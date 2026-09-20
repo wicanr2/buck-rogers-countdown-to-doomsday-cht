@@ -1,0 +1,40 @@
+record_index	data_offset_hex	page	heading_ascii	ordinal
+1	0x00C2	1	2456	4
+2	0x00E0	2	2456(Now)	7
+3	0x00FE	3	More on Abilities	8
+4	0x011C	4	Character Races	8
+5	0x013A	5	Careers	9
+6	0x0158	6	Rogues	1
+7	0x0176	7	Skills	5
+8	0x0194	8	Unused Skills	2
+9	0x01B2	9	Medic Skills	8
+10	0x01D0	10	Skills Mix	4
+11	0x01EE	11	Money	10
+12	0x020C	12	Damage	9
+13	0x022A	13	Range	6
+14	0x0248	14	Rocketships	3
+15	0x0266	15	Mercury	4
+16	0x0284	16	Earth	5
+17	0x02A2	17	Mars	2
+18	0x02C0	18	Salvage	6
+19	0x02DE	19	Ranged Weapons	1
+20	0x02FC	21	Gear Quality	7
+21	0x031A	22	Terrine	2
+22	0x0338	23	Scot's Alarm	4
+23	0x0356	24	The Elevator	5
+24	0x0374	26	Meeting with Robot	4
+25	0x0392	27	The King in 0-G	3
+26	0x03B0	28	Robot and Buck	5
+27	0x03CE	29	Buck's Speech.	7
+28	0x03EC	30	Jupiter Arrival	6
+29	0x040A	31	Desert Ape Pilots	2
+30	0x0428	32	The Great Rift	3
+31	0x0446	33	Talon's Speech	5
+32	0x0464	34	Deimos Prison	10
+33	0x0482	35	Buck's Capture	8
+34	0x04A0	36	Acidic Victory	7
+35	0x04BE	37	Alert Screen	3
+36	0x04DC	38	Lens Treatise	9
+37	0x04FA	39	Appendix	1
+38	0x0518	41	Technical Skills	2
+39	0x0536	42	Roll.	4

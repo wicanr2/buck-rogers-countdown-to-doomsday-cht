@@ -53,7 +53,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   手冊查詢。第一題為英文 Log Book 第 34 頁 `Deimos Prison` 第十字；明確錯答
   後原版會重新抽題。對應繁中來源是 `SCAN0352_039.jpg` 印刷頁 73 的「49. 在監獄中」。
   `docs/spec/002-manual-paragraph-overlay-draft.md` 只允許輸出端顯示中文段落，禁止自動作答或改原版判定。
+- 第十二階段已證實手冊題庫位於執行期 `0EC0:00C2..0553`，共有 39 筆 30-byte 紀錄；
+  頁碼、英文標題與序數已形成可重生清冊。工具不解碼、不輸出答案；第 32 與第 38 筆已
+  分別對回動態 `Deimos Prison` 與 `Technical Skills` 抽題。中文來源仍只有前者唯一確認。
 
-下一個不依賴倍率決策的工作，是盤點原版可抽選的手冊題庫，並將每個英文標題對回
-使用者提供的繁中掃描段落。映射完整性、錯答 generation 失效與分頁 prototype 驗證前，
+下一個不依賴倍率決策的工作，是逐筆將 39 筆英文 metadata 對回使用者提供的繁中掃描段落。
+映射完整性、錯答 generation 失效與分頁 prototype 驗證前，
 手冊覆繪 DRAFT 不升為 READY。

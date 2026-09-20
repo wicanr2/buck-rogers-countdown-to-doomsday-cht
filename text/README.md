@@ -4,6 +4,9 @@
 記憶體、規則、驗證答案或存檔。原版完整字串清冊與受著作權保護素材不納入 Git。
 
 目前 `menu.zh-TW.tsv` 僅是第八階段已由正常玩家路徑及中文說明書共同證實的 DRAFT。
+`manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
+`tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
+已唯一核對中文掃描來源的段落，目前仍只有 `Deimos Prison` 一筆。
 
 ## 驗證與 prototype 字型
 

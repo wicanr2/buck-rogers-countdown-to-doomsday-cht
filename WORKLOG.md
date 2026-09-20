@@ -146,3 +146,14 @@
 - 對回中文掃描 `SCAN0352_039.jpg` 印刷頁 73 的「49. 在監獄中」，建立一筆繁中
   短段落 catalog 與 DRAFT 映射。原圖、整頁 OCR、state、VRAM 與 trace 均留在被忽略的
   `workplace/`。
+# 2026-09-20：第十二階段手冊題庫結構
+
+- 建立並完整讀回第十二階段 goal；以 dosgolem 執行期資料與 IDA Pro 9.4 追查手冊題庫，
+  證實 `0EC0:00C2..0553` 有 39 筆、每筆 30 bytes。
+- 保留 raw offset／bytes／執行期 segment 與 IDA database 位址；證實頁碼、標題長度與
+  18-byte 區、序數、答案長度與 8-byte 區，以及 `encoded - 6 + field_length` 解碼公式。
+- 新增失敗即關閉的 `tools/manual_questions.py` 與 5 項測試。工具只輸出頁碼、標題、序數
+  與 offset；答案只驗證結構容量，不解碼、不輸出、不用於自動作答。
+- 由真實資料重生 `text/manual-questions.tsv` 並逐位元核對；第 32、38 筆分別吻合動態
+  `Deimos Prison` 第十字與 `Technical Skills` 第二字。
+- 中文來源目前仍只有 `Deimos Prison` 唯一確認；其餘 38 筆維持未知，未模糊猜補。

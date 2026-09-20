@@ -1,7 +1,8 @@
 # 002 — 手冊查詢繁中段落覆繪
 
 狀態：DRAFT  
-前置：[第十一階段證據](../re/phase-11-first-manual-check-event-map.md)
+前置：[第十一階段事件證據](../re/phase-11-first-manual-check-event-map.md)、
+[第十二階段題庫結構](../re/phase-12-manual-question-table-inventory.md)
 
 ## 目的
 
@@ -27,7 +28,8 @@
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
 2. 映射只可選擇覆繪文字；不得送鍵、改寫 DOS 記憶體或修改原版程式返回值。
 3. 錯答造成重新抽題時，舊段落必須在新題覆繪前失效；不得沿用上一題 metadata。
-4. 現階段只登記一題，未命中其他題目是預期行為，不可用標題模糊比對猜測。
+4. `manual-questions.tsv` 的 39 筆只證明原版 metadata；現階段仍只登記一筆繁中段落，
+   未命中其他題目是預期行為，不可用標題模糊比對猜測。
 
 ## READY 前置
 
