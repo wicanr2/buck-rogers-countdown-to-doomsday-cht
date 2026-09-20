@@ -19,3 +19,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第十二階段：手冊題庫結構與可抽題清冊](phase-12-manual-question-table-inventory.md) | 完成 | 證實原版題庫 schema、消費者與可抽題 metadata，再對回中文條目。 |
 | [第十三階段：39 筆手冊題目與繁中來源對照](phase-13-manual-source-crosswalk.md) | 完成 | 逐筆核對中文掃描來源、證據等級與可用繁中段落。 |
 | [第十四階段：首批短篇繁中手冊段落校訂](phase-14-manual-compact-paragraphs.md) | 完成 | 原圖校訂八筆短篇段落並建立題目鍵與繁中 catalog。 |
+| [第十五階段：第二批短篇繁中手冊段落校訂](phase-15-manual-compact-paragraphs-2.md) | 完成 | 再校訂八筆單段內容並擴充事件與 catalog。 |

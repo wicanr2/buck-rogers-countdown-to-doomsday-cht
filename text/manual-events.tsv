@@ -1,8 +1,16 @@
 event_key	record_index	page	heading_ascii	ordinal	text_key
+manual.page12.damage.word9	12	12	Damage	9	manual.rules.damage
+manual.page22.terrine.word2	21	22	Terrine	2	manual.bestiary.terrine
+manual.page23.scots_alarm.word4	22	23	Scot's Alarm	4	manual.log.5.scots_alarm
 manual.page24.the_elevator.word5	23	24	The Elevator	5	manual.log.11.the_elevator
+manual.page26.meeting_with_robot.word4	24	26	Meeting with Robot	4	manual.log.15.meeting_with_robot
 manual.page27.the_king_in_0_g.word3	25	27	The King in 0-G	3	manual.log.18.king_in_zero_g
+manual.page28.robot_and_buck.word5	26	28	Robot and Buck	5	manual.log.25.robot_and_buck
+manual.page29.bucks_speech.word7	27	29	Buck's Speech.	7	manual.log.27.bucks_speech
 manual.page30.jupiter_arrival.word6	28	30	Jupiter Arrival	6	manual.log.32.jupiter_arrival
+manual.page31.desert_ape_pilots.word2	29	31	Desert Ape Pilots	2	manual.log.37.desert_ape_pilots
 manual.page32.the_great_rift.word3	30	32	The Great Rift	3	manual.log.43.great_rift
+manual.page33.talons_speech.word5	31	33	Talon's Speech	5	manual.log.44.talons_speech
 manual.page34.deimos_prison.word10	32	34	Deimos Prison	10	manual.log.49.deimos_prison
 manual.page35.bucks_capture.word8	33	35	Buck's Capture	8	manual.log.56.bucks_capture
 manual.page36.acidic_victory.word7	34	36	Acidic Victory	7	manual.log.57.acidic_victory
