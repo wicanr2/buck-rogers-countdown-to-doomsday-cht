@@ -121,3 +121,15 @@
   沒有 RAR 解壓器，故未假裝已取得手冊內容。兩者均非原版功能缺陷。
 - 本批工作使用一次性 `docker run --rm`；未建立本專案長駐容器。原始素材與收據仍在
   `workplace/`，沒有納入 Git。
+# 2026-09-20：第十階段 catalog 與 GOLEMFNT 建置管線
+
+- 建立並完整讀回第十階段 goal；依路由載入在地化顯示／語意隔離、字型與規格閘門契約。
+- 新增失敗即關閉 TSV lint、決定性字元清單與 Unifont `.hex`／`.hex.gz` 到 16×16
+  `GOLEMFNT` builder；6 組 Python 正反向測試全數通過。
+- 現有 8 筆譯文導出 24 個唯一字元；本機 Unifont prototype 為 904 bytes，字型二進位留在
+  被忽略的 `workplace/`，未把測試來源升格為正式產品字型。
+- workplace dosgolem 新增 `cmd/fontcheck`，直接以 `xlate.LoadFont` 回讀，確認 24 個 glyph
+  覆蓋合併譯文的 29 個碼點；Go command 與 `xlate` 測試均通過，本機 commit 為
+  `8a224601a7d09fc8d0f63ab65828eb7f64fa0200`。
+- Go 映像的登入 shell 重設 PATH，兩次造成 `gofmt` 找不到；固定 PATH 並用非登入 shell
+  後乾淨通過，分類為容器環境問題。

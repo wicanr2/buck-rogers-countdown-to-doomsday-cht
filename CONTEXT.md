@@ -45,6 +45,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
 - 第九階段已把 psychic-war 驗證過的遊戲無關 `xlate` package 移植到 workplace dosgolem
   專用分支，本機 commit `b33cfbf`；`xlate` 與全部正式 packages 均通過。現行 `Draw` 只接受
   3 的倍數倍率，所以仍不能把它解讀為使用者已選 3×。dosgolem 遠端推送待明確外傳授權。
+- 第十階段已把 TSV 驗證、決定性字元清單與 Unifont→GOLEMFNT 16×16 子集建置工具納入
+  專案。現有 8 筆譯文導出 24 個唯一字模；904-byte prototype 已由 dosgolem production
+  `xlate.LoadFont` 回讀並覆蓋全部 29 個譯文字元；fontcheck 位於本機分支 commit `8a22460`。
+  字型二進位只留 `workplace/`，正式字型與 2×／3× 決策仍 pending。
 
 下一個受證據閘門約束的工作，是依使用者選定倍率，把 guarded post-call、矩形失效與
 GNU Unifont 子集接成 dosgolem 分支上的可丟棄 adapter，並產生英文／繁中 A/B 同狀態收據。

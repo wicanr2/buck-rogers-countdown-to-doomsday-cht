@@ -114,8 +114,9 @@ dispatcher entry 或固定延遲切 generation。
 - 清除、捲動、游標反白、畫面轉換、返回與存讀檔後的失效時機；
 - guarded post-call 與矩形失效契約尚未由可丟棄 adapter prototype、自然 fall-through
   regression 與英文／繁中 A/B 像素收據驗證；
-- GNU Unifont 已證實可作有授權的 prototype 字型，但正式採 2× 填滿格或 3× 置中仍待
-  使用者決定；完整字元清單、換行與 overflow 策略仍未知；
+- GNU Unifont 已證實可作有授權的 prototype 字型，且現有 8 筆譯文已由正式 TSV 決定性
+  導出 24 個字模並經 `xlate.LoadFont` 回讀；正式採 2× 填滿格或 3× 置中仍待使用者決定，
+  後續畫面的換行與 overflow 策略仍未知；
 - 選單每一行的完整 text-safe rectangle，以及非靜態畫面的適用性；
 - 上游字串表定位與對同內容、不同語意事件的 collision 策略。
 
