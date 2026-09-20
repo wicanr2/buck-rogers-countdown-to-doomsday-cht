@@ -67,6 +67,8 @@
 - `font/`：可重建的字型來源說明、字元清單與產物；授權與來源必須可追溯。
 - `docs/spec/`：DRAFT、READY、CONFORMED 規格；`docs/re/` 或 `RESEARCH-LOG.md`：
   位址、雜湊、實驗與推論等級。保留原始位址與 operand，不用推測名稱覆蓋定位資訊。
+- `docs/goals/`：分期目標、範圍與退出條件；不得複製 GitHub Issue 的逐項工作、
+  日期流水帳或未分級研究結論。
 - `workplace/`：唯一可寫研究工作區，保存解壓輸入、探針輸出、IDA 資料庫、OCR 暫存與
   截圖；必須 `.gitignore`，不建立 `work/`、`research/` 等同義目錄。
 - GitHub Issue 是唯一的可執行工作清單，必須逐項寫明範圍、依賴、完成條件與原版
