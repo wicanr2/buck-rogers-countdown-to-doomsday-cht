@@ -35,5 +35,6 @@
 | [第二十八階段功能選單顯示請求純核心](phase-28-menu-display-request-core.md) | READY exact-match catalog、九事件顯示請求與失敗即關閉驗證 |
 | [第二十九階段功能選單執行期顯示請求 watcher](phase-29-menu-runtime-request-watcher.md) | guarded post-call 直接產生九筆 request、content-free 收據與 CONFORMED 子規格 |
 | [第三十階段種族選單反白與文字安全矩形](phase-30-race-selection-highlight-lifecycle.md) | Down／Up normal→selected 重畫、同終點 framebuffer 與 logical text-safe rectangle |
+| [第三十一階段反白 variant 執行期繁中請求](phase-31-selection-variant-runtime-requests.md) | 12-identity exact catalog、13-request 固定重播與舊九事件相容性 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

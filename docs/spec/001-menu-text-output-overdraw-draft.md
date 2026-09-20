@@ -120,8 +120,9 @@ Martian。Up 先 normal redraw Martian，再 selected redraw Terran。相同終�
 
 因此 selection overlay 不能只在畫面進入時建立；每筆 exact normal／selected post-call 都是
 同一列中文覆繪重建候選。`text/menu-text-safe-rects.tsv` 已把原文清除矩形與中文 draw anchor
-分離：一般選項清除 col 1 起的含縮排原文，但中文從 col 3 畫。三筆新 variant 尚未加入
-production catalog，現行 resolver 必須維持 miss，不得用座標或 text key 模糊接線。
+分離：一般選項清除 col 1 起的含縮排原文，但中文從 col 3 畫。第三十一階段已將三筆新
+variant 納入正式 exact catalog；固定 Enter→Down→Up 路徑的 13 筆 post-call 全數產生
+request 且零 miss，仍不得用座標或 text key 模糊接線。
 
 ## 未知與 READY 閘門
 
@@ -129,11 +130,12 @@ production catalog，現行 resolver 必須維持 miss，不得用座標或 text
 
 - 第 4–7 階段已證實本功能選單進入／返回的矩形清除與 guarded post-call，但訊息捲動、
   存讀檔及其他畫面的失效時機仍未知；種族選單鍵盤反白已由第 30 階段 Down／Up 證實，
-  但其三筆新增 identity 與 overlay 重建尚未接入；
+  且其三筆新增 identity 已接入 exact catalog；overlay 重建與畫面繪製仍未接入；
 - 第 27 階段 `TextRecorder` 已由九筆真實事件與自然 fall-through／錯誤 guard regression
   驗證純觀測契約；第 28 階段 READY `MenuCatalog` 已把九筆真實收據精確解析成繁中
   `DisplayRequest`。第 29 階段又以 CONFORMED runtime watcher 在 guarded post-call 直接
-  產生九筆 request。矩形失效與繁中 `Stamp` 尚未接成可丟棄 adapter，也沒有繁中 A/B 像素收據；
+  產生九筆 request；第 31 階段把 selection variants 擴充為正常 Down／Up 路徑的 13 筆
+  exact request。矩形失效與繁中 `Stamp` 尚未接成可丟棄 adapter，也沒有繁中 A/B 像素收據；
 - GNU Unifont 已證實可作有授權的 prototype 字型，且現有 8 筆譯文已由正式 TSV 決定性
   導出 24 個字模並經 `xlate.LoadFont` 回讀；正式採 2× 填滿格或 3× 置中仍待使用者決定，
   後續畫面的換行與 overflow 策略仍未知；

@@ -13,7 +13,7 @@ import menu_events
 
 
 SELECTION_HEADER = [
-    "sequence", "input_phase", "event_role", "text_key", "original_length",
+    "sequence", "input_phase", "event_role", "event_key", "text_key", "original_length",
     "original_sha256", "caller", "background", "foreground", "row", "column",
 ]
 EVENT_FIELDS = {
@@ -24,7 +24,7 @@ HASH_RE = re.compile(r"^[0-9a-f]{64}$")
 CALLER_RE = re.compile(r"^[0-9A-F]{4}:[0-9A-F]{4}$")
 
 
-def _selection_rows(path: Path, catalog_keys: set[str]) -> list[dict[str, str]]:
+def _selection_rows(path: Path, catalog_keys: set[str], event_keys: set[str]) -> list[dict[str, str]]:
     data = path.read_bytes()
     if data.startswith(b"\xef\xbb\xbf"):
         raise ValueError("race-selection-events.tsv: 不得含 BOM")
@@ -47,6 +47,8 @@ def _selection_rows(path: Path, catalog_keys: set[str]) -> list[dict[str, str]]:
             raise ValueError("race-selection-events.tsv: lifecycle 順序不符")
         if row["text_key"] not in catalog_keys:
             raise ValueError("race-selection-events.tsv: text key 不在 catalog")
+        if row["event_key"] not in event_keys:
+            raise ValueError("race-selection-events.tsv: event key 不在正式 inventory")
         if not HASH_RE.fullmatch(row["original_sha256"]) or not CALLER_RE.fullmatch(row["caller"]):
             raise ValueError("race-selection-events.tsv: hash 或 caller 格式不符")
         for name in ("original_length", "background", "foreground", "row", "column"):
@@ -77,7 +79,14 @@ def verify(
     menu_events.validate(menu_path, catalog_path)
     with catalog_path.open(encoding="utf-8", newline="") as stream:
         catalog_keys = {row["key"] for row in csv.DictReader(stream, delimiter="\t")}
-    selection = _selection_rows(selection_path, catalog_keys)
+    with menu_path.open(encoding="utf-8", newline="") as stream:
+        inventory = {row["event_key"]: row for row in csv.DictReader(stream, delimiter="\t")}
+    selection = _selection_rows(selection_path, catalog_keys, set(inventory))
+    for row in selection:
+        item = inventory[row["event_key"]]
+        for name in ("text_key", "original_length", "original_sha256", "caller", "background", "foreground", "row", "column"):
+            if row[name] != item[name]:
+                raise ValueError(f"race-selection-events.tsv: {row['event_key']} 的 {name} 不符正式 inventory")
     a = json.loads(receipt_a.read_text(encoding="utf-8"))
     b = json.loads(receipt_b.read_text(encoding="utf-8"))
     if a != b:

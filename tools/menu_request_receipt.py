@@ -35,11 +35,15 @@ def verify(receipt_path: Path, events_path: Path, catalog_path: Path) -> None:
     with catalog_path.open(encoding="utf-8", newline="") as stream:
         translations = {row["key"]: row["translation"] for row in csv.DictReader(stream, delimiter="\t")}
     events, requests = receipt["events"], receipt["requests"]
-    if len(events) != len(identities) or len(requests) != len(identities):
+    if len(events) == len(identities) and len(requests) == len(identities):
+        expected = identities
+    elif len(events) == 9 and len(requests) == 9 and len(identities) == 12:
+        expected = identities[:9]
+    else:
         raise ValueError("request receipt: 事件或請求數不符")
 
     previous_post = 0
-    for index, (event, request, identity) in enumerate(zip(events, requests, identities), 1):
+    for index, (event, request, identity) in enumerate(zip(events, requests, expected), 1):
         if set(event) != EVENT_FIELDS or set(request) != REQUEST_FIELDS:
             raise ValueError(f"request receipt: 第 {index} 筆欄位不符")
         caller = event["caller"]

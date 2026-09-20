@@ -126,6 +126,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   回到 steady。正式 text-safe rectangle 已分離 col 1 原文清除範圍與 col 3 中文 anchor。
   三筆新增 variant 尚未接入 catalog；dosgolem 本機 commit 為
   `d55a4c84c3474034257cddf58d6fa32cff3d60d4`，未推送其遠端。
+- 第三十一階段已把三筆 selection variant 納入正式 12-identity exact catalog；固定
+  Enter→Down→Up 路徑兩次都產生逐位元相同的 13-event／13-request 收據，零 drop、pending、
+  catalog miss。舊九事件收據仍嚴格驗證前九筆；dosgolem 本機 commit 為
+  `79ecc2b9585f02339eef181ecb88b752bee4c2aa`，未推其遠端。字型、renderer 與倍率仍未接入。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
 接入正常玩家路徑覆繪。dispatcher／guarded post-call 已完成；下一個技術切片須在倍率決定後

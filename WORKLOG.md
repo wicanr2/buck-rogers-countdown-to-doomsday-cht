@@ -375,3 +375,20 @@
   與 Buck Rogers race detector 通過。
 - dosgolem 本機 commit 為 `98f3bec55d633cc2a69099f187848af4d765b7d1`，未推送其遠端；
   本階段沒有選 2×／3× 或建立玩家可見覆繪。
+
+# 2026-09-20：第三十一階段反白 variant 執行期繁中請求
+
+- 建立並完整讀回第 31 階段 goal；在倍率決策仍 pending 時，只閉合不依賴 renderer 的
+  selection exact-catalog 垂直切片。
+- 正式 `menu-events.tsv` 由 9 筆擴充為 12 個唯一 identity；normal Terran、selected Martian、
+  normal Martian 各有獨立 event key，selected Terran 重用既有 identity。
+- `race-selection-events.tsv` 加入逐事件 `event_key`，並與 text-safe rectangles、正式 inventory
+  進行完整 identity 交叉驗證；舊九事件／九 request verifier 仍只接受精確前九筆。
+- 固定 Enter→Down→Up 排程重生兩次，兩份 13-event／13-request 收據逐位元相同，SHA-256
+  為 `eb619b596f312aa61a2e5ea335c3c57157a0cd7cb2cf6350e03aaaaf03748b2f`，且零 drop、
+  pending、catalog miss。
+- 專案 41 項 Python 測試與正式收據 verifier 通過。dosgolem `go test ./...` 首次只被既有
+  非正式 workplace 多個 `main` 阻擋；排除 `/workplace/` 後，全部正式 packages test／vet
+  與 Buck Rogers race detector 通過。
+- dosgolem 本機 commit 為 `79ecc2b9585f02339eef181ecb88b752bee4c2aa`，未推其遠端；本階段
+  未載入字型、未繪圖，也未替使用者選定 2×／3×。

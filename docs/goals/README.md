@@ -35,3 +35,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第二十八階段：功能選單顯示請求純核心](phase-28-menu-display-request-core.md) | 完成 | 將 exact runtime identity 與正式繁中 TSV 接成失敗即關閉顯示請求。 |
 | [第二十九階段：功能選單執行期顯示請求 watcher](phase-29-menu-runtime-request-watcher.md) | 完成 | 在 guarded post-call 直接產生精確繁中顯示請求，不接 renderer。 |
 | [第三十階段：種族選單反白與文字安全矩形生命週期](phase-30-race-selection-highlight-lifecycle.md) | 完成 | 量測正常方向鍵反白重繪，建立 logical text-safe rectangle 證據。 |
+| [第三十一階段：反白 variant 的執行期繁中請求](phase-31-selection-variant-runtime-requests.md) | 完成 | 將已證實 selection identity 納入 exact catalog，閉合 13-request 路徑。 |
