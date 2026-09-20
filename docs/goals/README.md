@@ -59,3 +59,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第五十二階段：合法保存後段事件對齊](phase-52-valid-save-event-alignment.md) | 已完成 | 對齊圖示確認、儲存詢問、FileOps 與名冊事件，分類空名冊根因。 |
 | [第五十三階段：保存選項控制流與名冊接納狀態](phase-53-save-choice-control-flow-and-admission-state.md) | 已完成 | 從同一保存提示 state 比對 YES／NO 控制流、狀態寫入與後續 consumer。 |
 | [第五十四階段：已保存角色的名冊與加入隊伍路徑](phase-54-saved-character-roster-and-add-path.md) | 已完成 | 從真正保存分支接續 Add，驗證角色列、保存檔 consumer 與加入後邊界。 |
+| [第五十五階段：保存、名冊與加入隊伍繁中事件 catalog](phase-55-save-roster-join-translation-catalog.md) | 已完成 | 建立正常保存→Add→加入路徑的靜態文字 identity、繁中 catalog 與動態姓名隔離。 |

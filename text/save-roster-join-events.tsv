@@ -1,0 +1,19 @@
+event_key	sequence	event_role	translation_key	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+save_roster_join.menu_option.001	1	existing_static	menu.create_new_character	confirmed	120307499	120322952	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:15BD	0	10	12	9
+save_roster_join.menu_option.002	2	existing_static	menu.add_character_to_team	confirmed	120329849	120346079	21	d31754823288b10941ac65c8731360cdc55c604ad87478ffa0f435fe17762dd9	37F1:15BD	0	10	13	9
+save_roster_join.menu_option.003	3	existing_static	menu.load_saved_game	confirmed	120352347	120363988	15	7ffbeb7f1164aa6fe118718f48287dc9df5af7f6d8f84676df81f949c55ff4db	37F1:15BD	0	10	14	9
+save_roster_join.menu_option.004	4	existing_static	menu.joystick_mouse_initialize	confirmed	120374260	120393544	25	b0f82822456b6fd815be97c43ce3017dd7445ec36655d265754f2e6a16a9742c	37F1:15BD	0	10	15	9
+save_roster_join.menu_option.005	5	existing_static	menu.exit_to_dos	confirmed	120397066	120405725	11	622af18ec40b9e50d8ee66ca0da3e2071c85104b5fe4e3f07ea3b7ff116a7b4e	37F1:15BD	0	10	16	9
+save_roster_join.menu_selected.001	6	existing_static	menu.create_new_character	confirmed	120418973	120434426	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:175D	15	0	12	9
+save_roster_join.menu_instruction.001	7	existing_static	menu.choose_function	confirmed	120435236	120449221	18	925f9d44689040dbbecd13614cbe9c786da2e278dfeec900b17c19de3b08b572	37F1:101E	0	13	24	0
+save_roster_join.menu_previous.001	8	existing_static	menu.create_new_character	confirmed	121000485	121015938	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:1856	0	10	12	9
+save_roster_join.menu_current.001	9	existing_static	menu.add_character_to_team	confirmed	121016291	121032521	21	d31754823288b10941ac65c8731360cdc55c604ad87478ffa0f435fe17762dd9	37F1:175D	15	0	13	9
+save_roster_join.menu_instruction.002	10	existing_static	menu.choose_function	confirmed	121033328	121047313	18	925f9d44689040dbbecd13614cbe9c786da2e278dfeec900b17c19de3b08b572	37F1:101E	0	13	24	0
+save_roster_join.menu_enter.001	11	existing_static	menu.add_character_to_team	confirmed	121200369	121216599	21	d31754823288b10941ac65c8731360cdc55c604ad87478ffa0f435fe17762dd9	37F1:1856	0	10	13	9
+save_roster_join.roster_name_padded.001	12	dynamic_character_name		confirmed	121227787	121239640	15	f7872bdce8d40b314454ee51a0bbe13fe4c4ccb5d19d6b1299ac7d1a9ddab60c	37F1:15BD	0	10	2	1
+save_roster_join.roster_name_selected.001	13	dynamic_character_name		confirmed	121255711	121256682	1	559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd	37F1:175D	15	0	2	1
+save_roster_join.add_prompt.001	14	new_static	roster.add_prompt	confirmed	121257660	121270856	17	adfe0feb6f39631e4b7b14a12d9407e0af2a1bc12fc72dad2c1b879ca781ef90	37F1:101E	0	13	24	0
+save_roster_join.roster_name_normal.001	15	dynamic_character_name		confirmed	121800604	121801575	1	559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd	37F1:1856	0	10	2	1
+save_roster_join.loading.001	16	new_static	roster.loading	confirmed	121803259	121819552	21	e920b38b45dd6a828b466a06f4c4c4f63645f1c6a82e488599dc3da46b5280f2	0763:1307	0	10	24	0
+save_roster_join.joined_marker.001	17	dynamic_character_name		confirmed	121897024	121899523	3	d60b849846dd57b81aeb8f3b6e545341c143750c10c36c6681532e25ad9edcfb	37F1:175D	15	0	2	1
+save_roster_join.add_prompt.002	18	new_static	roster.add_prompt	confirmed	121900498	121913694	17	adfe0feb6f39631e4b7b14a12d9407e0af2a1bc12fc72dad2c1b879ca781ef90	37F1:101E	0	13	24	0

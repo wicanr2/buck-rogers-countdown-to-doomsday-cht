@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第五十五階段：保存、名冊與加入隊伍繁中事件 catalog](phase-55-save-roster-join-translation-catalog.md)：鎖定 18 筆完整路徑 identity，隔離四筆動態姓名並建立七筆繁中 key。
+
 此目錄保存 dosgolem 的原版行為收據與推論分級，不保存原版遊戲、手冊、可還原素材或
 其完整輸出。所有位址均須標明使用的位址空間；不可把 IDA 線性位址與 dosgolem 執行期
 段位址混用。

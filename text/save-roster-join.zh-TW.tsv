@@ -1,0 +1,8 @@
+key	translation	source
+menu.add_character_to_team	將角色加入隊伍	runtime-interface
+menu.load_saved_game	載入已存遊戲	runtime-interface
+menu.joystick_mouse_initialize	初始化搖桿／滑鼠	runtime-interface
+menu.exit_to_dos	離開至 DOS	runtime-interface
+menu.choose_function	選擇功能	runtime-interface
+roster.add_prompt	加入角色：	runtime-interface
+roster.loading	載入中……請稍候	runtime-interface
