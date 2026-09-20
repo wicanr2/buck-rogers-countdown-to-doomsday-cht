@@ -124,6 +124,12 @@ Martian。Up 先 normal redraw Martian，再 selected redraw Terran。相同終�
 variant 納入正式 exact catalog；固定 Enter→Down→Up 路徑的 13 筆 post-call 全數產生
 request 且零 miss，仍不得用座標或 text key 模糊接線。
 
+第三十三階段又在 #100,220,000–#109,990,000 每 10,000 steps 取樣：完整 palette 全程
+唯一，色號 0 與 15 的 RGB 都固定為黑色；selected Terran／Martian 完成重畫後，其 region
+hash 直到窗口終點都不再變。故本窗口內 selected row 是穩定黑底黑字，而非 palette blink
+或週期性 pixel redraw。忠實覆繪候選必須保留這項不可見 selection style；不得擅自換成
+白底、反色或現代游標。窗口外仍未知，正式 adapter 需用連續 runtime A/B 限定完成聲明。
+
 ## 未知與 READY 閘門
 
 下列項目未達 READY，故禁止 production 實作：

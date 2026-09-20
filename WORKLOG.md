@@ -409,3 +409,18 @@
 - dosgolem spec 013 已 CONFORMED；全部正式 packages test／vet 與相關 race detector 通過。
   本機 commit 為 `09f580877b0d1e34ef00fa44eddefa12898b7e53`，未推其遠端。
 - 第 25 階段倍率決策仍 pending；建議維持 2×，等待使用者依實圖確認。
+
+# 2026-09-21：第三十三階段種族選取列閃爍與色盤生命週期
+
+- 建立並完整讀回第 33 階段 goal；倍率決策仍 pending，因此只處理不依賴倍率的 selection
+  原版可見性證據。
+- 先由既有終點證實 selected Terran／Martian 仍有 index 15 背景與 index 0 glyph pixels，
+  排除「文字未畫」；再建立固定 step 的 palette／row region 連續取樣。
+- 第一批每 1,000 steps 取樣到逐字重畫過程；為避免短窗口外推，正式收據延長至
+  #110,000,000，每 10,000 steps 取 978 點，steady／Down 各重播兩次。
+- palette SHA-256 全窗口唯一，色號 0／15 皆為 `(0,0,0)`，contrast 978／978 為 false；
+  steady 自 #100,230,000、Down 自 #100,260,000 起，row 3／4 hash 與事件數完全固定。
+- 新增嚴格 verifier 與負向測試；44 項 Python 測試通過。dosgolem spec 014 已 CONFORMED，
+  全部正式 packages test／vet 與相關 race detector 通過。
+- dosgolem 本機 commit 為 `41917c85007efe17154cb92422cba3fe6539ad88`，未推其遠端；未選
+  2×／3×，未接 renderer，也未把原版不可見 selection 自行美化。

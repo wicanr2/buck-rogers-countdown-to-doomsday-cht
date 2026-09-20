@@ -134,6 +134,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   2×／3× 選單 A/B；兩批逐檔相同，四份收據皆零缺字、零重疊、零安全矩形外差異。
   2× 為 640×400／16×16 滿格，3× 為 960×600／16×16 ink 置中 24×24 格；本機 dosgolem
   commit 為 `09f580877b0d1e34ef00fa44eddefa12898b7e53`，未推其遠端。
+- 第三十三階段以 steady／Down 各 978 點長窗口證實：完整 palette 不變，色號 0／15 同為
+  黑色，selected row 完成後 pixels 與事件數都維持固定；取樣窗口內沒有 palette blink 或
+  週期性 redraw。未來忠實 renderer 必須保留黑底黑字 selection style；dosgolem 本機
+  commit 為 `41917c85007efe17154cb92422cba3fe6539ad88`，未推其遠端。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力及功能選單／手冊離線 A/B 都已
 具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

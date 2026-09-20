@@ -37,5 +37,6 @@
 | [第三十階段種族選單反白與文字安全矩形](phase-30-race-selection-highlight-lifecycle.md) | Down／Up normal→selected 重畫、同終點 framebuffer 與 logical text-safe rectangle |
 | [第三十一階段反白 variant 執行期繁中請求](phase-31-selection-variant-runtime-requests.md) | 12-identity exact catalog、13-request 固定重播與舊九事件相容性 |
 | [第三十二階段功能選單覆繪倍率 A/B prototype](phase-32-menu-overlay-scale-ab-prototype.md) | 同一原版 framebuffer 的 2×／3× xlate 覆繪、幾何與決策收據 |
+| [第三十三階段種族選取列閃爍與色盤生命週期](phase-33-selection-blink-lifecycle.md) | 978 點 palette／row 取樣、黑底黑字選取狀態與無週期重畫證據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。
