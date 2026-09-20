@@ -40,3 +40,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第三十三階段：種族選取列閃爍與色盤生命週期](phase-33-selection-blink-lifecycle.md) | 完成 | 量測 selected row 的連續幀可見性、palette 與像素重畫機制。 |
 | [第三十四階段：倍率中立的功能選單覆繪核心](phase-34-scale-neutral-menu-overlay-core.md) | 完成 | 將已證實選單幾何移入明示倍率的正式純核心，不預先選定 2×／3×。 |
 | [第三十五階段：選定種族後的下一畫面文字路徑清冊](phase-35-post-race-text-path-inventory.md) | 完成 | 由正常 Enter 路徑建立下一個玩家可見畫面的 content-safe 文字事件證據。 |
+| [第三十六階段：性別選擇生命週期收據](phase-36-gender-selection-lifecycle.md) | 完成 | 量測性別選擇的上下移動、返回與 framebuffer 決定性收據。 |

@@ -453,3 +453,16 @@
   packages test／vet 及相關 race detector 通過，spec 016 標為 CONFORMED。
 - dosgolem 本機 commit 為 `7009315c5a04981eb1b048e7bba34a0b932fbf6d`，未推其遠端；本輪
   未建立譯文、字型、幾何或 renderer，也未外推性別選單完整 lifecycle。
+
+# 2026-09-21：第三十六階段性別選擇生命週期
+
+- 建立並完整回讀第 36 階段 Goal；範圍只量正常 Down／Up／Escape，不依賴仍 pending 的
+  2×／3× 倍率決策。
+- 可丟棄 probe 證實 Down 先 normal 重畫男性列再 selected 重畫女性列，Up 反向復原；
+  Escape 先取消男性反白，再重建上一層功能選單，並非返回種族選單。
+- 正式 Down→Up 與 Escape 路徑各重播兩次；各自 JSON 與 64,000-byte framebuffer 逐 byte
+  相同，且通過完整 identity、絕對 step、排程與輸入雜湊驗證。
+- 新增 12 筆 content-safe 生命週期清冊、嚴格 verifier 與三項負向測試；專案 50 項 Python
+  測試通過。清冊不保存原版英文全文，也不猜譯尚未納入 catalog 的返回選單列。
+- dosgolem spec 017 已 CONFORMED，本機 commit 為
+  `57daa16fd3ab38ff19b8b1702fecf5b0ca14992d`，未推其遠端；本輪沒有翻譯、繪圖或選倍率。

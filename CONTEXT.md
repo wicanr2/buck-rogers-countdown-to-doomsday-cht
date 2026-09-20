@@ -146,6 +146,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   framebuffer；下一個性別選擇畫面新增提示、兩筆 normal 選項與 selected 第一選項共四筆
   content-safe identity。dosgolem spec 016 已 CONFORMED，本機 commit 為
   `7009315c5a04981eb1b048e7bba34a0b932fbf6d`，未推其遠端；尚未建立譯文或量方向鍵 lifecycle。
+- 第三十六階段以正常 Down→Up 與 Escape 完成性別選擇生命週期：前者依序 normal／selected
+  重畫兩列並逐位元回到第一列終點；後者先取消男性反白，再重建上一層功能選單，而非返回
+  種族選單。兩路徑各自雙重重播一致，專案 50 項測試通過；dosgolem spec 017 已 CONFORMED，
+  本機 commit 為 `57daa16fd3ab38ff19b8b1702fecf5b0ca14992d`，未推其遠端。仍未建立性別譯文或 renderer。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
