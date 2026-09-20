@@ -1,6 +1,6 @@
 # 目前狀態
 
-更新：2026-09-20
+更新：2026-09-21
 
 ## 已確認的產品方向
 
@@ -130,8 +130,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   Enter→Down→Up 路徑兩次都產生逐位元相同的 13-event／13-request 收據，零 drop、pending、
   catalog miss。舊九事件收據仍嚴格驗證前九筆；dosgolem 本機 commit 為
   `79ecc2b9585f02339eef181ecb88b752bee4c2aa`，未推其遠端。字型、renderer 與倍率仍未接入。
+- 第三十二階段以 steady／Down 真實 framebuffer、正式 TSV 與 dosgolem `xlate.Draw` 重生
+  2×／3× 選單 A/B；兩批逐檔相同，四份收據皆零缺字、零重疊、零安全矩形外差異。
+  2× 為 640×400／16×16 滿格，3× 為 960×600／16×16 ink 置中 24×24 格；本機 dosgolem
+  commit 為 `09f580877b0d1e34ef00fa44eddefa12898b7e53`，未推其遠端。
 
-下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
-接入正常玩家路徑覆繪。dispatcher／guarded post-call 已完成；下一個技術切片須在倍率決定後
-建立 renderer 接線與同狀態畫面 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；畫面 A/B 與分頁互動驗證前，
-手冊覆繪 DRAFT 不升為 READY。
+下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力及功能選單／手冊離線 A/B 都已
+具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
+轉場清除與同狀態 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；runtime 畫面與分頁互動
+驗證前，手冊與選單覆繪 DRAFT 不升為 READY。

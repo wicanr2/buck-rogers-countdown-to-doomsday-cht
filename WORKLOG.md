@@ -392,3 +392,20 @@
   與 Buck Rogers race detector 通過。
 - dosgolem 本機 commit 為 `79ecc2b9585f02339eef181ecb88b752bee4c2aa`，未推其遠端；本階段
   未載入字型、未繪圖，也未替使用者選定 2×／3×。
+
+# 2026-09-21：第三十二階段功能選單覆繪倍率 A/B prototype
+
+- 建立並完整讀回第 32 階段 goal；載入共同決策、Golden Box CJK UI 與規格閘門契約，
+  只製作可丟棄 A/B，不替使用者選倍率或接入 production。
+- 新增 dosgolem `buckrogers-overlay-prototype`：直接使用 `xlate.Draw`，嚴格讀正式事件、譯文、
+  text-safe rectangles 與 GOLEMFNT，輸出不含原文／譯文全文的幾何 JSON。
+- 初版把 `cmd/probe` 已轉好的 8-bit `.pal` 誤當 raw 6-bit DAC；依 `writeShot` 原始碼訂正為
+  直接 RGB 後重生所有產物。另一個初版錯誤是把 draw capacity 當完整清除寬度，已改為扣除
+  col 1→3 的兩格前導區再驗證。
+- steady／Down × 2×／3× 各重生兩次，兩批逐檔相同；四份收據均為七個 visible event、
+  零缺字、零矩形重疊、零安全矩形外差異，所有 ink contained。
+- 原生圖目視確認：2× 的 16×16 字模填滿格且字距緊密；3× 的同一字模置中 24×24 格、
+  相對較小。selected row 在原版固定終點本來就是黑底黑字，prototype 忠實保留，未美化。
+- dosgolem spec 013 已 CONFORMED；全部正式 packages test／vet 與相關 race detector 通過。
+  本機 commit 為 `09f580877b0d1e34ef00fa44eddefa12898b7e53`，未推其遠端。
+- 第 25 階段倍率決策仍 pending；建議維持 2×，等待使用者依實圖確認。

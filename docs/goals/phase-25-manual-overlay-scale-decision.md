@@ -63,6 +63,12 @@ Codex 建議選 2×：同頁容量不變，但繁中字模較大、與既有 Gol
 第 17 階段曾有的「2× 需新增底層支援」成本已消失。兩案之後仍可改，但會使畫面收據、
 版面規格與玩家偏好驗收重做。
 
+第 32 階段又以真實功能／種族選單 steady 與 Down framebuffer、production `xlate.Draw`、
+正式 event／譯文／text-safe rectangles 各重生 2×／3×。兩案幾何皆通過；2× 的中文 ink
+填滿 16×16 格，3× 則以 16×16 ink 置中 24×24 格、字間留 8 px。這項第二種 screen type
+仍支持 2× 建議，但不替使用者完成決策。詳見
+`docs/re/phase-32-menu-overlay-scale-ab-prototype.md`。
+
 ## 完成紀錄
 
 等待倍率決策與共同理解確認。
