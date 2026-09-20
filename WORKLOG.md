@@ -1,5 +1,17 @@
 # 工作歷程
 
+## 2026-09-20：第四階段選單轉場與失效生命週期
+
+- 使用者確認維持 dosgolem 輸出端繁體中文化並排除 clean-room remake；已同步更新
+  `CONTEXT.md`。
+- 依新建並讀回的第四階段目標，從 `after-bios-space-100m.state` 以 BIOS BDA Enter 正常
+  進入 `PICK RACE`；未使用 memory poke、傳送或 forced-win。
+- Enter 在 #100,010,174 被原版取走；新 dispatcher 在 #100,010,490 開始，但舊選單像素
+  `A000:838A` 直到 #100,031,031 才被 `0CF4:1B3C` 清除。DRAFT 因此改為保守地在轉場輸入
+  被原版接受時失效，未把下一筆字串輸出誤用為清除訊號。
+- 相同起點、Enter 與終點步數重播兩次 raw VRAM byte-for-byte 相同。兩次滑鼠候選點均被
+  原版讀到但沒有畫面變化，保留為輸入語意未知，未強行推定熱區。
+
 ## 2026-09-20：第三階段中文手冊 archive 清冊
 
 - 依本輪新建並讀回的 `docs/goals/phase-3-manual-input-inventory.md`，檢查既有 Docker
