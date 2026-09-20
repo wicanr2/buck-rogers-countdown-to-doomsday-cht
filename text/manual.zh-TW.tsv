@@ -1,5 +1,10 @@
 key	translation	source
+manual.lore.2456_now	地球現在已完全由 NEO 統治，但陰影一直難以消除。偶有 RAM 的部隊以命令錯誤之藉口而攻擊重要基地。NEO 於是加緊備戰，以防 RAM 的大舉進犯及未知的陰謀。	manual-and-runtime
+manual.rules.unused_skills	遊戲中有些技能在本遊戲中其實用不到，但在接下來的續集中就極有可能用到。	manual-and-runtime
 manual.rules.damage	當一個攻擊行動命中敵人時，被攻擊者即會受到某種程度的傷害，也就是生命力（HP）會減少。至於所造成的傷害程度，則端視攻擊者所使用的武器或加上其力量。有些武器對某些特定的對手並不起作用。例如機械人就不怕強光或瓦斯手榴彈。金星蛙就不怕火焰槍。	manual-and-runtime
+manual.rules.range	每個武器幾乎都有射擊範圍的限制，範圍分為短程（SHORT）、中程（MEDIUM）以及長程（LONG）。長程攻擊效果減5，中程減2，短程攻擊則不減其準確度。	manual-and-runtime
+manual.world.rocketships	以核能為動力的火箭已遠優於20世紀的原始火箭數倍之多，並已能在太陽系間自由的航行。掃描和通訊系統已用來導引太空船並傳送訊息，甚至在戰鬥中也可用來探知敵艦的虛實。極精密的電腦系統已可以在空曠的太空中，引導太空船至任一一定點。利用有機溶液更可以無限制的供給必需的氣體，以供長途飛行之用。	manual-and-runtime
+manual.world.earth	純種人類的家鄉——地球，長久以來一直是 RAM 的垃圾場。最近才因為巴克羅吉斯的幫助，新地球聯盟（NEO）才能奪回地球的自主權。RAM 和 NEO 兩大武力的戰事一直持續著，由地球打到外太空。不過地球的都市在 NEO 得到地球的主控權後，已逐漸繁榮起來了！在地球的大氣外，是一個充滿老舊太空探測器的垃圾地帶。NEO 的太空基地就藏在這些垃圾中。一開始，你的隊伍就是由此向太空出發。	manual-and-runtime
 manual.bestiary.terrine	這些可怕而又殘酷的變種人是 RAM 早期用來控制地球的戰鬥人。	manual-and-runtime
 manual.log.5.scots_alarm	Scot.dos 出現在你面前，他的影像一直搖晃顫抖，而且聲音也被靜電干擾：「不要去水星的馬利波薩（Mariposa）！」他的聲音越來越不清楚：「那是個奸計……末日裝置……」你再也聽不清楚他所說的話。他的影像越來越弱，直到最後只看到一堆因靜電而產生的白點。過了一會兒，連這也沒有了。	manual-and-runtime
 manual.log.11.the_elevator	火星的衛星昇降機從高空中一直延伸到地面上。它是連接火星地面以及衛星基地佛柏（Phobos）的主要交通工具。在入口處有著一群急欲搭上昇降機的火星人、RAM 的士兵以及沙漠跑者。Scot.dos 的聲音由你的耳機中傳來：「你必需搭上這班昇降機。那是唯一可以得到訊息的方法……在昇降機到達佛柏之前，RAM 是不會展開攻擊行動的。」	manual-and-runtime

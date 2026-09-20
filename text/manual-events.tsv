@@ -1,5 +1,10 @@
 event_key	record_index	page	heading_ascii	ordinal	text_key
+manual.page2.2456_now.word7	2	2	2456(Now)	7	manual.lore.2456_now
+manual.page8.unused_skills.word2	8	8	Unused Skills	2	manual.rules.unused_skills
 manual.page12.damage.word9	12	12	Damage	9	manual.rules.damage
+manual.page13.range.word6	13	13	Range	6	manual.rules.range
+manual.page14.rocketships.word3	14	14	Rocketships	3	manual.world.rocketships
+manual.page16.earth.word5	16	16	Earth	5	manual.world.earth
 manual.page22.terrine.word2	21	22	Terrine	2	manual.bestiary.terrine
 manual.page23.scots_alarm.word4	22	23	Scot's Alarm	4	manual.log.5.scots_alarm
 manual.page24.the_elevator.word5	23	24	The Elevator	5	manual.log.11.the_elevator

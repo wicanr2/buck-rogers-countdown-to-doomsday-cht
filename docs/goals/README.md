@@ -20,3 +20,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第十三階段：39 筆手冊題目與繁中來源對照](phase-13-manual-source-crosswalk.md) | 完成 | 逐筆核對中文掃描來源、證據等級與可用繁中段落。 |
 | [第十四階段：首批短篇繁中手冊段落校訂](phase-14-manual-compact-paragraphs.md) | 完成 | 原圖校訂八筆短篇段落並建立題目鍵與繁中 catalog。 |
 | [第十五階段：第二批短篇繁中手冊段落校訂](phase-15-manual-compact-paragraphs-2.md) | 完成 | 再校訂八筆單段內容並擴充事件與 catalog。 |
+| [第十六階段：第三批已證實繁中手冊段落校訂](phase-16-manual-compact-paragraphs-3.md) | 完成 | 從剩餘已證實來源校訂五筆完整內容並分類排除其餘候選。 |

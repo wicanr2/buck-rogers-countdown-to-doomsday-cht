@@ -22,5 +22,6 @@
 | [第十三階段繁中手冊來源對照](phase-13-manual-source-crosswalk.md) | 39 筆逐項來源、證據分級、OCR 搜尋收據與缺頁邊界 |
 | [第十四階段首批短篇手冊段落](phase-14-manual-compact-paragraphs.md) | 八筆原圖校訂、事件鍵、繁中 catalog、長度與失敗即關閉驗證 |
 | [第十五階段第二批短篇手冊段落](phase-15-manual-compact-paragraphs-2.md) | 第二批八筆原圖校訂、事件擴充、長度與回歸驗證 |
+| [第十六階段第三批已證實手冊段落](phase-16-manual-compact-paragraphs-3.md) | 剩餘候選篩選、五筆原圖校訂、排除原因與回歸驗證 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。
