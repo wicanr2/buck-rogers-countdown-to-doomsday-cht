@@ -1,5 +1,19 @@
 # 工作歷程
 
+## 2026-09-20：第二十九階段功能選單執行期顯示請求 watcher
+
+- 建立並完整讀回第 29 階段 goal；重新載入顯示／語意隔離與規格閘門契約。
+- implementation 前建立 READY runtime watcher 規格，只核准 recorder → exact catalog →
+  display request，不接 renderer、輸入或原版狀態寫入。
+- 新增 `MenuRequestWatcher` 並擴充 `buckrogers-text-receipt` 的可選 catalog 模式；既有純事件
+  模式保留，兩個 catalog 參數必須成對提供。
+- 同一 #99,999,999 固定狀態於 #100,010,000 排入正常 Enter，直接得到九筆 request、零
+  drop／pending／miss；content-free verifier 逐筆核對並拒絕全文洩漏。
+- 新增兩項專案 verifier 測試後共 34 項全綠；dosgolem 全部正式 packages test／vet 與
+  Buck Rogers／receipt command race detector 通過，子規格標為 CONFORMED。
+- dosgolem 本機 commit 為 `c6a963dafaf3f060a43816f8a6acbda90aa8b7a0`，未推送其遠端；
+  本輪未選 2×／3×、載入字型或繪圖。
+
 ## 2026-09-20：第二十八階段功能選單顯示請求純核心
 
 - 建立並完整讀回第 28 階段 goal；倍率決策仍 pending，只處理不依賴 2×／3× 的純解析層。

@@ -117,6 +117,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   第 27 階段 receipt 九筆全數命中，所有正式 packages test／vet 與 Buck Rogers race
   detector 通過。本機 commit 為 `0be85255d9cd5428c6b55a813410dcacbfd73a4f`，未推送
   dosgolem 遠端；尚未載入字型、繪圖或接入玩家可見路徑，選單整合仍是 DRAFT。
+- 第二十九階段已把 `TextRecorder` 與 `MenuCatalog` 接成 CONFORMED runtime request watcher：
+  同一正常 Enter 固定狀態在九筆 guarded post-call 各直接提交一筆繁中 `DisplayRequest`，
+  零 drop／pending／catalog miss。收據只含事件 metadata、key 與譯文字數；dosgolem 本機
+  commit 為 `c6a963dafaf3f060a43816f8a6acbda90aa8b7a0`，未推送其遠端。尚未載入字型或繪圖。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
 接入正常玩家路徑覆繪。dispatcher／guarded post-call 已完成；下一個技術切片須在倍率決定後

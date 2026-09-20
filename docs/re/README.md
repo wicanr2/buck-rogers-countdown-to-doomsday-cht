@@ -33,5 +33,6 @@
 | [第二十四階段手冊 runtime watcher](phase-24-manual-runtime-watcher.md) | dispatcher entry／guarded post-call 正式接線、固定狀態 metadata 收據與失敗即關閉測試 |
 | [第二十七階段功能選單文字事件清冊](phase-27-menu-event-inventory.md) | 九筆 content-free runtime identity、guarded post-call 收據與正式 TSV 雙向驗證 |
 | [第二十八階段功能選單顯示請求純核心](phase-28-menu-display-request-core.md) | READY exact-match catalog、九事件顯示請求與失敗即關閉驗證 |
+| [第二十九階段功能選單執行期顯示請求 watcher](phase-29-menu-runtime-request-watcher.md) | guarded post-call 直接產生九筆 request、content-free 收據與 CONFORMED 子規格 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。
