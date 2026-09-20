@@ -10,3 +10,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第三階段：中文手冊輸入清冊與頁面定位](phase-3-manual-input-inventory.md) | 已完成 | 建立不散布手冊內容的 RAR 清冊與可追溯頁面定位基線。 |
 | [第四階段：選單互動與覆繪失效生命週期](phase-4-menu-interaction-lifecycle.md) | 已完成 | 量測正常選單互動後的重繪、轉場與覆繪失效時機。 |
 | [第五階段：種族選擇畫面的離開與返回生命週期](phase-5-pick-race-return-lifecycle.md) | 已完成 | 量測 `PICK RACE` 的 Escape 離開、清除、重繪與返回證據。 |
+| [第六階段：清除路徑與失效 hook 證據](phase-6-clear-path-hook-evidence.md) | 已完成 | 排除底層 byte-fill，證實帶參數的 Mode 13h 矩形清除 hook 候選。 |

@@ -25,11 +25,16 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
 - dosgolem 已依使用者指示複製至被忽略的 `workplace/dosgolem/`，工作分支為
   `buck-rogers-cht-output-overlay`，基準 commit 為 `d9c0c27ca9af8239c7e96272a7165e03d7da04bf`；
   後續 probe 與 adapter 變更只在該副本進行。
+- 第六階段已訂正清除定位：watchpoint 的 `0CF4:1B3C` 是 `REP STOSB` 後的下一個 IP；實際
+  寫入在 `0CF4:1B3A`，其函式 `0CF4:1B2B` 是通用 byte-fill，已排除為 invalidation hook。
+  兩條轉場共用的上層候選是 `026F:029C` Mode 13h 矩形清除例程；Enter 清除
+  `x=8..311,y=16..183`，Escape 返回清除 `x=0..311,y=0..183`。完整證據見
+  `docs/re/phase-6-clear-path-hook-evidence.md`。
 - 中文手冊 RAR 已在 Docker 以 `lsar`／`unar` 盤點、完整性測試與解壓；80 個 archive
   項目通過、79 個實體檔案已有 SHA-256 清冊，並有 77 張 JPG 的 archive-order 定位。
   詳見 `docs/re/phase-3-manual-input-inventory.md`。手冊語意、頁碼與原版題目對應仍未知。
 - 尚未開始中文覆繪、翻譯 catalog、字型決策或任何原版檔／規則／存檔修改。
 
-下一個受證據閘門約束的工作，是追查兩個方向皆觀測到的 `0CF4:1B3C` 寫入端之函式邊界、
-呼叫鏈與清除矩形，判斷它能否成為正式 generation／invalidation hook；證據足夠前功能選單
-DRAFT 不升為 READY。
+下一個受證據閘門約束的工作，是證實 `0763:0424` 完成原版文字繪製後的 return／post-call
+觀測點，並把 `026F:029C` 矩形失效與後續文字事件組成可測的 generation 順序；此事件契約、
+中文字型與 A/B 像素驗證完成前，功能選單 DRAFT 不升為 READY。

@@ -4,7 +4,8 @@
 日期：2026-09-20  
 證據：[第二階段文字分派與生命週期追蹤](../re/phase-2-text-dispatch-and-lifecycle.md)、
 [第四階段向前轉場](../re/phase-4-menu-interaction-lifecycle.md)、
-[第五階段 Escape 返回](../re/phase-5-pick-race-return-lifecycle.md)
+[第五階段 Escape 返回](../re/phase-5-pick-race-return-lifecycle.md)、
+[第六階段清除路徑與 hook 邊界](../re/phase-6-clear-path-hook-evidence.md)
 
 ## 玩家可見範圍
 
@@ -54,7 +55,8 @@ height = 8
 ### 已量到的轉場失效證據
 
 由功能選單固定狀態送入 BIOS Enter 時，原版在 #100,010,174 接受輸入，於 #100,010,490
-先發生一筆新的 `0763:0424` dispatcher，卻到 #100,031,031 才由 `0CF4:1B3C` 將已證實的
+先發生一筆新的 `0763:0424` dispatcher，卻到 #100,031,031 才由 watchpoint 當時標為
+`0CF4:1B3C` 的路徑將已證實的
 舊選單像素 `A000:838A` 從 `0x0A` 清為 `0x00`。完整收據見
 [第四階段選單互動與失效生命週期](../re/phase-4-menu-interaction-lifecycle.md)。
 
@@ -63,9 +65,22 @@ height = 8
 尚未證實哪一個通用 dosgolem hook 可正確辨識所有轉場。
 
 反向返回亦有相同順序：Escape 在 #100,310,138 被原版取走，#100,310,464 已發生第一筆
-dispatcher，但 `PICK RACE` 標題像素到 #100,316,673 才由相同的 `0CF4:1B3C` 清除；終點
+dispatcher，但 `PICK RACE` 標題像素到 #100,316,673 才由相同路徑清除；終點
 逐位元回到既有功能選單基線。這使保守失效規則同時有進入與返回兩個正常玩家路徑支持，
 但仍不能僅憑兩個像素樣本把該寫入端宣稱為通用清畫面 hook。
+
+### 已證實的矩形失效候選
+
+第六階段訂正 watchpoint 地址：實際寫入指令是 `0CF4:1B3A REP STOSB`，`1B3C` 是下一個 IP；
+`0CF4:1B2B` 函式只是任意 far pointer 的 byte-fill，已排除為正式 hook。兩條路徑真正共用的
+上層事件是 `026F:029C`：在 `DS:3C78 == 3` 的 Mode 13h 分支，它把四個邏輯文字格參數
+換算成像素矩形，再逐列填 0。
+
+DRAFT 候選契約因此縮小為：固定輸入雜湊與 runtime bytes 簽章均相符時，在
+`026F:029C` 進入點讀取 `bottom/right/top/left` 四個低 byte；若範圍合法且模式為 3，將
+`[left×8, top×8, (right+1)×8, (bottom+1)×8)` 內相交的既有 overlay 標為失效，然後讓原版
+函式完整執行。Enter 樣本矩形為 `x=8..311, y=16..183`；Escape 返回為
+`x=0..311, y=0..183`。此契約仍是 DRAFT，尚未與 post-dispatch 重建事件接通。
 
 ## 未知與 READY 閘門
 
@@ -73,7 +88,8 @@ dispatcher，但 `PICK RACE` 標題像素到 #100,316,673 才由相同的 `0CF4:
 
 - 如何在 dosgolem 正式觀測／adapter 層可靠地於 `0763:0424` 的原版繪製後附加事件；
 - 清除、捲動、游標反白、畫面轉換、返回與存讀檔後的失效時機；
-- 以正式、通用 dosgolem event 識別「原版已接受轉場輸入」或畫面 generation 的方法；
+- 在 `0763:0424` 完成原版繪製後可靠送出 post-call 事件，並把矩形失效與後續字串重建歸入
+  正確 generation 的方法；
 - 中文字型來源、授權、字元清單、基線、行高、寬度、換行與 overflow 策略；
 - 選單每一行的完整 text-safe rectangle，以及非靜態畫面的適用性；
 - 上游字串表定位與對同內容、不同語意事件的 collision 策略。
