@@ -1,5 +1,19 @@
 # 工作歷程
 
+## 2026-09-20：第二十八階段功能選單顯示請求純核心
+
+- 建立並完整讀回第 28 階段 goal；倍率決策仍 pending，只處理不依賴 2×／3× 的純解析層。
+- 在 implementation 前建立 dosgolem READY 規格，固定兩份正式 TSV 的 schema、SHA-256、
+  exact identity、共用翻譯鍵與失敗即關閉契約。
+- 新增 `MenuCatalog`：完整比對 length／SHA-256、caller、色號與座標，只為已完成事件回傳
+  繁中 `DisplayRequest`；不保存英文全文、不繪圖、不送輸入或修改原版狀態。
+- Phase 27 真實收據九筆全數解析；負向測試涵蓋 identity 各欄、sequence、大小寫格式、
+  數值界線、重複與 TSV 關聯錯誤。Terran 選項／標題合法共用 text key。
+- Docker 內全部正式 packages test／vet 與 Buck Rogers race detector 通過。兩個 Go image
+  的登入 shell 找不到 `gofmt`，改用 image 內絕對路徑；非 root cache 改置 `/tmp` 後乾淨重跑。
+- dosgolem 本機 commit 為 `0be85255d9cd5428c6b55a813410dcacbfd73a4f`，未推送其遠端。
+- 尚未選定 2×／3×，未接 `xlate.Stamp`、矩形失效或玩家可見覆繪。
+
 ## 2026-09-20：第九階段 dosgolem 通用 xlate 基礎
 
 - 建立並完整讀回第九階段 goal；逐檔讀取來源 `xlate`、測試與規格 202／203，確認來源

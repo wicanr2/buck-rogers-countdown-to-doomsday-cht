@@ -32,3 +32,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第二十五階段：手冊繁中覆繪倍率決策](phase-25-manual-overlay-scale-decision.md) | 進行中 | 以原生尺寸 prototype 與 Golden Box CJK 版面證據決定 2×／3×。 |
 | [第二十六階段：README 遊戲歷史、保存價值與技術定位](phase-26-readme-history-positioning.md) | 完成 | 以可回查來源完成專案歷史介紹、保存理由、技術定位與權利邊界。 |
 | [第二十七階段：功能選單文字事件清冊](phase-27-menu-event-inventory.md) | 完成 | 由正常 Enter 固定狀態重生九筆 typed dispatcher／post-call metadata。 |
+| [第二十八階段：功能選單顯示請求純核心](phase-28-menu-display-request-core.md) | 完成 | 將 exact runtime identity 與正式繁中 TSV 接成失敗即關閉顯示請求。 |

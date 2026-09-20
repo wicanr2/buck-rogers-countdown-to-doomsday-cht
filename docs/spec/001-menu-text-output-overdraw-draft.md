@@ -7,7 +7,8 @@
 [第五階段 Escape 返回](../re/phase-5-pick-race-return-lifecycle.md)、
 [第六階段清除路徑與 hook 邊界](../re/phase-6-clear-path-hook-evidence.md)、
 [第七階段 post-call 與 generation 事件](../re/phase-7-text-post-call-generation-event.md)、
-[第八階段字型與版面 prototype](../re/phase-8-menu-font-layout-prototype.md)
+[第八階段字型與版面 prototype](../re/phase-8-menu-font-layout-prototype.md)、
+[第二十八階段顯示請求純核心](../re/phase-28-menu-display-request-core.md)
 
 ## 玩家可見範圍
 
@@ -115,7 +116,8 @@ dispatcher entry 或固定延遲切 generation。
 - 第 4–7 階段已證實本功能選單進入／返回的矩形清除與 guarded post-call，但訊息捲動、
   游標反白、存讀檔及其他畫面的失效時機仍未知；
 - 第 27 階段 `TextRecorder` 已由九筆真實事件與自然 fall-through／錯誤 guard regression
-  驗證純觀測契約；矩形失效與繁中 `Stamp` 尚未接成可丟棄 adapter，也沒有繁中 A/B 像素收據；
+  驗證純觀測契約；第 28 階段 READY `MenuCatalog` 已把九筆真實收據精確解析成繁中
+  `DisplayRequest`。矩形失效與繁中 `Stamp` 尚未接成可丟棄 adapter，也沒有繁中 A/B 像素收據；
 - GNU Unifont 已證實可作有授權的 prototype 字型，且現有 8 筆譯文已由正式 TSV 決定性
   導出 24 個字模並經 `xlate.LoadFont` 回讀；正式採 2× 填滿格或 3× 置中仍待使用者決定，
   後續畫面的換行與 overflow 策略仍未知；

@@ -112,6 +112,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   entry／guarded post-call。`text/menu-events.tsv` 以長度／SHA-256、caller、色號與座標連到
   八個正式繁中 key，不保存原文全文；真實 receipt verifier 與正反向 schema 測試均通過。
   dosgolem 本機 commit 為 `98f3bec55d633cc2a69099f187848af4d765b7d1`，未推送其遠端。
+- 第二十八階段已把九筆事件接成 dosgolem READY 純核心：`MenuCatalog` 嚴格載入正式事件／
+  繁中 TSV，以完整 length／SHA-256、caller、色號與座標精確解析 `DisplayRequest`；真實
+  第 27 階段 receipt 九筆全數命中，所有正式 packages test／vet 與 Buck Rogers race
+  detector 通過。本機 commit 為 `0be85255d9cd5428c6b55a813410dcacbfd73a4f`，未推送
+  dosgolem 遠端；尚未載入字型、繪圖或接入玩家可見路徑，選單整合仍是 DRAFT。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
 接入正常玩家路徑覆繪。dispatcher／guarded post-call 已完成；下一個技術切片須在倍率決定後
