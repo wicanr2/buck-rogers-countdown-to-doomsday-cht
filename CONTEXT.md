@@ -86,7 +86,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   generation、精確身分、各層唯一性、孤兒鍵、無效 UTF-8 及顯示請求不含答案。runtime
   ordinal 目前只動態證實 `second → 2`、`tenth → 10`，完整橋接仍是 READY 前置。詳見
   `docs/re/phase-20-manual-catalog-display-request-prototype.md`。
+- 第二十一階段以 IDA Pro 9.4 與 runtime dumps 證實原版序數表：consumer 將題庫
+  `record[+14]` 乘 19 後加 `0EC0:339B`，索引 `first` 至 `tenth` 十個長度前綴 slots。
+  `text/manual-ordinals.tsv` 可由原版 dump 決定性重生，現有 22 筆 catalog ordinal 全數涵蓋；
+  7 項正反向測試通過。完整證據見 `docs/re/phase-21-manual-ordinal-bridge-evidence.md`。
 
 下一個前沿決策是 2×／3× 輸出倍率；確認後才能讓選定倍率進入 dosgolem renderer 與正常
-玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。錯答 generation 的原版事件已
-量測，但完整 ordinal bridge、adapter A/B 與分頁互動驗證前，手冊覆繪 DRAFT 不升為 READY。
+玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。ordinal bridge 已解決；錯答
+generation 的原版事件也已量測，但 adapter A/B 與分頁互動驗證前，手冊覆繪 DRAFT 不升為
+READY。

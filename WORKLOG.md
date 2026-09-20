@@ -247,3 +247,14 @@
   `Technical Skills / second` 明確不顯示，沒有模糊比對或臨時補文。
 - 12 項正反向測試涵蓋 generation、精確身分、題目／事件／文字鍵唯一性、孤兒鍵、無效
   UTF-8、ordinal 歧義與顯示請求無答案；prototype 仍只在 `workplace/phase20/`。
+
+# 2026-09-20：第二十一階段手冊序數詞橋接證據
+
+- 建立並完整讀回第二十一階段 goal；載入 IDA Pro 9.4 技能、工具契約、逆向證據與規格閘門。
+- IDA Pro 9.4 匯出證實 `2A33:02B7..02D2` 讀題庫 `+14`、乘 `0x13`、加 `DS:339B`，索引
+  `0EC0:33AE..3459` 的 first 至 tenth 十個長度前綴 slots；second／tenth 另有動態事件交叉驗證。
+- 第一次 IDA 未指定 processor，腳本未執行；第二、三次分別遇到 `mem2base` module 與參數
+  API 差異。改用 `ida_loader.mem2base(..., -1)` 並從新 database 重跑後，JSON schema、`.i64`、
+  位址空間、輸入雜湊與輸出擁有權均通過；失敗 fragments 已逐一刪除。
+- 新增可重生 `manual-ordinals.tsv`、解析器與 7 項測試；現有 22 筆事件使用的 2–10 全部
+  涵蓋，原版表中的 1 亦保留。資料不含答案，尚未接入正式 adapter。

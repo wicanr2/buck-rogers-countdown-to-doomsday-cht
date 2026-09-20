@@ -8,6 +8,9 @@
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。
 
+`manual-ordinals.tsv` 保存原版 1–10 序數詞、runtime 位址與完整 19-byte slot；可由同一份
+執行期資料段透過 `tools/manual_ordinals.py` 重生。它只橋接題目顯示身分，不含答案。
+
 `manual-source-crosswalk.tsv` 逐筆記錄題目對應掃描、archive-order、SHA-256、印刷頁、
 中文錨點與證據等級。它是來源索引，不是可直接顯示的譯文 catalog；OCR 未經逐字校訂的
 內容不得搬入 `manual.zh-TW.tsv`。可用下列命令搭配本機解壓清冊驗證：
@@ -17,6 +20,8 @@ python3 tools/manual_crosswalk.py text/manual-questions.tsv text/manual-source-c
   --manifest workplace/inventory/manual-extracted-manifest.json
 python3 tools/manual_catalog.py text/manual-questions.tsv text/manual-source-crosswalk.tsv \
   text/manual-events.tsv text/manual.zh-TW.tsv
+python3 tools/manual_ordinals.py workplace/probe/phase12-manual-runtime-0EC0_0000.bin \
+  text/manual-ordinals.tsv --events text/manual-events.tsv
 ```
 
 `manual-events.tsv` 是 DRAFT 事件映射：只允許來源為 `confirmed` 的題目，以頁碼、英文標題及

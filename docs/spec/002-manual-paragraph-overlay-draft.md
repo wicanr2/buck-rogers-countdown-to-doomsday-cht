@@ -9,7 +9,8 @@
 [第十七階段分頁與倍率 prototype](../re/phase-17-manual-pagination-scale-prototype.md)、
 [第十八階段題目世代與失效](../re/phase-18-manual-generation-invalidation.md)、
 [第十九階段事件收集器 prototype](../re/phase-19-manual-event-collector-prototype.md)、
-[第二十階段 catalog 顯示請求 prototype](../re/phase-20-manual-catalog-display-request-prototype.md)
+[第二十階段 catalog 顯示請求 prototype](../re/phase-20-manual-catalog-display-request-prototype.md)、
+[第二十一階段序數詞橋接](../re/phase-21-manual-ordinal-bridge-evidence.md)
 
 ## 目的
 
@@ -42,8 +43,11 @@ pending。此模型已通過可丟棄 prototype，尚未授權 production 實作
 
 第二十階段將完整題目身分接到正式 TSV：只允許 `(page, heading_ascii, ordinal)` 精確唯一
 命中，再由唯一 `text_key` 取得繁中段落。輸出型別只含 generation、event key、text key 與
-translation，不得含答案、輸入或原版狀態寫入。runtime ordinal word 與 TSV 數字之間目前只
-動態證實 `second → 2`、`tenth → 10`；其他序數未建立證據橋接時一律不顯示。
+translation，不得含答案、輸入或原版狀態寫入。
+
+第二十一階段已由原版 consumer 證實 `record[+14] × 19 + DS:339B` 的 1–10 序數表，並以
+`text/manual-ordinals.tsv` 保存每筆 runtime 位址與原始 19-byte slot。adapter 必須從這份
+受驗資料做 ordinal word→number 精確橋接；表外、大小寫不同或 bytes 不符仍失敗即關閉。
 
 ## 失敗即關閉規則
 
@@ -69,6 +73,6 @@ translation，不得含答案、輸入或原版狀態寫入。runtime ordinal wo
   「舊覆蓋先失效、新覆蓋只在完整題目後出現」的同狀態 A/B 收據。
 - 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。
 - 將第十九階段 prototype 的同世代、跨世代、亂序與 poisoned 復原案例轉成正式 adapter 測試。
-- 由原版資料或可重播事件建立所有會命中正式 catalog 的 ordinal word→number 證據橋接；
-  不得以一般英文常識直接補齊。
+- 正式 adapter 讀取並驗證 `manual-ordinals.tsv`，以全套 catalog lookup 測試證明沒有回退
+  到程式碼內嵌序數或模糊比對。
 - 使用者確認 2×／3×，並為選定倍率補齊 dosgolem renderer 支援與正常玩家路徑收據。

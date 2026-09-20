@@ -25,3 +25,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第十八階段：手冊題目世代與舊覆蓋失效](phase-18-manual-generation-invalidation.md) | 完成 | 量測答錯換題事件順序，建立舊繁中覆蓋不得跨題沿用的失效契約。 |
 | [第十九階段：手冊題目事件收集器 prototype](phase-19-manual-event-collector-prototype.md) | 完成 | 以真實事件及反例驗證世代收集器的 typed lifecycle 與失敗即關閉行為。 |
 | [第二十階段：手冊 catalog 顯示請求 prototype](phase-20-manual-catalog-display-request-prototype.md) | 完成 | 以正式 TSV 驗證精確唯一命中與未命中失敗即關閉的顯示請求。 |
+| [第二十一階段：手冊序數詞橋接證據](phase-21-manual-ordinal-bridge-evidence.md) | 完成 | 由原版資料與 consumer 建立 runtime 序數詞到題庫數字的可稽核橋接。 |

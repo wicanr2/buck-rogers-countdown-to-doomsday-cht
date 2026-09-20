@@ -82,5 +82,7 @@ runtime 前，仍須由原版資料或可重播事件建立完整、可稽核的
 ## 結論與下一步
 
 從 runtime 題目身分到正式繁中 catalog 的精確、唯一、失敗即關閉路徑已由 prototype 證實。
-新增的實質缺口是完整 ordinal bridge；在它、倍率決策、正式 adapter、畫面 A/B 與分頁輸入
-完成前，spec 不升 READY，prototype 不進 production。
+本階段當時定位的完整 ordinal bridge 缺口，後由
+[第二十一階段](phase-21-manual-ordinal-bridge-evidence.md)以原版 1–10 表與 consumer 解決。
+倍率決策、正式 adapter、畫面 A/B 與分頁輸入仍未完成，spec 不升 READY，prototype 不進
+production。
