@@ -5,7 +5,8 @@
 [第十二階段題庫結構](../re/phase-12-manual-question-table-inventory.md)、
 [第十三階段繁中來源對照](../re/phase-13-manual-source-crosswalk.md)、
 [第十四階段短篇段落](../re/phase-14-manual-compact-paragraphs.md)、
-[第十六階段第三批段落](../re/phase-16-manual-compact-paragraphs-3.md)
+[第十六階段第三批段落](../re/phase-16-manual-compact-paragraphs-3.md)、
+[第十七階段分頁與倍率 prototype](../re/phase-17-manual-pagination-scale-prototype.md)
 
 ## 目的
 
@@ -18,6 +19,11 @@
 序數及唯一文字鍵。來源定位在 `text/manual-source-crosswalk.tsv`，顯示文字在
 `text/manual.zh-TW.tsv`。`show_when` 仍要求同一畫面 generation 已觀測到三個識別欄位；
 `answer_input` 永遠由原版處理，不自動填入。版面仍待 2×／3× 與分頁 prototype 決策。
+
+第十七階段由真實手冊畫面量得安全矩形 `[7,312)×[7,184)`；保留內距後的 prototype
+正文為 36 欄×17 行、每頁 612 字。2×／3× 使用相同邏輯格，頁數一致；兩案均已驗證
+安全矩形外 0 px 變更。這只證明靜態幾何可行，不證明分頁輸入、錯答重抽或 generation
+失效。倍率仍待使用者決定，因此不得把任一候選寫入 production 路徑。
 
 ## 失敗即關閉規則
 
@@ -34,3 +40,4 @@
 - 逐字校訂可用中文段落；解決 3 筆強推論與 `Roll.` 缺頁，或為它們訂出明確的失敗即關閉政策。
 - 原版覆繪位置、分頁、輸入提示保留與錯答重抽都有同狀態 A/B 收據。
 - 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。
+- 使用者確認 2×／3×，並為選定倍率補齊 dosgolem renderer 支援與正常玩家路徑收據。
