@@ -1,5 +1,19 @@
 # 工作歷程
 
+## 2026-09-20：第二階段文字分派與 DRAFT
+
+- 依本輪新建並讀回的 `docs/goals/phase-2-text-dispatch-and-lifecycle.md`，由既有固定狀態
+  重跑 dosgolem probe，沒有改動原版或 dosgolem 程式碼。
+- 傾印並以 16 位元反組譯檢查執行期 `0763` 段；證實 `0763:0424` 長度前綴 byte-string
+  dispatcher、`0763:026B` 字元 renderer、`0763:1809` glyph wrapper 與
+  `0763:183A..1863` pixel primitive 的資料流。
+- 以段:位移在 #71,107,500 傾印 `5747:0002`，取得長度 `0x14` 與 ASCII
+  `Create New Character`；詳情與推論等級見 `docs/re/phase-2-text-dispatch-and-lifecycle.md`。
+- 首次以 `-dump-mem-at` 將實模式地址誤作 IDA 地址，得到全零輸出；已用 `-dump-seg` 在同一
+  固定流程重跑並更正。這是觀測位址空間失誤，不是原版資料結論。
+- 新增覆繪 DRAFT，明定清除／捲動、中文字型與安全矩形尚未解決；未新增 production 程式、
+  翻譯、字型或 adapter。
+
 ## 2026-09-20：第一階段原版可觀測基線
 
 - 在無網路、唯讀原始輸入掛載的 Docker 容器中建立 ZIP／RAR 雜湊清冊；ZIP 解壓到
