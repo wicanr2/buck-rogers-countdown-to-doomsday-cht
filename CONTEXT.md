@@ -81,7 +81,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   `41 / Technical Skills / second`；9 項測試涵蓋缺欄、亂序、重複、未知 caller、錯誤頁碼及
   舊 generation 延遲返回，均失敗即關閉。完整設計見
   `docs/re/phase-19-manual-event-collector-prototype.md`。
+- 第二十階段把完整題目鍵接到正式事件與繁中 TSV：`Deimos Prison / tenth` 唯一命中 73 字
+  顯示請求，未有完整校訂段落的 `Technical Skills / second` 明確不顯示。12 項測試涵蓋
+  generation、精確身分、各層唯一性、孤兒鍵、無效 UTF-8 及顯示請求不含答案。runtime
+  ordinal 目前只動態證實 `second → 2`、`tenth → 10`，完整橋接仍是 READY 前置。詳見
+  `docs/re/phase-20-manual-catalog-display-request-prototype.md`。
 
 下一個前沿決策是 2×／3× 輸出倍率；確認後才能讓選定倍率進入 dosgolem renderer 與正常
 玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。錯答 generation 的原版事件已
-量測，但 adapter A/B 與分頁互動驗證前，手冊覆繪 DRAFT 不升為 READY。
+量測，但完整 ordinal bridge、adapter A/B 與分頁互動驗證前，手冊覆繪 DRAFT 不升為 READY。

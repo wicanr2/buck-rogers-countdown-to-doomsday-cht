@@ -236,3 +236,14 @@
   token 建模；真實第十八階段事件重建唯一鍵 `41 / Technical Skills / second`，不保存答案。
 - 9 項正反向測試通過；缺欄、亂序、重複、未知 caller、錯誤常值／頁碼及舊 generation
   延遲返回均不會產生顯示請求。prototype 保留在 `workplace/phase19/`，未移入正式路徑。
+
+# 2026-09-20：第二十階段手冊 catalog 顯示請求 prototype
+
+- 建立並完整讀回第二十階段 goal；載入顯示／語意隔離契約，維持翻譯只由正式 UTF-8 TSV
+  提供，沒有把中文段落或答案內嵌到 prototype。
+- 發現 runtime 輸出英文序數詞而事件 TSV 保存數字；只採用 dosgolem 已動態證實的
+  `second → 2` 與 `tenth → 10`，未以一般英文常識批次猜補其餘序數。
+- 正式 TSV 的 `Deimos Prison / tenth` 唯一命中 73 字顯示請求；尚未收錄完整段落的
+  `Technical Skills / second` 明確不顯示，沒有模糊比對或臨時補文。
+- 12 項正反向測試涵蓋 generation、精確身分、題目／事件／文字鍵唯一性、孤兒鍵、無效
+  UTF-8、ordinal 歧義與顯示請求無答案；prototype 仍只在 `workplace/phase20/`。

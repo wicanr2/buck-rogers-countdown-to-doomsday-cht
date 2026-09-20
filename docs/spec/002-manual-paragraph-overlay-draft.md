@@ -8,7 +8,8 @@
 [第十六階段第三批段落](../re/phase-16-manual-compact-paragraphs-3.md)、
 [第十七階段分頁與倍率 prototype](../re/phase-17-manual-pagination-scale-prototype.md)、
 [第十八階段題目世代與失效](../re/phase-18-manual-generation-invalidation.md)、
-[第十九階段事件收集器 prototype](../re/phase-19-manual-event-collector-prototype.md)
+[第十九階段事件收集器 prototype](../re/phase-19-manual-event-collector-prototype.md)、
+[第二十階段 catalog 顯示請求 prototype](../re/phase-20-manual-catalog-display-request-prototype.md)
 
 ## 目的
 
@@ -39,6 +40,11 @@ generation、正確 caller、正確順序及合法內容的 guarded post-call �
 poison 該 generation，下一個精確題首才能復原。矩形清除可移除 visible，但不得提交或重設
 pending。此模型已通過可丟棄 prototype，尚未授權 production 實作。
 
+第二十階段將完整題目身分接到正式 TSV：只允許 `(page, heading_ascii, ordinal)` 精確唯一
+命中，再由唯一 `text_key` 取得繁中段落。輸出型別只含 generation、event key、text key 與
+translation，不得含答案、輸入或原版狀態寫入。runtime ordinal word 與 TSV 數字之間目前只
+動態證實 `second → 2`、`tenth → 10`；其他序數未建立證據橋接時一律不顯示。
+
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
@@ -52,6 +58,9 @@ pending。此模型已通過可丟棄 prototype，尚未授權 production 實作
    不可建立題目身分。到 `word?` guarded post-call 前，任何中文手冊段落都不得顯示。
 7. pending frame 必須帶 generation；舊 generation 延遲返回、亂序、重複或未知 caller 不得
    推進目前題目。失敗後不可使用部分 metadata，須等下一個精確題首重新開始。
+8. catalog lookup 不得做大小寫折疊、模糊標題、近似頁碼或相鄰條目 fallback。ordinal word
+   未在已證實橋接表時，即使 page 與 heading 命中也不得顯示。
+9. 翻譯只由 UTF-8 TSV catalog 取得；顯示請求不得攜帶答案或改變原版語意狀態。
 
 ## READY 前置
 
@@ -60,4 +69,6 @@ pending。此模型已通過可丟棄 prototype，尚未授權 production 實作
   「舊覆蓋先失效、新覆蓋只在完整題目後出現」的同狀態 A/B 收據。
 - 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。
 - 將第十九階段 prototype 的同世代、跨世代、亂序與 poisoned 復原案例轉成正式 adapter 測試。
+- 由原版資料或可重播事件建立所有會命中正式 catalog 的 ordinal word→number 證據橋接；
+  不得以一般英文常識直接補齊。
 - 使用者確認 2×／3×，並為選定倍率補齊 dosgolem renderer 支援與正常玩家路徑收據。
