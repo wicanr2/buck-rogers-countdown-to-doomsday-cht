@@ -1,0 +1,10 @@
+event_key	sequence	text_key	original_length	original_sha256	caller	background	foreground	row	column
+menu.transition.old.create_new_character	1	menu.create_new_character	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:1856	0	10	12	9
+race.screen.prompt	2	menu.pick_race	9	e932f4664fa9d32f95c406fe026368eb2e88dcbdadab01fc684d95abddef0c93	37F1:158C	0	13	2	1
+race.option.terran	3	race.terran	8	28f962ee4f76bcaea2e7d195fccb11782ecb4aea3c8f78e342118d69968e5d69	37F1:15BD	0	10	3	1
+race.option.martian	4	race.martian	9	0b4bb31880bff1f894d08327119617f2f6b53ab4a2a28186019f91f7792a8574	37F1:15BD	0	10	4	1
+race.option.venusian	5	race.venusian	10	badf112c16ed35d19a85c5d3042d9e027caef7ebb4d9b235e08e589c8505b8c6	37F1:15BD	0	10	5	1
+race.option.mercurian	6	race.mercurian	11	f15295e72317d8ac3be813757c4c7f4f993faaab3c3ee824d48380aa68fabe23	37F1:15BD	0	10	6	1
+race.option.tinker	7	race.tinker	8	672ec527ec68a6045f2f8b465a983dabad09e2ba0e82a2e15d5c1fe7bc4437c5	37F1:15BD	0	10	7	1
+race.option.desert_runner	8	race.desert_runner	15	5e51e9ac65fa82e240b69a830566cb959580d9e36dbae350213bf24a7ca461b9	37F1:15BD	0	10	8	1
+race.heading.terran	9	race.terran	6	237c59a3b965d0787ce08d5afcd4ec80017f7de4b6d84021f2207f865345f419	37F1:175D	15	0	3	3

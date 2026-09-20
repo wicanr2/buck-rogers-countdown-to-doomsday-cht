@@ -40,7 +40,8 @@ height = 8
 ```
 
 `source` 的內容僅能作顯示比對鍵；繁中不得進入原版比較、資源查找、序列化、檔案路徑或
-存檔名稱。DRAFT 尚未決定正式 key 的序列化格式，也不在 repo 保存原版文字 catalog。
+存檔名稱。第 27 階段已用 `text/menu-events.tsv` 定義九筆 content-free identity：穩定
+event／text key 加原文長度／SHA-256、caller、色號與文字格座標；repo 不保存原版文字 catalog。
 
 ## DRAFT 覆繪生命週期
 
@@ -111,20 +112,21 @@ dispatcher entry 或固定延遲切 generation。
 
 下列項目未達 READY，故禁止 production 實作：
 
-- 清除、捲動、游標反白、畫面轉換、返回與存讀檔後的失效時機；
-- guarded post-call 與矩形失效契約尚未由可丟棄 adapter prototype、自然 fall-through
-  regression 與英文／繁中 A/B 像素收據驗證；
+- 第 4–7 階段已證實本功能選單進入／返回的矩形清除與 guarded post-call，但訊息捲動、
+  游標反白、存讀檔及其他畫面的失效時機仍未知；
+- 第 27 階段 `TextRecorder` 已由九筆真實事件與自然 fall-through／錯誤 guard regression
+  驗證純觀測契約；矩形失效與繁中 `Stamp` 尚未接成可丟棄 adapter，也沒有繁中 A/B 像素收據；
 - GNU Unifont 已證實可作有授權的 prototype 字型，且現有 8 筆譯文已由正式 TSV 決定性
   導出 24 個字模並經 `xlate.LoadFont` 回讀；正式採 2× 填滿格或 3× 置中仍待使用者決定，
   後續畫面的換行與 overflow 策略仍未知；
 - 選單每一行的完整 text-safe rectangle，以及非靜態畫面的適用性；
-- 上游字串表定位與對同內容、不同語意事件的 collision 策略。
+- 上游字串表定位仍未知；九筆已用完整 identity 區分同譯文的不同顯示事件，其他畫面的
+  collision 策略不得由此樣本外推。
 
 升為 READY 前，至少須以 dosgolem 取得一條正常互動路徑，明確量到上述生命週期事件，並
 完成原文／繁中 A/B 同狀態收據與中文 glyph containment 驗證。沒有達成這些條件時，DRAFT
 只能引導後續量測，不能成為程式碼、測試期望或「已中文化」的依據。
 
-第九階段已在本機 dosgolem 專用分支 `b33cfbf` 移植並測試通用 `xlate` package。這只解決
-GOLEMFNT、stamp、定色、失效、捲動與快照等遊戲無關能力，不構成本作 adapter 實作。
-現行 `xlate.Draw` 的 READY 契約要求倍率為 3 的倍數；若使用者選 2×，須先修訂該通用規格，
-不能把 3× 的現有實作誤當成產品方向已定案。
+第九階段已在本機 dosgolem 專用分支移植並測試通用 `xlate` package；第 22 階段又把
+`xlate.Draw` 擴充為支援所有正整數倍率。這只解決 GOLEMFNT、stamp、定色、失效、捲動與
+快照等遊戲無關能力，不構成本作 adapter 實作，也不代表使用者已在 2×／3× 間做出選擇。

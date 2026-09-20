@@ -317,3 +317,18 @@
   誠實標示沒有玩家版、Release 或已完成中文化聲明。
 - Docker 內檢查 14 個 Markdown 連結，其中 8 個相對入口全數存在；標題為單一 H1 與同層
   H2，沒有嵌入原版受保護素材或把工作流水帳塞進 README。
+
+# 2026-09-20：第二十七階段功能選單文字事件清冊
+
+- 第 25 階段倍率決策仍 pending；建立並完整讀回第 27 階段 goal，選擇不依賴倍率的
+  content-free 選單 runtime identity 垂直切片。
+- 新增 dosgolem `TextRecorder` 與 `buckrogers-text-receipt`：只保存原文 length／SHA-256、
+  caller、低位元組色號／座標及 entry／post-call step，不保留原文、不翻譯也不繪圖。
+- 第一次重播在 state 載入後立刻排入 Enter，使九筆事件提前 9,971 道；確認內容正確但未採。
+  修正為 #100,010,000 排入後重跑，九筆 entry 完全對齊第 4 階段，且全數通過三重 guard。
+- 新增 `menu-events.tsv`、schema validator 與 receipt verifier；九筆 hash／length 逐筆對回
+  第 8 階段原始 dump，八個 `menu.zh-TW.tsv` key 雙向完整覆蓋，沒有原文全文。
+- 專案 32 項正式 Python 測試、真實 JSON receipt、dosgolem 全部正式 packages test／vet
+  與 Buck Rogers race detector 通過。
+- dosgolem 本機 commit 為 `98f3bec55d633cc2a69099f187848af4d765b7d1`，未推送其遠端；
+  本階段沒有選 2×／3× 或建立玩家可見覆繪。
