@@ -30,5 +30,6 @@
 | [第二十一階段手冊序數詞橋接證據](phase-21-manual-ordinal-bridge-evidence.md) | 原版 1–10 長度前綴表、索引 consumer、IDA 收據與可重生 TSV |
 | [第二十二階段 dosgolem xlate 通用整數倍率](phase-22-dosgolem-xlate-integer-scale.md) | 2×／3× renderer、邊界安全、真實 GOLEMFNT 冒煙收據與本機 commit |
 | [第二十三階段手冊事件 adapter](phase-23-manual-event-adapter.md) | READY 純核心、generation／catalog 正反向測試、正式 TSV 與本機 commit |
+| [第二十四階段手冊 runtime watcher](phase-24-manual-runtime-watcher.md) | dispatcher entry／guarded post-call 正式接線、固定狀態 metadata 收據與失敗即關閉測試 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

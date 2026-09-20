@@ -1,6 +1,6 @@
 # 003 — 手冊事件 adapter 整合邊界
 
-狀態：DRAFT  
+狀態：DRAFT（事件觀測子層 READY；玩家可見整合仍未核准）
 日期：2026-09-20
 
 ## 目的
@@ -22,10 +22,17 @@
 
 ## 仍為 DRAFT 的整合
 
-- `oracle.OnCall`／dispatcher entry 與 guarded post-call 的正式接線。
 - 2×／3× 產品倍率選擇、字模偏移、手冊安全矩形與分頁控制。
 - 中文 overlay 的建立、clear／新 generation 移除與正常玩家路徑同狀態 A/B。
 - 玩家翻頁輸入與原版答題輸入如何共存；不得先假設按鍵語意。
 
 在上述項目各自取得證據並升為 READY 前，不得把純核心接入正式 runtime。核心單元測試通過
 只證明事件與資料契約的內部一致性，不證明中文已在遊戲畫面顯示。
+
+## 已核准的 runtime 觀測子層
+
+第 24 階段已把 `oracle.OnCall`、dispatcher entry、三重 guarded post-call 與 clear entry
+審查並實作為 dosgolem READY 規格 `docs/spec/008-buck-rogers-manual-runtime-watcher.md`。
+固定狀態重播已由真實原版第一題產生 `manual.page34.deimos_prison.word10` 顯示請求；收據見
+[第 24 階段研究紀錄](../re/phase-24-manual-runtime-watcher.md)。此核准只到 typed request，
+不包含 renderer、倍率、分頁或玩家輸入。

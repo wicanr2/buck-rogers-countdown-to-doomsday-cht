@@ -98,8 +98,15 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   並實作 `apps/buckrogers` 未接線純核心。正式 TSV、generation、poisoned 復原與 malformed
   反例測試、`go vet`、race detector 及所有正式 packages 均通過。本機 commit 為
   `8ce092f29d000ea7e6765c4f3389fe484aefa555`，未推送 dosgolem 遠端；玩家可見整合仍為 DRAFT。
+- 第二十四階段已完成 dosgolem runtime watcher：`0763:0424` entry 保存 caller／SS／SP，
+  只有 return address、相同 SS 與 `SP+0x10` 三重 guard 通過才提交片段；`026F:029C` clear
+  亦已接線。由 #266,399,999 固定狀態重播的第一題在 #266,557,246 精確產生
+  `manual.page34.deimos_prison.word10` 顯示請求，收據只含 metadata。watcher 不送鍵、不含
+  答案、不寫原版狀態且尚未繪圖；dosgolem 本機 commit 為
+  `38585dcd9e3861b6fa64a1b89dbec19e5a038dd7`，未推送其遠端。
+  詳見 `docs/re/phase-24-manual-runtime-watcher.md`。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
-接入正常玩家路徑覆繪。不依賴倍率的下一個技術切片是正式 dispatcher／guarded post-call
-接線證據與測試。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；畫面 A/B 與分頁互動驗證前，
+接入正常玩家路徑覆繪。dispatcher／guarded post-call 已完成；下一個技術切片須在倍率決定後
+建立 renderer 接線與同狀態畫面 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；畫面 A/B 與分頁互動驗證前，
 手冊覆繪 DRAFT 不升為 READY。

@@ -288,3 +288,19 @@
   dosgolem commit 為 `8ce092f29d000ea7e6765c4f3389fe484aefa555`，未推送其遠端。
 - 產品端 `003-manual-event-adapter` 只保存整合邊界與權威指標；總體手冊覆繪仍為 DRAFT，
   沒有選定 2×／3× 或接入玩家可見路徑。
+
+# 2026-09-20：第二十四階段手冊 runtime watcher 與真實事件收據
+
+- 建立並完整讀回第 24 階段 goal；載入復古中文化、dosgolem 與規格閘門契約。
+- 新增 READY runtime watcher 規格與 `apps/buckrogers.Watcher`；dispatcher entry 保存字串、
+  caller、SS、SP 與 generation，只有三重 guarded return 通過才提交 Collector。
+- 新增 `cmd/buckrogers-receipt`，只透過 dosgolem internal state 重播既有診斷狀態，沒有擴張
+  `oracle` 公開持久化 API；輸出只含事件鍵、文字鍵與翻譯字數。
+- 第一題由 #266,399,999 跑至 #266,557,246，精確產生
+  `manual.page34.deimos_prison.word10`／`manual.log.49.deimos_prison`／73 字元請求；沒有注入按鍵。
+- `go test ./...` 首輪只被既有 `workplace/fd2-input-parity-20260907` 重複 `main` 阻擋；排除
+  非正式 `workplace/` 後，全部正式 packages 的 test／vet 與 watcher race detector 通過。
+- 專案 26 項正式 Python 題庫、序數、來源、catalog 與字型資料測試全數通過。
+- 本階段未選 2×／3×，未建立 renderer、分頁輸入或玩家可見完成聲明。
+- dosgolem 本機 commit 為 `38585dcd9e3861b6fa64a1b89dbec19e5a038dd7`；依授權邊界未推送
+  dosgolem 遠端。
