@@ -237,6 +237,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   的 `NO`／`YES` 標籤及零寫檔推論均已追加勘誤。兩路 IP trace 各自雙重一致，保存檔雜湊
   亦一致；完整 memory 因 DOS 取時而尚未證實逐 byte 決定性。下一步以真正保存分支接續
   Add 正常玩家路徑，確認名冊是否顯示角色。
+- 第五十四階段已完成保存→Add→加入的正常玩家垂直鏈：Add 先讀 `A.WHO` 的 16-byte 起始區
+  與 offset 194 資格 byte，列出角色 `A`；Enter 後顯示 `Loading...Please Wait`，完整讀取
+  259-byte `A.WHO` 與兩筆 62-byte `A.stf`，回到 Add 時角色已從可加入名冊移除。兩次完整
+  重播的 18-event／2,611-FileOps JSON 在正規化 scratch 路徑後逐 byte 相同，framebuffer
+  與保存檔亦相同；未實作服務為空。原空名冊根因已關閉為不保存分支誤標。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

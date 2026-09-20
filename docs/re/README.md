@@ -51,5 +51,6 @@
 | [第四十四階段角色姓名輸入生命週期](phase-44-character-name-input-lifecycle.md) | 字元、Backspace、Enter 與 Escape 的輸入／回顯／轉場證據 |
 | [第五十二階段合法保存後段事件對齊](phase-52-valid-save-event-alignment.md) | 完整技能配置後的圖示／保存／加入角色 checkpoint、未實作服務排除與記憶體候選分級 |
 | [第五十三階段保存選項控制流與名冊接納狀態](phase-53-save-choice-control-flow-and-admission-state.md) | 保存分支勘誤、YES 寫檔控制流、決定性與後續 Add 驗證邊界 |
+| [第五十四階段已保存角色的名冊與加入隊伍路徑](phase-54-saved-character-roster-and-add-path.md) | 保存檔掃描、角色列、完整載入、加入後移除與雙重正常路徑收據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

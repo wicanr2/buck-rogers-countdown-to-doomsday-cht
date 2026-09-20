@@ -1,6 +1,18 @@
 # 工作歷程
 
-## 2026-09-21：第五十三階段保存選項控制流勘誤（進行中）
+## 2026-09-21：第五十四階段已保存角色加入隊伍（已完成）
+
+- 由第五十三階段同一保存提示 state，使用預設 Enter 真正保存，再以 Down→Enter 進入 Add；
+  Add 讀取 `A.WHO` 的名冊區段後列出角色 `A`。
+- 在名冊按 Enter 後，原版顯示 `Loading...Please Wait`，完整讀取 259-byte `A.WHO` 與兩筆
+  62-byte `A.stf`；完成後角色從可加入名冊移除，正常玩家加入鏈閉合。
+- 兩次由空白 scratch 完整重播各有 18 events、2,611 FileOps、3 write metadata；JSON 只差
+  scratch 絕對路徑，正規化後 SHA-256 都是
+  `302f42b72a0536da4893892f0e79dc055a6b355ca70f98bb1f63b60380c9f68c`。終點 framebuffer
+  與兩個保存檔亦逐 byte 相同。
+- 未實作服務為空，沒有修改 dosgolem production code；第 50、52、53 階段已追加關閉勘誤。
+
+## 2026-09-21：第五十三階段保存選項控制流勘誤（已完成）
 
 - 從第五十二階段同一 `save-before.state` 比對 Left→Enter 與預設 Enter；兩路各獨立重播
   兩次，IP trace 各自逐 byte 相同。
