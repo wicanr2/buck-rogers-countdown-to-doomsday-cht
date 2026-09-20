@@ -55,3 +55,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第四十八階段：角色身體圖示選擇生命週期](phase-48-body-icon-selection-lifecycle.md) | 已完成 | 證實圖示選取移動、拒絕回復及確認後進入儲存詢問。 |
 | [第四十九階段：儲存詢問與角色建立完成生命週期](phase-49-save-prompt-and-character-completion-lifecycle.md) | 已完成 | 證實字母鍵與選項操作差異、零檔案副作用及返回功能選單。 |
 | [第五十階段：角色名冊與加入隊伍生命週期](phase-50-character-roster-and-add-to-team-lifecycle.md) | 已完成 | 修正 scratch 證據缺口，證實兩分支皆無角色列並返回功能選單。 |
+| [第五十一階段：完整技能配置與合法角色保存](phase-51-complete-skill-allocation-and-valid-save.md) | 進行中 | 實際用完兩類技能點，重驗保存、名冊與加入角色結果。 |
