@@ -25,6 +25,8 @@
 `gender-text-safe-rects.tsv` 與 `class-text-safe-rects.tsv` 逐筆由 exact identity 的 row、column
 及 original length 導出 logical 320×200 清除矩形、anchor 與單列容量；Phase 41 已用四個真實
 framebuffer 驗證 2×／3× 都零缺字、零重疊且安全矩形外零差異，但仍只是離線 prototype。
+`post-class-events.tsv` 是確認預設職業後角色資料／重擲畫面的 96 筆 content-safe 清冊；它區分
+靜態標籤、動態值與重畫事件，不是可直接逐列翻譯的 catalog。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

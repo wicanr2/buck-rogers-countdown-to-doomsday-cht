@@ -176,8 +176,14 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   16×16 滿格；3× 是 960×600、16×16 ink 置中 24×24 格。兩者幾何皆可行，2× 仍較接近
   PC-98 Golden Box CJK 密度，但尚未被使用者選定；spec 022 已 CONFORMED，本機 dosgolem
   commit 為 `73e610943cb26ed3f0990ecd13bd196d12fe162a`，未推其遠端。
+- 第四十二階段由第四個正常 Enter 接受預設職業，證實下一畫面為角色資料／重擲能力值頁；
+  兩次 118-event JSON 與 framebuffer 各自逐 byte 相同，新增 96 筆事件已區分靜態標籤、
+  動態值、能力值、技能與重畫角色。固定 snapshot 可重生相同結果，但 seed 與亂數實作仍
+  未辨識，不外推自然開局；dosgolem spec 023 已 CONFORMED，本機 commit 為
+  `1e8060b5a83665da1e1b74a4f02cb391f938e25d`，未推其遠端。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
 轉場清除與同狀態 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；runtime 畫面與分頁互動
-驗證前，手冊與選單覆繪 DRAFT 不升為 READY。
+驗證前，手冊與選單覆繪 DRAFT 不升為 READY。不依賴倍率的下一個安全切片是重擲提示按鍵與
+動態欄位重畫生命週期。

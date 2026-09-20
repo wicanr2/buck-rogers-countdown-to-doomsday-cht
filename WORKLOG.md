@@ -536,3 +536,20 @@
 - 專案 70 項測試與真實 A/B verifier、dosgolem 全部正式套件測試、`go vet` 及相關 race
   detector 通過；spec 022 已 CONFORMED，本機 commit 為
   `73e610943cb26ed3f0990ecd13bd196d12fe162a`，未推其遠端。本輪未接 runtime Layer 或選定 2×／3×。
+
+# 2026-09-21：第四十二階段確認職業後的角色資料文字路徑
+
+- 重新載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 42 階段 Goal；範圍不依賴
+  仍 pending 的 2×／3× 倍率決策。
+- 從相同固定 state 排入第四個正常 BIOS Enter，確認進入角色資料／重擲能力值頁；新增 96 筆
+  guarded post-call 完成事件，分成靜態標籤、動態角色值、能力值、技能、重畫與重擲提示。
+- 正式路徑獨立重播兩次；118-event JSON 與 64,000-byte framebuffer 各自逐 byte 相同。
+  固定 snapshot 可重生相同能力值，但本輪沒有宣稱已識別 seed、亂數實作或一般骰序。
+- 新增 96 筆 content-safe 清冊、嚴格 verifier 與三項正反例測試；原版二進位沒有直接命中
+  runtime 短字串，未猜測其壓縮／解碼機制，正式檔案也不保存英文全文。
+- dosgolem spec 023 已 CONFORMED，本機 commit 為
+  `1e8060b5a83665da1e1b74a4f02cb391f938e25d`，未推其遠端；本輪沒有翻譯角色資料頁、接
+  renderer、修改角色規則或選定輸出倍率。
+- 首次 `go test ./...` 誤納被忽略的舊 `workplace/fd2-input-parity-20260907`，因三個獨立 probe
+  各自定義 `main` 而失敗；分類為驗證範圍問題後，在同一映像排除 `workplace/` 重跑全部
+  正式 packages test／vet 與 Buck Rogers race detector，結果全數通過。

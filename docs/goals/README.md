@@ -46,3 +46,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第三十九階段：職業選擇生命週期收據](phase-39-class-selection-lifecycle.md) | 完成 | 量測職業選擇的上下移動、返回與 framebuffer 決定性收據。 |
 | [第四十階段：職業選擇繁中執行期顯示請求](phase-40-class-runtime-display-requests.md) | 完成 | 將職業 exact identity 接成繁中 catalog 與 guarded post-call 顯示請求。 |
 | [第四十一階段：性別與職業繁中覆繪倍率 A/B](phase-41-character-creation-overlay-ab.md) | 完成 | 以真實 framebuffer 建立性別與職業 2×／3× 安全覆繪對照。 |
+| [第四十二階段：確認職業後的下一畫面文字路徑清冊](phase-42-post-class-text-path-inventory.md) | 已完成 | 由正常第四次 Enter 量測角色資料／重擲畫面的 96 筆新增事件與 framebuffer。 |
