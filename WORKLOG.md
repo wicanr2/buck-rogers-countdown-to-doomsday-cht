@@ -227,3 +227,12 @@
 - 首次執行因非 root Go cache 指向 `/.cache` 失敗，第二次因狀態保存的 `/orig` 未掛載失敗；
   固定 `GOCACHE=/tmp/go-build` 並將已驗證原版目錄唯讀掛到 `/orig` 後乾淨重跑。兩次失敗
   都未產生可誤認為成功的 VRAM 收據。
+
+# 2026-09-20：第十九階段手冊題目事件收集器 prototype
+
+- 建立並完整讀回第十九階段 goal；在倍率決策 pending 時，只處理不依賴 2×／3× 的事件
+  收集器，維持 DRAFT 規格與 production 閘門。
+- 被忽略的 Python prototype 將題首 entry、六筆 guarded post-call、局部 clear 與 generation
+  token 建模；真實第十八階段事件重建唯一鍵 `41 / Technical Skills / second`，不保存答案。
+- 9 項正反向測試通過；缺欄、亂序、重複、未知 caller、錯誤常值／頁碼及舊 generation
+  延遲返回均不會產生顯示請求。prototype 保留在 `workplace/phase19/`，未移入正式路徑。

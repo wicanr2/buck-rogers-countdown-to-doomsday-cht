@@ -76,6 +76,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   使舊 generation 失效，累積頁碼／標題／序數後，只在 `word?` guarded post-call 顯示新
   中文段落；兩次終態 raw VRAM 雜湊一致。完整收據見
   `docs/re/phase-18-manual-generation-invalidation.md`。
+- 第十九階段建立未接入 production 的題目事件收集器 prototype：題首建立 generation，六筆
+  guarded post-call 依序累積 page／heading／ordinal，`word?` 才提交唯一鍵。真實事件重建
+  `41 / Technical Skills / second`；9 項測試涵蓋缺欄、亂序、重複、未知 caller、錯誤頁碼及
+  舊 generation 延遲返回，均失敗即關閉。完整設計見
+  `docs/re/phase-19-manual-event-collector-prototype.md`。
 
 下一個前沿決策是 2×／3× 輸出倍率；確認後才能讓選定倍率進入 dosgolem renderer 與正常
 玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。錯答 generation 的原版事件已

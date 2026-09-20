@@ -7,7 +7,8 @@
 [第十四階段短篇段落](../re/phase-14-manual-compact-paragraphs.md)、
 [第十六階段第三批段落](../re/phase-16-manual-compact-paragraphs-3.md)、
 [第十七階段分頁與倍率 prototype](../re/phase-17-manual-pagination-scale-prototype.md)、
-[第十八階段題目世代與失效](../re/phase-18-manual-generation-invalidation.md)
+[第十八階段題目世代與失效](../re/phase-18-manual-generation-invalidation.md)、
+[第十九階段事件收集器 prototype](../re/phase-19-manual-event-collector-prototype.md)
 
 ## 目的
 
@@ -32,6 +33,12 @@
 頁碼、標題與序數後，只在 `2A33:0309` 的 `word?` guarded post-call 才允許解析並覆繪。
 不得等待空白畫面，也不得在第一筆或頁碼出現後提前畫中文。
 
+第十九階段把上述事件收斂為 typed lifecycle：`idle → pending(generation, stage, page?,
+heading?, ordinal?) → visible(key)`。pending frame 在 dispatcher entry 綁定 generation；只有同
+generation、正確 caller、正確順序及合法內容的 guarded post-call 能推進。任何驗證失敗都
+poison 該 generation，下一個精確題首才能復原。矩形清除可移除 visible，但不得提交或重設
+pending。此模型已通過可丟棄 prototype，尚未授權 production 實作。
+
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
@@ -43,6 +50,8 @@
    OCR 內容一律不可當成顯示譯文。
 6. 新題題首出現時須先清除上一 generation 的段落與 metadata；中途矩形清除只維持 pending，
    不可建立題目身分。到 `word?` guarded post-call 前，任何中文手冊段落都不得顯示。
+7. pending frame 必須帶 generation；舊 generation 延遲返回、亂序、重複或未知 caller 不得
+   推進目前題目。失敗後不可使用部分 metadata，須等下一個精確題首重新開始。
 
 ## READY 前置
 
@@ -50,4 +59,5 @@
 - 原版覆繪位置、分頁與輸入提示保留都有同狀態 A/B 收據；錯答重抽須在 adapter 實作後補
   「舊覆蓋先失效、新覆蓋只在完整題目後出現」的同狀態 A/B 收據。
 - 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。
+- 將第十九階段 prototype 的同世代、跨世代、亂序與 poisoned 復原案例轉成正式 adapter 測試。
 - 使用者確認 2×／3×，並為選定倍率補齊 dosgolem renderer 支援與正常玩家路徑收據。
