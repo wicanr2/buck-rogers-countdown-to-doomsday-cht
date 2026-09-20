@@ -160,6 +160,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   嚴格 verifier 覆蓋。dosgolem spec 019 已 CONFORMED，本機 commit 為
   `371683b7f5793c7104e839202497c742ba3e13c0`，未推其遠端；尚未量職業方向鍵／返回，也未建立
   職業譯文或 renderer。
+- 第三十九階段以正常 Down→Up 證實職業第一、二列依序 normal／selected 重畫，並逐位元
+  回到第一列初始狀態；Escape 先取消第一列反白，再重建功能選單，而非返回性別選擇。
+  兩條路徑各自雙重重播一致，專案 61 項測試通過；dosgolem spec 020 已 CONFORMED，本機
+  commit 為 `d8f34f101c719e6939565fe8b6f0d8b531e07ccc`，未推其遠端。尚未建立職業譯文、renderer
+  或倍率預設。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

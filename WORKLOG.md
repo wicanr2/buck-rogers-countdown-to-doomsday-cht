@@ -496,3 +496,14 @@
 - dosgolem spec 索引 256 份、全部正式 packages test／vet 與相關 race detector 通過；
   spec 019 已 CONFORMED，本機 commit `371683b7f5793c7104e839202497c742ba3e13c0`，未推其遠端。
 - 本輪未建立職業譯文、text-safe rectangle、renderer 或倍率預設，也未外推其他角色分支。
+
+# 2026-09-21：第三十九階段職業選擇生命週期
+
+- 建立並完整讀回第 39 階段 Goal；只量測正常 Down／Up／Escape，不依賴仍 pending 的倍率決策。
+- Down 先 normal 重畫第一職業、再 selected 重畫第二職業；Up 反向復原，終態逐位元等於
+  第 38 階段職業畫面。Escape 先取消第一列反白，再重建功能選單，而非返回性別選擇。
+- 兩條路徑各重播兩次；JSON 與 framebuffer 各自逐 byte 相同。新增 12 筆 content-safe
+  清冊、嚴格 verifier 與三項負向測試；專案 61 項 Python 測試通過。
+- dosgolem spec 020 已 CONFORMED；正式套件測試、`go vet` 與相關 race detector 通過，本機
+  commit 為 `d8f34f101c719e6939565fe8b6f0d8b531e07ccc`，未推其遠端。本輪沒有翻譯、繪圖、倍率預設
+  或原版資料修改。

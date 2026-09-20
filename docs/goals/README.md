@@ -43,3 +43,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第三十六階段：性別選擇生命週期收據](phase-36-gender-selection-lifecycle.md) | 完成 | 量測性別選擇的上下移動、返回與 framebuffer 決定性收據。 |
 | [第三十七階段：性別選擇繁中執行期顯示請求](phase-37-gender-runtime-display-requests.md) | 完成 | 將已證實性別事件接成正式繁中 catalog 與執行期顯示請求。 |
 | [第三十八階段：確認性別後的下一畫面文字路徑清冊](phase-38-post-gender-text-path-inventory.md) | 完成 | 由正常第三次 Enter 量測下一個角色建立畫面的文字事件與 framebuffer。 |
+| [第三十九階段：職業選擇生命週期收據](phase-39-class-selection-lifecycle.md) | 完成 | 量測職業選擇的上下移動、返回與 framebuffer 決定性收據。 |
