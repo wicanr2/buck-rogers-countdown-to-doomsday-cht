@@ -438,3 +438,18 @@
   `apps/buckrogers`／診斷命令 race detector 通過；spec 015 標為 CONFORMED。
 - dosgolem 本機 commit 為 `64b15779edc9d5be35e1acba0f854ba022008511`，未推其遠端；本輪
   未接正常玩家路徑、未建立預設倍率，也未宣稱功能選單已玩家可見中文化。
+
+# 2026-09-21：第三十五階段選定種族後的文字路徑清冊
+
+- 上一輪分類為有進展；重新載入復古遊戲、dosgolem 與規格閘門入口，建立並完整讀回第 35
+  階段 goal，選擇不依賴 2×／3× 決策的下一條正常玩家文字路徑。
+- 可丟棄 probe 由相同 #99,999,999 state 排入兩次正常 BIOS Enter，證實選定預設種族後
+  進入性別選擇畫面，新增提示、兩筆 normal 選項及 selected 第一選項共四筆事件。
+- dosgolem spec 016 先達 READY；`buckrogers-text-receipt` 新增 `-receipt-out`，以同一次
+  encode 保證 stdout／檔案逐 byte 相同，不改既有 JSON schema。
+- 正式排程重播兩次，14-event JSON 逐 byte 相同（SHA-256 `0c24a9fa…7dab`），終點
+  framebuffer 亦逐 byte 相同（SHA-256 `dcf947d1…715c`），兩次皆零 pending／drop。
+- 新增 `text/post-race-events.tsv` 與嚴格 verifier；專案 47 項測試、dosgolem 全部正式
+  packages test／vet 及相關 race detector 通過，spec 016 標為 CONFORMED。
+- dosgolem 本機 commit 為 `7009315c5a04981eb1b048e7bba34a0b932fbf6d`，未推其遠端；本輪
+  未建立譯文、字型、幾何或 renderer，也未外推性別選單完整 lifecycle。

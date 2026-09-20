@@ -142,6 +142,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   `apps/buckrogers` 倍率中立純核心；呼叫端必須明示倍率，沒有產品預設值。steady／Down ×
   2×／3× 的繁中 PNG、base PNG 與 JSON 全部逐 byte 等於第 32 階段基線；spec 015 已
   CONFORMED，本機 dosgolem commit 為 `64b15779edc9d5be35e1acba0f854ba022008511`，未推其遠端。
+- 第三十五階段由正常雙 Enter 選定預設種族，兩次重生相同的 14-event 收據與終點
+  framebuffer；下一個性別選擇畫面新增提示、兩筆 normal 選項與 selected 第一選項共四筆
+  content-safe identity。dosgolem spec 016 已 CONFORMED，本機 commit 為
+  `7009315c5a04981eb1b048e7bba34a0b932fbf6d`，未推其遠端；尚未建立譯文或量方向鍵 lifecycle。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

@@ -7,6 +7,9 @@
 `menu-events.tsv` 以事件鍵、正式文字鍵、原文長度／SHA-256、caller、色號與文字格座標保存
 同一路徑的九筆 typed identity；不保存原文全文。`tools/menu_events.py` 驗證 schema、順序、
 唯一性、bounds 與 `menu.zh-TW.tsv` 雙向覆蓋。
+`post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；目前只有
+原版事件證據，尚未加入繁中 catalog 或正式 renderer。`tools/post_race_receipt.py` 會把它
+與既有選單 inventory、固定雙 Enter 收據及終點 framebuffer 一起驗證。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。
