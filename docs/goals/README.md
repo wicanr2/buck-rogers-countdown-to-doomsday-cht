@@ -15,3 +15,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第八階段：功能選單繁中字型與版面 prototype](phase-8-menu-cht-font-layout-prototype.md) | 已完成 | 盤點參考實作、建立首批譯文與原生尺寸字型／版面對照。 |
 | [第九階段：dosgolem 通用繁中覆繪基礎](phase-9-dosgolem-xlate-foundation.md) | 已完成 | 移植並驗證通用 `xlate` package；遠端分支待明確授權。 |
 | [第十階段：繁中 catalog 與 GOLEMFNT 建置管線](phase-10-catalog-font-build-pipeline.md) | 已完成 | 建立 TSV lint、字元清單與可重生的 16×16 字型子集工具。 |
+| [第十一階段：第一條手冊查閱事件與中文段落映射](phase-11-first-manual-check-event-map.md) | 已完成 | 定位原版手冊查閱事件並建立第一條中文來源映射。 |

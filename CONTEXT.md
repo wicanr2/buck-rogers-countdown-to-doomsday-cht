@@ -49,7 +49,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   專案。現有 8 筆譯文導出 24 個唯一字模；904-byte prototype 已由 dosgolem production
   `xlate.LoadFont` 回讀並覆蓋全部 29 個譯文字元；fontcheck 位於本機分支 commit `8a22460`。
   字型二進位只留 `workplace/`，正式字型與 2×／3× 決策仍 pending。
+- 第十一階段已由載入 A 存檔後的正常功能選單路徑，證實進入冒險會顯示
+  手冊查詢。第一題為英文 Log Book 第 34 頁 `Deimos Prison` 第十字；明確錯答
+  後原版會重新抽題。對應繁中來源是 `SCAN0352_039.jpg` 印刷頁 73 的「49. 在監獄中」。
+  `docs/spec/002-manual-paragraph-overlay-draft.md` 只允許輸出端顯示中文段落，禁止自動作答或改原版判定。
 
-下一個受證據閘門約束的工作，是依使用者選定倍率，把 guarded post-call、矩形失效與
-GNU Unifont 子集接成 dosgolem 分支上的可丟棄 adapter，並產生英文／繁中 A/B 同狀態收據。
-自然 fall-through regression 與完整選單 containment 完成前，功能選單 DRAFT 不升為 READY。
+下一個不依賴倍率決策的工作，是盤點原版可抽選的手冊題庫，並將每個英文標題對回
+使用者提供的繁中掃描段落。映射完整性、錯答 generation 失效與分頁 prototype 驗證前，
+手冊覆繪 DRAFT 不升為 READY。

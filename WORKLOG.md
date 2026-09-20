@@ -133,3 +133,16 @@
   `8a224601a7d09fc8d0f63ab65828eb7f64fa0200`。
 - Go 映像的登入 shell 重設 PATH，兩次造成 `gofmt` 找不到；固定 PATH 並用非登入 shell
   後乾淨通過，分類為容器環境問題。
+
+# 2026-09-20：第十一階段手冊查詢映射
+
+- 建立並完整讀回第十一階段 goal；以已載入 A 存檔的固定狀態，從功能選單正常送入
+  六次 Down 再 Enter，取得第一個手冊查詢畫面。
+- workplace dosgolem 新增具名 BIOS 鍵、scratch 還原後 override、DOS FindFirst 目錄屬性與
+  `-call-length-string`。後者在繪圖呼叫當下保存共用暫存區，證實題目是英文 Log Book
+  第 34 頁 `Deimos Prison` 第十字。
+- 輸入明確錯誤的 `x` 後，原版立即重抽為第 41 頁 `Technical Skills` 第二字；未繞過、
+  未自動作答。
+- 對回中文掃描 `SCAN0352_039.jpg` 印刷頁 73 的「49. 在監獄中」，建立一筆繁中
+  短段落 catalog 與 DRAFT 映射。原圖、整頁 OCR、state、VRAM 與 trace 均留在被忽略的
+  `workplace/`。
