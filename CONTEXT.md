@@ -105,6 +105,9 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   答案、不寫原版狀態且尚未繪圖；dosgolem 本機 commit 為
   `38585dcd9e3861b6fa64a1b89dbec19e5a038dd7`，未推送其遠端。
   詳見 `docs/re/phase-24-manual-runtime-watcher.md`。
+- 第二十六階段已完成 README 穩定入口：以 SSI 產品目錄、原版 Rule Book 保存掃描及
+  MobyGames 版本／製作資料介紹作品歷史、Gold Box 系譜與核心循環；同時明確標示本專案
+  非 remake、原版素材須合法自備、尚無玩家版或 Release，且繁中尚未接入正式畫面。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
 接入正常玩家路徑覆繪。dispatcher／guarded post-call 已完成；下一個技術切片須在倍率決定後

@@ -30,3 +30,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第二十三階段：手冊事件 adapter 規格與正式核心](phase-23-manual-event-adapter.md) | 完成 | 將已證實事件與 catalog 流程審查成 READY 子規格，再實作未接線的正式核心。 |
 | [第二十四階段：手冊 runtime watcher 與真實事件收據](phase-24-manual-runtime-watcher.md) | 完成 | 將已證實 dispatcher guard 接到正式核心，以原版固定狀態驗證顯示請求。 |
 | [第二十五階段：手冊繁中覆繪倍率決策](phase-25-manual-overlay-scale-decision.md) | 進行中 | 以原生尺寸 prototype 與 Golden Box CJK 版面證據決定 2×／3×。 |
+| [第二十六階段：README 遊戲歷史、保存價值與技術定位](phase-26-readme-history-positioning.md) | 完成 | 以可回查來源完成專案歷史介紹、保存理由、技術定位與權利邊界。 |

@@ -304,3 +304,16 @@
 - 本階段未選 2×／3×，未建立 renderer、分頁輸入或玩家可見完成聲明。
 - dosgolem 本機 commit 為 `38585dcd9e3861b6fa64a1b89dbec19e5a038dd7`；依授權邊界未推送
   dosgolem 遠端。
+
+# 2026-09-20：第二十六階段 README 遊戲歷史與技術定位
+
+- 第 25 階段 2×／3× 父層決策仍等待使用者確認；依共同決策閘門沒有把沉默視為授權，改做
+  不依賴倍率且由遠端 Issue #11 明確要求的 README 工作。
+- 建立並完整讀回第 26 階段 goal，載入 README 標準與專案文件職責契約。
+- 以 SSI 1992 年產品目錄、原版 Rule Book 保存掃描、MobyGames 版本與 DOS credits 查證
+  1990 年平台、開發／發行、TSR 授權、Gold Box 系譜與玩法結構；README 相鄰提供來源連結
+  並記錄 2026-09-20 查閱日期。
+- README 明確區分 dosgolem 輸出覆繪與 remake／EXE 修改，保存手冊驗證與語意隔離，並
+  誠實標示沒有玩家版、Release 或已完成中文化聲明。
+- Docker 內檢查 14 個 Markdown 連結，其中 8 個相對入口全數存在；標題為單一 H1 與同層
+  H2，沒有嵌入原版受保護素材或把工作流水帳塞進 README。
