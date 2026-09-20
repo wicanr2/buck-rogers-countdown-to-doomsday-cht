@@ -122,3 +122,8 @@ dispatcher entry 或固定延遲切 generation。
 升為 READY 前，至少須以 dosgolem 取得一條正常互動路徑，明確量到上述生命週期事件，並
 完成原文／繁中 A/B 同狀態收據與中文 glyph containment 驗證。沒有達成這些條件時，DRAFT
 只能引導後續量測，不能成為程式碼、測試期望或「已中文化」的依據。
+
+第九階段已在本機 dosgolem 專用分支 `b33cfbf` 移植並測試通用 `xlate` package。這只解決
+GOLEMFNT、stamp、定色、失效、捲動與快照等遊戲無關能力，不構成本作 adapter 實作。
+現行 `xlate.Draw` 的 READY 契約要求倍率為 3 的倍數；若使用者選 2×，須先修訂該通用規格，
+不能把 3× 的現有實作誤當成產品方向已定案。

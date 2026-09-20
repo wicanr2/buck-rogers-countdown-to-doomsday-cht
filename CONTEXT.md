@@ -42,6 +42,9 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
 - 第八階段已建立首批 UTF-8 繁中 TSV，並由正常 Enter 路徑傾印九筆可見來源；六個種族
   譯名已用中文說明書核對。GNU Unifont 2× 填滿格與 3× 置中兩份本機 prototype 均完整
   清除第一筆 20 格原文且未越界。正式倍率仍待使用者選擇，尚未建立 production adapter。
+- 第九階段已把 psychic-war 驗證過的遊戲無關 `xlate` package 移植到 workplace dosgolem
+  專用分支，本機 commit `b33cfbf`；`xlate` 與全部正式 packages 均通過。現行 `Draw` 只接受
+  3 的倍數倍率，所以仍不能把它解讀為使用者已選 3×。dosgolem 遠端推送待明確外傳授權。
 
 下一個受證據閘門約束的工作，是依使用者選定倍率，把 guarded post-call、矩形失效與
 GNU Unifont 子集接成 dosgolem 分支上的可丟棄 adapter，並產生英文／繁中 A/B 同狀態收據。

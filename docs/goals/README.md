@@ -13,3 +13,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第六階段：清除路徑與失效 hook 證據](phase-6-clear-path-hook-evidence.md) | 已完成 | 排除底層 byte-fill，證實帶參數的 Mode 13h 矩形清除 hook 候選。 |
 | [第七階段：文字 post-call 與 generation 事件](phase-7-text-post-call-generation-event.md) | 已完成 | 證實 dispatcher 完成繪製後的事件與矩形失效之 generation 順序。 |
 | [第八階段：功能選單繁中字型與版面 prototype](phase-8-menu-cht-font-layout-prototype.md) | 已完成 | 盤點參考實作、建立首批譯文與原生尺寸字型／版面對照。 |
+| [第九階段：dosgolem 通用繁中覆繪基礎](phase-9-dosgolem-xlate-foundation.md) | 已完成 | 移植並驗證通用 `xlate` package；遠端分支待明確授權。 |

@@ -1,5 +1,16 @@
 # 工作歷程
 
+## 2026-09-20：第九階段 dosgolem 通用 xlate 基礎
+
+- 建立並完整讀回第九階段 goal；逐檔讀取來源 `xlate`、測試與規格 202／203，確認來源
+  `e515870`、目標基準 `d9c0c27`，未整串 cherry-pick 混有 oracle／cmd 變更的歷史。
+- 只移植遊戲無關 package、測試與規格索引，建立 workplace dosgolem commit `b33cfbf`；
+  沒有帶入 psychic-war 位址、譯文、狀態或字型資產。
+- Docker 的 `xlate` 詳細測試全綠；正式 package roots 全數 exit 0。`go test ./...` 唯一失敗
+  是被忽略 FD2 research workplace 的三個 `main` 衝突，已精確分類且未改寫他案資料。
+- 記錄現行通用層只接受 3 倍倍率；2× 若獲選須先做規格修訂，未把既有能力當成產品定案。
+- dosgolem 遠端 push 因缺少明確外傳授權遭安全審核拒絕；本機 commit 保留，未繞過。
+
 ## 2026-09-20：第八階段繁中字型與版面 prototype
 
 - 由固定狀態正常重播 Enter，於九次 dispatcher entry 傾印來源，證實功能選單與種族選單
