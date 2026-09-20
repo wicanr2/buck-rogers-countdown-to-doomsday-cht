@@ -11,7 +11,8 @@
 [第十九階段事件收集器 prototype](../re/phase-19-manual-event-collector-prototype.md)、
 [第二十階段 catalog 顯示請求 prototype](../re/phase-20-manual-catalog-display-request-prototype.md)、
 [第二十一階段序數詞橋接](../re/phase-21-manual-ordinal-bridge-evidence.md)、
-[第二十二階段整數倍率 renderer](../re/phase-22-dosgolem-xlate-integer-scale.md)
+[第二十二階段整數倍率 renderer](../re/phase-22-dosgolem-xlate-integer-scale.md)、
+[第二十三階段事件 adapter](../re/phase-23-manual-event-adapter.md)
 
 ## 目的
 
@@ -54,6 +55,11 @@ translation，不得含答案、輸入或原版狀態寫入。
 GOLEMFNT 驗證 2×／3×；非法倍率失敗即關閉、目的緩衝區外安全裁切。這只移除 2× 的工具
 限制，不等於選定正式倍率，也不構成遊戲 adapter 或正常玩家路徑完成證據。
 
+第二十三階段將事件收集、原版序數橋接與精確 catalog lookup 切成獨立 READY 子規格，並在
+dosgolem `apps/buckrogers` 實作未接線純核心。正式 TSV 正向／未命中與失敗即關閉測試均通過；
+核心不接 oracle、xlate、輸入或答案。總體規格仍須等 runtime hook、倍率、分頁與 A/B 收據，
+因此維持 DRAFT。
+
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
@@ -77,7 +83,6 @@ GOLEMFNT 驗證 2×／3×；非法倍率失敗即關閉、目的緩衝區外安�
 - 原版覆繪位置、分頁與輸入提示保留都有同狀態 A/B 收據；錯答重抽須在 adapter 實作後補
   「舊覆蓋先失效、新覆蓋只在完整題目後出現」的同狀態 A/B 收據。
 - 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。
-- 將第十九階段 prototype 的同世代、跨世代、亂序與 poisoned 復原案例轉成正式 adapter 測試。
-- 正式 adapter 讀取並驗證 `manual-ordinals.tsv`，以全套 catalog lookup 測試證明沒有回退
-  到程式碼內嵌序數或模糊比對。
+- 將 READY 純核心接上已驗證的 dispatcher entry／guarded post-call，並以正常玩家路徑證明
+  hook 不會誤收其他字串或漏掉已知手冊入口。
 - 使用者確認 2×／3×，並為選定倍率補齊正常玩家路徑、覆繪 containment 與分頁互動收據。

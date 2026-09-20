@@ -273,3 +273,18 @@
 - 首次兩個 Go 容器因登入 shell 遺失 `/usr/local/go/bin`，修正後又發現非 root 快取預設為
   `/.cache`；改用映像內絕對路徑及 `/tmp` 的 `GOCACHE`／`GOPATH` 後乾淨重跑。兩者皆為
   容器環境問題，不是 renderer 缺陷。
+
+# 2026-09-20：第二十三階段手冊事件 adapter 規格與正式核心
+
+- 建立並完整讀回第 23 階段 goal；重新載入復古中文化、dosgolem 能力與規格閘門契約，並
+  由主機 gh 回讀 Issues #6、#8 的遠端權威狀態。
+- 將第 18–21 階段證據審查成 dosgolem `007-buck-rogers-manual-event-adapter` READY 規格；
+  只批准未接 hook／renderer 的純核心，不把所有入口覆蓋的強推論冒稱已證實。
+- 新增 `apps/buckrogers` Collector 與 Catalog：generation、poisoned 復原、原版 1–10 序數、
+  三份嚴格 TSV 與 exact-match 顯示請求均有正式 Go 測試，不含答案或輸入副作用。
+- 首次 Go 測試因測試變數 `g2` 超出作用域而未編譯；修正測試後乾淨重跑。契約複核再補上
+  event ordinal 必須存在於原版橋接表的載入拒絕，避免把無法命中的壞資料視為可用 catalog。
+- `go vet`、race detector、正式專案 TSV 與 dosgolem 所有正式 packages 全數通過。本機
+  dosgolem commit 為 `8ce092f29d000ea7e6765c4f3389fe484aefa555`，未推送其遠端。
+- 產品端 `003-manual-event-adapter` 只保存整合邊界與權威指標；總體手冊覆繪仍為 DRAFT，
+  沒有選定 2×／3× 或接入玩家可見路徑。

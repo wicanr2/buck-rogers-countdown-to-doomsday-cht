@@ -27,3 +27,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第二十階段：手冊 catalog 顯示請求 prototype](phase-20-manual-catalog-display-request-prototype.md) | 完成 | 以正式 TSV 驗證精確唯一命中與未命中失敗即關閉的顯示請求。 |
 | [第二十一階段：手冊序數詞橋接證據](phase-21-manual-ordinal-bridge-evidence.md) | 完成 | 由原版資料與 consumer 建立 runtime 序數詞到題庫數字的可稽核橋接。 |
 | [第二十二階段：dosgolem xlate 通用整數倍率](phase-22-dosgolem-xlate-integer-scale.md) | 完成 | 擴充通用 GOLEMFNT renderer 支援 2×／3×，不預先選定遊戲倍率。 |
+| [第二十三階段：手冊事件 adapter 規格與正式核心](phase-23-manual-event-adapter.md) | 完成 | 將已證實事件與 catalog 流程審查成 READY 子規格，再實作未接線的正式核心。 |

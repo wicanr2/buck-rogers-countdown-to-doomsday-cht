@@ -94,8 +94,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   的 16×16 字模精確像素、非法倍率與短緩衝區裁切測試均通過；真實 GOLEMFNT 已畫出繁中
   「地球」。本機 commit 為 `ef7f8db32b20a6b9eb6d810bd4e6b99187c55f44`，未推送 dosgolem
   遠端。這不代表已選定產品倍率，詳見 `docs/re/phase-22-dosgolem-xlate-integer-scale.md`。
+- 第二十三階段已將第 19–21 階段的事件／序數／catalog 契約審查為 dosgolem READY 子規格，
+  並實作 `apps/buckrogers` 未接線純核心。正式 TSV、generation、poisoned 復原與 malformed
+  反例測試、`go vet`、race detector 及所有正式 packages 均通過。本機 commit 為
+  `8ce092f29d000ea7e6765c4f3389fe484aefa555`，未推送 dosgolem 遠端；玩家可見整合仍為 DRAFT。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
-接入正常玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。ordinal bridge 已解決；錯答
-generation 的原版事件也已量測，但 adapter A/B 與分頁互動驗證前，手冊覆繪 DRAFT 不升為
-READY。
+接入正常玩家路徑覆繪。不依賴倍率的下一個技術切片是正式 dispatcher／guarded post-call
+接線證據與測試。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；畫面 A/B 與分頁互動驗證前，
+手冊覆繪 DRAFT 不升為 READY。
