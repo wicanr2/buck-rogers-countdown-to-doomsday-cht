@@ -22,3 +22,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第十五階段：第二批短篇繁中手冊段落校訂](phase-15-manual-compact-paragraphs-2.md) | 完成 | 再校訂八筆單段內容並擴充事件與 catalog。 |
 | [第十六階段：第三批已證實繁中手冊段落校訂](phase-16-manual-compact-paragraphs-3.md) | 完成 | 從剩餘已證實來源校訂五筆完整內容並分類排除其餘候選。 |
 | [第十七階段：手冊查詢分頁與倍率對照 prototype](phase-17-manual-pagination-scale-prototype.md) | 完成 | 由真實查詢畫面建立 2×／3× 可丟棄分頁對照與決策證據。 |
+| [第十八階段：手冊題目世代與舊覆蓋失效](phase-18-manual-generation-invalidation.md) | 完成 | 量測答錯換題事件順序，建立舊繁中覆蓋不得跨題沿用的失效契約。 |

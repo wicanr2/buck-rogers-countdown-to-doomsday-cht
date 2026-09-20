@@ -24,5 +24,6 @@
 | [第十五階段第二批短篇手冊段落](phase-15-manual-compact-paragraphs-2.md) | 第二批八筆原圖校訂、事件擴充、長度與回歸驗證 |
 | [第十六階段第三批已證實手冊段落](phase-16-manual-compact-paragraphs-3.md) | 剩餘候選篩選、五筆原圖校訂、排除原因與回歸驗證 |
 | [第十七階段手冊分頁與倍率 prototype](phase-17-manual-pagination-scale-prototype.md) | 真實安全矩形、2×／3× 容量、逐頁對照與 renderer 限制 |
+| [第十八階段手冊題目世代與舊覆蓋失效](phase-18-manual-generation-invalidation.md) | 答錯換題時間線、局部清除反例與失敗即關閉世代契約 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

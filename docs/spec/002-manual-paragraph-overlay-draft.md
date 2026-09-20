@@ -6,7 +6,8 @@
 [第十三階段繁中來源對照](../re/phase-13-manual-source-crosswalk.md)、
 [第十四階段短篇段落](../re/phase-14-manual-compact-paragraphs.md)、
 [第十六階段第三批段落](../re/phase-16-manual-compact-paragraphs-3.md)、
-[第十七階段分頁與倍率 prototype](../re/phase-17-manual-pagination-scale-prototype.md)
+[第十七階段分頁與倍率 prototype](../re/phase-17-manual-pagination-scale-prototype.md)、
+[第十八階段題目世代與失效](../re/phase-18-manual-generation-invalidation.md)
 
 ## 目的
 
@@ -25,6 +26,12 @@
 安全矩形外 0 px 變更。這只證明靜態幾何可行，不證明分頁輸入、錯答重抽或 generation
 失效。倍率仍待使用者決定，因此不得把任一候選寫入 production 路徑。
 
+第十八階段證實錯答換題不會先把畫面整面清空：固定題首、頁碼與提示先逐筆覆寫，
+`026F:029C` 的局部矩形清除才在中途出現。因此 DRAFT adapter 應以
+`2A33:01ED → 0763:0424` 的精確題首 entry 開啟新 generation 並立即丟棄舊段落；累積
+頁碼、標題與序數後，只在 `2A33:0309` 的 `word?` guarded post-call 才允許解析並覆繪。
+不得等待空白畫面，也不得在第一筆或頁碼出現後提前畫中文。
+
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
@@ -34,10 +41,13 @@
    未命中其他題目是預期行為，不可用標題模糊比對猜測。
 5. `manual-source-crosswalk.tsv` 只證明來源定位；`strong-inference`、`unknown` 或未逐字校訂的
    OCR 內容一律不可當成顯示譯文。
+6. 新題題首出現時須先清除上一 generation 的段落與 metadata；中途矩形清除只維持 pending，
+   不可建立題目身分。到 `word?` guarded post-call 前，任何中文手冊段落都不得顯示。
 
 ## READY 前置
 
 - 逐字校訂可用中文段落；解決 3 筆強推論與 `Roll.` 缺頁，或為它們訂出明確的失敗即關閉政策。
-- 原版覆繪位置、分頁、輸入提示保留與錯答重抽都有同狀態 A/B 收據。
+- 原版覆繪位置、分頁與輸入提示保留都有同狀態 A/B 收據；錯答重抽須在 adapter 實作後補
+  「舊覆蓋先失效、新覆蓋只在完整題目後出現」的同狀態 A/B 收據。
 - 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。
 - 使用者確認 2×／3×，並為選定倍率補齊 dosgolem renderer 支援與正常玩家路徑收據。

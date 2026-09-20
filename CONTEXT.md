@@ -71,7 +71,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   `[7,312)×[7,184)`，正文 36×17 格、每頁 612 字；正式 236 字段落為 1 頁，708 字壓力
   樣本為 2 頁，兩案安全矩形外皆為 0 px 變更。2× 字較大但需擴充目前只接受 3 倍倍率的
   `xlate.Draw`；3× 已受支援但字體相對畫面較小，仍待使用者選擇。
+- 第十八階段已由固定狀態兩次重播答錯換題：新題首於 #301,127,835 出現，局部矩形清除
+  到 #301,166,163 才發生，證實原版不會先整面清空。DRAFT 契約改以精確題首 entry 立即
+  使舊 generation 失效，累積頁碼／標題／序數後，只在 `word?` guarded post-call 顯示新
+  中文段落；兩次終態 raw VRAM 雜湊一致。完整收據見
+  `docs/re/phase-18-manual-generation-invalidation.md`。
 
 下一個前沿決策是 2×／3× 輸出倍率；確認後才能讓選定倍率進入 dosgolem renderer 與正常
-玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。錯答 generation 失效及分頁互動驗證前，
-手冊覆繪 DRAFT 不升為 READY。
+玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。錯答 generation 的原版事件已
+量測，但 adapter A/B 與分頁互動驗證前，手冊覆繪 DRAFT 不升為 READY。
