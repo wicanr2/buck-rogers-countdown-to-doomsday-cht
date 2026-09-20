@@ -121,6 +121,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   同一正常 Enter 固定狀態在九筆 guarded post-call 各直接提交一筆繁中 `DisplayRequest`，
   零 drop／pending／catalog miss。收據只含事件 metadata、key 與譯文字數；dosgolem 本機
   commit 為 `c6a963dafaf3f060a43816f8a6acbda90aa8b7a0`，未推送其遠端。尚未載入字型或繪圖。
+- 第三十階段由正常 Down／Up 證實種族選單 selection lifecycle：舊列先 normal redraw，新列
+  再 selected redraw；同終點 Down 差異只在 `(24,24)–(79,39)`、832 pixels，Up 後逐位元
+  回到 steady。正式 text-safe rectangle 已分離 col 1 原文清除範圍與 col 3 中文 anchor。
+  三筆新增 variant 尚未接入 catalog；dosgolem 本機 commit 為
+  `d55a4c84c3474034257cddf58d6fa32cff3d60d4`，未推送其遠端。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
 接入正常玩家路徑覆繪。dispatcher／guarded post-call 已完成；下一個技術切片須在倍率決定後

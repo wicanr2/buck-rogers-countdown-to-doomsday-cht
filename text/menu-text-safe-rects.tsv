@@ -1,0 +1,10 @@
+event_key	x	y	width	height	draw_x	draw_y	capacity_cells	line_count	overflow_policy
+menu.transition.old.create_new_character	72	96	160	8	72	96	20	1	single-line-reject
+race.screen.prompt	8	16	72	8	8	16	9	1	single-line-reject
+race.option.terran	8	24	64	8	24	24	6	1	single-line-reject
+race.option.martian	8	32	72	8	24	32	7	1	single-line-reject
+race.option.venusian	8	40	80	8	24	40	8	1	single-line-reject
+race.option.mercurian	8	48	88	8	24	48	9	1	single-line-reject
+race.option.tinker	8	56	64	8	24	56	6	1	single-line-reject
+race.option.desert_runner	8	64	120	8	24	64	13	1	single-line-reject
+race.heading.terran	24	24	48	8	24	24	6	1	single-line-reject

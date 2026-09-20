@@ -9,7 +9,8 @@
 [第七階段 post-call 與 generation 事件](../re/phase-7-text-post-call-generation-event.md)、
 [第八階段字型與版面 prototype](../re/phase-8-menu-font-layout-prototype.md)、
 [第二十八階段顯示請求純核心](../re/phase-28-menu-display-request-core.md)、
-[第二十九階段執行期顯示請求 watcher](../re/phase-29-menu-runtime-request-watcher.md)
+[第二十九階段執行期顯示請求 watcher](../re/phase-29-menu-runtime-request-watcher.md)、
+[第三十階段反白與文字安全矩形](../re/phase-30-race-selection-highlight-lifecycle.md)
 
 ## 玩家可見範圍
 
@@ -110,12 +111,25 @@ address 只註冊一次，其餘自然命中必須忽略。
 #100,040,266。故矩形清除負責使相交 overlay 失效，各文字 post-call 負責重建；不能用任意
 dispatcher entry 或固定延遲切 generation。
 
+### 已證實的種族選單反白生命週期
+
+第三十階段在穩定種族選單送入正常 BIOS Down：原 Terran 先由 `37F1:1856` 以
+`bg/fg=0/10`、row/col `3,3` 重畫完成，再由 `37F1:175D` 以 `15/0`、`4,3` 反白
+Martian。Up 先 normal redraw Martian，再 selected redraw Terran。相同終點下，Down 只改
+`(24,24)–(79,39)` 的兩列；Up 後逐位元回到 steady。
+
+因此 selection overlay 不能只在畫面進入時建立；每筆 exact normal／selected post-call 都是
+同一列中文覆繪重建候選。`text/menu-text-safe-rects.tsv` 已把原文清除矩形與中文 draw anchor
+分離：一般選項清除 col 1 起的含縮排原文，但中文從 col 3 畫。三筆新 variant 尚未加入
+production catalog，現行 resolver 必須維持 miss，不得用座標或 text key 模糊接線。
+
 ## 未知與 READY 閘門
 
 下列項目未達 READY，故禁止 production 實作：
 
 - 第 4–7 階段已證實本功能選單進入／返回的矩形清除與 guarded post-call，但訊息捲動、
-  游標反白、存讀檔及其他畫面的失效時機仍未知；
+  存讀檔及其他畫面的失效時機仍未知；種族選單鍵盤反白已由第 30 階段 Down／Up 證實，
+  但其三筆新增 identity 與 overlay 重建尚未接入；
 - 第 27 階段 `TextRecorder` 已由九筆真實事件與自然 fall-through／錯誤 guard regression
   驗證純觀測契約；第 28 階段 READY `MenuCatalog` 已把九筆真實收據精確解析成繁中
   `DisplayRequest`。第 29 階段又以 CONFORMED runtime watcher 在 guarded post-call 直接

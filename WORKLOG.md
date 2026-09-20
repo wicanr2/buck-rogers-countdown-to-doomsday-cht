@@ -1,5 +1,20 @@
 # 工作歷程
 
+## 2026-09-20：第三十階段種族選單反白與文字安全矩形
+
+- 建立並完整讀回第 30 階段 goal；載入 GUI 還原與 localized geometry 契約，只處理
+  presentation／selection，不研究確認後 transaction。
+- implementation 前建立診斷多鍵排程 READY 規格；新增嚴格 `-bios-key-at` 與
+  `-screen-out`，完成兩次 Enter→Down→Up 重播後標為 CONFORMED。
+- Down 動態證實先 normal redraw Terran、再 selected redraw Martian；Up 先 normal redraw
+  Martian、再 selected redraw Terran，四筆均通過 guarded post-call。
+- 相同終點 steady／Down-only 只差 `(24,24)–(79,39)`、832 pixels；Down→Up framebuffer
+  逐位元回到 steady，兩次 13-event JSON 亦完全相同。
+- 新增 selection identity、text-safe rectangle 與 verifier；一般選項清除 col 1 含縮排原文，
+  中文 draw anchor 改用動態證實的 col 3。39 項專案測試全綠。
+- dosgolem 全部正式 packages test／vet 與相關 race detector 通過，本機 commit
+  `d55a4c84c3474034257cddf58d6fa32cff3d60d4` 未推送遠端。本輪未選倍率或畫中文。
+
 ## 2026-09-20：第二十九階段功能選單執行期顯示請求 watcher
 
 - 建立並完整讀回第 29 階段 goal；重新載入顯示／語意隔離與規格閘門契約。

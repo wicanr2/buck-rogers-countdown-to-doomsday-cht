@@ -1,0 +1,5 @@
+sequence	input_phase	event_role	text_key	original_length	original_sha256	caller	background	foreground	row	column
+1	down	unselect-old	race.terran	6	237c59a3b965d0787ce08d5afcd4ec80017f7de4b6d84021f2207f865345f419	37F1:1856	0	10	3	3
+2	down	select-new	race.martian	7	72d567c59a5473d826cb971bf313b8f5435f9e2eefca6b1f3c045dae4442c96a	37F1:175D	15	0	4	3
+3	up	unselect-old	race.martian	7	72d567c59a5473d826cb971bf313b8f5435f9e2eefca6b1f3c045dae4442c96a	37F1:1856	0	10	4	3
+4	up	select-new	race.terran	6	237c59a3b965d0787ce08d5afcd4ec80017f7de4b6d84021f2207f865345f419	37F1:175D	15	0	3	3
