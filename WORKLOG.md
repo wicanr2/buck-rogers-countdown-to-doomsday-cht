@@ -553,3 +553,17 @@
 - 首次 `go test ./...` 誤納被忽略的舊 `workplace/fd2-input-parity-20260907`，因三個獨立 probe
   各自定義 `main` 而失敗；分類為驗證範圍問題後，在同一映像排除 `workplace/` 重跑全部
   正式 packages test／vet 與 Buck Rogers race detector，結果全數通過。
+
+# 2026-09-21：第四十三階段重擲提示輸入與動態欄位重畫生命週期
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門及 dosgolem 契約，建立並完整讀回
+  第 43 階段 Goal。
+- 從相同固定 state 分別送出 `Y`、`N`、Enter、Space、Escape：`Y` 重擲並回到同一提示，
+  `N` 與 Enter 到達相同姓名提示終點，Space／Escape 只重印原提示且畫面不變。
+- spec 024 先達 READY；`Y` 與 `N` 各正式重播兩次，149-event／183-event JSON 及各自
+  64,000-byte framebuffer 均逐 byte 相同。沒有重擲挑值，也未把 snapshot 結果外推為一般骰序。
+- 新增兩份 content-safe 清冊、嚴格 verifier 與三項正反例測試；專案 76 項測試、dosgolem
+  全部正式 packages test／vet 與 Buck Rogers race detector 通過，spec 024 升為 CONFORMED。
+- 同輪修正 `docs/spec/000-index.md` 遺漏的 Buck Rogers 020–023，並登錄 024；本輪沒有翻譯、
+  接 renderer、修改角色規則或選定 2×／3×。dosgolem 本機 commit 為
+  `4f899924b35e14fdb7ef23bbb2fcd2620284ae43`，未推其遠端。

@@ -47,3 +47,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第四十階段：職業選擇繁中執行期顯示請求](phase-40-class-runtime-display-requests.md) | 完成 | 將職業 exact identity 接成繁中 catalog 與 guarded post-call 顯示請求。 |
 | [第四十一階段：性別與職業繁中覆繪倍率 A/B](phase-41-character-creation-overlay-ab.md) | 完成 | 以真實 framebuffer 建立性別與職業 2×／3× 安全覆繪對照。 |
 | [第四十二階段：確認職業後的下一畫面文字路徑清冊](phase-42-post-class-text-path-inventory.md) | 已完成 | 由正常第四次 Enter 量測角色資料／重擲畫面的 96 筆新增事件與 framebuffer。 |
+| [第四十三階段：重擲提示輸入與動態欄位重畫生命週期](phase-43-reroll-input-lifecycle.md) | 已完成 | 證實 `Y` 重擲與 `N` 接受分支，固定其事件與 framebuffer 生命週期。 |
