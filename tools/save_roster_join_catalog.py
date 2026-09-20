@@ -19,7 +19,8 @@ ROLES = {"existing_static", "new_static", "dynamic_character_name"}
 NEW_KEYS = {"roster.add_prompt", "roster.loading"}
 EXISTING_KEYS = {"menu.create_new_character", "menu.add_character_to_team", "menu.load_saved_game",
                  "menu.joystick_mouse_initialize", "menu.exit_to_dos", "menu.choose_function"}
-NEW_CATALOG_KEYS = NEW_KEYS | (EXISTING_KEYS - {"menu.create_new_character"})
+RUNTIME_HEADER = ["event_key", "sequence", "text_key", "original_length", "original_sha256",
+                  "caller", "background", "foreground", "row", "column"]
 EVENTS_SHA256 = "f178fae862f42eb6cc901251b97f2deea8dfa943ae17456f28208fee81adbcec"
 CALLER = re.compile(r"^[0-9A-F]{4}:[0-9A-F]{4}$")
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
@@ -35,7 +36,8 @@ def _decode(path: Path) -> str:
     return text
 
 
-def validate(events_path: Path, catalog_path: Path, menu_catalog_path: Path | None = None) -> None:
+def validate(events_path: Path, catalog_path: Path, menu_catalog_path: Path | None = None,
+             runtime_events_path: Path | None = None) -> None:
     event_bytes = events_path.read_bytes()
     if hashlib.sha256(event_bytes).hexdigest() != EVENTS_SHA256:
         raise ValueError("事件清冊與第五十四階段 exact identity 基線不符")
@@ -82,7 +84,7 @@ def validate(events_path: Path, catalog_path: Path, menu_catalog_path: Path | No
     except CatalogError as exc:
         raise ValueError(str(exc)) from exc
     catalog_keys = {entry.key for entry in entries}
-    if catalog_keys != NEW_CATALOG_KEYS:
+    if catalog_keys != NEW_KEYS:
         raise ValueError("新增 catalog 有漏譯或孤兒 key")
     if any(entry.source != "runtime-interface" for entry in entries):
         raise ValueError("新增譯文來源必須是 runtime-interface")
@@ -91,8 +93,21 @@ def validate(events_path: Path, catalog_path: Path, menu_catalog_path: Path | No
             menu_keys = {entry.key for entry in read_catalog(menu_catalog_path)}
         except CatalogError as exc:
             raise ValueError(str(exc)) from exc
-        if "menu.create_new_character" not in menu_keys:
-            raise ValueError("既有功能選單 catalog 缺少建立角色 key")
+        if not EXISTING_KEYS <= menu_keys:
+            raise ValueError("既有功能選單 catalog 缺少本路徑靜態 key")
+    if runtime_events_path is not None:
+        runtime_rows = list(csv.reader(io.StringIO(_decode(runtime_events_path)), delimiter="\t", strict=True))
+        if not runtime_rows or runtime_rows[0] != RUNTIME_HEADER or len(runtime_rows) != 3:
+            raise ValueError("runtime 事件表必須是兩筆 exact identity")
+        if [row[2] for row in runtime_rows[1:]] != ["roster.add_prompt", "roster.loading"]:
+            raise ValueError("runtime 事件表 key 或順序不符")
+        expected = {
+            ("17", "adfe0feb6f39631e4b7b14a12d9407e0af2a1bc12fc72dad2c1b879ca781ef90", "37F1:101E", "0", "13", "24", "0"),
+            ("21", "e920b38b45dd6a828b466a06f4c4c4f63645f1c6a82e488599dc3da46b5280f2", "0763:1307", "0", "10", "24", "0"),
+        }
+        actual = {(row[3], row[4], row[5], row[6], row[7], row[8], row[9]) for row in runtime_rows[1:]}
+        if actual != expected:
+            raise ValueError("runtime 事件 identity 與完整清冊不符")
 
 
 def verify_known_dynamic_bytes() -> None:
@@ -110,5 +125,5 @@ if __name__ == "__main__":
     root = Path(__file__).resolve().parents[1]
     verify_known_dynamic_bytes()
     validate(root / "text/save-roster-join-events.tsv", root / "text/save-roster-join.zh-TW.tsv",
-             root / "text/menu.zh-TW.tsv")
+             root / "text/menu.zh-TW.tsv", root / "text/save-roster-join-runtime-events.tsv")
     print("保存→名冊→加入繁中 catalog：通過")

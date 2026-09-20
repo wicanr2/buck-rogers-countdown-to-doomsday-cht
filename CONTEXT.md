@@ -2,6 +2,12 @@
 
 更新：2026-09-21
 
+第五十六階段已完成：保存→功能選單→名冊→加入隊伍 catalog 已接入 dosgolem 唯一 guarded
+`MenuRequestWatcher`。兩次完整正常路徑皆為 18 events／14 requests／4 dynamic-name misses，
+3 writes 與 2,611 FileOps 逐項等於無 catalog baseline；framebuffer 與保存檔亦逐 byte 不變。
+spec 034 已 CONFORMED，專案 100 項測試及 dosgolem 全套 test／vet／race 通過。仍未接
+renderer，2×／3× 尚待使用者決定。
+
 第五十五階段已完成：第五十四階段保存→名冊→加入正常路徑的 18 筆事件已鎖成 exact identity
 清冊。四筆姓名事件分別是固定欄寬 `A`、反白／正常 `A` 與已加入標記 `* A`，均明確禁止進入
 翻譯 catalog；兩筆新增靜態文案與五筆尚缺功能選單文案已有正式繁中譯文。97 項專案測試

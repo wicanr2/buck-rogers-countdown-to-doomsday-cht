@@ -1,5 +1,10 @@
 key	translation	source
 menu.create_new_character	建立新角色	manual-and-runtime
+menu.add_character_to_team	將角色加入隊伍	runtime-interface
+menu.load_saved_game	載入已存遊戲	runtime-interface
+menu.joystick_mouse_initialize	初始化搖桿／滑鼠	runtime-interface
+menu.exit_to_dos	離開至 DOS	runtime-interface
+menu.choose_function	選擇功能	runtime-interface
 menu.pick_race	選擇種族	runtime
 race.terran	地球人	manual-and-runtime
 race.martian	火星人	manual-and-runtime

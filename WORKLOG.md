@@ -736,3 +736,16 @@
   catalog 可決定性導出 37 個字元。
 - 本輪未接 dosgolem production watcher／renderer，也未選定 2×／3×；dosgolem 工作樹沒有
   正式程式變更。
+# 2026-09-21：第五十六階段保存、名冊與加入隊伍執行期顯示請求
+
+- spec 034 依 DRAFT→READY→implementation→原版 oracle 驗收升為 CONFORMED；沒有把 RE
+  結論直接寫進 production。
+- 擴充唯一 menu catalog 至 21 個 identity；roster projection 只含加入提示與載入提示兩個
+  identity，並以既有 exact parser／merge／watcher 產生請求。
+- 兩次 fresh scratch 完整重播皆為 18 events、14 requests、4 動態姓名 misses、3 writes、
+  2,611 FileOps；正規化 JSON SHA-256 均為 `898963d5…b19299`。
+- 新舊模式的事件、輸入、FileOps、writes、framebuffer 與保存檔完全相同，證實譯文請求沒有
+  污染存檔、名冊或加入語意。
+- 新增正式 receipt verifier 與正反例測試；專案 100 項測試及 dosgolem 全部正式 packages
+  test／vet、Buck Rogers／receipt race detector 通過。
+- 本輪未載字型、清除英文、繪製中文或選定 2×／3×；dosgolem commit 只留本機分支。

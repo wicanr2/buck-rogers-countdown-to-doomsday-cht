@@ -25,6 +25,14 @@ class SaveRosterJoinCatalogTests(unittest.TestCase):
         self.check()
         subject.verify_known_dynamic_bytes()
 
+    def test_repository_runtime_projection_matches_full_inventory(self):
+        subject.validate(
+            ROOT / "text/save-roster-join-events.tsv",
+            ROOT / "text/save-roster-join.zh-TW.tsv",
+            ROOT / "text/menu.zh-TW.tsv",
+            ROOT / "text/save-roster-join-runtime-events.tsv",
+        )
+
     def test_rejects_identity_drift_and_dynamic_translation(self):
         drift = self.events.replace(b"121227787", b"121227788", 1)
         with self.assertRaises(ValueError):

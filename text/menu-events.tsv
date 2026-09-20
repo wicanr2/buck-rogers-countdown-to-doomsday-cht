@@ -11,3 +11,12 @@ race.heading.terran	9	race.terran	6	237c59a3b965d0787ce08d5afcd4ec80017f7de4b6d8
 race.selection.normal.terran	10	race.terran	6	237c59a3b965d0787ce08d5afcd4ec80017f7de4b6d84021f2207f865345f419	37F1:1856	0	10	3	3
 race.selection.selected.martian	11	race.martian	7	72d567c59a5473d826cb971bf313b8f5435f9e2eefca6b1f3c045dae4442c96a	37F1:175D	15	0	4	3
 race.selection.normal.martian	12	race.martian	7	72d567c59a5473d826cb971bf313b8f5435f9e2eefca6b1f3c045dae4442c96a	37F1:1856	0	10	4	3
+function.menu.option.create_new_character	13	menu.create_new_character	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:15BD	0	10	12	9
+function.menu.option.add_character_to_team	14	menu.add_character_to_team	21	d31754823288b10941ac65c8731360cdc55c604ad87478ffa0f435fe17762dd9	37F1:15BD	0	10	13	9
+function.menu.option.load_saved_game	15	menu.load_saved_game	15	7ffbeb7f1164aa6fe118718f48287dc9df5af7f6d8f84676df81f949c55ff4db	37F1:15BD	0	10	14	9
+function.menu.option.joystick_mouse_initialize	16	menu.joystick_mouse_initialize	25	b0f82822456b6fd815be97c43ce3017dd7445ec36655d265754f2e6a16a9742c	37F1:15BD	0	10	15	9
+function.menu.option.exit_to_dos	17	menu.exit_to_dos	11	622af18ec40b9e50d8ee66ca0da3e2071c85104b5fe4e3f07ea3b7ff116a7b4e	37F1:15BD	0	10	16	9
+function.menu.selected.create_new_character	18	menu.create_new_character	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:175D	15	0	12	9
+function.menu.instruction.choose_function	19	menu.choose_function	18	925f9d44689040dbbecd13614cbe9c786da2e278dfeec900b17c19de3b08b572	37F1:101E	0	13	24	0
+function.menu.selected.add_character_to_team	20	menu.add_character_to_team	21	d31754823288b10941ac65c8731360cdc55c604ad87478ffa0f435fe17762dd9	37F1:175D	15	0	13	9
+function.menu.normal.add_character_to_team	21	menu.add_character_to_team	21	d31754823288b10941ac65c8731360cdc55c604ad87478ffa0f435fe17762dd9	37F1:1856	0	10	13	9

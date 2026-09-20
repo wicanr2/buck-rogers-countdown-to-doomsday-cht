@@ -20,8 +20,8 @@
 
 ## 靜態文字與 key
 
-- 本路徑沿用既有 `menu.create_new_character`；另外五個功能選單 key 與兩個名冊 key 收在
-  `text/save-roster-join.zh-TW.tsv`。
+- 本路徑沿用既有 `menu.create_new_character`；另外五個功能選單 key 已在第五十六階段回填
+  唯一 `text/menu.zh-TW.tsv`，兩個名冊 key 留在 `text/save-roster-join.zh-TW.tsv`。
 - `roster.add_prompt` 對應兩個 caller／幾何相同、時間不同的事件 identity；清冊仍保留兩筆，
   只共用譯文 key。
 - `roster.loading` 保留不同 caller `0763:1307`，不得只用原文雜湊放寬比對。
@@ -35,4 +35,3 @@
 
 2026-09-21 於 `python:3.13-alpine`、`--network none` 執行：97 項專案測試全部通過；新增 catalog
 導出 37 個唯一字元供後續 GOLEMFNT 字型輸入。此階段沒有接 renderer，也沒有選定 2×／3×。
-

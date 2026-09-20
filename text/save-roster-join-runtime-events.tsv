@@ -1,0 +1,3 @@
+event_key	sequence	text_key	original_length	original_sha256	caller	background	foreground	row	column
+roster.add_prompt	1	roster.add_prompt	17	adfe0feb6f39631e4b7b14a12d9407e0af2a1bc12fc72dad2c1b879ca781ef90	37F1:101E	0	13	24	0
+roster.loading	2	roster.loading	21	e920b38b45dd6a828b466a06f4c4c4f63645f1c6a82e488599dc3da46b5280f2	0763:1307	0	10	24	0
