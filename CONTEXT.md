@@ -207,9 +207,15 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   spec 028 已 CONFORMED，本機 dosgolem commit 為
   `0b66a03808f9d67e2c57ca23e82ad56eb08ac254`，未推其遠端。身體圖示互動與角色建立完成仍未
   證實；本輪未翻譯、接 renderer 或選定倍率。
+- 第四十八階段證實四方向鍵皆改變角色身體圖示選取；正式 Right 分支固定為 297 events。
+  Enter 與 Escape 顯示逐 byte 相同的確認提示，Enter→`N` 重建並回到圖示基線，Enter→`Y`
+  進入儲存詢問畫面。三條正式分支各雙重重播一致，專案 90 項測試與 dosgolem 正式
+  test／vet／race 通過；spec 029 已 CONFORMED，本機 dosgolem commit 為
+  `b385b85103ada0e381063f4869e42b3f006c2f6b`，未推其遠端。尚未回答儲存詢問，也未翻譯、
+  接 renderer 或選定 2×／3×。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
 轉場清除與同狀態 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；runtime 畫面與分頁互動
-驗證前，手冊與選單覆繪 DRAFT 不升為 READY。不依賴倍率的下一個安全切片是職業技能點配置
-畫面的方向鍵／加減／確認／返回生命週期。
+驗證前，手冊與選單覆繪 DRAFT 不升為 READY。不依賴倍率的下一個安全切片是儲存詢問的
+`Y`／`N` 與角色建立完成後第一個正常玩家畫面。

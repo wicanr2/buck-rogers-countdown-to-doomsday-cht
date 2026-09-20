@@ -624,3 +624,18 @@
   全部正式 packages test／vet 與 Buck Rogers race detector 通過，spec 028 升為 CONFORMED。
 - 本輪沒有翻譯技術技能／身體圖示畫面、修改規則、接 renderer 或選定 2×／3×。dosgolem
   本機 commit 為 `0b66a03808f9d67e2c57ca23e82ad56eb08ac254`，未推其遠端。
+
+# 2026-09-21：第四十八階段角色身體圖示選擇生命週期
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 48
+  階段 Goal。
+- Probe 證實四方向鍵都改變圖示選取；Enter 與 Escape 顯示逐 byte 相同的圖示確認提示。
+- Enter→`N` 重建並回到逐 byte 相同的圖示基線；Enter→`Y` 進入儲存詢問畫面。
+- spec 029 先達 READY；移動、拒絕與確認三條分支各正式重播兩次，297／302／298-event
+  JSON 與 framebuffer 各自逐 byte 相同。
+- 新增三份 content-safe 清冊、嚴格 verifier 與兩項正反例測試；專案 90 項測試、dosgolem
+  正式 packages test／vet 與 Buck Rogers race detector 通過，spec 029 升為 CONFORMED。
+- `go test ./...` 首次只被既有未納版控 `workplace/fd2-input-parity-20260907` 多個 `main` 衝突
+  阻擋；排除 `workplace/` 後以相同容器乾淨重跑通過。本輪沒有翻譯、接 renderer、回答儲存
+  詢問或選定 2×／3×。dosgolem 本機 commit 為
+  `b385b85103ada0e381063f4869e42b3f006c2f6b`，未推其遠端。

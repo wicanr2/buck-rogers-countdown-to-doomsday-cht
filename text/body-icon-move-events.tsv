@@ -1,0 +1,2 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+body.icon.move.instruction.001	1	selection_instruction	confirmed	106069173	106084684	20	1e748ea4e0f00d9d879d97a49952e7d7864e199af2d132e04180028863681508	37F1:101E	0	13	24	0

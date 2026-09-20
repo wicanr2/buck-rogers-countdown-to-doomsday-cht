@@ -1,0 +1,7 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+body.icon.refuse.confirmation.001	1	icon_confirmation_prompt	confirmed	106001584	106014851	17	7425046ea84bd8ee003f37778b6295b55ffceba2ea15e5f49ff1bc16ea718790	37F1:101E	0	13	24	0
+body.icon.refuse.old_label.001	2	body_icon_screen	confirmed	106244727	106247228	3	cba06b5736faf67e54b07b561eae94395e774c517a7d910a54369e1263ccfbd4	1C41:2708	0	15	6	8
+body.icon.refuse.old_action.001	3	body_icon_screen	confirmed	106247256	106258221	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:2729	0	15	10	3
+body.icon.refuse.new_label.001	4	body_icon_screen	confirmed	106258249	106260742	3	11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437	1C41:274A	0	15	12	8
+body.icon.refuse.new_action.001	5	body_icon_screen	confirmed	106260770	106271689	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:276B	0	15	16	3
+body.icon.refuse.instruction.001	6	selection_instruction	confirmed	106679575	106695132	20	1e748ea4e0f00d9d879d97a49952e7d7864e199af2d132e04180028863681508	37F1:101E	0	13	24	0

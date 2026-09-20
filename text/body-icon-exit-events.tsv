@@ -1,0 +1,3 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+body.icon.exit.confirmation.001	1	icon_confirmation_prompt	confirmed	106001584	106014851	17	7425046ea84bd8ee003f37778b6295b55ffceba2ea15e5f49ff1bc16ea718790	37F1:101E	0	13	24	0
+body.icon.exit.save_prompt.001	2	save_prompt	confirmed	106216323	106222649	8	e1fa2a383f79b2f88b49a1c2e1fc55ac644b215f38321184da2ac5b137d9dae0	37F1:101E	0	13	24	0
