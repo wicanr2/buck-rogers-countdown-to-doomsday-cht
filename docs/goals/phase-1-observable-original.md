@@ -1,6 +1,6 @@
 # 第一階段目標：可觀測的原版啟動與文字輸出基線
 
-狀態：進行前（尚未開始量測）  
+狀態：已完成（dosgolem 收據覆蓋啟動、固定狀態重播與一條選單文字像素輸出鏈）
 日期：2026-09-20  
 工作追蹤：[GitHub Issue #1](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/1)、[#2](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/2)、[#3](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/3)、[#4](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/4)
 
@@ -39,3 +39,10 @@
 當成功定義的五項均以 dosgolem 可重生收據佐證後，本階段結束。若真實啟動路徑首先
 遇到尚未支援的機器層能力，應記錄最小缺口、建立 DRAFT 規格並暫停依賴它的後續工作；
 不得以猜測或改寫遊戲行為跨越缺口。
+
+## 完成收據
+
+- 輸入、權利邊界、工具與正常重播：[第一階段輸入與啟動收據](../re/phase-1-input-and-startup.md)。
+- 文字像素 callsite、座標、色彩、字型／字串來源與清除／捲動的已知與未知：
+  [第一階段選單文字輸出追蹤](../re/phase-1-menu-text-trace.md)。
+- 當前真相與未解邊界：[CONTEXT.md](../../CONTEXT.md)。

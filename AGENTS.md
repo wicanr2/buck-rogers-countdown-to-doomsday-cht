@@ -66,7 +66,8 @@
   全文／掃描影像或可還原原作的大量文字。
 - `font/`：可重建的字型來源說明、字元清單與產物；授權與來源必須可追溯。
 - `docs/spec/`：DRAFT、READY、CONFORMED 規格；`docs/re/` 或 `RESEARCH-LOG.md`：
-  位址、雜湊、實驗與推論等級。保留原始位址與 operand，不用推測名稱覆蓋定位資訊。
+  位址、雜湊、實驗與推論等級。`docs/re/README.md` 是此類證據的索引入口。保留原始位址與
+  operand，不用推測名稱覆蓋定位資訊。
 - `docs/goals/`：分期目標、範圍與退出條件；不得複製 GitHub Issue 的逐項工作、
   日期流水帳或未分級研究結論。
 - `workplace/`：唯一可寫研究工作區，保存解壓輸入、探針輸出、IDA 資料庫、OCR 暫存與
