@@ -39,9 +39,10 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
 - 中文手冊 RAR 已在 Docker 以 `lsar`／`unar` 盤點、完整性測試與解壓；80 個 archive
   項目通過、79 個實體檔案已有 SHA-256 清冊，並有 77 張 JPG 的 archive-order 定位。
   詳見 `docs/re/phase-3-manual-input-inventory.md`。手冊語意、頁碼與原版題目對應仍未知。
-- 尚未開始中文覆繪、翻譯 catalog、字型決策或任何原版檔／規則／存檔修改。
+- 第八階段已建立首批 UTF-8 繁中 TSV，並由正常 Enter 路徑傾印九筆可見來源；六個種族
+  譯名已用中文說明書核對。GNU Unifont 2× 填滿格與 3× 置中兩份本機 prototype 均完整
+  清除第一筆 20 格原文且未越界。正式倍率仍待使用者選擇，尚未建立 production adapter。
 
-下一個受證據閘門約束的工作，是建立可丟棄的功能選單繁中覆繪 prototype：先建立首批譯文、
-可追溯字型候選與 text-safe rectangle，再把 guarded post-call 與矩形失效接起來，產生
-英文／繁中 A/B 像素收據。prototype、自然 fall-through regression、字型授權與 containment
-完成前，功能選單 DRAFT 不升為 READY。
+下一個受證據閘門約束的工作，是依使用者選定倍率，把 guarded post-call、矩形失效與
+GNU Unifont 子集接成 dosgolem 分支上的可丟棄 adapter，並產生英文／繁中 A/B 同狀態收據。
+自然 fall-through regression 與完整選單 containment 完成前，功能選單 DRAFT 不升為 READY。

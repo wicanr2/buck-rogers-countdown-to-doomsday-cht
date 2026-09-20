@@ -1,0 +1,10 @@
+key	translation	source
+menu.create_new_character	建立新角色	manual-and-runtime
+menu.pick_race	選擇種族	runtime
+race.terran	地球人	manual-and-runtime
+race.martian	火星人	manual-and-runtime
+race.venusian	金星人	manual-and-runtime
+race.mercurian	水星人	manual-and-runtime
+race.tinker	萬能工匠	manual-and-runtime
+race.desert_runner	沙漠跑者	manual-and-runtime
+

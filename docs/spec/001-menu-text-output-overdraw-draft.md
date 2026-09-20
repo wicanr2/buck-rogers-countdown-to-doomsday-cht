@@ -6,7 +6,8 @@
 [第四階段向前轉場](../re/phase-4-menu-interaction-lifecycle.md)、
 [第五階段 Escape 返回](../re/phase-5-pick-race-return-lifecycle.md)、
 [第六階段清除路徑與 hook 邊界](../re/phase-6-clear-path-hook-evidence.md)、
-[第七階段 post-call 與 generation 事件](../re/phase-7-text-post-call-generation-event.md)
+[第七階段 post-call 與 generation 事件](../re/phase-7-text-post-call-generation-event.md)、
+[第八階段字型與版面 prototype](../re/phase-8-menu-font-layout-prototype.md)
 
 ## 玩家可見範圍
 
@@ -113,7 +114,8 @@ dispatcher entry 或固定延遲切 generation。
 - 清除、捲動、游標反白、畫面轉換、返回與存讀檔後的失效時機；
 - guarded post-call 與矩形失效契約尚未由可丟棄 adapter prototype、自然 fall-through
   regression 與英文／繁中 A/B 像素收據驗證；
-- 中文字型來源、授權、字元清單、基線、行高、寬度、換行與 overflow 策略；
+- GNU Unifont 已證實可作有授權的 prototype 字型，但正式採 2× 填滿格或 3× 置中仍待
+  使用者決定；完整字元清單、換行與 overflow 策略仍未知；
 - 選單每一行的完整 text-safe rectangle，以及非靜態畫面的適用性；
 - 上游字串表定位與對同內容、不同語意事件的 collision 策略。
 
