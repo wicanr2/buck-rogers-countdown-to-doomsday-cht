@@ -482,3 +482,17 @@
 - dosgolem 255 份 spec 索引、全部正式 packages test／vet 與相關 race detector 通過；spec 018
   已 CONFORMED，本機 commit `24f0dd55cdce8a929ab513e2a2a1f78afb6fb56b`，未推其遠端。
 - 本輪沒有載入字型、清除原文、繪製繁中像素或選定 2×／3×。
+
+# 2026-09-21：第三十八階段確認性別後的職業選擇文字路徑
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 能力文件，建立並完整回讀
+  第 38 階段 Goal。
+- 從相同固定 state 在 #100,400,000 排第三個正常 Enter；probe 證實接受預設性別後進入
+  職業選擇，新增提示、五個 normal 選項及 selected 第一選項共七筆事件。
+- 一次性原版 bytes／候選雜湊核對七筆語意；臨時 `/tmp` 腳本已刪除，正式檔案不保存原文。
+- 先建立 READY spec 019，再將三鍵路徑正式重播兩次；22-event JSON 與 64,000-byte
+  framebuffer 各自逐 byte 相同。
+- 新增 `post-gender-events.tsv`、嚴格 verifier 與三項測試；專案 58 項測試及真實收據通過。
+- dosgolem spec 索引 256 份、全部正式 packages test／vet 與相關 race detector 通過；
+  spec 019 已 CONFORMED，本機 commit `371683b7f5793c7104e839202497c742ba3e13c0`，未推其遠端。
+- 本輪未建立職業譯文、text-safe rectangle、renderer 或倍率預設，也未外推其他角色分支。

@@ -17,6 +17,9 @@
 女性」；`tools/gender_events.py` 反查前兩份證據表並要求事件與譯文鍵雙向完整。提示中的
 「性別」由中文說明書 `SCAN0352_005.jpg` 原圖核對，男性／女性則明示為標準介面譯詞，
 不冒稱手冊逐字摘錄。
+`post-gender-events.tsv` 保存接受預設性別後職業選擇畫面的七筆 content-safe identity；目前
+只有原版事件證據，尚未加入繁中 catalog。`tools/post_gender_receipt.py` 會把它連同既有
+menu／gender inventory、固定三 Enter 收據與終點 framebuffer 一起驗證。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

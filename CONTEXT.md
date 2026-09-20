@@ -155,6 +155,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   15 requests／7 misses，且返回功能選單後不沿用性別請求。dosgolem 共用 exact catalog 核心，
   沒有第二套 watcher；spec 018 已 CONFORMED，本機 commit 為
   `24f0dd55cdce8a929ab513e2a2a1f78afb6fb56b`，未推其遠端。仍未載入字型、繪圖或選倍率。
+- 第三十八階段由第三個正常 Enter 接受預設性別，證實下一畫面為五選項職業選擇；兩次
+  22-event JSON 與終點 framebuffer 各自逐 byte 相同，新七筆 content-safe identity 已由
+  嚴格 verifier 覆蓋。dosgolem spec 019 已 CONFORMED，本機 commit 為
+  `371683b7f5793c7104e839202497c742ba3e13c0`，未推其遠端；尚未量職業方向鍵／返回，也未建立
+  職業譯文或 renderer。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

@@ -151,8 +151,10 @@ identity 保存於 `text/post-race-events.tsv`。
 normal 選項從 col 1 起、selected 第一選項從 col 3 起，與種族選單呈現相同兩格縮排形狀。
 第 36 階段已由正常 Down／Up 證實 normal→selected 重畫及兩格縮排，Escape 則先取消男性
 反白再返回功能選單；訂正第 35 階段「方向鍵與 Escape 未知」。第 37 階段又把七個唯一
-identity 接入正式繁中 catalog 與 runtime request。確認性別後的生命週期、text-safe rectangle
-及玩家可見 renderer 仍未知／未接，因此本整體規格仍是 DRAFT。
+identity 接入正式繁中 catalog 與 runtime request。第 38 階段又以第三個正常 Enter 證實
+接受預設性別後進入五選項的職業選擇畫面，新增七筆 content-safe identity；訂正「確認性別
+後畫面未知」。職業選單生命週期、text-safe rectangle 及玩家可見 renderer 仍未知／未接，
+因此本整體規格仍是 DRAFT。
 
 ## 未知與 READY 閘門
 
@@ -174,8 +176,8 @@ identity 接入正式繁中 catalog 與 runtime request。確認性別後的生�
 - 上游字串表定位仍未知；九筆已用完整 identity 區分同譯文的不同顯示事件，其他畫面的
   collision 策略不得由此樣本外推。
 - 選定預設種族後的性別畫面已有初始、Down／Up 與 Escape 證據，七個唯一 identity 亦已
-  產生 exact runtime request；但 Enter 確認後的清除／重建與性別畫面的 text-safe rectangle
-  仍未知，且尚未接 renderer。
+  產生 exact runtime request；Enter 確認性別後的職業初始畫面已有七筆 identity，但其
+  Down／Up／Escape、確認職業後畫面、性別／職業 text-safe rectangle 仍未知，且尚未接 renderer。
 
 升為 READY 前，至少須以 dosgolem 取得一條正常互動路徑，明確量到上述生命週期事件，並
 完成原文／繁中 A/B 同狀態收據與中文 glyph containment 驗證。沒有達成這些條件時，DRAFT
