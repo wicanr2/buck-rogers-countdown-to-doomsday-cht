@@ -1,5 +1,14 @@
 # 工作歷程
 
+## 2026-09-20：第三階段中文手冊 archive 清冊
+
+- 依本輪新建並讀回的 `docs/goals/phase-3-manual-input-inventory.md`，檢查既有 Docker
+  映像後重用 `coab-manual-extract:bookworm-v1` 的 `lsar`／`unar` 1.10.1。
+- RAR 唯讀掛載、無網路執行：80 個 archive 項目完整性測試全數通過；解壓 79 個實體檔案
+  到被忽略的 `workplace/manual-extracted/`，並產生逐檔 SHA-256 manifest。
+- 文件只保存 archive metadata、工具、雜湊與掃描檔 archive-order 定位；未做 OCR、內容
+  摘錄、題目配對或中文顯示，也未將原始／解壓素材納入 Git。
+
 ## 2026-09-20：第二階段文字分派與 DRAFT
 
 - 依本輪新建並讀回的 `docs/goals/phase-2-text-dispatch-and-lifecycle.md`，由既有固定狀態

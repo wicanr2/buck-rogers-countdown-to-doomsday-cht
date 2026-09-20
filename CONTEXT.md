@@ -11,7 +11,9 @@
   色彩與文字格座標。完整證據見 `docs/re/phase-2-text-dispatch-and-lifecycle.md`。
 - 清除／捲動、游標反白、畫面轉換、返回與存讀檔後的覆繪失效時機仍未知，因此
   `docs/spec/001-menu-text-output-overdraw-draft.md` 仍是 DRAFT，未授權 production hook。
-- 中文手冊 RAR 已雜湊登記，尚未解壓。因此尚無手冊頁碼、題目對應或可顯示的中文段落。
+- 中文手冊 RAR 已在 Docker 以 `lsar`／`unar` 盤點、完整性測試與解壓；80 個 archive
+  項目通過、79 個實體檔案已有 SHA-256 清冊，並有 77 張 JPG 的 archive-order 定位。
+  詳見 `docs/re/phase-3-manual-input-inventory.md`。手冊語意、頁碼與原版題目對應仍未知。
 - 尚未開始中文覆繪、翻譯 catalog、字型決策或任何原版檔／規則／存檔修改。
 
 下一個受證據閘門約束的工作，是量測選單互動或畫面轉換的覆繪失效時機，並處理
