@@ -23,3 +23,9 @@
 
 本階段只證實角色建立流程離開至功能選單；沒有證實角色是否已加入任何記憶體內名冊，也沒有
 推導存檔格式、翻譯畫面、接 renderer 或選定 2×／3×。
+
+## 後續勘誤（第五十階段）
+
+原收據命令沒有設定 dosgolem `Scratch`，所以當時的 overlay manifest 相同不能單獨證明沒有
+檔案副作用。畫面與事件證據保留；spec 031 以 scratch-backed 收據及 FileOps 重驗後，才正式
+證實兩分支沒有 DOS write，scratch 只建立內容未變的 `CHARS.DAX` shadow。

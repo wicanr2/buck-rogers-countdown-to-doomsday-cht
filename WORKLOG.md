@@ -654,3 +654,21 @@
   正式 packages test／vet 與 Buck Rogers race detector 通過，spec 030 升為 CONFORMED。
 - 本輪沒有推導存檔格式、證實記憶體內名冊、翻譯畫面、接 renderer 或選定 2×／3×。
   dosgolem 本機 commit 為 `024399bf9478c014a7e43922b66e6f2f941c836e`，未推其遠端。
+
+# 2026-09-21：第五十階段角色名冊與 scratch-backed 重驗
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 50
+  階段 Goal。
+- 追查空名冊時發現第四十九階段命令沒有設定 `DOS.Scratch`；舊 manifest 不能證明沒有副作用。
+  保留原畫面／事件證據，將 spec 030 標為 SUPERSEDED 並追加勘誤，沒有重寫錯誤形成歷史。
+- spec 031 先達 READY；收據命令新增失敗即關閉的 `-scratch` 與可選 `-file-ops` metadata，
+  並補空值、有效目錄、一般檔案與不存在路徑的正反例測試。
+- scratch-backed FileOps 證實 `NO`／`YES` 都以讀寫模式 shadow `CHARS.DAX`，但沒有 DOS write；
+  四份正式 scratch manifest 只含內容等於 pristine 的 `CHARS.DAX`。
+- 兩分支進入加入角色功能後都沒有角色列並返回相同功能選單；各自兩次 316-event JSON、
+  framebuffer 與 manifest 逐 byte 相同。
+- 新增兩份清冊、嚴格 verifier 與兩項正反例測試；專案 94 項測試、dosgolem 正式 packages
+  test／vet 與 Buck Rogers race detector 通過，spec 031 升為 CONFORMED。
+- 本輪沒有推導角色資料格式、翻譯、接 renderer 或選定 2×／3×。下一切片須完整配置技能點
+  後再重驗合法角色保存，不能把本輪未用點數路徑外推成一般角色建立規則。dosgolem 本機
+  commit 為 `5b5f9b59318033acdd4d444754bb43abc68863d5`，未推其遠端。

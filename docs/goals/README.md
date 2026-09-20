@@ -54,3 +54,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第四十七階段：技術技能配置的選取、加減與離開生命週期](phase-47-technical-skill-allocation-lifecycle.md) | 已完成 | 證實技術技能選取、可逆加減及兩條離開確認路徑。 |
 | [第四十八階段：角色身體圖示選擇生命週期](phase-48-body-icon-selection-lifecycle.md) | 已完成 | 證實圖示選取移動、拒絕回復及確認後進入儲存詢問。 |
 | [第四十九階段：儲存詢問與角色建立完成生命週期](phase-49-save-prompt-and-character-completion-lifecycle.md) | 已完成 | 證實字母鍵與選項操作差異、零檔案副作用及返回功能選單。 |
+| [第五十階段：角色名冊與加入隊伍生命週期](phase-50-character-roster-and-add-to-team-lifecycle.md) | 已完成 | 修正 scratch 證據缺口，證實兩分支皆無角色列並返回功能選單。 |

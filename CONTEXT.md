@@ -215,13 +215,17 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   接 renderer 或選定 2×／3×。
 - 第四十九階段證實儲存詢問採選項操作：直接字母 `Y` 無作用，直接字母 `N` 接受預設
   `NO`；Left→Enter 接受 `YES`。兩條接受分支都回到逐 byte 相同的功能選單，四份 writable
-  overlay 寫後 manifest 也都等於 pristine manifest，沒有磁碟檔案副作用。三條正式分支
-  各雙重重播一致，專案 92 項測試與 dosgolem 正式 test／vet／race 通過；spec 030 已
-  CONFORMED，本機 dosgolem commit 為 `024399bf9478c014a7e43922b66e6f2f941c836e`，未推其
-  遠端。尚未證實角色是否加入記憶體內名冊，也未翻譯、接 renderer 或選定 2×／3×。
+  overlay manifest 當時也相同。但該命令未設定 `DOS.Scratch`，所以零副作用結論已撤回，
+  spec 030 改標 SUPERSEDED；畫面、輸入與事件結論仍有效。
+- 第五十階段新增 `-scratch` 與 content-safe `-file-ops`，以正式 scratch-backed 收據重驗：
+  `NO`／`YES` 都 shadow `CHARS.DAX` 但沒有 DOS write，四份 scratch 內容皆等於 pristine；
+  兩分支進入加入角色功能都沒有角色列並返回相同功能選單。各雙重重播為 316 events，專案
+  94 項測試與 dosgolem 正式 test／vet／race 通過，spec 031 已 CONFORMED，本機 dosgolem
+  commit 為 `5b5f9b59318033acdd4d444754bb43abc68863d5`，未推其遠端。此路徑使用未用技能點
+  離開，不能外推完整配置後的合法角色保存結果。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
 轉場清除與同狀態 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；runtime 畫面與分頁互動
-驗證前，手冊與選單覆繪 DRAFT 不升為 READY。不依賴倍率的下一個安全切片是回到功能選單
-後的角色名冊可見性與加入隊伍正常玩家路徑。
+驗證前，手冊與選單覆繪 DRAFT 不升為 READY。不依賴倍率的下一個安全切片是完成職業與技術
+技能點配置後，重驗合法角色保存及名冊可見性。

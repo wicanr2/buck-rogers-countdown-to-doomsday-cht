@@ -51,3 +51,10 @@
 - 三條正式分支各雙重重播逐 byte 相同；兩份清冊、嚴格 verifier 與正反例測試已建立。
 - 專案 92 項測試與 dosgolem 正式 packages test／vet／race 全數通過，spec 030 已 CONFORMED。
 - 本階段沒有翻譯、接 renderer、推導存檔格式或替使用者選定 2×／3×。
+
+## 後續勘誤（第五十階段）
+
+- 本階段收據命令當時未設定 dosgolem `Scratch`；無 scratch 時寫入會維持成功語意但不落地，
+  因此「overlay manifest 相同證明沒有檔案副作用」的結論已撤回。
+- 畫面、輸入與事件結論仍有效。檔案副作用已由 spec 031 使用 scratch-backed 收據重驗：
+  兩分支確實沒有 DOS write，且名冊結果相同。
