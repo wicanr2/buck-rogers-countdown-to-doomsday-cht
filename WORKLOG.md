@@ -639,3 +639,18 @@
   阻擋；排除 `workplace/` 後以相同容器乾淨重跑通過。本輪沒有翻譯、接 renderer、回答儲存
   詢問或選定 2×／3×。dosgolem 本機 commit 為
   `b385b85103ada0e381063f4869e42b3f006c2f6b`，未推其遠端。
+
+# 2026-09-21：第四十九階段儲存詢問與角色建立完成生命週期
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 49
+  階段 Goal。
+- Probe 證實儲存詢問不是字母 `Y`／`N` 對話框：直接 `Y` 沒有事件或像素變化，字母 `N`
+  接受預設 `NO`；Left 改變反白後 Enter 才是實際 `YES` 路徑。
+- `NO` 與 `YES` 都回到逐 byte 相同的功能選單；各自兩份 fresh writable overlay 的寫後
+  manifest 全部逐 byte 等於 pristine manifest，沒有把選項文字誤報為磁碟寫入。
+- spec 030 先達 READY；字母 `Y`、預設 `NO` 與選取 `YES` 三條分支各正式重播兩次，
+  298／305／305-event JSON 與 framebuffer 各自逐 byte 相同。
+- 新增兩份 content-safe 清冊、嚴格 verifier 與兩項正反例測試；專案 92 項測試、dosgolem
+  正式 packages test／vet 與 Buck Rogers race detector 通過，spec 030 升為 CONFORMED。
+- 本輪沒有推導存檔格式、證實記憶體內名冊、翻譯畫面、接 renderer 或選定 2×／3×。
+  dosgolem 本機 commit 為 `024399bf9478c014a7e43922b66e6f2f941c836e`，未推其遠端。

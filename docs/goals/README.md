@@ -53,3 +53,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第四十六階段：職業技能動作選單、減點與確認離開生命週期](phase-46-career-skill-action-and-exit-lifecycle.md) | 已完成 | 證實可逆減點、離開位置及 Escape→`Y` 進入技術技能配置。 |
 | [第四十七階段：技術技能配置的選取、加減與離開生命週期](phase-47-technical-skill-allocation-lifecycle.md) | 已完成 | 證實技術技能選取、可逆加減及兩條離開確認路徑。 |
 | [第四十八階段：角色身體圖示選擇生命週期](phase-48-body-icon-selection-lifecycle.md) | 已完成 | 證實圖示選取移動、拒絕回復及確認後進入儲存詢問。 |
+| [第四十九階段：儲存詢問與角色建立完成生命週期](phase-49-save-prompt-and-character-completion-lifecycle.md) | 已完成 | 證實字母鍵與選項操作差異、零檔案副作用及返回功能選單。 |

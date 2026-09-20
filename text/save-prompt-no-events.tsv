@@ -1,0 +1,8 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+save.prompt.no.menu_option.001	1	function_menu	confirmed	107106983	107122436	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:15BD	0	10	12	9
+save.prompt.no.menu_option.002	2	function_menu	confirmed	107129333	107145620	21	d31754823288b10941ac65c8731360cdc55c604ad87478ffa0f435fe17762dd9	37F1:15BD	0	10	13	9
+save.prompt.no.menu_option.003	3	function_menu	confirmed	107151842	107163483	15	7ffbeb7f1164aa6fe118718f48287dc9df5af7f6d8f84676df81f949c55ff4db	37F1:15BD	0	10	14	9
+save.prompt.no.menu_option.004	4	function_menu	confirmed	107173755	107193085	25	b0f82822456b6fd815be97c43ce3017dd7445ec36655d265754f2e6a16a9742c	37F1:15BD	0	10	15	9
+save.prompt.no.menu_option.005	5	function_menu	confirmed	107196607	107205220	11	622af18ec40b9e50d8ee66ca0da3e2071c85104b5fe4e3f07ea3b7ff116a7b4e	37F1:15BD	0	10	16	9
+save.prompt.no.selected_option.001	6	function_menu_selected	confirmed	107218468	107233967	20	ac461667a825d608971320c5e9a9b0c3beddba13cdf3a659b5d03dd578a13fa7	37F1:175D	15	0	12	9
+save.prompt.no.instruction.001	7	function_menu_instruction	confirmed	107234777	107248716	18	925f9d44689040dbbecd13614cbe9c786da2e278dfeec900b17c19de3b08b572	37F1:101E	0	13	24	0
