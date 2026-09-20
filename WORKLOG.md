@@ -1,5 +1,17 @@
 # 工作歷程
 
+## 2026-09-21：第五十三階段保存選項控制流勘誤（進行中）
+
+- 從第五十二階段同一 `save-before.state` 比對 Left→Enter 與預設 Enter；兩路各獨立重播
+  兩次，IP trace 各自逐 byte 相同。
+- 預設 Enter 於 step `120,205,401`／`120,205,903` 建立 `A.who`／`A.stf`，檔案大小及
+  SHA-256 在兩次重播一致；Left→Enter 不建立兩檔。先前 `NO`／`YES` 分支名稱與零寫檔結論
+  已推翻並在 phase 49、50、52 文件追加勘誤。
+- Left 造成的同 step 首次控制流分歧為 `120,000,036`，runtime `0C10:0309` 對
+  `0C10:030B`；保存路徑的 DOS create／write／close 與小範圍 runtime trace 已保存。
+- 兩路終點 framebuffer 仍逐 byte 相同。預設保存路徑的完整 memory 受 DOS 取時影響而未
+  宣稱逐 byte 決定性；下一步接續 Add 重驗名冊。
+
 ## 2026-09-21：第五十二階段合法保存後段事件對齊（進行中）
 
 - 上一輪分類為有進展；載入復古遊戲、規格閘門、dosgolem 與 IDA Pro 9.4 契約，建立並

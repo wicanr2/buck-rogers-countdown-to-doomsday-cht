@@ -57,3 +57,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第五十階段：角色名冊與加入隊伍生命週期](phase-50-character-roster-and-add-to-team-lifecycle.md) | 已完成 | 修正 scratch 證據缺口，證實兩分支皆無角色列並返回功能選單。 |
 | [第五十一階段：完整技能配置與合法角色保存](phase-51-complete-skill-allocation-and-valid-save.md) | 進行中 | 實際用完兩類技能點，重驗保存、名冊與加入角色結果。 |
 | [第五十二階段：合法保存後段事件對齊](phase-52-valid-save-event-alignment.md) | 進行中 | 對齊圖示確認、儲存詢問、FileOps 與名冊事件，分類空名冊根因。 |
+| [第五十三階段：保存選項控制流與名冊接納狀態](phase-53-save-choice-control-flow-and-admission-state.md) | 進行中 | 從同一保存提示 state 比對 YES／NO 控制流、狀態寫入與後續 consumer。 |

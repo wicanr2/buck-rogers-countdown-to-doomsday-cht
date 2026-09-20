@@ -52,3 +52,9 @@
   的 JSON、framebuffer、scratch 逐 byte 相同，回讀後 1 MiB memory 亦逐 byte 相同。
 - 未實作 DOS／BIOS 服務、身體圖示未移動，以及目前找到的 persistent memory 差異 consumer
   均已排除為空名冊根因；原版保存條件／記憶體內角色生命週期仍未知，本 Goal 保持進行中。
+
+## 2026-09-21 第五十三階段勘誤
+
+- 本階段把預設 Enter／Left→Enter 分別命名為 NO／YES 的判讀已推翻；預設 Enter 才會建立
+  `A.who`／`A.stf`，Left→Enter 不保存。因此本階段零寫檔與空名冊只證明不保存分支，不能
+  用來推論合法角色保存失敗。完整控制流與檔案收據移交第五十三階段。

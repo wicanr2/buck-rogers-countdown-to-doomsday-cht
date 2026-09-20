@@ -232,6 +232,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   JSON、framebuffer、scratch 及回讀後 1 MiB memory 一致，但 `SAVE A? YES` 仍無 DOS write，
   Add 仍無角色列。找到的 DGROUP／heap 差異均未被 Add consumer 讀取，原版保存條件仍未知；
   dosgolem 診斷功能在本機 commit `4bb3cc9d83868ea2d827cff33b43e2585c7f16ac`，未推其遠端。
+- 第五十三階段已訂正保存選項：由同一 `save-before.state` 直接預設 Enter 才是真正保存，
+  會決定性建立 259-byte `A.who` 與 124-byte `A.stf`；Left→Enter 不保存。先前第 49–52 階段
+  的 `NO`／`YES` 標籤及零寫檔推論均已追加勘誤。兩路 IP trace 各自雙重一致，保存檔雜湊
+  亦一致；完整 memory 因 DOS 取時而尚未證實逐 byte 決定性。下一步以真正保存分支接續
+  Add 正常玩家路徑，確認名冊是否顯示角色。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

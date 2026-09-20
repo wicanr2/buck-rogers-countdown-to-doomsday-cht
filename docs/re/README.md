@@ -50,5 +50,6 @@
 | [第四十三階段重擲提示輸入與動態欄位生命週期](phase-43-reroll-input-lifecycle.md) | `Y` 重擲與 `N` 接受分支的正常 BIOS 輸入、事件及 framebuffer 收據 |
 | [第四十四階段角色姓名輸入生命週期](phase-44-character-name-input-lifecycle.md) | 字元、Backspace、Enter 與 Escape 的輸入／回顯／轉場證據 |
 | [第五十二階段合法保存後段事件對齊](phase-52-valid-save-event-alignment.md) | 完整技能配置後的圖示／保存／加入角色 checkpoint、未實作服務排除與記憶體候選分級 |
+| [第五十三階段保存選項控制流與名冊接納狀態](phase-53-save-choice-control-flow-and-admission-state.md) | 保存分支勘誤、YES 寫檔控制流、決定性與後續 Add 驗證邊界 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

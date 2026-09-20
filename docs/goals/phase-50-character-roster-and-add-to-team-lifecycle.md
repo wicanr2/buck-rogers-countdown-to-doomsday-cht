@@ -53,3 +53,10 @@
   316-event JSON、framebuffer 與 manifest 均一致。
 - 專案 94 項測試與 dosgolem 正式 packages test／vet／race 全數通過，spec 031 已 CONFORMED。
 - 本階段沒有推導角色資料格式、翻譯、接 renderer 或替使用者選定 2×／3×。
+
+## 後續勘誤（第五十三階段）
+
+- 本階段兩條所謂 `NO`／`YES` 收據的選項語意命名有誤；真正會保存的是預設 Enter，會建立
+  `A.who` 與 `A.stf`。Left→Enter 才是本階段反覆量到的零寫檔路徑。
+- 因此「兩分支皆無 DOS write」與由此推導的空名冊結論撤回；舊重播仍保留為不保存分支
+  的有效負面收據，後續須用真正保存分支重驗 Add 正常玩家路徑。
