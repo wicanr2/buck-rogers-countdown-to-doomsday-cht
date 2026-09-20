@@ -185,9 +185,13 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   提示，`N` 新增 65 筆事件後進入姓名提示。兩分支各自雙重重播一致；固定 snapshot 可
   重生同一組結果，但 seed／亂數公式仍未知。spec 024 已 CONFORMED，dosgolem 本機 commit
   為 `4f899924b35e14fdb7ef23bbb2fcd2620284ae43`，未推其遠端。
+- 第四十四階段證實姓名字元逐字回顯，Backspace 直接清除最後字元但沒有 dispatcher 事件；
+  非空姓名 Enter 轉入職業技能點配置畫面。Escape 只重印提示，空字串 Backspace 無變化。
+  編輯與確認分支各自雙重重播一致；spec 025 已 CONFORMED，dosgolem 本機 commit 為
+  `260b3a7f504f7ade6b5487aa591e99911a82bd13`，未推其遠端。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
 轉場清除與同狀態 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；runtime 畫面與分頁互動
-驗證前，手冊與選單覆繪 DRAFT 不升為 READY。不依賴倍率的下一個安全切片是姓名輸入提示的
-編輯、確認與返回生命週期。
+驗證前，手冊與選單覆繪 DRAFT 不升為 READY。不依賴倍率的下一個安全切片是職業技能點配置
+畫面的方向鍵／加減／確認／返回生命週期。

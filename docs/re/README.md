@@ -48,5 +48,6 @@
 | [第四十一階段性別與職業繁中覆繪倍率 A/B](phase-41-character-creation-overlay-ab.md) | 四個真實 framebuffer 的 2×／3× 安全矩形覆繪與決策證據 |
 | [第四十二階段確認職業後的角色資料文字路徑](phase-42-post-class-text-path-inventory.md) | 四次正常 Enter 後角色資料／重擲頁的 96 筆 content-safe 事件收據 |
 | [第四十三階段重擲提示輸入與動態欄位生命週期](phase-43-reroll-input-lifecycle.md) | `Y` 重擲與 `N` 接受分支的正常 BIOS 輸入、事件及 framebuffer 收據 |
+| [第四十四階段角色姓名輸入生命週期](phase-44-character-name-input-lifecycle.md) | 字元、Backspace、Enter 與 Escape 的輸入／回顯／轉場證據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

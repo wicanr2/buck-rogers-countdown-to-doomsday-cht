@@ -567,3 +567,16 @@
 - 同輪修正 `docs/spec/000-index.md` 遺漏的 Buck Rogers 020–023，並登錄 024；本輪沒有翻譯、
   接 renderer、修改角色規則或選定 2×／3×。dosgolem 本機 commit 為
   `4f899924b35e14fdb7ef23bbb2fcd2620284ae43`，未推其遠端。
+
+# 2026-09-21：第四十四階段角色姓名輸入生命週期
+
+- 上一輪分類為有進展；載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 44
+  階段 Goal。
+- Probe 證實 `A`、`B` 各產生單字元回顯事件；Backspace 不產生文字事件，但終點像素顯示
+  第二字元清除。Escape 只重印提示，空字串 Backspace 無事件也無像素差異。
+- spec 025 先達 READY；正式「AB→Backspace」與「A→Enter」分支各重播兩次，185-event／
+  226-event JSON 與 framebuffer 各自逐 byte 相同。Enter 後停在職業技能點配置畫面，未操作。
+- 新增兩份 content-safe 清冊、嚴格 verifier 與三項正反例測試；專案 79 項測試、dosgolem
+  全部正式 packages test／vet 與 Buck Rogers race detector 通過，spec 025 升為 CONFORMED。
+- 本輪沒有翻譯玩家姓名、改姓名規則、配置技能、接 renderer 或選定 2×／3×。
+- dosgolem 本機 commit 為 `260b3a7f504f7ade6b5487aa591e99911a82bd13`，未推其遠端。

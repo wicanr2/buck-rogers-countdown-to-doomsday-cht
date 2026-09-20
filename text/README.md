@@ -29,6 +29,8 @@ framebuffer 驗證 2×／3× 都零缺字、零重疊且安全矩形外零差異
 靜態標籤、動態值與重畫事件，不是可直接逐列翻譯的 catalog。
 `reroll-yes-events.tsv` 與 `reroll-no-events.tsv` 分別保存正常 `Y` 重擲及 `N` 接受分支的新事件；
 能力值與轉場重畫只供生命週期比對，不得當成固定譯文。
+`name-edit-events.tsv` 與 `name-confirm-events.tsv` 保存短測試姓名的回顯及確認後技能配置畫面
+identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 framebuffer 收據驗證。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。
