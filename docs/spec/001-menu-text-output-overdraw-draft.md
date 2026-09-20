@@ -2,7 +2,9 @@
 
 狀態：DRAFT — 禁止據此實作 production hook  
 日期：2026-09-20  
-證據：[第二階段文字分派與生命週期追蹤](../re/phase-2-text-dispatch-and-lifecycle.md)
+證據：[第二階段文字分派與生命週期追蹤](../re/phase-2-text-dispatch-and-lifecycle.md)、
+[第四階段向前轉場](../re/phase-4-menu-interaction-lifecycle.md)、
+[第五階段 Escape 返回](../re/phase-5-pick-race-return-lifecycle.md)
 
 ## 玩家可見範圍
 
@@ -59,6 +61,11 @@ height = 8
 所以 DRAFT 的保守規則是：在原版接受可造成轉場的輸入時，現有 overlay 必須立即標示為
 失效；不得把「首次看到下一筆字串事件」當成原畫面已清除的證據。這只是失效策略候選，
 尚未證實哪一個通用 dosgolem hook 可正確辨識所有轉場。
+
+反向返回亦有相同順序：Escape 在 #100,310,138 被原版取走，#100,310,464 已發生第一筆
+dispatcher，但 `PICK RACE` 標題像素到 #100,316,673 才由相同的 `0CF4:1B3C` 清除；終點
+逐位元回到既有功能選單基線。這使保守失效規則同時有進入與返回兩個正常玩家路徑支持，
+但仍不能僅憑兩個像素樣本把該寫入端宣稱為通用清畫面 hook。
 
 ## 未知與 READY 閘門
 

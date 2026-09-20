@@ -1,5 +1,19 @@
 # 工作歷程
 
+## 2026-09-20：第五階段 Escape 返回與 workplace dosgolem 分支
+
+- 依新建並讀回的第五階段目標，以原版正常 BIOS Escape 從 `PICK RACE` 返回功能選單；
+  未使用 memory poke、傳送、forced-win 或原版資料改寫。
+- 依使用者指示，將乾淨 dosgolem 複製到被忽略的 `workplace/dosgolem/`，建立
+  `buck-rogers-cht-output-overlay` 分支；基準為 `d9c0c27ca9af8239c7e96272a7165e03d7da04bf`，
+  後續實驗改由該副本執行。
+- Escape 在 #100,310,138 被原版取走；第一筆 dispatcher 在 #100,310,464 發生，
+  `PICK RACE` 標題像素 `A000:1549` 至 #100,316,673 才由 `0CF4:1B3C` 清除。
+- 終點 VRAM 逐位元等於既有功能選單基線，第二次獨立重播亦相同；DRAFT 因此取得一進一退
+  兩條正常路徑的失效證據，但 `0CF4:1B3C` 尚未證實為通用清除 hook。
+- 首次將 checkpoint 與 `-steps` 設成相同步數時，因 probe 在終點前先退出而未寫出狀態；
+  改以終點多一道指令、checkpoint 維持原步數後成功。此為工具命令的開區間行為，非遊戲失敗。
+
 ## 2026-09-20：第四階段選單轉場與失效生命週期
 
 - 使用者確認維持 dosgolem 輸出端繁體中文化並排除 clean-room remake；已同步更新
