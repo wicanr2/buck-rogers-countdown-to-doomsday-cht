@@ -1,0 +1,11 @@
+event_key	x	y	width	height	draw_x	draw_y	capacity_cells	line_count	overflow_policy
+class.screen.prompt	8	16	80	8	8	16	10	1	single-line-reject
+class.option.rocket_jock	8	24	104	8	8	24	13	1	single-line-reject
+class.option.warrior	8	32	56	8	8	32	7	1	single-line-reject
+class.option.medic	8	40	72	8	8	40	9	1	single-line-reject
+class.option.engineer	8	48	80	8	8	48	10	1	single-line-reject
+class.option.rogue	8	56	56	8	8	56	7	1	single-line-reject
+class.selection.selected.rocket_jock	24	24	88	8	24	24	11	1	single-line-reject
+class.selection.normal.rocket_jock	24	24	88	8	24	24	11	1	single-line-reject
+class.selection.selected.warrior	24	32	40	8	24	32	5	1	single-line-reject
+class.selection.normal.warrior	24	32	40	8	24	32	5	1	single-line-reject

@@ -22,6 +22,9 @@
 並接到 `class.zh-TW.tsv` 的「選擇職業／太空船駕駛員／戰士／醫生／工程師／流浪漢」。譯名
 由中文說明書 `SCAN0352_007.jpg` 至 `SCAN0352_009.jpg` 原圖核對；目前只產生 runtime request，
 尚未接入正式 renderer。
+`gender-text-safe-rects.tsv` 與 `class-text-safe-rects.tsv` 逐筆由 exact identity 的 row、column
+及 original length 導出 logical 320×200 清除矩形、anchor 與單列容量；Phase 41 已用四個真實
+framebuffer 驗證 2×／3× 都零缺字、零重疊且安全矩形外零差異，但仍只是離線 prototype。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

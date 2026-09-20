@@ -45,5 +45,6 @@
 | [第三十八階段確認性別後的職業選擇文字路徑](phase-38-post-gender-text-path-inventory.md) | 正常第三次 Enter、七筆職業畫面 identity 與決定性 framebuffer |
 | [第三十九階段職業選擇生命週期](phase-39-class-selection-lifecycle.md) | Down／Up normal→selected 重畫、Escape 返回功能選單與雙重決定性收據 |
 | [第四十階段職業選擇繁中執行期顯示請求](phase-40-class-runtime-display-requests.md) | 手冊職業譯名、十 identity exact catalog 與三路徑 request 收據 |
+| [第四十一階段性別與職業繁中覆繪倍率 A/B](phase-41-character-creation-overlay-ab.md) | 四個真實 framebuffer 的 2×／3× 安全矩形覆繪與決策證據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

@@ -171,6 +171,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   專案 65 項測試與 dosgolem 正式測試、vet、race 全數通過；spec 021 已 CONFORMED，本機
   commit 為 `0025008fbb7d49c42e352f961585a10e82c118e5`，未推其遠端。仍未載入字型、繪製繁中像素
   或選定倍率。
+- 第四十一階段以四個正常玩家路徑 framebuffer 完成性別／職業 2×／3× 覆繪 A/B；八組
+  輸出各重生兩批，皆零缺字、零重疊、安全矩形外零差異且 ink contained。2× 是 640×400、
+  16×16 滿格；3× 是 960×600、16×16 ink 置中 24×24 格。兩者幾何皆可行，2× 仍較接近
+  PC-98 Golden Box CJK 密度，但尚未被使用者選定；spec 022 已 CONFORMED，本機 dosgolem
+  commit 為 `73e610943cb26ed3f0990ecd13bd196d12fe162a`，未推其遠端。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

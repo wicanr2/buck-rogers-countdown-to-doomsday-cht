@@ -521,3 +521,18 @@
 - 專案 65 項測試與正式 verifier、dosgolem 全部正式套件測試、`go vet` 及相關 race detector
   通過；spec 021 已 CONFORMED，本機 commit 為
   `0025008fbb7d49c42e352f961585a10e82c118e5`，未推其遠端。本輪未載入字型、繪圖或選定 2×／3×。
+
+# 2026-09-21：第四十一階段性別與職業繁中覆繪倍率 A/B
+
+- 上一輪分類為有進展；載入復古逆向與 PC-98 Golden Box UI 技能，建立並完整讀回第 41
+  階段 Goal，維持不替使用者選倍率。
+- 建立性別七筆、職業十筆 logical text-safe rectangles；validator 由 exact identity 導出位置、
+  原文寬度與容量，拒絕改寬、越界、錯 anchor、缺鍵或譯文溢出。
+- 正常 BIOS 路徑重生 gender／class steady／Down 四個 framebuffer，各兩次逐 byte 相同；
+  擴充既有離線 prototype 的 exact screen variant，不另造 renderer 核心。
+- 四狀態 × 2×／3× 各重生兩批，JSON、繁中 PNG、base PNG 逐檔相同；全部零缺字、零重疊、
+  零安全矩形外差異且 ink contained。目視確認 2× 緊密滿格、3× 四周留白，最長六字皆完整。
+- `catalog_font` 補納正式 `runtime-interface` 來源，性別與職業共用 GOLEMFNT 決定性建置。
+- 專案 70 項測試與真實 A/B verifier、dosgolem 全部正式套件測試、`go vet` 及相關 race
+  detector 通過；spec 022 已 CONFORMED，本機 commit 為
+  `73e610943cb26ed3f0990ecd13bd196d12fe162a`，未推其遠端。本輪未接 runtime Layer 或選定 2×／3×。

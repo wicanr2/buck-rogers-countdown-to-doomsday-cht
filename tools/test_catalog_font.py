@@ -37,6 +37,12 @@ class CatalogFontTest(unittest.TestCase):
         self.assertEqual(catalog_codepoints(entries), sorted(map(ord, "乙甲人")))
         self.assertEqual(character_list_bytes(entries), "U+4E59\t乙\nU+4EBA\t人\nU+7532\t甲\n".encode())
 
+    def test_catalog_accepts_runtime_interface_source(self):
+        path = self.write_catalog(
+            "key\ttranslation\tsource\ngender.male\t男性\truntime-interface\n".encode()
+        )
+        self.assertEqual(read_catalog(path)[0].source, "runtime-interface")
+
     def test_catalog_rejects_invalid_utf8(self):
         with self.assertRaises(CatalogError):
             read_catalog(self.write_catalog(b"key\ttranslation\tsource\nkey\t\xff\truntime\n"))
