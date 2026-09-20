@@ -30,11 +30,18 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   兩條轉場共用的上層候選是 `026F:029C` Mode 13h 矩形清除例程；Enter 清除
   `x=8..311,y=16..183`，Escape 返回清除 `x=0..311,y=0..183`。完整證據見
   `docs/re/phase-6-clear-path-hook-evidence.md`。
+- 第七階段已證實 `0763:0424` post-call：`Create New Character` 最後 glyph 於
+  #100,025,833 寫完，#100,025,943 才返回 `37F1:1856`。現有 `OnCall` 足以在 adapter
+  觀測 return，但必須由 entry 建立 pending frame，並以 return address、`SS` 及
+  `SP == entry SP + 0x10` 排除自然 fall-through；`37F1:15BD` 已有實際反例。Enter 的事件
+  順序是舊選單 post-call → 矩形失效 → 新畫面 dispatcher／post-call。完整證據見
+  `docs/re/phase-7-text-post-call-generation-event.md`。
 - 中文手冊 RAR 已在 Docker 以 `lsar`／`unar` 盤點、完整性測試與解壓；80 個 archive
   項目通過、79 個實體檔案已有 SHA-256 清冊，並有 77 張 JPG 的 archive-order 定位。
   詳見 `docs/re/phase-3-manual-input-inventory.md`。手冊語意、頁碼與原版題目對應仍未知。
 - 尚未開始中文覆繪、翻譯 catalog、字型決策或任何原版檔／規則／存檔修改。
 
-下一個受證據閘門約束的工作，是證實 `0763:0424` 完成原版文字繪製後的 return／post-call
-觀測點，並把 `026F:029C` 矩形失效與後續文字事件組成可測的 generation 順序；此事件契約、
-中文字型與 A/B 像素驗證完成前，功能選單 DRAFT 不升為 READY。
+下一個受證據閘門約束的工作，是建立可丟棄的功能選單繁中覆繪 prototype：先建立首批譯文、
+可追溯字型候選與 text-safe rectangle，再把 guarded post-call 與矩形失效接起來，產生
+英文／繁中 A/B 像素收據。prototype、自然 fall-through regression、字型授權與 containment
+完成前，功能選單 DRAFT 不升為 READY。

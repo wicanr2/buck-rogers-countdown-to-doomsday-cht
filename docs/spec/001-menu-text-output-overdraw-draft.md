@@ -5,7 +5,8 @@
 證據：[第二階段文字分派與生命週期追蹤](../re/phase-2-text-dispatch-and-lifecycle.md)、
 [第四階段向前轉場](../re/phase-4-menu-interaction-lifecycle.md)、
 [第五階段 Escape 返回](../re/phase-5-pick-race-return-lifecycle.md)、
-[第六階段清除路徑與 hook 邊界](../re/phase-6-clear-path-hook-evidence.md)
+[第六階段清除路徑與 hook 邊界](../re/phase-6-clear-path-hook-evidence.md)、
+[第七階段 post-call 與 generation 事件](../re/phase-7-text-post-call-generation-event.md)
 
 ## 玩家可見範圍
 
@@ -55,10 +56,14 @@ height = 8
 ### 已量到的轉場失效證據
 
 由功能選單固定狀態送入 BIOS Enter 時，原版在 #100,010,174 接受輸入，於 #100,010,490
-先發生一筆新的 `0763:0424` dispatcher，卻到 #100,031,031 才由 watchpoint 當時標為
+先發生一筆轉場中的 `0763:0424` dispatcher，卻到 #100,031,031 才由 watchpoint 當時標為
 `0CF4:1B3C` 的路徑將已證實的
 舊選單像素 `A000:838A` 從 `0x0A` 清為 `0x00`。完整收據見
 [第四階段選單互動與失效生命週期](../re/phase-4-menu-interaction-lifecycle.md)。
+
+第七階段進一步證實該第一筆內容仍是舊功能選單的 `Create New Character` 重畫；真正的
+矩形清除完成後，#100,033,190 才開始下一筆已觀測文字。因此不能把 #100,010,490 稱為
+新畫面的第一筆文字。
 
 所以 DRAFT 的保守規則是：在原版接受可造成轉場的輸入時，現有 overlay 必須立即標示為
 失效；不得把「首次看到下一筆字串事件」當成原畫面已清除的證據。這只是失效策略候選，
@@ -80,16 +85,34 @@ DRAFT 候選契約因此縮小為：固定輸入雜湊與 runtime bytes 簽章�
 `026F:029C` 進入點讀取 `bottom/right/top/left` 四個低 byte；若範圍合法且模式為 3，將
 `[left×8, top×8, (right+1)×8, (bottom+1)×8)` 內相交的既有 overlay 標為失效，然後讓原版
 函式完整執行。Enter 樣本矩形為 `x=8..311, y=16..183`；Escape 返回為
-`x=0..311, y=0..183`。此契約仍是 DRAFT，尚未與 post-dispatch 重建事件接通。
+`x=0..311, y=0..183`。第七階段已在 DRAFT 事件層接上 post-call 重建候選；尚未由 adapter
+prototype 與 A/B 像素收據驗證。
+
+### 已證實的 post-call 候選
+
+第七階段由已知 `Create New Character` 樣本證實：`0763:0424` entry 位於
+#100,010,490，最後一個 glyph 的 64 個像素到 #100,025,833 全部寫完，caller return
+`37F1:1856` 則在 #100,025,943 才成為下一道指令。dispatcher 以 `RETF 0Ch` 返回，因此
+entry `SS:SP` 到 post-call 固定增加 `0x10`；該 Enter 畫面的九筆樣本全部符合。
+
+但 return address 不可單獨作事件：`37F1:15BD` 曾在沒有相應 pending dispatcher 的情況下
+自然 fall-through。DRAFT 的 guarded post-call 契約為：entry 時立即複製顯示輸入，以
+`Caller()`、entry `SS:SP` 建立 pending frame；return hook 只有在 address、`SS` 與
+`SP == entry SP + 0x10` 同時符合時，才可送出這一筆原文已完成的覆繪事件。每個 return
+address 只註冊一次，其餘自然命中必須忽略。
+
+同一路徑的 generation 順序已量到：舊選單 post-call #100,025,943 → 矩形失效 entry
+#100,028,739 → 清除返回 #100,032,997 → 新畫面 dispatcher #100,033,190 → 新畫面 post-call
+#100,040,266。故矩形清除負責使相交 overlay 失效，各文字 post-call 負責重建；不能用任意
+dispatcher entry 或固定延遲切 generation。
 
 ## 未知與 READY 閘門
 
 下列項目未達 READY，故禁止 production 實作：
 
-- 如何在 dosgolem 正式觀測／adapter 層可靠地於 `0763:0424` 的原版繪製後附加事件；
 - 清除、捲動、游標反白、畫面轉換、返回與存讀檔後的失效時機；
-- 在 `0763:0424` 完成原版繪製後可靠送出 post-call 事件，並把矩形失效與後續字串重建歸入
-  正確 generation 的方法；
+- guarded post-call 與矩形失效契約尚未由可丟棄 adapter prototype、自然 fall-through
+  regression 與英文／繁中 A/B 像素收據驗證；
 - 中文字型來源、授權、字元清單、基線、行高、寬度、換行與 overflow 策略；
 - 選單每一行的完整 text-safe rectangle，以及非靜態畫面的適用性；
 - 上游字串表定位與對同內容、不同語意事件的 collision 策略。

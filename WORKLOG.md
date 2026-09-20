@@ -1,5 +1,23 @@
 # 工作歷程
 
+## 2026-09-20：第七階段 post-call 與 generation 順序
+
+- 依新建並完整讀回的第七階段 goal，從固定功能選單狀態重播正常 BIOS Enter；第一筆
+  `0763:0424` entry 為 #100,010,490，caller post-call `37F1:1856` 為 #100,025,943。
+- 同步傾印來源 bytes，確認這筆仍是舊選單 `Create New Character`；最後一個 `r` glyph 的
+  64 個不同 VRAM 位址於 #100,025,234–#100,025,833 全部寫完，post-call 晚 110 道指令。
+- IDA Pro 9.4 一次性 16-bit database 證實 caller `37F1:1851` 是 far call、return 為
+  `1856`；dispatcher 尾端是 `0763:04B0 RETF 0Ch`。九筆 Enter 畫面 dispatcher 的 entry／
+  return 均符合 `SS` 相同、`SP = entry SP + 0x10`。
+- 找到不能只看 return address 的反例：`37F1:15BD` 在第一筆真正以它為 return address 的
+  dispatcher 之前，已因正常 fall-through 命中一次。DRAFT 因此要求 entry pending frame、
+  return address、`SS` 與 `SP` 四者共同配對。
+- 已閉合 Enter 時間線：舊選單 post-call #100,025,943 → 矩形失效 #100,028,739 → 清除返回
+  #100,032,997 → 新畫面 dispatcher #100,033,190 → post-call #100,040,266。現有 `OnCall`
+  足以表達 guarded return，未證實需要先擴充通用 dosgolem API。
+- 尚未建立 production adapter；下一階段是首批繁中譯文、字型／text-safe rectangle 與
+  可丟棄 A/B 覆繪 prototype。
+
 ## 2026-09-20：第六階段清除路徑與 hook 邊界
 
 - 依新建並讀回的第六階段目標，以 workplace dosgolem 分支重播 Enter 與 Escape 正常路徑；
