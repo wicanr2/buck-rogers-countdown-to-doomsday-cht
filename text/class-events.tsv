@@ -1,0 +1,11 @@
+event_key	sequence	text_key	original_length	original_sha256	caller	background	foreground	row	column
+class.screen.prompt	1	class.prompt	10	ba7ebb6c0b122ffd1c5619afce128a161bd0c0bb3ce32006692034af03011cf2	37F1:158C	0	13	2	1
+class.option.rocket_jock	2	class.rocket_jock	13	0daed6fa43d74eed856f6ed56bf5c68cea5a0f3c8e63448f937c5781f7828df7	37F1:15BD	0	10	3	1
+class.option.warrior	3	class.warrior	7	5f06e4b5cfbbb4175542b3b7ed1d8bd5d82cedba0c0246d171060954067afa06	37F1:15BD	0	10	4	1
+class.option.medic	4	class.medic	9	703e3358de1a6e09949207fef2f92a3ab86719627bb3873cced97a49b5ac1ed6	37F1:15BD	0	10	5	1
+class.option.engineer	5	class.engineer	10	c5d861dfd308e95ddd6273cb3e459e5f4cc9c642c82ac991ef13f33c4749d682	37F1:15BD	0	10	6	1
+class.option.rogue	6	class.rogue	7	01889f0c26d76f2a9b13fe59e7e5d4600136761b874dfe3a4ad6d4f42bbaa4bd	37F1:15BD	0	10	7	1
+class.selection.selected.rocket_jock	7	class.rocket_jock	11	86e1e1a3338833f3ff16dfc15fc561fd99ffd1aefb2756a16afea104d57555f1	37F1:175D	15	0	3	3
+class.selection.normal.rocket_jock	8	class.rocket_jock	11	86e1e1a3338833f3ff16dfc15fc561fd99ffd1aefb2756a16afea104d57555f1	37F1:1856	0	10	3	3
+class.selection.selected.warrior	9	class.warrior	5	25877b98fccba1d5a34b052c47e3265d8723b23fb696fb358fe6fc042dddb6db	37F1:175D	15	0	4	3
+class.selection.normal.warrior	10	class.warrior	5	25877b98fccba1d5a34b052c47e3265d8723b23fb696fb358fe6fc042dddb6db	37F1:1856	0	10	4	3

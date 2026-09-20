@@ -507,3 +507,17 @@
 - dosgolem spec 020 已 CONFORMED；正式套件測試、`go vet` 與相關 race detector 通過，本機
   commit 為 `d8f34f101c719e6939565fe8b6f0d8b531e07ccc`，未推其遠端。本輪沒有翻譯、繪圖、倍率預設
   或原版資料修改。
+
+# 2026-09-21：第四十階段職業選擇繁中執行期顯示請求
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 40
+  階段 Goal。
+- 由 `SCAN0352_007.jpg` 至 `SCAN0352_009.jpg` 原圖核對太空船駕駛員、戰士、工程師、
+  流浪漢與醫生；建立十 identity、六鍵繁中 catalog 及交叉證據 validator。
+- 先建立 READY spec 021，再以共用 exact parser 新增 `LoadClassCatalog`，receipt command 加入
+  成對 class flags；沿用同一 watcher，未建立模糊比對或第二套流程。
+- steady、Down→Up、Escape 各重播兩次，pair 內 JSON 逐 byte 相同。Escape 的七筆返回選單
+  identity 與初始 menu 不同，首次 30-request 預期正確失敗後訂正為 23 requests／7 misses。
+- 專案 65 項測試與正式 verifier、dosgolem 全部正式套件測試、`go vet` 及相關 race detector
+  通過；spec 021 已 CONFORMED，本機 commit 為
+  `0025008fbb7d49c42e352f961585a10e82c118e5`，未推其遠端。本輪未載入字型、繪圖或選定 2×／3×。

@@ -7,19 +7,21 @@
 `menu-events.tsv` 以事件鍵、正式文字鍵、原文長度／SHA-256、caller、色號與文字格座標保存
 同一路徑的九筆 typed identity；不保存原文全文。`tools/menu_events.py` 驗證 schema、順序、
 唯一性、bounds 與 `menu.zh-TW.tsv` 雙向覆蓋。
-`post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；目前只有
-原版事件證據，尚未加入繁中 catalog 或正式 renderer。`tools/post_race_receipt.py` 會把它
+`post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；這些事件
+已由 `gender-events.tsv` 接入繁中 request，但尚未加入正式 renderer。`tools/post_race_receipt.py` 會把它
 與既有選單 inventory、固定雙 Enter 收據及終點 framebuffer 一起驗證。
 `gender-selection-events.tsv` 保存性別畫面 Down→Up 四筆與 Escape 八筆生命週期 identity；
 `tools/gender_selection_receipt.py` 以兩條各自重播兩次的收據驗證精確排程、事件與終點畫面。
-返回功能選單中尚未正式翻譯的列只保存語意位置，不以推測譯文擴張 catalog。
+返回功能選單的不同 identity 只保存語意位置，不以相似語意模糊擴張 catalog。
 `gender-events.tsv` 將其中七個唯一性別 identity 接到 `gender.zh-TW.tsv` 的「選擇性別／男性／
 女性」；`tools/gender_events.py` 反查前兩份證據表並要求事件與譯文鍵雙向完整。提示中的
 「性別」由中文說明書 `SCAN0352_005.jpg` 原圖核對，男性／女性則明示為標準介面譯詞，
 不冒稱手冊逐字摘錄。
-`post-gender-events.tsv` 保存接受預設性別後職業選擇畫面的七筆 content-safe identity；目前
-只有原版事件證據，尚未加入繁中 catalog。`tools/post_gender_receipt.py` 會把它連同既有
-menu／gender inventory、固定三 Enter 收據與終點 framebuffer 一起驗證。
+`post-gender-events.tsv` 保存接受預設性別後職業選擇畫面的七筆 content-safe identity；
+`class-events.tsv` 再與 `class-selection-events.tsv` 交叉核對，形成十個唯一職業 identity，
+並接到 `class.zh-TW.tsv` 的「選擇職業／太空船駕駛員／戰士／醫生／工程師／流浪漢」。譯名
+由中文說明書 `SCAN0352_007.jpg` 至 `SCAN0352_009.jpg` 原圖核對；目前只產生 runtime request，
+尚未接入正式 renderer。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

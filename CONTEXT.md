@@ -165,6 +165,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   兩條路徑各自雙重重播一致，專案 61 項測試通過；dosgolem spec 020 已 CONFORMED，本機
   commit 為 `d8f34f101c719e6939565fe8b6f0d8b531e07ccc`，未推其遠端。尚未建立職業譯文、renderer
   或倍率預設。
+- 第四十階段由中文說明書原圖核對五個職業譯名，將十個職業 identity 接到 dosgolem 共用
+  exact catalog 與 guarded post-call watcher。steady／Down→Up／Escape 各雙重重播一致，分別
+  為 22／26／23 requests；Escape 返回選單的不同 identity 正確形成七次 miss，未放寬比對。
+  專案 65 項測試與 dosgolem 正式測試、vet、race 全數通過；spec 021 已 CONFORMED，本機
+  commit 為 `0025008fbb7d49c42e352f961585a10e82c118e5`，未推其遠端。仍未載入字型、繪製繁中像素
+  或選定倍率。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
