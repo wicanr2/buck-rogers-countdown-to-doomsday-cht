@@ -189,6 +189,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   非空姓名 Enter 轉入職業技能點配置畫面。Escape 只重印提示，空字串 Backspace 無變化。
   編輯與確認分支各自雙重重播一致；spec 025 已 CONFORMED，dosgolem 本機 commit 為
   `260b3a7f504f7ade6b5487aa591e99911a82bd13`，未推其遠端。
+- 第四十五階段以正常 BIOS 輸入證實職業技能配置畫面的 Down 會由第一列移到第二列，預設
+  動作下 Enter 可替第一項技能合法加一點；仍有 6 點未用時 Escape 顯示確認提示，`N` 會
+  回到逐 byte 相同的配置畫面。三條分支各自雙重重播一致，專案 82 項測試與 dosgolem
+  正式測試、vet、race 全數通過；spec 026 已 CONFORMED，本機 dosgolem commit 為
+  `a0bb175d4712b92ce183ac1bd8715aaa6b4bcbec`，未推其遠端。減點、`Y` 離開與配置完成後轉場
+  仍未證實；本輪未翻譯、接 renderer 或選定倍率。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

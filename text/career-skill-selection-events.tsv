@@ -1,0 +1,9 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+career.skill.selection.previous_row.001	1	previous_row_redraw	confirmed	102700473	102705259	6	65659145569b894bd67d06e685509c2decc5b2ac5e18700c085a253506b0fb75	2684:0608	0	10	6	1
+career.skill.selection.previous_row.002	2	previous_row_redraw	confirmed	102705453	102707203	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:0640	0	10	6	23
+career.skill.selection.previous_row.003	3	previous_row_redraw	confirmed	102707502	102710019	3	13f29ebe076bc606a142eb89378fd3073c0ca2dd4d3f707709a341fbbe07c449	2684:067A	0	10	6	29
+career.skill.selection.previous_row.004	4	previous_row_redraw	confirmed	102710228	102711978	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:06B4	0	10	6	35
+career.skill.selection.current_row.005	5	current_row_redraw	confirmed	102712786	102723674	14	21a508147eccbbd32ae15709337ed29fbb794d71950f3ea11b950445c06b95b6	2684:0608	0	13	7	1
+career.skill.selection.current_row.006	6	current_row_redraw	confirmed	102723868	102725618	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:0640	0	13	7	23
+career.skill.selection.current_row.007	7	current_row_redraw	confirmed	102725905	102728421	3	ab26883b7d963cecd77bee361cb34c495ad2423968beabce86f54a5960c794f6	2684:067A	0	13	7	29
+career.skill.selection.current_row.008	8	current_row_redraw	confirmed	102728630	102730380	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:06B4	0	13	7	35

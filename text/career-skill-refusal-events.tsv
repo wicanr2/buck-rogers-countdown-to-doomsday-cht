@@ -1,0 +1,2 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+career.skill.refusal.bottom_prompt.001	1	bottom_prompt_redraw	confirmed	102701085	102726497	33	65108526a62ebc58d90c1406cce2b83133f5a8fa5221f87e6f62f40589bc07a9	37F1:101E	0	13	24	0

@@ -31,6 +31,9 @@ framebuffer 驗證 2×／3× 都零缺字、零重疊且安全矩形外零差異
 能力值與轉場重畫只供生命週期比對，不得當成固定譯文。
 `name-edit-events.tsv` 與 `name-confirm-events.tsv` 保存短測試姓名的回顯及確認後技能配置畫面
 identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 framebuffer 收據驗證。
+`career-skill-selection-events.tsv`、`career-skill-add-events.tsv` 與
+`career-skill-refusal-events.tsv` 保存技能列下移、一次合法加點，以及仍有點數時 Escape→`N`
+拒絕離開的 content-safe identity；動態數值與原版提示全文不列為譯文。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。
