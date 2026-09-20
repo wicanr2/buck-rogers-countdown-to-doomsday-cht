@@ -20,5 +20,6 @@
 | [第十一階段手冊查閱事件映射](phase-11-first-manual-check-event-map.md) | 正常進入路徑、動態題目、錯答重抽與中文掃描對應 |
 | [第十二階段手冊題庫結構](phase-12-manual-question-table-inventory.md) | 39 筆定長 schema、解碼器、消費者、無答案 metadata 清冊與動態反向驗證 |
 | [第十三階段繁中手冊來源對照](phase-13-manual-source-crosswalk.md) | 39 筆逐項來源、證據分級、OCR 搜尋收據與缺頁邊界 |
+| [第十四階段首批短篇手冊段落](phase-14-manual-compact-paragraphs.md) | 八筆原圖校訂、事件鍵、繁中 catalog、長度與失敗即關閉驗證 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

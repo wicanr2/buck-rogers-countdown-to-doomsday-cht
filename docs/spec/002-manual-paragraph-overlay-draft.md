@@ -3,7 +3,8 @@
 狀態：DRAFT  
 前置：[第十一階段事件證據](../re/phase-11-first-manual-check-event-map.md)、
 [第十二階段題庫結構](../re/phase-12-manual-question-table-inventory.md)、
-[第十三階段繁中來源對照](../re/phase-13-manual-source-crosswalk.md)
+[第十三階段繁中來源對照](../re/phase-13-manual-source-crosswalk.md)、
+[第十四階段短篇段落](../re/phase-14-manual-compact-paragraphs.md)
 
 ## 目的
 
@@ -12,24 +13,17 @@
 
 ## DRAFT 映射記錄
 
-| 欄位 | 本題值 |
-| --- | --- |
-| `event_key` | `manual.page34.deimos_prison.word10` |
-| `page` | `34` |
-| `heading_ascii` | `Deimos Prison` |
-| `ordinal_ascii` | `tenth` |
-| `text_key` | `manual.log.49.deimos_prison` |
-| `source_scan` | archive-order 66 / `SCAN0352_039.jpg` / 印刷頁 73 |
-| `show_when` | 同一畫面 generation 已觀測到頁碼、標題與序數後 |
-| `answer_input` | 原版英文輸入與判定；不自動填入 |
-| `layout` | 待定；須依使用者選定 2×／3× 後做分頁 prototype |
+權威事件列位於 `text/manual-events.tsv`，目前有 9 筆；每筆保留 record、頁碼、英文標題、
+序數及唯一文字鍵。來源定位在 `text/manual-source-crosswalk.tsv`，顯示文字在
+`text/manual.zh-TW.tsv`。`show_when` 仍要求同一畫面 generation 已觀測到三個識別欄位；
+`answer_input` 永遠由原版處理，不自動填入。版面仍待 2×／3× 與分頁 prototype 決策。
 
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
 2. 映射只可選擇覆繪文字；不得送鍵、改寫 DOS 記憶體或修改原版程式返回值。
 3. 錯答造成重新抽題時，舊段落必須在新題覆繪前失效；不得沿用上一題 metadata。
-4. `manual-questions.tsv` 的 39 筆只證明原版 metadata；現階段仍只登記一筆繁中段落，
+4. `manual-questions.tsv` 的 39 筆只證明原版 metadata；現階段只登記 9 筆繁中段落，
    未命中其他題目是預期行為，不可用標題模糊比對猜測。
 5. `manual-source-crosswalk.tsv` 只證明來源定位；`strong-inference`、`unknown` 或未逐字校訂的
    OCR 內容一律不可當成顯示譯文。

@@ -6,7 +6,7 @@
 目前 `menu.zh-TW.tsv` 僅是第八階段已由正常玩家路徑及中文說明書共同證實的 DRAFT。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
-已唯一核對中文掃描來源的段落，目前仍只有 `Deimos Prison` 一筆。
+已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 9 筆。
 
 `manual-source-crosswalk.tsv` 逐筆記錄題目對應掃描、archive-order、SHA-256、印刷頁、
 中文錨點與證據等級。它是來源索引，不是可直接顯示的譯文 catalog；OCR 未經逐字校訂的
@@ -15,7 +15,12 @@
 ```sh
 python3 tools/manual_crosswalk.py text/manual-questions.tsv text/manual-source-crosswalk.tsv \
   --manifest workplace/inventory/manual-extracted-manifest.json
+python3 tools/manual_catalog.py text/manual-questions.tsv text/manual-source-crosswalk.tsv \
+  text/manual-events.tsv text/manual.zh-TW.tsv
 ```
+
+`manual-events.tsv` 是 DRAFT 事件映射：只允許來源為 `confirmed` 的題目，以頁碼、英文標題及
+序數精確指向一筆文字鍵。它不含英文答案，也不會送鍵或改寫原版記憶體。
 
 ## 驗證與 prototype 字型
 

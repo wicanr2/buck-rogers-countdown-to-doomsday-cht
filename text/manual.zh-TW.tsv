@@ -1,2 +1,10 @@
 key	translation	source
+manual.log.11.the_elevator	火星的衛星昇降機從高空中一直延伸到地面上。它是連接火星地面以及衛星基地佛柏（Phobos）的主要交通工具。在入口處有著一群急欲搭上昇降機的火星人、RAM 的士兵以及沙漠跑者。Scot.dos 的聲音由你的耳機中傳來：「你必需搭上這班昇降機。那是唯一可以得到訊息的方法……在昇降機到達佛柏之前，RAM 是不會展開攻擊行動的。」	manual-and-runtime
+manual.log.18.king_in_zero_g	蛙王在無重力狀態下的馬利波薩（Mariposa）衛星之核心地帶根本毫無用處。它那笨重的身體會隨著一跳下而到處翻滾亂撞。如果你想繼續下去，最好把蛙王留下來。	manual-and-runtime
+manual.log.32.jupiter_arrival	你的航艦逐漸接近木星的磁力雲層，在強風之下，你的航艦就像是一隻蝴蝶般脆弱。在雲層下，你看到了暴風騎士（Stormrider），木星的主要居民。再飛低一點，你就看見了頗多城市漂浮在木星的大氣中。在城市旁是一個個類似農場的建築，裡面飼養著木星主要食物來源布洛特（Bloat）和曼塔（Manta）。在別的柵欄中也有著無數不知名的生物，看來又是生物科技的成果。一個暴風騎士以無線電與你連繫，並很快地答應你們降落的要求。你們降落在平台上，並慶幸能夠找到一個未被 RAM 染指的星球。	manual-and-runtime
+manual.log.43.great_rift	這個大裂縫在火星而言，是個小小的峽谷——大約與地球北美洲的大峽谷一樣大。最大的挑戰是 350 公尺高的垂直陡坡，唯一的可能只有附近的斜坡可過。	manual-and-runtime
 manual.log.49.deimos_prison	你們被監禁於 RAM 的航艦內，並被帶到火星最主要的戴蒙斯（Deimos）基地。隨即被送至 RAM 最著名的政治犯及軍事犯監獄 Stockade。	manual-and-runtime
+manual.log.56.bucks_capture	威瑪（Wilma）泣不成聲地說：「巴克被捕了！聽說他們已經把他帶到戴蒙斯（Deimos）。我們必須把他救出來，否則……。」她立刻做了個指示，一隊 NEO 的志願軍站了出來。她說：「末日裝備的事由他們去解決即可，我們快趕去拯救巴克羅吉斯。」	manual-and-runtime
+manual.log.57.acidic_victory	你們跟著蛙王回到金星的酸液池塘旁。上百的酸液蛙群集在你們身旁，爭著目睹趕走 RAM 的英雄們。蛙王作了一段極長的致詞。但很可惜，你們連一個字也聽不懂！最後，眾蛙在鼓掌喝采時激起的酸液，使你們不得不走避。	manual-and-runtime
+manual.log.63.alert_screen	螢幕上顯示：「所有 RAM 軍隊請注意，金星基地全部進入紫色警戒中。」	manual-and-runtime
+manual.log.68.lens_treatise	Scot.dos 嚴肅地說：「以我們所獲得的情報看來，RAM 應是在製造一種以極大透鏡聚集並反射太陽能量的設備。反射的能量應足以摧毀地球上的特定目標，也許是整塊大陸！在裝備旁的護殼應可以限制其力量。」	manual-and-runtime
