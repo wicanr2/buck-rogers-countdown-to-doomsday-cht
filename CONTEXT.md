@@ -90,8 +90,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   `record[+14]` 乘 19 後加 `0EC0:339B`，索引 `first` 至 `tenth` 十個長度前綴 slots。
   `text/manual-ordinals.tsv` 可由原版 dump 決定性重生，現有 22 筆 catalog ordinal 全數涵蓋；
   7 項正反向測試通過。完整證據見 `docs/re/phase-21-manual-ordinal-bridge-evidence.md`。
+- 第二十二階段已在 workplace dosgolem 分支擴充 `xlate.Draw`：正整數倍率皆可用，2×／3×
+  的 16×16 字模精確像素、非法倍率與短緩衝區裁切測試均通過；真實 GOLEMFNT 已畫出繁中
+  「地球」。本機 commit 為 `ef7f8db32b20a6b9eb6d810bd4e6b99187c55f44`，未推送 dosgolem
+  遠端。這不代表已選定產品倍率，詳見 `docs/re/phase-22-dosgolem-xlate-integer-scale.md`。
 
-下一個前沿決策是 2×／3× 輸出倍率；確認後才能讓選定倍率進入 dosgolem renderer 與正常
-玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。ordinal bridge 已解決；錯答
+下一個前沿決策仍是 2×／3× 輸出倍率；兩者的 renderer 能力都已具備，確認後才能把選定倍率
+接入正常玩家路徑覆繪。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉。ordinal bridge 已解決；錯答
 generation 的原版事件也已量測，但 adapter A/B 與分頁互動驗證前，手冊覆繪 DRAFT 不升為
 READY。

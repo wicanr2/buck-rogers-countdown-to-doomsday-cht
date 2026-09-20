@@ -258,3 +258,18 @@
   位址空間、輸入雜湊與輸出擁有權均通過；失敗 fragments 已逐一刪除。
 - 新增可重生 `manual-ordinals.tsv`、解析器與 7 項測試；現有 22 筆事件使用的 2–10 全部
   涵蓋，原版表中的 1 亦保留。資料不含答案，尚未接入正式 adapter。
+
+# 2026-09-20：第二十二階段 dosgolem xlate 通用整數倍率
+
+- 建立並完整讀回第二十二階段 goal；載入復古中文化、CJK 點陣介面與規格閘門契約。
+- workplace dosgolem 的 `xlate.Draw` 改為接受正整數倍率；預設字模倍率使用
+  `max(1, scale/3)`，讓 2× 可畫 16×16 字模並保留既有 3×／6× 行為。
+- 新增 2× 精確 footprint／色彩、非法倍率不改輸出及短緩衝區安全裁切測試；所有正式 Go
+  packages（排除 `workplace/`）在無網路一次性 Docker 容器全數通過。
+- production `xlate.LoadFont` 讀取真實 `menu-unifont16.golemfnt`，2×／3× 均畫出繁中
+  「地球」；PNG 與 JSON 收據只留在被忽略的 `workplace/phase22-xlate-smoke/`。
+- dosgolem 本機 commit 為 `ef7f8db32b20a6b9eb6d810bd4e6b99187c55f44`，未推送其遠端；
+  本階段沒有替使用者選定產品倍率，也未接入 production adapter。
+- 首次兩個 Go 容器因登入 shell 遺失 `/usr/local/go/bin`，修正後又發現非 root 快取預設為
+  `/.cache`；改用映像內絕對路徑及 `/tmp` 的 `GOCACHE`／`GOPATH` 後乾淨重跑。兩者皆為
+  容器環境問題，不是 renderer 缺陷。

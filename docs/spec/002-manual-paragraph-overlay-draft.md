@@ -10,7 +10,8 @@
 [第十八階段題目世代與失效](../re/phase-18-manual-generation-invalidation.md)、
 [第十九階段事件收集器 prototype](../re/phase-19-manual-event-collector-prototype.md)、
 [第二十階段 catalog 顯示請求 prototype](../re/phase-20-manual-catalog-display-request-prototype.md)、
-[第二十一階段序數詞橋接](../re/phase-21-manual-ordinal-bridge-evidence.md)
+[第二十一階段序數詞橋接](../re/phase-21-manual-ordinal-bridge-evidence.md)、
+[第二十二階段整數倍率 renderer](../re/phase-22-dosgolem-xlate-integer-scale.md)
 
 ## 目的
 
@@ -49,6 +50,10 @@ translation，不得含答案、輸入或原版狀態寫入。
 `text/manual-ordinals.tsv` 保存每筆 runtime 位址與原始 19-byte slot。adapter 必須從這份
 受驗資料做 ordinal word→number 精確橋接；表外、大小寫不同或 bytes 不符仍失敗即關閉。
 
+第二十二階段已讓 dosgolem 通用 `xlate` renderer 接受正整數倍率，並以真實 16×16
+GOLEMFNT 驗證 2×／3×；非法倍率失敗即關閉、目的緩衝區外安全裁切。這只移除 2× 的工具
+限制，不等於選定正式倍率，也不構成遊戲 adapter 或正常玩家路徑完成證據。
+
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
@@ -75,4 +80,4 @@ translation，不得含答案、輸入或原版狀態寫入。
 - 將第十九階段 prototype 的同世代、跨世代、亂序與 poisoned 復原案例轉成正式 adapter 測試。
 - 正式 adapter 讀取並驗證 `manual-ordinals.tsv`，以全套 catalog lookup 測試證明沒有回退
   到程式碼內嵌序數或模糊比對。
-- 使用者確認 2×／3×，並為選定倍率補齊 dosgolem renderer 支援與正常玩家路徑收據。
+- 使用者確認 2×／3×，並為選定倍率補齊正常玩家路徑、覆繪 containment 與分頁互動收據。
