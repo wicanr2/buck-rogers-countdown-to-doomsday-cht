@@ -50,3 +50,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第四十三階段：重擲提示輸入與動態欄位重畫生命週期](phase-43-reroll-input-lifecycle.md) | 已完成 | 證實 `Y` 重擲與 `N` 接受分支，固定其事件與 framebuffer 生命週期。 |
 | [第四十四階段：角色姓名輸入的編輯、確認與取消生命週期](phase-44-character-name-input-lifecycle.md) | 已完成 | 證實字元回顯、Backspace 清除、Enter 轉場及 Escape 負面行為。 |
 | [第四十五階段：職業技能點配置的選取、加減與離開生命週期](phase-45-career-skill-allocation-lifecycle.md) | 已完成 | 證實技能列下移、一次合法加點及 Escape→`N` 拒絕離開。 |
+| [第四十六階段：職業技能動作選單、減點與確認離開生命週期](phase-46-career-skill-action-and-exit-lifecycle.md) | 已完成 | 證實可逆減點、離開位置及 Escape→`Y` 進入技術技能配置。 |

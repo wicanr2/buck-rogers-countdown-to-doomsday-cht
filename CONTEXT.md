@@ -195,6 +195,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   正式測試、vet、race 全數通過；spec 026 已 CONFORMED，本機 dosgolem commit 為
   `a0bb175d4712b92ce183ac1bd8715aaa6b4bcbec`，未推其遠端。減點、`Y` 離開與配置完成後轉場
   仍未證實；本輪未翻譯、接 renderer 或選定倍率。
+- 第四十六階段證實職業技能配置的預設 Enter 加點後，Right→Enter 會把同一技能與剩餘點數
+  完整還原；終點逐 byte 等於零點／Right 選取畫面。Left 由預設位置環回離開位置；Escape→
+  `Y` 在未用 6 點時仍可進入技術技能配置畫面。兩條正式分支各雙重重播一致，專案 85 項
+  測試與 dosgolem 正式測試、vet、race 全數通過；spec 027 已 CONFORMED，本機 dosgolem
+  commit 為 `dbd262607c90be3a0e92b7173b61bbf140823580`，未推其遠端。技術技能互動與角色建立完成
+  仍未證實；本輪未翻譯、接 renderer 或選定倍率。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

@@ -1,0 +1,11 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+career.skill.subtract.add_redraw.001	1	add_redraw	confirmed	102701235	102706021	6	65659145569b894bd67d06e685509c2decc5b2ac5e18700c085a253506b0fb75	2684:0608	0	13	6	1
+career.skill.subtract.add_redraw.002	2	add_redraw	confirmed	102706219	102707975	2	0fc5165686190ca845407c03ad4572e801265487ce3d352487f32016af34ed05	2684:0640	0	13	6	23
+career.skill.subtract.add_redraw.003	3	add_redraw	confirmed	102708274	102710791	3	13f29ebe076bc606a142eb89378fd3073c0ca2dd4d3f707709a341fbbe07c449	2684:067A	0	13	6	29
+career.skill.subtract.add_redraw.004	4	add_redraw	confirmed	102711127	102713648	3	77a5bd29ccf29839a8677928908d7636d1c0e95825f5e132666e8e299e713ed3	2684:06B4	0	13	6	35
+career.skill.subtract.add_redraw.005	5	add_redraw	confirmed	102713926	102716440	3	c96fcd749319878f883223735a9ef212e212d6db90ee409dc6a5626e27592168	2684:02E5	0	15	1	23
+career.skill.subtract.subtract_redraw.006	6	subtract_redraw	confirmed	102901312	102906098	6	65659145569b894bd67d06e685509c2decc5b2ac5e18700c085a253506b0fb75	2684:0608	0	13	6	1
+career.skill.subtract.subtract_redraw.007	7	subtract_redraw	confirmed	102906292	102908042	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:0640	0	13	6	23
+career.skill.subtract.subtract_redraw.008	8	subtract_redraw	confirmed	102908341	102910858	3	13f29ebe076bc606a142eb89378fd3073c0ca2dd4d3f707709a341fbbe07c449	2684:067A	0	13	6	29
+career.skill.subtract.subtract_redraw.009	9	subtract_redraw	confirmed	102911067	102912817	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:06B4	0	13	6	35
+career.skill.subtract.subtract_redraw.010	10	subtract_redraw	confirmed	102913063	102915574	3	ef0a93227acd0bcfc9c494889a2975c6008c215fd3fcebd6fcab53052d7e0231	2684:02E5	0	15	1	23

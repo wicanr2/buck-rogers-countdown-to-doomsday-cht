@@ -594,3 +594,18 @@
   全部正式 packages test／vet 與 Buck Rogers race detector 通過，spec 026 升為 CONFORMED。
 - 本輪沒有翻譯技能配置畫面、改點數或職業規則、接 renderer、測試 `Y` 離開或選定 2×／3×。
   dosgolem 本機 commit 為 `a0bb175d4712b92ce183ac1bd8715aaa6b4bcbec`，未推其遠端。
+
+# 2026-09-21：第四十六階段職業技能動作選單與確認離開
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 46
+  階段 Goal。
+- Probe 證實預設 Enter 加點後 Right→Enter 以五筆重畫還原同一技能與剩餘點數；終點逐 byte
+  等於零點／Right 選取畫面。Left 從預設位置環回離開位置並顯示未用點數確認提示。
+- Escape→`Y` 從未用 6 點的確認提示進入技術技能配置畫面，而非停在提示；新畫面包含 62 筆
+  content-safe 完成事件。
+- spec 027 先達 READY；可逆減點與確認離開兩條分支各正式重播兩次，236／289-event JSON
+  與 framebuffer 各自逐 byte 相同。
+- 新增兩份清冊、嚴格 verifier 與三項正反例測試；專案 85 項測試、dosgolem 全部正式
+  packages test／vet 與 Buck Rogers race detector 通過，spec 027 升為 CONFORMED。
+- 本輪沒有翻譯技能畫面、配置技術技能、修改規則、接 renderer 或選定 2×／3×。dosgolem
+  本機 commit 為 `dbd262607c90be3a0e92b7173b61bbf140823580`，未推其遠端。

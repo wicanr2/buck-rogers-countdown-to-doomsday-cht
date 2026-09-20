@@ -34,6 +34,9 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `career-skill-selection-events.tsv`、`career-skill-add-events.tsv` 與
 `career-skill-refusal-events.tsv` 保存技能列下移、一次合法加點，以及仍有點數時 Escape→`N`
 拒絕離開的 content-safe identity；動態數值與原版提示全文不列為譯文。
+`career-skill-subtract-events.tsv` 與 `career-skill-exit-events.tsv` 保存先加後減的可逆重畫，
+以及 Escape→`Y` 的確認提示與技術技能配置終點；Right 本身沒有文字事件，其動作語意由後續
+重畫和逐 byte 畫面還原共同證實。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。
