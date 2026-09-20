@@ -1,5 +1,23 @@
 # 工作歷程
 
+## 2026-09-21：第五十二階段合法保存後段事件對齊（進行中）
+
+- 上一輪分類為有進展；載入復古遊戲、規格閘門、dosgolem 與 IDA Pro 9.4 契約，建立並
+  完整讀回第 52 階段 Goal。
+- 七個正常玩家 checkpoint 證實圖示確認、`SAVE A? YES`、返回功能選單與 Add 選取均落在
+  預期狀態；完整配置路徑最後 26 筆事件與第五十階段逐筆相同。
+- spec 032／033 先達 READY，再實作可選 `-unimplemented` 與 `-state-out`；正式雙重重播的
+  1,457-event JSON、framebuffer、scratch 逐 byte 相同，savestate 回讀後 1 MiB memory 亦
+  逐 byte 相同。未實作服務與 DOS write 均為空，兩份規格升為 CONFORMED。
+- 完整／未用技能點保存後 DGROUP 只差 `0EC0:388B`，但 Add 路徑對它零讀寫；heap 差異 bytes
+  亦沒有被 Add consumer 讀取。IDA 9.4 一次性 START.EXE database 沒有 operand `0x388B`
+  直接命中，未把零 xref 外推成沒有間接存取。
+- Right 選圖不改保存結果；Down×3 曾誤認為 Drop，但實測為 Joystick-Mouse Initialize，已
+  保留勘誤。空名冊的原版保存條件仍未知，未修改平台或遊戲語意。
+- dosgolem 全部正式 packages test／vet 與 Buck Rogers／receipt race detector 通過。
+- dosgolem 本機分支 commit 為 `4bb3cc9d83868ea2d827cff33b43e2585c7f16ac`，未推其遠端；
+  專案 94 項 Python 測試亦全數通過。
+
 ## 2026-09-21：第五十一階段完整技能配置（進行中）
 
 - 建立並完整讀回第 51 階段 goal；由正常 BIOS 路徑實測職業技能 80 點與技術技能 40 點，

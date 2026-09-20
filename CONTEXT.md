@@ -227,6 +227,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   歸零後無警告進入身體圖示畫面。第一個完整配置後的保存／名冊 probe 仍沒有 DOS write，
   scratch `CHARS.DAX` 與 pristine 同雜湊並回到空名冊；尚須對齊第 48–50 階段後段事件與
   按鍵時點，未判定為 dosgolem 檔案服務缺口，也尚未形成正式雙重重播或 CONFORMED 規格。
+- 第五十二階段已排除後段按鍵時點、身體圖示未移動與已記錄的未實作 DOS／BIOS 服務；
+  `-unimplemented`／`-state-out` 的 spec 032／033 已 CONFORMED。完整配置正式雙重重播的
+  JSON、framebuffer、scratch 及回讀後 1 MiB memory 一致，但 `SAVE A? YES` 仍無 DOS write，
+  Add 仍無角色列。找到的 DGROUP／heap 差異均未被 Add consumer 讀取，原版保存條件仍未知；
+  dosgolem 診斷功能在本機 commit `4bb3cc9d83868ea2d827cff33b43e2585c7f16ac`，未推其遠端。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
