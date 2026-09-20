@@ -466,3 +466,19 @@
   測試通過。清冊不保存原版英文全文，也不猜譯尚未納入 catalog 的返回選單列。
 - dosgolem spec 017 已 CONFORMED，本機 commit 為
   `57daa16fd3ab38ff19b8b1702fecf5b0ca14992d`，未推其遠端；本輪沒有翻譯、繪圖或選倍率。
+
+# 2026-09-21：第三十七階段性別選擇繁中執行期顯示請求
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 能力文件，建立並完整回讀
+  第 37 階段 Goal。
+- 中文說明書 `SCAN0352_005.jpg` 原圖證實「性別」用語；男性／女性採標準介面譯詞並明示為
+  `runtime-interface`，未把沒有命中的 OCR 線索冒充來源。
+- 先建立 READY spec 018，再將 menu／gender catalog 共用同一 exact identity loader 與 resolver；
+  catalog 合併遇 identity 衝突即拒絕，watcher 與 recorder 沒有複製第二套。
+- 正式 Down→Up 路徑兩次皆為 18 events／18 requests／零 miss；Escape 路徑兩次皆為 22 events／
+  15 requests／7 misses，返回功能選單後沒有沿用性別 request。兩組收據各自逐 byte 相同。
+- 新增正式七 identity inventory、三鍵繁中 catalog、交叉證據 validator 與 request verifier；
+  專案 55 項測試及真實收據通過。
+- dosgolem 255 份 spec 索引、全部正式 packages test／vet 與相關 race detector 通過；spec 018
+  已 CONFORMED，本機 commit `24f0dd55cdce8a929ab513e2a2a1f78afb6fb56b`，未推其遠端。
+- 本輪沒有載入字型、清除原文、繪製繁中像素或選定 2×／3×。

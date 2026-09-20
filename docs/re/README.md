@@ -41,5 +41,6 @@
 | [第三十四階段倍率中立的功能選單覆繪核心](phase-34-scale-neutral-menu-overlay-core.md) | READY→CONFORMED 純核心、2×／3× 同 API 與四組逐位元回歸收據 |
 | [第三十五階段選定種族後的文字路徑清冊](phase-35-post-race-text-path-inventory.md) | 正常雙 Enter 路徑、性別畫面四筆 content-safe identity 與決定性 framebuffer |
 | [第三十六階段性別選擇生命週期](phase-36-gender-selection-lifecycle.md) | Down／Up normal→selected 重畫、Escape 返回功能選單與雙重決定性收據 |
+| [第三十七階段性別選擇繁中執行期顯示請求](phase-37-gender-runtime-display-requests.md) | 七 identity 繁中 catalog、18-request 正常路徑與 Escape 失敗即關閉證據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

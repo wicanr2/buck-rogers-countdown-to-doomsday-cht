@@ -13,6 +13,10 @@
 `gender-selection-events.tsv` 保存性別畫面 Down→Up 四筆與 Escape 八筆生命週期 identity；
 `tools/gender_selection_receipt.py` 以兩條各自重播兩次的收據驗證精確排程、事件與終點畫面。
 返回功能選單中尚未正式翻譯的列只保存語意位置，不以推測譯文擴張 catalog。
+`gender-events.tsv` 將其中七個唯一性別 identity 接到 `gender.zh-TW.tsv` 的「選擇性別／男性／
+女性」；`tools/gender_events.py` 反查前兩份證據表並要求事件與譯文鍵雙向完整。提示中的
+「性別」由中文說明書 `SCAN0352_005.jpg` 原圖核對，男性／女性則明示為標準介面譯詞，
+不冒稱手冊逐字摘錄。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

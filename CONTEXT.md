@@ -150,6 +150,11 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   重畫兩列並逐位元回到第一列終點；後者先取消男性反白，再重建上一層功能選單，而非返回
   種族選單。兩路徑各自雙重重播一致，專案 50 項測試通過；dosgolem spec 017 已 CONFORMED，
   本機 commit 為 `57daa16fd3ab38ff19b8b1702fecf5b0ca14992d`，未推其遠端。仍未建立性別譯文或 renderer。
+- 第三十七階段已把七個性別 identity 與三筆繁中 catalog 接到既有 guarded post-call watcher：
+  Enter→Enter→Down→Up 兩次皆為 18 events／18 requests／零 miss；Escape 兩次皆為 22 events／
+  15 requests／7 misses，且返回功能選單後不沿用性別請求。dosgolem 共用 exact catalog 核心，
+  沒有第二套 watcher；spec 018 已 CONFORMED，本機 commit 為
+  `24f0dd55cdce8a929ab513e2a2a1f78afb6fb56b`，未推其遠端。仍未載入字型、繪圖或選倍率。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

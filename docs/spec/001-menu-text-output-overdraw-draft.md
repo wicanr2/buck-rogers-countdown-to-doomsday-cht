@@ -148,9 +148,11 @@ JSON 全部逐 byte 等於既有基線。診斷命令已改用正式核心，不
 JSON 與終點 framebuffer；後四筆是提示、兩筆 normal 選項及 selected 第一選項，完整
 identity 保存於 `text/post-race-events.tsv`。
 
-normal 選項從 col 1 起、selected 第一選項從 col 3 起，與種族選單呈現相同兩格縮排形狀；
-但性別選單 Down／Up、Escape 與確認後生命週期仍未知，所以目前只作 DRAFT 原版證據，
-未加入正式翻譯 catalog、text-safe rectangle 或 renderer。
+normal 選項從 col 1 起、selected 第一選項從 col 3 起，與種族選單呈現相同兩格縮排形狀。
+第 36 階段已由正常 Down／Up 證實 normal→selected 重畫及兩格縮排，Escape 則先取消男性
+反白再返回功能選單；訂正第 35 階段「方向鍵與 Escape 未知」。第 37 階段又把七個唯一
+identity 接入正式繁中 catalog 與 runtime request。確認性別後的生命週期、text-safe rectangle
+及玩家可見 renderer 仍未知／未接，因此本整體規格仍是 DRAFT。
 
 ## 未知與 READY 閘門
 
@@ -171,8 +173,9 @@ normal 選項從 col 1 起、selected 第一選項從 col 3 起，與種族選�
 - 選單每一行的完整 text-safe rectangle，以及非靜態畫面的適用性；
 - 上游字串表定位仍未知；九筆已用完整 identity 區分同譯文的不同顯示事件，其他畫面的
   collision 策略不得由此樣本外推。
-- 選定預設種族後的性別畫面已有四筆 content-safe identity，但方向鍵反白、返回與確認後
-  清除／重建仍未知；不得只因 caller／座標相似就套用種族選單 lifecycle。
+- 選定預設種族後的性別畫面已有初始、Down／Up 與 Escape 證據，七個唯一 identity 亦已
+  產生 exact runtime request；但 Enter 確認後的清除／重建與性別畫面的 text-safe rectangle
+  仍未知，且尚未接 renderer。
 
 升為 READY 前，至少須以 dosgolem 取得一條正常互動路徑，明確量到上述生命週期事件，並
 完成原文／繁中 A/B 同狀態收據與中文 glyph containment 驗證。沒有達成這些條件時，DRAFT
