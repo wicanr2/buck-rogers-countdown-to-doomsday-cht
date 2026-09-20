@@ -201,6 +201,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   測試與 dosgolem 正式測試、vet、race 全數通過；spec 027 已 CONFORMED，本機 dosgolem
   commit 為 `dbd262607c90be3a0e92b7173b61bbf140823580`，未推其遠端。技術技能互動與角色建立完成
   仍未證實；本輪未翻譯、接 renderer 或選定倍率。
+- 第四十七階段由正常路徑進入技術技能配置，證實 Down 選取移動、Enter 加點、Right→Enter
+  完整減回、Escape→`N` 回到逐 byte 相同基線，以及 Escape→`Y` 進入角色身體圖示選擇。
+  四條正式分支各雙重重播一致，專案 88 項測試與 dosgolem 正式測試、vet、race 全數通過；
+  spec 028 已 CONFORMED，本機 dosgolem commit 為
+  `0b66a03808f9d67e2c57ca23e82ad56eb08ac254`，未推其遠端。身體圖示互動與角色建立完成仍未
+  證實；本輪未翻譯、接 renderer 或選定倍率。
 
 下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
 手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、

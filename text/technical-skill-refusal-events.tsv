@@ -1,0 +1,2 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+technical.skill.refuse.exit_confirmation_prompt.001	1	exit_confirmation_prompt	confirmed	103601017	103627195	34	5592b4048986b175d187438df9b7ecd154cdedc775a9ff290231d5e3863a9a9b	37F1:101E	0	13	24	0

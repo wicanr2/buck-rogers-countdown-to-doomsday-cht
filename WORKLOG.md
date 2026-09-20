@@ -609,3 +609,18 @@
   packages test／vet 與 Buck Rogers race detector 通過，spec 027 升為 CONFORMED。
 - 本輪沒有翻譯技能畫面、配置技術技能、修改規則、接 renderer 或選定 2×／3×。dosgolem
   本機 commit 為 `dbd262607c90be3a0e92b7173b61bbf140823580`，未推其遠端。
+
+# 2026-09-21：第四十七階段技術技能配置生命週期
+
+- 上一輪分類為有進展；重新載入復古遊戲、規格閘門與 dosgolem 契約，建立並完整讀回第 47
+  階段 Goal。
+- 由正常職業技能 Escape→`Y` 路徑進入技術技能頁；Down 以八筆事件移到第二列，Enter 合法
+  增加第一項一點，Right→Enter 再以五筆事件完整減回。
+- Escape→`N` 在一筆確認提示後逐 byte 回到技術技能基線；Escape→`Y` 進入角色身體圖示
+  選擇畫面，沒有把確認提示誤當離開完成。
+- spec 028 先達 READY；四條分支各正式重播兩次，297／299／290／296-event JSON 與
+  framebuffer 各自逐 byte 相同。
+- 新增四份 content-safe 清冊、嚴格 verifier 與三項正反例測試；專案 88 項測試、dosgolem
+  全部正式 packages test／vet 與 Buck Rogers race detector 通過，spec 028 升為 CONFORMED。
+- 本輪沒有翻譯技術技能／身體圖示畫面、修改規則、接 renderer 或選定 2×／3×。dosgolem
+  本機 commit 為 `0b66a03808f9d67e2c57ca23e82ad56eb08ac254`，未推其遠端。

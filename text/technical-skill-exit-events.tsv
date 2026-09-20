@@ -1,0 +1,8 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+technical.skill.exit.exit_confirmation_prompt.001	1	exit_confirmation_prompt	confirmed	103601017	103627195	34	5592b4048986b175d187438df9b7ecd154cdedc775a9ff290231d5e3863a9a9b	37F1:101E	0	13	24	0
+technical.skill.exit.body_icon_screen.002	2	body_icon_screen	confirmed	103906978	103923225	21	e920b38b45dd6a828b466a06f4c4c4f63645f1c6a82e488599dc3da46b5280f2	0763:1307	0	10	24	0
+technical.skill.exit.body_icon_screen.003	3	body_icon_screen	confirmed	105257742	105260243	3	cba06b5736faf67e54b07b561eae94395e774c517a7d910a54369e1263ccfbd4	1C41:2708	0	15	6	8
+technical.skill.exit.body_icon_screen.004	4	body_icon_screen	confirmed	105260271	105271190	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:2729	0	15	10	3
+technical.skill.exit.body_icon_screen.005	5	body_icon_screen	confirmed	105271218	105273757	3	11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437	1C41:274A	0	15	12	8
+technical.skill.exit.body_icon_screen.006	6	body_icon_screen	confirmed	105273785	105284704	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:276B	0	15	16	3
+technical.skill.exit.body_icon_screen.007	7	body_icon_screen	confirmed	105692579	105708090	20	1e748ea4e0f00d9d879d97a49952e7d7864e199af2d132e04180028863681508	37F1:101E	0	13	24	0

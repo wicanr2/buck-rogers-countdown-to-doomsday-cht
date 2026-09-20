@@ -1,0 +1,9 @@
+event_key	sequence	event_role	inference_level	entry_step	post_call_step	original_length	original_sha256	caller	background	foreground	row	column
+technical.skill.down.previous_row_redraw.001	1	previous_row_redraw	confirmed	103600399	103613574	17	c3f8edd2a3501a616e366a7577d27e28593b77041fcc776c3beed2d21a55cb2b	2684:0608	0	10	6	1
+technical.skill.down.previous_row_redraw.002	2	previous_row_redraw	confirmed	103613768	103615518	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:0640	0	10	6	23
+technical.skill.down.previous_row_redraw.003	3	previous_row_redraw	confirmed	103615807	103618329	3	fa4139aea519a01459a00dc1f3307e9c6d8d016cf9794ee6eff0b8e0daf5389c	2684:067A	0	10	6	29
+technical.skill.down.previous_row_redraw.004	4	previous_row_redraw	confirmed	103618538	103620288	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:06B4	0	10	6	35
+technical.skill.down.current_row_redraw.005	5	current_row_redraw	confirmed	103621092	103634255	17	f1c727903cc921ea5458d3bc5ba7d53b88de20c6a93d4373b704e740f8de43ba	2684:0608	0	13	7	1
+technical.skill.down.current_row_redraw.006	6	current_row_redraw	confirmed	103634449	103636199	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:0640	0	13	7	23
+technical.skill.down.current_row_redraw.007	7	current_row_redraw	confirmed	103636488	103639010	3	fa4139aea519a01459a00dc1f3307e9c6d8d016cf9794ee6eff0b8e0daf5389c	2684:067A	0	13	7	29
+technical.skill.down.current_row_redraw.008	8	current_row_redraw	confirmed	103639219	103640969	2	7daed43814b633951fa277cd01695574df6e05a9cb10523f1763e842b06be0ff	2684:06B4	0	13	7	35
