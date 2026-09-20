@@ -2,7 +2,8 @@
 
 狀態：DRAFT  
 前置：[第十一階段事件證據](../re/phase-11-first-manual-check-event-map.md)、
-[第十二階段題庫結構](../re/phase-12-manual-question-table-inventory.md)
+[第十二階段題庫結構](../re/phase-12-manual-question-table-inventory.md)、
+[第十三階段繁中來源對照](../re/phase-13-manual-source-crosswalk.md)
 
 ## 目的
 
@@ -30,9 +31,11 @@
 3. 錯答造成重新抽題時，舊段落必須在新題覆繪前失效；不得沿用上一題 metadata。
 4. `manual-questions.tsv` 的 39 筆只證明原版 metadata；現階段仍只登記一筆繁中段落，
    未命中其他題目是預期行為，不可用標題模糊比對猜測。
+5. `manual-source-crosswalk.tsv` 只證明來源定位；`strong-inference`、`unknown` 或未逐字校訂的
+   OCR 內容一律不可當成顯示譯文。
 
 ## READY 前置
 
-- 盤點並反向驗證所有可抽題的頁碼與標題，每筆有獨立中文掃描來源。
+- 逐字校訂可用中文段落；解決 3 筆強推論與 `Roll.` 缺頁，或為它們訂出明確的失敗即關閉政策。
 - 原版覆繪位置、分頁、輸入提示保留與錯答重抽都有同狀態 A/B 收據。
 - 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。

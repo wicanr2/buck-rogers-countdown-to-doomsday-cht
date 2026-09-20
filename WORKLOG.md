@@ -157,3 +157,15 @@
 - 由真實資料重生 `text/manual-questions.tsv` 並逐位元核對；第 32、38 筆分別吻合動態
   `Deimos Prison` 第十字與 `Technical Skills` 第二字。
 - 中文來源目前仍只有 `Deimos Prison` 唯一確認；其餘 38 筆維持未知，未模糊猜補。
+# 2026-09-20：第十三階段繁中手冊來源對照
+
+- 建立並完整讀回第十三階段 goal；確認第一個掃描序列是操作說明，題庫來源位於第二個
+  `SCAN0352_*` 冒險者日誌序列，未混用冊別。
+- 重用 `tvg-magazine-ocr:rapidocr-1.4.4` 在無網路一次性容器處理必要頁面；OCR JSON 只留在
+  `workplace/manual-ocr/` 作搜尋線索，正式文件只保存短小錨點及雜湊。
+- 建立 39 筆 `manual-source-crosswalk.tsv`：35 筆已證實、3 筆強推論、1 筆未知；每筆來源
+  均附 archive-order、掃描 SHA-256、印刷頁與中文錨點。
+- `Deimos Prison` 以條目 49 驗證，`Technical Skills` 以印刷頁 87 中英並列附錄表驗證；
+  `Roll.` 的下一頁不在素材中，沒有猜補。
+- 新增失敗即關閉對照驗證器及 4 項測試；連同既有題庫測試共 9 項通過，實際 manifest
+  雜湊與現有中文 catalog lint 亦通過。未逐字校訂的 OCR 段落沒有加入顯示 catalog。

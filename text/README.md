@@ -8,6 +8,15 @@
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源的段落，目前仍只有 `Deimos Prison` 一筆。
 
+`manual-source-crosswalk.tsv` 逐筆記錄題目對應掃描、archive-order、SHA-256、印刷頁、
+中文錨點與證據等級。它是來源索引，不是可直接顯示的譯文 catalog；OCR 未經逐字校訂的
+內容不得搬入 `manual.zh-TW.tsv`。可用下列命令搭配本機解壓清冊驗證：
+
+```sh
+python3 tools/manual_crosswalk.py text/manual-questions.tsv text/manual-source-crosswalk.tsv \
+  --manifest workplace/inventory/manual-extracted-manifest.json
+```
+
 ## 驗證與 prototype 字型
 
 以下命令必須在專案規範要求的隔離 Docker 容器內執行：

@@ -17,3 +17,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第十階段：繁中 catalog 與 GOLEMFNT 建置管線](phase-10-catalog-font-build-pipeline.md) | 已完成 | 建立 TSV lint、字元清單與可重生的 16×16 字型子集工具。 |
 | [第十一階段：第一條手冊查閱事件與中文段落映射](phase-11-first-manual-check-event-map.md) | 已完成 | 定位原版手冊查閱事件並建立第一條中文來源映射。 |
 | [第十二階段：手冊題庫結構與可抽題清冊](phase-12-manual-question-table-inventory.md) | 完成 | 證實原版題庫 schema、消費者與可抽題 metadata，再對回中文條目。 |
+| [第十三階段：39 筆手冊題目與繁中來源對照](phase-13-manual-source-crosswalk.md) | 完成 | 逐筆核對中文掃描來源、證據等級與可用繁中段落。 |
