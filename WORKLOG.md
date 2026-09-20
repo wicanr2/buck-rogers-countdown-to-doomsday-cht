@@ -424,3 +424,17 @@
   全部正式 packages test／vet 與相關 race detector 通過。
 - dosgolem 本機 commit 為 `41917c85007efe17154cb92422cba3fe6539ad88`，未推其遠端；未選
   2×／3×，未接 renderer，也未把原版不可見 selection 自行美化。
+
+# 2026-09-21：第三十四階段倍率中立的功能選單覆繪核心
+
+- 上一輪分類為有進展；重新載入復古遊戲、dosgolem 與規格閘門入口，建立並完整讀回第 34
+  階段 goal。倍率決策仍 pending，本輪只處理不依賴產品預設倍率的純核心。
+- 先建立 dosgolem READY spec 015，再新增 `apps/buckrogers.BuildMenuOverlay`；typed input
+  明示事件、譯文、色號、安全矩形、anchor、容量、overflow 與 scale，任一錯誤整批回 nil。
+- 診斷命令改用正式核心，移除原有 stamp 建構、ink 計算與 containment 第二套邏輯。
+- steady／Down × 2×／3× 使用第 32 階段相同真實輸入重生；四組繁中 PNG、base PNG 與
+  JSON 全部逐 byte 等於既有基線，四份 JSON SHA-256 未變。
+- dosgolem 排除既有非正式 `workplace/` 後，全部正式 packages test／vet，以及
+  `apps/buckrogers`／診斷命令 race detector 通過；spec 015 標為 CONFORMED。
+- dosgolem 本機 commit 為 `64b15779edc9d5be35e1acba0f854ba022008511`，未推其遠端；本輪
+  未接正常玩家路徑、未建立預設倍率，也未宣稱功能選單已玩家可見中文化。

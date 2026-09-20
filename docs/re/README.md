@@ -38,5 +38,6 @@
 | [第三十一階段反白 variant 執行期繁中請求](phase-31-selection-variant-runtime-requests.md) | 12-identity exact catalog、13-request 固定重播與舊九事件相容性 |
 | [第三十二階段功能選單覆繪倍率 A/B prototype](phase-32-menu-overlay-scale-ab-prototype.md) | 同一原版 framebuffer 的 2×／3× xlate 覆繪、幾何與決策收據 |
 | [第三十三階段種族選取列閃爍與色盤生命週期](phase-33-selection-blink-lifecycle.md) | 978 點 palette／row 取樣、黑底黑字選取狀態與無週期重畫證據 |
+| [第三十四階段倍率中立的功能選單覆繪核心](phase-34-scale-neutral-menu-overlay-core.md) | READY→CONFORMED 純核心、2×／3× 同 API 與四組逐位元回歸收據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

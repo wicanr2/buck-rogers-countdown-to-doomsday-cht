@@ -38,3 +38,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第三十一階段：反白 variant 的執行期繁中請求](phase-31-selection-variant-runtime-requests.md) | 完成 | 將已證實 selection identity 納入 exact catalog，閉合 13-request 路徑。 |
 | [第三十二階段：功能選單覆繪倍率 A/B prototype](phase-32-menu-overlay-scale-ab-prototype.md) | 完成 | 以同一原版 framebuffer 建立 2×／3× 繁中覆繪與幾何決策收據。 |
 | [第三十三階段：種族選取列閃爍與色盤生命週期](phase-33-selection-blink-lifecycle.md) | 完成 | 量測 selected row 的連續幀可見性、palette 與像素重畫機制。 |
+| [第三十四階段：倍率中立的功能選單覆繪核心](phase-34-scale-neutral-menu-overlay-core.md) | 完成 | 將已證實選單幾何移入明示倍率的正式純核心，不預先選定 2×／3×。 |

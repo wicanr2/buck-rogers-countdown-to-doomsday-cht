@@ -130,6 +130,17 @@ hash 直到窗口終點都不再變。故本窗口內 selected row 是穩定黑�
 或週期性 pixel redraw。忠實覆繪候選必須保留這項不可見 selection style；不得擅自換成
 白底、反色或現代游標。窗口外仍未知，正式 adapter 需用連續 runtime A/B 限定完成聲明。
 
+### 已符合的倍率中立純覆繪核心
+
+第三十四階段已把第 32 階段診斷命令中的 stamp 建構、ink rectangle 與 containment 規則，
+依 dosgolem `015-buck-rogers-menu-overlay-core` READY 子規格移入 `apps/buckrogers`。核心只接受
+明示倍率，沒有產品預設值；2×／3× 四組真實 framebuffer 重生的繁中 PNG、base PNG 與
+JSON 全部逐 byte 等於既有基線。診斷命令已改用正式核心，不再保存第二套相同行為。
+
+這只使 `DisplayRequest → typed overlay entry → xlate.Layer` 的純建構段達 CONFORMED；尚未
+把 runtime watcher、矩形失效與 frame lifecycle 接到玩家路徑，也沒有選定 2×／3×，因此
+本整體規格仍為 DRAFT。
+
 ## 未知與 READY 閘門
 
 下列項目未達 READY，故禁止 production 實作：
@@ -141,7 +152,8 @@ hash 直到窗口終點都不再變。故本窗口內 selected row 是穩定黑�
   驗證純觀測契約；第 28 階段 READY `MenuCatalog` 已把九筆真實收據精確解析成繁中
   `DisplayRequest`。第 29 階段又以 CONFORMED runtime watcher 在 guarded post-call 直接
   產生九筆 request；第 31 階段把 selection variants 擴充為正常 Down／Up 路徑的 13 筆
-  exact request。矩形失效與繁中 `Stamp` 尚未接成可丟棄 adapter，也沒有繁中 A/B 像素收據；
+  exact request。繁中 `Stamp` 的倍率中立純核心與離線 A/B 已完成，但矩形失效、frame
+  lifecycle 與 runtime watcher 尚未接成玩家路徑 adapter；
 - GNU Unifont 已證實可作有授權的 prototype 字型，且現有 8 筆譯文已由正式 TSV 決定性
   導出 24 個字模並經 `xlate.LoadFont` 回讀；正式採 2× 填滿格或 3× 置中仍待使用者決定，
   後續畫面的換行與 overflow 策略仍未知；

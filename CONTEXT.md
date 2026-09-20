@@ -138,8 +138,12 @@ clean-room remake／重寫引擎分支；後續只可在不改動原版 EXE、�
   黑色，selected row 完成後 pixels 與事件數都維持固定；取樣窗口內沒有 palette blink 或
   週期性 redraw。未來忠實 renderer 必須保留黑底黑字 selection style；dosgolem 本機
   commit 為 `41917c85007efe17154cb92422cba3fe6539ad88`，未推其遠端。
+- 第三十四階段已把離線診斷命令的 stamp／ink／containment 規則移入 dosgolem
+  `apps/buckrogers` 倍率中立純核心；呼叫端必須明示倍率，沒有產品預設值。steady／Down ×
+  2×／3× 的繁中 PNG、base PNG 與 JSON 全部逐 byte 等於第 32 階段基線；spec 015 已
+  CONFORMED，本機 dosgolem commit 為 `64b15779edc9d5be35e1acba0f854ba022008511`，未推其遠端。
 
-下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力及功能選單／手冊離線 A/B 都已
-具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
+下一個前沿決策仍是 2×／3× 輸出倍率；兩者 renderer 能力、倍率中立選單純核心及功能選單／
+手冊離線 A/B 都已具備。確認後才能把選定倍率寫入 READY 規格並接入正常玩家路徑 renderer，再做連續幀反白、
 轉場清除與同狀態 A/B。3 筆強推論與 `Roll.` 缺頁仍失敗即關閉；runtime 畫面與分頁互動
 驗證前，手冊與選單覆繪 DRAFT 不升為 READY。
