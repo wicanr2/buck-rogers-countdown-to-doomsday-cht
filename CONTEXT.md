@@ -457,3 +457,10 @@ format 不保留可用的來源／授權資訊。dosgolem spec 218 固定此停�
 active，2×／3×、invalid／nil、value isolation、vet 與 race 都通過，且 package 沒有 DOS／遊戲依賴。
 它沒有 backend、視窗、hit event、重繪、持久化或玩家可切換功能；那些和正式字型、手冊 runtime
 接線及 A/B 一樣仍未完成，dosgolem branch 依規範未推送。
+
+第九十階段已在同一未推送 dosgolem branch 的 `b0721c605619a9e689c934994408e009e9231ff9` 完成
+spec 220 CONFORMED 的 `ManualPresentationConsumer`。它只消費 `PresentationEvents()` 的 value snapshot：
+先完整比對已消費 prefix，逐筆 `Apply` 成功才提交 cursor；snapshot 縮短、歷史漂移與非法 event
+皆失敗即關閉，中段錯誤只保留成功 prefix。Docker 的 Go test、vet、race 均通過。沒有接 watcher
+callback、command／遊戲 loop、正式字型、frame／draw 或正常玩家 A/B；spec 005 仍為 DRAFT，不能宣稱
+手冊中文已顯示。

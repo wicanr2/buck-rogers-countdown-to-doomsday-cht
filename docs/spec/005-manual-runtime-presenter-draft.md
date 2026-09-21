@@ -7,7 +7,8 @@
 [第八十五階段整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)、
 [第八十六階段 lifecycle 接線](../re/phase-86-manual-presentation-lifecycle.md)、
 [第八十七階段多行 presenter 核心](../re/phase-87-manual-multiline-presenter-core.md)、
-[第八十八階段字型來源稽核](../re/phase-88-manual-formal-font-subset.md)。
+[第八十八階段字型來源稽核](../re/phase-88-manual-formal-font-subset.md)、
+[第九十階段 queue consumer 純核心](../re/phase-90-manual-presentation-queue-consumer.md)。
 
 ## 目的與邊界
 
@@ -30,12 +31,13 @@
 | 正式正文幾何與容量 | 已證實 | `text/manual-overlay-layout.tsv`、`tools/manual_overlay_layout.py`；22 筆正式譯文全部通過，最長 236 字。 |
 | 2×／3× RGBA 基礎 | 已證實 | `xlate.Layer` 與 `ScaleIndexedRGBA` 只讀 indexed framebuffer／palette，建立 RGBA；既有 runtime overlay constructor 已拒絕 2、3 以外的倍率。 |
 | 手冊多行純核心 | 已證實／CONFORMED（純核心） | dosgolem spec 217 與第 87 階段：唯一 layout loader、14 個背景＋14 個文字 stamp、2×／3×、generation state 與 synthetic RGBA containment；尚未接入正常玩家 runtime。 |
+| presentation queue consumer | 已證實／CONFORMED（純核心） | dosgolem spec 220 與第 90 階段：只接受 `PresentationEvents()` append-only value snapshot，先驗證完整已消費 prefix，僅在 `Apply` 成功後推進 cursor；未接 watcher callback、command 或遊戲 loop。 |
 | 字型需求清單 | 已證實 | 由正式 `manual.zh-TW.tsv` 重生的未追蹤清單有 691 個碼點，SHA-256 為 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`。 |
 | 正式字型候選 | 已證實為缺席／DRAFT | 第 88 階段與 dosgolem spec 218：本機沒有原始字型檔及完整授權告知；舊 GOLEMFNT 最大只有 81 glyph，不能當作 691 glyph 正式來源。 |
 | 可直接重用的手冊 presenter | 已證實為否 | `RuntimeMenuOverlay` 驗證的是單列 `MenuOverlayRects`／`TextEvent` 幾何；它沒有讀取手冊 layout TSV、14 行段落分格或手冊 lifecycle 接線。可重用的是其 RGBA／`xlate.Layer` 模式，不是該 adapter。 |
 
 上表的 dosgolem source 均固定為本機 branch `buck-rogers-cht-output-overlay` 的
-`3fc37fe2908c7247447e34dfe18ae3b44855b534`；位址為 dosgolem 實模式
+`b0721c605619a9e689c934994408e009e9231ff9`；位址為 dosgolem 實模式
 `segment:offset`，不是 IDA 線性位址。
 
 ## 擬定 presenter 契約
@@ -63,8 +65,9 @@
 active-context clear、catalog-hit request 皆帶 generation，且 accessor 回傳 value-copy。它只提供
 presentation metadata，沒有 machine write、鍵盤或 DOS input 路徑；receipt 也只投影 key／rune count。
 第八十七階段的 `RuntimeManualOverlay` 已將此 value 型別消費為純核心，並以兩個 layer 完成 14 行
-background／text 合成；它仍沒有 callback 或 command 接線。未來 runtime 必須消費這條 queue，不得
-倒回 `Observations()` 猜測世代。
+background／text 合成。第九十階段的 `ManualPresentationConsumer` 現可消費 append-only snapshot，
+以完整 prefix 一致性、成功後才前進的 cursor 餵入 presenter；它仍沒有 watcher callback、command 或
+遊戲 loop 接線。未來 runtime 必須由此 consumer 消費 queue，不得倒回 `Observations()` 猜測世代。
 
 此外，目前只有字元需求清單；第八十八階段已證實本機沒有正式字型檔的來源或實際授權告知，
 舊 GOLEMFNT 子集也不夠 691 glyph。正式字型檔的來源、授權告知與每個 glyph 的實際回讀仍須按
@@ -84,6 +87,7 @@ background／text 合成；它仍沒有 callback 或 command 接線。未來 run
 
 - [x] dosgolem spec 216 的 lifecycle queue、generation、begin／clear／request 負向測試及正常玩家 metadata 收據。
 - [x] dosgolem spec 217 的 layout loader、14 行 row-major builder、504／505 邊界、缺字與非法倍率的失敗即關閉純核心測試。
+- [x] dosgolem spec 220 的 append-only queue consumer、prefix 漂移／縮短拒絕、partial-failure cursor 與純核心測試。
 - [ ] 可重生且已授權的手冊 GOLEMFNT 子集，以及 691 glyph 的回讀驗證。
 - [ ] 正常第一題及答錯換題的 2×／3× same-state output 收據；request 前、catalog miss 與
   pending clear 時都不得畫中文。

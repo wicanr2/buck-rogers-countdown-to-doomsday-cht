@@ -1112,3 +1112,15 @@
 - spec 219 已 CONFORM（純核心）；dosgolem 本機提交為
   `9240c3b19ad5eaba7a44a2b9b4f4420fe1653a0a`，未推送。backend、hit event、面板狀態、持久化、
   實際 runtime 重繪及玩家路徑驗收仍為後續 DRAFT。
+
+## 2026-09-21 — 第九十階段：手冊 presentation queue consumer 純核心
+
+- dosgolem 新增 `ManualPresentationConsumer`，只接受 watcher 的 append-only event value snapshot；
+  先驗證完整已消費 prefix，再以 presenter `Apply` 成功作為 cursor 的唯一提交點。完整重播為 zero-op，
+  歷史 mutation／snapshot shrink 均在 presenter 前拒絕；中段失敗僅保留成功 prefix。
+- Docker 的 `go test ./apps/buckrogers`、`go vet ./apps/buckrogers` 與 race 檢查通過。合成測試涵蓋
+  begin→clear→request、replay、未知及無 begin request、partial failure、defensive-copy 與 nil；
+  consumer 唯一直接 import 是 `fmt`，沒有 machine、oracle、input、command 或 renderer 依賴。
+- spec 220 已 CONFORM（純核心）；dosgolem 本機提交為
+  `b0721c605619a9e689c934994408e009e9231ff9`，未推送。沒有接 watcher callback、遊戲 loop、正式字型、
+  frame／draw 或 normal-player A/B；手冊 runtime 中文顯示仍未完成。
