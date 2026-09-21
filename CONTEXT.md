@@ -421,3 +421,13 @@ y=120；四個 active-selection prototype 的原畫布與複製畫布 SHA-256 �
 runtime overlay，卻沒有可重用的視窗或 host pointer event loop；`cmd/probe` 的滑鼠只屬
 決定性 DOS 注入，不能充當 host UI。spec 004 因實際 backend 與 option click 套用語意未定而
 維持 DRAFT。下一個阻塞決策仍是點擊倍率後立即套用／保持面板／Apply；本輪未修改 dosgolem。
+
+使用者現已選擇 C：在 host 面板先選取 2×或3×，再按 Apply 提交；排除兩種 option 點擊即套用。
+Apply 後是否自動收合、實際 frontend backend、focus 與持久化仍未決定，不能從 C 推定。
+
+第八十五階段重跑 `phase12-before-question.state`，由 #266,399,999 至 #266,557,247 仍只在
+已證實的終端 `word?` guarded post-call 產生 generation 1 的
+`manual.page34.deimos_prison.word10` request。xlate／36×14 layout 足以支持獨立的 2×／3×
+手冊 RGBA presenter，但現有 `RuntimeMenuOverlay` 只是單列選單 adapter，`Watcher` 也沒有
+帶 generation 的 presentation lifecycle callback／queue。規格 005 因此維持 DRAFT；正式 691 glyph
+字型、lifecycle 接線與同狀態 A/B 都是下一個 READY gate。沒有修改 dosgolem production code。

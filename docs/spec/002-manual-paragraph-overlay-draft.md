@@ -14,7 +14,8 @@
 [第二十二階段整數倍率 renderer](../re/phase-22-dosgolem-xlate-integer-scale.md)、
 [第二十三階段事件 adapter](../re/phase-23-manual-event-adapter.md)、
 [第二十四階段 runtime watcher](../re/phase-24-manual-runtime-watcher.md)、
-[第六十階段 READY 前置稽核](../re/phase-60-manual-overlay-ready-prerequisite-audit.md)
+[第六十階段 READY 前置稽核](../re/phase-60-manual-overlay-ready-prerequisite-audit.md)、
+[第八十五階段 presenter 整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)
 
 ## 目的
 
@@ -72,6 +73,13 @@ dosgolem `apps/buckrogers` 實作未接線純核心。正式 TSV 正向／未命
 單頁正文。故目前正式 catalog 不需要新增分頁按鍵或頁尾提示；未來若新增超過單頁的譯文，
 須另開 DRAFT 規格，不能默認截斷、送鍵或接管原版輸入。
 
+第八十五階段以目前 dosgolem revision 重跑第十一階段正常玩家 state，仍在完整 guarded
+`word?` 後得到唯一 answer-free request。`xlate.Layer` 已足以對同一 raw framebuffer／palette
+生成 2×／3× RGBA，但現有 `RuntimeMenuOverlay` 只適用單列選單；watcher 也尚未輸出帶 generation
+的 presentation lifecycle。手冊 presenter 的 14 行 builder、typed begin／clear／request 接線與
+691 glyph 正式字型因此另列為 [規格 005](005-manual-runtime-presenter-draft.md) 的 DRAFT gate，
+不得因既有 menu overlay 能畫中文就宣稱手冊 renderer 已完成。
+
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
@@ -107,7 +115,8 @@ dosgolem `apps/buckrogers` 實作未接線純核心。正式 TSV 正向／未命
   證實整框 prototype 會遮住完成原版驗證所需的題目 metadata；建議採保留方案，其正文容量
   為 36×14＝504 字，現有 22 筆仍全數單頁。
 - [x] 使用者確認 2×／3× 均為正式支援模式，且可在遊戲執行中切換。
-- [ ] 第八十一階段確認 host-only 切換入口、啟動倍率與持久化方式；控制不得送入 DOS。
+- [x] 使用者確認 host-only 頂端按鈕開啟面板，倍率採先選取、再按套用（C）；控制不得送入 DOS。
+- [ ] 規格 005 的手冊 presentation lifecycle、14 行 renderer、正式字型與 normal-path A/B 仍須 READY。
 
 ## CONFORMED 驗收（實作後收據）
 

@@ -89,3 +89,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第八十二階段：host 設定面板控制列視覺 prototype](phase-82-host-settings-panel-visual-prototype.md) | 完成 | 由視窗頂端按鈕開啟設定面板，已驗證不侵入原版畫布的 host UI。 |
 | [第八十三階段：手冊保留原題的 504 字容量契約](phase-83-manual-preserved-prompt-capacity-contract.md) | 完成 | 將已確認的 36×14 手冊正文落成正式 catalog／幾何驗證。 |
 | [第八十四階段：dosgolem host 前端能力盤點](phase-84-dosgolem-host-frontend-capability-audit.md) | 完成 | 盤點可重用 host 前端能力與通用／遊戲 adapter 邊界，不預設點選套用語意。 |
+| [第八十五階段：手冊繁中 presenter 接線 READY 前稽核](phase-85-manual-presenter-integration-readiness-audit.md) | 完成 | 固定手冊 request、lifecycle、字型需求與 xlate 能力，列出 presenter READY 的 typed lifecycle 與字型缺口。 |

@@ -22,8 +22,9 @@
 
 ## 仍為 DRAFT 的整合
 
-- 2×／3× 產品倍率選擇、字模偏移、手冊安全矩形與分頁控制。
-- 中文 overlay 的建立、clear／新 generation 移除與正常玩家路徑同狀態 A/B。
+- 2×／3× 產品倍率均已確認，host 選擇採先選取再按套用；其 backend／持久化仍由規格 004 保持 DRAFT。
+- 中文 overlay 的建立、帶 generation 的 begin／clear presentation lifecycle、14 行段落 renderer、
+  正式字型與正常玩家路徑同狀態 A/B（見規格 005）。
 - 玩家翻頁輸入與原版答題輸入如何共存；不得先假設按鍵語意。
 
 在上述項目各自取得證據並升為 READY 前，不得把純核心接入正式 runtime。核心單元測試通過

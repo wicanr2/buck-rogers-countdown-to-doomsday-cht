@@ -1058,3 +1058,13 @@
   生成 2×／3× RGBA，但 runtime scale 是 constructor-only；DOS 模擬滑鼠維持對拍輸入，不混入 host UI。
 - 新增 spec 004 DRAFT，將通用 presenter、host hit-test、輸入隔離與重繪責任獨立於
   `apps/buckrogers/`；option click 套用語意與 backend 選擇保持未定，沒有實作 dosgolem。
+
+## 2026-09-21 — 第八十五階段：手冊繁中 presenter 整合就緒稽核
+
+- 使用者確認倍率操作採 C：option 只選取，Apply 才提交 2×／3×；面板收合與持久化沒有自行推定。
+- 以目前 `8bfd5b4e5802f65d428d3fb439196b3c571c002b` 重跑正常玩家手冊 state，固定 request 與
+  第 24 階段一致，未注入按鍵、未輸出答案或原版全文。
+- 從正式 22 筆手冊譯文重生 691 碼點字型需求清單；它只是被忽略的研究輸出，尚非正式字型。
+- 建立 spec 005 DRAFT：xlate 可提供只讀 RGBA／逐格失效，但需新增手冊專屬的 14 行 builder 與
+  帶 generation 的 begin／clear／request presentation lifecycle；既有選單 presenter 不可直接套用。
+- 沒有變更 dosgolem production code、DOS 輸入、原版答案驗證、存檔或遊戲資料。

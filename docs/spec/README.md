@@ -9,3 +9,4 @@
 | [手冊查詢繁中段落覆繪](002-manual-paragraph-overlay-draft.md) | DRAFT | 依原版題目 metadata 顯示對應中文段落，保留原版答案判定。 |
 | [手冊事件 adapter 整合邊界](003-manual-event-adapter.md) | DRAFT | 指向 dosgolem READY 純核心，並隔離尚未獲准的 hook／renderer 整合。 |
 | [dosgolem host 前端與執行期倍率](004-dosgolem-host-frontend-draft.md) | DRAFT | 將 host canvas、輸入隔離、重繪與未決倍率操作語意分開。 |
+| [手冊繁中輸出端 presenter 整合](005-manual-runtime-presenter-draft.md) | DRAFT | 將 typed 手冊 request 接到 14 行 RGBA 段落，並明列 lifecycle 與字型 READY 缺口。 |

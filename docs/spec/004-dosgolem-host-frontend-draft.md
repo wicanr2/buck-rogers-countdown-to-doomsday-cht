@@ -42,18 +42,21 @@ Buck Rogers 的 host 控制列與面板必須將完整 320×200 畫布下推；�
 5. API 與 state 只可表達通用的 output scale、canvas、host chrome、host hit event 與重繪；
    Buck Rogers 的題目、翻譯鍵、矩形、手冊答案與遊戲座標不可出現在通用層。
 
-## 未決前沿與不做
+## 已確認操作語意與未決前沿
 
-- 使用者尚未選擇 option 點擊後「立即套用並關閉」、「立即套用且保持開啟」或「選取後 Apply」；
-  DRAFT 不得替任一方案設定 transition、按鈕或持久化。
-- 實際視窗 backend、平台支援、host 文案／字型、鍵盤焦點與設定跨重啟持久化均為未知；不是以
+使用者已選擇 option 點擊後「先選取、再按 Apply」（C），排除兩種立即套用。DRAFT host state
+至少區分 `activeScale` 與暫存 `selectedScale`：點選 option 只能改後者；只有 Apply 可將它提交為
+新的 output scale，並以同一 raw input、palette 與 active layer 重繪。這個確認不推定 Apply 後是否
+自動收合面板，也不推定跨重啟持久化。
+
+- 實際視窗 backend、平台支援、host 文案／字型、鍵盤焦點、Apply 後面板狀態與設定跨重啟持久化均為未知；不是以
   headless CLI 或 DOS mouse injection 推定。
 - 不改原版 EXE、DOS 輸入、原版手冊驗證、存檔結構、遊戲規則或 adapter 的 exact output identity。
 
 ## READY 前置與未來驗收
 
-進入實作前，必須先由使用者選定 option click 的套用語意，並以該選擇補齊 backend、focus 與
-session／持久化範圍。READY 後至少驗證：
+進入實作前，必須依選定的 C 語意補齊 backend、focus、Apply 後面板狀態與 session／持久化範圍。
+READY 後至少驗證：
 
 1. 2×與3×的 host canvas 與控制列幾何；畫布內容逐 byte 等於同一 raw input 的輸出投影。
 2. 每個 host hit event 對 DOS mouse state、BIOS key queue、IRQ、raw framebuffer、DOS memory
