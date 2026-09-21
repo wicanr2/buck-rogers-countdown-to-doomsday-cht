@@ -96,3 +96,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第八十九階段：host 倍率預選與 Apply 純核心](phase-89-host-scale-selection-apply-core.md) | 完成（純核心） | 依 C 建立 generic selectedScale／activeScale core，不接前端或 DOS。 |
 | [第九十階段：手冊 presentation queue consumer 純核心](phase-90-manual-presentation-queue-consumer.md) | 完成（純核心） | 將 append-only lifecycle value queue 安全交給 presenter，不接 command 或 DOS。 |
 | [第九十一階段：手冊 watcher snapshot bridge 純核心](phase-91-manual-watcher-snapshot-bridge.md) | 完成（純核心） | 將 watcher defensive snapshot 交給 consumer，不接 command、字型或 DOS。 |
+| [第九十二階段：正式字型候選 manifest 驗證補強](phase-92-formal-font-candidate-manifest-validation.md) | 完成（候選審查工具） | 建立候選來源／授權／coverage 的 fail-closed 審查，不採用或散布字型。 |

@@ -117,8 +117,14 @@ python3 tools/catalog_font.py chars text/menu.zh-TW.tsv --out font/characters.tx
 python3 tools/catalog_font.py build text/menu.zh-TW.tsv \
   --font /inputs/unifont.hex.gz \
   --out workplace/font/menu-unifont16.golemfnt
+python3 tools/catalog_font.py validate-candidate text/manual.zh-TW.tsv \
+  --manifest workplace/phaseNN/input/candidate-manifest.json \
+  --source workplace/phaseNN/input/candidate.hex.gz \
+  --license workplace/phaseNN/input/COPYING
 ```
 
 `lint` 失敗即關閉地驗證 UTF-8、精確標頭及欄數、唯一 key、非空譯文、來源枚舉、控制／
 格式字元與 NFC。`chars` 依 Unicode 碼點排序，每行固定為 `U+XXXX<TAB>字元`；字型建置若
 缺任一字模、遇到非 8×16／16×16 字模或格式錯誤便中止。
+`validate-candidate` 不建置字型；它只驗證被忽略工作區內的 strict manifest、實際來源／授權文字雜湊、
+既有 Unifont parser coverage 與本機驗證／發行未定狀態，stdout 不回顯 license、notice 或 glyph bytes。

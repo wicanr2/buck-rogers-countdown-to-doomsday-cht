@@ -1,7 +1,7 @@
 # 規格索引
 
-只有標為 READY 的規格可以授權正式程式路徑。本目錄目前僅有 DRAFT；它們保存已知證據、
-未知與驗收需求，不是覆繪實作的許可。
+只有標為 READY 的規格可以授權正式程式路徑。本目錄包含尚待原版／玩家路徑證據的 DRAFT，以及
+不改玩家行為的候選審查工具收據；兩者都不能單獨宣稱覆繪已完成。
 
 | 規格 | 狀態 | 範圍 |
 | --- | --- | --- |
@@ -10,3 +10,4 @@
 | [手冊事件 adapter 整合邊界](003-manual-event-adapter.md) | DRAFT | 指向 dosgolem READY 純核心，並隔離尚未獲准的 hook／renderer 整合。 |
 | [dosgolem host 前端與執行期倍率](004-dosgolem-host-frontend-draft.md) | DRAFT | 將 host canvas、輸入隔離、重繪與未決倍率操作語意分開。 |
 | [手冊繁中輸出端 presenter 整合](005-manual-runtime-presenter-draft.md) | DRAFT | 將 typed 手冊 request 接到 14 行 RGBA 段落，並明列 lifecycle 與字型 READY 缺口。 |
+| [手冊正式字型候選 manifest 驗證器](006-formal-font-candidate-manifest-validator.md) | CONFORMED（候選審查工具） | 審查本機候選的來源、授權 metadata 與 coverage；不採用、建置或散布字型。 |

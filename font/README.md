@@ -11,3 +11,16 @@ SIL Open Font License 1.1 條款，仍須連同實際採用版本重新核對完
 採用或可散布的聲明。
 
 建置及驗證命令見 [`text/README.md`](../text/README.md)。
+
+使用者提供候選與完整授權文字後，必須先在 Docker 內執行候選審查：
+
+```sh
+python3 tools/catalog_font.py validate-candidate text/manual.zh-TW.tsv \
+  --manifest workplace/phaseNN/input/candidate-manifest.json \
+  --source workplace/phaseNN/input/candidate.hex.gz \
+  --license workplace/phaseNN/input/COPYING
+```
+
+命令只輸出檔名、SHA-256、format／version 與 glyph count metadata，不寫入 GOLEMFNT。它要求 strict
+manifest、來源與授權文字雜湊、691 glyph coverage、`local-validation-only` 與 `undecided` 發行狀態；
+通過只代表候選可進入後續權利審查，不代表採用、嵌入或可散布。

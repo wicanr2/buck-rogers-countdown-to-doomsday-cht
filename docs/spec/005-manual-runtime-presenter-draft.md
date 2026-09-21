@@ -9,7 +9,8 @@
 [第八十七階段多行 presenter 核心](../re/phase-87-manual-multiline-presenter-core.md)、
 [第八十八階段字型來源稽核](../re/phase-88-manual-formal-font-subset.md)、
 [第九十階段 queue consumer 純核心](../re/phase-90-manual-presentation-queue-consumer.md)、
-[第九十一階段 watcher snapshot bridge 純核心](../re/phase-91-manual-watcher-snapshot-bridge.md)。
+[第九十一階段 watcher snapshot bridge 純核心](../re/phase-91-manual-watcher-snapshot-bridge.md)、
+[第九十二階段候選 manifest 驗證](006-formal-font-candidate-manifest-validator.md)。
 
 ## 目的與邊界
 
@@ -35,11 +36,12 @@
 | presentation queue consumer | 已證實／CONFORMED（純核心） | dosgolem spec 220 與第 90 階段：只接受 `PresentationEvents()` append-only value snapshot，先驗證完整已消費 prefix，僅在 `Apply` 成功後推進 cursor；未接 watcher callback、command 或遊戲 loop。 |
 | watcher snapshot bridge | 已證實／CONFORMED（純核心） | dosgolem spec 221 與第 91 階段：只將 `PresentationEvents()` defensive snapshot 轉送給 consumer，沒有第二份 cursor；未接 command、frame loop 或玩家畫面。 |
 | 字型需求清單 | 已證實 | 由正式 `manual.zh-TW.tsv` 重生的未追蹤清單有 691 個碼點，SHA-256 為 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`。 |
+| 候選 manifest 驗證器 | 已證實／CONFORMED（候選審查工具） | project spec 006 的 `validate-candidate` 以 strict manifest 驗證 source／license SHA、既有 parser coverage 與 character-list SHA，無寫入字型路徑；它不採用候選或判定可散布。 |
 | 正式字型候選 | 已證實為缺席／DRAFT | 第 88 階段與 dosgolem spec 218：本機沒有原始字型檔及完整授權告知；舊 GOLEMFNT 最大只有 81 glyph，不能當作 691 glyph 正式來源。 |
 | 可直接重用的手冊 presenter | 已證實為否 | `RuntimeMenuOverlay` 驗證的是單列 `MenuOverlayRects`／`TextEvent` 幾何；它沒有讀取手冊 layout TSV、14 行段落分格或手冊 lifecycle 接線。可重用的是其 RGBA／`xlate.Layer` 模式，不是該 adapter。 |
 
 上表的 dosgolem source 均固定為本機 branch `buck-rogers-cht-output-overlay` 的
-`bac3f3fafc3cc40b78eee66fdb1f756f21509e53`；位址為 dosgolem 實模式
+`a4a87aad48607ea6ff6e4646de1292f5caaeade9`；位址為 dosgolem 實模式
 `segment:offset`，不是 IDA 線性位址。
 
 ## 擬定 presenter 契約
@@ -75,6 +77,9 @@ bridge／consumer 路徑消費 queue，不得倒回 `Observations()` 猜測世�
 此外，目前只有字元需求清單；第八十八階段已證實本機沒有正式字型檔的來源或實際授權告知，
 舊 GOLEMFNT 子集也不夠 691 glyph。正式字型檔的來源、授權告知與每個 glyph 的實際回讀仍須按
 `font/README.md` 與 dosgolem spec 218 完成。不能以 fixture、缺字回呼或舊子集的部分畫面當作可接受輸出。
+第九十二階段的 `validate-candidate` 現可在候選到位後機械驗證 strict manifest、source／license hash 與
+691 glyph coverage，但未建立 candidate manifest，也沒有 candidate source 或完整授權文字；故它不改變
+字型 DRAFT、權利決策或 runtime 接線停止線。
 
 ## 與 host 倍率控制的關係
 
@@ -92,6 +97,7 @@ bridge／consumer 路徑消費 queue，不得倒回 `Observations()` 猜測世�
 - [x] dosgolem spec 217 的 layout loader、14 行 row-major builder、504／505 邊界、缺字與非法倍率的失敗即關閉純核心測試。
 - [x] dosgolem spec 220 的 append-only queue consumer、prefix 漂移／縮短拒絕、partial-failure cursor 與純核心測試。
 - [x] dosgolem spec 221 的 watcher snapshot bridge、單一轉送、consumer error propagation 與純核心測試。
+- [x] project spec 006 的候選 manifest、source／license hash、coverage 與無寫入驗證工具測試。
 - [ ] 可重生且已授權的手冊 GOLEMFNT 子集，以及 691 glyph 的回讀驗證。
 - [ ] 正常第一題及答錯換題的 2×／3× same-state output 收據；request 前、catalog miss 與
   pending clear 時都不得畫中文。

@@ -470,3 +470,11 @@ spec 221 CONFORMED 的 `ManualPresentationBridge`。它只取得 watcher 的 def
 `PresentationEvents()` snapshot，原樣交給 consumer；不保存第二份 cursor、不讀 `Observations()`、不吞掉
 consumer error。Docker 的 Go test、vet、race 均通過，並更正 spec 220 頂端狀態為 CONFORMED。沒有接
 command、遊戲 loop、正式字型、frame／draw 或正常玩家 A/B；spec 005 仍是 DRAFT，手冊中文尚未顯示。
+
+第九十二階段已完成 project spec 006 CONFORMED 的候選審查工具。`tools/catalog_font.py
+validate-candidate` 只讀 manifest、候選 source、完整授權文字與 catalog，驗證 strict schema、basename、
+SHA-256、非空 UTF-8 license、既有 Unifont parser coverage 與 character-list SHA，且 stdout 不回顯
+notice／license／glyph bytes、不寫 GOLEMFNT。158 項 Python 測試含正式 691 glyph synthetic coverage
+通過；synthetic data 不是候選字型。dosgolem 本機 `a4a87aad48607ea6ff6e4646de1292f5caaeade9` 僅回填
+spec 218 的工具邊界，該 spec 仍 DRAFT：本機仍沒有 candidate source／完整授權文字，不能進入字型 build、
+手冊 runtime 或正常玩家 A/B。

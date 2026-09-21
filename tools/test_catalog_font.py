@@ -1,4 +1,8 @@
+import contextlib
+import hashlib
 import gzip
+import io
+import json
 import struct
 import tempfile
 import unittest
@@ -10,10 +14,13 @@ from catalog_font import (
     MAGIC,
     SOURCE_UNIFONT,
     build_golemfnt,
+    candidate_validation_json,
     catalog_codepoints,
     character_list_bytes,
+    main,
     read_catalog,
     read_catalogs,
+    validate_font_candidate,
 )
 
 
@@ -29,6 +36,31 @@ class CatalogFontTest(unittest.TestCase):
         path = self.root / "catalog.tsv"
         path.write_bytes(content)
         return path
+
+    def write_candidate(self, entries: list[Entry], glyphs: list[int] | None = None) -> tuple[Path, Path, Path, dict[str, object]]:
+        glyphs = glyphs if glyphs is not None else catalog_codepoints(entries)
+        source = self.root / "candidate.hex"
+        source.write_text("".join(f"{codepoint:04X}:{'AA' * 32}\n" for codepoint in glyphs), encoding="ascii")
+        license_path = self.root / "COPYING"
+        license_path.write_text("Synthetic complete license text.\n", encoding="utf-8")
+        manifest = self.root / "candidate-manifest.json"
+        data: dict[str, object] = {
+            "schema": "buck-rogers-manual-font-candidate/v1",
+            "source_filename": source.name,
+            "source_version": "synthetic-v1",
+            "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+            "source_format": "unifont-hex",
+            "conversion_rule": "unifont-8x16-or-16x16-to-golemfnt-16x16",
+            "license_filename": license_path.name,
+            "license_sha256": hashlib.sha256(license_path.read_bytes()).hexdigest(),
+            "attribution_notice": "synthetic attribution",
+            "embedding_notice": "synthetic embedding notice",
+            "character_list_sha256": hashlib.sha256(character_list_bytes(entries)).hexdigest(),
+            "validation_scope": "local-validation-only",
+            "distribution_status": "undecided",
+        }
+        manifest.write_text(json.dumps(data), encoding="utf-8")
+        return manifest, source, license_path, data
 
     def test_catalog_accepts_valid_utf8_and_sorts_unique_characters(self):
         path = self.write_catalog(
@@ -109,6 +141,87 @@ class CatalogFontTest(unittest.TestCase):
         unsupported.write_text("7532:" + "00" * 64 + "\n", encoding="ascii")
         with self.assertRaises(CatalogError):
             build_golemfnt(entries, unsupported)
+
+    def test_candidate_manifest_validates_metadata_without_building_or_leaking_input(self):
+        entries = [Entry("a", "A甲", "runtime")]
+        manifest, source, license_path, _ = self.write_candidate(entries)
+        validation = validate_font_candidate(entries, manifest, source, license_path)
+        metadata = json.loads(candidate_validation_json(validation))
+        self.assertEqual(metadata["glyphs"], {"found": 2, "required": 2})
+        self.assertEqual(metadata["source"]["filename"], source.name)
+        self.assertEqual(metadata["license"]["filename"], license_path.name)
+        encoded = candidate_validation_json(validation)
+        self.assertNotIn("synthetic attribution", encoded)
+        self.assertNotIn("Synthetic complete license text", encoded)
+        self.assertNotIn("AA" * 16, encoded)
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            self.assertEqual(
+                main([
+                    "validate-candidate", "--manifest", str(manifest), "--source", str(source), "--license", str(license_path),
+                    str(self.write_catalog("key\ttranslation\tsource\na\tA甲\truntime\n".encode("utf-8"))),
+                ]),
+                0,
+            )
+        self.assertEqual(json.loads(output.getvalue()), metadata)
+        self.assertFalse((self.root / "out.golemfnt").exists())
+
+    def test_candidate_manifest_covers_the_formal_manual_catalog_with_synthetic_glyphs(self):
+        manual_catalog = Path(__file__).resolve().parents[1] / "text" / "manual.zh-TW.tsv"
+        entries = read_catalog(manual_catalog)
+        manifest, source, license_path, _ = self.write_candidate(entries)
+        validation = validate_font_candidate(entries, manifest, source, license_path)
+        self.assertEqual(validation.required_glyphs, 691)
+        self.assertEqual(validation.found_glyphs, 691)
+        self.assertEqual(
+            validation.character_list_sha256,
+            "dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f",
+        )
+        self.assertFalse((self.root / "manual-synthetic.golemfnt").exists())
+
+    def test_candidate_manifest_rejects_schema_hash_and_policy_drift(self):
+        entries = [Entry("a", "甲", "runtime")]
+        manifest, source, license_path, data = self.write_candidate(entries)
+        cases: list[tuple[str, dict[str, object]]] = []
+        missing = dict(data)
+        del missing["source_version"]
+        cases.append(("missing", missing))
+        unknown = dict(data)
+        unknown["unexpected"] = "x"
+        cases.append(("unknown", unknown))
+        for field, value in (
+            ("source_sha256", "0" * 64),
+            ("license_sha256", "1" * 64),
+            ("character_list_sha256", "2" * 64),
+            ("source_filename", "nested/candidate.hex"),
+            ("source_format", "bdf"),
+            ("conversion_rule", "other"),
+            ("validation_scope", "adopted"),
+            ("distribution_status", "distributable"),
+        ):
+            drift = dict(data)
+            drift[field] = value
+            cases.append((field, drift))
+        for name, content in cases:
+            with self.subTest(name=name):
+                manifest.write_text(json.dumps(content), encoding="utf-8")
+                with self.assertRaises(CatalogError):
+                    validate_font_candidate(entries, manifest, source, license_path)
+
+    def test_candidate_manifest_rejects_empty_license_missing_source_and_coverage_gap(self):
+        entries = [Entry("a", "A甲", "runtime")]
+        manifest, source, license_path, data = self.write_candidate(entries)
+        license_path.write_text(" \n", encoding="utf-8")
+        data["license_sha256"] = hashlib.sha256(license_path.read_bytes()).hexdigest()
+        manifest.write_text(json.dumps(data), encoding="utf-8")
+        with self.assertRaises(CatalogError):
+            validate_font_candidate(entries, manifest, source, license_path)
+
+        manifest, source, license_path, _ = self.write_candidate(entries, [ord("A")])
+        with self.assertRaises(CatalogError):
+            validate_font_candidate(entries, manifest, self.root / "missing.hex", license_path)
+        with self.assertRaises(CatalogError):
+            validate_font_candidate(entries, manifest, source, license_path)
 
 
 if __name__ == "__main__":

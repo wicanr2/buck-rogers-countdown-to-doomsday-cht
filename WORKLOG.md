@@ -1136,3 +1136,15 @@
 - spec 221 已 CONFORM（純核心）；dosgolem 本機提交為
   `bac3f3fafc3cc40b78eee66fdb1f756f21509e53`，未推送。同時修正 spec 220 頂端狀態。沒有 command、
   遊戲 loop、正式字型、frame／draw 或 normal-player A/B；手冊 runtime 中文顯示仍未完成。
+
+## 2026-09-21 — 第九十二階段：正式字型候選 manifest 驗證補強
+
+- `tools/catalog_font.py` 新增 `validate-candidate`：strict JSON manifest 必須與實際 source／license
+  basename、SHA-256、非空 UTF-8 授權文字、既有 Unifont parser glyph coverage 與 catalog character-list
+  SHA 一致；未知欄、policy 漂移、格式／conversion 不符、缺輸入、空 license 與缺 glyph 都失敗即關閉。
+- 成功只以 JSON 輸出 filename、SHA、format／version、scope／distribution 與 found／required count，不
+  回顯 notice、license 或 glyph bytes，且命令沒有字型 output path。158 項 Python 測試、正式 691 glyph
+  synthetic coverage、504 字版面與 catalog lint 都通過；沒有 candidate 或 GOLEMFNT 產物。
+- project spec 006 已 CONFORM（候選審查工具）；dosgolem 本機提交
+  `a4a87aad48607ea6ff6e4646de1292f5caaeade9` 僅回填 spec 218 邊界，未推送。字型來源／完整授權文字、
+  採用、build、runtime 與 normal-player A/B 仍未完成。

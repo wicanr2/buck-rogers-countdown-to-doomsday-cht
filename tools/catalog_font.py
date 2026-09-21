@@ -6,7 +6,10 @@ from __future__ import annotations
 import argparse
 import csv
 import gzip
+import hashlib
 import io
+import json
+import re
 import struct
 import sys
 import unicodedata
@@ -20,6 +23,29 @@ MAGIC = b"GOLEMFNT"
 WIDTH = 16
 HEIGHT = 16
 SOURCE_UNIFONT = 1
+CANDIDATE_SCHEMA = "buck-rogers-manual-font-candidate/v1"
+CANDIDATE_SOURCE_FORMAT = "unifont-hex"
+CANDIDATE_CONVERSION_RULE = "unifont-8x16-or-16x16-to-golemfnt-16x16"
+CANDIDATE_VALIDATION_SCOPE = "local-validation-only"
+CANDIDATE_DISTRIBUTION_STATUS = "undecided"
+CANDIDATE_FIELDS = frozenset(
+    {
+        "schema",
+        "source_filename",
+        "source_version",
+        "source_sha256",
+        "source_format",
+        "conversion_rule",
+        "license_filename",
+        "license_sha256",
+        "attribution_notice",
+        "embedding_notice",
+        "character_list_sha256",
+        "validation_scope",
+        "distribution_status",
+    }
+)
+SHA256_RE = re.compile(r"[0-9a-f]{64}\Z")
 
 
 class CatalogError(ValueError):
@@ -31,6 +57,44 @@ class Entry:
     key: str
     translation: str
     source: str
+
+
+@dataclass(frozen=True)
+class CandidateManifest:
+    source_filename: str
+    source_version: str
+    source_sha256: str
+    license_filename: str
+    license_sha256: str
+    character_list_sha256: str
+
+
+@dataclass(frozen=True)
+class CandidateValidation:
+    source_filename: str
+    source_version: str
+    source_sha256: str
+    license_filename: str
+    license_sha256: str
+    character_list_sha256: str
+    required_glyphs: int
+    found_glyphs: int
+
+    def metadata(self) -> dict[str, object]:
+        return {
+            "character_list_sha256": self.character_list_sha256,
+            "distribution_status": CANDIDATE_DISTRIBUTION_STATUS,
+            "glyphs": {"found": self.found_glyphs, "required": self.required_glyphs},
+            "license": {"filename": self.license_filename, "sha256": self.license_sha256},
+            "schema": CANDIDATE_SCHEMA,
+            "source": {
+                "filename": self.source_filename,
+                "format": CANDIDATE_SOURCE_FORMAT,
+                "sha256": self.source_sha256,
+                "version": self.source_version,
+            },
+            "validation_scope": CANDIDATE_VALIDATION_SCOPE,
+        }
 
 
 def read_catalog(path: Path) -> list[Entry]:
@@ -147,6 +211,143 @@ def build_golemfnt(entries: list[Entry], unifont_path: Path) -> bytes:
     return bytes(output)
 
 
+def _sha256(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _read_regular_file(path: Path, label: str) -> bytes:
+    if not path.is_file():
+        raise CatalogError(f"{path}: {label} 必須是一般檔案")
+    try:
+        data = path.read_bytes()
+    except OSError as exc:
+        raise CatalogError(f"{path}: 無法讀取 {label}") from exc
+    if not data:
+        raise CatalogError(f"{path}: {label} 不得為空")
+    return data
+
+
+def _strict_json_object(path: Path) -> dict[str, object]:
+    data = _read_regular_file(path, "candidate manifest")
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise CatalogError(f"{path}: candidate manifest 必須是 UTF-8") from exc
+    if text.startswith("\ufeff"):
+        raise CatalogError(f"{path}: candidate manifest 不允許 UTF-8 BOM")
+
+    def no_duplicate_keys(pairs: list[tuple[str, object]]) -> dict[str, object]:
+        out: dict[str, object] = {}
+        for key, value in pairs:
+            if key in out:
+                raise CatalogError(f"{path}: candidate manifest 重複欄位 {key}")
+            out[key] = value
+        return out
+
+    try:
+        value = json.loads(text, object_pairs_hook=no_duplicate_keys)
+    except json.JSONDecodeError as exc:
+        raise CatalogError(f"{path}: candidate manifest 不是有效 JSON") from exc
+    if not isinstance(value, dict):
+        raise CatalogError(f"{path}: candidate manifest 必須是 object")
+    return value
+
+
+def _manifest_text(data: dict[str, object], field: str) -> str:
+    value = data[field]
+    if not isinstance(value, str) or not value or value.strip() != value:
+        raise CatalogError(f"candidate manifest: {field} 必須是非空字串")
+    if "\n" in value or "\r" in value or "\x00" in value:
+        raise CatalogError(f"candidate manifest: {field} 不得含換行或 NUL")
+    return value
+
+
+def _manifest_filename(data: dict[str, object], field: str) -> str:
+    value = _manifest_text(data, field)
+    if value in {".", ".."} or "/" in value or "\\" in value or Path(value).name != value:
+        raise CatalogError(f"candidate manifest: {field} 必須是 basename")
+    return value
+
+
+def _manifest_sha256(data: dict[str, object], field: str) -> str:
+    value = _manifest_text(data, field)
+    if not SHA256_RE.fullmatch(value):
+        raise CatalogError(f"candidate manifest: {field} 必須是 64 個小寫十六進位字元")
+    return value
+
+
+def read_candidate_manifest(path: Path) -> CandidateManifest:
+    data = _strict_json_object(path)
+    fields = frozenset(data)
+    if fields != CANDIDATE_FIELDS:
+        missing = sorted(CANDIDATE_FIELDS - fields)
+        unknown = sorted(fields - CANDIDATE_FIELDS)
+        detail = []
+        if missing:
+            detail.append(f"缺欄 {','.join(missing)}")
+        if unknown:
+            detail.append(f"未知欄 {','.join(unknown)}")
+        raise CatalogError(f"{path}: candidate manifest schema 不符：{'；'.join(detail)}")
+    if _manifest_text(data, "schema") != CANDIDATE_SCHEMA:
+        raise CatalogError(f"{path}: candidate manifest schema 不支援")
+    if _manifest_text(data, "source_format") != CANDIDATE_SOURCE_FORMAT:
+        raise CatalogError(f"{path}: candidate source_format 不支援")
+    if _manifest_text(data, "conversion_rule") != CANDIDATE_CONVERSION_RULE:
+        raise CatalogError(f"{path}: candidate conversion_rule 不支援")
+    if _manifest_text(data, "validation_scope") != CANDIDATE_VALIDATION_SCOPE:
+        raise CatalogError(f"{path}: candidate validation_scope 必須是本機驗證")
+    if _manifest_text(data, "distribution_status") != CANDIDATE_DISTRIBUTION_STATUS:
+        raise CatalogError(f"{path}: candidate distribution_status 必須保持未定")
+    for field in ("source_version", "attribution_notice", "embedding_notice"):
+        _manifest_text(data, field)
+    return CandidateManifest(
+        source_filename=_manifest_filename(data, "source_filename"),
+        source_version=_manifest_text(data, "source_version"),
+        source_sha256=_manifest_sha256(data, "source_sha256"),
+        license_filename=_manifest_filename(data, "license_filename"),
+        license_sha256=_manifest_sha256(data, "license_sha256"),
+        character_list_sha256=_manifest_sha256(data, "character_list_sha256"),
+    )
+
+
+def validate_font_candidate(entries: list[Entry], manifest_path: Path, source_path: Path, license_path: Path) -> CandidateValidation:
+    manifest = read_candidate_manifest(manifest_path)
+    if source_path.name != manifest.source_filename:
+        raise CatalogError(f"{source_path}: source filename 與 candidate manifest 不符")
+    if license_path.name != manifest.license_filename:
+        raise CatalogError(f"{license_path}: license filename 與 candidate manifest 不符")
+    source = _read_regular_file(source_path, "candidate source")
+    if _sha256(source) != manifest.source_sha256:
+        raise CatalogError(f"{source_path}: candidate source SHA-256 不符")
+    license_text = _read_regular_file(license_path, "candidate license")
+    try:
+        if not license_text.decode("utf-8").strip():
+            raise CatalogError(f"{license_path}: candidate license 不得為空白")
+    except UnicodeDecodeError as exc:
+        raise CatalogError(f"{license_path}: candidate license 必須是 UTF-8 文字") from exc
+    if _sha256(license_text) != manifest.license_sha256:
+        raise CatalogError(f"{license_path}: candidate license SHA-256 不符")
+    character_sha256 = _sha256(character_list_bytes(entries))
+    if character_sha256 != manifest.character_list_sha256:
+        raise CatalogError("candidate manifest: character_list_sha256 與 catalog 不符")
+    codepoints = catalog_codepoints(entries)
+    glyphs = load_unifont_subset(source_path, codepoints)
+    return CandidateValidation(
+        source_filename=manifest.source_filename,
+        source_version=manifest.source_version,
+        source_sha256=manifest.source_sha256,
+        license_filename=manifest.license_filename,
+        license_sha256=manifest.license_sha256,
+        character_list_sha256=manifest.character_list_sha256,
+        required_glyphs=len(codepoints),
+        found_glyphs=len(glyphs),
+    )
+
+
+def candidate_validation_json(validation: CandidateValidation) -> str:
+    return json.dumps(validation.metadata(), ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+
+
 def _write_if_changed(path: Path, content: bytes) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists() and path.read_bytes() == content:
@@ -170,6 +371,12 @@ def main(argv: list[str] | None = None) -> int:
     build.add_argument("--font", required=True, type=Path)
     build.add_argument("--out", required=True, type=Path)
 
+    candidate = subparsers.add_parser("validate-candidate", help="驗證本機字型候選 manifest，不建置字型")
+    candidate.add_argument("catalog", nargs="+", type=Path)
+    candidate.add_argument("--manifest", required=True, type=Path)
+    candidate.add_argument("--source", required=True, type=Path)
+    candidate.add_argument("--license", required=True, type=Path)
+
     args = parser.parse_args(argv)
     try:
         entries = read_catalogs(args.catalog)
@@ -177,6 +384,8 @@ def main(argv: list[str] | None = None) -> int:
             _write_if_changed(args.out, character_list_bytes(entries))
         elif args.command == "build":
             _write_if_changed(args.out, build_golemfnt(entries, args.font))
+        elif args.command == "validate-candidate":
+            print(candidate_validation_json(validate_font_candidate(entries, args.manifest, args.source, args.license)))
     except (CatalogError, OSError, csv.Error) as exc:
         print(f"錯誤：{exc}", file=sys.stderr)
         return 1
