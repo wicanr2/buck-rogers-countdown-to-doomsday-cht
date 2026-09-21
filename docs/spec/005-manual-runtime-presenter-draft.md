@@ -74,7 +74,8 @@ background／text 合成；它仍沒有 callback 或 command 接線。未來 run
 
 使用者已選擇「先選取，再按套用」（選項 C）。手冊 presenter 只接收明示的 2 或 3，因此可在
 兩種倍率各自驗證，不依賴 host 點選事件；host 的 selected scale 只有在 Apply 成功後才可成為
-新的 presenter scale。host 面板的 backend、套用後是否自動收合與跨重啟持久化仍屬
+新的 presenter scale。dosgolem spec 219 已 CONFORM 這個 selected／active 的純 state core，尚未
+接到任何 presenter。host 面板的 backend、套用後是否自動收合與跨重啟持久化仍屬
 [規格 004](004-dosgolem-host-frontend-draft.md)，不得混入 Buck Rogers adapter。
 
 ## READY 前置與 CONFORMED 驗收

@@ -451,3 +451,9 @@ A/B，因此規格 005 仍為 DRAFT，不可聲稱手冊已中文化。
 format 不保留可用的來源／授權資訊。dosgolem spec 218 固定此停止線並在同一未推送 branch 的
 `3fc37fe2908c7247447e34dfe18ae3b44855b534` 留存。必須先由使用者提供候選及授權文字，或明確
 授權取得指定候選，才可進入字型 READY；正式字型、runtime 接線與原版／繁中 A/B 仍未完成。
+
+第八十九階段依使用者已選的 C，在 dosgolem 本機 `9240c3b19ad5eaba7a44a2b9b4f4420fe1653a0a`
+完成 spec 219 的 CONFORMED 通用 `host.ScaleController`。Select 只更新 selected，Apply 才更新
+active，2×／3×、invalid／nil、value isolation、vet 與 race 都通過，且 package 沒有 DOS／遊戲依賴。
+它沒有 backend、視窗、hit event、重繪、持久化或玩家可切換功能；那些和正式字型、手冊 runtime
+接線及 A/B 一樣仍未完成，dosgolem branch 依規範未推送。

@@ -1102,3 +1102,13 @@
 - dosgolem spec 218 維持 DRAFT，明定 input manifest 與可散布停止線；本機提交
   `3fc37fe2908c7247447e34dfe18ae3b44855b534` 未推送。等待使用者提供或明確授權取得候選後，
   才能進入 READY。
+
+## 2026-09-21 — 第八十九階段：host 倍率預選與 Apply 純核心
+
+- 依使用者的 C 建立通用 `host.ScaleController`：Select 只變 `selectedScale`，Apply 才原子提交
+  `activeScale`，重複 Apply／回選原值皆無額外變更；無效 scale、nil 與回傳值污染皆失敗即關閉。
+- Docker 的 `go test`、`go vet`、race 與直接 import 檢查通過；core 只依賴 `fmt`，沒有 DOS、
+  machine、oracle、adapter 或 command 依賴，也沒有畫面、鍵盤、滑鼠、VRAM、存檔副作用。
+- spec 219 已 CONFORM（純核心）；dosgolem 本機提交為
+  `9240c3b19ad5eaba7a44a2b9b4f4420fe1653a0a`，未推送。backend、hit event、面板狀態、持久化、
+  實際 runtime 重繪及玩家路徑驗收仍為後續 DRAFT。

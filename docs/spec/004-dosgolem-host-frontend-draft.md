@@ -18,9 +18,10 @@ Buck Rogers 的 host 控制列與面板必須將完整 320×200 畫布下推；�
 
 | 項目 | 分級 | 證據與結論 |
 | --- | --- | --- |
-| dosgolem 現況 | 已證實 | 本機 `buck-rogers-cht-output-overlay` 的 `8bfd5b4e5802f65d428d3fb439196b3c571c002b`；README 明定它是無頭、決定性、供程式化觀測的執行器。 |
+| dosgolem 現況 | 已證實 | 本機 `buck-rogers-cht-output-overlay` 的 `9240c3b19ad5eaba7a44a2b9b4f4420fe1653a0a`；README 明定它是無頭、決定性、供程式化觀測的執行器。 |
 | 既有輸出疊層 | 已證實 | `xlate.Layer` 只讀 indexed framebuffer 與 palette，畫入新的 RGBA；`apps/buckrogers.RuntimeMenuOverlay.Draw` 同樣先重建 RGBA，沒有寫回 machine VRAM。 |
 | 2×／3× 輸出 | 已證實 | Buck Rogers runtime overlay constructor 明示只接受 2 或 3；其 `scale` 為私有欄位，沒有執行期 setter。既有 instance 不能自行改倍率。 |
+| C 的倍率 state core | 已證實／CONFORMED（純核心） | dosgolem spec 219 與第 89 階段：generic `host.ScaleController` 將 selected 與 active 分離，只有 Apply 提交；唯一直接 import 是 `fmt`，沒有 backend／DOS／遊戲依賴。 |
 | DOS 滑鼠能力 | 已證實 | `cmd/probe` 的 `-mouse-*`／`-click-*` 是以固定 instruction step 呼叫模擬 DOS 滑鼠；它是原版輸入／對拍能力，不是 host 視窗事件。 |
 | 可重用 host 視窗與事件迴圈 | 強推論：不存在 | `go.mod` 沒有前端依賴；所有 Go source 的 window／frontend／SDL／Ebiten／GLFW／event-loop token 搜尋為零；命令均為無頭診斷或收據工具。結論與 README 的定位一致，但實際選用哪個新 backend 仍未知。 |
 
@@ -46,8 +47,9 @@ Buck Rogers 的 host 控制列與面板必須將完整 320×200 畫布下推；�
 
 使用者已選擇 option 點擊後「先選取、再按 Apply」（C），排除兩種立即套用。DRAFT host state
 至少區分 `activeScale` 與暫存 `selectedScale`：點選 option 只能改後者；只有 Apply 可將它提交為
-新的 output scale，並以同一 raw input、palette 與 active layer 重繪。這個確認不推定 Apply 後是否
-自動收合面板，也不推定跨重啟持久化。
+新的 output scale。第八十九階段已將這個 value-only transition 實作並 CONFORM；實際以同一 raw
+input、palette 與 active layer 重繪仍屬未接線 frontend 責任。這個確認不推定 Apply 後是否自動收合
+面板，也不推定跨重啟持久化。
 
 - 實際視窗 backend、平台支援、host 文案／字型、鍵盤焦點、Apply 後面板狀態與設定跨重啟持久化均為未知；不是以
   headless CLI 或 DOS mouse injection 推定。

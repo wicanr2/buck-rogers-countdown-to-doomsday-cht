@@ -93,3 +93,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第八十六階段：手冊 presentation lifecycle 接線](phase-86-manual-presentation-lifecycle.md) | 完成 | 建立並驗證 answer-free typed queue；手冊 renderer 與字型仍未實作。 |
 | [第八十七階段：手冊多行 presenter 核心](phase-87-manual-multiline-presenter-core.md) | 完成（純核心） | 依正式 36×14 layout 建立可注入字型的 14 行 RGBA core，不接玩家 runtime。 |
 | [第八十八階段：手冊正式 GOLEMFNT 子集的來源與可重生性](phase-88-manual-formal-font-subset.md) | 完成（DRAFT 稽核） | 691 glyph 清單已重生；本機候選與授權告知缺席，不接 runtime 或散布字型。 |
+| [第八十九階段：host 倍率預選與 Apply 純核心](phase-89-host-scale-selection-apply-core.md) | 完成（純核心） | 依 C 建立 generic selectedScale／activeScale core，不接前端或 DOS。 |

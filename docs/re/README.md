@@ -85,3 +85,4 @@
 | [第八十六階段：手冊 presentation lifecycle 接線](phase-86-manual-presentation-lifecycle.md) | CONFORMED typed begin／clear／request queue、正常玩家 metadata 重播與無輸入邊界。 |
 | [第八十七階段：手冊多行 presenter 純核心](phase-87-manual-multiline-presenter-core.md) | CONFORMED 的 36×14／504、背景＋文字 layer、2×／3×與 lifecycle synthetic 收據；未接玩家 runtime。 |
 | [第八十八階段：手冊正式 GOLEMFNT 子集來源稽核](phase-88-manual-formal-font-subset.md) | DRAFT：691 glyph 清單已重生，但本機沒有可核對的候選字型與授權告知。 |
+| [第八十九階段：host 倍率預選與 Apply 純核心](phase-89-host-scale-selection-apply-core.md) | CONFORMED 的 selected／active state；不含 backend、hit event 或玩家切換。 |
