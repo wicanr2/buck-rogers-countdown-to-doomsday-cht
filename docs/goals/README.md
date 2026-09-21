@@ -95,3 +95,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第八十八階段：手冊正式 GOLEMFNT 子集的來源與可重生性](phase-88-manual-formal-font-subset.md) | 完成（DRAFT 稽核） | 691 glyph 清單已重生；本機候選與授權告知缺席，不接 runtime 或散布字型。 |
 | [第八十九階段：host 倍率預選與 Apply 純核心](phase-89-host-scale-selection-apply-core.md) | 完成（純核心） | 依 C 建立 generic selectedScale／activeScale core，不接前端或 DOS。 |
 | [第九十階段：手冊 presentation queue consumer 純核心](phase-90-manual-presentation-queue-consumer.md) | 完成（純核心） | 將 append-only lifecycle value queue 安全交給 presenter，不接 command 或 DOS。 |
+| [第九十一階段：手冊 watcher snapshot bridge 純核心](phase-91-manual-watcher-snapshot-bridge.md) | 完成（純核心） | 將 watcher defensive snapshot 交給 consumer，不接 command、字型或 DOS。 |

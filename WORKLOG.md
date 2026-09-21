@@ -1124,3 +1124,15 @@
 - spec 220 已 CONFORM（純核心）；dosgolem 本機提交為
   `b0721c605619a9e689c934994408e009e9231ff9`，未推送。沒有接 watcher callback、遊戲 loop、正式字型、
   frame／draw 或 normal-player A/B；手冊 runtime 中文顯示仍未完成。
+
+## 2026-09-21 — 第九十一階段：手冊 watcher snapshot bridge 純核心
+
+- dosgolem 新增 `ManualPresentationBridge`，只取得 `Watcher.PresentationEvents()` defensive value
+  snapshot 並原樣交給 consumer；不保存第二份 cursor、不讀 `Observations()`、不重試／重排 event，且不會
+  吞掉 consumer 的 history drift 或 partial-failure error。
+- Docker 的 `go test ./apps/buckrogers`、`go vet ./apps/buckrogers` 與 race 檢查通過。合成測試涵蓋
+  begin→clear→request 分批 append、完整 replay zero-op、watcher history drift、partial failure 重試與
+  nil；bridge 唯一直接 import 是 `fmt`，沒有 machine、oracle、input、command、renderer 或 font 依賴。
+- spec 221 已 CONFORM（純核心）；dosgolem 本機提交為
+  `bac3f3fafc3cc40b78eee66fdb1f756f21509e53`，未推送。同時修正 spec 220 頂端狀態。沒有 command、
+  遊戲 loop、正式字型、frame／draw 或 normal-player A/B；手冊 runtime 中文顯示仍未完成。

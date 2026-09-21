@@ -87,3 +87,4 @@
 | [第八十八階段：手冊正式 GOLEMFNT 子集來源稽核](phase-88-manual-formal-font-subset.md) | DRAFT：691 glyph 清單已重生，但本機沒有可核對的候選字型與授權告知。 |
 | [第八十九階段：host 倍率預選與 Apply 純核心](phase-89-host-scale-selection-apply-core.md) | CONFORMED 的 selected／active state；不含 backend、hit event 或玩家切換。 |
 | [第九十階段：手冊 presentation queue consumer 純核心](phase-90-manual-presentation-queue-consumer.md) | CONFORMED 的 append-only value cursor；不含 watcher callback、command 或玩家畫面。 |
+| [第九十一階段：手冊 watcher snapshot bridge 純核心](phase-91-manual-watcher-snapshot-bridge.md) | CONFORMED 的 watcher→consumer 單一轉送；不含 command、字型或玩家畫面。 |

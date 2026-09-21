@@ -464,3 +464,9 @@ spec 220 CONFORMED 的 `ManualPresentationConsumer`。它只消費 `Presentation
 皆失敗即關閉，中段錯誤只保留成功 prefix。Docker 的 Go test、vet、race 均通過。沒有接 watcher
 callback、command／遊戲 loop、正式字型、frame／draw 或正常玩家 A/B；spec 005 仍為 DRAFT，不能宣稱
 手冊中文已顯示。
+
+第九十一階段已在同一未推送 dosgolem branch 的 `bac3f3fafc3cc40b78eee66fdb1f756f21509e53` 完成
+spec 221 CONFORMED 的 `ManualPresentationBridge`。它只取得 watcher 的 defensive
+`PresentationEvents()` snapshot，原樣交給 consumer；不保存第二份 cursor、不讀 `Observations()`、不吞掉
+consumer error。Docker 的 Go test、vet、race 均通過，並更正 spec 220 頂端狀態為 CONFORMED。沒有接
+command、遊戲 loop、正式字型、frame／draw 或正常玩家 A/B；spec 005 仍是 DRAFT，手冊中文尚未顯示。
