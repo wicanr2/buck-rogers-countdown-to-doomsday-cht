@@ -63,3 +63,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第五十六階段：保存、名冊與加入隊伍執行期繁中顯示請求](phase-56-save-roster-join-runtime-display-requests.md) | 已完成 | 將 exact catalog 接入 dosgolem guarded watcher，並以完整正常路徑證實動態姓名不翻譯。 |
 | [第五十七階段：明示倍率的執行期繁中覆繪路徑](phase-57-scale-explicit-runtime-overlay-path.md) | 完成 | 將 typed request 接到倍率中立 renderer，以 2×／3× 同狀態驗證中文像素與語意隔離。 |
 | [第五十八階段：執行期繁中覆繪證據固化與交接](phase-58-runtime-overlay-evidence-and-handoff.md) | 完成 | 固化 Phase 57 收據、完成全面驗證、提交、推送與 Issue 回寫。 |
+| [第五十九階段：手冊執行期繁中覆繪倍率門檻](phase-59-manual-runtime-overlay-scale-gate.md) | 進行中 | 以既有雙倍率實圖與 runtime 收據由使用者確認正式輸出倍率。 |
