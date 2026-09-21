@@ -66,3 +66,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第五十九階段：手冊執行期繁中覆繪倍率門檻](phase-59-manual-runtime-overlay-scale-gate.md) | 進行中 | 以既有雙倍率實圖與 runtime 收據由使用者確認正式輸出倍率。 |
 | [第六十階段：手冊覆繪 READY 前置稽核](phase-60-manual-overlay-ready-prerequisite-audit.md) | 完成 | 分開實作前契約與實作後驗收，查證 catalog／watcher 後只保留真正的 READY blocker。 |
 | [第六十一階段：手冊單頁容量失敗即關閉驗證](phase-61-manual-single-page-capacity-validator.md) | 完成 | 將 612 字單頁上限落成 catalog 驗證與邊界測試，不預選倍率或分頁操作。 |
+| [第六十二階段：明示倍率的手冊執行期繁中覆繪](phase-62-scale-explicit-manual-runtime-overlay.md) | 等待使用者確認版面 | 先解決原版題目保留方式，再將手冊 typed request 接到長存 xlate layer。 |

@@ -58,5 +58,6 @@
 | [第五十七階段明示倍率的執行期繁中覆繪](phase-57-scale-explicit-runtime-overlay.md) | 2×／3× 輸出端覆繪、清除／同原點取代生命週期與同狀態收據 |
 | [第六十階段手冊覆繪 READY 前置稽核](phase-60-manual-overlay-ready-prerequisite-audit.md) | 39 題／22 譯文邊界、單頁容量、失敗即關閉與 READY／CONFORMED 分流 |
 | [第六十一階段手冊單頁容量驗證](phase-61-manual-single-page-capacity-validator.md) | 36×17 單頁上限、612／613 字邊界與正式 catalog 失敗即關閉收據 |
+| [第六十二階段手冊原版題目保留版面 prototype](phase-62-manual-prompt-preservation-prototype.md) | 整框覆蓋操作缺口、保留題目的 36×14 雙倍率對照與待決版面前沿 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。
