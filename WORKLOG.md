@@ -920,3 +920,15 @@
 - 本階段不建立安全矩形、不繪製繁中像素，不選定產品預設倍率或手冊版面。
 <!-- phase-72-dosgolem-commit -->
 - dosgolem 本機提交：`790a41cbf03d056caedf87f06698f50cae90a8c1`（分支 `buck-rogers-cht-output-overlay`，未推送）。
+
+## 2026-09-21 — 第七十三階段：技術技能配置雙倍率覆繪
+
+- 建立 17 筆 technical exact rectangles，兩個共享標題沿用 career rectangles；加入 CLI 旗標與
+  缺少依賴時的失敗即關閉檢查。
+- 首輪 PNG 揭露 selected 英文殘字，立即將 spec 212 退回 DRAFT；查明停止點早於下一垂直回掃，
+  延後 100,000 steps 後 request 數不變且繁中正確，重新審查 READY 並完成 CONFORMED。
+- base／Down × 2×／3× 各雙重重播，原版 framebuffer、語意 projection、矩形外與動態欄均無差異；
+  正式圖已人工檢查。
+- 專案 136 項 Python 測試、dosgolem 全正式套件 test、`go vet` 與相關 race detector 通過。
+- dosgolem 本機提交：`2d8561c8a87e6868c8e0d647fbcf69e6c18169c0`（分支
+  `buck-rogers-cht-output-overlay`，未推送）。

@@ -70,3 +70,4 @@
 | [第七十二階段技術技能配置靜態繁中請求](phase-72-technical-skill-static-runtime-requests.md) | 13 個手冊譯名、17 個不重複 identities、共享標題勘誤與 base／Down 收據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。
+| [第七十三階段：技術技能配置執行期繁中覆繪](phase-73-technical-skill-runtime-overlay.md) | 17 筆專屬矩形、共享標題、穩定 frame 訂正與雙倍率同狀態收據。 |

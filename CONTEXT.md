@@ -341,3 +341,10 @@ dosgolem 實作已提交於本機 branch，commit `91407a4`，未推送其遠端
 framebuffer 相同。本階段只完成 request，尚未建立技術技能安全矩形或繁中像素覆繪。
 <!-- phase-72-dosgolem-commit -->
 - dosgolem 本機分支 `buck-rogers-cht-output-overlay` 的第 72 階段提交為 `790a41cbf03d056caedf87f06698f50cae90a8c1`；依專案規範僅保留於 `workplace/dosgolem`，未推送遠端。
+
+第七十三階段已將技術技能配置的 17 個專屬 identities 與兩個 career 共享標題矩形接入 2×／3×
+runtime overlay。首次沿用 request 停止點時人工圖像發現 selected stamp 尚為 `Pending`；延後至
+下一穩定 frame 後繁中正常顯示，規格已把穩定 frame 與目視驗收列為必要條件。base／Down 的
+兩倍率各雙重重播一致，矩形外與動態欄 0 px，原版 framebuffer 與語意不變。產品預設倍率及
+手冊版面仍未替使用者決定。
+dosgolem 本機分支提交為 `2d8561c8a87e6868c8e0d647fbcf69e6c18169c0`，未推送其遠端。
