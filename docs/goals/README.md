@@ -91,3 +91,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第八十四階段：dosgolem host 前端能力盤點](phase-84-dosgolem-host-frontend-capability-audit.md) | 完成 | 盤點可重用 host 前端能力與通用／遊戲 adapter 邊界，不預設點選套用語意。 |
 | [第八十五階段：手冊繁中 presenter 接線 READY 前稽核](phase-85-manual-presenter-integration-readiness-audit.md) | 完成 | 固定手冊 request、lifecycle、字型需求與 xlate 能力，列出 presenter READY 的 typed lifecycle 與字型缺口。 |
 | [第八十六階段：手冊 presentation lifecycle 接線](phase-86-manual-presentation-lifecycle.md) | 完成 | 建立並驗證 answer-free typed queue；手冊 renderer 與字型仍未實作。 |
+| [第八十七階段：手冊多行 presenter 核心](phase-87-manual-multiline-presenter-core.md) | 完成（純核心） | 依正式 36×14 layout 建立可注入字型的 14 行 RGBA core，不接玩家 runtime。 |

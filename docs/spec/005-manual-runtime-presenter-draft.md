@@ -5,7 +5,8 @@
 前置：[手冊段落覆繪](002-manual-paragraph-overlay-draft.md)、
 [手冊事件 adapter](003-manual-event-adapter.md)、[第十八階段 lifecycle 證據](../re/phase-18-manual-generation-invalidation.md)、
 [第八十五階段整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)、
-[第八十六階段 lifecycle 接線](../re/phase-86-manual-presentation-lifecycle.md)。
+[第八十六階段 lifecycle 接線](../re/phase-86-manual-presentation-lifecycle.md)、
+[第八十七階段多行 presenter 核心](../re/phase-87-manual-multiline-presenter-core.md)。
 
 ## 目的與邊界
 
@@ -27,16 +28,17 @@
 | 新題／局部 clear 邊界 | 已證實 | `2A33:01ED` 題首開始新 generation；`026F:029C` 可在 pending 中途出現；只有 `2A33:0309` 的 guarded post-call 可提交 request。第 18 階段的答錯重抽反例排除了「等全畫面清空」與「及早顯示新段落」。 |
 | 正式正文幾何與容量 | 已證實 | `text/manual-overlay-layout.tsv`、`tools/manual_overlay_layout.py`；22 筆正式譯文全部通過，最長 236 字。 |
 | 2×／3× RGBA 基礎 | 已證實 | `xlate.Layer` 與 `ScaleIndexedRGBA` 只讀 indexed framebuffer／palette，建立 RGBA；既有 runtime overlay constructor 已拒絕 2、3 以外的倍率。 |
+| 手冊多行純核心 | 已證實／CONFORMED（純核心） | dosgolem spec 217 與第 87 階段：唯一 layout loader、14 個背景＋14 個文字 stamp、2×／3×、generation state 與 synthetic RGBA containment；尚未接入正常玩家 runtime。 |
 | 字型需求清單 | 已證實 | 由正式 `manual.zh-TW.tsv` 重生的未追蹤清單有 691 個碼點，SHA-256 為 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`。 |
 | 可直接重用的手冊 presenter | 已證實為否 | `RuntimeMenuOverlay` 驗證的是單列 `MenuOverlayRects`／`TextEvent` 幾何；它沒有讀取手冊 layout TSV、14 行段落分格或手冊 lifecycle 接線。可重用的是其 RGBA／`xlate.Layer` 模式，不是該 adapter。 |
 
 上表的 dosgolem source 均固定為本機 branch `buck-rogers-cht-output-overlay` 的
-`47397ebd18e63a0daa4cb54bd593c5fbfd549ada`；位址為 dosgolem 實模式
+`21c9295c90fac44b5852fd5934a6d027342cde24`；位址為 dosgolem 實模式
 `segment:offset`，不是 IDA 線性位址。
 
 ## 擬定 presenter 契約
 
-1. 建立 `RuntimeManualOverlay(layout, font, scale)` 時必須讀取並驗證唯一正式 layout，
+1. 建立 `RuntimeManualOverlay(layout, catalog, font, scale)` 時必須讀取並驗證唯一正式 layout，
    要求 16×16 字型、所有正式 translation 均有 glyph，且 `scale` 僅為 2 或 3。任一檢查
    失敗時不建立 presenter、不得局部顯示。
 2. 每筆 translation 按 Unicode rune 以 row-major 填入 36 欄×14 行；每行建立一筆
@@ -57,8 +59,10 @@
 
 第八十六階段已在 dosgolem spec 216 實作並 CONFORM `PresentationEvents()`：exact begin、
 active-context clear、catalog-hit request 皆帶 generation，且 accessor 回傳 value-copy。它只提供
-presentation metadata，沒有 callback、renderer、machine write、鍵盤或 DOS input 路徑；receipt 也只
-投影 key／rune count。未來 presenter 必須消費這條 queue，不得倒回 `Observations()` 猜測世代。
+presentation metadata，沒有 machine write、鍵盤或 DOS input 路徑；receipt 也只投影 key／rune count。
+第八十七階段的 `RuntimeManualOverlay` 已將此 value 型別消費為純核心，並以兩個 layer 完成 14 行
+background／text 合成；它仍沒有 callback 或 command 接線。未來 runtime 必須消費這條 queue，不得
+倒回 `Observations()` 猜測世代。
 
 此外，目前只有字元需求清單；正式字型檔的來源、授權告知與每個 glyph 的實際回讀仍須按
 `font/README.md` 完成。不能以缺字回呼後的部分畫面當作可接受輸出。
@@ -75,7 +79,7 @@ presentation metadata，沒有 callback、renderer、machine write、鍵盤或 D
 進入正式程式前必須完成：
 
 - [x] dosgolem spec 216 的 lifecycle queue、generation、begin／clear／request 負向測試及正常玩家 metadata 收據。
-- [ ] layout loader、14 行 row-major builder、504／505 邊界、缺字與非法倍率的失敗即關閉測試。
+- [x] dosgolem spec 217 的 layout loader、14 行 row-major builder、504／505 邊界、缺字與非法倍率的失敗即關閉純核心測試。
 - [ ] 可重生且已授權的手冊 GOLEMFNT 子集，以及 691 glyph 的回讀驗證。
 - [ ] 正常第一題及答錯換題的 2×／3× same-state output 收據；request 前、catalog miss 與
   pending clear 時都不得畫中文。

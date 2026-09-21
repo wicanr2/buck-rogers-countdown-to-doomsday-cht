@@ -438,3 +438,10 @@ begin、active-context clear、exact catalog-hit request 時輸出帶 generation
 presentation queue，accessor 為 value-copy；正常玩家 state 新增 begin→clear→request 三筆 metadata，
 既有 request 保持不變。這個 branch 依規範沒有推送。手冊 renderer、正式字型與 RGBA A/B 仍為
 規格 005 DRAFT，不可聲稱手冊中文已上畫面。
+
+第八十七階段已在同一未推送 dosgolem branch 的
+`21c9295c90fac44b5852fd5934a6d027342cde24` 實作 spec 217 的 CONFORMED 純核心。它嚴格載入
+唯一 36×14／504 手冊 layout，預先驗證完整 catalog 字模，將確認的 presentation value queue 建成
+14 個背景與 14 個文字 layer stamps，支援明示 2×／3×，並拒絕 stale／miss／缺字／錯誤 generation。
+Docker 的 Go vet 與 race 測試通過；它尚未載入正式字型、接 command／normal runtime 或取得原版／繁中
+A/B，因此規格 005 仍為 DRAFT，不可聲稱手冊已中文化。

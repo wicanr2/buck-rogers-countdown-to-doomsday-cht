@@ -1079,3 +1079,15 @@
   generation 1 metadata。沒有 injected input、machine write、中文 renderer 或原版素材輸出。
 - spec 216 已 CONFORM；Go unit、vet 與 race 驗證通過。dosgolem 本機提交為
   `47397ebd18e63a0daa4cb54bd593c5fbfd549ada`，分支未推送。
+
+## 2026-09-21 — 第八十七階段：手冊多行 presenter 純核心
+
+- dosgolem 新增 `RuntimeManualOverlay` 與嚴格 `manual-overlay-layout.tsv` loader；它消費既有
+  answer-free lifecycle value，建立 14 個完整 clear-band 背景 stamp 與 14 個 36-cell 文字 stamp，
+  不寫 DOS VRAM、不讀寫輸入、答案或存檔。
+- constructor 預先拒絕錯誤 layout／catalog／16×16 字型／glyph／2×或3×以外倍率；lifecycle 拒絕
+  stale generation、catalog miss、部分 request 與非法狀態。2×／3× synthetic RGBA 測試確認清除
+  矩形外零差異、504 rune row-major 與 defensive-copy。
+- spec 217 已 CONFORM（僅純核心）；Docker 的 Go vet 與 race 測試均通過。dosgolem 本機提交為
+  `21c9295c90fac44b5852fd5934a6d027342cde24`，分支未推送。正式字型、command 接線與正常玩家 A/B
+  仍未完成。
