@@ -2,6 +2,11 @@
 
 更新：2026-09-21
 
+第六十四階段已完成：角色資料／重擲頁的 35 個靜態 exact identity 已建立繁中 catalog，
+dosgolem spec 037 已 CONFORMED。四次 Enter 與其後 `Y` 分支各雙重重播，分別產生 43／52
+筆 request；JSON 與 framebuffer 各自逐 byte 相同，原版畫面雜湊未變。動態姓名、身分、
+摘要、能力值、技能值與骰值皆未進 catalog；本階段尚未接 renderer，也未選 2×／3×。
+
 第五十七階段已完成：dosgolem 已將 14 筆靜態請求接到輸出端繁中 RGBA 覆繪；
 `026F:029C` 清除矩形與同原點取代契約使終態只保留當下 `roster.add_prompt`。
 2×／3× 各兩次可決定重生，原版 framebuffer、輸入、FileOps、writes 與存檔不變；

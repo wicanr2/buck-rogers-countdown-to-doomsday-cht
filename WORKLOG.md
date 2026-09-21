@@ -1,5 +1,14 @@
 # 工作歷程
 
+## 2026-09-21：第六十四階段角色資料靜態繁中請求
+
+- 從 96 筆角色資料事件隔離 35 個靜態 exact identity；建立繁中 catalog、來源分級與動態值
+  排除 verifier。
+- dosgolem spec 037 依 READY→實作→CONFORMED；新增角色紙 catalog 旗標並沿用既有
+  `MenuRequestWatcher`，未接 renderer。
+- 四次 Enter 與其後 `Y` 分支各重跑兩次：118／149 events、43／52 requests；JSON 與
+  framebuffer 各自逐 byte 相同，原版畫面雜湊未變。
+
 ## 2026-09-21：第五十四階段已保存角色加入隊伍（已完成）
 
 - 由第五十三階段同一保存提示 state，使用預設 Enter 真正保存，再以 Down→Enter 進入 Add；
