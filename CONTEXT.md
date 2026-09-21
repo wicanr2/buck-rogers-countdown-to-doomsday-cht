@@ -315,3 +315,9 @@ dosgolem 實作已提交於本機 branch，commit `22f46b4`，未推送其遠端
 始於 x=136。base／輸入 `A` 的 2×／3× 各雙重重播一致；差異只在核准矩形內，輸入欄零差異。
 runtime 現在雙向拒絕缺少或孤兒 rectangle。本階段仍未選定預設倍率，也未處理手冊版面。
 dosgolem 實作已提交於本機 branch，commit `6e16fe5`，未推送其遠端。
+
+第六十九階段已關閉姓名提示轉場生命週期：`A`→Enter 後通用清除 hook 讓 active keys 歸零，
+2×／3× RGBA 等於 baseline；Escape 已訂正為原地重印而非取消，兩次 request 以同 key replace，
+終態只留一份 stamp。收據工具現可明示合法空終態 `drew=false`，但仍拒絕缺字或 active-key
+不一致；沒有新增姓名專屬清除。本階段仍未選定產品倍率或手冊版面。
+dosgolem 實作已提交於本機 branch，commit `8e60489`，未推送其遠端。

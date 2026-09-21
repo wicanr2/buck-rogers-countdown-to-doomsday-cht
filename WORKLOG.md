@@ -867,3 +867,14 @@
   與矩形外均為 0。原始解析度實圖確認提示完整且 `A` 可見。
 - 專案 117 項 Python 測試、dosgolem 全套 Go 測試、vet 與相關 race detector 全數通過。
 - dosgolem 實作已提交於本機 branch，commit `6e16fe5`，未推送其遠端。
+
+# 2026-09-21：第六十九階段角色姓名覆繪轉場失效生命週期
+
+- 重讀第四十四階段後先訂正本輪假設：Escape 不取消，只重印姓名提示並留在原畫面。
+- 首次 Enter overlay 重播證實 layer 已清空，但收據命令錯把合法 `drew=false` 當失敗；spec 208
+  先達 READY，再讓空 active keys／零缺字的終態可正式輸出。
+- Enter 226／1／225 的終態 2×／3× RGBA 等於 baseline；Escape 184／2／182 以同 key replace，
+  終態只留一份 stamp。兩分支 control 與雙倍率各雙重重播一致，raw framebuffer 不變。
+- 專案 119 項 Python 測試、dosgolem 全套 Go 測試、vet 與相關 race detector 全數通過；
+  原始解析度實圖確認技能頁無殘字、Escape 留頁且無重複提示。
+- dosgolem 實作已提交於本機 branch，commit `8e60489`，未推送其遠端。

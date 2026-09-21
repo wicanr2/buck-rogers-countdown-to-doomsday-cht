@@ -64,5 +64,6 @@
 | [第六十五階段角色資料頁執行期繁中覆繪](phase-65-character-sheet-runtime-overlay.md) | 35 筆安全矩形、base／Y × 2×／3× runtime overlay、同 palette baseline 與像素 containment |
 | [第六十七階段角色姓名靜態提示執行期請求](phase-67-character-name-static-text-runtime-requests.md) | 姓名固定提示 exact request、玩家輸入 miss 與雙重正常路徑收據 |
 | [第六十八階段角色姓名提示執行期繁中覆繪](phase-68-character-name-prompt-runtime-overlay.md) | 提示／輸入欄幾何、2×／3× containment 與動態姓名零干擾收據 |
+| [第六十九階段角色姓名覆繪轉場失效生命週期](phase-69-character-name-overlay-transition-invalidation.md) | Enter 空終態清除、Escape 同 key 重印與雙倍率無殘字收據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。
