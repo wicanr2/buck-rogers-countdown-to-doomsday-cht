@@ -1040,3 +1040,12 @@
   在 DOS 座標轉換／BIOS／IRQ 前消費。
 - dosgolem 目前無現成互動視窗 frontend；prototype 僅定義通用 host layout／input contract。
   下一個共同決策是 option click 的立即套用或二次確認語意。
+
+## 2026-09-21 — 第八十三階段：手冊保留原題的 504 字容量契約
+
+- 將現行手冊正文正式固定為下方 `[7,312)×[72,184)` 的 36×14 格、504 字容量；原版上方
+  頁碼、英文標題與序數保持不動。
+- 新增 layout TSV 與 verifier；schema、幾何、containment、504／505 邊界、22 筆 catalog 全部
+  納入失敗即關閉驗證，最大正式段落為 236 字。
+- 將 spec 002 與文字目錄收斂到 504 字；612 字只保留歷史 prototype／收據脈絡。未接
+  dosgolem presenter，未改寫原版輸入或手冊答案判定。

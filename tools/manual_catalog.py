@@ -14,7 +14,7 @@ from catalog_font import read_catalog
 EVENT_FIELDS = ["event_key", "record_index", "page", "heading_ascii", "ordinal", "text_key"]
 EVENT_PATTERN = re.compile(r"^manual\.page([0-9]+)\.[a-z0-9_]+\.word([0-9]+)$")
 MANUAL_PAGE_COLUMNS = 36
-MANUAL_PAGE_BODY_ROWS = 17
+MANUAL_PAGE_BODY_ROWS = 14
 MANUAL_PAGE_CAPACITY = MANUAL_PAGE_COLUMNS * MANUAL_PAGE_BODY_ROWS
 
 

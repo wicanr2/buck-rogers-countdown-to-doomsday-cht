@@ -79,6 +79,11 @@ Phase 75 已由 dosgolem guarded glyph watcher 將此清冊接成 typed events�
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。
 
+`manual-overlay-layout.tsv` 是保留原版頁碼、標題與序數時唯一的正式正文幾何：只清除
+`[7,312)×[72,184)`，以 x=16、y=72 的 36 欄×14 行格顯示，單頁容量固定為 504 字。
+`tools/manual_overlay_layout.py` 會把 schema、矩形、格線、容量與 `manual.zh-TW.tsv` 一起
+失敗即關閉驗證；這不是 presenter，也不改寫原版題目或答案流程。
+
 `manual-ordinals.tsv` 保存原版 1–10 序數詞、runtime 位址與完整 19-byte slot；可由同一份
 執行期資料段透過 `tools/manual_ordinals.py` 重生。它只橋接題目顯示身分，不含答案。
 
@@ -91,6 +96,7 @@ python3 tools/manual_crosswalk.py text/manual-questions.tsv text/manual-source-c
   --manifest workplace/inventory/manual-extracted-manifest.json
 python3 tools/manual_catalog.py text/manual-questions.tsv text/manual-source-crosswalk.tsv \
   text/manual-events.tsv text/manual.zh-TW.tsv
+python3 tools/manual_overlay_layout.py text/manual-overlay-layout.tsv text/manual.zh-TW.tsv
 python3 tools/manual_ordinals.py workplace/probe/phase12-manual-runtime-0EC0_0000.bin \
   text/manual-ordinals.tsv --events text/manual-events.tsv
 python3 tools/menu_events.py text/menu-events.tsv text/menu.zh-TW.tsv
