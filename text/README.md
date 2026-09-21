@@ -34,6 +34,9 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `name-prompt-events.tsv` 只收錄接受重擲後唯一的 16-byte 靜態姓名提示 exact identity，
 `name-prompt.zh-TW.tsv` 將它顯示為「角色姓名：」。玩家輸入回顯不在 catalog；
 `tools/name_prompt_catalog.py` 反查 `reroll-no-events.tsv` 並拒絕 identity、來源或文字治理漂移。
+`name-prompt-text-safe-rects.tsv` 將原版 16-byte 提示範圍固定為 `[0,128)×[192,200)`；
+`tools/name_prompt_text_safe_rects.py` 另以 `name-edit-events.tsv` 證實玩家輸入從 x=136 開始，
+禁止安全矩形侵入動態姓名欄。
 `career-skill-selection-events.tsv`、`career-skill-add-events.tsv` 與
 `career-skill-refusal-events.tsv` 保存技能列下移、一次合法加點，以及仍有點數時 Escape→`N`
 拒絕離開的 content-safe identity；動態數值與原版提示全文不列為譯文。

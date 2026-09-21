@@ -310,3 +310,8 @@ DAC 0–14，讓 index 15 沿用 BIOS 白色。通用修正載入標準 VGA 前 
 失敗即關閉。兩路各雙重重播的 JSON 與 framebuffer 逐位元一致；本階段未新增安全矩形或
 renderer，因此不影響仍待決的產品倍率與手冊版面。
 dosgolem 實作已提交於本機 branch，commit `22f46b4`，未推送其遠端。
+
+第六十八階段已將姓名提示接入明示倍率 runtime overlay：提示安全矩形止於 x=128，玩家輸入
+始於 x=136。base／輸入 `A` 的 2×／3× 各雙重重播一致；差異只在核准矩形內，輸入欄零差異。
+runtime 現在雙向拒絕缺少或孤兒 rectangle。本階段仍未選定預設倍率，也未處理手冊版面。
+dosgolem 實作已提交於本機 branch，commit `6e16fe5`，未推送其遠端。

@@ -856,3 +856,14 @@
   echo 維持 miss。兩路各雙重重播，JSON 與 framebuffer 逐位元一致。
 - 專案 113 項 Python 測試與 dosgolem 全套 Go 測試、vet、相關 race detector 均通過；
   dosgolem 本機 commit 為 `22f46b4`，未推送其遠端。
+
+# 2026-09-21：第六十八階段角色姓名提示執行期繁中覆繪
+
+- 由 exact event 與玩家回顯清冊證實提示 `[0,128)×[192,200)`、輸入欄 x=136；建立正式
+  rectangle catalog 與資料驗證器。
+- name-prompt rect 已接入長存 presenter；新增 catalog／rectangle 雙向 event-key coverage，
+  缺表與孤兒 rect 都失敗即關閉。
+- base／輸入 `A` 的 2×／3× 各雙重重播一致；差異 941／2,038 pixels 全在矩形內，輸入欄
+  與矩形外均為 0。原始解析度實圖確認提示完整且 `A` 可見。
+- 專案 117 項 Python 測試、dosgolem 全套 Go 測試、vet 與相關 race detector 全數通過。
+- dosgolem 實作已提交於本機 branch，commit `6e16fe5`，未推送其遠端。

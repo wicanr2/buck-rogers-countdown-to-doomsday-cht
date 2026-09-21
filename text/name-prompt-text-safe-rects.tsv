@@ -1,0 +1,2 @@
+event_key	x	y	width	height	draw_x	draw_y	capacity_cells	line_count	overflow_policy
+character.name.prompt	0	192	128	8	0	192	16	1	single-line-reject
