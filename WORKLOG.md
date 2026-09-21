@@ -1030,3 +1030,13 @@
   正式綁鍵前須由使用者決定入口，不得借用會送入 DOS 的 BIOS key queue。
 - 使用者選擇 dosgolem 外層設定面板，而非直接快捷鍵或單鍵循環；面板開啟鍵及設定生命週期
   仍在共同決策前沿。
+
+## 2026-09-21 — 第八十二階段：host 設定面板控制列 prototype
+
+- 使用者確認由視窗頂端 host-only 滑鼠按鈕開啟面板，排除 `F10`／`Ctrl+F10`。
+- 以 Phase 62 真實手冊 framebuffer 產生 2×／3×、各兩種 active selection 的四張圖；面板
+  位於控制列下方並將畫布下推，沒有覆蓋原版／繁中像素。複製後遊戲畫布 SHA-256 與來源一致。
+- 2× 視窗為 640×480、畫布自 y=80；3× 為 960×720、畫布自 y=120。所有 host hit rectangles
+  在 DOS 座標轉換／BIOS／IRQ 前消費。
+- dosgolem 目前無現成互動視窗 frontend；prototype 僅定義通用 host layout／input contract。
+  下一個共同決策是 option click 的立即套用或二次確認語意。

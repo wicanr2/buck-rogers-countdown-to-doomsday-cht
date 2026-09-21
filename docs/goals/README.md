@@ -86,3 +86,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第七十九階段：技能操作列配色中立 runtime 生命週期](phase-79-skill-action-bar-style-neutral-runtime-lifecycle.md) | 完成 | 雙候選已共用原子 group 取代、clear、anchor 與 frame lifecycle；仍無 CLI 預設。 |
 | [第八十階段：技能操作列快捷字母保留與混合寬度版面](phase-80-action-bar-hotkey-preserving-layout.md) | 完成 | 保留白色拉丁字母與原色中文，完成混合寬度版面及真實畫面驗證。 |
 | [第八十一階段：手冊保留原題與執行期倍率切換契約](phase-81-manual-preserved-prompt-and-runtime-scale-switch.md) | 進行中 | 固定手冊 36×14 版面，設計不污染 DOS 輸入的 2×／3× 執行期切換。 |
+| [第八十二階段：host 設定面板控制列視覺 prototype](phase-82-host-settings-panel-visual-prototype.md) | 完成 | 由視窗頂端按鈕開啟設定面板，已驗證不侵入原版畫布的 host UI。 |
