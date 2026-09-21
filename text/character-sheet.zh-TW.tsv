@@ -4,7 +4,7 @@ character.sheet.hp	生命值	runtime-interface
 character.sheet.race	種族	manual-and-runtime
 character.sheet.ac	護甲等級	manual-and-runtime
 character.sheet.gender	性別	runtime-interface
-character.sheet.thac0	THAC 指數	manual-and-runtime
+character.sheet.thac0	命中指數	manual-and-runtime
 character.sheet.career	職業	manual-and-runtime
 character.sheet.level	等級	manual-and-runtime
 character.sheet.status	狀態	runtime-interface

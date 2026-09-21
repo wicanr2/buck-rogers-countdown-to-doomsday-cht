@@ -2,6 +2,11 @@
 
 更新：2026-09-21
 
+第六十五階段已完成：角色資料／重擲頁 35 個靜態 request 已接入 dosgolem 明示 2×／3×
+runtime overlay。base／`Y` 各雙倍率雙重重播決定，安全矩形外差異為 0、raw framebuffer
+不變；spec 038 已 CONFORMED。產品預設倍率仍未選。此終態 dosgolem palette 將動態值色號
+15 映成黑色，未覆繪 baseline 亦如此；這不是中文層清除，動態值可讀性／palette parity 尚未完成。
+
 第六十四階段已完成：角色資料／重擲頁的 35 個靜態 exact identity 已建立繁中 catalog，
 dosgolem spec 037 已 CONFORMED。四次 Enter 與其後 `Y` 分支各雙重重播，分別產生 43／52
 筆 request；JSON 與 framebuffer 各自逐 byte 相同，原版畫面雜湊未變。動態姓名、身分、

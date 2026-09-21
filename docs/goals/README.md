@@ -69,3 +69,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第六十二階段：明示倍率的手冊執行期繁中覆繪](phase-62-scale-explicit-manual-runtime-overlay.md) | 等待使用者確認版面 | 先解決原版題目保留方式，再將手冊 typed request 接到長存 xlate layer。 |
 | [第六十三階段：性別與職業選單執行期繁中覆繪整合](phase-63-gender-class-runtime-overlay-integration.md) | 完成 | 將既有性別／職業 request 與安全矩形接入明示倍率 runtime overlay，雙倍率驗證生命週期。 |
 | [第六十四階段：角色資料／重擲畫面靜態繁中請求](phase-64-character-sheet-static-text-runtime-requests.md) | 完成 | 從 96 筆事件隔離 35 筆靜態 identity，建立繁中 exact catalog 與正常路徑 runtime request。 |
+| [第六十五階段：角色資料頁安全矩形與雙倍率執行期覆繪](phase-65-character-sheet-overlay-geometry-and-runtime.md) | 完成 | 35 筆安全矩形已接入 2×／3× runtime overlay，完成 base／Y 同狀態與矩形外零差異驗收。 |
