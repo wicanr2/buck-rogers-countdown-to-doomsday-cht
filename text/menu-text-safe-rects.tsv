@@ -11,3 +11,12 @@ race.heading.terran	24	24	48	8	24	24	6	1	single-line-reject
 race.selection.normal.terran	24	24	48	8	24	24	6	1	single-line-reject
 race.selection.selected.martian	24	32	56	8	24	32	7	1	single-line-reject
 race.selection.normal.martian	24	32	56	8	24	32	7	1	single-line-reject
+function.menu.option.create_new_character	72	96	160	8	72	96	20	1	single-line-reject
+function.menu.option.add_character_to_team	72	104	168	8	72	104	21	1	single-line-reject
+function.menu.option.load_saved_game	72	112	120	8	72	112	15	1	single-line-reject
+function.menu.option.joystick_mouse_initialize	72	120	200	8	72	120	25	1	single-line-reject
+function.menu.option.exit_to_dos	72	128	88	8	72	128	11	1	single-line-reject
+function.menu.selected.create_new_character	72	96	160	8	72	96	20	1	single-line-reject
+function.menu.instruction.choose_function	0	192	144	8	0	192	18	1	single-line-reject
+function.menu.selected.add_character_to_team	72	104	168	8	72	104	21	1	single-line-reject
+function.menu.normal.add_character_to_team	72	104	168	8	72	104	21	1	single-line-reject

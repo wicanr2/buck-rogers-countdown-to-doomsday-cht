@@ -61,3 +61,5 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第五十四階段：已保存角色的名冊與加入隊伍路徑](phase-54-saved-character-roster-and-add-path.md) | 已完成 | 從真正保存分支接續 Add，驗證角色列、保存檔 consumer 與加入後邊界。 |
 | [第五十五階段：保存、名冊與加入隊伍繁中事件 catalog](phase-55-save-roster-join-translation-catalog.md) | 已完成 | 建立正常保存→Add→加入路徑的靜態文字 identity、繁中 catalog 與動態姓名隔離。 |
 | [第五十六階段：保存、名冊與加入隊伍執行期繁中顯示請求](phase-56-save-roster-join-runtime-display-requests.md) | 已完成 | 將 exact catalog 接入 dosgolem guarded watcher，並以完整正常路徑證實動態姓名不翻譯。 |
+| [第五十七階段：明示倍率的執行期繁中覆繪路徑](phase-57-scale-explicit-runtime-overlay-path.md) | 完成 | 將 typed request 接到倍率中立 renderer，以 2×／3× 同狀態驗證中文像素與語意隔離。 |
+| [第五十八階段：執行期繁中覆繪證據固化與交接](phase-58-runtime-overlay-evidence-and-handoff.md) | 完成 | 固化 Phase 57 收據、完成全面驗證、提交、推送與 Issue 回寫。 |

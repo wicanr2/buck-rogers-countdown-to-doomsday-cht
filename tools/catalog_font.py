@@ -68,6 +68,19 @@ def read_catalog(path: Path) -> list[Entry]:
     return entries
 
 
+def read_catalogs(paths: list[Path]) -> list[Entry]:
+    """合併多份 catalog；同一 key 即使譯文相同也拒絕，維持單一權威。"""
+    entries: list[Entry] = []
+    seen: set[str] = set()
+    for path in paths:
+        for entry in read_catalog(path):
+            if entry.key in seen:
+                raise CatalogError(f"多 catalog 重複 key：{entry.key}")
+            seen.add(entry.key)
+            entries.append(entry)
+    return entries
+
+
 def catalog_codepoints(entries: list[Entry]) -> list[int]:
     return sorted({ord(ch) for entry in entries for ch in entry.translation})
 
@@ -146,20 +159,20 @@ def main(argv: list[str] | None = None) -> int:
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     lint = subparsers.add_parser("lint", help="驗證 TSV catalog")
-    lint.add_argument("catalog", type=Path)
+    lint.add_argument("catalog", nargs="+", type=Path)
 
     chars = subparsers.add_parser("chars", help="產生決定性的字元清單")
-    chars.add_argument("catalog", type=Path)
+    chars.add_argument("catalog", nargs="+", type=Path)
     chars.add_argument("--out", required=True, type=Path)
 
     build = subparsers.add_parser("build", help="由 Unifont 建立 GOLEMFNT 子集")
-    build.add_argument("catalog", type=Path)
+    build.add_argument("catalog", nargs="+", type=Path)
     build.add_argument("--font", required=True, type=Path)
     build.add_argument("--out", required=True, type=Path)
 
     args = parser.parse_args(argv)
     try:
-        entries = read_catalog(args.catalog)
+        entries = read_catalogs(args.catalog)
         if args.command == "chars":
             _write_if_changed(args.out, character_list_bytes(entries))
         elif args.command == "build":

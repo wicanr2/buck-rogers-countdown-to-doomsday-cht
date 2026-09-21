@@ -2,6 +2,11 @@
 
 更新：2026-09-21
 
+第五十七階段已完成：dosgolem 已將 14 筆靜態請求接到輸出端繁中 RGBA 覆繪；
+`026F:029C` 清除矩形與同原點取代契約使終態只保留當下 `roster.add_prompt`。
+2×／3× 各兩次可決定重生，原版 framebuffer、輸入、FileOps、writes 與存檔不變；
+動態姓名列零覆繪差異。spec 035 已 CONFORMED，但 2×／3× 產品預設仍留給使用者決定。
+
 第五十六階段已完成：保存→功能選單→名冊→加入隊伍 catalog 已接入 dosgolem 唯一 guarded
 `MenuRequestWatcher`。兩次完整正常路徑皆為 18 events／14 requests／4 dynamic-name misses，
 3 writes 與 2,611 FileOps 逐項等於無 catalog baseline；framebuffer 與保存檔亦逐 byte 不變。

@@ -749,3 +749,25 @@
 - 新增正式 receipt verifier 與正反例測試；專案 100 項測試及 dosgolem 全部正式 packages
   test／vet、Buck Rogers／receipt race detector 通過。
 - 本輪未載字型、清除英文、繪製中文或選定 2×／3×；dosgolem commit 只留本機分支。
+
+# 2026-09-21：第五十七階段明示倍率執行期繁中覆繪
+
+- 將 menu 與 roster 安全矩形、合併 catalog 字型與 runtime request 接入長存 `xlate.Layer`；
+  命令必須明示 2× 或 3×，沒有建立預設倍率。
+- 首輪重播暴露舊 stamp，spec 誠實退回 DRAFT；後續接入已證實的 `026F:029C` 清除矩形，
+  並新增同原點輸出取代契約，沒有依 event key 硬編清單。
+- 修正後 2×／3× 各兩次均為 18 events、14 requests、4 dynamic misses、14 actions，終態
+  只有 `roster.add_prompt`；同倍率 RGBA 逐 byte 一致。
+- raw framebuffer、events、BIOS keys、2,611 FileOps、3 writes 與存檔全部等於無覆繪 baseline；
+  RGBA 差異只在終態安全矩形，動態姓名列零差異。spec 035 升為 CONFORMED。
+
+# 2026-09-21：第五十八階段覆繪證據固化與交接
+
+- 建立第 57 階段研究紀錄並掛入證據索引；更新 `CONTEXT.md`、spec 035 與 Goal 狀態，
+  保留首輪失敗與退回 DRAFT 的訂正歷史。
+- 專案 101 項 Python 測試全數通過；dosgolem 正式套件 `go test`、`go vet` 與
+  `xlate`／`apps/buckrogers`／`cmd/buckrogers-text-receipt` race detector 全數通過。
+- dosgolem 變更已提交於本機 `buck-rogers-cht-output-overlay` 分支，commit `b2fb855`；
+  依權利邊界不推送其遠端。
+- 差異檢查通過；本輪 Docker 容器已清理。專案根的 root-owned `original/` 是本輪前已存在
+  且已確認為空的 Docker 掛載殘留，已只刪除該空目錄，沒有遺失可恢復資料。

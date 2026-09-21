@@ -31,6 +31,7 @@ class SaveRosterJoinCatalogTests(unittest.TestCase):
             ROOT / "text/save-roster-join.zh-TW.tsv",
             ROOT / "text/menu.zh-TW.tsv",
             ROOT / "text/save-roster-join-runtime-events.tsv",
+            ROOT / "text/save-roster-join-text-safe-rects.tsv",
         )
 
     def test_rejects_identity_drift_and_dynamic_translation(self):

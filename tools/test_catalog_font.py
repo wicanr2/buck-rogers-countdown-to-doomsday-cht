@@ -13,6 +13,7 @@ from catalog_font import (
     catalog_codepoints,
     character_list_bytes,
     read_catalog,
+    read_catalogs,
 )
 
 
@@ -42,6 +43,16 @@ class CatalogFontTest(unittest.TestCase):
             "key\ttranslation\tsource\ngender.male\t男性\truntime-interface\n".encode()
         )
         self.assertEqual(read_catalog(path)[0].source, "runtime-interface")
+
+    def test_multiple_catalogs_merge_without_copying_translation_authority(self):
+        first = self.root / "first.tsv"
+        second = self.root / "second.tsv"
+        first.write_text("key\ttranslation\tsource\na\t甲\truntime\n", encoding="utf-8")
+        second.write_text("key\ttranslation\tsource\nb\t乙\truntime-interface\n", encoding="utf-8")
+        self.assertEqual([entry.key for entry in read_catalogs([first, second])], ["a", "b"])
+        second.write_text("key\ttranslation\tsource\na\t甲\truntime-interface\n", encoding="utf-8")
+        with self.assertRaises(CatalogError):
+            read_catalogs([first, second])
 
     def test_catalog_rejects_invalid_utf8(self):
         with self.assertRaises(CatalogError):

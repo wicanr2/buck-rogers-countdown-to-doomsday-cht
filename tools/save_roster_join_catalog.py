@@ -37,7 +37,7 @@ def _decode(path: Path) -> str:
 
 
 def validate(events_path: Path, catalog_path: Path, menu_catalog_path: Path | None = None,
-             runtime_events_path: Path | None = None) -> None:
+             runtime_events_path: Path | None = None, runtime_rects_path: Path | None = None) -> None:
     event_bytes = events_path.read_bytes()
     if hashlib.sha256(event_bytes).hexdigest() != EVENTS_SHA256:
         raise ValueError("事件清冊與第五十四階段 exact identity 基線不符")
@@ -108,6 +108,24 @@ def validate(events_path: Path, catalog_path: Path, menu_catalog_path: Path | No
         actual = {(row[3], row[4], row[5], row[6], row[7], row[8], row[9]) for row in runtime_rows[1:]}
         if actual != expected:
             raise ValueError("runtime 事件 identity 與完整清冊不符")
+        if runtime_rects_path is not None:
+            rects = list(csv.reader(io.StringIO(_decode(runtime_rects_path)), delimiter="\t", strict=True))
+            want_header = ["event_key", "x", "y", "width", "height", "draw_x", "draw_y",
+                           "capacity_cells", "line_count", "overflow_policy"]
+            if not rects or rects[0] != want_header or len(rects) != 3:
+                raise ValueError("runtime 安全矩形 schema 或筆數不符")
+            event_by_key = {row[0]: row for row in runtime_rows[1:]}
+            for row in rects[1:]:
+                event = event_by_key.get(row[0])
+                if event is None:
+                    raise ValueError("安全矩形含孤兒 event_key")
+                x, y, width, height, draw_x, draw_y, capacity, lines = map(int, row[1:9])
+                if (x, y, width, height) != (int(event[9]) * 8, int(event[8]) * 8,
+                                             int(event[3]) * 8, 8):
+                    raise ValueError("安全矩形未由 dispatcher 幾何精確導出")
+                if (draw_x, draw_y, capacity, lines, row[9]) != (x, y, int(event[3]), 1,
+                                                                  "single-line-reject"):
+                    raise ValueError("安全矩形 draw／容量契約不符")
 
 
 def verify_known_dynamic_bytes() -> None:
@@ -125,5 +143,6 @@ if __name__ == "__main__":
     root = Path(__file__).resolve().parents[1]
     verify_known_dynamic_bytes()
     validate(root / "text/save-roster-join-events.tsv", root / "text/save-roster-join.zh-TW.tsv",
-             root / "text/menu.zh-TW.tsv", root / "text/save-roster-join-runtime-events.tsv")
+             root / "text/menu.zh-TW.tsv", root / "text/save-roster-join-runtime-events.tsv",
+             root / "text/save-roster-join-text-safe-rects.tsv")
     print("保存→名冊→加入繁中 catalog：通過")
