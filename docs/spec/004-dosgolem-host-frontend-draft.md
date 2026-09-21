@@ -1,0 +1,66 @@
+# 004 — dosgolem host 前端與執行期倍率
+
+狀態：DRAFT
+
+前置：[第八十二階段 host 面板 prototype](../re/phase-82-host-settings-panel-visual-prototype.md)、
+[第八十四階段能力盤點](../re/phase-84-dosgolem-host-frontend-capability-audit.md)
+
+## 目的與邊界
+
+本規格只界定一個通用、玩家可操作的 dosgolem host 前端應承接什麼資料與輸入邊界，讓
+2×／3× 倍率能在執行期改變而不影響 DOS。它不是 Buck Rogers adapter、不是原版輸入模擬器，
+也不授權實作任何視窗後端或設定面板。
+
+Buck Rogers 的 host 控制列與面板必須將完整 320×200 畫布下推；既有幾何位於第八十二階段
+證據。本規格不重複該遊戲的 rectangle，亦不把它放進 `apps/buckrogers/`。
+
+## 已證實能力與缺口
+
+| 項目 | 分級 | 證據與結論 |
+| --- | --- | --- |
+| dosgolem 現況 | 已證實 | 本機 `buck-rogers-cht-output-overlay` 的 `8bfd5b4e5802f65d428d3fb439196b3c571c002b`；README 明定它是無頭、決定性、供程式化觀測的執行器。 |
+| 既有輸出疊層 | 已證實 | `xlate.Layer` 只讀 indexed framebuffer 與 palette，畫入新的 RGBA；`apps/buckrogers.RuntimeMenuOverlay.Draw` 同樣先重建 RGBA，沒有寫回 machine VRAM。 |
+| 2×／3× 輸出 | 已證實 | Buck Rogers runtime overlay constructor 明示只接受 2 或 3；其 `scale` 為私有欄位，沒有執行期 setter。既有 instance 不能自行改倍率。 |
+| DOS 滑鼠能力 | 已證實 | `cmd/probe` 的 `-mouse-*`／`-click-*` 是以固定 instruction step 呼叫模擬 DOS 滑鼠；它是原版輸入／對拍能力，不是 host 視窗事件。 |
+| 可重用 host 視窗與事件迴圈 | 強推論：不存在 | `go.mod` 沒有前端依賴；所有 Go source 的 window／frontend／SDL／Ebiten／GLFW／event-loop token 搜尋為零；命令均為無頭診斷或收據工具。結論與 README 的定位一致，但實際選用哪個新 backend 仍未知。 |
+
+`xlate.Layer`、原始 indexed framebuffer、palette 與 active overlay stamps 是可重用的資料層；
+原生視窗、host pointer events、控制列繪製、hit test、面板焦點與 output-present loop 都需要
+新增通用能力。不得把後者誤放入 `apps/buckrogers/`。
+
+## 擬定通用契約
+
+1. host presenter 的每一幀只讀取目前的 indexed framebuffer、palette 與 active presentation
+   layer，建立 output RGBA；不改 VRAM、DOS 記憶體、檔案、存檔、BIOS queue 或 IRQ。
+2. host layout 以目前 output scale 與 host chrome state 導出遊戲 canvas 的 output origin；遊戲
+   canvas 必須完整保留，不能被 host control 覆蓋、裁切或以不同倍率重採樣。
+3. 滑鼠移動、按下、放開先以 output-space hit rectangle 判斷。命中 host rectangle 的事件必須在
+   任何 DOS 座標轉換、DOS mouse API、BIOS 或 IRQ 前被消費；未命中的未來 forwarding 另由
+   backend 明示，不可借用 `cmd/probe` 的診斷注入。
+4. 倍率改變時以同一份目前 raw indexed framebuffer、palette 與 active overlay state 重繪，
+   不重啟 DOS、不送鍵、不清除 VRAM，也不遺失已顯示的繁中 stamp。
+5. API 與 state 只可表達通用的 output scale、canvas、host chrome、host hit event 與重繪；
+   Buck Rogers 的題目、翻譯鍵、矩形、手冊答案與遊戲座標不可出現在通用層。
+
+## 未決前沿與不做
+
+- 使用者尚未選擇 option 點擊後「立即套用並關閉」、「立即套用且保持開啟」或「選取後 Apply」；
+  DRAFT 不得替任一方案設定 transition、按鈕或持久化。
+- 實際視窗 backend、平台支援、host 文案／字型、鍵盤焦點與設定跨重啟持久化均為未知；不是以
+  headless CLI 或 DOS mouse injection 推定。
+- 不改原版 EXE、DOS 輸入、原版手冊驗證、存檔結構、遊戲規則或 adapter 的 exact output identity。
+
+## READY 前置與未來驗收
+
+進入實作前，必須先由使用者選定 option click 的套用語意，並以該選擇補齊 backend、focus 與
+session／持久化範圍。READY 後至少驗證：
+
+1. 2×與3×的 host canvas 與控制列幾何；畫布內容逐 byte 等於同一 raw input 的輸出投影。
+2. 每個 host hit event 對 DOS mouse state、BIOS key queue、IRQ、raw framebuffer、DOS memory
+   與存檔均為零副作用。
+3. 切換前後以相同 raw input、palette 與 active layer 重繪；繁中 stamps 不遺失，且不新增
+   原版輸入或重啟。
+4. 以至少一條正常玩家路徑做原文／繁中、2×／3×與切換前後的同狀態收據；差異只在核准的
+   presentation pixels 與 host chrome 範圍。
+
+在上述項目完成前，本規格維持 DRAFT，不能作為 production 視窗前端或手冊 presenter 的許可。

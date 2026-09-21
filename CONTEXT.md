@@ -415,3 +415,9 @@ y=120；四個 active-selection prototype 的原畫布與複製畫布 SHA-256 �
 `manual_catalog.py` 與 `manual_overlay_layout.py` 都接受 504、拒絕 505。22 筆校訂段落最長
 236 字，均通過。第十七／六十一階段的 612 字敘述僅保留為已取代的歷史 prototype／收據，
 不得再引用為 production 容量。此階段沒有接 presenter、改輸入或改原版驗證。
+
+第八十四階段固定 dosgolem 本機 `buck-rogers-cht-output-overlay` 的
+`8bfd5b4e5802f65d428d3fb439196b3c571c002b`：它已有 xlate／RGBA compositing 與明示 2×／3×
+runtime overlay，卻沒有可重用的視窗或 host pointer event loop；`cmd/probe` 的滑鼠只屬
+決定性 DOS 注入，不能充當 host UI。spec 004 因實際 backend 與 option click 套用語意未定而
+維持 DRAFT。下一個阻塞決策仍是點擊倍率後立即套用／保持面板／Apply；本輪未修改 dosgolem。

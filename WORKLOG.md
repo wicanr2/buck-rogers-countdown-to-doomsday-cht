@@ -1049,3 +1049,12 @@
   納入失敗即關閉驗證，最大正式段落為 236 字。
 - 將 spec 002 與文字目錄收斂到 504 字；612 字只保留歷史 prototype／收據脈絡。未接
   dosgolem presenter，未改寫原版輸入或手冊答案判定。
+
+## 2026-09-21 — 第八十四階段：dosgolem host 前端能力盤點
+
+- 固定並檢閱 dosgolem 本機 `8bfd5b4`；README、command inventory、source search 與 Go 測試
+  共同證實現況是無頭觀測器，沒有可直接接用的視窗或 host pointer event loop。
+- 既有 xlate／Buck Rogers overlay 能從 raw indexed framebuffer、palette 與 active stamps
+  生成 2×／3× RGBA，但 runtime scale 是 constructor-only；DOS 模擬滑鼠維持對拍輸入，不混入 host UI。
+- 新增 spec 004 DRAFT，將通用 presenter、host hit-test、輸入隔離與重繪責任獨立於
+  `apps/buckrogers/`；option click 套用語意與 backend 選擇保持未定，沒有實作 dosgolem。

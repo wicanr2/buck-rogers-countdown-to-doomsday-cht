@@ -80,3 +80,4 @@
 | [第八十階段：技能操作列快捷字母保留與混合寬度版面](phase-80-action-bar-hotkey-preserving-layout.md) | 白色助記字母、原色中文、28-pixel 混合寬度與 Add 空白格擴張證據。 |
 | [第八十二階段：host 設定面板控制列視覺 prototype](phase-82-host-settings-panel-visual-prototype.md) | 上方 host 控制列、下推而不遮畫布的面板，以及 2×／3× hit rectangle 契約。 |
 | [第八十三階段：手冊保留原題的 504 字容量契約](phase-83-manual-preserved-prompt-capacity-contract.md) | 保留題目時的正式 36×14／504 字幾何、catalog 邊界與已取代 612 字契約的分界。 |
+| [第八十四階段：dosgolem host 前端能力盤點](phase-84-dosgolem-host-frontend-capability-audit.md) | 無頭現況、可重用 output compositing、DOS 滑鼠輸入邊界與必須新增的通用 host 能力。 |

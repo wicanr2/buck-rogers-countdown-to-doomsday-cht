@@ -88,3 +88,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第八十一階段：手冊保留原題與執行期倍率切換契約](phase-81-manual-preserved-prompt-and-runtime-scale-switch.md) | 進行中 | 固定手冊 36×14 版面，設計不污染 DOS 輸入的 2×／3× 執行期切換。 |
 | [第八十二階段：host 設定面板控制列視覺 prototype](phase-82-host-settings-panel-visual-prototype.md) | 完成 | 由視窗頂端按鈕開啟設定面板，已驗證不侵入原版畫布的 host UI。 |
 | [第八十三階段：手冊保留原題的 504 字容量契約](phase-83-manual-preserved-prompt-capacity-contract.md) | 完成 | 將已確認的 36×14 手冊正文落成正式 catalog／幾何驗證。 |
+| [第八十四階段：dosgolem host 前端能力盤點](phase-84-dosgolem-host-frontend-capability-audit.md) | 完成 | 盤點可重用 host 前端能力與通用／遊戲 adapter 邊界，不預設點選套用語意。 |
