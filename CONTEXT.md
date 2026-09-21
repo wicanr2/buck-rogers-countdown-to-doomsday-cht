@@ -327,3 +327,9 @@ exact request。base 為 226／14／212，Down 為 234／16／218；動態點數
 variants 維持 miss。control／catalog 雙重重播的原版語意與 framebuffer 相同。本階段只建立
 request，尚未建立安全矩形或繪製技能頁繁中像素。
 dosgolem 實作已提交於本機 branch，commit `c4fb58c`，未推送其遠端。
+
+第七十一階段已將上述 14 identities 建立 exact-width 矩形並接入執行期覆繪。
+base／Down 的 2×／3× 各雙重重播一致；矩形外與 x≥184 動態數值欄均為 0 px，
+原版 framebuffer 及 presentation 欄位外語意與 Phase 70 control 一致。選取列取代與
+姓名提示轉場失效均無殘字。產品預設倍率及手冊版面仍待使用者決定。
+dosgolem 實作已提交於本機 branch，commit `91407a4`，未推送其遠端。

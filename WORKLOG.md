@@ -890,3 +890,19 @@
 - 專案 123 項 Python 測試、dosgolem 全套 Go 測試、vet 與相關 race detector 全數通過；
   本階段未建立安全矩形或 renderer。
 - dosgolem 實作已提交於本機 branch，commit `c4fb58c`，未推送其遠端。
+
+# 2026-09-21：第七十一階段職業技能配置執行期繁中覆繪
+
+- 以 14 個 exact identities 的原文起點與長度建立安全矩形；動態數值欄從 x=184 開始。
+- dosgolem 新增 `-career-skill-rects`，與 career-skill catalog 成對失敗即關閉，並併入
+  長存 presenter。
+- base／Down × 2×／3× 各雙重重播；原版 framebuffer 不變，矩形外與動態數值欄
+  差異均為 0。四張原始解析度圖已目視通過。
+- 專案 Python 回歸 127 項通過；dosgolem 正式套件 test／vet 通過。`go test ./...`
+  會掃入既有 `workplace/fd2-input-parity-20260907` 三個獨立 main，改以排除研究暫存套件
+  的同容器命令乾淨重跑。
+- 全套 race 的未改動 `internal/cpu` 首次在 2 GiB 被系統終止，改用 8 GiB 後仍先觸及
+  套件 10 分鐘逾時，期間沒有 race 報告或斷言失敗。本輪改動的 `apps/buckrogers` 與
+  `cmd/buckrogers-text-receipt` 已獨立 race 通過；不將未完成的全 CPU race 冒稱通過。
+- 本階段不選定產品預設倍率，不改手冊版面。
+- dosgolem 實作已提交於本機 branch，commit `91407a4`，未推送其遠端。

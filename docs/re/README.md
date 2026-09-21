@@ -66,5 +66,6 @@
 | [第六十八階段角色姓名提示執行期繁中覆繪](phase-68-character-name-prompt-runtime-overlay.md) | 提示／輸入欄幾何、2×／3× containment 與動態姓名零干擾收據 |
 | [第六十九階段角色姓名覆繪轉場失效生命週期](phase-69-character-name-overlay-transition-invalidation.md) | Enter 空終態清除、Escape 同 key 重印與雙倍率無殘字收據 |
 | [第七十階段職業技能配置靜態繁中請求](phase-70-career-skill-static-runtime-requests.md) | 四標題／八技能 exact catalog、selected variants 與動態點數 miss 收據 |
+| [第七十一階段職業技能配置執行期繁中覆繪](phase-71-career-skill-runtime-overlay.md) | 14 筆 exact 矩形、base／Down 雙倍率取代生命週期與動態數值零干擾收據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

@@ -43,6 +43,9 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `career-skill-screen-events.tsv` 從姓名確認與 Down 清冊收錄四個固定標題、八個一般技能列及
 兩個已證實的 selected variants；`career-skill-screen.zh-TW.tsv` 的技能譯名必須逐筆等於
 角色資料正式 catalog。未收錄的選取 variant 與所有點數仍維持 miss。
+`career-skill-screen-text-safe-rects.tsv` 以每個 exact event 的原文長度限定單列矩形；
+技能列右界最遠 x=136，points／bonus／total 從 x=184／232／280 開始。
+`tools/career_skill_screen_text_safe_rects.py` 驗證矩形、容量與動態欄零侵入。
 `career-skill-subtract-events.tsv` 與 `career-skill-exit-events.tsv` 保存先加後減的可逆重畫，
 以及 Escape→`Y` 的確認提示與技術技能配置終點；Right 本身沒有文字事件，其動作語意由後續
 重畫和逐 byte 畫面還原共同證實。

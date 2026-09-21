@@ -1,0 +1,15 @@
+event_key	x	y	width	height	draw_x	draw_y	capacity_cells	line_count	overflow_policy
+career.screen.remaining_points.heading	8	8	160	8	8	8	20	1	single-line-reject
+career.screen.maximum_per_skill.heading	8	16	144	8	8	16	18	1	single-line-reject
+career.screen.skills.heading	8	32	104	8	8	32	13	1	single-line-reject
+career.screen.columns.heading	168	32	144	8	168	32	18	1	single-line-reject
+career.screen.skill.notice.normal	8	48	48	8	8	48	6	1	single-line-reject
+career.screen.skill.maneuver_zero_g.normal	8	56	112	8	8	56	14	1	single-line-reject
+career.screen.skill.use_jetpack.normal	8	64	88	8	8	64	11	1	single-line-reject
+career.screen.skill.pilot_rocket.normal	8	72	96	8	8	72	12	1	single-line-reject
+career.screen.skill.pilot_fixed_wing.normal	8	80	128	8	8	80	16	1	single-line-reject
+career.screen.skill.drive_ground_car.normal	8	88	128	8	8	88	16	1	single-line-reject
+career.screen.skill.pilot_rotorwing.normal	8	96	128	8	8	96	16	1	single-line-reject
+career.screen.skill.drive_jetcar.normal	8	104	96	8	8	104	12	1	single-line-reject
+career.screen.skill.notice.selected	8	48	48	8	8	48	6	1	single-line-reject
+career.screen.skill.maneuver_zero_g.selected	8	56	112	8	8	56	14	1	single-line-reject
