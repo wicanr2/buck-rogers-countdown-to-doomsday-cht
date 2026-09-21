@@ -1020,3 +1020,11 @@
   `go test ./...` 仍會掃到既有未版控 `workplace/fd2-input-parity-20260907` 三個 probe 的重複
   `main`，未誤改其他研究資料。
 - dosgolem 本機提交：`8bfd5b4`（分支 `buck-rogers-cht-output-overlay`，未推送）。
+
+## 2026-09-21 — 第八十一階段前置：手冊版面與倍率方向確認
+
+- 使用者採保留原版題目的方案 A；production 正文收斂為 36×14＝504 字，排除整框替換。
+- 使用者不選單一固定倍率，要求遊戲執行中可在 2×／3× 間調整；Phase 25／59 的固定倍率
+  門檻因此完成並由第八十一階段 runtime switch 契約接手。
+- 查證 dosgolem 現有玩家路徑只有命令列明示倍率，未發現 host-only 快捷鍵／設定選單；
+  正式綁鍵前須由使用者決定入口，不得借用會送入 DOS 的 BIOS key queue。

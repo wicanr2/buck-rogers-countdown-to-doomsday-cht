@@ -29,7 +29,7 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第二十二階段：dosgolem xlate 通用整數倍率](phase-22-dosgolem-xlate-integer-scale.md) | 完成 | 擴充通用 GOLEMFNT renderer 支援 2×／3×，不預先選定遊戲倍率。 |
 | [第二十三階段：手冊事件 adapter 規格與正式核心](phase-23-manual-event-adapter.md) | 完成 | 將已證實事件與 catalog 流程審查成 READY 子規格，再實作未接線的正式核心。 |
 | [第二十四階段：手冊 runtime watcher 與真實事件收據](phase-24-manual-runtime-watcher.md) | 完成 | 將已證實 dispatcher guard 接到正式核心，以原版固定狀態驗證顯示請求。 |
-| [第二十五階段：手冊繁中覆繪倍率決策](phase-25-manual-overlay-scale-decision.md) | 進行中 | 以原生尺寸 prototype 與 Golden Box CJK 版面證據決定 2×／3×。 |
+| [第二十五階段：手冊繁中覆繪倍率決策](phase-25-manual-overlay-scale-decision.md) | 完成 | 排除單一固定倍率，改採執行期可切換 2×／3×。 |
 | [第二十六階段：README 遊戲歷史、保存價值與技術定位](phase-26-readme-history-positioning.md) | 完成 | 以可回查來源完成專案歷史介紹、保存理由、技術定位與權利邊界。 |
 | [第二十七階段：功能選單文字事件清冊](phase-27-menu-event-inventory.md) | 完成 | 由正常 Enter 固定狀態重生九筆 typed dispatcher／post-call metadata。 |
 | [第二十八階段：功能選單顯示請求純核心](phase-28-menu-display-request-core.md) | 完成 | 將 exact runtime identity 與正式繁中 TSV 接成失敗即關閉顯示請求。 |
@@ -63,10 +63,10 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第五十六階段：保存、名冊與加入隊伍執行期繁中顯示請求](phase-56-save-roster-join-runtime-display-requests.md) | 已完成 | 將 exact catalog 接入 dosgolem guarded watcher，並以完整正常路徑證實動態姓名不翻譯。 |
 | [第五十七階段：明示倍率的執行期繁中覆繪路徑](phase-57-scale-explicit-runtime-overlay-path.md) | 完成 | 將 typed request 接到倍率中立 renderer，以 2×／3× 同狀態驗證中文像素與語意隔離。 |
 | [第五十八階段：執行期繁中覆繪證據固化與交接](phase-58-runtime-overlay-evidence-and-handoff.md) | 完成 | 固化 Phase 57 收據、完成全面驗證、提交、推送與 Issue 回寫。 |
-| [第五十九階段：手冊執行期繁中覆繪倍率門檻](phase-59-manual-runtime-overlay-scale-gate.md) | 進行中 | 以既有雙倍率實圖與 runtime 收據由使用者確認正式輸出倍率。 |
+| [第五十九階段：手冊執行期繁中覆繪倍率門檻](phase-59-manual-runtime-overlay-scale-gate.md) | 完成 | 2×／3× 均為正式模式；切換控制移交第八十一階段。 |
 | [第六十階段：手冊覆繪 READY 前置稽核](phase-60-manual-overlay-ready-prerequisite-audit.md) | 完成 | 分開實作前契約與實作後驗收，查證 catalog／watcher 後只保留真正的 READY blocker。 |
 | [第六十一階段：手冊單頁容量失敗即關閉驗證](phase-61-manual-single-page-capacity-validator.md) | 完成 | 將 612 字單頁上限落成 catalog 驗證與邊界測試，不預選倍率或分頁操作。 |
-| [第六十二階段：明示倍率的手冊執行期繁中覆繪](phase-62-scale-explicit-manual-runtime-overlay.md) | 等待使用者確認版面 | 先解決原版題目保留方式，再將手冊 typed request 接到長存 xlate layer。 |
+| [第六十二階段：明示倍率的手冊執行期繁中覆繪](phase-62-scale-explicit-manual-runtime-overlay.md) | 進行中 | 已採保留原題的 36×14 版面；等待 host-only 倍率切換契約。 |
 | [第六十三階段：性別與職業選單執行期繁中覆繪整合](phase-63-gender-class-runtime-overlay-integration.md) | 完成 | 將既有性別／職業 request 與安全矩形接入明示倍率 runtime overlay，雙倍率驗證生命週期。 |
 | [第六十四階段：角色資料／重擲畫面靜態繁中請求](phase-64-character-sheet-static-text-runtime-requests.md) | 完成 | 從 96 筆事件隔離 35 筆靜態 identity，建立繁中 exact catalog 與正常路徑 runtime request。 |
 | [第六十五階段：角色資料頁安全矩形與雙倍率執行期覆繪](phase-65-character-sheet-overlay-geometry-and-runtime.md) | 完成 | 35 筆安全矩形已接入 2×／3× runtime overlay，完成 base／Y 同狀態與矩形外零差異驗收。 |
@@ -85,3 +85,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第七十八階段：技能操作列配色中立覆繪核心](phase-78-skill-action-bar-style-neutral-overlay-core.md) | 完成 | 16 筆 rectangles 與明示逐字配色核心已通過雙候選、雙倍率驗證；無 production 預設。 |
 | [第七十九階段：技能操作列配色中立 runtime 生命週期](phase-79-skill-action-bar-style-neutral-runtime-lifecycle.md) | 完成 | 雙候選已共用原子 group 取代、clear、anchor 與 frame lifecycle；仍無 CLI 預設。 |
 | [第八十階段：技能操作列快捷字母保留與混合寬度版面](phase-80-action-bar-hotkey-preserving-layout.md) | 完成 | 保留白色拉丁字母與原色中文，完成混合寬度版面及真實畫面驗證。 |
+| [第八十一階段：手冊保留原題與執行期倍率切換契約](phase-81-manual-preserved-prompt-and-runtime-scale-switch.md) | 進行中 | 固定手冊 36×14 版面，設計不污染 DOS 輸入的 2×／3× 執行期切換。 |
