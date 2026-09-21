@@ -803,3 +803,16 @@
   新前沿是版面保留方式，建議保留原版題目。
 - 依共同決策閘門，production presenter 暫停等待使用者選擇；本輪不修改 dosgolem、不設定
   預設倍率，也不新增中文題目提示或自動答案。
+
+# 2026-09-21：第六十三階段性別與職業 runtime overlay
+
+- dosgolem spec 036 先達 READY，再把 gender／class rect 以完整 catalog 配對旗標接到既有
+  `RuntimeMenuOverlay`；孤兒 rect、缺表、部分輸入與非法倍率均失敗即關閉。
+- 權威正常三 Enter＋Down 路徑的 baseline、2××2、3××2 均為 24 events／requests；覆繪模式
+  另有 24 actions，零 miss／缺字。終態只留職業畫面八 keys，性別與舊 variant 已清除。
+- 同倍率 JSON／RGBA 逐 byte 相同；raw framebuffer 五份相同。2×／3× 安全矩形內差異為
+  3,288／6,225 px，外部皆 0；原始解析度目視無跨列、裁切或殘字。
+- 第一次原版掛載多一層目錄、第二次誤用相近 state，分別在載入與 24-event 閘門失敗；修正
+  精確路徑與權威 state 後乾淨重跑，沒有放寬期望。
+- 專案回歸增至 105 項並通過；dosgolem 全部正式 test／vet 與相關 race 通過，本機 commit
+  `e1d2070` 未推遠端。產品倍率與手冊版面仍未代替使用者決定。

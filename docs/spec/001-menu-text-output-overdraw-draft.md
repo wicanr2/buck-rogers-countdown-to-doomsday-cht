@@ -180,6 +180,11 @@ identity 接入正式繁中 catalog 與 runtime request。第 38 階段又以第
   產生 exact runtime request；職業初始畫面與 Down／Up／Escape 亦已有 exact runtime request，
   但確認職業後畫面、性別／職業 text-safe rectangle 仍未知，且尚未接 renderer。
 
+第六十三階段已訂正上述後半限制：性別／職業正式 text-safe rectangles 與 exact request 已接入
+長存 runtime renderer；正常三 Enter＋Down 路徑在 2×／3× 各兩次驗證 24 requests／actions、
+轉場失效、同原點取代、安全矩形外 0 px 與原版 framebuffer 不變。確認職業後的角色資料與
+後續動態畫面仍未接 renderer；產品預設倍率也仍待使用者決定。
+
 升為 READY 前，至少須以 dosgolem 取得一條正常互動路徑，明確量到上述生命週期事件，並
 完成原文／繁中 A/B 同狀態收據與中文 glyph containment 驗證。沒有達成這些條件時，DRAFT
 只能引導後續量測，不能成為程式碼、測試期望或「已中文化」的依據。

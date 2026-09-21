@@ -282,3 +282,9 @@ containment 與同狀態 A/B 正確歸入實作後 CONFORMED；目前唯一 READ
 正文容量為 36×14＝504 字，現有最長 236 字仍單頁。2×／3× 圖均已重生並目視通過。
 目前最前沿決策是「保留原版題目」或「整框替換並另設計中文題目提示」；建議前者。使用者
 確認前不實作 production presenter，也不將 612 上限改成 504；dosgolem 本輪未修改。
+
+第六十三階段已把性別／職業 exact request 與安全矩形接進 dosgolem 長存 runtime overlay。
+正常三 Enter＋Down 路徑在 2×／3× 各兩次均為 24 requests／24 actions、零 miss，終態只保留
+職業畫面八個 keys；性別與舊 selected variant 已失效。兩倍率安全矩形外 0 px，原版 raw
+framebuffer 全等於既有 class Down 基準。專案 105 項測試與 dosgolem 正式 test／vet／race
+通過；dosgolem 本機 commit `e1d2070` 未推遠端。手冊版面與產品預設倍率仍待使用者決定。
