@@ -304,3 +304,9 @@ DAC 0–14，讓 index 15 沿用 BIOS 白色。通用修正載入標準 VGA 前 
 事件與輸入完全不變；base／`Y`、2×／3× 各雙重重播決定性一致，HP 數值已在 RGBA baseline
 成為可見白字。spec 205 已 CONFORMED；完整 DAC 16–255 預設表仍不猜補。產品倍率與手冊
 版面仍待使用者決定。
+
+第六十七階段已把角色姓名畫面的固定提示接成 exact runtime request。五鍵正常路徑固定為
+183 events／1 request／182 misses；加送玩家 `A` 後為 184／1／183，單 byte 姓名回顯仍
+失敗即關閉。兩路各雙重重播的 JSON 與 framebuffer 逐位元一致；本階段未新增安全矩形或
+renderer，因此不影響仍待決的產品倍率與手冊版面。
+dosgolem 實作已提交於本機 branch，commit `22f46b4`，未推送其遠端。

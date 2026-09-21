@@ -62,5 +62,6 @@
 | [第六十三階段性別與職業執行期繁中覆繪](phase-63-gender-class-runtime-overlay.md) | 正常角色建立雙倍率 runtime overlay、轉場失效、同原點取代與像素 containment 收據 |
 | [第六十四階段角色資料靜態繁中執行期請求](phase-64-character-sheet-static-runtime-requests.md) | 隔離 35 個靜態 identity，完成 exact catalog、base／Y runtime request 與 framebuffer 非干擾收據 |
 | [第六十五階段角色資料頁執行期繁中覆繪](phase-65-character-sheet-runtime-overlay.md) | 35 筆安全矩形、base／Y × 2×／3× runtime overlay、同 palette baseline 與像素 containment |
+| [第六十七階段角色姓名靜態提示執行期請求](phase-67-character-name-static-text-runtime-requests.md) | 姓名固定提示 exact request、玩家輸入 miss 與雙重正常路徑收據 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

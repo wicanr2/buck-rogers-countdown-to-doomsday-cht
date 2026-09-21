@@ -845,3 +845,14 @@
 - 專案 Python 回歸 109 項通過；正式 Go 套件 `vet` 與相關 race detector 通過。第一次
   Python 命令誤指不存在的 `tests/`，第一次 `vet ./...` 又掃入既有 `workplace/` 重複
   `main`；修正為實際 `tools/` 與排除研究暫存套件後，以同一容器乾淨重跑。
+
+# 2026-09-21：第六十七階段角色姓名靜態提示執行期請求
+
+- 從第六十六階段固定 state 沿四次 Enter＋`N` 正常路徑重生姓名畫面，確認固定提示 exact
+  identity；完整英文只在一次性本機探針核對，未納入正式 catalog。
+- 建立一筆繁中「角色姓名：」catalog、嚴格來源驗證器與 dosgolem loader／命令列接線；未設
+  text-safe rectangle，不啟用 renderer。
+- 正常路徑為 183 events／1 request／182 misses；加送 `A` 為 184／1／183，證實玩家輸入
+  echo 維持 miss。兩路各雙重重播，JSON 與 framebuffer 逐位元一致。
+- 專案 113 項 Python 測試與 dosgolem 全套 Go 測試、vet、相關 race detector 均通過；
+  dosgolem 本機 commit 為 `22f46b4`，未推送其遠端。
