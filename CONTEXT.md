@@ -356,3 +356,12 @@ content-safe 清冊；未觀測到獨立 disabled variant，維持 unknown。dos
 DRAFT，下一階段應實作 Buck Rogers 專屬 guarded glyph-event watcher，不能直接當成
 原有字串事件。dosgolem 本機提交為 `7d8ca0b`，未推送其遠端。產品倍率與
 手冊版面仍未決定。
+
+第七十五階段已將技能頁底部逐字路徑接成 dosgolem `ActionBarWatcher`。
+screen anchor 來自 exact 技能畫面標題，technical 只 allowlist 兩個 Phase 72 已證實的
+career 共享標題；每字通過 `0763:026B` caller、mode=1、repeat=1、色彩、座標、
+SS/SP far-return guard 與完整雜湊後才產生 content-safe event。八條正常路徑雙重播
+均為 0 miss、0 drop，watcher/control framebuffer 與其餘語意收據一致；spec 213 已
+CONFORMED。底部操作列仍未接繁中 request／overlay，disabled 仍是 unknown；下一個
+不依賴產品倍率的安全切片是建立繁中 catalog 與 typed display requests。dosgolem
+本機提交為 `356848c`，未推送其遠端。

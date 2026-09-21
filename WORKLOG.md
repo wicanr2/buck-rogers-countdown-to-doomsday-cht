@@ -948,3 +948,19 @@
 - dosgolem 新增 spec 213（DRAFT），只規劃 guarded glyph-event watcher；本階段沒有
   production 程式碼變更，也未選定 2×／3× 或手冊版面。
 - dosgolem 本機提交：`7d8ca0b`（分支 `buck-rogers-cht-output-overlay`，未推送）。
+
+## 2026-09-21 — 第七十五階段：技能配置底部操作列執行期事件
+
+- spec 213 先補齊輸入雜湊、typed 狀態、exact anchor、失效、失敗模式、垂直鏈、
+  驗收與權利邊界後升 READY，才實作 `ActionBarWatcher`。
+- runtime 初次證據依序曝露局部 clear、row 24 重畫、mode=1 及 technical 共享
+  career keys 四個契約細節。每次都先回 DRAFT 修 spec／負向測試，再用同一路徑
+  重跑；雜湊、caller、色彩與座標未放寬。
+- career base／Subtract／Done 與 technical base／Subtract／Prev／Next／Done
+  的事件數為 3／6／9／8／13／18／23／28。每路 watcher A/B JSON 逐 byte
+  一致，0 miss、0 drop。
+- 八路 watcher A/B/control framebuffer 均逐 byte 一致；去除 action metadata 後，watcher 與
+  control 的其餘 JSON 也一致。收據 verifier 為 `tools/skill_action_bar_runtime_receipt.py`。
+- 專案 142 項 Python 回歸、dosgolem 全部正式套件 test／vet 及相關 race detector
+  通過；spec 213 已 CONFORMED。本階段沒有譯文、request 或 overlay。
+- dosgolem 本機提交：`356848c`（分支 `buck-rogers-cht-output-overlay`，未推送）。
