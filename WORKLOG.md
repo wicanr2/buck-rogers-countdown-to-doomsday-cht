@@ -782,3 +782,13 @@
   重抽、containment 與同狀態 A/B 改列實作後 CONFORMED 驗收。
 - 專案 101 項 Python 測試及 dosgolem 手冊 adapter／watcher 正式與 race 測試通過；本輪
   未修改 dosgolem。唯一 READY blocker 仍為使用者尚未選定 2×／3×。
+
+# 2026-09-21：第六十一階段手冊單頁容量失敗即關閉驗證
+
+- 核對第 17 階段 prototype 與正式 catalog parser 都以 Python Unicode 字元計數；一個字元
+  對應 `xlate.Layout` 的一個邏輯格。
+- `manual_catalog.py` 由 36 欄×17 列導出 612 字上限；新增 612 字正例與 613 字負例，超限
+  會指出 record、實際字數與上限，不會截斷或默認分頁。
+- 正式 22 筆 catalog 通過，完整 Python 回歸由 101 增至 103 項並全數通過。
+- 首次聚焦命令因未設定 `PYTHONPATH` 在收集階段失敗；以正確環境重跑 6 項乾淨通過，分類
+  為測試命令問題。本輪未修改 dosgolem，正式倍率仍待使用者選定。

@@ -13,6 +13,9 @@ from catalog_font import read_catalog
 
 EVENT_FIELDS = ["event_key", "record_index", "page", "heading_ascii", "ordinal", "text_key"]
 EVENT_PATTERN = re.compile(r"^manual\.page([0-9]+)\.[a-z0-9_]+\.word([0-9]+)$")
+MANUAL_PAGE_COLUMNS = 36
+MANUAL_PAGE_BODY_ROWS = 17
+MANUAL_PAGE_CAPACITY = MANUAL_PAGE_COLUMNS * MANUAL_PAGE_BODY_ROWS
 
 
 def read_rows(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -56,6 +59,12 @@ def validate(questions_path: Path, crosswalk_path: Path, events_path: Path, cata
         seen_text.add(event["text_key"])
         if event["text_key"] not in catalog:
             raise ValueError(f"record {record} 的 text_key 不在 catalog")
+        translation = catalog[event["text_key"]].translation
+        if len(translation) > MANUAL_PAGE_CAPACITY:
+            raise ValueError(
+                f"record {record} 的譯文有 {len(translation)} 字，"
+                f"超過單頁上限 {MANUAL_PAGE_CAPACITY} 字"
+            )
 
     extras = sorted(catalog.keys() - seen_text)
     if extras:

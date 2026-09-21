@@ -53,6 +53,23 @@ class ManualCatalogTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "未映射"):
             subject.validate(self.questions, self.crosswalk, self.events, self.catalog)
 
+    def test_accepts_translation_at_single_page_capacity(self):
+        self.catalog.write_text(
+            "key\ttranslation\tsource\n"
+            f"manual.log.11.the_elevator\t{'字' * subject.MANUAL_PAGE_CAPACITY}\tmanual-and-runtime\n",
+            encoding="utf-8",
+        )
+        subject.validate(self.questions, self.crosswalk, self.events, self.catalog)
+
+    def test_rejects_translation_over_single_page_capacity(self):
+        self.catalog.write_text(
+            "key\ttranslation\tsource\n"
+            f"manual.log.11.the_elevator\t{'字' * (subject.MANUAL_PAGE_CAPACITY + 1)}\tmanual-and-runtime\n",
+            encoding="utf-8",
+        )
+        with self.assertRaisesRegex(ValueError, "613 字，超過單頁上限 612 字"):
+            subject.validate(self.questions, self.crosswalk, self.events, self.catalog)
+
 
 if __name__ == "__main__":
     unittest.main()
