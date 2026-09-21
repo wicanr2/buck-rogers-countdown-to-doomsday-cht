@@ -964,3 +964,15 @@
 - 專案 142 項 Python 回歸、dosgolem 全部正式套件 test／vet 及相關 race detector
   通過；spec 213 已 CONFORMED。本階段沒有譯文、request 或 overlay。
 - dosgolem 本機提交：`356848c`（分支 `buck-rogers-cht-output-overlay`，未推送）。
+
+## 2026-09-21 — 第七十六階段：技能操作列繁中顯示請求
+
+- 建立 `skill-action-bar.zh-TW.tsv`，五個譯文採 `runtime-interface` 來源；事件與譯文
+  雙向覆蓋，career／technical 及 normal／focus 共用文字鍵。
+- dosgolem 新增 16-identity exact resolver 與 watcher request 佇列；純 event 模式維持相容。
+- 初次 runtime 因漏掛 savestate 所需 `/orig/GAME.OVR` 失敗且未產生收據；確認來源後以
+  唯讀 `/orig` 重跑，沒有放寬產品契約。
+- 八路 event／request 數為 3／6／9／8／13／18／23／28；A/B、control 語意與 framebuffer
+  全數一致，0 miss／drop。專案 144 項 Python 與 dosgolem 全套 test／vet／race 通過。
+- spec 214 已 CONFORMED；本階段沒有操作列覆繪，也未決定產品倍率或手冊版面。
+- dosgolem 本機提交：`6d17fd3`（分支 `buck-rogers-cht-output-overlay`，未推送）。

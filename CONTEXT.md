@@ -365,3 +365,9 @@ SS/SP far-return guard 與完整雜湊後才產生 content-safe event。八條�
 CONFORMED。底部操作列仍未接繁中 request／overlay，disabled 仍是 unknown；下一個
 不依賴產品倍率的安全切片是建立繁中 catalog 與 typed display requests。dosgolem
 本機提交為 `356848c`，未推送其遠端。
+
+第七十六階段已將技能操作列事件接成繁中 exact requests。「加點／減點／上頁／下頁／完成」
+分級為 `runtime-interface`，不冒稱中文手冊逐字譯名。八條正常路徑的 event／request 數為
+3／6／9／8／13／18／23／28；雙重播、純事件 control 與 framebuffer 非干擾均通過，
+spec 214 已 CONFORMED。操作列仍未建立安全矩形或繪製中文；產品預設倍率與手冊版面仍未決定。
+dosgolem 本機分支提交為 `6d17fd3`，未推送其遠端。

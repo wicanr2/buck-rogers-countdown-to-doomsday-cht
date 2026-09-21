@@ -68,7 +68,9 @@ SHA-256、逐字 caller、幾何與一般／焦點色彩。這些標籤經 `0763
 Phase 75 已由 dosgolem guarded glyph watcher 將此清冊接成 typed events；
 `tools/skill_action_bar_runtime_receipt.py` 驗證八條正常路徑的雙重播、exact identity、
 0 miss／drop、watcher／control 語意一致與 framebuffer 零差異。此階段仍只有事件，
-尚未建立繁中顯示請求或覆繪。
+尚未覆繪。`skill-action-bar.zh-TW.tsv` 以 editorial 的 `runtime-interface` 來源保存
+「加點／減點／上頁／下頁／完成」五個繁中介面詞；`tools/skill_action_bar_catalog.py`
+固定 UTF-8／NFC、來源與事件雙向覆蓋，不冒稱中文手冊逐字譯名。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

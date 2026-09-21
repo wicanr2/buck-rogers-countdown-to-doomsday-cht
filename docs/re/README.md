@@ -73,3 +73,4 @@
 | [第七十三階段：技術技能配置執行期繁中覆繪](phase-73-technical-skill-runtime-overlay.md) | 17 筆專屬矩形、共享標題、穩定 frame 訂正與雙倍率同狀態收據。 |
 | [第七十四階段：技能配置底部操作列輸出路徑清冊](phase-74-skill-action-bar-output-path-inventory.md) | 逐字輸出路徑、五標籤幾何、焦點色彩與 disabled unknown 邊界。 |
 | [第七十五階段：技能配置底部操作列執行期事件](phase-75-skill-action-bar-runtime-events.md) | Guarded glyph watcher、錨定訂正、八路雙重播與 framebuffer 非干擾收據。 |
+| [第七十六階段：技能操作列繁中顯示請求](phase-76-skill-action-bar-display-requests.md) | 五個繁中介面詞、16 個 exact identities、八路 request 與語意隔離收據。 |

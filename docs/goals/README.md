@@ -80,3 +80,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第七十三階段：技術技能配置安全矩形與雙倍率覆繪](phase-73-technical-skill-overlay-geometry-and-runtime.md) | 完成 | 合併技術專屬與共享標題矩形，接入 2×／3× runtime overlay 並驗證選取列與動態數值隔離。 |
 | [第七十四階段：技能配置底部操作列輸出路徑清冊](phase-74-skill-action-bar-output-path-inventory.md) | 完成 | 證實五標籤的逐字輸出路徑、幾何與焦點色彩；disabled 維持 unknown。 |
 | [第七十五階段：技能配置底部操作列執行期事件](phase-75-skill-action-bar-runtime-events.md) | 完成 | Guarded glyph-event watcher 已以八條正常路徑驗證決定性與 framebuffer 非干擾。 |
+| [第七十六階段：技能操作列繁中 catalog 與顯示請求](phase-76-skill-action-bar-translation-requests.md) | 完成 | 五個譯文鍵與 exact requests 已完成八路非干擾驗收；尚未繪製。 |
