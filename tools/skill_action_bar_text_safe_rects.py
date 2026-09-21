@@ -6,6 +6,9 @@ from pathlib import Path
 
 HEADER=["event_key","x","y","width","height","draw_x","draw_y","capacity_cells","line_count","overflow_policy"]
 
+def logical_width(text: str) -> int:
+    return sum(4 if ord(ch) < 128 else 8 for ch in text)
+
 def read_rects(path: Path):
     with path.open(encoding="utf-8",newline="") as handle:
         reader=csv.DictReader(handle,delimiter="\t")
@@ -26,10 +29,11 @@ def validate(events: Path, translations: Path, rects: Path) -> int:
     for key,(screen,text_key,x0,y0,x1,y1) in expected.items():
         row=found[key]; nums={name:int(row[name]) for name in HEADER[1:9]}
         got=(nums["x"],nums["y"],nums["width"],nums["height"])
-        if got!=(x0,y0,x1-x0,y1-y0): raise ValueError(f"{key}: exact 幾何漂移")
-        if nums["draw_x"]!=x0 or nums["draw_y"]!=y0 or nums["capacity_cells"]!=(x1-x0)//8: raise ValueError(f"{key}: anchor 或容量漂移")
+        approved_width=(x1-x0)+8 if text_key=="action.add" else x1-x0
+        if got!=(x0,y0,approved_width,y1-y0): raise ValueError(f"{key}: 核准幾何漂移")
+        if nums["draw_x"]!=x0 or nums["draw_y"]!=y0 or nums["capacity_cells"]!=approved_width//8: raise ValueError(f"{key}: anchor 或容量漂移")
         if nums["line_count"]!=1 or row["overflow_policy"]!="single-line-reject": raise ValueError(f"{key}: 單列契約漂移")
-        if text_key not in texts or len(texts[text_key])>nums["capacity_cells"]: raise ValueError(f"{key}: 譯文缺少或容量不足")
+        if text_key not in texts or logical_width(texts[text_key])>nums["width"]: raise ValueError(f"{key}: 譯文缺少或混合寬度容量不足")
         base=key.rsplit(".",1)[0]; geom=got+(nums["draw_x"],nums["draw_y"],nums["capacity_cells"])
         if base in per_action and per_action[base]!=geom: raise ValueError(f"{base}: normal/focus 幾何不一致")
         per_action[base]=geom

@@ -1,12 +1,12 @@
 event_key	x	y	width	height	draw_x	draw_y	capacity_cells	line_count	overflow_policy
-career.action.add.normal	0	192	24	8	0	192	3	1	single-line-reject
-career.action.add.focus	0	192	24	8	0	192	3	1	single-line-reject
+career.action.add.normal	0	192	32	8	0	192	4	1	single-line-reject
+career.action.add.focus	0	192	32	8	0	192	4	1	single-line-reject
 career.action.subtract.normal	32	192	64	8	32	192	8	1	single-line-reject
 career.action.subtract.focus	32	192	64	8	32	192	8	1	single-line-reject
 career.action.done.normal	104	192	32	8	104	192	4	1	single-line-reject
 career.action.done.focus	104	192	32	8	104	192	4	1	single-line-reject
-technical.action.add.normal	0	192	24	8	0	192	3	1	single-line-reject
-technical.action.add.focus	0	192	24	8	0	192	3	1	single-line-reject
+technical.action.add.normal	0	192	32	8	0	192	4	1	single-line-reject
+technical.action.add.focus	0	192	32	8	0	192	4	1	single-line-reject
 technical.action.subtract.normal	32	192	64	8	32	192	8	1	single-line-reject
 technical.action.subtract.focus	32	192	64	8	32	192	8	1	single-line-reject
 technical.action.prev.normal	104	192	32	8	104	192	4	1	single-line-reject

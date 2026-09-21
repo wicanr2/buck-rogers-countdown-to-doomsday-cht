@@ -387,3 +387,10 @@ focus 固定沿用原版黑字白底。spec 215 仍是 DRAFT，CLI／runtime 尚
 partial clear 整組失效、career／technical anchor 切換與 frame 後明示 palette 重套用均有測試。
 兩候選及 2×／3× 共用相同 lifecycle，constructor 仍沒有預設值。spec 215 維持 DRAFT，正式
 CLI 與正常玩家路徑覆繪只剩 normal 配色決策；dosgolem 本機提交 `6d230a1`，未推遠端。
+
+第八十階段依使用者決定推翻前述兩個配色候選：技能操作列正式保留括號內拉丁助記字母，
+只有字母為白色，括號與中文沿用 palette 10。五筆顯示改為 `(A)加點`、`(S)減點`、
+`(P)上頁`、`(N)下頁`、`(D)完成`。ASCII 採 4、中文採 8 logical-pixel 前進；最窄 Add
+安全使用下一標籤前的 8-pixel 空白，2×／3× 真實畫面均無裁切、重疊或框線侵入。
+字母直接鍵盤控制作用仍為 unknown；spec 215 已 READY，但完整 runtime 玩家路徑尚未 CONFORMED。
+dosgolem 本機分支提交為 `8bfd5b4`，未推送其遠端。

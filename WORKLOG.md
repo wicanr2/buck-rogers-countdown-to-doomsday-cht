@@ -1005,3 +1005,18 @@
 - 完整 `go test ./...` 通過；全域 vet 被既有未版控 workplace 三個 probe `main` 衝突攔下，改以
   正式 package 清單重跑 vet，另跑 Buck Rogers race，均通過，未刪改其他研究資料。
 - dosgolem 本機提交 `6d230a1`，未推遠端；spec 215 保持 DRAFT，正式 CLI 等待配色決策。
+
+## 2026-09-21 — 第八十階段：快捷字母保留與混合寬度版面
+
+- 接受使用者修正：排除全綠及首個中文字白色，改為括號內 A／S／P／N／D 保持白色，
+  括號與繁中標籤使用原版 palette 10；focus 仍為黑字白底。
+- 以 Phase 71／73 真實 framebuffer 與正式 Unifont 來源重生 2×／3× prototype；五字顯示
+  採 ASCII 4 px、CJK 8 px 前進，總寬 28 px。Add 擴用 `[24,32)` 空白後沒有重疊或框線侵入。
+- 正式 catalog、矩形驗證器與 dosgolem renderer 已改為失敗即關閉的混合寬度／固定配色契約；
+  原子 group lifecycle 保持不變。
+- 可見首字母身分已證實，但 A／S／P／N／D 直接鍵盤作用尚未實測，文件只稱助記字母。
+- spec 215 升 READY；完整正常玩家路徑 runtime overlay 收據留待後續 CONFORMED 階段。
+- 專案 149 項 Python 測試通過；dosgolem 正式 packages 的 test／vet 及 Buck Rogers race 通過。
+  `go test ./...` 仍會掃到既有未版控 `workplace/fd2-input-parity-20260907` 三個 probe 的重複
+  `main`，未誤改其他研究資料。
+- dosgolem 本機提交：`8bfd5b4`（分支 `buck-rogers-cht-output-overlay`，未推送）。

@@ -77,3 +77,4 @@
 | [第七十七階段：技能操作列覆繪幾何與配色前沿](phase-77-skill-action-bar-overlay-geometry.md) | 8-pixel command band、雙倍率字模 containment、底框排除與 normal 配色 prototype。 |
 | [第七十八階段：技能操作列配色中立覆繪核心](phase-78-skill-action-bar-style-neutral-overlay-core.md) | 16 個 exact rectangles、明示逐字配色 API、雙候選雙倍率核心驗證。 |
 | [第七十九階段：技能操作列配色中立 runtime 生命週期](phase-79-skill-action-bar-style-neutral-runtime-lifecycle.md) | 原子 group 取代、clear／anchor 失效、frame 後明示 palette 重套用。 |
+| [第八十階段：技能操作列快捷字母保留與混合寬度版面](phase-80-action-bar-hotkey-preserving-layout.md) | 白色助記字母、原色中文、28-pixel 混合寬度與 Add 空白格擴張證據。 |

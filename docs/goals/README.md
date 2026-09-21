@@ -81,6 +81,7 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第七十四階段：技能配置底部操作列輸出路徑清冊](phase-74-skill-action-bar-output-path-inventory.md) | 完成 | 證實五標籤的逐字輸出路徑、幾何與焦點色彩；disabled 維持 unknown。 |
 | [第七十五階段：技能配置底部操作列執行期事件](phase-75-skill-action-bar-runtime-events.md) | 完成 | Guarded glyph-event watcher 已以八條正常路徑驗證決定性與 framebuffer 非干擾。 |
 | [第七十六階段：技能操作列繁中 catalog 與顯示請求](phase-76-skill-action-bar-translation-requests.md) | 完成 | 五個譯文鍵與 exact requests 已完成八路非干擾驗收；尚未繪製。 |
-| [第七十七階段：技能操作列安全矩形與雙倍率執行期覆繪](phase-77-skill-action-bar-overlay-geometry-and-runtime.md) | 等待使用者確認 normal 配色 | 8-pixel command band 已證實；首字白／次字綠或全綠待選後再升 READY。 |
+| [第七十七階段：技能操作列安全矩形與雙倍率執行期覆繪](phase-77-skill-action-bar-overlay-geometry-and-runtime.md) | 已由第八十階段取代 | 8-pixel command band 證據保留；舊兩個配色候選均作廢。 |
 | [第七十八階段：技能操作列配色中立覆繪核心](phase-78-skill-action-bar-style-neutral-overlay-core.md) | 完成 | 16 筆 rectangles 與明示逐字配色核心已通過雙候選、雙倍率驗證；無 production 預設。 |
 | [第七十九階段：技能操作列配色中立 runtime 生命週期](phase-79-skill-action-bar-style-neutral-runtime-lifecycle.md) | 完成 | 雙候選已共用原子 group 取代、clear、anchor 與 frame lifecycle；仍無 CLI 預設。 |
+| [第八十階段：技能操作列快捷字母保留與混合寬度版面](phase-80-action-bar-hotkey-preserving-layout.md) | 完成 | 保留白色拉丁字母與原色中文，完成混合寬度版面及真實畫面驗證。 |

@@ -11,9 +11,9 @@ class SkillActionBarRectsTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             p=Path(d)/"r.tsv"; p.write_text(RECTS.read_text().replace(old,new,1),encoding="utf-8")
             with self.assertRaises(ValueError): validate(EVENTS,TEXT,p)
-    def test_rejects_geometry(self): self.reject("career.action.add.normal\t0\t192\t24","career.action.add.normal\t0\t184\t24")
+    def test_rejects_geometry(self): self.reject("career.action.add.normal\t0\t192\t32","career.action.add.normal\t0\t184\t32")
     def test_rejects_missing(self): self.reject("career.action.add.normal","orphan")
-    def test_rejects_capacity(self): self.reject("\t3\t1\tsingle-line-reject","\t1\t1\tsingle-line-reject")
+    def test_rejects_capacity(self): self.reject("\t4\t1\tsingle-line-reject","\t1\t1\tsingle-line-reject")
     def test_rejects_cross_action_overlap(self): self.reject("career.action.done.normal\t104","career.action.done.normal\t32")
 
 if __name__=="__main__": unittest.main()
