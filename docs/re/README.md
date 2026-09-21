@@ -56,5 +56,6 @@
 | [第五十三階段保存選項控制流與名冊接納狀態](phase-53-save-choice-control-flow-and-admission-state.md) | 保存分支勘誤、YES 寫檔控制流、決定性與後續 Add 驗證邊界 |
 | [第五十四階段已保存角色的名冊與加入隊伍路徑](phase-54-saved-character-roster-and-add-path.md) | 保存檔掃描、角色列、完整載入、加入後移除與雙重正常路徑收據 |
 | [第五十七階段明示倍率的執行期繁中覆繪](phase-57-scale-explicit-runtime-overlay.md) | 2×／3× 輸出端覆繪、清除／同原點取代生命週期與同狀態收據 |
+| [第六十階段手冊覆繪 READY 前置稽核](phase-60-manual-overlay-ready-prerequisite-audit.md) | 39 題／22 譯文邊界、單頁容量、失敗即關閉與 READY／CONFORMED 分流 |
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。

@@ -771,3 +771,14 @@
   依權利邊界不推送其遠端。
 - 差異檢查通過；本輪 Docker 容器已清理。專案根的 root-owned `original/` 是本輪前已存在
   且已確認為空的 Docker 掛載殘留，已只刪除該空目錄，沒有遺失可恢復資料。
+
+# 2026-09-21：第六十階段手冊覆繪 READY 前置稽核
+
+- 重驗 39 筆題庫、來源對照、22 筆正式事件／譯文與 10 筆序數橋接；來源分布為
+  35 confirmed、3 strong-inference、1 unknown。
+- 22 筆正式譯文最長 236 字，均可放入 36×17＝612 字單頁；其餘 17 題明定 catalog miss
+  並保留原版英文，不猜補、不模糊匹配，也不新增分頁按鍵。
+- 訂正 spec 002 的關卡：資料、watcher 與失敗即關閉屬 READY 前置；正常路徑覆繪、錯答
+  重抽、containment 與同狀態 A/B 改列實作後 CONFORMED 驗收。
+- 專案 101 項 Python 測試及 dosgolem 手冊 adapter／watcher 正式與 race 測試通過；本輪
+  未修改 dosgolem。唯一 READY blocker 仍為使用者尚未選定 2×／3×。

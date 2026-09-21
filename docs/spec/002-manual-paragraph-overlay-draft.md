@@ -12,7 +12,9 @@
 [第二十階段 catalog 顯示請求 prototype](../re/phase-20-manual-catalog-display-request-prototype.md)、
 [第二十一階段序數詞橋接](../re/phase-21-manual-ordinal-bridge-evidence.md)、
 [第二十二階段整數倍率 renderer](../re/phase-22-dosgolem-xlate-integer-scale.md)、
-[第二十三階段事件 adapter](../re/phase-23-manual-event-adapter.md)
+[第二十三階段事件 adapter](../re/phase-23-manual-event-adapter.md)、
+[第二十四階段 runtime watcher](../re/phase-24-manual-runtime-watcher.md)、
+[第六十階段 READY 前置稽核](../re/phase-60-manual-overlay-ready-prerequisite-audit.md)
 
 ## 目的
 
@@ -24,7 +26,7 @@
 權威事件列位於 `text/manual-events.tsv`，目前有 22 筆；每筆保留 record、頁碼、英文標題、
 序數及唯一文字鍵。來源定位在 `text/manual-source-crosswalk.tsv`，顯示文字在
 `text/manual.zh-TW.tsv`。`show_when` 仍要求同一畫面 generation 已觀測到三個識別欄位；
-`answer_input` 永遠由原版處理，不自動填入。版面仍待 2×／3× 與分頁 prototype 決策。
+`answer_input` 永遠由原版處理，不自動填入。版面仍待 2×／3× 決策。
 
 第十七階段由真實手冊畫面量得安全矩形 `[7,312)×[7,184)`；保留內距後的 prototype
 正文為 36 欄×17 行、每頁 612 字。2×／3× 使用相同邏輯格，頁數一致；兩案均已驗證
@@ -60,6 +62,14 @@ dosgolem `apps/buckrogers` 實作未接線純核心。正式 TSV 正向／未命
 核心不接 oracle、xlate、輸入或答案。總體規格仍須等 runtime hook、倍率、分頁與 A/B 收據，
 因此維持 DRAFT。
 
+第二十四階段已把純核心接上正式 runtime watcher；原版固定狀態能在
+`#266,557,246` 對 `manual.page34.deimos_prison.word10` 產生唯一顯示請求，而正式 catalog
+未收錄的 `41 / Technical Skills / second` 只完成題目事件、請求數維持 0。第六十階段再以
+目前資料重驗：39 筆題庫中 35 筆來源已證實、3 筆為強推論、1 筆未知；正式事件與譯文各
+22 筆，最長譯文 236 字，全部可放入 36×17＝612 字的單頁正文。故目前正式 catalog 不需要
+新增分頁按鍵或頁尾提示；未來若新增超過單頁的譯文，須另開 DRAFT 規格，不能默認截斷、
+送鍵或接管原版輸入。
+
 ## 失敗即關閉規則
 
 1. 三個原版識別欄位任一缺失、超過同一 generation，或 catalog 沒有唯一命中，不顯示中文段落。
@@ -76,13 +86,26 @@ dosgolem `apps/buckrogers` 實作未接線純核心。正式 TSV 正向／未命
 8. catalog lookup 不得做大小寫折疊、模糊標題、近似頁碼或相鄰條目 fallback。ordinal word
    未在已證實橋接表時，即使 page 與 heading 命中也不得顯示。
 9. 翻譯只由 UTF-8 TSV catalog 取得；顯示請求不得攜帶答案或改變原版語意狀態。
+10. 目前只顯示 22 筆已逐字校訂且來源為 `confirmed` 的單頁譯文；其餘 17 筆即使來源已
+    證實，只要未列入正式事件與譯文 catalog，就維持原版英文。3 筆 `strong-inference`、
+    1 筆 `unknown` 以及任何未校訂內容一律不得猜補。
+11. 正式 catalog 的單筆譯文必須不超過 612 個 Unicode 字元；超限資料須在載入／驗證時
+    失敗即關閉，不能靜默截斷。此界線不預先決定未來多頁內容的操作方式。
 
-## READY 前置
+## READY 前置（實作前契約）
 
-- 逐字校訂可用中文段落；解決 3 筆強推論與 `Roll.` 缺頁，或為它們訂出明確的失敗即關閉政策。
-- 原版覆繪位置、分頁與輸入提示保留都有同狀態 A/B 收據；錯答重抽須在 adapter 實作後補
-  「舊覆蓋先失效、新覆蓋只在完整題目後出現」的同狀態 A/B 收據。
-- 通過未命中、重複標題、過期 generation 與 catalog 缺漏的失敗即關閉測試。
-- 將 READY 純核心接上已驗證的 dispatcher entry／guarded post-call，並以正常玩家路徑證明
-  hook 不會誤收其他字串或漏掉已知手冊入口。
-- 使用者確認 2×／3×，並為選定倍率補齊正常玩家路徑、覆繪 containment 與分頁互動收據。
+- [x] 22 筆可用中文段落均已逐字校訂、來源為 `confirmed`，且以 exact identity 接到 catalog。
+- [x] 其餘 17 題已有明確失敗即關閉政策；不要求先解決 3 筆強推論與 `Roll.` 缺頁。
+- [x] 未命中、重複標題、過期 generation、catalog 缺漏與 ordinal 異常均有負向測試。
+- [x] READY 純核心已接上已驗證的 dispatcher entry／guarded post-call，並有真實固定狀態收據。
+- [x] 目前 22 筆譯文都能單頁顯示；本範圍不新增分頁輸入或頁尾提示。
+- [ ] 使用者確認正式輸出倍率為 2× 或 3×，將所選倍率、像素原點與安全矩形寫成固定契約。
+
+## CONFORMED 驗收（實作後收據）
+
+- 正常玩家路徑只在完整題目 `word?` guarded post-call 後顯示中文，不誤收其他字串。
+- 選定倍率下的中文 ink 完全落在 `[7,312)×[7,184)` 安全矩形，矩形外 0 px 差異。
+- 錯答重抽時舊 generation 先失效，新段落只在新題身分完整後出現；舊段落不得殘留。
+- catalog miss、未校訂題目與超限譯文不畫中文；原版英文與原版答案輸入仍可操作。
+- 同資料、同初始狀態、同輸入與固定 seed（若涉及亂數）的原文／繁中 A/B，除核准覆繪像素
+  外，事件、輸入、原版 framebuffer、記憶體、檔案操作與存檔不得改變。
