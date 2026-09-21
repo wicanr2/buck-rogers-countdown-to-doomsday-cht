@@ -371,3 +371,9 @@ CONFORMED。底部操作列仍未接繁中 request／overlay，disabled 仍是 u
 3／6／9／8／13／18／23／28；雙重播、純事件 control 與 framebuffer 非干擾均通過，
 spec 214 已 CONFORMED。操作列仍未建立安全矩形或繪製中文；產品預設倍率與手冊版面仍未決定。
 dosgolem 本機分支提交為 `6d17fd3`，未推送其遠端。
+
+第七十七階段已證實技能操作列只應覆蓋原事件 `y=192..200` 的 8 logical-pixel band；既有
+16×16 字模在 2×／3× 輸出均完整容納。向上擴張 16 logical pixels 會侵入金色底框，已排除。
+dosgolem spec 215 為 DRAFT，本機提交 `952c596`，未推遠端。normal 原版採首字白、其餘綠；
+繁中要保留首字白／次字綠或改為全綠仍待使用者依真實畫面 prototype 決定，故 production
+overlay 尚未開工。產品預設倍率與手冊版面仍未決定。

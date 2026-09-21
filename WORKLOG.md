@@ -976,3 +976,12 @@
   全數一致，0 miss／drop。專案 144 項 Python 與 dosgolem 全套 test／vet／race 通過。
 - spec 214 已 CONFORMED；本階段沒有操作列覆繪，也未決定產品倍率或手冊版面。
 - dosgolem 本機提交：`6d17fd3`（分支 `buck-rogers-cht-output-overlay`，未推送）。
+
+## 2026-09-21 — 第七十七階段前置：操作列幾何與配色 prototype
+
+- 依本輪 goal 先量測 Phase 71／73 真實 framebuffer 與既有 16×16 GOLEMFNT renderer。
+- 證實 exact `y=192..200` 在 2×／3× 均能容納字模；16 logical-pixel 候選會蓋住底框，排除。
+- 以正式譯文建立首字白／次字綠與全綠兩種 career／technical、2×／3× 可丟棄圖；technical
+  2× 的 `y<192` 像素逐 byte 等於既有基底。
+- 原版 normal 混色沒有自然的繁中首字母對應，依共同決策閘門暫停 production 配色；spec 215
+  保持 DRAFT。dosgolem 本機提交 `952c596`，未推遠端。
