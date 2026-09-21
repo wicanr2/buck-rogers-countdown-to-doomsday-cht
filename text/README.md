@@ -71,6 +71,10 @@ Phase 75 已由 dosgolem guarded glyph watcher 將此清冊接成 typed events�
 尚未覆繪。`skill-action-bar.zh-TW.tsv` 以 editorial 的 `runtime-interface` 來源保存
 「加點／減點／上頁／下頁／完成」五個繁中介面詞；`tools/skill_action_bar_catalog.py`
 固定 UTF-8／NFC、來源與事件雙向覆蓋，不冒稱中文手冊逐字譯名。
+`skill-action-bar-text-safe-rects.tsv` 將 8 個畫面配置展開為 16 個 normal／focus exact keys；
+矩形只使用已證實的 `y=192..200`，同一 action 的 variant 共用幾何。
+`tools/skill_action_bar_text_safe_rects.py` 拒絕缺漏、孤兒、幾何／容量漂移與同畫面跨 action
+重疊；配色不屬於矩形資料。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

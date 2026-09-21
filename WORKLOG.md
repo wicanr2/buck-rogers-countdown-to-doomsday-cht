@@ -985,3 +985,13 @@
   2× 的 `y<192` 像素逐 byte 等於既有基底。
 - 原版 normal 混色沒有自然的繁中首字母對應，依共同決策閘門暫停 production 配色；spec 215
   保持 DRAFT。dosgolem 本機提交 `952c596`，未推遠端。
+
+## 2026-09-21 — 第七十八階段：配色中立操作列覆繪核心
+
+- 建立 16 筆 normal／focus exact rectangles 與 Python verifier；同 action variant 可共用幾何，
+  同畫面跨 action 重疊、缺漏、孤兒、容量及 geometry drift 均失敗即關閉。
+- dosgolem 建立不含 normal 預設值的 multi-color stamp builder；caller 必須逐 rune 明示已證實的
+  palette 10／15，focus 固定 palette 15 底／0 字。
+- `[15,10]` 與 `[10,10]` 兩候選均在 2×／3× 通過核心 containment，不構成產品選擇；CLI 未接線。
+- 專案 149 項 Python、dosgolem 全套 test／vet／Buck Rogers race 通過。dosgolem 本機提交
+  `236cb3b`，未推遠端；spec 215 保持 DRAFT。

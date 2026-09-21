@@ -377,3 +377,8 @@ dosgolem 本機分支提交為 `6d17fd3`，未推送其遠端。
 dosgolem spec 215 為 DRAFT，本機提交 `952c596`，未推遠端。normal 原版採首字白、其餘綠；
 繁中要保留首字白／次字綠或改為全綠仍待使用者依真實畫面 prototype 決定，故 production
 overlay 尚未開工。產品預設倍率與手冊版面仍未決定。
+
+第七十八階段已完成不依賴配色決策的 16 筆正式安全矩形與 style-neutral dosgolem 核心。
+normal 必須逐 rune 明示 palette 10／15，沒有預設；兩個候選在 2×／3× 均通過 containment。
+focus 固定沿用原版黑字白底。spec 215 仍是 DRAFT，CLI／runtime 尚未接線，繼續等待使用者
+選擇 normal 配色。dosgolem 本機提交 `236cb3b`，未推遠端；產品倍率與手冊版面仍未決定。
