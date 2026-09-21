@@ -76,3 +76,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第六十九階段：角色姓名覆繪轉場失效生命週期](phase-69-character-name-overlay-transition-invalidation.md) | 完成 | Enter 清除至空 layer；Escape 原地重印以同 key 取代，兩倍率皆無殘字或堆疊。 |
 | [第七十階段：職業技能配置靜態文字繁中請求](phase-70-career-skill-static-text-runtime-requests.md) | 完成 | 14 個標題／技能 identity 已接成 exact request；base／Down 動態點數均維持 miss。 |
 | [第七十一階段：職業技能配置安全矩形與雙倍率覆繪](phase-71-career-skill-overlay-geometry-and-runtime.md) | 完成 | 14 筆 exact 矩形已接入 2×／3× overlay，選取列取代正確且動態數值零干擾。 |
+| [第七十二階段：技術技能配置靜態文字繁中請求](phase-72-technical-skill-static-text-runtime-requests.md) | 完成 | 新增 17 個不重複 exact identities，共享標題、base／Down requests 與 framebuffer 非干擾已驗收。 |

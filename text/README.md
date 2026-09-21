@@ -46,6 +46,11 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `career-skill-screen-text-safe-rects.tsv` 以每個 exact event 的原文長度限定單列矩形；
 技能列右界最遠 x=136，points／bonus／total 從 x=184／232／280 開始。
 `tools/career_skill_screen_text_safe_rects.py` 驗證矩形、容量與動態欄零侵入。
+`technical-skill-screen-events.tsv` 從職業技能離開清冊與技術技能 Down 清冊收錄
+17 個不重複 exact identities：兩個專屬標題、13 個一般技能列與前兩列 selected variants。
+「單項技能上限」與「點數／加值／總計」和職業技能頁是同一 identity，由 career catalog 共享，
+不重複定義。`technical-skill-screen.zh-TW.tsv` 的 13 個技能譯名逐筆來自中文手冊
+`SCAN0352_012.jpg` 第 19–20 頁原圖；動態點數與未實測 selected variants 仍維持 miss。
 `career-skill-subtract-events.tsv` 與 `career-skill-exit-events.tsv` 保存先加後減的可逆重畫，
 以及 Escape→`Y` 的確認提示與技術技能配置終點；Right 本身沒有文字事件，其動作語意由後續
 重畫和逐 byte 畫面還原共同證實。

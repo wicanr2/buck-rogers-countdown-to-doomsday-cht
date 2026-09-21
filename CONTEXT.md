@@ -333,3 +333,11 @@ base／Down 的 2×／3× 各雙重重播一致；矩形外與 x≥184 動態數
 原版 framebuffer 及 presentation 欄位外語意與 Phase 70 control 一致。選取列取代與
 姓名提示轉場失效均無殘字。產品預設倍率及手冊版面仍待使用者決定。
 dosgolem 實作已提交於本機 branch，commit `91407a4`，未推送其遠端。
+
+第七十二階段已將技術技能配置頁接成 exact runtime requests。13 個技能譯名都回到
+中文手冊 `SCAN0352_012.jpg` 第 19–20 頁原圖。technical catalog 新增 17 個不重複 identities；
+「單項技能上限」與「點數／加值／總計」在兩技能頁是相同 identity，因此共享 career catalog，
+不重複定義。base 為 289／32／257，Down 為 297／34／263；control／catalog 的原版語意與
+framebuffer 相同。本階段只完成 request，尚未建立技術技能安全矩形或繁中像素覆繪。
+<!-- phase-72-dosgolem-commit -->
+- dosgolem 本機分支 `buck-rogers-cht-output-overlay` 的第 72 階段提交為 `790a41cbf03d056caedf87f06698f50cae90a8c1`；依專案規範僅保留於 `workplace/dosgolem`，未推送遠端。

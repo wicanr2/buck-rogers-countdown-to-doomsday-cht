@@ -906,3 +906,17 @@
   `cmd/buckrogers-text-receipt` 已獨立 race 通過；不將未完成的全 CPU race 冒稱通過。
 - 本階段不選定產品預設倍率，不改手冊版面。
 - dosgolem 實作已提交於本機 branch，commit `91407a4`，未推送其遠端。
+
+# 2026-09-21：第七十二階段技術技能配置靜態繁中請求
+
+- 從職業技能 Escape→`Y` 正常路徑隔離技術頁的固定標題、13 個技能列與前兩列
+  selected variants；所有技能譯名都以中文手冊原圖校訂。
+- 首次合併因兩個標題和 career catalog 具有相同 exact identity 而失敗即關閉。spec 211
+  退回 DRAFT，修正為共享既有 identity，再審查為 READY；technical catalog 從 19 筆修正為
+  17 筆不重複 identities，命令列也強制同時提供 career catalog。
+- base control／catalog 各雙重重播為 289 events／16→32 requests／273→257 misses；Down 為
+  297／16→34／281→263。原版語意與 framebuffer 不變。
+- 專案 131 項 Python 測試、dosgolem 正式套件 test／vet 與本輪改動套件 race 全數通過。
+- 本階段不建立安全矩形、不繪製繁中像素，不選定產品預設倍率或手冊版面。
+<!-- phase-72-dosgolem-commit -->
+- dosgolem 本機提交：`790a41cbf03d056caedf87f06698f50cae90a8c1`（分支 `buck-rogers-cht-output-overlay`，未推送）。
