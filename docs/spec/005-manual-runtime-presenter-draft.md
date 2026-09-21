@@ -6,7 +6,8 @@
 [手冊事件 adapter](003-manual-event-adapter.md)、[第十八階段 lifecycle 證據](../re/phase-18-manual-generation-invalidation.md)、
 [第八十五階段整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)、
 [第八十六階段 lifecycle 接線](../re/phase-86-manual-presentation-lifecycle.md)、
-[第八十七階段多行 presenter 核心](../re/phase-87-manual-multiline-presenter-core.md)。
+[第八十七階段多行 presenter 核心](../re/phase-87-manual-multiline-presenter-core.md)、
+[第八十八階段字型來源稽核](../re/phase-88-manual-formal-font-subset.md)。
 
 ## 目的與邊界
 
@@ -30,10 +31,11 @@
 | 2×／3× RGBA 基礎 | 已證實 | `xlate.Layer` 與 `ScaleIndexedRGBA` 只讀 indexed framebuffer／palette，建立 RGBA；既有 runtime overlay constructor 已拒絕 2、3 以外的倍率。 |
 | 手冊多行純核心 | 已證實／CONFORMED（純核心） | dosgolem spec 217 與第 87 階段：唯一 layout loader、14 個背景＋14 個文字 stamp、2×／3×、generation state 與 synthetic RGBA containment；尚未接入正常玩家 runtime。 |
 | 字型需求清單 | 已證實 | 由正式 `manual.zh-TW.tsv` 重生的未追蹤清單有 691 個碼點，SHA-256 為 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`。 |
+| 正式字型候選 | 已證實為缺席／DRAFT | 第 88 階段與 dosgolem spec 218：本機沒有原始字型檔及完整授權告知；舊 GOLEMFNT 最大只有 81 glyph，不能當作 691 glyph 正式來源。 |
 | 可直接重用的手冊 presenter | 已證實為否 | `RuntimeMenuOverlay` 驗證的是單列 `MenuOverlayRects`／`TextEvent` 幾何；它沒有讀取手冊 layout TSV、14 行段落分格或手冊 lifecycle 接線。可重用的是其 RGBA／`xlate.Layer` 模式，不是該 adapter。 |
 
 上表的 dosgolem source 均固定為本機 branch `buck-rogers-cht-output-overlay` 的
-`21c9295c90fac44b5852fd5934a6d027342cde24`；位址為 dosgolem 實模式
+`3fc37fe2908c7247447e34dfe18ae3b44855b534`；位址為 dosgolem 實模式
 `segment:offset`，不是 IDA 線性位址。
 
 ## 擬定 presenter 契約
@@ -64,8 +66,9 @@ presentation metadata，沒有 machine write、鍵盤或 DOS input 路徑；rece
 background／text 合成；它仍沒有 callback 或 command 接線。未來 runtime 必須消費這條 queue，不得
 倒回 `Observations()` 猜測世代。
 
-此外，目前只有字元需求清單；正式字型檔的來源、授權告知與每個 glyph 的實際回讀仍須按
-`font/README.md` 完成。不能以缺字回呼後的部分畫面當作可接受輸出。
+此外，目前只有字元需求清單；第八十八階段已證實本機沒有正式字型檔的來源或實際授權告知，
+舊 GOLEMFNT 子集也不夠 691 glyph。正式字型檔的來源、授權告知與每個 glyph 的實際回讀仍須按
+`font/README.md` 與 dosgolem spec 218 完成。不能以 fixture、缺字回呼或舊子集的部分畫面當作可接受輸出。
 
 ## 與 host 倍率控制的關係
 

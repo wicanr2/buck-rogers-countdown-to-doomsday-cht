@@ -445,3 +445,9 @@ presentation queue，accessor 為 value-copy；正常玩家 state 新增 begin�
 14 個背景與 14 個文字 layer stamps，支援明示 2×／3×，並拒絕 stale／miss／缺字／錯誤 generation。
 Docker 的 Go vet 與 race 測試通過；它尚未載入正式字型、接 command／normal runtime 或取得原版／繁中
 A/B，因此規格 005 仍為 DRAFT，不可聲稱手冊已中文化。
+
+第八十八階段完成字型來源 DRAFT 稽核。正式手冊的 691 glyph 清單可重生且雜湊固定，但目前
+`workplace/` 沒有原始字型候選與完整授權告知；十份歷史 GOLEMFNT 子集最大只有 81 glyph，且
+format 不保留可用的來源／授權資訊。dosgolem spec 218 固定此停止線並在同一未推送 branch 的
+`3fc37fe2908c7247447e34dfe18ae3b44855b534` 留存。必須先由使用者提供候選及授權文字，或明確
+授權取得指定候選，才可進入字型 READY；正式字型、runtime 接線與原版／繁中 A/B 仍未完成。

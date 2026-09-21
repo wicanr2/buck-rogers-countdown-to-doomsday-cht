@@ -1091,3 +1091,14 @@
 - spec 217 已 CONFORM（僅純核心）；Docker 的 Go vet 與 race 測試均通過。dosgolem 本機提交為
   `21c9295c90fac44b5852fd5934a6d027342cde24`，分支未推送。正式字型、command 接線與正常玩家 A/B
   仍未完成。
+
+## 2026-09-21 — 第八十八階段：手冊正式 GOLEMFNT 子集來源稽核
+
+- 從正式手冊 catalog 重生 691 glyph 清單（SHA-256
+  `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`），放在被忽略的
+  `workplace/phase88/`；缺少候選輸入時 builder 以 nonzero 結束且不產生輸出。
+- 唯讀盤點證實 workspace 沒有原始字型與完整授權文字；十份歷史 GOLEMFNT 最大 81 glyph，
+  既不能覆蓋 691 也不能反推來源／授權。沒有下載、採用或散布字型。
+- dosgolem spec 218 維持 DRAFT，明定 input manifest 與可散布停止線；本機提交
+  `3fc37fe2908c7247447e34dfe18ae3b44855b534` 未推送。等待使用者提供或明確授權取得候選後，
+  才能進入 READY。
