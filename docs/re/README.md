@@ -71,3 +71,4 @@
 
 `workplace/` 是被 Git 忽略的原始輸入與可重生收據存放處；其檔名與雜湊由上述文件引用。
 | [第七十三階段：技術技能配置執行期繁中覆繪](phase-73-technical-skill-runtime-overlay.md) | 17 筆專屬矩形、共享標題、穩定 frame 訂正與雙倍率同狀態收據。 |
+| [第七十四階段：技能配置底部操作列輸出路徑清冊](phase-74-skill-action-bar-output-path-inventory.md) | 逐字輸出路徑、五標籤幾何、焦點色彩與 disabled unknown 邊界。 |

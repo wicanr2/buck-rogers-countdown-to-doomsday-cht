@@ -61,6 +61,10 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `technical-skill-refusal-events.tsv` 與 `technical-skill-exit-events.tsv` 保存技術技能列下移、
 加後減、Escape→`N` 回復及 Escape→`Y` 進入身體圖示選擇的 exact identity；不含動態點數
 或原版提示全文。
+`skill-action-bar-events.tsv` 保存職業／技術技能頁底部五個操作標籤的長度、
+SHA-256、逐字 caller、幾何與一般／焦點色彩。這些標籤經 `0763:026B`
+的低階字元路徑，不是現有高階 dispatcher 事件；disabled 狀態尚未觀測，固定為
+`unknown`。`tools/skill_action_bar_events.py` 會拒絕身分、幾何、色彩或證據分級漂移。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
 已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。

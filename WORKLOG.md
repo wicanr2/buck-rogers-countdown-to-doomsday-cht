@@ -932,3 +932,19 @@
 - 專案 136 項 Python 測試、dosgolem 全正式套件 test、`go vet` 與相關 race detector 通過。
 - dosgolem 本機提交：`2d8561c8a87e6868c8e0d647fbcf69e6c18169c0`（分支
   `buck-rogers-cht-output-overlay`，未推送）。
+
+## 2026-09-21 — 第七十四階段：技能配置底部操作列輸出路徑
+
+- 用 dosgolem 正常輸入重生職業 base／Subtract／Done 焦點及技術 base／Subtract／
+  Prev／Next／Done 焦點；八條收據均來自同一固定 savestate。
+- IDA 9.4 證實 `0763:026B` 是低階字元輸入，`0763:1809` 是 8×8 glyph
+  renderer；原來的 `0763:0424` 高階 dispatcher 不在此路徑。
+- 建立 8-row content-safe 清冊、驗證器與負向測試；disabled variant 保持
+  `unknown`，未翻譯、未實作 overlay。
+- 收據 SHA-256：career base `0b3b9cf1…e429`、Subtract `624aa186…daf`、Done
+  `850d18e6…f137`；technical base `bd82bf11…7f2`、Subtract `ede95606…cdd`、Prev
+  `c147f860…371a`、Next `4ba2b122…f36`、Done `9ca6aba1…d6e`。完整雜湊保存於
+  `docs/re/phase-74-skill-action-bar-output-path-inventory.md` 所引用的本機收據。
+- dosgolem 新增 spec 213（DRAFT），只規劃 guarded glyph-event watcher；本階段沒有
+  production 程式碼變更，也未選定 2×／3× 或手冊版面。
+- dosgolem 本機提交：`7d8ca0b`（分支 `buck-rogers-cht-output-overlay`，未推送）。

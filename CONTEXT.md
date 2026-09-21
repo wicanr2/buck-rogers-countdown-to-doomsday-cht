@@ -348,3 +348,11 @@ runtime overlay。首次沿用 request 停止點時人工圖像發現 selected s
 兩倍率各雙重重播一致，矩形外與動態欄 0 px，原版 framebuffer 與語意不變。產品預設倍率及
 手冊版面仍未替使用者決定。
 dosgolem 本機分支提交為 `2d8561c8a87e6868c8e0d647fbcf69e6c18169c0`，未推送其遠端。
+
+第七十四階段已證實技能頁底部五個操作標籤不經現有高階 dispatcher，而是
+由上層 `37F1` caller 逐字進入 `0763:026B`，再由 `0763:1809` 畫 8×8 glyph。
+職業三標籤與技術五標籤的初始／Right 焦點路徑、幾何、caller 與色彩已收進
+content-safe 清冊；未觀測到獨立 disabled variant，維持 unknown。dosgolem spec 213 是
+DRAFT，下一階段應實作 Buck Rogers 專屬 guarded glyph-event watcher，不能直接當成
+原有字串事件。dosgolem 本機提交為 `7d8ca0b`，未推送其遠端。產品倍率與
+手冊版面仍未決定。

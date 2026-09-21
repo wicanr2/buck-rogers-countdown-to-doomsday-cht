@@ -1,0 +1,9 @@
+screen	key	original_length	original_sha256	row	column	x0	y0	x1	y1	normal_first_caller	normal_rest_caller	normal_bg	normal_first_fg	normal_rest_fg	focus_caller	focus_bg	focus_fg	evidence_level	disabled_state
+career	action.add	3	9fd728c66c9a256b121472dabf32a34317aed01d8427d70ec830289cf23a7cc8	24	0	0	192	24	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown
+career	action.subtract	8	63df016f961c5684d4c795008031fd4d9483e23dc827fe95dc385c782038b22b	24	4	32	192	96	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown
+career	action.done	4	11a6767d5674c7e45f7e00dc525762275b3a48491ad6045427d2609cc496c516	24	13	104	192	136	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown
+technical	action.add	3	9fd728c66c9a256b121472dabf32a34317aed01d8427d70ec830289cf23a7cc8	24	0	0	192	24	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown
+technical	action.subtract	8	63df016f961c5684d4c795008031fd4d9483e23dc827fe95dc385c782038b22b	24	4	32	192	96	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown
+technical	action.prev	4	73912999faf42cb37adc0db937015cfbb2554170d72329b88ad86bf62a75cd98	24	13	104	192	136	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown
+technical	action.next	4	1ff57a29d7c9d11bdf61c1b80f2b289b44c1ea844824d4b94a0d52b6ba5fc858	24	18	144	192	176	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown
+technical	action.done	4	11a6767d5674c7e45f7e00dc525762275b3a48491ad6045427d2609cc496c516	24	23	184	192	216	200	37F1:0391	37F1:03CE	0	15	10	37F1:0337	15	0	confirmed	unknown

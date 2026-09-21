@@ -78,3 +78,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第七十一階段：職業技能配置安全矩形與雙倍率覆繪](phase-71-career-skill-overlay-geometry-and-runtime.md) | 完成 | 14 筆 exact 矩形已接入 2×／3× overlay，選取列取代正確且動態數值零干擾。 |
 | [第七十二階段：技術技能配置靜態文字繁中請求](phase-72-technical-skill-static-text-runtime-requests.md) | 完成 | 新增 17 個不重複 exact identities，共享標題、base／Down requests 與 framebuffer 非干擾已驗收。 |
 | [第七十三階段：技術技能配置安全矩形與雙倍率覆繪](phase-73-technical-skill-overlay-geometry-and-runtime.md) | 完成 | 合併技術專屬與共享標題矩形，接入 2×／3× runtime overlay 並驗證選取列與動態數值隔離。 |
+| [第七十四階段：技能配置底部操作列輸出路徑清冊](phase-74-skill-action-bar-output-path-inventory.md) | 完成 | 證實五標籤的逐字輸出路徑、幾何與焦點色彩；disabled 維持 unknown。 |
