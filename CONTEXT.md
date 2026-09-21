@@ -321,3 +321,9 @@ dosgolem 實作已提交於本機 branch，commit `6e16fe5`，未推送其遠端
 終態只留一份 stamp。收據工具現可明示合法空終態 `drew=false`，但仍拒絕缺字或 active-key
 不一致；沒有新增姓名專屬清除。本階段仍未選定產品倍率或手冊版面。
 dosgolem 實作已提交於本機 branch，commit `8e60489`，未推送其遠端。
+
+第七十階段已把職業技能配置的四個標題、八個一般技能列及兩個已證實 selected identities 接成
+exact request。base 為 226／14／212，Down 為 234／16／218；動態點數與未實測 selected
+variants 維持 miss。control／catalog 雙重重播的原版語意與 framebuffer 相同。本階段只建立
+request，尚未建立安全矩形或繪製技能頁繁中像素。
+dosgolem 實作已提交於本機 branch，commit `c4fb58c`，未推送其遠端。

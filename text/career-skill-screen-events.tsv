@@ -1,0 +1,15 @@
+event_key	sequence	text_key	original_length	original_sha256	caller	background	foreground	row	column
+career.screen.remaining_points.heading	1	career.screen.remaining_points	20	942e36efce40ffc3613f8fb8fea303b40acf3957e6643d8c6479227d43917a91	2684:07AD	0	10	1	1
+career.screen.maximum_per_skill.heading	2	career.screen.maximum_per_skill	18	3b71578e637832b04ef56df605837bd638cbe8b5aff684e7461e793e72e5658d	2684:07F9	0	10	2	1
+career.screen.skills.heading	3	career.screen.skills	13	63e40f41a77d00f6ad1a1f722c6bb9c4a877032593b1a9f135af04cd301297c6	2684:083B	0	10	4	1
+career.screen.columns.heading	4	career.screen.columns	18	993fb1fb1f8aa955dd3249c938d915299f7727fc8e086c727c24d9ed17d42f53	2684:085C	0	10	4	21
+career.screen.skill.notice.normal	5	character.skill.notice	6	65659145569b894bd67d06e685509c2decc5b2ac5e18700c085a253506b0fb75	2684:0608	0	10	6	1
+career.screen.skill.maneuver_zero_g.normal	6	character.skill.maneuver_zero_g	14	21a508147eccbbd32ae15709337ed29fbb794d71950f3ea11b950445c06b95b6	2684:0608	0	10	7	1
+career.screen.skill.use_jetpack.normal	7	character.skill.use_jetpack	11	66773645acce0a3a700727a0191659fbdb1d32ca37eadfbcd8c5064c27ad1ce1	2684:0608	0	10	8	1
+career.screen.skill.pilot_rocket.normal	8	character.skill.pilot_rocket	12	012f9df23526751f3997c942506c4fdd5ccd2f2c74b41c9bda232706ec8e93d6	2684:0608	0	10	9	1
+career.screen.skill.pilot_fixed_wing.normal	9	character.skill.pilot_fixed_wing	16	d818fc89e110e453a56fd0b548ca62f22b275e37860a7eb1ffa2119ca2b58c4e	2684:0608	0	10	10	1
+career.screen.skill.drive_ground_car.normal	10	character.skill.drive_ground_car	16	8a7cd9760cdcb2d5b197b895792121212350a967d2c5e42c995ee3d36aa96ca5	2684:0608	0	10	11	1
+career.screen.skill.pilot_rotorwing.normal	11	character.skill.pilot_rotorwing	16	43f03467ae899c50f6c7fef25158321ba6c8c7f68c025ad6765b670ead35df26	2684:0608	0	10	12	1
+career.screen.skill.drive_jetcar.normal	12	character.skill.drive_jetcar	12	4b591c8f59593805185a3031494d99f2884beecbadda4e1bf70b84ba8bfc66aa	2684:0608	0	10	13	1
+career.screen.skill.notice.selected	13	character.skill.notice	6	65659145569b894bd67d06e685509c2decc5b2ac5e18700c085a253506b0fb75	2684:0608	0	13	6	1
+career.screen.skill.maneuver_zero_g.selected	14	character.skill.maneuver_zero_g	14	21a508147eccbbd32ae15709337ed29fbb794d71950f3ea11b950445c06b95b6	2684:0608	0	13	7	1

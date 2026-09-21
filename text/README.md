@@ -40,6 +40,9 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `career-skill-selection-events.tsv`、`career-skill-add-events.tsv` 與
 `career-skill-refusal-events.tsv` 保存技能列下移、一次合法加點，以及仍有點數時 Escape→`N`
 拒絕離開的 content-safe identity；動態數值與原版提示全文不列為譯文。
+`career-skill-screen-events.tsv` 從姓名確認與 Down 清冊收錄四個固定標題、八個一般技能列及
+兩個已證實的 selected variants；`career-skill-screen.zh-TW.tsv` 的技能譯名必須逐筆等於
+角色資料正式 catalog。未收錄的選取 variant 與所有點數仍維持 miss。
 `career-skill-subtract-events.tsv` 與 `career-skill-exit-events.tsv` 保存先加後減的可逆重畫，
 以及 Escape→`Y` 的確認提示與技術技能配置終點；Right 本身沒有文字事件，其動作語意由後續
 重畫和逐 byte 畫面還原共同證實。

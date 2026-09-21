@@ -74,3 +74,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第六十七階段：角色姓名輸入畫面靜態文字繁中請求](phase-67-character-name-static-text-runtime-requests.md) | 完成 | 姓名固定提示已建立 exact request，玩家姓名回顯維持 miss，雙重正常路徑收據一致。 |
 | [第六十八階段：角色姓名提示安全矩形與雙倍率執行期覆繪](phase-68-character-name-prompt-overlay-geometry-and-runtime.md) | 完成 | 雙倍率覆繪已接通，矩形外與玩家輸入欄零差異，缺少／孤兒矩形失敗即關閉。 |
 | [第六十九階段：角色姓名覆繪轉場失效生命週期](phase-69-character-name-overlay-transition-invalidation.md) | 完成 | Enter 清除至空 layer；Escape 原地重印以同 key 取代，兩倍率皆無殘字或堆疊。 |
+| [第七十階段：職業技能配置靜態文字繁中請求](phase-70-career-skill-static-text-runtime-requests.md) | 完成 | 14 個標題／技能 identity 已接成 exact request；base／Down 動態點數均維持 miss。 |

@@ -878,3 +878,15 @@
 - 專案 119 項 Python 測試、dosgolem 全套 Go 測試、vet 與相關 race detector 全數通過；
   原始解析度實圖確認技能頁無殘字、Escape 留頁且無重複提示。
 - dosgolem 實作已提交於本機 branch，commit `8e60489`，未推送其遠端。
+
+# 2026-09-21：第七十階段職業技能配置靜態繁中請求
+
+- 從姓名確認與 Down 正常路徑清冊隔離四個標題、八個一般技能列及兩個 selected identities；
+  動態剩餘點數、points、bonus、total 全部維持 miss。
+- 技能譯名逐筆鎖定既有角色資料正式 catalog；建立 14-event／12-text-key TSV、來源驗證器與
+  dosgolem loader／成對旗標。
+- base 雙重重播為 226／14／212，Down 為 234／16／218；catalog 與 control 的原版語意及
+  framebuffer 相同。
+- 專案 123 項 Python 測試、dosgolem 全套 Go 測試、vet 與相關 race detector 全數通過；
+  本階段未建立安全矩形或 renderer。
+- dosgolem 實作已提交於本機 branch，commit `c4fb58c`，未推送其遠端。
