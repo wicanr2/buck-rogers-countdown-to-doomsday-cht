@@ -832,3 +832,16 @@
   精確路徑與權威 state 後乾淨重跑，沒有放寬期望。
 - 專案回歸增至 105 項並通過；dosgolem 全部正式 test／vet 與相關 race 通過，本機 commit
   `e1d2070` 未推遠端。產品倍率與手冊版面仍未代替使用者決定。
+
+# 2026-09-21：第六十六階段 mode 13h 預設色盤修正
+
+- 由乾淨 `START.EXE` 冷啟動證實遊戲只以 BIOS block write 設 DAC 0–14 與 16–31，沒有
+  `3C8/3C9` 直接寫入；index 15 應沿用 mode 13h BIOS 預設白色。
+- dosgolem spec 205 依成熟模擬器色表先達 READY；通用實作只載入標準 VGA 前 16 色，
+  單元測試另以 sentinel 保證 DAC 16 未被猜補。
+- 修正後重建 70M／100M state；100M raw framebuffer 雜湊不變，DAC 15 為白色。角色頁
+  base／`Y`、2×／3× 各雙重重播一致，原版 HP 動態值已在 baseline 實際可見。
+- 全部 Go packages 測試通過；沒有選定產品倍率或手冊版面，也沒有推送 dosgolem 遠端。
+- 專案 Python 回歸 109 項通過；正式 Go 套件 `vet` 與相關 race detector 通過。第一次
+  Python 命令誤指不存在的 `tests/`，第一次 `vet ./...` 又掃入既有 `workplace/` 重複
+  `main`；修正為實際 `tools/` 與排除研究暫存套件後，以同一容器乾淨重跑。

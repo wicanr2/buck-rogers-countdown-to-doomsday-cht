@@ -70,3 +70,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第六十三階段：性別與職業選單執行期繁中覆繪整合](phase-63-gender-class-runtime-overlay-integration.md) | 完成 | 將既有性別／職業 request 與安全矩形接入明示倍率 runtime overlay，雙倍率驗證生命週期。 |
 | [第六十四階段：角色資料／重擲畫面靜態繁中請求](phase-64-character-sheet-static-text-runtime-requests.md) | 完成 | 從 96 筆事件隔離 35 筆靜態 identity，建立繁中 exact catalog 與正常路徑 runtime request。 |
 | [第六十五階段：角色資料頁安全矩形與雙倍率執行期覆繪](phase-65-character-sheet-overlay-geometry-and-runtime.md) | 完成 | 35 筆安全矩形已接入 2×／3× runtime overlay，完成 base／Y 同狀態與矩形外零差異驗收。 |
+| [第六十六階段：角色資料頁 VGA palette 狀態對拍與可讀性](phase-66-vga-palette-state-parity.md) | 完成 | 證實 mode 13h 預設 DAC 缺口，通用修正 index 15 白色並重生角色頁決定性收據。 |

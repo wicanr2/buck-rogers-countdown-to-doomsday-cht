@@ -298,3 +298,9 @@ containment 與同狀態 A/B 正確歸入實作後 CONFORMED；目前唯一 READ
 職業畫面八個 keys；性別與舊 selected variant 已失效。兩倍率安全矩形外 0 px，原版 raw
 framebuffer 全等於既有 class Down 基準。專案 105 項測試與 dosgolem 正式 test／vet／race
 通過；dosgolem 本機 commit `e1d2070` 未推遠端。手冊版面與產品預設倍率仍待使用者決定。
+
+第六十六階段已證實角色動態值呈黑是 dosgolem 的 mode 13h BIOS 預設色盤缺口：遊戲只寫
+DAC 0–14，讓 index 15 沿用 BIOS 白色。通用修正載入標準 VGA 前 16 色，raw framebuffer、
+事件與輸入完全不變；base／`Y`、2×／3× 各雙重重播決定性一致，HP 數值已在 RGBA baseline
+成為可見白字。spec 205 已 CONFORMED；完整 DAC 16–255 預設表仍不猜補。產品倍率與手冊
+版面仍待使用者決定。
