@@ -431,3 +431,10 @@ Apply 後是否自動收合、實際 frontend backend、focus 與持久化仍未
 手冊 RGBA presenter，但現有 `RuntimeMenuOverlay` 只是單列選單 adapter，`Watcher` 也沒有
 帶 generation 的 presentation lifecycle callback／queue。規格 005 因此維持 DRAFT；正式 691 glyph
 字型、lifecycle 接線與同狀態 A/B 都是下一個 READY gate。沒有修改 dosgolem production code。
+
+第八十六階段已在 dosgolem 本機 branch `buck-rogers-cht-output-overlay` 的
+`47397ebd18e63a0daa4cb54bd593c5fbfd549ada` 實作並 CONFORM spec 216。Watcher 現在只有在 exact
+begin、active-context clear、exact catalog-hit request 時輸出帶 generation 的 answer-free
+presentation queue，accessor 為 value-copy；正常玩家 state 新增 begin→clear→request 三筆 metadata，
+既有 request 保持不變。這個 branch 依規範沒有推送。手冊 renderer、正式字型與 RGBA A/B 仍為
+規格 005 DRAFT，不可聲稱手冊中文已上畫面。

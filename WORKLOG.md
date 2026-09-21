@@ -1068,3 +1068,14 @@
 - 建立 spec 005 DRAFT：xlate 可提供只讀 RGBA／逐格失效，但需新增手冊專屬的 14 行 builder 與
   帶 generation 的 begin／clear／request presentation lifecycle；既有選單 presenter 不可直接套用。
 - 沒有變更 dosgolem production code、DOS 輸入、原版答案驗證、存檔或遊戲資料。
+
+## 2026-09-21 — 第八十六階段：手冊 presentation lifecycle 接線
+
+- dosgolem 新增 answer-free `ManualPresentationEvent` value queue；精確 begin、active-context clear
+  與 exact catalog-hit request 都帶 generation，queue／request 回傳值不可回寫 watcher。
+- `buckrogers-receipt` 只投影 lifecycle 的 step、kind、generation、event／text key 與 rune count，
+  沒有輸出 translation 全文、英文原文或答案。
+- 正常玩家重播仍止於 #266,557,247；既有 request 不變，新增 begin→pending clear→request 三筆
+  generation 1 metadata。沒有 injected input、machine write、中文 renderer 或原版素材輸出。
+- spec 216 已 CONFORM；Go unit、vet 與 race 驗證通過。dosgolem 本機提交為
+  `47397ebd18e63a0daa4cb54bd593c5fbfd549ada`，分支未推送。

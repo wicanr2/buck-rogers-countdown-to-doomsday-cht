@@ -74,10 +74,11 @@ dosgolem `apps/buckrogers` 實作未接線純核心。正式 TSV 正向／未命
 須另開 DRAFT 規格，不能默認截斷、送鍵或接管原版輸入。
 
 第八十五階段以目前 dosgolem revision 重跑第十一階段正常玩家 state，仍在完整 guarded
-`word?` 後得到唯一 answer-free request。`xlate.Layer` 已足以對同一 raw framebuffer／palette
-生成 2×／3× RGBA，但現有 `RuntimeMenuOverlay` 只適用單列選單；watcher 也尚未輸出帶 generation
-的 presentation lifecycle。手冊 presenter 的 14 行 builder、typed begin／clear／request 接線與
-691 glyph 正式字型因此另列為 [規格 005](005-manual-runtime-presenter-draft.md) 的 DRAFT gate，
+`word?` 後得到唯一 answer-free request。第八十六階段已將 exact begin、active-context clear 與
+catalog-hit request 的 generation 接成 dosgolem spec 216 CONFORMED typed queue；未來 presenter
+不得從一般 observation 猜測 lifecycle。`xlate.Layer` 已足以對同一 raw framebuffer／palette 生成
+2×／3× RGBA，但現有 `RuntimeMenuOverlay` 只適用單列選單。手冊 presenter 的 14 行 builder 與
+691 glyph 正式字型仍列為 [規格 005](005-manual-runtime-presenter-draft.md) 的 DRAFT gate，
 不得因既有 menu overlay 能畫中文就宣稱手冊 renderer 已完成。
 
 ## 失敗即關閉規則
@@ -116,7 +117,8 @@ dosgolem `apps/buckrogers` 實作未接線純核心。正式 TSV 正向／未命
   為 36×14＝504 字，現有 22 筆仍全數單頁。
 - [x] 使用者確認 2×／3× 均為正式支援模式，且可在遊戲執行中切換。
 - [x] 使用者確認 host-only 頂端按鈕開啟面板，倍率採先選取、再按套用（C）；控制不得送入 DOS。
-- [ ] 規格 005 的手冊 presentation lifecycle、14 行 renderer、正式字型與 normal-path A/B 仍須 READY。
+- [x] 規格 216 已 CONFORM 手冊 presentation lifecycle queue，並有正常玩家 metadata 收據。
+- [ ] 規格 005 的 14 行 renderer、正式字型與 normal-path RGBA A/B 仍須 READY。
 
 ## CONFORMED 驗收（實作後收據）
 

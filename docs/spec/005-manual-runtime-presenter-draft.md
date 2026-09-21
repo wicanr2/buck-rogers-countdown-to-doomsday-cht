@@ -4,7 +4,8 @@
 日期：2026-09-21  
 前置：[手冊段落覆繪](002-manual-paragraph-overlay-draft.md)、
 [手冊事件 adapter](003-manual-event-adapter.md)、[第十八階段 lifecycle 證據](../re/phase-18-manual-generation-invalidation.md)、
-[第八十五階段整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)。
+[第八十五階段整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)、
+[第八十六階段 lifecycle 接線](../re/phase-86-manual-presentation-lifecycle.md)。
 
 ## 目的與邊界
 
@@ -21,6 +22,7 @@
 | 前提 | 分級 | 證據／結論 |
 | --- | --- | --- |
 | typed 顯示請求 | 已證實 | `apps/buckrogers/manual.go` 的 `DisplayRequest` 只有 generation、event key、text key、translation；`Catalog.Resolve` 是精確身分查找，不含答案或輸入。 |
+| presentation lifecycle queue | 已證實／CONFORMED | dosgolem spec 216 與第 86 階段已將 exact begin、active-context clear、catalog-hit request 以 generation 輸出；queue value-copy 不持有 renderer、machine 或 input 參照。 |
 | 正常玩家事件 | 已證實 | 第 85 階段以 `phase12-before-question.state` 在 #266,557,246 得到 `manual.page34.deimos_prison.word10`；完整事件順序及固定 state 見研究收據。 |
 | 新題／局部 clear 邊界 | 已證實 | `2A33:01ED` 題首開始新 generation；`026F:029C` 可在 pending 中途出現；只有 `2A33:0309` 的 guarded post-call 可提交 request。第 18 階段的答錯重抽反例排除了「等全畫面清空」與「及早顯示新段落」。 |
 | 正式正文幾何與容量 | 已證實 | `text/manual-overlay-layout.tsv`、`tools/manual_overlay_layout.py`；22 筆正式譯文全部通過，最長 236 字。 |
@@ -29,7 +31,7 @@
 | 可直接重用的手冊 presenter | 已證實為否 | `RuntimeMenuOverlay` 驗證的是單列 `MenuOverlayRects`／`TextEvent` 幾何；它沒有讀取手冊 layout TSV、14 行段落分格或手冊 lifecycle 接線。可重用的是其 RGBA／`xlate.Layer` 模式，不是該 adapter。 |
 
 上表的 dosgolem source 均固定為本機 branch `buck-rogers-cht-output-overlay` 的
-`8bfd5b4e5802f65d428d3fb439196b3c571c002b`；位址為 dosgolem 實模式
+`47397ebd18e63a0daa4cb54bd593c5fbfd549ada`；位址為 dosgolem 實模式
 `segment:offset`，不是 IDA 線性位址。
 
 ## 擬定 presenter 契約
@@ -53,15 +55,10 @@
 
 ## 現有接線缺口
 
-`Watcher` 現在只保存 `Requests()` 與 answer-free `Observations()`。`begin`、`clear` observation
-沒有 generation，且 watcher 沒有 presentation callback／typed lifecycle queue；`Install` 也沒有
-呼叫任何 renderer。直接從目前的 metadata 陣列猜測 active generation，會把 presentation
-狀態建立在未被 API 表達的時序假設上。
-
-進入 READY 前，必須先在 `apps/buckrogers` 設計並測試一條非語意的 typed lifecycle 輸出，例如
-`begin(generation)`、`clear(generation)`、`request(DisplayRequest)`。它只能在現有已證實的 watcher
-分支發射，且不得擴充 `DisplayRequest` 為原文、答案、鍵盤或 machine write。這是技術 DRAFT
-blocker，不是 host UI 選擇。
+第八十六階段已在 dosgolem spec 216 實作並 CONFORM `PresentationEvents()`：exact begin、
+active-context clear、catalog-hit request 皆帶 generation，且 accessor 回傳 value-copy。它只提供
+presentation metadata，沒有 callback、renderer、machine write、鍵盤或 DOS input 路徑；receipt 也只
+投影 key／rune count。未來 presenter 必須消費這條 queue，不得倒回 `Observations()` 猜測世代。
 
 此外，目前只有字元需求清單；正式字型檔的來源、授權告知與每個 glyph 的實際回讀仍須按
 `font/README.md` 完成。不能以缺字回呼後的部分畫面當作可接受輸出。
@@ -77,7 +74,7 @@ blocker，不是 host UI 選擇。
 
 進入正式程式前必須完成：
 
-- [ ] lifecycle queue／callback 的事件型別、generation 與 begin／clear／request 負向測試。
+- [x] dosgolem spec 216 的 lifecycle queue、generation、begin／clear／request 負向測試及正常玩家 metadata 收據。
 - [ ] layout loader、14 行 row-major builder、504／505 邊界、缺字與非法倍率的失敗即關閉測試。
 - [ ] 可重生且已授權的手冊 GOLEMFNT 子集，以及 691 glyph 的回讀驗證。
 - [ ] 正常第一題及答錯換題的 2×／3× same-state output 收據；request 前、catalog miss 與

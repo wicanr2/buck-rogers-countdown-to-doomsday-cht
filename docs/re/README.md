@@ -82,3 +82,4 @@
 | [第八十三階段：手冊保留原題的 504 字容量契約](phase-83-manual-preserved-prompt-capacity-contract.md) | 保留題目時的正式 36×14／504 字幾何、catalog 邊界與已取代 612 字契約的分界。 |
 | [第八十四階段：dosgolem host 前端能力盤點](phase-84-dosgolem-host-frontend-capability-audit.md) | 無頭現況、可重用 output compositing、DOS 滑鼠輸入邊界與必須新增的通用 host 能力。 |
 | [第八十五階段：手冊繁中 presenter 整合就緒稽核](phase-85-manual-presenter-integration-readiness-audit.md) | 重跑正常手冊 request、xlate／14 行 layout 能力，以及 lifecycle 與字型 READY 缺口。 |
+| [第八十六階段：手冊 presentation lifecycle 接線](phase-86-manual-presentation-lifecycle.md) | CONFORMED typed begin／clear／request queue、正常玩家 metadata 重播與無輸入邊界。 |
