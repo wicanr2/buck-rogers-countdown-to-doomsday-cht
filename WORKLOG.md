@@ -995,3 +995,13 @@
 - `[15,10]` 與 `[10,10]` 兩候選均在 2×／3× 通過核心 containment，不構成產品選擇；CLI 未接線。
 - 專案 149 項 Python、dosgolem 全套 test／vet／Buck Rogers race 通過。dosgolem 本機提交
   `236cb3b`，未推遠端；spec 215 保持 DRAFT。
+
+## 2026-09-21 — 第七十九階段：配色中立 runtime 生命週期
+
+- `RuntimeActionBarOverlay` 強制 constructor 注入 normal 配色；`Frame` 在通用指紋／錨點初始化後
+  重套 caller palette，修正全綠候選會被原版首字白覆寫的風險。
+- normal／focus 依 exact rectangle 原子取代；partial clear 造成 group 不完整時整組移除。
+- career／technical anchor 切換、unrelated event 清除及 technical shared career keys 保留均測試。
+- 完整 `go test ./...` 通過；全域 vet 被既有未版控 workplace 三個 probe `main` 衝突攔下，改以
+  正式 package 清單重跑 vet，另跑 Buck Rogers race，均通過，未刪改其他研究資料。
+- dosgolem 本機提交 `6d230a1`，未推遠端；spec 215 保持 DRAFT，正式 CLI 等待配色決策。

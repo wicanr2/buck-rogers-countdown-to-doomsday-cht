@@ -382,3 +382,8 @@ overlay 尚未開工。產品預設倍率與手冊版面仍未決定。
 normal 必須逐 rune 明示 palette 10／15，沒有預設；兩個候選在 2×／3× 均通過 containment。
 focus 固定沿用原版黑字白底。spec 215 仍是 DRAFT，CLI／runtime 尚未接線，繼續等待使用者
 選擇 normal 配色。dosgolem 本機提交 `236cb3b`，未推遠端；產品倍率與手冊版面仍未決定。
+
+第七十九階段已完成配色中立 `RuntimeActionBarOverlay`：同 action normal／focus 原子取代、
+partial clear 整組失效、career／technical anchor 切換與 frame 後明示 palette 重套用均有測試。
+兩候選及 2×／3× 共用相同 lifecycle，constructor 仍沒有預設值。spec 215 維持 DRAFT，正式
+CLI 與正常玩家路徑覆繪只剩 normal 配色決策；dosgolem 本機提交 `6d230a1`，未推遠端。

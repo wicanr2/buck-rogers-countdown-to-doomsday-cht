@@ -83,3 +83,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第七十六階段：技能操作列繁中 catalog 與顯示請求](phase-76-skill-action-bar-translation-requests.md) | 完成 | 五個譯文鍵與 exact requests 已完成八路非干擾驗收；尚未繪製。 |
 | [第七十七階段：技能操作列安全矩形與雙倍率執行期覆繪](phase-77-skill-action-bar-overlay-geometry-and-runtime.md) | 等待使用者確認 normal 配色 | 8-pixel command band 已證實；首字白／次字綠或全綠待選後再升 READY。 |
 | [第七十八階段：技能操作列配色中立覆繪核心](phase-78-skill-action-bar-style-neutral-overlay-core.md) | 完成 | 16 筆 rectangles 與明示逐字配色核心已通過雙候選、雙倍率驗證；無 production 預設。 |
+| [第七十九階段：技能操作列配色中立 runtime 生命週期](phase-79-skill-action-bar-style-neutral-runtime-lifecycle.md) | 完成 | 雙候選已共用原子 group 取代、clear、anchor 與 frame lifecycle；仍無 CLI 預設。 |
