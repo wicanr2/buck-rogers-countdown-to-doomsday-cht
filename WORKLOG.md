@@ -1294,3 +1294,13 @@
 - 第七頁合法終態在第 341M step 送一筆 BIOS Enter；兩次第八頁收據逐 byte 相同，故事區四行 row 17–20 建立 content-safe identity 與繁中 DRAFT，row 24 動態列排除。19 份譯文聯集本機倚天子集為 1025 字模，正式 loader 對 6175 個譯文字元零缺字；全套 Python 測試 225 項通過。第八頁尚未接 runtime，見[第一百三十一階段](docs/re/phase-131-story-page8-enter-trace.md)。
 - 第二頁 READY 審查從合法首屏 state 重播到四行穩定 frame，控制組與既有首屏覆繪 2×／3×的原版終態相同，且前頁 active stamp 在首個相交 video-span 前失效；safe rectangle 與字模 containment 通過。續從第二頁穩定 state 合法 Enter，量到早於第三頁文字的最早相交原版 pre-write，並確認 far-return 與相對 SS/SP。
 - 獨立審查抓出可丟棄負向測試將合法四行誤當錯序的缺陷；修為真正錯序、partial drift 與 return-edge 負例後，主代理和審查代理各自在 Docker 未快取重跑通過。spec 011 因此限縮升 READY，四筆 event status 升 `confirmed/READY`；全套 Python 測試 226 項通過。這只授權第二頁 adapter 實作，尚未宣稱 runtime A/B 或中文化完成。
+
+## 2026-09-22 — 第一百三十四階段：第九頁單行敘事草稿
+
+- 從第八頁合法終態送一筆 BIOS Enter，兩次原版收據逐 byte 相同；故事區 row 17 唯一固定行有 guarded glyph identity 與私有裁切。row 24 動態狀態列與右側姓名排除。
+- 低階翻譯代理建立單行繁中 DRAFT，主代理依私有原句把帶強制拘押意味的「押送」校正為「列隊離開」；20 份譯文聯集本機倚天子集 1026 字模，正式 loader 對 6182 個譯文字元零缺字。尚未接 runtime，見[第一百三十四階段](docs/re/phase-134-story-page9-enter-trace.md)。
+
+## 2026-09-22 — 第一百三十五階段：滑鼠焦點與放開邊緣
+
+- Docker／Xvfb 的真實 Ebitengine 2× canvas Down 後，另一視窗取得焦點使 `IsFocused` 由真轉假；bridge 只 `ReleaseMouse(0)`、不 Move，DOS 左鍵由 1 清為 0。孤兒與重複實體 `mouseup` 未經 Ebitengine public API 形成額外 release edge，故沒有額外 DOS 呼叫；不得冒稱 bridge 收到該事件。3× panel-open 前提的新 Down／Up 對 DOS 零呼叫。
+- 四個案例的起點以 dosgolem `cmd/state-compare` 正規化比較均相等；仍缺完整四角、實體 host hit/miss 路由與正常玩家因果 A/B，spec228 保持 DRAFT。詳見[第一百三十五階段](docs/re/phase-135-real-ebiten-mouse-focus-loss-and-release-edges.md)。

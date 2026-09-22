@@ -154,6 +154,11 @@ row 24 動態狀態列排除；仍屬 DRAFT，未接 runtime。證據見
 [`docs/re/phase-131-story-page8-enter-trace.md`](../docs/re/phase-131-story-page8-enter-trace.md)。
 全部 19 份 catalog 的本機倚天子集為 1025 字模，dosgolem loader 對 6175 個譯文字元
 檢查零缺字；這仍不構成第八頁的中文覆繪 A/B。
+`story-page9-events.tsv` 與 `story-page9.zh-TW.tsv` 是第八頁合法終態後 Enter 的第九頁唯一
+固定敘事行；只保存 content-safe identity 與繁中 DRAFT，排除右側姓名、row 24 動態列。
+全部 20 份 catalog 的本機倚天子集為 1026 字模，正式 loader 對 6182 個譯文字元
+零缺字；尚未接 runtime 或完成 A/B。證據見
+[`docs/re/phase-134-story-page9-enter-trace.md`](../docs/re/phase-134-story-page9-enter-trace.md)。
 
 ## 驗證與 prototype 字型
 

@@ -19,6 +19,10 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 的真實事件、有界 Step 與滑鼠按鍵清除收據；3×兩組的起始 machine／DOS 正規化狀態相等。
 這些收據不證明遊戲可由滑鼠操作，MouseBridge 仍是 DRAFT，見
 [第一百三十三階段](docs/re/phase-133-real-ebiten-mouse-bounded-step.md)。
+另以真實 X11 失焦驗到已送 DOS 的 Down 會只 Release、不 Move；無前置 Down 的實體 Up
+及重複 Up 在 Ebitengine public input API 未產生新的 release edge，3× panel-open 前提下的
+新 Down／Up 也不觸 DOS。這些仍是可丟棄 harness 的限定收據，不代表完整前端路由或
+滑鼠可操作，見[第一百三十五階段](docs/re/phase-135-real-ebiten-mouse-focus-loss-and-release-edges.md)。
 本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
 鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
 Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×
@@ -60,6 +64,9 @@ pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
 第七頁後合法 Enter 又到第八頁，固定故事區四行已有低階身分與繁中 DRAFT；右側動態狀態列
 排除。全部 19 份 catalog 的私有倚天子集為 1025 字模，正式 loader 對 6175 個譯文字元
 零缺字；第八頁仍未接 runtime。
+第八頁後的合法 Enter 又量到第九頁唯一固定故事行，繁中 DRAFT 已建立，右側姓名與動態列
+排除；全部 20 份 catalog 的本機倚天子集 1026 字模，正式 loader 對 6182 個譯文字元
+零缺字。第九頁尚未接 runtime 或做中文 A/B。
 見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
 [第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)、
 [state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)、
@@ -67,7 +74,8 @@ pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
 [第五頁收據](docs/re/phase-122-story-page5-enter-trace.md)及
 [第六頁收據](docs/re/phase-128-story-page6-enter-trace.md)及
 [第七頁收據](docs/re/phase-129-story-page7-enter-trace.md)及
-[第八頁收據](docs/re/phase-131-story-page8-enter-trace.md)。
+[第八頁收據](docs/re/phase-131-story-page8-enter-trace.md)及
+[第九頁收據](docs/re/phase-134-story-page9-enter-trace.md)。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
 意譯，不是整章手冊逐字轉錄。37 題有中文掃描對照；第 3、39 題因缺少直接的中文

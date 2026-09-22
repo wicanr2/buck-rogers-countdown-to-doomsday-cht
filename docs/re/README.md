@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第一百三十四階段：第八頁後合法 Enter 的第九頁 trace](phase-134-story-page9-enter-trace.md)：一筆 `0763:04FF → 0763:026B` DRAFT identity、兩次一致收據與私有畫面核對；右側動態列排除，未接 runtime。
+
 - [第一百三十二階段：第二頁劇情 READY 審查與首屏轉場收據](phase-132-story-page2-ready-review.md)：第 2 頁四行穩定 frame、catalog／字型／矩形、glyph far-return／relative stack guard 與第 2 頁→第 3 頁最早視訊寫入收據；錯序假負例已勘誤，獨立無快取測試全綠，spec 011 已升 READY typed adapter contract，尚未接 production 或完成 A/B。
 - [第一百三十一階段：第七頁後合法 Enter 的第八頁 trace](phase-131-story-page8-enter-trace.md)：四行 `0763:04FF → 0763:026B` DRAFT identity、同狀態畫面與繁中候選；右側動態列排除，未接 runtime。
 - [第一百三十階段：手冊返回 Num Lock 8 分支至下一次鍵盤輪詢](phase-130-manual-return-numlock8-next-poll-boundary.md)：同一合法 8 在非零分支後回到已證實的無鍵 BIOS poll；同狀態 A/B 無畫面、色盤、檔案或服務差異，未得到遊戲內保存／讀檔入口。
@@ -10,6 +12,7 @@
 - [第一百二十六階段：手冊成功返回後的鍵盤 consumer 邊界](phase-126-manual-return-keyboard-consumer-boundary.md)：同一合法 Num Lock 8 被原版 BIOS 取走並回交 consumer，已確認其非零分支；未證實玩家語意、轉場或遊戲內保存／讀檔入口。
 - [第一百二十五階段：Ebitengine 實體 host 輸入 prototype](phase-125-ebiten-physical-host-input-prototype.md)：Docker/Xvfb 真實 pointer／Enter 事件驗證 Cancel 回 2×、Apply 3×收合、鍵盤隔離與 DOS 邊界；仍非可玩版。
 - [第一百三十三階段：真實 Ebitengine MouseBridge 有界 Step 收據](phase-133-real-ebiten-mouse-bounded-step.md)：2× canvas Down/Up 與外部 Up 的真實事件收據；raw 存態檔雜湊不可跨 run 比，spec 228 維持 DRAFT。
+- [第一百三十五階段：真實 Ebitengine 焦點遺失與放開邊緣](phase-135-real-ebiten-mouse-focus-loss-and-release-edges.md)：2× accepted Down→真實 X11 focus-loss cleanup、orphan／repeated release 的 Ebitengine edge 停止線，以及 3× panel-open 新事件隔離；以正規化 state digest 比對起點，spec 228 仍維持 DRAFT。
 - [第一百二十四階段：第四頁首次 glyph trace 勘誤](phase-124-story-page4-first-glyph-trace.md)：從第三頁合法 state 以同一筆 Enter 可重生第四頁六行 `0763:04FF → 0763:026B` identity；前五筆 visual-transcription 候選與原版 metadata 不符，第六筆相符。catalog 保持 DRAFT、未接 runtime。
 
 - [第一百二十三階段：手冊成功返回分支的保存／讀檔入口邊界](phase-123-manual-return-save-load-entry-boundary.md)：手冊確認 save/load 的選單與槽位條件；從成功返回的最早可重播 command/status state 以 Num Lock 前進鍵驗證仍無轉場，故不拼接建角收據、不猜鍵、未做 save/load A/B。
