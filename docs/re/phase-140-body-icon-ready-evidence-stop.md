@@ -74,3 +74,39 @@ cell clear 與故事頁專用 fill／pixel trace；glyph entry 只是候選失�
 安全矩形的通用 pre-execution video-write 診斷，或逐 step framebuffer 比對診斷**，
 再以相同三條合法路徑雙重重播，找出每個 active stamp 最早相交寫入。未取得這份
 pre-write 證據前，不建立 READY typed-core、不接 production，七筆仍維持 DRAFT。
+
+## 2026-09-23 訂正：受限 store 診斷補足已量 lifecycle
+
+前節停止線保留，因為單看逐 step framebuffer 會漏掉「寫回相同色值」；首次候選也確實
+在拒絕分支漏掉四筆 body text 重畫。後續只在本機 dosgolem CLI 的明示 body trace
+加入 content-safe pre-execution store metadata：`F3 AA`／`ES=A000` span，以及 IDA 9.4
+已證實的 glyph primitive `0763:184D`、`0763:1854` 單 byte `STOSB`。IDA 輸入是 runtime
+`0763:0000` 8 KiB 快照，SHA-256
+`436711fefc7071fcaf0811ef0b4243a5f2fd42840ca0f3b11aaaf121454deac6`；IDA EA 等於
+runtime offset。`0763:1821–182E` 計算 `DI=((row*320)+column)*8`，`0763:1830–1833`
+設定 `ES=A000`。診斷不輸出 AL、原始 bytes 或 framebuffer 內容。
+
+最終本機 dosgolem commit `2755f7c`，runner SHA-256
+`52a071e1b42dd0ec2affc8f659e8d2bc1fd8062fb95bb5175126b35f24d34802`。拒絕分支
+A／B 逐 byte 相同，receipt SHA-256
+`7971fd3aae514698cb8ee8846affb852b1e09b33e86640560bb6f79d2a880348`。已量 active
+stamp 的最早相交 pre-write 為：selection `106000487`（`0CF4:1B3A`、`A000:F000`、
+320 bytes）；old label `106244991`（`0763:184D`、`A000:3C40`、1 byte）；old action
+`106247520`（`A000:6418`）；new label `106258513`（`A000:7840`）；new action
+`106261034`（`A000:A018`）；confirmation→selection `106679836`（`A000:F000`）。確認
+分支另證實 confirmation→save prompt 的 fill 為 `106227779`、`0CF4:1B3A`、
+`A000:F070`、208 bytes。終端的新 selection／save prompt 沒有在已量停止點後虛構離頁。
+
+ignored `workplace/body-icon-ready-atomic-core/` 的可丟棄 typed-core 直接解析正式
+events／rects、三路 return receipts 與 pre-write receipts。它逐筆驗七 identity、
+`0763:03D6` opcode `0xCA` RETF 回 `0763:049B`、同 SS／SP+`0x12`，以及每次高階
+字串首 glyph `high_word_mask=0x7c`、其餘 glyph 為零；另測 generation／原子群組、
+unknown／duplicate／partial、restore／discontinuity 與 pre-write 漂移失敗即關閉。
+正式 DRAFT catalog 必須被拒，正例只用即時暫存 READY fixture。Phase 101 正式倚天字型
+對七筆譯文零缺字，2× 16px 與 3× 22px ink 均落在各自 16／24px 高的縮放矩形內。
+5 項 Docker 測試通過；typed receipt SHA-256
+`22017162ace0bbaebbf16fcbddcd0478a6c346f0c66b1c99d6f3b6e7503e64bd`。
+
+因此原先 return／ABI 與已量 lifecycle pre-write 的實質缺口已補足，可交獨立 READY
+審查；本筆不自行升級 `text/body-icon-events.tsv` 或 spec 009，不接 production，也不宣稱
+未量的儲存詢問離頁、完整開機或存讀檔生命週期。

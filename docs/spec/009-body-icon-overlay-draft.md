@@ -66,26 +66,29 @@ caller、色號、row 與 column。`body-icon-text-safe-rects.tsv` 由同一 ide
 
 ## DRAFT→READY 證據審查閘門
 
-目前已具備：
+目前已具備（2026-09-23 READY 候選，仍待獨立審查）：
 
 - 七筆文字 identity、來源清冊、繁中 catalog 與七筆安全矩形已由獨立驗證器鎖定。
 - Phase 48／49 已證實移動、拒絕、確認、儲存詢問的正常玩家 trace 與逐 byte 重播。
 - 原版 `READY ACTION` 語意由 Phase 48 原版畫面證據核對，不以 hash 單獨猜測。
 - 可丟棄 projection 已用 Phase 48 六份 A/B 收據精確重生 1／6／2 筆 request；但它不是
   runtime watcher，因現有 `MenuRequestWatcher` 不觀測 `1C41` 低階 glyph calls。
+- 七筆低階 glyph 已逐筆證實 verified RETF、同 SS／SP+`0x12` 與 ABI 高位契約；正常
+  move／refuse／confirm 路徑亦已用受限 pre-execution video store 診斷量出上述 active
+  stamp 的最早相交寫入。可丟棄 typed-core 及 2×／3×正式倚天 containment 已通過；
+  正例只用暫存 READY fixture，正式 catalog 仍為 DRAFT。
 
 仍需完成，未達 READY：
 
-- 將目前可丟棄 projection 的 exact 聚合移入正式、失敗即關閉的 `1C41` glyph watcher
-  API；目前 projection 已重生 1／6／2 筆，但尚未提供 runtime watcher 的
-  catalog miss／drop／pending 收據，且不得直接把 projection 併入正式玩家路徑。
-- 以 body-icon 進入、`N` 返回、確認後儲存詢問、離開功能選單等正常路徑，量出或嚴格
-  證實矩形清除與 stamp generation 順序；不得套用功能選單 Enter／Escape 的矩形數值。
+- 由獨立審查確認 move／`N` 返回／確認後儲存詢問的 typed identity、generation 與
+  pre-write 足以限縮 READY；儲存詢問離開功能選單尚未量，不得納入 READY 範圍。
 - 審查顯示安全矩形、來源色與生命週期證據是否足以寫成可實作且可否證的 READY
   契約；不足時保持 DRAFT，不以程式假設補洞。
 
 完成證據審查後才可把本檔升為 READY、實作正式 runtime presenter。實作後另建立
-同狀態 2×／3× A/B 收據：原版 bytes／輸入／檔案事件不變、七個矩形內可見差異、
+正式、失敗即關閉的 `1C41` glyph watcher API，提供 catalog miss／drop／pending 收據；
+不得直接把可丟棄 projection／typed-core 併入正式玩家路徑。並建立同狀態 2×／3×
+A/B 收據：原版 bytes／輸入／檔案事件不變、七個矩形內可見差異、
 矩形外零差異、圖示像素與動態欄零污染、所有轉場零殘字；通過後才能標為
 CONFORMED。在此之前不得於 README 宣稱身體圖示畫面已中文化。
 
