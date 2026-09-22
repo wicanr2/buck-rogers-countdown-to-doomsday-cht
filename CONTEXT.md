@@ -182,6 +182,11 @@ SP+`0x12` 與七 ABI word 高位為零；但從合法 page9 state 再送 Enter �
 故事區，沒有可授權失效的最早相交 pre-write。真正清除故事區的後續玩家動作仍未知，
 因此第九頁保持 DRAFT，尚未接 runtime 或做中文 A/B；見
 [第一百三十四階段](docs/re/phase-134-story-page9-enter-trace.md)。
+手冊明示的數字鍵盤 4／6 在同一合法 page9 state 各做雙重、361M–361.1M 的有界重播：
+兩鍵皆於 `361000150` 被 BIOS 消費，只在 row 24 產生 command/status clear／33 glyph，
+`story_fill_writes`／`story_pixel_write` 均為空，沒有碰到故事區。這兩鍵不能當作 page9
+失效邊界；下一個候選必須先由手冊證實是適用於此 command state 的不同玩家動作，詳見
+[第一百三十四階段](docs/re/phase-134-story-page9-enter-trace.md)。
 第九頁後再送合法 Enter，兩次重播只見 row 15 command/status 重畫，無新固定故事行；
 因此沒有第十頁 catalog，不猜補譯文，見[第一百三十六階段](docs/re/phase-136-story-page10-enter-stop-line.md)。
 第 5、7、8 頁三處 DRAFT 譯文依私有原版畫面校訂後，20 份 catalog 的本機倚天子集

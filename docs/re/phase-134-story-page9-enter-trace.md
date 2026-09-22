@@ -110,3 +110,37 @@ glyph 或「沒有第十頁」誤當成覆繪失效事件。
 覆寫的合法後續玩家動作、state 與最早相交 pre-write 仍未知。未取得該證據前不得建立
 宣稱可升 READY 的 typed-core、不得接 production watcher／renderer，也不得稱第九頁
 已中文化；`text/story-page9-events.tsv` 與本頁狀態保持 DRAFT。
+
+## 2026-09-23 手冊明示數字鍵盤 4／6 的最小生命周期邊界
+
+依[第一百一十二階段](phase-112-command-turn-manual-evidence.md)的中文手冊原圖證據，
+數字鍵盤 4／6 分別是左／右轉；本輪只使用這兩個已明示的正常玩家控制，未送 Esc、
+Alt+Q、數字鍵盤 2 或任何猜測鍵。它們是檢驗第九頁故事區失效的候選，並不因手冊標為
+轉向就被預設為可離開故事頁。
+
+從上述合法 page9 state（SHA-256
+`563ed40ba276c6857c57b05344949dec5891e4596ad783a9fc89b805eae8c2a4`）開始，兩鍵均在
+step `361000000` 排入，固定跑到 `361100000`。使用的是本階段先前已鎖定、未重建的
+`buckrogers-text-receipt`（build provenance dosgolem commit
+`c0f6d76b0eb60caa72e74a619c1b981c91b340a5`、runner SHA-256
+`d150746873eb8e0f715baffca27cd26523d8cf132e3915aaf338845bf3725b52`）；原版維持唯讀，
+位址仍是 dosgolem 實模式 `segment:offset`。收據只記錄 content-safe metadata，位於
+ignored `workplace/page9-lifecycle-search/`。
+
+- 數字鍵盤 4（`4B:00`）的兩次獨立收據
+  `key4-a.json`、`key4-probe.json` 逐 byte 相同，SHA-256 均為
+  `c0a17ffc923bd0c627c14d601c91e95ec9f8d0909cb6bec5015561d9aadbc4b3`。
+- 數字鍵盤 6（`4D:00`）的 `key6-a.json`、`key6-b.json` 也逐 byte 相同，SHA-256 均為
+  `9522cef7f52f7494c02c8448c77df12b5a7ef28cbeab8298e65443a6989bdd5a`。
+- 四份收據都在 step `361000150` 由 BIOS `INT 16h/AH=00h` 消費相應鍵值，唯一 clear 是
+  step `361028641` 的 text row 24（`top=bottom=24,left=33,right=39`），其後只有 row 24、
+  columns 0–32 的 33 glyph command/status run。這與第九頁故事區 `[8,168)` 不相交。
+  每份的 `story_fill_writes` 與 `story_pixel_write` 都是空值，indexed framebuffer 與
+  palette 的 SHA-256 分別仍是
+  `fb65f3b36e019caa8d0e74d72aa71ab9908b76ec03fc1f5c301ca563473647b0`、
+  `6ff2334f924ec0eeb8d96fdddd074ba4a74ed43aab6036c32e48805870f3633d`。
+
+因此，這兩個已證實控制只重畫 row 24 command/status，沒有提供故事區 clear、fill、
+pixel pre-write 或可授權的覆繪失效邊界。第九頁保持 DRAFT，未接 production。下一個
+候選必須先由手冊證實為適用於這個 page9 command state 的**不同**玩家動作；在取得該
+適用性證據前，不再擴大 scan-code 探索。
