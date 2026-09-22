@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證第四頁 screenshot-derived DRAFT identity 與繁中候選。"""
+"""驗證第四頁 dosgolem glyph-trace DRAFT identity 與繁中候選。"""
 from __future__ import annotations
 import csv, hashlib, re, sys, unicodedata
 from pathlib import Path
@@ -7,12 +7,12 @@ from pathlib import Path
 EVENT_HEADER = ["event_key","sequence","original_length","original_sha256","caller","glyph_guard","background","foreground","row","column","entry_step","post_call_step","evidence_level","catalog_status"]
 TRANSLATION_HEADER = ["key","translation","source"]
 EXPECTED = [
- ("story.page4.line.001",33,"faea4e715864605d192788c6331c6335b3a9bccc91fba21e72069a5336d64f12",17),
- ("story.page4.line.002",38,"59206579c9802e1d04cea0730e6fafcf81da28d9df31bc898c9a0cb11b61db56",18),
- ("story.page4.line.003",33,"9c8b8840aa76634ac107888c33017f57910b06e999d3199cb92810b8939759ea",19),
- ("story.page4.line.004",24,"58cbe528d3e70d3188fbd9033e2cf6f40ecbdadb4491e193b1a7c8539ae771f7",20),
- ("story.page4.line.005",35,"8e49dbd6d876f3772995c070f80036e0651d265abd9299cf12d07bd0af5d5ce0",21),
- ("story.page4.line.006",24,"ab0a680e1bd4ba6ed62ac7438633c6559b22412508953561e0034d7440b65066",22),
+ ("story.page4.line.001",34,"70dcbd264497c53d685f4261bf3bff0b8e4a3110b43b918105be9753048d95bf",17,301110011,302556029),
+ ("story.page4.line.002",37,"b2005b94a3d6fb0fe926ff3c77bbb2f6d2c6a43169affb4cd10ee6b2641b6247",18,302599801,304177273),
+ ("story.page4.line.003",33,"41248df16995d7ec129c735e250e4cbae84411a7b9da14bc67efe0594293cda7",19,304221261,305623148),
+ ("story.page4.line.004",31,"35b59e99604cbd7264ad1218ae3ad20760dfc7a0d21ca04afaadeebe87a00eda",20,305667022,306981257),
+ ("story.page4.line.005",33,"c83d64d5bcfeae8f41fc4fc899637fa45af2826b62d33e9ee9042331e91b561b",21,307025461,308427356),
+ ("story.page4.line.006",24,"ab0a680e1bd4ba6ed62ac7438633c6559b22412508953561e0034d7440b65066",22,308471572,309478931),
 ]
 
 def rows(path, header):
@@ -33,10 +33,10 @@ def validate(events_path: Path, translations_path: Path):
     ev=rows(events_path, EVENT_HEADER); tr=rows(translations_path, TRANSLATION_HEADER)
     if len(ev)!=len(EXPECTED) or len(tr)!=len(EXPECTED): raise ValueError("第四頁 DRAFT 必須恰有六筆")
     for i,(row, want) in enumerate(zip(ev, EXPECTED),1):
-        key,length,digest,logical_row=want
-        if (row["event_key"],int(row["sequence"]),int(row["original_length"]),row["original_sha256"],int(row["row"])) != (key,i,length,digest,logical_row): raise ValueError(f"identity: {key}")
+        key,length,digest,logical_row,entry,post=want
+        if (row["event_key"],int(row["sequence"]),int(row["original_length"]),row["original_sha256"],int(row["row"]),int(row["entry_step"]),int(row["post_call_step"])) != (key,i,length,digest,logical_row,entry,post): raise ValueError(f"identity: {key}")
         if not re.fullmatch(r"[0-9a-f]{64}", digest): raise ValueError(f"hash: {key}")
-        if (row["caller"],row["glyph_guard"],row["background"],row["foreground"],row["column"],row["entry_step"],row["post_call_step"],row["evidence_level"],row["catalog_status"]) != ("unknown","unknown","0","10","1","0","0","visual-transcription","DRAFT"): raise ValueError(f"DRAFT metadata: {key}")
+        if (row["caller"],row["glyph_guard"],row["background"],row["foreground"],row["column"],row["evidence_level"],row["catalog_status"]) != ("0763:04FF","0763:026B","0","10","1","confirmed","DRAFT"): raise ValueError(f"DRAFT metadata: {key}")
     keys=[x["event_key"] for x in ev]
     if [x["key"] for x in tr] != keys: raise ValueError("translation coverage")
     for x in tr:

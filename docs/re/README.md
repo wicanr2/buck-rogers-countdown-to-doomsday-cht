@@ -1,6 +1,8 @@
 # 原版觀測證據索引
 
+- [第一百二十六階段：手冊成功返回後的鍵盤 consumer 邊界](phase-126-manual-return-keyboard-consumer-boundary.md)：同一合法 Num Lock 8 被原版 BIOS 取走並回交 consumer，已確認其非零分支；未證實玩家語意、轉場或遊戲內保存／讀檔入口。
 - [第一百二十五階段：Ebitengine 實體 host 輸入 prototype](phase-125-ebiten-physical-host-input-prototype.md)：Docker/Xvfb 真實 pointer／Enter 事件驗證 Cancel 回 2×、Apply 3×收合、鍵盤隔離與 DOS 邊界；仍非可玩版。
+- [第一百二十四階段：第四頁首次 glyph trace 勘誤](phase-124-story-page4-first-glyph-trace.md)：從第三頁合法 state 以同一筆 Enter 可重生第四頁六行 `0763:04FF → 0763:026B` identity；前五筆 visual-transcription 候選與原版 metadata 不符，第六筆相符。catalog 保持 DRAFT、未接 runtime。
 
 - [第一百二十三階段：手冊成功返回分支的保存／讀檔入口邊界](phase-123-manual-return-save-load-entry-boundary.md)：手冊確認 save/load 的選單與槽位條件；從成功返回的最早可重播 command/status state 以 Num Lock 前進鍵驗證仍無轉場，故不拼接建角收據、不猜鍵、未做 save/load A/B。
 - [第一百二十二階段：第四頁後合法 Enter 的下一頁 trace](phase-122-story-page5-enter-trace.md)：確認第五頁底部五行敘事的 `0763:04FF → 0763:026B` content-safe identity，校正誤配人物名的初稿並重建 1006 字模；轉場失效與 runtime A/B 未驗，catalog 維持 DRAFT。

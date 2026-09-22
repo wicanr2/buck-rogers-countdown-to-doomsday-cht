@@ -1238,6 +1238,18 @@
 
 - 英文手冊與中文 Data Card 指明：讀檔可在主選單或隊員管理選單，保存僅在隊員管理選單並選 A–J 槽位。成功返回分支續按已證實的 Enter 至 330M 仍只見 command/status；依手冊 Num Lock 前進鍵送入數字鍵盤 8，以及無鍵延長，均沒有新畫面、dispatcher event 或檔案操作。
 - 這不能證明遊戲已進可操作冒險狀態，更不能拿建角分支的保存收據冒充手冊後 save/load。下一步是追 330M 的鍵盤 consumer 與選單轉場；未猜其他鍵、未改原版 state。見[第一百二十三階段](docs/re/phase-123-manual-return-save-load-entry-boundary.md)。
+
+## 2026-09-22 — 第一百二十四階段：第四頁首次 glyph trace 勘誤
+
+- 從第三頁合法 state 於絕對步 `301000000` 排入唯一正常 BIOS Enter，兩次 Docker／dosgolem 重播均維持第四頁 indexed framebuffer SHA-256 `4f9d1bb…`，並產生逐 byte 相同的 content-safe receipt；沒有輸出原文、答案、畫面或原始 state。
+- 先前的「unknown caller」是舊 receipt 二進位未包含現有 glyph／return-edge 診斷所致，並非 page4 沒有 glyph path。現有來源在暫存容器重建後，量到 row 17–22 六筆 `0763:04FF → 0763:026B` guarded runs 與 entry／post 步數；`story-page4-events.tsv` 因而改為 `confirmed`／`DRAFT`。
+- 逐筆比對既有 visual-transcription：line 1–5 的 length／SHA-256 都不符合低階 trace，line 6 相符。私有原圖複核後修訂繁中 DRAFT 第 3–6 行的語意順序，避免將時代資訊錯接到前一子句；來源仍為 `runtime-editorial`，未升格、未接 runtime。尚未完成文字安全矩形、失效邊界、同狀態 A/B 或 runtime 接線，不能升 READY。
+- 私有收據只留在 ignored `workplace/page4-lowlevel-probe/`；容器皆以 `--rm` 完成，檢查產物為目前 UID/GID，沒有遺留專案相關容器或 root-owned 檔案。
+
+## 2026-09-22 — 第一百二十六階段：手冊返回後的鍵盤 consumer 邊界
+
+- 同一合法 330M state 與 Num Lock 8 重播證實：`INT 16h/AH=00h` 取走 `0x4838`，並回交 `37F1:1116`；有界指令 trace 顯示其後走 `37F1:113F → 37F1:118A` 非零輸入邊。原版玩家語意仍未知。
+- IDA 9.4 的裸 OVR file offset 對照只作分級線索，不與 dosgolem 實模式位址混用；未接到選單、A–J 槽位或保存檔寫入。下一步只追這條已觀測分支至 consumer return 或下一次 key-poll，見[第一百二十六階段](docs/re/phase-126-manual-return-keyboard-consumer-boundary.md)。
 ## 2026-09-22 — 第一百二十五階段：實體 host input prototype
 
 - Docker/Xvfb／xdotool 對真實 Ebitengine 視窗驗證設定開啟、3×暫選、Cancel 回 2×且重開仍 2×、Apply 3×收合，以及面板開啟時 Enter 隔離、關閉後 Enter BIOS 排隊。

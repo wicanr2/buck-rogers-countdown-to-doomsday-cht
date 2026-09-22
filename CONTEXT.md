@@ -30,15 +30,18 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 首筆可見像素差異。完整開機玩家路徑與存讀檔／restore 仍未驗，spec010 維持 READY，
 不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)
 及[第一百一十九階段](docs/re/phase-119-story-opening-enter-lifecycle.md)。
-第二頁四行、第三頁五行有可重播低階 glyph 身分與繁中 DRAFT；第四頁六行只有
-既有畫面反查的 `visual-transcription` DRAFT，尚無首次繪製時的 caller／步數。
+第二頁四行、第三頁五行與第四頁六行均有可重播低階 glyph 身分與繁中 DRAFT。第四頁由
+第三頁合法 state 的同一筆 Enter 重生為 `0763:04FF → 0763:026B` 六行；舊
+`visual-transcription` 前五筆 length／hash 與原版 trace 不符，僅第六筆相符，故繁中候選仍須
+編輯審查、catalog 維持 DRAFT 且不得接 runtime。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
 初稿曾誤配右側人物姓名，經原圖座標核對訂正。第二至五頁均不得接 runtime，
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
 候選聯集重建為 1006 字模，正式 loader 已回讀且零缺字；這仍只證明字型覆蓋。
 見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
 [第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)、
-[state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)與
+[state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)、
+[首次 glyph trace 勘誤](docs/re/phase-124-story-page4-first-glyph-trace.md)與
 [第五頁收據](docs/re/phase-122-story-page5-enter-trace.md)。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
@@ -53,10 +56,12 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 machine／DOS 狀態與控制組相等。由成功返回終態重新載入 dosgolem savestate 的
 無鍵 A/B 也證明衍生手冊層不會復活；這不是原版遊戲內存檔／讀檔。手冊顯示
 保存需進隊員管理選單並選 A–J 槽位；成功返回分支至 330M 仍只有 command/status，
-已知的 Num Lock 前進鍵沒有可見或檔案效果，尚無可銜接的合法保存入口。
+已知的 Num Lock 前進鍵沒有可見或檔案效果；後續追蹤已證實此鍵被 BIOS 取走並交回
+原版 consumer，且進入非零輸入分支，但尚未追至轉場或合法保存入口。
 見[第一百零四階段](docs/re/phase-104-manual-success-return.md)、
 [第一百二十一階段](docs/re/phase-121-manual-savestate-restore-boundary.md)與
-[第一百二十三階段](docs/re/phase-123-manual-return-save-load-entry-boundary.md)。
+[第一百二十三階段](docs/re/phase-123-manual-return-save-load-entry-boundary.md)、
+[第一百二十六階段](docs/re/phase-126-manual-return-keyboard-consumer-boundary.md)。
 
 操作列已在正常角色建立→技術技能頁接線；
 2× 維持逐位元不變、3× 中文字模改為 22×22 並縮緊字距，白色快捷字母不變。

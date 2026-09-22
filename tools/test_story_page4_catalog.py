@@ -32,8 +32,13 @@ class StoryPage4CatalogTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate(events, TRANSLATIONS)
 
-    def test_rejects_unknown_evidence_level(self):
-        events = self._copy_with(EVENTS, lambda rows: rows[0].__setitem__("evidence_level", "confirmed"))
+    def test_rejects_post_call_step_drift(self):
+        events = self._copy_with(EVENTS, lambda rows: rows[0].__setitem__("post_call_step", "302556030"))
+        with self.assertRaises(ValueError):
+            validate(events, TRANSLATIONS)
+
+    def test_rejects_visual_transcription_evidence_level(self):
+        events = self._copy_with(EVENTS, lambda rows: rows[0].__setitem__("evidence_level", "visual-transcription"))
         with self.assertRaises(ValueError):
             validate(events, TRANSLATIONS)
 
