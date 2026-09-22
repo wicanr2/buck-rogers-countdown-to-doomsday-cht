@@ -1265,3 +1265,17 @@
 
 - Docker/Xvfb／xdotool 對真實 Ebitengine 視窗驗證設定開啟、3×暫選、Cancel 回 2×且重開仍 2×、Apply 3×收合，以及面板開啟時 Enter 隔離、關閉後 Enter BIOS 排隊。
 - Xvfb 固定視窗與 logical layout letterbox 導致座標漂移，runner 已以當前 X11 geometry 與比例換算重播；這不是正式視窗規格。host hit 不寫 DOS；pointer miss 不轉送 DOS mouse 仍是待決 UX，不升 READY／可玩版。
+
+## 2026-09-22 — 第一百三十階段：Num Lock 8 的下一次 key-poll 停止線
+
+- 同一私有 330M state／同一合法 Num Lock 8 從已確認的 `37F1:118A` 受控追蹤；dosgolem BIOS metadata
+  在 `331000653` 明確記錄 `INT 16h/AH=01h`、無可用鍵，故在第一個後續 poll 停止，不追加第二鍵。
+- 同終止 step 的無鍵 control 與單鍵分支 indexed framebuffer／palette 相同，dispatcher、FileOps、writes
+  與未實作服務均空；完整記憶體雜湊不同但語意未知。未到主選單、隊員管理、A–J 或保存／讀檔。
+- IDA 9.4 的 file-offset 線索保持第一百二十六階段既有分級；本輪僅增加 content-safe BIOS poll
+  instrumentation，未改正式 runtime 或遊戲規則。詳見[第一百三十階段](docs/re/phase-130-manual-return-numlock8-next-poll-boundary.md)。
+
+## 2026-09-22 — 第一百二十九階段：第七頁固定敘事與繁中候選
+
+- 從第六頁合法 state 送入一筆 BIOS Enter，兩次原版收據逐 byte 相同；另從同狀態重生 indexed 畫面、色盤與 PNG，固定敘事六行均可核對。
+- 低階翻譯代理依私有裁切建立六行繁中 DRAFT；identity、key、來源、NFC 與寬度驗證通過。右側人物姓名與動態狀態列排除。尚未接 runtime，見[第一百二十九階段](docs/re/phase-129-story-page7-enter-trace.md)。

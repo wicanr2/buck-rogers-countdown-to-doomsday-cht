@@ -44,12 +44,15 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 第五頁後的合法 Enter 也已量到第六頁 row 17–22 六行低階身分；低階翻譯代理建立
 繁中 DRAFT；全部 17 份 catalog 的倚天聯集已重建為 1014 glyph，dosgolem 正式 loader
 對譯文字元零缺字。這仍不代表第六頁接通 runtime 或可散布字型。
+第六頁後的合法 Enter 又確認第七頁 row 17–22 六行；同狀態 indexed 畫面與色盤重生一致，
+六行繁中候選與 identity 已建為 DRAFT，尚未接 runtime 或做中文 A/B。
 見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
 [第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)、
 [state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)、
 [首次 glyph trace 勘誤](docs/re/phase-124-story-page4-first-glyph-trace.md)與
 [第五頁收據](docs/re/phase-122-story-page5-enter-trace.md)及
-[第六頁收據](docs/re/phase-128-story-page6-enter-trace.md)。
+[第六頁收據](docs/re/phase-128-story-page6-enter-trace.md)及
+[第七頁收據](docs/re/phase-129-story-page7-enter-trace.md)。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
 意譯，不是整章手冊逐字轉錄。37 題有中文掃描對照；第 3、39 題因缺少直接的中文

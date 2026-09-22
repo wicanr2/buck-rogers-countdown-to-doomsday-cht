@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第一百三十階段：手冊返回 Num Lock 8 分支至下一次鍵盤輪詢](phase-130-manual-return-numlock8-next-poll-boundary.md)：同一合法 8 在非零分支後回到已證實的無鍵 BIOS poll；同狀態 A/B 無畫面、色盤、檔案或服務差異，未得到遊戲內保存／讀檔入口。
+- [第一百二十九階段：第六頁後合法 Enter 的第七頁 trace](phase-129-story-page7-enter-trace.md)：六行 `0763:04FF → 0763:026B` DRAFT identity、同狀態畫面與繁中候選；未接 runtime。
 - [第一百二十八階段：第五頁後合法 Enter 的第六頁 trace](phase-128-story-page6-enter-trace.md)：六行 `0763:04FF → 0763:026B` DRAFT identity、繁中候選與 page5 首筆 story-region 改寫；未接 runtime。
 - [第一百二十七階段：pointer miss A/B prototype](phase-127-pointer-miss-ab-prototype.md)：同一實體 click 的 no-forward／實驗性 DOS mouse state 對照；非正式 UX。
 

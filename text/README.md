@@ -143,6 +143,9 @@ catalog；清除／失效邊界與正常玩家路徑尚待 READY 審查，不得
 固定敘事 DRAFT；`tools/story_page6_catalog.py` 驗證低階 glyph 身分、譯文 key／來源、NFC、
 控制字元與保守 39 格寬度。右側人物名與 row 24 狀態列排除；首筆原版清除僅為前頁
 stamp 失效候選，尚未完成 runtime A/B，不得接正式覆繪。
+`story-page7-events.tsv` 與 `story-page7.zh-TW.tsv` 是第六頁後合法 Enter 所見的第七頁下方六行
+固定敘事 DRAFT；`tools/story_page7_catalog.py` 驗證同狀態 glyph 身分與繁中候選格式。
+右側人物名及 row 24 排除；尚未完成字型重建、失效生命週期或 runtime A/B。
 
 ## 驗證與 prototype 字型
 
