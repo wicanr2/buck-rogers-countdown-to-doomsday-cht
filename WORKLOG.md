@@ -1397,3 +1397,8 @@
 - 第八頁第二次審查一度同意以 logical `[8,96)×[136,168)` 限縮 READY；主代理在寫正式規格時反查原文最長 38 glyph，發現該矩形只包 11 個中文字格、會留下右側英文殘字。已撤回升級並退回重訂完整原文清除矩形、字型 containment 與 pre-write typed-core；catalog 保持 DRAFT。
 - 原代理以 max 38 glyph 與 exit 32/32 scanline 的 x=8／CX=304 fill，將第八頁最小已量矩形訂正為 `[8,312)×[136,168)`；新增字型與 typed-core corrigendum receipts，保留並 backlink 舊窄矩形收據。新幾何零缺字／越界且端到端 verifier 六項通過，正交第三次獨立 READY 審查。
 - 第八頁第三次獨立審查重生兩份 corrigendum receipts，確認完整英文清除右界、32 列 fill、端到端 130 edge 與失敗即關閉契約；[規格 017](docs/spec/017-story-page8-overlay-ready.md)及四筆 event catalog 只在固定四行與已量 Enter 進出升 READY。正式 runtime／A/B 未接，未升 CONFORMED。
+
+## 2026-09-23 — 第八頁正式接線與限縮 CONFORMED
+
+- Terra 在本機 dosgolem `c0f6d76` 原子接通第八頁 strict loader、watcher、verified RETF、逐列 pre-write 失效、presenter、RGBA／PNG 與 JSON receipt。另一代理獨立審查 flags、generation、完整英文清除矩形與雙倍率失敗即關閉，Docker 定向 test／vet／race 均通過。
+- 從合法第七頁終態重生 control／2×／3×，兩倍率均四 key、零缺字、安全矩形外零差，正規化 machine／DOS 與控制組相等；同程序兩筆 Enter 在 step `351154334` 記錄 active 4→0，離頁終態 RGBA 等於 baseline。人工檢視兩張 PNG 亦確認英文四行完整清除、人物與右側動態區不受影響。詳見[第一百五十七階段](docs/re/phase-157-story-page8-runtime-conformance.md)。規格 017 只在此固定路徑升 CONFORMED，完整開機、存讀檔及第九頁仍未知。

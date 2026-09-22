@@ -1,6 +1,6 @@
 # 017 — 第八頁固定劇情輸出端覆繪
 
-狀態：**READY；僅第八頁固定四行與已量合法 Enter 進出。正式 runtime 未接。**
+狀態：**CONFORMED；僅第八頁固定四行與已量合法 Enter 進出。**
 日期：2026-09-23
 
 ## 範圍與權利
@@ -69,11 +69,15 @@ edge 的全面時間單調；正式實作至少須維持 entry<return 與事件�
 被拒，只用暫存 READY fixture 驗核心。`text/story-page8.zh-TW.tsv` 的
 `runtime-editorial` 譯文已逐行校對，但不是手冊逐字引文。
 
-## CONFORMED 閘門
+## CONFORMED 收據
 
-正式 watcher／strict loader／presenter／CLI 完成後，須從同一合法 state
-重生 control、2×、3×：四 key、零缺字，RGBA 差異只在安全矩形；原版
-CPU／DOS／BIOS／file ops、indexed framebuffer 與 palette 相等。已量
-Enter 離頁須同程序 active→pre-write clear，終態 RGBA==baseline 且
-無殘字；正式 2×／3×各需完整 fail-closed matrix。完成前不可標
-CONFORMED 或稱第八頁已中文化。
+本機 dosgolem `c0f6d76b0eb60caa72e74a619c1b981c91b340a5` 已接通正式
+watcher／strict loader／presenter／CLI。從同一合法 state 重生的 control、2×、3×
+均為四 key、零缺字，RGBA 差異只在安全矩形，正規化 machine／DOS 狀態相等。
+同程序合法 Enter 離頁在 step `351154334` 記錄 active 4→0，終態
+RGBA==baseline 且無殘字。獨立審查確認正式 2×／3×失敗即關閉矩陣，Docker
+定向 test／vet／race 通過。完整收據與證據限制見
+[第一百五十七階段](../re/phase-157-story-page8-runtime-conformance.md)。
+
+本結論不涵蓋完整開機、其他入口／出口、右側動態資訊、存讀檔、第九頁或其餘
+遊戲文字；這些不得由本頁收據外推。

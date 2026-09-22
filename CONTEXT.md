@@ -23,9 +23,14 @@ return／ABI、最早相交 pre-write、七 ABI 低位映射、逐列半開寫�
 現有四行譯文已由低階翻譯代理對原版畫面校對，無需修改；本機倚天
 2×／3×正式幾何靜態 containment 亦零缺字、零越界，但尚非 runtime 授權。
 其後端到端 verifier 與完整英文清除矩形經三次獨立審查、兩度退回後，
-[規格 017](docs/spec/017-story-page8-overlay-ready.md)只在固定四行與已量
-Enter 進出限縮升 READY。舊 `[8,96)` 已勘誤為
-`[8,312)×[136,168)`；正式 runtime／A/B 未做，不得稱已中文化。
+[規格 017](docs/spec/017-story-page8-overlay-ready.md)先在固定四行與已量
+Enter 進出限縮升 READY。舊 `[8,96)` 已勘誤為 `[8,312)×[136,168)`。
+本機 dosgolem `c0f6d76` 再接通正式 lifecycle；control／2×／3×與同程序
+Enter 離頁驗得四 key、零缺字、矩形外零差、machine／DOS 全等，step
+`351154334` active 4→0 且終態無殘字。獨立程式審查與定向 test／vet／race
+通過，因此第八頁**只在固定四行及已量 Enter 進出限縮 CONFORMED**；見
+[第一百五十七階段](docs/re/phase-157-story-page8-runtime-conformance.md)。完整開機、
+其他出口、存讀檔、第九頁及其餘文字仍未驗。
 
 互動式玩家前端的第一個可玩版本已由使用者決定先支援 Linux，架構保留日後
 Windows／macOS 擴充；第一版三平台同步交付已排除。視窗後端也已選定
