@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證第四頁 dosgolem glyph-trace DRAFT identity 與繁中候選。"""
+"""驗證第四頁 READY glyph identity 與繁中候選。"""
 from __future__ import annotations
 import csv, hashlib, re, sys, unicodedata
 from pathlib import Path
@@ -36,7 +36,7 @@ def validate(events_path: Path, translations_path: Path):
         key,length,digest,logical_row,entry,post=want
         if (row["event_key"],int(row["sequence"]),int(row["original_length"]),row["original_sha256"],int(row["row"]),int(row["entry_step"]),int(row["post_call_step"])) != (key,i,length,digest,logical_row,entry,post): raise ValueError(f"identity: {key}")
         if not re.fullmatch(r"[0-9a-f]{64}", digest): raise ValueError(f"hash: {key}")
-        if (row["caller"],row["glyph_guard"],row["background"],row["foreground"],row["column"],row["evidence_level"],row["catalog_status"]) != ("0763:04FF","0763:026B","0","10","1","confirmed","DRAFT"): raise ValueError(f"DRAFT metadata: {key}")
+        if (row["caller"],row["glyph_guard"],row["background"],row["foreground"],row["column"],row["evidence_level"],row["catalog_status"]) != ("0763:04FF","0763:026B","0","10","1","confirmed","READY"): raise ValueError(f"READY metadata: {key}")
     keys=[x["event_key"] for x in ev]
     if [x["key"] for x in tr] != keys: raise ValueError("translation coverage")
     for x in tr:
@@ -45,4 +45,4 @@ def validate(events_path: Path, translations_path: Path):
 
 if __name__ == "__main__":
     if len(sys.argv)!=3: raise SystemExit("usage: story_page4_catalog.py EVENTS TRANSLATIONS")
-    validate(Path(sys.argv[1]),Path(sys.argv[2])); print("story page4 DRAFT OK")
+    validate(Path(sys.argv[1]),Path(sys.argv[2])); print("story page4 READY OK")

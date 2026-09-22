@@ -170,6 +170,12 @@ ignored `workplace/phase128-mousebridge-prototype/bridge.go` 曾對畫布內配�
 這不等於真實 Ebitengine／dosgolem 事件矩陣已通過；正式 bridge 前仍須取得
 實體畫布內 Up 的座標、呼叫順序與正常玩家因果收據，spec 228 維持 DRAFT。
 
+[第一百四十六階段](../re/phase-146-real-ebiten-inside-up-corrected.md)已以修正後原型
+重跑真實 Ebitengine 2×／3×畫布內 Down→Up；兩倍率均觀測到
+`Move→Press→Move→Release`，DOS button 清除，輸入 API 邊界的 BIOS／IRQ／indexed
+與 memory 不變。這只補上述畫布內 Up 呼叫順序；四角／邊界、其他 cleanup、
+正式 backend route 與正常玩家因果 A/B 仍缺，spec 228／本規格仍維持 DRAFT。
+
 1. Linux Ebitengine 後端的正式事件接線：將 prototype host chrome hit test、面板鍵盤隔離、Ebitengine key 到
    DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。
 2. 從遊戲開機到故事 state 的完整正常玩家路徑，以及 host 操作後繼續遊玩、存檔／讀檔的同狀態

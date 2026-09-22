@@ -1,7 +1,7 @@
 # 第一百四十三階段：第四頁 READY 前最小證據
 
 日期：2026-09-22
-狀態：**DRAFT；192 筆逐字返回與六行完整矩形的最早 pre-write 已證實；第四頁覆繪仍未升 READY。**
+狀態：**原始 DRAFT；192 筆逐字返回與六行完整矩形的最早 pre-write 已證實。2026-09-22 獨立審查已據此限縮升為規格 013 的 READY；尚未接 runtime。**
 
 > **勘誤（2026-09-22）**：本文件起草時把 `-story-fill-trace` 記下的第一筆
 > step `310023777` 稱為六行 `[8,320)×[136,184)` 的「最早相交」。獨立審查
@@ -128,3 +128,15 @@ ignored `workplace/page4-ready-atomic-core/` 的可丟棄 typed-core 三項測�
 第四頁正式資料目前仍為 DRAFT。接下來須獨立審查六筆繁中候選及 typed
 原子提交契約，將矩形、失效、字型與 A/B 驗收寫入限縮 READY 規格；
 在此之前不得接 watcher、catalog 或 renderer 的 production path。
+
+## 獨立 READY 審查結果（2026-09-22）
+
+未參與上述收據產生的審查，重算 `text/story-page4-events.tsv` 的六筆 identity、192 筆
+return-edge 契約、rows=6 的矩形／pre-write 邊界，並重跑 catalog 與可丟棄 typed-core 的
+失敗即關閉測試。結果通過：六行的 `catalog_status` 已改為 `READY`，但這不是 runtime 接線。
+
+字型收據的兩個數字使用不同計數單位：phase 143 的 catalog 為 57 個譯文字元；phase 118 的
+正式 loader 報告 page4 58 個 Unicode 檢查項。兩者均為缺字 0，且本次對現行 TSV 重算為 57 個
+文字字元、53 個唯一 Unicode code point；因此不把計數差異誤寫成 coverage failure。限縮的
+typed contract、字型／矩形、已量 Enter 清除與 CONFORMED 驗收已固定於
+[規格 013](../spec/013-story-page4-overlay-draft.md)。其他離頁、完整開機與存讀檔仍為未知。

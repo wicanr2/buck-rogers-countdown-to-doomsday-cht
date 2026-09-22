@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證第五頁低階 identity 與繁中候選；DRAFT，不授權 runtime。"""
+"""驗證第五頁 READY typed-adapter 的低階 identity 與繁中候選。"""
 from __future__ import annotations
 
 import csv
@@ -48,7 +48,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
     events = _rows(events_path, EVENT_HEADER)
     translations = _rows(translations_path, TRANSLATION_HEADER)
     if len(events) != len(EXPECTED) or len(translations) != len(EXPECTED):
-        raise ValueError("第五頁 DRAFT 必須恰有五筆")
+        raise ValueError("第五頁 READY 必須恰有五筆")
     keys = [row["event_key"] for row in events]
     translation_keys = [row["key"] for row in translations]
     if keys != translation_keys or len(set(keys)) != len(keys) or len(set(translation_keys)) != len(translation_keys):
@@ -69,8 +69,8 @@ def validate(events_path: Path, translations_path: Path) -> None:
             raise ValueError(f"故事區列不符：{key}")
         if (int(row["entry_step"]), int(row["post_call_step"])) != (entry, post):
             raise ValueError(f"步數不符：{key}")
-        if row["evidence_level"] != "proven" or row["catalog_status"] != "DRAFT":
-            raise ValueError(f"DRAFT 狀態或證據分級不符：{key}")
+        if row["evidence_level"] != "proven" or row["catalog_status"] != "READY":
+            raise ValueError(f"READY 狀態或證據分級不符：{key}")
     for row in translations:
         text = row["translation"]
         if not text or row["source"] != "runtime-editorial":
@@ -94,7 +94,7 @@ def main(argv: list[str]) -> int:
     except (OSError, ValueError) as exc:
         print(f"失敗即關閉：{exc}", file=sys.stderr)
         return 1
-    print("story-page5 DRAFT catalog OK")
+    print("story-page5 READY catalog OK")
     return 0
 
 

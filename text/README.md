@@ -138,14 +138,16 @@ Chiagong 的「奇亞貢」仍只是未由中文手冊逐字確認的編輯性�
 僅對同一合法 state 的五行與已量 Enter 離頁給出雙倍率限縮驗收。
 `tools/story_page3_ab_verify.py` 是唯讀收據驗證入口：逐欄比對 control 與 2×／3×
 原版欄位，並檢查覆繪差異只在五行安全矩形內；它不能取代正常玩家完整開機與存讀檔。
-`story-page4-events.tsv` 與 `story-page4.zh-TW.tsv` 是第四頁六行 DRAFT；原先
-`visual-transcription` 的前五筆身分已被兩次合法 Enter 的低階 glyph trace 否定並訂正，
-現有 `tools/story_page4_catalog.py` 驗證 exact hash、caller／guard、步數、幾何與翻譯容量。
-這只解決輸出身分，不代表完成失效生命週期或 runtime A/B，仍不得接入正式覆繪。
+`story-page4-events.tsv` 是第四頁六行 READY 身分目錄，`story-page4.zh-TW.tsv` 保持編輯性
+繁中候選；原先 `visual-transcription` 的前五筆身分已被兩次合法 Enter 的低階 glyph trace
+否定並訂正。`tools/story_page4_catalog.py` 驗證 exact hash、caller／guard、步數、幾何、READY
+狀態與翻譯容量。READY 僅授權依規格 013 實作；尚未接入 runtime、未做 2×／3× A/B，
+不得稱為已中文化。
 `story-page5-events.tsv` 與 `story-page5.zh-TW.tsv` 是第四頁後合法 Enter 所見的
-第五頁下方五行固定敘事 DRAFT；`tools/story_page5_catalog.py` 驗證低階 glyph
-length／hash、caller／guard、row 17–21 與 39 格容量。右側人物姓名未納入此
-catalog；清除／失效邊界與正常玩家路徑尚待 READY 審查，不得接 runtime。
+第五頁下方五行固定敘事 READY；`tools/story_page5_catalog.py` 驗證低階 glyph
+length／hash、caller／guard、row 17–21、39 格容量與 READY 狀態。右側人物姓名未納入此
+catalog；READY 僅授權依規格 014 實作，runtime A/B、清除與正常玩家路徑仍未驗，不得稱為
+已中文化。
 `story-page6-events.tsv` 與 `story-page6.zh-TW.tsv` 是第五頁後合法 Enter 的第六頁下方六行
 固定敘事 DRAFT；`tools/story_page6_catalog.py` 驗證低階 glyph 身分、譯文 key／來源、NFC、
 控制字元與保守 39 格寬度。右側人物名與 row 24 狀態列排除；首筆原版清除僅為前頁

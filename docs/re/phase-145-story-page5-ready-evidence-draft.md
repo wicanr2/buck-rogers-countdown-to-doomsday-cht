@@ -1,7 +1,7 @@
 # 第一百四十五階段：第五頁 READY 前最小證據
 
 日期：2026-09-22
-狀態：**DRAFT；第五頁五行的低階 return／ABI 與已量 Enter 離頁 pre-write 已補齊，仍待獨立 READY 審查，未接 production。**
+狀態：**READY；僅第五頁五行 typed adapter contract 與已量 Enter 離頁，未接 production、不是 CONFORMED。**
 
 ## 範圍與散布邊界
 
@@ -68,20 +68,28 @@ step `321118406`／`A000:AB48` 是第一筆**可見** story-region pixel 差異�
 
 ## TSV 幾何與字型核對
 
-`tools/story_page5_catalog.py` 與其八個失敗即關閉測試通過；它鎖定五筆 DRAFT identity、
-UTF-8/NFC、控制／格式字元、鍵值雙向覆蓋、39-cell 保守行寬，以及 hash、狀態與 key
-漂移拒絕。此驗證器證明的是資料層幾何上界，**不**把上述 strong-inference rectangle
-升格為正式資料。
+`tools/story_page5_catalog.py` 與其八個失敗即關閉測試在隔離的
+`python:3.13-bookworm` Docker 容器重跑通過；它鎖定五筆 DRAFT 身分、UTF-8/NFC、
+控制／格式字元、鍵值雙向覆蓋、39-cell 保守行寬，以及雜湊、狀態與 key 漂移拒絕。
+現行五筆譯文的保守寬度依序是 `22/30/24/16/10` 格，均低於 39。此驗證器證明的
+只是資料層幾何上界，**不**把上述強推論 rectangle 升格為正式資料。
 
-私有 `workplace/phase128-font/buckrogers-eten-top-pad.golemfnt`（SHA-256
-`16e0e8cd687bbcd0f12b8330a47a7eed9519dd861063c41c01388f9ffc41d024`）由 dosgolem
-正式 loader 回讀為 `GOLEMFNT 16x16 glyphs=1014 coverage=51`，第五頁現行 51 個譯文字元
-零缺字。字型來源及產物不可散布；coverage 不構成 runtime 繪製、containment 或 A/B。
+本階段起草時所引 `workplace/phase128-font/` 的 page5 catalog SHA-256 是
+`4b3dc682d78bc67634241b72fa25a5cec2bd2acd32c986d6a59f1391a5facb51`，已不等於現行
+`text/story-page5.zh-TW.tsv` SHA-256
+`cb640abad6d04c5db8e6f4662c799a90120ae11d21ee80cf646933252d06b728`；故其 1014-glyph
+loader 收據不得再當作**現行**第五頁的涵蓋證據。已找到對應現行 SHA 的本機產物
+`workplace/phase138-font/eten-subset.golemfont` 與 `manifest.json`：格式為
+`GOLEMFNT 16x16 glyphs=1024`，產物 SHA-256
+`b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`，且 manifest 明列本
+TSV 的現行雜湊。這只證明可追溯的本機建置輸入／輸出相符；本輪未以正式 loader 回讀該
+1024-glyph 產物，亦未證明 2×／3×墨跡包含、執行期繪製或 A/B，因此不能以 manifest
+取代那些收據。字型來源、產物及 manifest 均不可散布。
 
-## READY 前停止線
+## 原 DRAFT 停止線（已由後續審查解除）
 
-本階段只補原版低階證據與資料核對，不能把 `text/story-page5-events.tsv` 的 `DRAFT` 升為
-`READY`。獨立審查仍必須：
+本階段起草時只補原版低階證據與資料核對，原先不能把 `text/story-page5-events.tsv` 的
+`DRAFT` 升為 `READY`。當時要求的項目如下；其後續完成結果見下一節。
 
 1. 將五行原子提交、完整 identity、RETF／stack／high-word、擬定 rectangle 與 pre-write
    失效規則寫成可丟棄 typed-core，並覆蓋 partial、duplicate、錯序、style、return edge、
@@ -91,4 +99,27 @@ UTF-8/NFC、控制／格式字元、鍵值雙向覆蓋、39-cell 保守行寬，
 3. 由未參與收據生成者覆核 TSV、168 筆 return edge、half-open span 計算、舊可見差異訂正
    與本機／不可散布邊界。
 
-完成前不得建立第五頁 watcher、presenter、正式安全矩形資料或任何 production path。
+完成前不得建立第五頁 watcher、presenter、正式安全矩形資料或任何 production path；此停止線
+在下列可丟棄審查完成前有效。
+
+## 獨立 READY 審查補證與結論（限縮）
+
+**結論：第五頁五筆 catalog 已升為 `proven/READY`，只授權未來 typed adapter 實作；未改
+dosgolem production watcher／renderer，亦不是 CONFORMED。**
+
+以未參與 receipt 生成的審查角度，重核 168 筆 guarded return、half-open pre-write span、
+現行 TSV 與字型。新增的 ignored `workplace/page5-ready-atomic-core/` 只讀五筆 TSV，三項
+測試通過：完整五行才原子提交；DRAFT、partial、duplicate、錯序、identity、ABI、return、
+relative stack、step、font miss、unknown／非相交／已量 write 與 discontinuity 皆失敗即關閉。
+它的 pre-write 僅接受 `0CF4:1B3A`／`ES=A000` 且按實際 `DI/CX` 與
+`[8,320)×[136,176)` 做 half-open 相交；不以固定 step、DI 或絕對 SS/SP 作 runtime identity。
+
+現行 51 個譯文字元以既有 dosgolem `fontcheck` 對
+`workplace/phase138-font/eten-subset.golemfont` 回讀為
+`GOLEMFNT 16x16 glyphs=1024 coverage=51`、零缺字。直接解碼該字型的 static bitmap 收據
+在 2×／3×各得 3255 ink pixels、safe rectangle 外零墨跡；收據只在 ignored `workplace/`，
+不含原版素材，也不是 runtime A/B。
+
+尚缺同 state control／2×／3× A/B、Enter 離頁同幀清除及無殘字、正常開機玩家路徑與遊戲內
+存讀檔。它們是後續 CONFORMED 閘門，不得提前宣稱已中文化。正式契約見
+[spec 014](../spec/014-story-page5-overlay-ready.md)。

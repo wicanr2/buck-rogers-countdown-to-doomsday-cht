@@ -1340,3 +1340,10 @@
 - 第四頁獨立 READY 審查指出[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)把只監測 rows 17–21 的 `storyFillIntersects()` 收據誤當成六行矩形最早 pre-write；已保留舊收據並追加勘誤。固定本機 dosgolem `564d53f` 雙重重跑 192 筆 return 一致，私有 typed 核心三項測試與第四頁 57 字元字型 coverage 通過；仍需擴至 row 22 的 committed content-safe 診斷，第四頁維持 DRAFT。
 - 滑鼠 ignored `phase128` 原型原先對畫布內 Up 也只 Release；依既有 DRAFT 契約修正為畫布內 `Move→Release`、畫布外／panel／失焦只 Release。雙倍率四角與邊界 fake 測試在 `golang:1.26.7-bookworm` Docker 的 vet／race 通過；真實 Ebitengine／dosgolem 矩陣未驗，spec 228 仍 DRAFT。本機 dosgolem 文件 commit `564d53f` 留存勘誤，未推上游。
 - 本機 dosgolem `ac1f7fb` 以 READY（僅診斷）的 `-story-fill-rows 6` 補量第四頁 row 22；同一合法 state 的兩份收據逐 byte 相同，48 筆 span 均相交完整六行矩形，最早 pre-write 仍為 step `310023777`。舊五行誤判的勘誤保留；第四頁譯文及 runtime 尚未經 READY 審查，仍維持 DRAFT。
+
+## 2026-09-22 — 第四頁限縮 READY 與滑鼠畫布內放開重驗
+
+- Terra 獨立審查第四頁六行 identity、192 筆 return、六行 pre-write、譯文目錄及本機字型覆蓋，建立[規格 013](docs/spec/013-story-page4-overlay-draft.md)並將六筆 exact catalog 升 READY。這只准開始實作第四頁固定六行及已量 Enter 離頁，正式 runtime／同狀態 A/B 尚未完成。
+- 修正後的 ignored MouseBridge 原型以真實 Ebitengine／Xvfb 在 2×、3× 重播畫布內 Down→Up；兩份私有收據分別記錄 `Move→Press→Move→Release`、button 0→1→0，輸入 API 邊界的 BIOS／IRQ／indexed／memory 不變。第一次 2× 執行因錯誤覆蓋 image 的 GOPATH 而觸發離線下載失敗，已中止並沿用 image 原設定乾淨重跑；證據見[第一百四十六階段](docs/re/phase-146-real-ebiten-inside-up-corrected.md)。MouseBridge 仍 DRAFT。
+- 第五頁 Terra 獨立審查補足五行 disposable typed-core 的原子／失敗即關閉負例，並以現行正式本機字型 loader 對 51 個譯文字元零缺字回讀、2×／3×靜態墨跡零越界。[規格 014](docs/spec/014-story-page5-overlay-ready.md)及五筆 exact catalog 限縮升 READY；尚未接正式 runtime 或同狀態 A/B。
+- 第四頁 watcher／catalog／presenter 的可測核心已在本機 dosgolem `63396bb` 提交，相關套件的 Docker test／vet／race 通過；CLI、A/B 與離頁收據未完成，不能升 CONFORMED。

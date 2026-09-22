@@ -24,8 +24,13 @@ class StoryPage4CatalogTest(unittest.TestCase):
         self.addCleanup(lambda: Path(handle.name).unlink(missing_ok=True))
         return Path(handle.name)
 
-    def test_valid_draft(self):
+    def test_valid_ready(self):
         validate(EVENTS, TRANSLATIONS)
+
+    def test_rejects_non_ready_catalog(self):
+        events = self._copy_with(EVENTS, lambda rows: rows[0].__setitem__("catalog_status", "DRAFT"))
+        with self.assertRaises(ValueError):
+            validate(events, TRANSLATIONS)
 
     def test_rejects_identity_hash_drift(self):
         events = self._copy_with(EVENTS, lambda rows: rows[0].__setitem__("original_sha256", "0" * 64))

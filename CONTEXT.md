@@ -19,6 +19,11 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 的真實事件、有界 Step 與滑鼠按鍵清除收據；3×兩組的起始 machine／DOS 正規化狀態相等。
 這些收據不證明遊戲可由滑鼠操作，MouseBridge 仍是 DRAFT，見
 [第一百三十三階段](docs/re/phase-133-real-ebiten-mouse-bounded-step.md)。
+修正畫布內 Up 為 `Move→Release` 後，另以真實 Ebitengine 重跑 2×／3×
+同畫布 Down→Up；兩倍率均為 `Move→Press→Move→Release`，DOS button
+清除，輸入 API 邊界 BIOS／IRQ／indexed／memory 不變，見
+[第一百四十六階段](docs/re/phase-146-real-ebiten-inside-up-corrected.md)。
+其餘矩陣與玩家可見滑鼠因果未驗，MouseBridge 仍 DRAFT。
 另以真實 X11 失焦驗到已送 DOS 的 Down 會只 Release、不 Move；無前置 Down 的實體 Up
 及重複 Up 在 Ebitengine public input API 未產生新的 release edge，3× panel-open 前提下的
 新 Down／Up 也不觸 DOS。這些仍是可丟棄 harness 的限定收據，不代表完整前端路由或
@@ -76,13 +81,17 @@ SP 相差 `0x12`，不再以首筆樣本外推其餘 143 筆。
 安全矩形外零差異，原版 machine／DOS state 全等，離頁 active 5→0、終態無殘字。
 因此 spec 012 **僅上述路徑升 CONFORMED**，完整開機與存讀檔仍未驗。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
-初稿曾誤配右側人物姓名，經原圖座標核對訂正。第四、五頁仍不得接 runtime；
+初稿曾誤配右側人物姓名，經原圖座標核對訂正。第五頁五筆 exact catalog
+與[規格 014](docs/spec/014-story-page5-overlay-ready.md)已限縮升 READY；
+第五頁正式 runtime／A/B 仍未完成，不能宣稱已中文化。
 第四頁另有[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)
 逐筆 192 glyph 返回；但獨立審查發現原 `story-fill-trace` 只看前五行，
 不能單獨證明六行完整矩形的最早相交 pre-write。後續本機 dosgolem
 `ac1f7fb` 以受限六行診斷補齊 row 22，雙重重播的 48 筆相交 span
 一致；最早仍為 step `310023777`。typed 核心與字型覆蓋已有私有正反例，
-但第四頁 catalog／覆繪仍為 DRAFT，須先審查譯文及升限縮 READY 規格。
+第四頁六筆 exact catalog 與[規格 013](docs/spec/013-story-page4-overlay-draft.md)
+已經獨立審查而限縮升 READY；正式 watcher／presenter 與 A/B 尚未完成，
+故第四頁仍不能宣稱已中文化。
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
 候選聯集重建為 1006 字模，正式 loader 已回讀且零缺字；這仍只證明字型覆蓋。
 第五頁後的合法 Enter 也已量到第六頁 row 17–22 六行低階身分；低階翻譯代理建立
