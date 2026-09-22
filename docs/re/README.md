@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第九十九階段：技能操作列 3× 中文密度](phase-99-action-bar-3x-density.md)：正常技術技能頁操作列接線、白色快捷字母、3× 22 像素中文與 2× 不變的同狀態收據。
 - [第九十六階段：倚天手冊中文執行期整合](phase-96-eten-manual-runtime.md)：正式建置器、原版樣式參數、雙倍率中文與錯答清除，以及完整存態語意比較。
 - [第九十七階段：手冊 3× 中文密度與第二題](phase-97-manual-cjk-density.md)：2× 不變、3× 22 像素中文字、校正後技術技能翻譯、雙題換題及 restore 收據。
 - [第五十五階段：保存、名冊與加入隊伍繁中事件 catalog](phase-55-save-roster-join-translation-catalog.md)：鎖定 18 筆完整路徑 identity，隔離四筆動態姓名並建立七筆繁中 key。
