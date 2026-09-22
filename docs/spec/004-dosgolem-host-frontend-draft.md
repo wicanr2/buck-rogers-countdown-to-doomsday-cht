@@ -131,11 +131,18 @@ Windows 與 macOS 的視窗／鍵盤／滑鼠能力；[安裝說明](https://ebi
    `PanelController` 決定是否可送，面板開啟時不改 machine keyboard queue，關閉時才明示呼叫
    `QueueKey`。它不處理 pointer、mouse 或 Ebitengine 的 key mapping。
 
-因此下列三個最小缺口仍不可省略：
+第一百一十六階段已以私有原版 state 在 Docker／Xvfb 驗證真實 Machine step→snapshot→Draw、
+2×／Cancel／Apply 與 BIOS key forwarding；完整 receipt 見 `docs/re/phase-116-game-loaded-ebiten-prototype.md`。
+該原型的 `active_layer_connected=false`，故不得把此接線當成繁中 active layer 或完整可玩版。
 
-1. 同一 presentation instant 的 **indexed、palette 與 active xlate layer** 整體快照／重繪契約；
-   現有 `xlate.Layer.Frame`／`Draw` 有可變 stamp 生命週期，不能以單獨 fixture 或跨 goroutine
-   讀取冒充快照。
+其後本機 dosgolem `docs/spec/227-host-active-layer-snapshot-core.md` 已 CONFORM 純 projection：
+它將已由 lifecycle owner 定色的 active stamps clone 後繪製，保證 presenter 不改原 layer。這只
+收斂通用核心；尚未提供任何 Buck Rogers runtime 對其 private active layer 的接線，故本規格仍有
+下列三個最小缺口：
+
+1. 實際 runtime 與同一 presentation instant 的 **indexed、palette 與 active xlate layer** 整體
+   接線；`xlate.Layer.Frame`／watcher／`OnDrop` 有可變 stamp 生命週期，必須由同執行緒的
+   lifecycle owner 先完成，不能以單獨 fixture、跨 goroutine 讀取或 clone 取代遊戲實際更新。
 2. Linux Ebitengine 後端的正式事件接線：host chrome hit test、面板鍵盤隔離、Ebitengine key 到
    DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。
 3. 至少一條正常 Buck Rogers 玩家路徑的同狀態收據，證明 Open／Select／Apply／Cancel 的 host
