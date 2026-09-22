@@ -137,9 +137,9 @@ hash 直到窗口終點都不再變。故本窗口內 selected row 是穩定黑�
 明示倍率，沒有產品預設值；2×／3× 四組真實 framebuffer 重生的繁中 PNG、base PNG 與
 JSON 全部逐 byte 等於既有基線。診斷命令已改用正式核心，不再保存第二套相同行為。
 
-這只使 `DisplayRequest → typed overlay entry → xlate.Layer` 的純建構段達 CONFORMED；尚未
-把 runtime watcher、矩形失效與 frame lifecycle 接到玩家路徑，也沒有選定 2×／3×，因此
-本整體規格仍為 DRAFT。
+這只使 `DisplayRequest → typed overlay entry → xlate.Layer` 的純建構段達 CONFORMED。後續的
+種族 runtime 勘誤已接上固定玩家路徑，但 generation／streaming 總契約與未覆蓋畫面仍未閉合，
+故本整體規格仍為 DRAFT。
 
 ### 已證實的選定種族後下一畫面
 
@@ -162,17 +162,17 @@ identity 接入正式繁中 catalog 與 runtime request。第 38 階段又以第
 下列項目未達 READY，故禁止 production 實作：
 
 - 第 4–7 階段已證實本功能選單進入／返回的矩形清除與 guarded post-call，但訊息捲動、
-  存讀檔及其他畫面的失效時機仍未知；種族選單鍵盤反白已由第 30 階段 Down／Up 證實，
-  且其三筆新增 identity 已接入 exact catalog；overlay 重建與畫面繪製仍未接入；
+  存讀檔及其他畫面的失效時機仍未知；種族選單的固定 Down／Up／Enter 路徑已由本文件的
+  runtime 勘誤限縮 CONFORMED，不能外推到未量測的出口或其他畫面；
 - 第 27 階段 `TextRecorder` 已由九筆真實事件與自然 fall-through／錯誤 guard regression
   驗證純觀測契約；第 28 階段 READY `MenuCatalog` 已把九筆真實收據精確解析成繁中
   `DisplayRequest`。第 29 階段又以 CONFORMED runtime watcher 在 guarded post-call 直接
   產生九筆 request；第 31 階段把 selection variants 擴充為正常 Down／Up 路徑的 13 筆
-  exact request。繁中 `Stamp` 的倍率中立純核心與離線 A/B 已完成，但矩形失效、frame
-  lifecycle 與 runtime watcher 尚未接成玩家路徑 adapter；
+  exact request。繁中 `Stamp` 的倍率中立純核心與離線 A/B 已完成；種族固定路徑另有
+  runtime adapter／矩形失效／frame lifecycle 收據，其餘畫面仍未接成玩家路徑；
 - GNU Unifont 已證實可作有授權的 prototype 字型，且現有 8 筆譯文已由正式 TSV 決定性
-  導出 24 個字模並經 `xlate.LoadFont` 回讀；正式採 2× 填滿格或 3× 置中仍待使用者決定，
-  後續畫面的換行與 overflow 策略仍未知；
+  導出 24 個字模並經 `xlate.LoadFont` 回讀；2×／3×均為正式可切換模式，後續未覆蓋畫面的
+  換行與 overflow 策略仍未知；
 - 選單每一行的完整 text-safe rectangle，以及非靜態畫面的適用性；
 - 上游字串表定位仍未知；九筆已用完整 identity 區分同譯文的不同顯示事件，其他畫面的
   collision 策略不得由此樣本外推。
@@ -183,12 +183,28 @@ identity 接入正式繁中 catalog 與 runtime request。第 38 階段又以第
 第六十三階段已訂正上述後半限制：性別／職業正式 text-safe rectangles 與 exact request 已接入
 長存 runtime renderer；正常三 Enter＋Down 路徑在 2×／3× 各兩次驗證 24 requests／actions、
 轉場失效、同原點取代、安全矩形外 0 px 與原版 framebuffer 不變。確認職業後的角色資料與
-後續動態畫面仍未接 renderer；產品預設倍率也仍待使用者決定。
+後續動態畫面仍未接 renderer。使用者已決定 2×／3×均為正式支援、可於執行期切換；host
+前端的預選／Apply 接線是另一份 DRAFT 契約，並非本選單覆繪的倍率決策缺口。
 
-升為 READY 前，至少須以 dosgolem 取得一條正常互動路徑，明確量到上述生命週期事件，並
+其餘未覆蓋範圍升為 READY 前，至少須以 dosgolem 取得一條正常互動路徑，明確量到上述生命週期事件，並
 完成原文／繁中 A/B 同狀態收據與中文 glyph containment 驗證。沒有達成這些條件時，DRAFT
 只能引導後續量測，不能成為程式碼、測試期望或「已中文化」的依據。
 
+### 種族建立 runtime 勘誤（2026-09-23）
+
+第 31 階段的 request-only 證據已由固定玩家路徑補齊。以 dosgolem
+`2755f7ca526b4e8fdfc469e30d9c0ffb871c4958` 的 immutable runner，從 #99,999,999 排入
+Enter、Down、Up、Enter，正式 menu event／譯文／安全矩形 TSV 與 16×16 倚天字型在 2×／3×
+各兩次均得到確認前 13 events／13 requests／13 actions、零 miss、零缺字；所有 presentation
+差異都在核准矩形內。最後 Enter 後，`026F:029C` 於 #100,406,278 清除全部種族 stamp，終態
+RGBA 等於 baseline，machine、indexed framebuffer、palette 與 control 相同。
+
+完整重播繼續進入性別頁時有 4 筆 menu-only catalog miss；它們是下一頁非 menu identity，
+不是種族 13 筆的 miss。故 **Create New Character → Pick Race → Down → Up → Enter／離頁**
+只在此固定 state、排程、正式 TSV 與雙倍率範圍內為限縮 CONFORMED。它不建立跨畫面
+generation／streaming 保證，也不覆蓋訊息捲動、存讀檔、其他出口或其他文字畫面；本 spec
+仍為 DRAFT，不能宣稱整體選單文字已中文化。
+
 第九階段已在本機 dosgolem 專用分支移植並測試通用 `xlate` package；第 22 階段又把
 `xlate.Draw` 擴充為支援所有正整數倍率。這只解決 GOLEMFNT、stamp、定色、失效、捲動與
-快照等遊戲無關能力，不構成本作 adapter 實作，也不代表使用者已在 2×／3× 間做出選擇。
+快照等遊戲無關能力，不構成本作 adapter 實作；倍率產品決定已於上文訂正。

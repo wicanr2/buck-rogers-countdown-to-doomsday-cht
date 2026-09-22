@@ -1,5 +1,20 @@
 # 工作歷程
 
+## 2026-09-23 — 種族建立 runtime 覆繪與離頁限縮收據
+
+- 從固定 `after-bios-space-100m.state` 以 Enter `100010000`、Down `100240000`、Up
+  `100300000`、Enter `100400000` 重播 Create New Character → Pick Race → Down → Up → Enter。
+  為隔離共享 dosgolem 後續提交，runner 由 `2755f7ca526b4e8fdfc469e30d9c0ffb871c4958` archive；
+  `buckrogers-text-receipt/main.go` SHA-256 為
+  `c19bde17973ecc1473042945f6a40f1cce8635b45ccfeaf1426c2d1ade586f1c`。
+- 正式 menu TSV 和倚天 16×16 字型的 2×／3×各兩次確認前收據均有 13 events／requests／actions、
+  零 miss、零缺字與逐 byte 決定性；安全矩形外差異為 0。最後 Enter 後 #100,406,278 的
+  `026F:029C` `(bottom=22,right=38,top=2,left=1)` 清除使 active overlay 歸零，終態 RGBA
+  等於 baseline，machine／indexed／palette 與 control 一致。
+- 完整重播接著進性別頁的 4 筆 menu-only miss 是下一頁非 menu identity，未混入種族路徑的
+  零 miss 結論。私有收據與 immutable runner 留在 `workplace/phase160-race-runtime/`；spec001
+  只把固定路徑標為 CONFORMED，整體仍 DRAFT，generation／streaming 總契約與未覆蓋畫面仍缺。
+
 ## 2026-09-22：第九十五階段倚天 top-pad parser READY 規格（已完成）
 
 - 使用者選定 `top-pad`：output row 0 為零、source rows 0..14 寫入 rows 1..15；`bottom-pad` 已排除。

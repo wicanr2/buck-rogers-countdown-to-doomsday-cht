@@ -58,3 +58,28 @@ post-call 全部直接產生正確 normal／selected 繁中 `DisplayRequest`。
 正式 packages test／vet 與 Buck Rogers race detector 全數通過。dosgolem 變更只建立本機
 commit `79ecc2b9585f02339eef181ecb88b752bee4c2aa`，未推其遠端；本階段沒有選
 2×／3×，亦未接 renderer。
+
+## 執行期覆繪後續收據（2026-09-23）
+
+本段只回填本階段種族建立的正常玩家路徑，不改寫上述 2026-09-20 的 request-only 結論。
+共享 worktree 隨後已有提交，故 runner 由 dosgolem
+`2755f7ca526b4e8fdfc469e30d9c0ffb871c4958` 的 immutable archive 建立；
+`cmd/buckrogers-text-receipt/main.go` SHA-256 為
+`c19bde17973ecc1473042945f6a40f1cce8635b45ccfeaf1426c2d1ade586f1c`。
+
+- 固定 `after-bios-space-100m.state`（#99,999,999）排入 Enter `100010000`、Down
+  `100240000`、Up `100300000`、Enter `100400000`，使用正式 menu event／譯文／安全矩形 TSV
+  與 16×16 倚天字型。
+- 確認前 2× A/B、3× A/B 各有 13 events／13 exact requests／13 overlay actions、零 miss、
+  零缺字，且同倍率逐 byte 決定性。2× 3,638、3× 7,567 個差異像素均位於正式安全矩形，
+  矩形外均為 0。
+- 同一程序的最後 Enter 後，#100,406,278 的 `026F:029C`
+  `(bottom=22,right=38,top=2,left=1)` 清除全部種族 stamp；終態 RGBA 等於 baseline，
+  control／2×／3×的 machine、indexed framebuffer、palette 相同。
+- 完整重播延續到性別頁會出現 4 筆 menu-only catalog miss；它們屬下一頁非 menu identity，
+  不得混入種族 13 筆的零 miss 結論。
+
+私有收據與 immutable runner 位於 ignored
+`workplace/phase160-race-runtime/`。因此 Create New Character → Pick Race → Down → Up →
+Enter／離頁只在此固定 state、排程、正式 TSV 與兩倍率範圍內限縮 CONFORMED；generation／
+streaming 總契約及未覆蓋畫面仍不成立。

@@ -2,6 +2,15 @@
 
 更新：2026-09-23
 
+功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
+限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →
+Enter，以 dosgolem `2755f7c` immutable runner、正式 menu TSV 與倚天字型做 2×／3×各兩次
+runtime A/B。確認前為 13 exact requests／actions、零 miss、矩形外零差；最後 Enter 的
+`026F:029C` 清除使 active overlay 歸零且終態 RGBA 等於 baseline。完整重播進入性別頁後的
+4 筆 menu-only miss 屬下一頁非 menu identity，種族 13 筆仍零 miss。這不閉合
+generation／streaming 總契約、訊息／存讀檔／其他出口或其他文字畫面，故 spec001 整體仍
+DRAFT；2×／3×均已是使用者決定的正式可切換模式。
+
 第七頁固定故事文字已在三輪獨立審查後限縮升
 [規格 016](docs/spec/016-story-page7-overlay-ready.md)：合法第六頁終態
 Enter 進入 row 17–22 六行、合法第七頁 Enter 離頁。190 glyph 原版逐字
