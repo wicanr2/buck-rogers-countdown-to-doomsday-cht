@@ -1228,3 +1228,8 @@
 
 - 本機 dosgolem 以穩定的 story active layer pointer 接到 host 只讀投影；真實原版 state 與合法輸入產生的五行 READY 繁中已在 Docker／Xvfb Ebitengine 視窗顯示。初版將 2× 16×16 字模直接放大至 3×，視覺檢查發現中文字距過大；隨後改在 host Apply 時重建 3× 22×22 CJK 輸出 presenter，2×、Cancel 後 2×、Apply 後 3× 的 RGBA 均逐像素等於正式 CLI，原版 indexed 不變。
 - 這是受控 host event 的 ignored prototype，不是正式可玩前端；pointer hit、實體鍵盤映射、完整玩家路徑、其他 overlay 的倍率切換與存讀檔仍待驗。見[第一百二十階段收據](docs/re/phase-120-game-active-story-layer-prototype.md)。
+
+## 2026-09-22 — 第一百二十一至一百二十二階段：手冊恢復邊界與第五頁敘事
+
+- 手冊成功返回後的 dosgolem savestate 無鍵恢復，2×／3× 均無舊中文覆繪復活、原版狀態與控制組相等；它不是原版遊戲內保存／讀檔。手冊後合法保存入口尚未證實，故不猜按鍵。保留 spec002 歷史 22／691 基準並追加現況 39／39 勘誤，見[第一百二十一階段](docs/re/phase-121-manual-savestate-restore-boundary.md)。
+- 從第四頁私有終態合法 Enter 量到第五頁底部五行敘事的低階 glyph 身分；最初的譯文誤配右側人物姓名，主代理檢視原圖後攔下並訂正，維持 DRAFT。新譯文使全部 catalog 需求增至 1006 字模；舊 997 字模正確拒絕九個新字，隨後以本機倚天重建並由 dosgolem 正式 loader 驗證 1006／1006 覆蓋。未接 runtime 或驗轉場，見[第一百二十二階段](docs/re/phase-122-story-page5-enter-trace.md)。

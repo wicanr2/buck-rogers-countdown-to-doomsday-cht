@@ -31,11 +31,15 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)
 及[第一百一十九階段](docs/re/phase-119-story-opening-enter-lifecycle.md)。
 第二頁四行、第三頁五行有可重播低階 glyph 身分與繁中 DRAFT；第四頁六行只有
-既有畫面反查的 `visual-transcription` DRAFT，尚無首次繪製時的 caller／步數，
-不得接 runtime。動態狀態列一律排除。既有本機倚天 14 份 catalog 候選聯集為
-990 字模，需隨正式譯文重建。見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
-[第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)與
-[state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)。
+既有畫面反查的 `visual-transcription` DRAFT，尚無首次繪製時的 caller／步數。
+從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
+初稿曾誤配右側人物姓名，經原圖座標核對訂正。第二至五頁均不得接 runtime，
+動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
+候選聯集重建為 1006 字模，正式 loader 已回讀且零缺字；這仍只證明字型覆蓋。
+見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
+[第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)、
+[state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)與
+[第五頁收據](docs/re/phase-122-story-page5-enter-trace.md)。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
 意譯，不是整章手冊逐字轉錄。37 題有中文掃描對照；第 3、39 題因缺少直接的中文
@@ -46,8 +50,10 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 其餘仍待後續抽樣試玩，不宣稱逐題玩家路徑均已驗收。第三題新增收據見
 [第一百零三階段](docs/re/phase-103-manual-third-question-runtime.md)。
 手冊題目正確作答後的正常返回亦已於 2×／3× 驗證覆繪完全失效、完整
-machine／DOS 狀態與控制組相等；存檔／讀檔尚無可銜接的手冊後正常玩家路徑，
-仍待驗收。見[第一百零四階段](docs/re/phase-104-manual-success-return.md)。
+machine／DOS 狀態與控制組相等。由成功返回終態重新載入 dosgolem savestate 的
+無鍵 A/B 也證明衍生手冊層不會復活；這不是原版遊戲內存檔／讀檔，後者仍缺
+可銜接的合法保存入口與正常玩家路徑。見[第一百零四階段](docs/re/phase-104-manual-success-return.md)
+與[第一百二十一階段](docs/re/phase-121-manual-savestate-restore-boundary.md)。
 
 操作列已在正常角色建立→技術技能頁接線；
 2× 維持逐位元不變、3× 中文字模改為 22×22 並縮緊字距，白色快捷字母不變。

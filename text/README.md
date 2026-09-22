@@ -123,17 +123,22 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 繁中譯文依中文手冊 `SCAN0352_003.jpg`–`SCAN0352_004.jpg` 印刷頁 1–3 的「巴克羅吉斯」
 、「新地球組織（NEO）」與「美蘇貿易聯邦（RAM）」用語建立。`tools/story_opening_catalog.py`
 驗證五筆 identity、譯文雙向覆蓋、NFC、控制／格式字元與 39 格資料層上界；
-READY 只授權首屏 adapter 實作，尚未接 runtime 或通過原版／繁中 A/B，不能稱已中文化。
+首屏五行已接 dosgolem runtime 並通過 2×／3× 同狀態 A/B 及 Enter 轉頁失效驗證；
+完整開機玩家路徑與存讀檔仍未驗，規格 010 保持 READY，不外推整款遊戲已中文化。
 `story-page2-events.tsv` 與 `story-page2.zh-TW.tsv` 是第二頁四行固定敘事的 DRAFT 候選；
 `tools/story_page2_catalog.py` 另外驗證 row 17–20、排除 row 24 動態狀態列與 39 格保守容量，
 尚未接 runtime。Chiagong 的「奇亞貢」目前只是未由中文手冊逐字確認的 DRAFT 音譯。
 `story-page3-events.tsv` 與 `story-page3.zh-TW.tsv` 是第三頁五行固定敘事的 DRAFT 候選；
 `tools/story_page3_catalog.py` 驗證 row 17–21、排除 row 24 動態狀態列與 39 格保守容量。
+第三頁五行均為依原版畫面語意建立的 editorial DRAFT，尚未接 runtime。
 `story-page4-events.tsv` 與 `story-page4.zh-TW.tsv` 是由既有 page4 PNG 反查出的六筆
 `visual-transcription` DRAFT；`tools/story_page4_catalog.py` 只驗證 screenshot-derived
 hash／幾何／翻譯容量，caller、glyph guard 與步數仍為 unknown，未達 runtime identity，
 不得接入正式覆繪。
-第三頁五行均為依原版畫面語意建立的 editorial DRAFT，尚未接 runtime。
+`story-page5-events.tsv` 與 `story-page5.zh-TW.tsv` 是第四頁後合法 Enter 所見的
+第五頁下方五行固定敘事 DRAFT；`tools/story_page5_catalog.py` 驗證低階 glyph
+length／hash、caller／guard、row 17–21 與 39 格容量。右側人物姓名未納入此
+catalog；清除／失效邊界與正常玩家路徑尚待 READY 審查，不得接 runtime。
 
 ## 驗證與 prototype 字型
 

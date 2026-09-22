@@ -49,9 +49,14 @@ python3 tools/eten_font.py build text/manual.zh-TW.tsv \
 不得加入 Git、GitHub、Release 或公開封包。契約見
 [spec 008](../docs/spec/008-eten-top-pad-local-font-builder-draft.md)。
 
-目前校訂後的全部正式與 DRAFT `text/*.zh-TW.tsv` 聯集為 997 glyph；本機重建收據與
+先前校訂後的全部正式與 DRAFT `text/*.zh-TW.tsv` 聯集為 997 glyph；本機重建收據與
 page2／page3／page4 分頁回讀結果見
 [第一百一十八階段收據](../docs/re/phase-118-story-draft-font-rebuild.md)。此 997 glyph
 是新的 DRAFT 字型涵蓋基準，不抹除上述歷史 961 glyph 基準，也不代表任何故事頁面
 已完成 runtime 覆繪或可散布。生成的 `GOLEMFNT` 與 manifest 僅留於被忽略的
 `workplace/phase118-font/`。
+
+第五頁 DRAFT 敘事加入後，現行完整聯集為 1006 glyph；本機倚天重建與 dosgolem
+正式 loader 零缺字收據見[第一百二十二階段](../docs/re/phase-122-story-page5-enter-trace.md)。
+先前 997 glyph 為當時 catalog 的歷史基準，不能用舊字型驗收新譯文；新版產物仍只在
+被忽略的 `workplace/phase122-font/`，不得公開散布。

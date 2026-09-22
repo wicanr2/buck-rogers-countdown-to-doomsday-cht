@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第一百二十二階段：第四頁後合法 Enter 的下一頁 trace](phase-122-story-page5-enter-trace.md)：確認第五頁底部五行敘事的 `0763:04FF → 0763:026B` content-safe identity，校正誤配人物名的初稿並重建 1006 字模；轉場失效與 runtime A/B 未驗，catalog 維持 DRAFT。
+- [第一百二十一階段：手冊成功返回 savestate restore 邊界](phase-121-manual-savestate-restore-boundary.md)：成功返回 state 的無鍵 2×／3× A/B 證實 restore 後不復活衍生手冊層；明示這不是遊戲內保存／讀檔，並記錄合法保存入口的停止線與 spec 002 現況勘誤。
 - [第一百零六階段：Ebitengine host 前端 prototype](phase-106-ebiten-frontend-prototype.md)：Linux／Xvfb 的 Go 1.26.7＋Ebitengine 2.9.9 可丟棄視覺與輸入隔離證據；2×／3×、Apply 後兩個未定面板候選與 presentation snapshot provider 缺口，非 production／非正式玩家路徑。
 - [第一百零四階段：手冊正確作答後的遊戲內返回](phase-104-manual-success-return.md)：以本機手冊的合法正常 BIOS 輸入通過原版判定，驗證 2×／3× 中文覆繪在後續遊戲畫面清除、像素隔離與完整存態 A/B；不記錄答案，存讀檔仍待驗收。
 - [第一百零五階段：手冊成功返回後首個劇情畫面追蹤](phase-105-first-story-screen-trace.md)：確認首個玩家可見劇情畫面、五筆首屏 DRAFT identity 與第二頁失效候選；尚不接 runtime。

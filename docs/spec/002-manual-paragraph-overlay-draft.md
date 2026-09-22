@@ -17,6 +17,15 @@
 [第六十階段 READY 前置稽核](../re/phase-60-manual-overlay-ready-prerequisite-audit.md)、
 [第八十五階段 presenter 整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)
 
+> **現況勘誤（2026-09-22）**：本文下方的「22 筆／691 glyph」是第六十至第九十五階段的
+> 歷史 DRAFT 閘門與當時輸入，不是目前 catalog 的數量。現行手冊 catalog 已由
+> [第一百階段](../re/phase-100-manual-39-translation.md) 補齊為 39／39；其中 37 題有中文
+> 掃描對照、2 題保留獨立英文原書來源與翻譯證據。第一百零四階段的成功返回 runtime
+> 收據使用的是 961 glyph 本機字型（見其 SHA-256），不得把它與第一百一十八階段為
+> 故事 DRAFT catalog 建立的 997 glyph 聯集混為同一個正式手冊輸入。保留原段落的
+> 22／691 數字，讓歷史 READY 判斷可回查；後續工作不得以那些數字否定 39／39 現況，
+> 也不得僅因 997 glyph coverage 就宣稱手冊 runtime 已擴張或已 CONFORMED。
+
 ## 目的
 
 當原版已顯示一個手冊查詢時，dosgolem 可依「頁碼＋英文標題＋序數」找到對應的
