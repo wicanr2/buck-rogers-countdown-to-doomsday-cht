@@ -68,8 +68,9 @@ BIOS queue、IRQ、檔案或存檔的能力。這只是一條讀取邊界；它�
 host chrome 或 backend event loop。
 
 本機 dosgolem 分支已另有純 `host.PanelController`：它不持有 DOS machine，不自行送鍵，
-只回傳 `ConsumedByHost`／`ForwardToDOS` 許可。它沒有實作未決的「未按 Apply 即關閉面板」
-語意，也不保存倍率至磁碟；因此不能把單元測試視為實際 BIOS／IRQ 零副作用收據。
+只回傳 `ConsumedByHost`／`ForwardToDOS` 許可。它已實作「未按 Apply 即關閉面板」等於 Cancel：
+selected 重設為 active 後收合；也不保存倍率至磁碟。因此不能把單元測試視為實際
+BIOS／IRQ 零副作用收據。
 
 具體 frontend adapter 必須在同一個 machine-stepping thread 取得此 frame，不能在 machine
 並行 Step 時呼叫 source。這是避免取得跨幀 indexed／palette 配對的執行緒契約，而不是
@@ -117,6 +118,30 @@ Windows 與 macOS 的視窗／鍵盤／滑鼠能力；[安裝說明](https://ebi
 平台工具鏈；本專案目前沒有已驗證的 SDL3 Go 綁定或專用 image。Ebitengine
 較快接通原是工程建議；使用者其後明確選定 Go／Ebitengine 作為 dosgolem
 畫面前端，SDL3 分支已排除。原型仍不足以把本規格升為 READY。
+
+## 2026-09-22 有界 READY 審查
+
+本次將可由通用 API 獨立證實的兩個小邊界收斂為本機 dosgolem 分支的
+`docs/spec/226-host-machine-presentation-bridge.md`：
+
+1. `MachineFrameSource` 在與 `Machine.Step` 相同 goroutine 中，從 `VideoSize`、`Indexed` 與
+   `Palette` 建立 `host.FrameSource`；indexed 是 machine 回傳複本、palette 是值，之後仍由
+   `PresentationSnapshotProvider` 複製。這不跨執行緒，也不含 active xlate layer。
+2. `KeyboardBridge` 只接收已由未來視窗後端映射的 DOS scan code；它先以
+   `PanelController` 決定是否可送，面板開啟時不改 machine keyboard queue，關閉時才明示呼叫
+   `QueueKey`。它不處理 pointer、mouse 或 Ebitengine 的 key mapping。
+
+因此下列三個最小缺口仍不可省略：
+
+1. 同一 presentation instant 的 **indexed、palette 與 active xlate layer** 整體快照／重繪契約；
+   現有 `xlate.Layer.Frame`／`Draw` 有可變 stamp 生命週期，不能以單獨 fixture 或跨 goroutine
+   讀取冒充快照。
+2. Linux Ebitengine 後端的正式事件接線：host chrome hit test、面板鍵盤隔離、Ebitengine key 到
+   DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。
+3. 至少一條正常 Buck Rogers 玩家路徑的同狀態收據，證明 Open／Select／Apply／Cancel 的 host
+   操作未改 raw frame、DOS input／mouse、IRQ、記憶體或存檔，並在 2×／3× 保留 active 繁中 stamp。
+
+第 226 號規格僅為純核心 CONFORMED；它沒有把本規格升為 READY，也不構成可玩的 frontend。
 
 ## READY 前置與未來驗收
 
