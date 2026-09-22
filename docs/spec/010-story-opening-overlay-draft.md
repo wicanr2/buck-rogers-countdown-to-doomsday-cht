@@ -59,9 +59,13 @@ story region 的原版指令是 `0CF4:1B3A`，step `281020572`，修改 bounding
 1. 只在五行完整 guarded glyph run 均 exact-hit 後，原子建立一個首屏 stamp group；任一
    run miss、hash／長度／row／column／色號／caller／return guard 不符都必須失敗即關閉，
    不可顯示局部中文或 fallback。
-2. 在每次 machine instruction 後，若已顯示 group 且原始 indexed framebuffer 的
-   `[8,320)×[136,176)` 出現任何變化，立即移除整組 stamp；偵測本身只讀原版畫面，不能反寫
-   VRAM。`0CF4:1B3A` 的上述首筆改寫是已確認觸發實例，不是可套給所有畫面的一般地址規則。
+2. 不得為此在每道 machine instruction 後掃描整個 story region。只在已確認的
+   `0CF4:1B3A` 寫入指令 entry 讀取 `ES:DI` 與 `CX`，並以 row-aware 的 Mode 13h video-span
+   intersection 判斷它是否實際碰到 `[8,320)×[136,176)`；命中時立即移除整組 stamp。偵測只讀
+   registers／原版畫面，不能反寫 VRAM。已重播的首個實例是 `ES:DI=A000:AB48`、`CX=304`，
+   即 row 137 的 x=`8..311`；它在 step `281020572` 寫入並與候選 story rectangle 相交。
+   `0CF4:1B3A` 是通用 fill primitive，故 segment、destination 與 count 均為 fail-closed
+   gate，不得只憑 code address 對所有呼叫一律失效。
 3. 清除後不得因第二頁 glyph 或任何其他文字自動重建首屏 group。只有再次完整命中這五個
    exact identities 才可建立。
 
@@ -105,8 +109,8 @@ indices、generation／group identity；不可含英文 bytes、作答內容或 
 - [ ] 正式 961 glyph 以上的本機 top-pad union font 必須重建，並以 production `xlate.LoadFont`
   回讀覆蓋五行譯文；字型 bytes／倚天來源仍只能留在 `workplace/`。
 - [ ] `StoryOpeningWatcher` 的 ABI entry／guarded post-call、連續 run、錯序、partial run、miss、
-  stack guard 與第二頁非重建的 synthetic tests；不能複用 ActionBarWatcher 的 game-specific
-  identity 或把 diagnostics 當 runtime。
+  stack guard、row-aware video-span intersection 與第二頁非重建的 synthetic tests；不能複用
+  ActionBarWatcher 的 game-specific identity 或把 diagnostics 當 runtime。
 - [ ] 首屏→下一頁、返回／離開（若該流程存在）與可銜接存讀檔的正常玩家路徑需量出；尚未證實的
   路徑只能使 group 保持失效，不能猜測恢復。
 
