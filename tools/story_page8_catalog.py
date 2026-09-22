@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證第八頁 content-safe identity 與繁中 DRAFT 譯文。"""
+"""驗證第八頁 content-safe identity 與繁中 READY 譯文。"""
 from __future__ import annotations
 
 import csv
@@ -39,7 +39,7 @@ def _rows(path: Path, header: list[str]) -> list[dict[str, str]]:
 def validate(events_path: Path, translations_path: Path) -> None:
     events, translations = _rows(events_path, EVENT_HEADER), _rows(translations_path, TRANSLATION_HEADER)
     if len(events) != len(EXPECTED) or len(translations) != len(EXPECTED):
-        raise ValueError("第八頁 DRAFT 必須恰有四筆")
+        raise ValueError("第八頁 READY 必須恰有四筆")
     keys, translation_keys = [r["event_key"] for r in events], [r["key"] for r in translations]
     if keys != translation_keys or len(set(keys)) != len(EXPECTED) or len(set(translation_keys)) != len(EXPECTED):
         raise ValueError("事件與譯文 key 非雙向一對一")
@@ -47,7 +47,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
         actual = (row["event_key"], int(row["sequence"]), int(row["original_length"]), row["original_sha256"], int(row["row"]), int(row["entry_step"]), int(row["post_call_step"]))
         if actual != (key, i, length, digest, logical_row, entry, post):
             raise ValueError(f"identity 不符：{key}")
-        if row["caller"] != "0763:04FF" or row["glyph_guard"] != "0763:026B" or (row["background"], row["foreground"], row["column"], row["evidence_level"], row["catalog_status"]) != ("0", "10", "1", "confirmed", "DRAFT") or not re.fullmatch(r"[0-9a-f]{64}", digest):
+        if row["caller"] != "0763:04FF" or row["glyph_guard"] != "0763:026B" or (row["background"], row["foreground"], row["column"], row["evidence_level"], row["catalog_status"]) != ("0", "10", "1", "confirmed", "READY") or not re.fullmatch(r"[0-9a-f]{64}", digest):
             raise ValueError(f"metadata 不符：{key}")
     for row in translations:
         text = row["translation"]
@@ -60,4 +60,4 @@ if __name__ == "__main__":
     if len(sys.argv) != 3:
         raise SystemExit(f"用法：{sys.argv[0]} EVENTS.tsv TRANSLATIONS.tsv")
     validate(Path(sys.argv[1]), Path(sys.argv[2]))
-    print("story-page8 DRAFT catalog OK")
+    print("story-page8 READY catalog OK")

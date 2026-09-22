@@ -3,7 +3,7 @@
 更新：2026-09-23
 
 第七頁固定故事文字已在三輪獨立審查後限縮升
-[規格 016 READY](docs/spec/016-story-page7-overlay-ready.md)：合法第六頁終態
+[規格 016](docs/spec/016-story-page7-overlay-ready.md)：合法第六頁終態
 Enter 進入 row 17–22 六行、合法第七頁 Enter 離頁。190 glyph 原版逐字
 return／ABI、最早相交 pre-write、七 ABI 低位映射、逐列半開寫入判定及
 2×／3×字型 containment 已核對；此 READY 審查階段正式 dosgolem runtime
@@ -16,12 +16,16 @@ return／ABI、最早相交 pre-write、七 ABI 低位映射、逐列半開寫�
 關閉矩陣，主代理獨立重跑定向 test／vet／race 通過；因此第七頁
 **只在固定六行及已量 Enter 離頁限縮 CONFORMED**；見
 [第一百五十六階段](docs/re/phase-156-story-page7-runtime-ab-pending-failure-audit.md)。
-第八頁四行已有雙重原版收據補足 130 glyph 的 SS／SP+0x12／RETF 與
-合法 page8→page9 最早相交 pre-write；2×／3×正式字型 containment 與
-typed-core 失敗即關閉仍缺，因此維持 DRAFT，見
+第八頁四行先由雙重原版收據補足 130 glyph 的 SS／SP+0x12／RETF 與
+合法 page8→page9 最早相交 pre-write；當時 2×／3×正式字型 containment
+與 typed-core 失敗即關閉仍缺，故維持 DRAFT，見
 [第一百五十五階段](docs/re/phase-155-story-page8-ready-prerequisite-evidence.md)。
 現有四行譯文已由低階翻譯代理對原版畫面校對，無需修改；本機倚天
 2×／3×正式幾何靜態 containment 亦零缺字、零越界，但尚非 runtime 授權。
+其後端到端 verifier 與完整英文清除矩形經三次獨立審查、兩度退回後，
+[規格 017](docs/spec/017-story-page8-overlay-ready.md)只在固定四行與已量
+Enter 進出限縮升 READY。舊 `[8,96)` 已勘誤為
+`[8,312)×[136,168)`；正式 runtime／A/B 未做，不得稱已中文化。
 
 互動式玩家前端的第一個可玩版本已由使用者決定先支援 Linux，架構保留日後
 Windows／macOS 擴充；第一版三平台同步交付已排除。視窗後端也已選定

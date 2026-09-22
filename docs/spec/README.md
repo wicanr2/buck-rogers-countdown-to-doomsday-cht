@@ -21,3 +21,4 @@
 | [第五頁劇情文字輸出端覆繪](014-story-page5-overlay-ready.md) | CONFORMED（僅五行與已量 Enter 離頁） | 五行正式 runtime、雙倍率同狀態 A/B、失敗即關閉矩陣與 page5→page6 pre-write 清除已驗；完整開機及存讀檔未驗。 |
 | [第六頁劇情文字輸出端覆繪](015-story-page6-overlay-ready.md) | CONFORMED（僅六行與已量 Enter 離頁） | 六行正式 runtime、雙倍率同狀態 A/B、失敗即關閉矩陣與 page6→page7 pre-write 清除已驗；完整開機及存讀檔未驗。 |
 | [第七頁劇情文字輸出端覆繪](016-story-page7-overlay-ready.md) | CONFORMED（僅六行與已量 Enter 進出） | 六行正式 runtime、雙倍率同狀態 A/B、同程序 active 6→0 及完整失敗即關閉矩陣已驗；完整開機及存讀檔未驗。 |
+| [第八頁劇情文字輸出端覆繪](017-story-page8-overlay-ready.md) | READY（僅四行與已量 Enter 進出） | 130 return edge、完整英文清除矩形、雙倍率字型幾何與 page8→9 pre-write 已審；正式 runtime／A/B 未完成。 |
