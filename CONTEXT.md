@@ -187,6 +187,10 @@ SP+`0x12` 與七 ABI word 高位為零；但從合法 page9 state 再送 Enter �
 `story_fill_writes`／`story_pixel_write` 均為空，沒有碰到故事區。這兩鍵不能當作 page9
 失效邊界；下一個候選必須先由手冊證實是適用於此 command state 的不同玩家動作，詳見
 [第一百三十四階段](docs/re/phase-134-story-page9-enter-trace.md)。
+同一 consumer 已證實的手冊 Num Lock 8 亦做雙重、下一輪詢即停止的重播：step
+`361000150` 消費後於 `361000605` 停下，無 clear、glyph、故事區 fill 或 pixel 寫入。
+這不證明 8 的遊戲語意無效，但依停止條件不延長；目前所有已明示的 4／6／8 都沒有 page9
+失效邊界，頁 9 維持 DRAFT，不能升 READY 或接 production。
 第九頁後再送合法 Enter，兩次重播只見 row 15 command/status 重畫，無新固定故事行；
 因此沒有第十頁 catalog，不猜補譯文，見[第一百三十六階段](docs/re/phase-136-story-page10-enter-stop-line.md)。
 第 5、7、8 頁三處 DRAFT 譯文依私有原版畫面校訂後，20 份 catalog 的本機倚天子集
@@ -224,8 +228,13 @@ machine／DOS 狀態與控制組相等。由成功返回終態重新載入 dosgo
 2× 維持逐位元不變、3× 中文字模改為 22×22 並縮緊字距，白色快捷字母不變。
 該頁控制組／雙倍率完整存態與原版 indexed 畫面相等，安全矩形外零差異；
 其他焦點與離頁生命週期仍待驗收。身體圖示目前只完成 exact 事件、繁中 TSV、
-安全矩形、字模覆蓋與離線 request projection；`1C41` 低階 glyph watcher／清除
-生命週期尚缺正式收據，因此仍為 DRAFT，未接 runtime 覆繪；詳見
+安全矩形、字模覆蓋與離線 request projection。ignored、由 `git archive` 建立的
+可丟棄 probe 已在正常移動／拒絕／確認雙重重播確認七筆低階 glyph 均經
+`0763:03D6` 的 `0xCA` RETF 回到 `0763:049B`、同 SS、SP+`0x12`；每次字串首 glyph
+的 ABI 高位 mask 為 `0x7c`，其餘 glyph 為零。production 未改，且目前仍無法證明
+各安全矩形最早相交 pre-write；必須先新增受限矩形的通用 pre-execution video-write
+或逐 step framebuffer 診斷。因此身體圖示仍為 DRAFT，未接 runtime 覆繪；詳見
+[第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)與
 [第九十九階段收據](docs/re/phase-99-action-bar-3x-density.md)。
 身體圖示資料切片見[第一百零一階段](docs/re/phase-101-body-icon-text-catalog.md)，
 手冊與快捷列的最新抽樣邊界見[第一百零二階段](docs/re/phase-102-overlay-audit.md)。
