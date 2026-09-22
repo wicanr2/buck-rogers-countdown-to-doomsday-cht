@@ -76,6 +76,14 @@ class CatalogFontTest(unittest.TestCase):
         )
         self.assertEqual(read_catalog(path)[0].source, "runtime-interface")
 
+    def test_catalog_accepts_editorial_source_levels(self):
+        path = self.write_catalog(
+            "key\ttranslation\tsource\n"
+            "story.one\t甲\truntime-editorial\n"
+            "story.two\t乙\tmanual-term-editorial\n".encode()
+        )
+        self.assertEqual([entry.source for entry in read_catalog(path)], ["runtime-editorial", "manual-term-editorial"])
+
     def test_multiple_catalogs_merge_without_copying_translation_authority(self):
         first = self.root / "first.tsv"
         second = self.root / "second.tsv"

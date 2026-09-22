@@ -5,16 +5,22 @@
 互動式玩家前端的第一個可玩版本已由使用者決定先支援 Linux，架構保留日後
 Windows／macOS 擴充；第一版三平台同步交付已排除。視窗後端也已選定
 Go／Ebitengine，排除 SDL3；面板開啟時鍵盤由 host 消費、不送進 DOS，關閉後恢復。
-Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；設定持久化仍待共同決策；
+Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留本次遊戲期間，
+不寫跨重啟設定檔，每次啟動預設 2×，遊戲中可 Apply 切到 3×；
+未 Apply 即關閉面板會取消暫選，再開時選取值回到目前已套用倍率；
 [spec 004](docs/spec/004-dosgolem-host-frontend-draft.md) 維持 DRAFT，工作項為
 [Issue #16](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/16)。
+本機 dosgolem 已有通用唯讀畫面快照與純面板事件核心，但尚無 Ebitengine 玩家視窗、
+machine 接線或跨重啟設定；純核心測試不能取代正常玩家路徑驗收。
 
-手冊成功返回後首個劇情畫面的五行固定英文輸出，已有可重播的低階 glyph
-身分（原文長度／雜湊、caller、列／欄與色號）及中文手冊術語對照；
-`text/story-opening-events.tsv`／`text/story-opening.zh-TW.tsv` 目前僅為 DRAFT。
-下一頁首筆劇情區改寫已定位，不能誤用底部狀態列清除作為失效時機。
-本機倚天 12 份 catalog 候選聯集為 971 字模，但首屏劇情尚未接 runtime，
-不能宣稱此路徑已中文化；詳見[第一百零五階段](docs/re/phase-105-first-story-screen-trace.md)。
+手冊成功返回後前三個劇情畫面的固定英文輸出，已有可重播的低階 glyph 身分
+（原文長度／雜湊、caller、列／欄與色號）及繁中 DRAFT 候選：第一頁五行、
+第二頁四行、第三頁五行；動態狀態列排除。首個換頁的劇情區視訊寫入已定位，
+不能誤用底部狀態列清除作為失效時機。本機倚天 14 份 catalog 候選聯集為
+990 字模，dosgolem 正式 loader 已回讀並覆蓋這三頁 139 個譯文字元；
+三頁均尚未接 runtime，不得宣稱已中文化。詳見[第一百零五階段](docs/re/phase-105-first-story-screen-trace.md)、
+[第一百零七階段](docs/re/phase-107-story-page2-draft.md)與
+[第一百零八階段](docs/re/phase-108-story-page3-draft.md)。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
 意譯，不是整章手冊逐字轉錄。37 題有中文掃描對照；第 3、39 題因缺少直接的中文

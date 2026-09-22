@@ -127,6 +127,9 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 `story-page2-events.tsv` 與 `story-page2.zh-TW.tsv` 是第二頁四行固定敘事的 DRAFT 候選；
 `tools/story_page2_catalog.py` 另外驗證 row 17–20、排除 row 24 動態狀態列與 39 格保守容量，
 尚未接 runtime。Chiagong 的「奇亞貢」目前只是未由中文手冊逐字確認的 DRAFT 音譯。
+`story-page3-events.tsv` 與 `story-page3.zh-TW.tsv` 是第三頁五行固定敘事的 DRAFT 候選；
+`tools/story_page3_catalog.py` 驗證 row 17–21、排除 row 24 動態狀態列與 39 格保守容量。
+五行均為依原版畫面語意建立的 editorial DRAFT，尚未接 runtime。
 
 ## 驗證與 prototype 字型
 
@@ -147,5 +150,8 @@ python3 tools/catalog_font.py validate-candidate text/manual.zh-TW.tsv \
 `lint` 失敗即關閉地驗證 UTF-8、精確標頭及欄數、唯一 key、非空譯文、來源枚舉、控制／
 格式字元與 NFC。`chars` 依 Unicode 碼點排序，每行固定為 `U+XXXX<TAB>字元`；字型建置若
 缺任一字模、遇到非 8×16／16×16 字模或格式錯誤便中止。
+來源枚舉中的 `runtime-editorial` 表示依正常 runtime 畫面語意建立的編輯性 DRAFT，
+`manual-term-editorial` 表示句子仍是編輯性 DRAFT、但其中專名／術語有中文手冊證據；
+兩者都不代表手冊逐字摘錄。`manual-and-runtime` 僅用於確有手冊段落與 runtime 對應的資料。
 `validate-candidate` 不建置字型；它只驗證被忽略工作區內的 strict manifest、實際來源／授權文字雜湊、
 既有 Unifont parser coverage 與本機驗證／發行未定狀態，stdout 不回顯 license、notice 或 glyph bytes。

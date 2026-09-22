@@ -22,6 +22,7 @@ Buck Rogers 的 host 控制列與面板必須將完整 320×200 畫布下推；�
 | 既有輸出疊層 | 已證實 | `xlate.Layer` 只讀 indexed framebuffer 與 palette，畫入新的 RGBA；`apps/buckrogers.RuntimeMenuOverlay.Draw` 同樣先重建 RGBA，沒有寫回 machine VRAM。 |
 | 2×／3× 輸出 | 已證實 | Buck Rogers runtime overlay constructor 明示只接受 2 或 3；其 `scale` 為私有欄位，沒有執行期 setter。既有 instance 不能自行改倍率。 |
 | C 的倍率 state core | 已證實／CONFORMED（純核心） | dosgolem spec 219 與第 89 階段：generic `host.ScaleController` 將 selected 與 active 分離，只有 Apply 提交；唯一直接 import 是 `fmt`，沒有 backend／DOS／遊戲依賴。 |
+| host 面板事件核心 | 已證實（純核心；非玩家前端） | 本機 dosgolem 分支 `ecac793` 的 `host.PanelController` 只處理已分類的 host 事件：面板開啟時鍵盤及 host hit 不轉送，Apply 提交後自動收合；未命中 pointer 保持未決。Docker race／vet 已通過，未接 Ebitengine、machine 或持久化。 |
 | DOS 滑鼠能力 | 已證實 | `cmd/probe` 的 `-mouse-*`／`-click-*` 是以固定 instruction step 呼叫模擬 DOS 滑鼠；它是原版輸入／對拍能力，不是 host 視窗事件。 |
 | 可重用 host 視窗與事件迴圈 | 強推論：不存在 | `go.mod` 沒有前端依賴；所有 Go source 的 window／frontend／SDL／Ebiten／GLFW／event-loop token 搜尋為零；命令均為無頭診斷或收據工具。結論與 README 的定位一致，但實際選用哪個新 backend 仍未知。 |
 
@@ -66,6 +67,10 @@ Palette 為值型別。故 presenter 即使修改它拿到的 slice，也沒有�
 BIOS queue、IRQ、檔案或存檔的能力。這只是一條讀取邊界；它不處理 input、overlay Draw、
 host chrome 或 backend event loop。
 
+本機 dosgolem 分支已另有純 `host.PanelController`：它不持有 DOS machine，不自行送鍵，
+只回傳 `ConsumedByHost`／`ForwardToDOS` 許可。它沒有實作未決的「未按 Apply 即關閉面板」
+語意，也不保存倍率至磁碟；因此不能把單元測試視為實際 BIOS／IRQ 零副作用收據。
+
 具體 frontend adapter 必須在同一個 machine-stepping thread 取得此 frame，不能在 machine
 並行 Step 時呼叫 source。這是避免取得跨幀 indexed／palette 配對的執行緒契約，而不是
 允許 presenter 控制 machine。現階段尚未把 `Machine` 直接放進 `host` package，以維持 host
@@ -79,7 +84,7 @@ host chrome 或 backend event loop。
 新的 output scale。第八十九階段已將這個 value-only transition 實作並 CONFORM；實際以同一 raw
 input、palette 與 active layer 重繪仍屬未接線 frontend 責任；不推定跨重啟持久化。
 
-- host 文案／字型與設定跨重啟持久化仍未知；不是以
+- host 文案／字型仍未知；不是以
   headless CLI 或 DOS mouse injection 推定。
 - 使用者於 2026-09-22 確認第一個可玩版本先支援 Linux，架構保留日後擴充
   Windows／macOS 的能力；第一版三平台同步打包與驗收已排除。這只定平台優先序，
@@ -89,6 +94,12 @@ input、palette 與 active layer 重繪仍屬未接線 frontend 責任；不推�
   host 面板命中的滑鼠與鍵盤事件均須對 DOS BIOS queue／IRQ 零副作用。
 - 使用者看過 A／B 可丟棄原型後，確認按 Apply 提交倍率時自動收合面板，
   立即恢復遊戲鍵盤；保持展開以便連續調整的分支已排除。Apply 不得額外送鍵進 DOS。
+- 使用者確認第一個 Linux 可玩版的 2×／3× 倍率只在本次遊戲期間保留；
+  不寫跨重啟設定檔；每次啟動預設 2×，玩家可於本次遊戲中切到 3×。
+  預設 3× 與跨重啟記住上次倍率的分支已排除。
+- 使用者看過純 host 狀態 A／B 原型後，確認未按 Apply 即關閉面板等於取消暫選；
+  再開時 `selectedScale` 回到目前 `activeScale`。保留隱藏待套用選取的分支已排除；
+  Close／Cancel 仍只由 host 消費，不向 DOS 送鍵或滑鼠事件。
 - 不改原版 EXE、DOS 輸入、原版手冊驗證、存檔結構、遊戲規則或 adapter 的 exact output identity。
 
 ### Linux Ebitengine 後端的可丟棄驗證
@@ -107,8 +118,8 @@ Windows 與 macOS 的視窗／鍵盤／滑鼠能力；[安裝說明](https://ebi
 
 ## READY 前置與未來驗收
 
-進入實作前，必須依已選定的 Linux／Ebitengine、C 語意與面板焦點隔離，補齊
-host 文案／字型及 session／持久化範圍。
+進入實作前，必須依已選定的 Linux／Ebitengine、C 語意、面板焦點隔離及 session-only
+倍率、2× 啟動預設及未 Apply 的取消語意，補齊 host 文案／字型與實際事件接線。
 READY 後至少驗證：
 
 1. 2×與3×的 host canvas 與控制列幾何；畫布內容逐 byte 等於同一 raw input 的輸出投影。

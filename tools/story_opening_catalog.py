@@ -78,7 +78,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
         raise ValueError("事件與譯文 key 非雙向一對一")
     event_by_key = {row["event_key"]: row for row in events}
     for row in translations:
-        if not row["translation"] or row["source"] != "manual-and-runtime":
+        if not row["translation"] or row["source"] not in {"runtime-editorial", "manual-term-editorial"}:
             raise ValueError(f"譯文來源或內容不符：{row['key']}")
         if row["translation"] != unicodedata.normalize("NFC", row["translation"]):
             raise ValueError(f"譯文非 NFC：{row['key']}")

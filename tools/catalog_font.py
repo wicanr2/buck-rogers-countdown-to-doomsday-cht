@@ -18,7 +18,13 @@ from pathlib import Path
 
 
 HEADER = ["key", "translation", "source"]
-ALLOWED_SOURCES = {"runtime", "manual-and-runtime", "runtime-interface"}
+ALLOWED_SOURCES = {
+    "runtime",
+    "manual-and-runtime",
+    "runtime-interface",
+    "runtime-editorial",
+    "manual-term-editorial",
+}
 MAGIC = b"GOLEMFNT"
 WIDTH = 16
 HEIGHT = 16

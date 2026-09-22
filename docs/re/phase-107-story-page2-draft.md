@@ -28,7 +28,9 @@ status glyph 不得混入此 catalog。
 EARTH ORGANIZATION, NEO）」。目前沒有找到中文手冊原圖直接使用「太空港」對應本頁
 `spaceport` 的證據，因此「太空港」只是依遊戲語境作的 editorial DRAFT，不宣稱沿用手冊
 固定譯名。`奇亞貢` 是從 page2 原版固定專名所作的 DRAFT 音譯，中文手冊目前沒有找到
-逐字對應，故不升級為已證實術語；
+逐字對應，故不升級為已證實術語。TSV 只有含 NEO 手冊術語的第一行使用
+`manual-term-editorial`；其餘三行使用 `runtime-editorial`，明確表示都是 DRAFT 意譯，
+不把 page2 敘述冒稱為手冊逐字來源；
 「訓練／講堂」是依本頁英文語意的 editorial DRAFT，不是手冊逐字摘錄。
 
 ## 驗證與限制

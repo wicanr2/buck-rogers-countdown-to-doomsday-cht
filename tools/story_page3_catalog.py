@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證第二頁固定劇情的 DRAFT exact identity 與繁中候選。"""
+"""驗證第三頁固定劇情的 DRAFT exact identity 與繁中候選。"""
 
 from __future__ import annotations
 
@@ -13,10 +13,11 @@ EVENT_HEADER = ["event_key", "sequence", "original_length", "original_sha256", "
 TRANSLATION_HEADER = ["key", "translation", "source"]
 STORY_CELL_CAPACITY = 39
 EXPECTED = [
-    ("story.page2.line.001", 37, "d5e1af5a30c6c4954aec9e63c0ab8454f5b451d333b9c58c0b66a89c43733364", 17, 281022067, 282599485),
-    ("story.page2.line.002", 31, "8834f68a0a932af699b5f090e02a652184341ef8c107ca30d714097b6f9e91c7", 18, 282643017, 283957425),
-    ("story.page2.line.003", 38, "57910b8786c4b13181ed37f12b273e7f43886747dbab9fb360f09071ae39c7bd", 19, 284002085, 285622608),
-    ("story.page2.line.004", 37, "a114f1a715a848c0280677ab70d806145ae5e1991f6f570f5ace5d49c9dc85b4", 20, 285666098, 287243280),
+    ("story.page3.line.001", 34, "84c6fba5f613f52a02e935f0937bb66eea6632840d9465cf8fc9c3d7edd0dbff", 17, 291022040, 292467756),
+    ("story.page3.line.002", 37, "6ea1adb513486d4687926d744f1d9ff22638ee3a9eaeef6fe6ff97282c361536", 18, 292511846, 294089001),
+    ("story.page3.line.003", 31, "fd9dbc141cf71e523e4f8a45fe5ced142f55d5257f5801f4259142162bf5f37a", 19, 294132533, 295447194),
+    ("story.page3.line.004", 37, "93c17e4396f05f1e17c659f42233369c205ae8f23280c796e0bf8b023873479d", 20, 295491296, 297068295),
+    ("story.page3.line.005", 5, "8f0cfc1b387ddcad6870b6a960f67f71d044bd7163d01db49e753b6e71afb7d5", 21, 297111967, 297287594),
 ]
 SHA256_RE = re.compile(r"[0-9a-f]{64}\Z")
 
@@ -48,7 +49,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
     events = _rows(events_path, EVENT_HEADER)
     translations = _rows(translations_path, TRANSLATION_HEADER)
     if len(events) != len(EXPECTED) or len(translations) != len(EXPECTED):
-        raise ValueError("第二頁 DRAFT 必須恰有四筆固定劇情")
+        raise ValueError("第三頁 DRAFT 必須恰有五筆固定劇情")
     for index, (row, expected) in enumerate(zip(events, EXPECTED), start=1):
         key, length, digest, logical_row, entry, post = expected
         if row["event_key"] != key or int(row["sequence"]) != index:
@@ -61,7 +62,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
             raise ValueError(f"位址不符：{key}")
         if (row["background"], row["foreground"], row["column"]) != ("0", "10", "1"):
             raise ValueError(f"顏色／欄位不符：{key}")
-        if int(row["row"]) != logical_row or not (17 <= logical_row <= 20):
+        if int(row["row"]) != logical_row or not (17 <= logical_row <= 21):
             raise ValueError(f"故事區列不符：{key}")
         if (int(row["entry_step"]), int(row["post_call_step"])) != (entry, post):
             raise ValueError(f"步數不符：{key}")
@@ -73,7 +74,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
         raise ValueError("事件與譯文 key 非雙向一對一")
     for row in translations:
         text = row["translation"]
-        if not text or row["source"] not in {"runtime-editorial", "manual-term-editorial"}:
+        if not text or row["source"] != "runtime-editorial":
             raise ValueError(f"譯文來源或內容不符：{row['key']}")
         if text != unicodedata.normalize("NFC", text):
             raise ValueError(f"譯文非 NFC：{row['key']}")
@@ -94,7 +95,7 @@ def main(argv: list[str]) -> int:
     except (OSError, ValueError) as exc:
         print(f"失敗即關閉：{exc}", file=sys.stderr)
         return 1
-    print("story-page2 DRAFT catalog OK")
+    print("story-page3 DRAFT catalog OK")
     return 0
 
 
