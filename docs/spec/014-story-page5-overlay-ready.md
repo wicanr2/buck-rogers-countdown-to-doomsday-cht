@@ -1,7 +1,11 @@
 # 014 — 第五頁固定劇情輸出端覆繪
 
-狀態：**READY；僅第五頁五行與已量 page5→page6 Enter 離頁。**
+狀態：**CONFORMED；僅合法第四頁終態進入第五頁五行，及同執行 page5→page6 Enter 離頁。**
 日期：2026-09-22
+
+2026-09-23 限縮驗收：正式 runtime control／2×／3×及同執行 active→clear 收據見
+[phase 148](../re/phase-148-story-page5-runtime-ab-pending-audit.md)；後續失敗即關閉稽核
+見該文件的追加結論。本狀態不包含完整開機、其他離頁或遊戲內存讀檔。
 
 ## 範圍、權利與停止線
 

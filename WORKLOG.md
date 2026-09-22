@@ -1355,3 +1355,8 @@
 ## 2026-09-23 — 第五頁正式接線與同執行離頁 A/B
 
 - Terra 在本機 dosgolem `0f3ea89` 完成第五頁 watcher／presenter／CLI；主代理從提交後 runner 重跑穩定 2×及同執行雙 Enter 2×，與私有收據逐 byte 相同。control／2×／3×皆五 key 啟用、零缺字、安全矩形外零差，原版 JSON 與正規化存態全等；離頁 active 5→0，終態 RGBA 等於 baseline。詳見[第一百四十八階段](docs/re/phase-148-story-page5-runtime-ab-pending-audit.md)。完整失敗即關閉矩陣仍待獨立審查，spec 014 維持 READY。
+
+## 2026-09-23 — 第四／五頁限縮 CONFORMED 與第六頁前置診斷
+
+- Terra 在本機 dosgolem `5652f11` 補第四頁 ABI、return、未知／不相交寫入負例；`a2dba44` 補第五頁 presenter 原子負例。主代理於 `6181e31` 再補第五頁完整 hash gate、return step、已啟用後未知／不相交寫入與雙倍率缺字、非 READY 負例；`6dcc427` 補第四頁正式 loader 的雙倍率缺字、DRAFT catalog 拒絕。Docker Go test／vet／race 通過；原先 control／2×／3×及離頁私有收據雜湊回讀相符，未修改 runtime code。因此[規格 013](docs/spec/013-story-page4-overlay-draft.md)與[規格 014](docs/spec/014-story-page5-overlay-ready.md)只在固定合法 Enter 進入／離頁路徑升 CONFORMED，完整開機、其他離頁與存讀檔未驗。
+- Terra 雙重重播第六頁 200 筆 glyph 的 return／ABI 與離頁 48 筆候選矩形相交 pre-write；主代理回讀兩組 state 及雙份收據 SHA-256。[第一百四十九階段](docs/re/phase-149-story-page6-ready-prerequisite-diagnostics.md)保留精確 runner 身分未記錄的限制，第六頁保持 DRAFT，不接 production。

@@ -1,6 +1,6 @@
 # 目前狀態
 
-更新：2026-09-22
+更新：2026-09-23
 
 互動式玩家前端的第一個可玩版本已由使用者決定先支援 Linux，架構保留日後
 Windows／macOS 擴充；第一版三平台同步交付已排除。視窗後端也已選定
@@ -52,7 +52,7 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 首筆可見像素差異。完整開機玩家路徑與存讀檔／restore 仍未驗，spec010 維持 READY，
 不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)
 及[第一百一十九階段](docs/re/phase-119-story-opening-enter-lifecycle.md)。
-第二頁四行、第三頁五行與第四頁六行均有可重播低階 glyph 身分；前兩頁事件目錄為 READY，第四頁維持繁中 DRAFT。第四頁由
+第二頁四行、第三頁五行與第四頁六行均有可重播低階 glyph 身分；以下記錄第四頁早期 DRAFT 勘誤，現況以後段規格 013 為準。第四頁由
 第三頁合法 state 的同一筆 Enter 重生為 `0763:04FF → 0763:026B` 六行；舊
 `visual-transcription` 前五筆 length／hash 與原版 trace 不符，僅第六筆相符，故繁中候選仍須
 編輯審查、catalog 維持 DRAFT 且不得接 runtime。
@@ -82,11 +82,14 @@ SP 相差 `0x12`，不再以首筆樣本外推其餘 143 筆。
 因此 spec 012 **僅上述路徑升 CONFORMED**，完整開機與存讀檔仍未驗。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
 初稿曾誤配右側人物姓名，經原圖座標核對訂正。第五頁五筆 exact catalog
-與[規格 014](docs/spec/014-story-page5-overlay-ready.md)已限縮升 READY；
+與[規格 014](docs/spec/014-story-page5-overlay-ready.md)當時限縮升 READY；
 本機 dosgolem `0f3ea89` 已接正式 watcher／presenter／CLI，control／2×／3×及
 同執行 active→clear 離頁的同狀態 A/B 通過，見[第一百四十八階段](docs/re/phase-148-story-page5-runtime-ab-pending-audit.md)。
-失敗即關閉矩陣仍待獨立審查，規格 014 暫不升 CONFORMED；完整開機、
-其他離頁與存讀檔亦未驗，不宣稱整段故事已全部中文化。
+其後本機 dosgolem `a2dba44`／`6181e31` 補 presenter 原子性與 watcher
+失敗即關閉負例；`6dcc427` 再補第四頁 DRAFT catalog／缺字雙倍率拒絕。
+Docker Go test／vet／race 通過，私有收據雜湊已回讀；
+規格 014 **僅上述固定玩家路徑限縮升 CONFORMED**。完整開機、
+其他離頁與存讀檔未驗，不宣稱整段故事已全部中文化。
 第四頁另有[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)
 逐筆 192 glyph 返回；但獨立審查發現原 `story-fill-trace` 只看前五行，
 不能單獨證明六行完整矩形的最早相交 pre-write。後續本機 dosgolem
@@ -96,15 +99,20 @@ SP 相差 `0x12`，不再以首筆樣本外推其餘 143 筆。
 已經獨立審查而限縮升 READY；本機 dosgolem `1cf9ec4` 已接正式
 watcher／presenter／CLI，control／2×／3×及同執行 active→clear 離頁的
 同狀態 A/B 通過，見[第一百四十七階段](docs/re/phase-147-story-page4-runtime-ab-pending-audit.md)。
-失敗即關閉的完整負例矩陣仍待獨立審查，spec 013 暫不升 CONFORMED；
+失敗即關閉矩陣當時仍待獨立審查；
 審查曾發現 presenter `Apply` 對後段無效事件可能留下前段 stamp；
-本機 `cad9c3f` 已以兩階段驗證／提交與雙倍率負例修正，仍有其他失敗矩陣待補；
-其他離頁、完整開機與存讀檔亦未驗。
+本機 `cad9c3f` 已以兩階段驗證／提交與雙倍率負例修正；其後 `5652f11`
+補 ABI／return／video write 負例，Docker Go test／vet／race 通過且私有收據雜湊
+已回讀。規格 013 **僅上述固定玩家路徑限縮升 CONFORMED**；其他離頁、
+完整開機與存讀檔亦未驗。
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
 候選聯集重建為 1006 字模，正式 loader 已回讀且零缺字；這仍只證明字型覆蓋。
 第五頁後的合法 Enter 也已量到第六頁 row 17–22 六行低階身分；低階翻譯代理建立
-繁中 DRAFT；全部 17 份 catalog 的倚天聯集已重建為 1014 glyph，dosgolem 正式 loader
-對譯文字元零缺字。這仍不代表第六頁接通 runtime 或可散布字型。
+繁中 DRAFT。後續[第一百四十九階段](docs/re/phase-149-story-page6-ready-prerequisite-diagnostics.md)
+補 200 glyph 的雙重 return／ABI 收據及第六頁離頁最早相交 pre-write；
+精確 runner 身分、正式安全矩形與 typed-core 負例仍缺，第六頁不升 READY。
+全部 17 份 catalog 的倚天聯集曾重建為 1014 glyph，dosgolem 正式 loader
+對當時譯文字元零缺字；這不代表現行完整字型已驗或第六頁接通 runtime。
 第六頁後的合法 Enter 又確認第七頁 row 17–22 六行；同狀態 indexed 畫面與色盤重生一致，
 六行繁中候選與 identity 已建為 DRAFT；全部 18 份 catalog 的本機倚天聯集重建為
 1022 字模，正式 loader 對 6136 個譯文字元零缺字。這仍尚未接 runtime 或做中文 A/B。

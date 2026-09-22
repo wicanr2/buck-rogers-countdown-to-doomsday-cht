@@ -1,7 +1,9 @@
 # 第一百四十八階段：第五頁五行執行期 A/B 與待審負例
 
 日期：2026-09-23
-狀態：**正式接線與已量同狀態 A/B 通過；規格 014 暫維持 READY，待失敗即關閉矩陣獨立審查，不宣稱 CONFORMED。**
+狀態（建立時）：**正式接線與已量同狀態 A/B 通過；規格 014 暫維持 READY，待失敗即關閉矩陣獨立審查。**
+2026-09-23 追加稽核後，規格 014 僅在本文固定玩家路徑限縮升 **CONFORMED**；
+原始待審結論保留如下，不覆寫形成史。
 
 ## 固定輸入與私有證據
 
@@ -63,3 +65,19 @@ DOS digest 同上。從提交後 runner 使用兩筆同型 `-bios-key-at` 重跑
 須獨立審查每個 case 是否真正抵達其聲稱的錯誤條件，並補 presenter
 invalid-tail、混合 generation、duplicate key 的原子性負例。未完成前規格 014
 保持 READY。完整開機玩家路徑、其他離頁與遊戲內存讀檔尚未由本收據驗證。
+
+## 2026-09-23 追加稽核與限縮結論
+
+Terra 在本機 dosgolem `a2dba44` 補 presenter invalid-tail、混合 generation、
+duplicate key 的 2×／3×原子拒絕測試。主代理於 `6181e31` 再補完整末字 SHA
+mismatch 真正觸發計數、return step、已啟用 group 下未知／非 A000／不相交 write
+不得誤清、已量相交 pre-write 清除後 RGBA 無殘留，以及 2×／3×缺字與 DRAFT TSV
+拒絕。原有七個 ABI word 非零高位、caller／guard／style／order、return caller／
+SS／SP、partial／discontinuity、READY catalog identity 與正式 CLI 負例一併審閱。
+主代理從當前程式 Docker 重跑 Go test、vet、race 均通過，並回讀本文六份
+control／2×／3×穩定與離頁私有收據，雜湊皆與本文相符。新提交只增加測試，
+未改變重生收據所用 runtime 路徑。
+
+因此規格 014 只在同一合法第四頁終態、既有 BIOS Enter 進入第五頁、
+再由 Enter 離開的雙倍率五行正常執行鏈升 CONFORMED。完整開機、其他離頁
+與遊戲內存讀檔仍未知，不從本收據外推。

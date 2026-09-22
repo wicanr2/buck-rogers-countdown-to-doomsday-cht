@@ -1,7 +1,9 @@
 # 第一百四十七階段：第四頁六行執行期 A/B 與失敗矩陣待審
 
 日期：2026-09-23
-狀態：**正式接線與已量同狀態 A/B 通過；規格 013 暫維持 READY，待失敗即關閉矩陣獨立審查，不宣稱 CONFORMED。**
+狀態（建立時）：**正式接線與已量同狀態 A/B 通過；規格 013 暫維持 READY，待失敗即關閉矩陣獨立審查。**
+2026-09-23 追加稽核後，規格 013 僅在本文固定玩家路徑限縮升 **CONFORMED**；
+原始待審結論保留如下，不覆寫形成史。
 
 ## 固定輸入、工具與權利
 
@@ -76,3 +78,19 @@ style、七欄高位、return caller／step、缺字、非 READY TSV、未知或
 寫入，以及相關雙倍率零局部繪製。這些負例通過前，spec 013 **不升
 CONFORMED**。
 其他離頁、完整開機玩家路徑與遊戲內存讀檔仍是未知，不從本收據外推。
+
+## 2026-09-23 追加稽核與限縮結論
+
+獨立 Terra 在本機 dosgolem `5652f11` 補完七個 ABI word 非零高位、return caller／
+predecessor／step、未知與不相交 write 的負例；已存在的完整末字 SHA mismatch、
+return opcode／SS／SP、partial、六行原子提交與雙倍率 presenter
+invalid-tail／mixed generation／duplicate key 負例一併審閱。主代理於
+`6dcc427` 再補正式 loader 的雙倍率 DRAFT catalog 與缺字拒絕，從當前
+`6dcc427` Docker 重跑相關 Go test、vet、race 均通過，並回讀本文六份
+control／2×／3×穩定與離頁私有收據，雜湊皆與本文相符。程式提交僅增加測試，
+未改變重生收據所用的 runtime 路徑；正式 A/B 的範圍仍是同一合法第三頁
+終態、既有 BIOS Enter 進入第四頁、再由 Enter 離開的正常執行鏈。
+
+因此規格 013 只在上述雙倍率六行與已量 Enter 離頁升 CONFORMED。這不證明
+從完整開機逐步遊玩、其他離頁方式或遊戲內存讀檔；該等項目維持未知，
+不能用本頁通過宣稱全遊戲完成。
