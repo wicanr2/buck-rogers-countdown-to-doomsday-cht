@@ -1,6 +1,6 @@
 # 原版觀測證據索引
 
-- [第一百二十八階段：第五頁後合法 Enter 的第六頁 trace](phase-128-story-page6-enter-trace.md)：六行 `0763:04FF → 0763:026B` DRAFT identity 與 page5 首筆 story-region 改寫；未建立譯文或 runtime。
+- [第一百二十八階段：第五頁後合法 Enter 的第六頁 trace](phase-128-story-page6-enter-trace.md)：六行 `0763:04FF → 0763:026B` DRAFT identity、繁中候選與 page5 首筆 story-region 改寫；未接 runtime。
 - [第一百二十七階段：pointer miss A/B prototype](phase-127-pointer-miss-ab-prototype.md)：同一實體 click 的 no-forward／實驗性 DOS mouse state 對照；非正式 UX。
 
 - [第一百二十六階段：手冊成功返回後的鍵盤 consumer 邊界](phase-126-manual-return-keyboard-consumer-boundary.md)：同一合法 Num Lock 8 被原版 BIOS 取走並回交 consumer，已確認其非零分支；未證實玩家語意、轉場或遊戲內保存／讀檔入口。

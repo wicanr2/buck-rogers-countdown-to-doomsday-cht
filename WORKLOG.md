@@ -1250,6 +1250,17 @@
 
 - 同一合法 330M state 與 Num Lock 8 重播證實：`INT 16h/AH=00h` 取走 `0x4838`，並回交 `37F1:1116`；有界指令 trace 顯示其後走 `37F1:113F → 37F1:118A` 非零輸入邊。原版玩家語意仍未知。
 - IDA 9.4 的裸 OVR file offset 對照只作分級線索，不與 dosgolem 實模式位址混用；未接到選單、A–J 槽位或保存檔寫入。下一步只追這條已觀測分支至 consumer return 或下一次 key-poll，見[第一百二十六階段](docs/re/phase-126-manual-return-keyboard-consumer-boundary.md)。
+
+## 2026-09-22 — 第一百二十七階段：面板外滑鼠 A/B 與譯文校對
+
+- ignored Ebitengine/Xvfb 原型對同一私有原版 state、同一個面板外真實 click 做不轉送／實驗性 DOS mouse 轉送 A/B。前者座標不變，後者由 `(160,100)` 變 `(100,82)`；兩者 BIOS、IRQ 與 indexed 畫面不變。原版未 Step，不能宣稱實際遊戲操作效果。正式轉送 UX 仍待使用者選擇，見[第一百二十七階段](docs/re/phase-127-pointer-miss-ab-prototype.md)。
+- 低階翻譯代理校對第二至五頁 DRAFT；第二至四頁不變，第五頁第四行縮為「讓它成為本應有的」。第四頁仍遵循第 124 階段的已證實 glyph 行序；全部仍未接 runtime。第五頁 catalog 八項測試通過。
+
+## 2026-09-22 — 第一百二十八階段：第六頁固定敘事身分與 DRAFT 譯文
+
+- 從第五頁合法 state 於已證實時間送入唯一 BIOS Enter，兩次 dosgolem receipt 逐 byte 相同；第六頁 row 17–22 六行 `0763:04FF → 0763:026B` exact identity 已鎖入 TSV。第一個新 glyph 前的故事區原版寫入只證明前頁失效候選，不足以證明正式 stamp lifecycle。
+- 低階翻譯代理依私有底部裁切建立六行繁中 DRAFT，右側姓名與 row 24 排除；專名尚無可靠固定繁中譯名，暫保留原文。已補 catalog key、Unicode 與保守寬度驗證；全部 17 份 TSV 本機倚天重建為 1014 glyph，dosgolem 正式 loader 對 6084 個譯文字元檢查零缺字。仍未接 runtime 或完成 2×／3× A/B，見[第一百二十八階段](docs/re/phase-128-story-page6-enter-trace.md)。
+- 使用者其後確認面板關閉時 canvas 內非 host 點擊轉送原版 DOS mouse、面板開啟時所有 pointer 由 host 消費；排除永不轉送。這是 MouseBridge 設計輸入，不表示 phase127 的未 Step 原型已證明玩家可見效果。
 ## 2026-09-22 — 第一百二十五階段：實體 host input prototype
 
 - Docker/Xvfb／xdotool 對真實 Ebitengine 視窗驗證設定開啟、3×暫選、Cancel 回 2×且重開仍 2×、Apply 3×收合，以及面板開啟時 Enter 隔離、關閉後 Enter BIOS 排隊。

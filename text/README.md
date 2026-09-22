@@ -131,14 +131,18 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 `story-page3-events.tsv` 與 `story-page3.zh-TW.tsv` 是第三頁五行固定敘事的 DRAFT 候選；
 `tools/story_page3_catalog.py` 驗證 row 17–21、排除 row 24 動態狀態列與 39 格保守容量。
 第三頁五行均為依原版畫面語意建立的 editorial DRAFT，尚未接 runtime。
-`story-page4-events.tsv` 與 `story-page4.zh-TW.tsv` 是由既有 page4 PNG 反查出的六筆
-`visual-transcription` DRAFT；`tools/story_page4_catalog.py` 只驗證 screenshot-derived
-hash／幾何／翻譯容量，caller、glyph guard 與步數仍為 unknown，未達 runtime identity，
-不得接入正式覆繪。
+`story-page4-events.tsv` 與 `story-page4.zh-TW.tsv` 是第四頁六行 DRAFT；原先
+`visual-transcription` 的前五筆身分已被兩次合法 Enter 的低階 glyph trace 否定並訂正，
+現有 `tools/story_page4_catalog.py` 驗證 exact hash、caller／guard、步數、幾何與翻譯容量。
+這只解決輸出身分，不代表完成失效生命週期或 runtime A/B，仍不得接入正式覆繪。
 `story-page5-events.tsv` 與 `story-page5.zh-TW.tsv` 是第四頁後合法 Enter 所見的
 第五頁下方五行固定敘事 DRAFT；`tools/story_page5_catalog.py` 驗證低階 glyph
 length／hash、caller／guard、row 17–21 與 39 格容量。右側人物姓名未納入此
 catalog；清除／失效邊界與正常玩家路徑尚待 READY 審查，不得接 runtime。
+`story-page6-events.tsv` 與 `story-page6.zh-TW.tsv` 是第五頁後合法 Enter 的第六頁下方六行
+固定敘事 DRAFT；`tools/story_page6_catalog.py` 驗證低階 glyph 身分、譯文 key／來源、NFC、
+控制字元與保守 39 格寬度。右側人物名與 row 24 狀態列排除；首筆原版清除僅為前頁
+stamp 失效候選，尚未完成 runtime A/B，不得接正式覆繪。
 
 ## 驗證與 prototype 字型
 

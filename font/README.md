@@ -60,3 +60,10 @@ page2／page3／page4 分頁回讀結果見
 正式 loader 零缺字收據見[第一百二十二階段](../docs/re/phase-122-story-page5-enter-trace.md)。
 先前 997 glyph 為當時 catalog 的歷史基準，不能用舊字型驗收新譯文；新版產物仍只在
 被忽略的 `workplace/phase122-font/`，不得公開散布。
+
+第六頁 DRAFT 敘事及第五頁校譯加入後，全部 17 份 `text/*.zh-TW.tsv` 的本機倚天
+聯集重建為 1014 glyph。`workplace/phase128-font/` 的 GOLEMFNT SHA-256 為
+`16e0e8cd687bbcd0f12b8330a47a7eed9519dd861063c41c01388f9ffc41d024`，
+字元清單 SHA-256 為 `91ed941652102ce935a0ff9afd1dd1b85da5964d0f8d53d8a3334a87e4f6d24c`；
+dosgolem 正式 loader 對全部譯文字元回讀為零缺字。這只是 DRAFT 字型覆蓋收據，
+並非第六頁 runtime 已接通或字型可公開散布。
