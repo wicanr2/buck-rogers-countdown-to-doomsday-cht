@@ -64,3 +64,49 @@ python3 tools/story_page9_catalog.py text/story-page9-events.tsv text/story-page
 本階段只完成原版 content-safe identity、私有畫面證據與 DRAFT catalog。第九頁仍須
 READY 規格、正式 watcher／renderer、同狀態原文／繁中 A/B、清除／返回生命週期與正常
 玩家路徑收據，方可稱為已中文化。
+
+## 2026-09-23 READY 前置重生與離頁停止線
+
+以本機 dosgolem commit
+`c0f6d76b0eb60caa72e74a619c1b981c91b340a5` 在無網路、有界 Docker 內建置固定
+`buckrogers-text-receipt`；runner SHA-256 為
+`d150746873eb8e0f715baffca27cd26523d8cf132e3915aaf338845bf3725b52`。
+原版仍為上述 `GAME.OVR` 雜湊；位址皆為 dosgolem 實模式 `segment:offset`，不是
+IDA 線性位址。私有 runner、state、完整收據與 framebuffer 僅在 ignored
+`workplace/page9-ready-atomic-core/`，不得加入 Git 或公開封包。
+
+從合法 page8 state（SHA-256
+`327dc1cb8baf4bee71cdcd0173538af123c47266c8bbf556b28f38d89355b0a9`）於 step
+`351000000` 送 Enter，縮短執行至 `352100000`，兩份 entry JSON／stdout 逐 byte
+相同，SHA-256 均為
+`0d27b6948399aff772aa2533a2b0b8ca19b5b9495c1c51bee94cd197eeec3873`；兩份
+indexed framebuffer 亦相同，SHA-256
+`fb65f3b36e019caa8d0e74d72aa71ab9908b76ec03fc1f5c301ca563473647b0`。
+兩次皆直接記錄 row 17、columns 1–20 的 20 筆 glyph entry 與 20 筆 verified
+return edge：返回指令 `0763:03D6`、opcode `0xCA`、caller `0763:04FF`、entry／return
+同 SS `1841`、SP 相對增加 `0x12`，七個 ABI word 的 high-word mask 均為零；首筆
+entry `351155910`、末筆 post-call `351988536` 與正式 DRAFT identity 一致。這補強
+逐字 return／ABI 證據，但不自行把 catalog 升 READY。
+
+離頁側從既有合法 page9 state（檔案 SHA-256
+`563ed40ba276c6857c57b05344949dec5891e4596ad783a9fc89b805eae8c2a4`）開始；此值不得與
+phase134 的 memory SHA-256 混用。
+在 step `361000000` 送 Enter、執行至 `370000000` 的兩份 exit JSON／stdout 逐 byte
+相同，SHA-256
+`bc1c11cba16bf57bda6bc3f5370a5c8be9279f99e8343a38c6b9abddb9541ab6`；indexed
+framebuffer SHA-256 均為
+`0aba8869b347eb07683bf3a74825ccfc36eecbf8feaf96b20cd2ac50c1745df0`。
+兩份收據均沒有 `story_fill_writes` 或 `story_pixel_write`，所以沒有可證的 page9
+故事區最早相交 pre-write。
+
+另以有界 key／instruction probe（收據 SHA-256
+`1ef70fafc346989fed6dfc4e8f36eb5415825ac6c9053b06ff74a907eccd01b2`）確認該 Enter
+不是未被消費：step `361000150` 由 BIOS `INT 16h AH=00` 讀取，step `361111822`
+起出現 row 15、caller `0763:049B` 的 command/status glyph。這個轉場只重畫
+command/status，沒有改寫 row 17 的第九頁故事文字；因此不能把該 Enter、row 15
+glyph 或「沒有第十頁」誤當成覆繪失效事件。
+
+結論與停止線：第九頁 entry identity／逐字 return／ABI 已確認，但故事區真正被清除或
+覆寫的合法後續玩家動作、state 與最早相交 pre-write 仍未知。未取得該證據前不得建立
+宣稱可升 READY 的 typed-core、不得接 production watcher／renderer，也不得稱第九頁
+已中文化；`text/story-page9-events.tsv` 與本頁狀態保持 DRAFT。

@@ -1402,3 +1402,8 @@
 
 - Terra 在本機 dosgolem `c0f6d76` 原子接通第八頁 strict loader、watcher、verified RETF、逐列 pre-write 失效、presenter、RGBA／PNG 與 JSON receipt。另一代理獨立審查 flags、generation、完整英文清除矩形與雙倍率失敗即關閉，Docker 定向 test／vet／race 均通過。
 - 從合法第七頁終態重生 control／2×／3×，兩倍率均四 key、零缺字、安全矩形外零差，正規化 machine／DOS 與控制組相等；同程序兩筆 Enter 在 step `351154334` 記錄 active 4→0，離頁終態 RGBA 等於 baseline。人工檢視兩張 PNG 亦確認英文四行完整清除、人物與右側動態區不受影響。詳見[第一百五十七階段](docs/re/phase-157-story-page8-runtime-conformance.md)。規格 017 只在此固定路徑升 CONFORMED，完整開機、存讀檔及第九頁仍未知。
+
+## 2026-09-23 — 第九頁 entry 補強與 lifecycle 停止線
+
+- 以本機 dosgolem `c0f6d76` 建置固定 runner，從合法 page8 state 雙重重生第九頁；兩份 content-safe entry 收據逐 byte 相同，20 glyph 均直接證實 `0763:03D6`／`0xCA` 返回 `0763:04FF`、同 SS、SP+`0x12` 及七 ABI word 高位為零，與既有單行 DRAFT identity 一致。
+- 從合法 page9 state 在 361M 送 Enter 的兩份 exit 收據亦逐 byte相同，但到 370M 都沒有 story fill 或 story pixel write。有界 key probe 證實 Enter 在 step `361000150` 由 BIOS AH=00 消費，之後只於 row 15 產生 command/status glyph；不能把這個轉場當成 page9 覆繪失效。真正清除故事區的合法後續動作與最早相交 pre-write 尚未知，故停止 READY typed-core、不接 production，頁 9 維持 DRAFT。證據、runner 與限制見[第一百三十四階段](docs/re/phase-134-story-page9-enter-trace.md)；私有原版、state 與完整收據只留 ignored `workplace/`。

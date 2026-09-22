@@ -176,7 +176,12 @@ watcher／presenter／CLI，control／2×／3×及同執行 active→clear 離�
 零缺字；第八頁仍未接 runtime。
 第八頁後的合法 Enter 又量到第九頁唯一固定故事行，繁中 DRAFT 已建立，右側姓名與動態列
 排除；全部 20 份 catalog 的本機倚天子集 1026 字模，正式 loader 對 6182 個譯文字元
-零缺字。第九頁尚未接 runtime 或做中文 A/B。
+零缺字。後續以固定 dosgolem runner 雙重重生，補齊該行 20 筆 verified RETF、同 SS、
+SP+`0x12` 與七 ABI word 高位為零；但從合法 page9 state 再送 Enter 雖在 BIOS
+`INT 16h AH=00` 被消費並進入 row 15 command/status，兩次至 370M 均未改寫 page9
+故事區，沒有可授權失效的最早相交 pre-write。真正清除故事區的後續玩家動作仍未知，
+因此第九頁保持 DRAFT，尚未接 runtime 或做中文 A/B；見
+[第一百三十四階段](docs/re/phase-134-story-page9-enter-trace.md)。
 第九頁後再送合法 Enter，兩次重播只見 row 15 command/status 重畫，無新固定故事行；
 因此沒有第十頁 catalog，不猜補譯文，見[第一百三十六階段](docs/re/phase-136-story-page10-enter-stop-line.md)。
 第 5、7、8 頁三處 DRAFT 譯文依私有原版畫面校訂後，20 份 catalog 的本機倚天子集
