@@ -9,7 +9,8 @@
 
 ## 目的與停止線
 
-本規格只定義一個供使用者本機使用的倚天 15 點 → 16×16 `GOLEMFNT` 建置器。它從正式 UTF-8 手冊
+本規格只定義一個供使用者本機使用的倚天 15 點 → 16×16 `GOLEMFNT` 建置器。它從正式 UTF-8
+手冊及介面
 catalog 導出 glyph 集合，對固定身份的本機字型檔做 Big5 索引，並產生可被 dosgolem `xlate.LoadFont`
 讀取的二進位。它不是字型散布器、授權意見、遊戲安裝器、前景色決策、手冊 presenter 接線，亦不改寫
 原版 EXE、VRAM、輸入、答案判定、存檔或任何遊戲資料。
@@ -36,9 +37,10 @@ python3 tools/eten_font.py build text/manual.zh-TW.tsv \
 ```
 
 `build` 必須接受一個或多個與現有 `catalog_font.py` 同 schema 的 UTF-8 TSV，先以既有嚴格 catalog
-驗證讀入，再取排序、去重後的 Unicode codepoints。第 1 版只接受本規格固定的手冊字元清單：691 glyph、
-character-list SHA-256 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`。這可防止翻譯更動、
-漏字或錯誤來源在沒有新證據審查時悄悄進入本機遊戲。
+驗證讀入，再取排序、去重後的 Unicode codepoints。第九十六階段首版手冊為 691 glyph、
+character-list SHA-256 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`，
+其固定輸出雜湊仍作歷史回歸。後續正式譯文增補必須更新測試收據並由正式 catalog
+重建字模；多 catalog 可共享文字 key，但合併的是字元聯集，不可把跨檔重用誤判為重複翻譯。
 
 三個 source argument 都必須是一般檔，並在任何解析前精確匹配下列 filename、byte length 與 SHA-256：
 
@@ -76,12 +78,12 @@ row 後，轉為 `00 00 + 15 rows`。這固定使用者選定的 `top-pad`：out
 ## 輸出、回讀與失敗即關閉
 
 輸出必須是按 codepoint 遞增、唯一的 `GOLEMFNT`：`GOLEMFNT` magic、little-endian `W=16`、`H=16`、
-glyph count=691，及每格 `u32 codepoint + u8 source tag + 32-byte bitmap`。所有 glyph 生成完成後才可以
+glyph count 等於正式 catalog 字元聯集，及每格 `u32 codepoint + u8 source tag + 32-byte bitmap`。所有 glyph 生成完成後才可以
 原子替換 `--out`；失敗不得留下新檔或覆蓋既有有效輸出。產出後需由 builder 自行嚴格回讀 header、總長、
 codepoint 順序、tag、32-byte bitmap 與末端位置，並以 dosgolem `xlate.LoadFont` 做本機 integration 回讀。
 
 除了 `U+0020`，任何全零 glyph 都失敗；任何缺 glyph、重複 codepoint、UTF-8／TSV 格式錯誤、catalog SHA
-漂移、codec 失敗、來源身份不符、非法／保留 Big5 區、索引超界、row 寬度不符、輸出／sidecar 路徑逃離、
+驗證失敗、codec 失敗、來源身份不符、非法／保留 Big5 區、索引超界、row 寬度不符、輸出／sidecar 路徑逃離、
 header／回讀不符都必須以非零結束，且不繪圖、不改 VRAM、不啟動遊戲。
 
 ## 測試與審查條件
@@ -89,10 +91,16 @@ header／回讀不符都必須以非零結束，且不繪圖、不改 VRAM、不
 實作階段需有不含第三方字型 bytes 的 synthetic tests，至少覆蓋：三來源格數與雜湊拒絕、ASCII／SPC／常用／
 次常用四分區、六個端點、三個保留 gap、codec／非兩 bytes 拒絕、top-pad row 與 ASCII x=4..11、唯一排序、
 無非空 blank、GOLEMFNT round-trip、atomic failure 及 `workplace/` 路徑限制。使用者本機來源只可在 Docker
-integration run 做 691 glyph 收據；公開 CI 在來源缺席時必須明確 skip，而不是下載、模擬或把字型塞進 fixture。
+integration run 做實際 glyph 數與來源雜湊收據；公開 CI 在來源缺席時必須明確 skip，而不是下載、模擬或把字型塞進 fixture。
 
 READY 審查已逐項確認上述 typed input、分區、codec、對齊、輸出、失敗模式、權利邊界與測試設計均無未知。
 本機建置器已實作為 `tools/eten_font.py`，12 項合成測試涵蓋來源身份、分區端點、字模格式、輸出路徑與
 第二次檔案替換失敗的回復。真實來源產出 25,583 bytes、691 字模，SHA-256 為
 `78c10dec8055110764013007899c4455b91256a78f94e212294ac9c51c01364e`；dosgolem `xlate.LoadFont`
 回讀為 16×16、691 字模。本工具的 CONFORMED 不代表全遊戲中文化或字型可公開散布。
+
+第九十七階段擴充為多 catalog 並重建校正後正式譯文：10 份 catalog 聯集 760 glyph，
+本機輸出 SHA-256 `6fb92d1bcde389ee02c2953cf175838f21be5dd8782f87aaad40c0837cb29624`；
+校正後手冊單檔 707 glyph、character-list SHA-256
+`71a67c4e475b0150ff65ea99c0d7666322485ae5884a414e6ce649a0d558bb45`。
+以上為新增收據，未抹除首版歷史輸入與輸出。

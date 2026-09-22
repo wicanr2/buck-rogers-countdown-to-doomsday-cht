@@ -77,7 +77,7 @@ Phase 75 已由 dosgolem guarded glyph watcher 將此清冊接成 typed events�
 重疊；配色不屬於矩形資料。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
-已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 22 筆。
+已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 23 筆。
 
 `manual-overlay-layout.tsv` 是保留原版頁碼、標題與序數時唯一的正式正文幾何：只清除
 `[7,312)×[72,184)`，以 x=16、y=72 的 36 欄×14 行格顯示，單頁容量固定為 504 字。

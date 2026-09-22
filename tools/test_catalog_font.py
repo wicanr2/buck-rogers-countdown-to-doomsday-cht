@@ -171,11 +171,11 @@ class CatalogFontTest(unittest.TestCase):
         entries = read_catalog(manual_catalog)
         manifest, source, license_path, _ = self.write_candidate(entries)
         validation = validate_font_candidate(entries, manifest, source, license_path)
-        self.assertEqual(validation.required_glyphs, 691)
-        self.assertEqual(validation.found_glyphs, 691)
+        self.assertEqual(validation.required_glyphs, 707)
+        self.assertEqual(validation.found_glyphs, 707)
         self.assertEqual(
             validation.character_list_sha256,
-            "dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f",
+            "71a67c4e475b0150ff65ea99c0d7666322485ae5884a414e6ce649a0d558bb45",
         )
         self.assertFalse((self.root / "manual-synthetic.golemfnt").exists())
 

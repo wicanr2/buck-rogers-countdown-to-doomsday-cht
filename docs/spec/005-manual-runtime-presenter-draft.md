@@ -1,6 +1,7 @@
 # 005 — 手冊繁中輸出端 presenter 整合
 
-狀態：DRAFT  
+狀態：DRAFT（全範圍）；首題、錯答換題第二題及 restore 穩定點的窄範圍實作與收據見
+[第九十七階段](../re/phase-97-manual-cjk-density.md)及 dosgolem spec 222，遊戲內返回／存讀檔尚未驗收。
 日期：2026-09-21  
 前置：[手冊段落覆繪](002-manual-paragraph-overlay-draft.md)、
 [手冊事件 adapter](003-manual-event-adapter.md)、[第十八階段 lifecycle 證據](../re/phase-18-manual-generation-invalidation.md)、

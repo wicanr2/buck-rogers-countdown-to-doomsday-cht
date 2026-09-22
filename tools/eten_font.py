@@ -13,15 +13,15 @@ import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
-from catalog_font import CatalogError, character_list_bytes, catalog_codepoints, read_catalogs
+from catalog_font import CatalogError, Entry, character_list_bytes, catalog_codepoints, read_catalog
 
 
 MAGIC = b"GOLEMFNT"
 WIDTH = HEIGHT = 16
 GLYPH_BYTES = 32
-EXPECTED_CHARACTER_LIST_SHA256 = "dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f"
-EXPECTED_GLYPHS = 691
-EXPECTED_OUTPUT_SHA256 = "78c10dec8055110764013007899c4455b91256a78f94e212294ac9c51c01364e"
+MANUAL_CHARACTER_LIST_SHA256 = "dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f"
+MANUAL_GLYPHS = 691
+MANUAL_OUTPUT_SHA256 = "78c10dec8055110764013007899c4455b91256a78f94e212294ac9c51c01364e"
 SOURCE_ASCII = 1
 SOURCE_SPC = 2
 SOURCE_STD_COMMON = 3
@@ -232,6 +232,25 @@ def _publish_pair(font_path: Path, font_data: bytes, manifest_path: Path, manife
                     pass
 
 
+def _read_catalog_glyph_entries(paths: list[Path]) -> list[Entry]:
+    """逐檔採既有 strict TSV 驗證，再對 glyph 而不是文字 key 合併。"""
+    if not paths:
+        raise CatalogError("至少需要一份正式 catalog")
+    entries: list[Entry] = []
+    for path in paths:
+        # 已接通 UI catalog 可共享同一 text key；read_catalogs 的跨檔 key
+        # 唯一性規則不適用於純字型 coverage。
+        entries.extend(read_catalog(path))
+    return entries
+
+
+def _catalog_metadata(paths: list[Path]) -> list[dict[str, str]]:
+    return sorted(
+        ({"filename": path.name, "sha256": _sha256(path.read_bytes())} for path in paths),
+        key=lambda item: (item["filename"], item["sha256"]),
+    )
+
+
 def build(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path, out: Path, manifest_out: Path, repository: Path | None = None) -> dict[str, object]:
     repository = (repository or Path(__file__).resolve().parents[1]).resolve()
     safe_out = _workplace_path(out, repository)
@@ -244,26 +263,26 @@ def build(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path, 
     input_paths = {path.resolve() for path in inputs}
     if safe_out in input_paths or safe_manifest in input_paths:
         raise CatalogError("輸出不得與 catalog 或字型來源重疊")
-    entries = read_catalogs(catalogs)
+    entries = _read_catalog_glyph_entries(catalogs)
     character_sha = _sha256(character_list_bytes(entries))
     codepoints = catalog_codepoints(entries)
-    if character_sha != EXPECTED_CHARACTER_LIST_SHA256 or len(codepoints) != EXPECTED_GLYPHS:
-        raise CatalogError("catalog 不符合固定的 691 glyph character-list SHA-256")
     asc = _read_source(asc_path, "asc")
     spc = _read_source(spc_path, "spc")
     std = _read_source(std_path, "std")
     glyphs = [glyph_for(codepoint, asc, spc, std) for codepoint in codepoints]
     font_data = encode_golemfnt(glyphs)
     reread = decode_golemfnt(font_data)
-    if reread != glyphs or len(reread) != EXPECTED_GLYPHS:
+    if reread != glyphs or len(reread) != len(codepoints):
         raise CatalogError("GOLEMFNT 回讀不符")
-    if _sha256(font_data) != EXPECTED_OUTPUT_SHA256:
-        raise CatalogError("GOLEMFNT SHA-256 不符合已驗證的 top-pad 收據")
+    output_sha = _sha256(font_data)
+    if character_sha == MANUAL_CHARACTER_LIST_SHA256 and len(codepoints) == MANUAL_GLYPHS and output_sha != MANUAL_OUTPUT_SHA256:
+        raise CatalogError("手冊 GOLEMFNT SHA-256 不符合已驗證的 top-pad 收據")
     manifest: dict[str, object] = {
+        "catalogs": _catalog_metadata(catalogs),
         "character_list_sha256": character_sha,
         "distribution_status": "local-only-not-for-distribution",
         "format": {"glyphs": len(glyphs), "height": HEIGHT, "magic": MAGIC.decode("ascii"), "width": WIDTH},
-        "output_sha256": _sha256(font_data),
+        "output_sha256": output_sha,
         "sources": {name: {"bytes": spec[1], "filename": spec[0], "sha256": spec[2]} for name, spec in sorted(SOURCE_SPECS.items())},
         "top_pad": {"ascii_x": [4, 11], "source_rows": [0, 14], "output_rows": [1, 15]},
     }
@@ -275,7 +294,7 @@ def build(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path, 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
-    command = subparsers.add_parser("build", help="建立固定 691 glyph 的本機倚天 top-pad 字型")
+    command = subparsers.add_parser("build", help="由一份或多份正式 catalog 建立本機倚天 top-pad 字型")
     command.add_argument("catalog", nargs="+", type=Path)
     command.add_argument("--asc", required=True, type=Path)
     command.add_argument("--spc", required=True, type=Path)

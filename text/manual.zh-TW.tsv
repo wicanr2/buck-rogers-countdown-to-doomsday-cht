@@ -21,3 +21,4 @@ manual.log.56.bucks_capture	威瑪（Wilma）泣不成聲地說：「巴克被�
 manual.log.57.acidic_victory	你們跟著蛙王回到金星的酸液池塘旁。上百的酸液蛙群集在你們身旁，爭著目睹趕走 RAM 的英雄們。蛙王作了一段極長的致詞。但很可惜，你們連一個字也聽不懂！最後，眾蛙在鼓掌喝采時激起的酸液，使你們不得不走避。	manual-and-runtime
 manual.log.63.alert_screen	螢幕上顯示：「所有 RAM 軍隊請注意，金星基地全部進入紫色警戒中。」	manual-and-runtime
 manual.log.68.lens_treatise	Scot.dos 嚴肅地說：「以我們所獲得的情報看來，RAM 應是在製造一種以極大透鏡聚集並反射太陽能量的設備。反射的能量應足以摧毀地球上的特定目標，也許是整塊大陸！在裝備旁的護殼應可以限制其力量。」	manual-and-runtime
+manual.rules.technical_skills	技術性技能包括破解保安系統、通訊操作、爆破、急救、臨時修復、開鎖、電器維修、維生系統維修、機械維修、核能引擎維修、火箭船體維修、武器維修及感測器操作。破解保安系統、通訊操作、爆破、開鎖與感測器操作可在冒險中使用；急救可在冒險與戰鬥中使用；臨時修復及各項維修可在冒險與太空戰鬥中使用。	manual-and-runtime

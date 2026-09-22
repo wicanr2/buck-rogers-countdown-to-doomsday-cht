@@ -121,7 +121,7 @@ class EtenFontTest(unittest.TestCase):
         manifest = self.repo / "workplace/font.json"
         out.write_bytes(b"old")
         manifest.write_bytes(b"old-manifest")
-        with patch("eten_font.SOURCE_SPECS", self.specs()), patch("eten_font.EXPECTED_CHARACTER_LIST_SHA256", "x"), patch("eten_font.EXPECTED_GLYPHS", 0):
+        with patch("eten_font.SOURCE_SPECS", self.specs()), patch("eten_font._read_source", side_effect=CatalogError("synthetic source failure")):
             with self.assertRaises(CatalogError):
                 build([], self.asc, self.spc, self.std, out, manifest, self.repo)
         self.assertEqual(out.read_bytes(), b"old")
@@ -145,11 +145,24 @@ class EtenFontTest(unittest.TestCase):
             if calls == 2:
                 raise OSError("synthetic second replace failure")
             return real_replace(source, destination)
-        with patch("eten_font.SOURCE_SPECS", self.specs()), patch("eten_font.EXPECTED_OUTPUT_SHA256", expected), patch("eten_font.os.replace", side_effect=fail_second):
+        with patch("eten_font.SOURCE_SPECS", self.specs()), patch("eten_font.MANUAL_OUTPUT_SHA256", expected), patch("eten_font.os.replace", side_effect=fail_second):
             with self.assertRaises(OSError):
                 build([catalog], self.asc, self.spc, self.std, out, manifest, self.repo)
         self.assertEqual(out.read_bytes(), b"old-font")
         self.assertEqual(manifest.read_bytes(), b"old-manifest")
+
+    def test_multiple_catalogs_merge_glyphs_despite_shared_text_key(self):
+        first = self.repo / "workplace/first.tsv"
+        second = self.repo / "workplace/second.tsv"
+        first.write_text("key\ttranslation\tsource\nshared\t甲\truntime\n", encoding="utf-8")
+        second.write_text("key\ttranslation\tsource\nshared\t乙\truntime-interface\n", encoding="utf-8")
+        out = self.repo / "workplace/union.golemfnt"
+        manifest_out = self.repo / "workplace/union.json"
+        with patch("eten_font.SOURCE_SPECS", self.specs()):
+            manifest = build([first, second], self.asc, self.spc, self.std, out, manifest_out, self.repo)
+        self.assertEqual(manifest["format"]["glyphs"], 2)
+        self.assertEqual([glyph.codepoint for glyph in decode_golemfnt(out.read_bytes())], sorted(map(ord, "甲乙")))
+        self.assertEqual([entry["filename"] for entry in manifest["catalogs"]], ["first.tsv", "second.tsv"])
 
     def test_rejects_symlink_and_hardlink_alias_outputs(self):
         out = self.repo / "workplace/font.golemfnt"
@@ -168,7 +181,7 @@ class EtenFontTest(unittest.TestCase):
     def test_formal_catalog_character_list_is_fixed(self):
         catalog = Path(__file__).resolve().parents[1] / "text/manual.zh-TW.tsv"
         from catalog_font import read_catalog
-        self.assertEqual(hashlib.sha256(character_list_bytes(read_catalog(catalog))).hexdigest(), "dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f")
+        self.assertEqual(hashlib.sha256(character_list_bytes(read_catalog(catalog))).hexdigest(), "71a67c4e475b0150ff65ea99c0d7666322485ae5884a414e6ce649a0d558bb45")
 
 
 if __name__ == "__main__":

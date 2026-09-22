@@ -12,7 +12,7 @@ CATALOG = ROOT / "text/manual.zh-TW.tsv"
 
 class ManualOverlayLayoutTest(unittest.TestCase):
     def test_formal_layout_and_catalog(self):
-        self.assertEqual(subject.validate(LAYOUT, CATALOG), 22)
+        self.assertEqual(subject.validate(LAYOUT, CATALOG), 23)
 
     def test_rejects_geometry_drift(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -41,7 +41,10 @@ python3 tools/eten_font.py build text/manual.zh-TW.tsv \
   --manifest-out workplace/phase96-font/buckrogers-eten-top-pad.json
 ```
 
-目前固定手冊集合為 691 個字模；實際來源與輸出均驗證 SHA-256，建置失敗時保留既有產物。
+第九十六階段最初的 22 段手冊集合為 691 個字模；新增段落後目前 23 段手冊為 707 個字模。
+建置器亦可合併 10 份正式介面與手冊 catalog，目前本機完整聯集為 760 個字模，
+來源與輸出均驗證 SHA-256，建置失敗時保留既有產物。完整入口與雜湊見
+[第九十七階段收據](../docs/re/phase-97-manual-cjk-density.md)。
 它不使用 Unifont validator；兩套來源解析保持各自格式。字型與生成產物只留在本機 `workplace/`，
 不得加入 Git、GitHub、Release 或公開封包。契約見
 [spec 008](../docs/spec/008-eten-top-pad-local-font-builder-draft.md)。
