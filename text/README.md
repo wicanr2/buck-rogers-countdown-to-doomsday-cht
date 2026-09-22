@@ -126,9 +126,11 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 首屏五行已接 dosgolem runtime 並通過 2×／3× 同狀態 A/B 及 Enter 轉頁失效驗證；
 完整開機玩家路徑與存讀檔仍未驗，規格 010 保持 READY，不外推整款遊戲已中文化。
 `story-page2-events.tsv` 的四筆固定敘事 identity 已依 spec 011 審核為 `confirmed/READY`；
-`story-page2.zh-TW.tsv` 的文字仍是需實際畫面驗收的編輯性候選；
+`story-page2.zh-TW.tsv` 的文字屬編輯性譯文，已於已量原版畫面完成 2×／3× A/B 驗收；
 `tools/story_page2_catalog.py` 另外驗證 row 17–20、排除 row 24 動態狀態列與 39 格保守容量，
-尚未接 runtime。Chiagong 的「奇亞貢」目前只是未由中文手冊逐字確認的 DRAFT 音譯。
+正式 dosgolem runtime 已接第二頁四行與合法 Enter 離頁失效，限縮驗收見
+[`docs/re/phase-141-story-page2-runtime-conformance.md`](../docs/re/phase-141-story-page2-runtime-conformance.md)。
+Chiagong 的「奇亞貢」仍只是未由中文手冊逐字確認的編輯性音譯。
 `story-page3-events.tsv` 是第三頁五行固定敘事的 READY 身分目錄；`story-page3.zh-TW.tsv` 仍是編輯性譯文；
 `tools/story_page3_catalog.py` 驗證 row 17–21、排除 row 24 動態狀態列與 39 格保守容量。
 第三頁五行依原版畫面語意翻譯，尚未接正式 runtime；READY 僅及 typed adapter 契約。
