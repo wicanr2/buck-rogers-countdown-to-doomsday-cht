@@ -1,13 +1,15 @@
 # 005 — 手冊繁中輸出端 presenter 整合
 
-狀態：DRAFT（全範圍）；首題、錯答換題第二題及 restore 穩定點的窄範圍實作與收據見
-[第九十七階段](../re/phase-97-manual-cjk-density.md)及 dosgolem spec 222，遊戲內返回／存讀檔尚未驗收。
-日期：2026-09-21  
-現況訂正（2026-09-22）：下列「正式字型候選」「前景色未知」與未勾選字型／首題收據欄位
-記錄的是本規格起草時狀態，已由[第九十六階段](../re/phase-96-eten-manual-runtime.md)及
-dosgolem `222-buck-rogers-manual-runtime-presentation.md` 的窄範圍 CONFORMED 證據補足；
-不能再用那些舊列宣稱首題尚無正式色彩來源或字型。全範圍仍因正常返回、存讀檔與
-其餘題目抽測未完而維持 DRAFT。
+狀態：**CONFORMED（明確 presenter 範圍）**。本狀態只涵蓋 39／39 catalog 與字型預檢、
+14 行 renderer、2×／3× RGBA，以及已量測的首題、錯答換題、第三題與成功返回同狀態收據。
+**不包含 39 題逐題正常玩家路徑、存檔／讀檔或正式互動視窗；39／39 catalog 不等於
+39／39 runtime 驗收。**
+日期：2026-09-23
+現況訂正（2026-09-23）：第九十六至一百零四階段與 dosgolem spec 216、217、220、221、
+222 已推翻本文件早期的「正式字型候選」「前景色未知」「尚未接 runtime」及「尚未驗證
+遊戲內返回」狀態。現行本機正式字型含 961 個 glyph，已量原版色彩事件，並完成下列
+明確範圍的 2×／3× 同狀態驗收。其餘 38 題不可因 catalog 靜態預檢而宣稱逐題 runtime
+完成；存讀檔與正式互動視窗也仍在本規格範圍外。
 前置：[手冊段落覆繪](002-manual-paragraph-overlay-draft.md)、
 [手冊事件 adapter](003-manual-event-adapter.md)、[第十八階段 lifecycle 證據](../re/phase-18-manual-generation-invalidation.md)、
 [第八十五階段整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)、
@@ -21,7 +23,7 @@ dosgolem `222-buck-rogers-manual-runtime-presentation.md` 的窄範圍 CONFORMED
 
 ## 目的與邊界
 
-本規格定義未來 `apps/buckrogers` 手冊 presenter 必須補齊的輸出端接線。它只把既有
+本規格定義 `apps/buckrogers` 手冊 presenter 的輸出端接線。它只把既有
 `DisplayRequest` 轉為 2×或3× RGBA 的繁中段落；不修改 DOS VRAM、原版記憶體、BIOS
 輸入、答案比較、檔案或存檔，也不處理 host 設定面板。
 
@@ -37,18 +39,18 @@ dosgolem `222-buck-rogers-manual-runtime-presentation.md` 的窄範圍 CONFORMED
 | presentation lifecycle queue | 已證實／CONFORMED | dosgolem spec 216 與第 86 階段已將 exact begin、active-context clear、catalog-hit request 以 generation 輸出；queue value-copy 不持有 renderer、machine 或 input 參照。 |
 | 正常玩家事件 | 已證實 | 第 85 階段以 `phase12-before-question.state` 在 #266,557,246 得到 `manual.page34.deimos_prison.word10`；完整事件順序及固定 state 見研究收據。 |
 | 新題／局部 clear 邊界 | 已證實 | `2A33:01ED` 題首開始新 generation；`026F:029C` 可在 pending 中途出現；只有 `2A33:0309` 的 guarded post-call 可提交 request。第 18 階段的答錯重抽反例排除了「等全畫面清空」與「及早顯示新段落」。 |
-| 正式正文幾何與容量 | 已證實 | `text/manual-overlay-layout.tsv`、`tools/manual_overlay_layout.py`；22 筆正式譯文全部通過，最長 236 字。 |
+| 正式正文幾何與容量 | 已證實 | `text/manual-overlay-layout.tsv`、`tools/manual_overlay_layout.py`；39 筆正式譯文全部通過 504 字元上限。這是 catalog／layout 預檢，不是 39 題逐題 runtime 證據。 |
 | 2×／3× RGBA 基礎 | 已證實 | `xlate.Layer` 與 `ScaleIndexedRGBA` 只讀 indexed framebuffer／palette，建立 RGBA；既有 runtime overlay constructor 已拒絕 2、3 以外的倍率。 |
-| 手冊多行純核心 | 已證實／CONFORMED（純核心） | dosgolem spec 217 與第 87 階段：唯一 layout loader、14 個背景＋14 個文字 stamp、2×／3×、generation state 與 synthetic RGBA containment；尚未接入正常玩家 runtime。 |
+| 手冊多行 presenter | 已證實／CONFORMED | dosgolem spec 217、222 與第 87、96 至 104 階段：唯一 layout loader、14 個背景＋14 個文字 stamp、2×／3×、generation state 與 RGBA containment，並已接入正常玩家 instruction loop。 |
 | presentation queue consumer | 已證實／CONFORMED（純核心） | dosgolem spec 220 與第 90 階段：只接受 `PresentationEvents()` append-only value snapshot，先驗證完整已消費 prefix，僅在 `Apply` 成功後推進 cursor；未接 watcher callback、command 或遊戲 loop。 |
 | watcher snapshot bridge | 已證實／CONFORMED（純核心） | dosgolem spec 221 與第 91 階段：只將 `PresentationEvents()` defensive snapshot 轉送給 consumer，沒有第二份 cursor；未接 command、frame loop 或玩家畫面。 |
-| 字型需求清單 | 已證實 | 由正式 `manual.zh-TW.tsv` 重生的未追蹤清單有 691 個碼點，SHA-256 為 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`。 |
+| 字型需求與正式本機字型 | 已證實／CONFORMED（本機使用） | 正式 catalog 與目前 story／UI 需求已重生為 961 glyph 本機 GOLEMFNT；第 100、102、104 階段的 coverage／fontcheck 均為零缺字。此結論不授權公開散布字型。 |
 | 候選 manifest 驗證器 | 已證實／CONFORMED（候選審查工具） | project spec 006 的 `validate-candidate` 以 strict manifest 驗證 source／license SHA、既有 parser coverage 與 character-list SHA，無寫入字型路徑；它不採用候選或判定可散布。 |
-| 正式字型候選 | DRAFT | 使用者已授權其已購買的本機倚天 15 點字型用於本機遊戲，且已選定 `top-pad`。第 94 階段的 16×16／691 glyph 對齊 preview 均通過；正式 ETen parser 與前景色來源仍未 READY，故不接入 runtime，且不得公開散布。舊 GOLEMFNT 最大仍只有 81 glyph，不能當作正式來源。 |
+| 正式字型 | 已證實／CONFORMED（本機使用） | project spec 008 與第 96、100、102、104 階段：本機倚天 15 點字型採 `top-pad` 轉成 16×16 GOLEMFNT，已接 runtime；2× 維持 16×16，3× 的 CJK ink 為 22×22、置於 24px cell 並偏移 1px，ASCII 維持 16×16。不得公開散布原字型或衍生字模。 |
 | 可直接重用的手冊 presenter | 已證實為否 | `RuntimeMenuOverlay` 驗證的是單列 `MenuOverlayRects`／`TextEvent` 幾何；它沒有讀取手冊 layout TSV、14 行段落分格或手冊 lifecycle 接線。可重用的是其 RGBA／`xlate.Layer` 模式，不是該 adapter。 |
 
-上表的 dosgolem source 均固定為本機 branch `buck-rogers-cht-output-overlay` 的
-`a4a87aad48607ea6ff6e4646de1292f5caaeade9`；位址為 dosgolem 實模式
+上表的 dosgolem 實作與測試版本分別由所引 spec 216、217、220、221、222 的 provenance
+欄位固定；不可再以本規格起草時的單一舊 commit 代替各階段收據。位址為 dosgolem 實模式
 `segment:offset`，不是 IDA 線性位址。
 
 ## 擬定 presenter 契約
@@ -70,24 +72,22 @@ dosgolem `222-buck-rogers-manual-runtime-presentation.md` 的窄範圍 CONFORMED
 5. 請求、文字鍵、generation、原版題目 identity 與手冊資料均由既有 watcher／catalog 提供；
    presenter 不重新比對英文、不接受原始答案，也不以未命中或近似條目補譯。
 
-## 現有接線缺口
+## 現行接線與證據邊界
 
-第八十六階段已在 dosgolem spec 216 實作並 CONFORM `PresentationEvents()`：exact begin、
-active-context clear、catalog-hit request 皆帶 generation，且 accessor 回傳 value-copy。它只提供
-presentation metadata，沒有 machine write、鍵盤或 DOS input 路徑；receipt 也只投影 key／rune count。
-第八十七階段的 `RuntimeManualOverlay` 已將此 value 型別消費為純核心，並以兩個 layer 完成 14 行
-background／text 合成。第九十階段的 `ManualPresentationConsumer` 會以完整 prefix 一致性、成功後才
-前進的 cursor 消費 snapshot；第九十一階段的 `ManualPresentationBridge` 已成為唯一 watcher 讀取點，
-只轉送 `PresentationEvents()` 給 consumer，仍沒有 command 或遊戲 loop 接線。未來 runtime 必須由此
-bridge／consumer 路徑消費 queue，不得倒回 `Observations()` 猜測世代。
+dosgolem spec 216、217、220、221、222 已把 `PresentationEvents()` 的 exact begin、
+active-context clear 與 catalog-hit request，經唯一 snapshot bridge／consumer 接到
+`RuntimeManualOverlay` 與正式 instruction loop。generation、完整 prefix、成功後才前進 cursor、
+14 行原子 Apply、缺字／非法倍率／不連續事件失敗即關閉等契約都有定向測試；presentation 路徑
+不寫 machine、鍵盤、答案比較或 DOS input。
 
-第九十三階段已盤點可覆蓋 691 glyph 的本機倚天 15 點字模，第九十四階段則在使用者明確授權的本機
-範圍重生兩個 16×16／691 glyph 對齊 preview；完整檔案 metadata、Big5 分區、preview 收據與未決項目見
-spec 007。使用者授權的是本機使用，不是公開散布；候選目錄仍沒有完整授權告知。使用者已選定 `top-pad`，
-現有正文區仍沒有正式前景色來源；不得把 preview 的 controlled sampling 當成 runtime
-策略。正式 parser、每 glyph 回讀、配色契約與 normal-player A/B 仍須按 `font/README.md`、spec 007 與
-dosgolem spec 218 完成。第九十二階段的 `validate-candidate` 只支援 Unifont，因而正確拒絕此候選；不得
-為繞過停止線而假造 manifest 或把倚天格式宣稱為已通過。
+正式 constructor 會預檢 39 筆 catalog translation 與 glyph coverage。2× 保持 16×16；3× 使用
+24px cell，CJK ink 為 22×22 並偏移 1px，ASCII 維持 16×16。正常玩家收據已覆蓋首題、答錯後
+generation 清除與第二題 exact hit、第三題 exact hit，以及答對成功返回後清除；2×／3× A/B 的
+安全矩形外差異為零，相關原版 indexed frame、machine／DOS state 亦依各收據相等。
+
+上述證據只足以 CONFORM 這個明確 presenter 範圍。39／39 catalog 是靜態資料、layout 與字型預檢，
+不能替代其餘 38 題逐題正常玩家 runtime；存檔／讀檔與正式互動視窗也未納入本次驗收。倚天字型
+及衍生 GOLEMFNT 只獲准本機使用，不得公開散布。
 
 ## 與 host 倍率控制的關係
 
@@ -99,18 +99,23 @@ dosgolem spec 218 完成。第九十二階段的 `validate-candidate` 只支援 
 
 ## READY 前置與 CONFORMED 驗收
 
-進入正式程式前必須完成：
+明確 presenter 範圍已完成：
 
 - [x] dosgolem spec 216 的 lifecycle queue、generation、begin／clear／request 負向測試及正常玩家 metadata 收據。
 - [x] dosgolem spec 217 的 layout loader、14 行 row-major builder、504／505 邊界、缺字與非法倍率的失敗即關閉純核心測試。
 - [x] dosgolem spec 220 的 append-only queue consumer、prefix 漂移／縮短拒絕、partial-failure cursor 與純核心測試。
 - [x] dosgolem spec 221 的 watcher snapshot bridge、單一轉送、consumer error propagation 與純核心測試。
 - [x] project spec 006 的候選 manifest、source／license hash、coverage 與無寫入驗證工具測試。
-- [ ] 可重生且已授權的手冊 GOLEMFNT 子集，以及 691 glyph 的回讀驗證。
-- [ ] 正常第一題及答錯換題的 2×／3× same-state output 收據；request 前、catalog miss 與
-  pending clear 時都不得畫中文。
+- [x] project spec 008 的本機倚天 `top-pad` builder、現行 961 glyph GOLEMFNT 回讀與零缺字驗證。
+- [x] 正常首題、答錯換題、第三題及答對成功返回的 2×／3× same-state output 收據；request 前、
+  catalog miss、pending clear 與返回後都不得畫中文。
+- [x] 39／39 catalog／layout／glyph 預檢；此項明確不代表 39 題逐題正常玩家 runtime 驗收。
+- [x] 範圍排除已記錄：其餘 38 題逐題 runtime、存檔／讀檔與正式互動視窗不在本次 CONFORMED 聲明內。
 
 CONFORMED 時，原文／繁中 A/B 必須使用同一 state、原版資料、輸入與受控亂數條件（如有）；
 原版 indexed framebuffer、記憶體、輸入、答案驗證、檔案及存檔必須一致，差異只可出現在
 `[7,312)×[72,184)` 的核准 RGBA 像素。另須證實答錯重抽會在新題 begin 先移除舊段落，並於
 新題完整 `word?` 後才顯示新段落，沒有殘字。
+
+第 96、97、102、103、104 階段的收據已在上述明確範圍滿足這些條件；未列入的玩家路徑仍須
+另行取得同狀態收據後，才能擴張本規格的 CONFORMED 範圍。
