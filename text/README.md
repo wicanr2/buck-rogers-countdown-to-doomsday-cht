@@ -61,6 +61,11 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `technical-skill-refusal-events.tsv` 與 `technical-skill-exit-events.tsv` 保存技術技能列下移、
 加後減、Escape→`N` 回復及 Escape→`Y` 進入身體圖示選擇的 exact identity；不含動態點數
 或原版提示全文。
+`body-icon-events.tsv` 與 `body-icon.zh-TW.tsv` 沿用第四十八階段移動／拒絕／確認的正常
+玩家 trace，整理身體圖示畫面的七筆固定介面文字；`tools/body_icon_catalog.py` 會回查三份
+既有事件清冊、驗證容量與雙向 coverage。`body-icon-text-safe-rects.tsv` 依同一 exact
+identity 建立七筆 logical 安全矩形，並以 `tools/body_icon_text_safe_rects.py` 驗證同一畫面
+群組內不重疊；這一階段仍只完成前置資料，尚未接 runtime overlay。
 `skill-action-bar-events.tsv` 保存職業／技術技能頁底部五個操作標籤的長度、
 SHA-256、逐字 caller、幾何與一般／焦點色彩。這些標籤經 `0763:026B`
 的低階字元路徑，不是現有高階 dispatcher 事件；disabled 狀態尚未觀測，固定為

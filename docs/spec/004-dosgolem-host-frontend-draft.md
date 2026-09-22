@@ -53,6 +53,9 @@ input、palette 與 active layer 重繪仍屬未接線 frontend 責任。這個�
 
 - 實際視窗 backend、平台支援、host 文案／字型、鍵盤焦點、Apply 後面板狀態與設定跨重啟持久化均為未知；不是以
   headless CLI 或 DOS mouse injection 推定。
+- 使用者於 2026-09-22 確認第一個可玩版本先支援 Linux，架構保留日後擴充
+  Windows／macOS 的能力；第一版三平台同步打包與驗收已排除。這只定平台優先序，
+  不替視窗 backend、鍵盤焦點、面板收合或持久化定案。
 - 不改原版 EXE、DOS 輸入、原版手冊驗證、存檔結構、遊戲規則或 adapter 的 exact output identity。
 
 ## READY 前置與未來驗收

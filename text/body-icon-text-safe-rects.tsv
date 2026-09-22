@@ -1,0 +1,8 @@
+screen	event_key	x	y	width	height	draw_x	draw_y	capacity_cells	line_count	overflow_policy
+confirmation	body.icon.confirmation	0	192	136	8	0	192	17	1	single-line-reject
+save_prompt	body.icon.save_prompt	0	192	64	8	0	192	8	1	single-line-reject
+body_icon	body.icon.old.label	64	48	24	8	64	48	3	1	single-line-reject
+body_icon	body.icon.old.action	24	80	112	8	24	80	14	1	single-line-reject
+body_icon	body.icon.new.label	64	96	24	8	64	96	3	1	single-line-reject
+body_icon	body.icon.new.action	24	128	112	8	24	128	14	1	single-line-reject
+selection	body.icon.selection.instruction	0	192	160	8	0	192	20	1	single-line-reject
