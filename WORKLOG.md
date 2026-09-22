@@ -1372,3 +1372,7 @@
 ## 2026-09-23 — 第六頁限縮 READY
 
 - Terra 在 ignored `workplace/page6-ready-atomic-core/` 建立可丟棄六行 typed-core、失敗即關閉負例及雙倍率字型 containment；以本機 dosgolem `6dcc427` 重建 runner，從合法第五／六頁 state 各雙重重生，與先前 entry／exit 收據逐 byte 相同。另位 Terra 獨立審查訂正錯誤檔名造成的初步誤判後，確認[規格 015](docs/spec/015-story-page6-overlay-ready.md)與六筆 event catalog 只在固定六行及已量 Enter 離頁升 READY；正式 watcher／presenter／CLI 與同狀態 A/B 未完成。證據與勘誤見[第一百四十九階段](docs/re/phase-149-story-page6-ready-prerequisite-diagnostics.md)。
+
+## 2026-09-23 — 第六頁正式接線與限縮 CONFORMED
+
+- Terra 在本機 dosgolem `e3e1db1` 完成六行 core，主代理 `a7304e3` 補真正缺字及 presenter 原子負例，Terra `0ce4948` 接正式 CLI。主代理以最新 runner 從合法第五頁終態重生 control／2×／3×穩定及同執行 Enter 離頁：六 key 啟用、零缺字、安全矩形外零差、原版事件與正規化 machine／DOS 全等；離頁 active 6→0，終態 RGBA 等於 baseline。Docker Go test／vet／race 通過；[第一百五十二階段](docs/re/phase-152-story-page6-runtime-conformance.md)保存私有收據雜湊、工具與權利邊界。規格 015 只在固定路徑升 CONFORMED，不外推完整開機、存讀檔或其餘遊戲文字。

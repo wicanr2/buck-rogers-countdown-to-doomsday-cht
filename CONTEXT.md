@@ -122,7 +122,12 @@ watcher／presenter／CLI，control／2×／3×及同執行 active→clear 離�
 補 200 glyph 的雙重 return／ABI 收據及第六頁離頁最早相交 pre-write；
 後續由本機 `6dcc427` 重建 runner 並逐 byte 重生兩組收據，私有 typed-core
 與雙倍率字型 containment 通過獨立審查。[規格 015](docs/spec/015-story-page6-overlay-ready.md)
-與六筆 event catalog 已限縮升 READY；正式 runtime／A/B 尚未完成。
+與六筆 event catalog 當時限縮升 READY；其後本機 dosgolem `e3e1db1`、
+`a7304e3`、`0ce4948` 接正式 core、負例與 CLI。
+[第一百五十二階段](docs/re/phase-152-story-page6-runtime-conformance.md)
+以 control／2×／3×及同執行 Enter 離頁同狀態 A/B 驗證六行可讀、零缺字、
+安全矩形外零差、原版 machine／DOS 全等與失效後無殘字。因此規格 015
+**僅上述固定路徑升 CONFORMED**；完整開機、其他離頁及存讀檔仍未知。
 全部 17 份 catalog 的倚天聯集曾重建為 1014 glyph，dosgolem 正式 loader
 對當時譯文字元零缺字；第六頁現行字型另由本機 1024 字模 loader
 回讀零缺字，但仍不代表第六頁已接通 runtime。

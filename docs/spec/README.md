@@ -19,4 +19,4 @@
 | [第三頁劇情文字輸出端覆繪](012-story-page3-overlay-draft.md) | CONFORMED（僅五行與已量 Enter 離頁） | 雙倍率正式 runtime、五行 exact identity、逐筆 far-return、同狀態 A/B 與 pre-write 清除已驗；其他離頁、完整開機與存讀檔未驗。 |
 | [第四頁劇情文字輸出端覆繪](013-story-page4-overlay-draft.md) | CONFORMED（僅六行與已量 Enter 離頁） | 六行正式 runtime、雙倍率同狀態 A/B、失敗即關閉矩陣與 page4→page5 pre-write 清除已驗；完整開機及存讀檔未驗。 |
 | [第五頁劇情文字輸出端覆繪](014-story-page5-overlay-ready.md) | CONFORMED（僅五行與已量 Enter 離頁） | 五行正式 runtime、雙倍率同狀態 A/B、失敗即關閉矩陣與 page5→page6 pre-write 清除已驗；完整開機及存讀檔未驗。 |
-| [第六頁劇情文字輸出端覆繪](015-story-page6-overlay-ready.md) | READY（僅六行與已量 Enter 離頁） | 六行 exact identity、200 筆 far-return、六列安全矩形與 page6→page7 pre-write 契約已審核；尚未接 runtime 或完成 A/B。 |
+| [第六頁劇情文字輸出端覆繪](015-story-page6-overlay-ready.md) | CONFORMED（僅六行與已量 Enter 離頁） | 六行正式 runtime、雙倍率同狀態 A/B、失敗即關閉矩陣與 page6→page7 pre-write 清除已驗；完整開機及存讀檔未驗。 |

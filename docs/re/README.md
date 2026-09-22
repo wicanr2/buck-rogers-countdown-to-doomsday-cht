@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百五十二階段：第六頁六行雙倍率執行期同狀態驗收](phase-152-story-page6-runtime-conformance.md)：control／2×／3×及同執行 Enter 離頁 A/B、原版 machine／DOS 全等、安全矩形與失敗即關閉驗收；只限固定路徑 CONFORMED。
 - [第一百五十一階段：真實 Ebitengine 畫布外放開與失焦清理](phase-151-ebiten-mouse-release-cleanup-prototype.md)：雙倍率畫布外／控制列／面板開啟／失焦 release-only，及 3×孤兒／重複 Up public API 停止線；只屬 ignored 原型。
 - [第一百五十階段：真實 Ebitengine 滑鼠四角與排除邊界](phase-150-ebiten-mouse-geometry-prototype.md)：2×／3×四角 DOS 座標與控制列／右／下 exclusive 邊界的 14 份實體事件收據；只屬 ignored 原型，MouseBridge 維持 DRAFT。
 - [第一百四十九階段：第六頁逐字返回、離頁寫入與 READY 審查](phase-149-story-page6-ready-prerequisite-diagnostics.md)：200 glyph 逐筆 ABI／RETF、48 筆相交寫入、精確 runner 重生與可丟棄核心後限縮升 READY；正式 runtime／A/B 未完成。
