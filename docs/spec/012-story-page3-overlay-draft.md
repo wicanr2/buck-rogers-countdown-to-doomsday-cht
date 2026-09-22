@@ -1,6 +1,6 @@
 # 012 — 第三頁固定劇情輸出端覆繪
 
-狀態：**DRAFT；不得接 production，待獨立證據審查。**
+狀態：**READY；僅五行 typed adapter 契約可接 production，尚非 CONFORMED。**
 日期：2026-09-22
 
 ## 範圍與權利邊界
@@ -19,7 +19,7 @@ BIOS 輸入、檔案與存檔、答案判定或譯文的語意用途。right-sid
 | 項目 | 分級 | 證據 |
 | --- | --- | --- |
 | 五行 exact identity、順序、長度、SHA-256、樣式與座標 | 已證實 | [第 108 階段](../re/phase-108-story-page3-draft.md)、`text/story-page3-events.tsv`；caller `0763:04FF`、guarded primitive `0763:026B`、rows 17–21、column 1、mode/repeat `1/1`、背景／前景 `0/10`，長度 `34/37/31/37/5`。 |
-| 每個 glyph 的真實完成控制流 | 已證實 | [第 139 階段](../re/phase-139-story-page3-return-edge.md)：144 筆皆是緊前 `0763:03D6` opcode `0xCA` 的 RETF 後到 caller；首筆有界 trace 證實相同 SS、`SP+0x12`。 |
+| 每個 glyph 的真實完成控制流 | 已證實 | [第 139 階段](../re/phase-139-story-page3-return-edge.md)：144 筆皆是緊前 `0763:03D6` opcode `0xCA` 的 RETF 後到 caller；補充的雙重收據逐筆證實相同 SS、`SP+0x12`。 |
 | page3→page4 已量 Enter 的最早視訊寫入 | 已證實 | [第 138 階段](../re/phase-138-story-page3-exit-prewrite.md)：`0CF4:1B3A`、`ES:DI=A000:AA08`、`CX=304`，step `301108549`；比首個可見差異早 24 step，且早於第四頁 glyph。 |
 | 五行繁中候選 | 編輯性 DRAFT | `text/story-page3.zh-TW.tsv`；來源為私有原版畫面語意校對，不是中文手冊逐字譯名。 |
 | 其他離頁方式、完整開機玩家路徑與遊戲內存讀檔 | 未知 | 不以這條 Enter 收據外推。 |
@@ -32,7 +32,7 @@ BIOS 輸入、檔案與存檔、答案判定或譯文的語意用途。right-sid
 Go 1.26.7／`golang:1.26.7-bookworm` Docker 重生。固定 receipt step 與當次絕對 SS/SP
 都只是證據錨點，不是 runtime identity。
 
-## 候選 typed contract（待 READY 審查）
+## READY typed contract
 
 可沿用已 READY 的[第二頁 typed adapter](011-story-page2-overlay-draft.md)之狹窄模式，
 但不得直接把第二頁四行 constants 當第三頁資料。第三頁 watcher 只讀
@@ -61,11 +61,12 @@ ASCII 仍依既有樣式。原版 320×200 indexed framebuffer 不得改，RGBA 
 衍生層，不能復活舊 group。這只描述已量 Enter 路徑及保守失敗邊界，不聲稱其他
 離頁方式已解。
 
-## READY 與 CONFORMED 閘門
+## READY 審查與 CONFORMED 閘門
 
-升 READY 前須獨立重算五個 TSV identity 與 144 return edge 對應、檢查 source bitmap
-行界與 39-cell 上限、驗證當前 20 份 catalog 的本機倚天子集完整覆蓋，並審查
-上述 typed input／清除交集／負例是否足以阻止錯頁套譯。未通過前只准 disposable probe。
+[第一百四十二階段獨立審查](../re/phase-142-story-page3-ready-review.md)已重算五個 TSV
+identity、144 個逐筆 return edge、行界與 39-cell 上限，驗證現行 20 份 catalog
+的本機倚天字型覆蓋，並以可丟棄核心測試上述 typed input、原子提交、清除交集與
+失敗即關閉負例。這只使五行 adapter 契約升 READY，不是 runtime 驗收。
 
 READY 後可實作第三頁 adapter；再由同一合法原版 state、同一 BIOS 排程的 control、
 2×、3×做 A/B：原版 CPU／DOS／BIOS／file ops／writes／未實作服務與 indexed framebuffer／

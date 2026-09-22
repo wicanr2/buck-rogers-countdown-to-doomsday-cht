@@ -129,9 +129,9 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 `story-page2.zh-TW.tsv` 的文字仍是需實際畫面驗收的編輯性候選；
 `tools/story_page2_catalog.py` 另外驗證 row 17–20、排除 row 24 動態狀態列與 39 格保守容量，
 尚未接 runtime。Chiagong 的「奇亞貢」目前只是未由中文手冊逐字確認的 DRAFT 音譯。
-`story-page3-events.tsv` 與 `story-page3.zh-TW.tsv` 是第三頁五行固定敘事的 DRAFT 候選；
+`story-page3-events.tsv` 是第三頁五行固定敘事的 READY 身分目錄；`story-page3.zh-TW.tsv` 仍是編輯性譯文；
 `tools/story_page3_catalog.py` 驗證 row 17–21、排除 row 24 動態狀態列與 39 格保守容量。
-第三頁五行均為依原版畫面語意建立的 editorial DRAFT，尚未接 runtime。
+第三頁五行依原版畫面語意翻譯，尚未接正式 runtime；READY 僅及 typed adapter 契約。
 `story-page4-events.tsv` 與 `story-page4.zh-TW.tsv` 是第四頁六行 DRAFT；原先
 `visual-transcription` 的前五筆身分已被兩次合法 Enter 的低階 glyph trace 否定並訂正，
 現有 `tools/story_page4_catalog.py` 驗證 exact hash、caller／guard、步數、幾何與翻譯容量。

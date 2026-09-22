@@ -47,28 +47,32 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 首筆可見像素差異。完整開機玩家路徑與存讀檔／restore 仍未驗，spec010 維持 READY，
 不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)
 及[第一百一十九階段](docs/re/phase-119-story-opening-enter-lifecycle.md)。
-第二頁四行、第三頁五行與第四頁六行均有可重播低階 glyph 身分與繁中 DRAFT。第四頁由
+第二頁四行、第三頁五行與第四頁六行均有可重播低階 glyph 身分；前兩頁事件目錄為 READY，第四頁維持繁中 DRAFT。第四頁由
 第三頁合法 state 的同一筆 Enter 重生為 `0763:04FF → 0763:026B` 六行；舊
 `visual-transcription` 前五筆 length／hash 與原版 trace 不符，僅第六筆相符，故繁中候選仍須
 編輯審查、catalog 維持 DRAFT 且不得接 runtime。
 第二頁其後另以同狀態原版收據量到四行完成、首屏失效、第二頁→第三頁的最早相交
 pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
-[spec 011](docs/spec/011-story-page2-overlay-draft.md) 已限縮升 READY，四筆事件身分資料也升
+[spec 011](docs/spec/011-story-page2-overlay-draft.md) 當時限縮升 READY，四筆事件身分資料也升
 `confirmed/READY`。本機 dosgolem 已接第二頁四行 runtime：2×／3×正例與 control
 的原版 machine／DOS 正規化狀態相等，四鍵啟用、零缺字、安全矩形外零差異；兩倍率
 的 page2→page3 pre-write 均記錄 active 4→0、終態無殘字。獨立稽核發現 TSV caller／guard
 驗證及 presenter 原子 Apply 缺口，已於本機 `2fa5be4` 修正；`db1a281` 補部分負例。
-完整雙倍率失敗矩陣與同幀輸出驗證仍在進行，故 spec 011 保持 READY，**未升 CONFORMED**。
+後續補齊雙倍率失敗矩陣與同幀輸出驗證，並以最新本機程式重跑 control／2×／3×
+及合法 Enter 離頁；[第一百四十一階段](docs/re/phase-141-story-page2-runtime-conformance.md)
+使 spec 011 **限縮升 CONFORMED**，只涵蓋第二頁四行與已量離頁。
 第三頁離頁的合法 Enter 已以兩次一致收據量到最早安全矩形交集 pre-write：step
-`301108549`，早於第一個可見差異 `301108573` 與第四頁首 glyph；第三頁仍為 DRAFT，
+`301108549`，早於第一個可見差異 `301108573` 與第四頁首 glyph；此證據取得時第三頁仍為 DRAFT，
 見[第一百三十八階段](docs/re/phase-138-story-page3-exit-prewrite.md)。
 另從第二頁合法終態雙重重播第三頁，五行 144 個 glyph 均有已確認的 `RETF imm16`
-返回 caller；首筆有界指令 trace 證實 entry／return 同 SS、SP 相差 `0x12`。
+返回 caller；審查後再補雙重 content-safe 收據，逐筆直接證實 entry／return 同 SS、
+SP 相差 `0x12`，不再以首筆樣本外推其餘 143 筆。
 [第一百三十九階段](docs/re/phase-139-story-page3-return-edge.md)與
-[spec 012](docs/spec/012-story-page3-overlay-draft.md)已建立，仍待獨立 READY 審查，
-不得據 DRAFT 接 runtime。
+[第一百四十二階段](docs/re/phase-142-story-page3-ready-review.md)獨立審查通過後，
+[spec 012](docs/spec/012-story-page3-overlay-draft.md)限縮升 READY，僅授權五行 typed adapter
+接正式 runtime；尚未做第三頁 A/B，**未升 CONFORMED**。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
-初稿曾誤配右側人物姓名，經原圖座標核對訂正。第二至五頁均不得接 runtime，
+初稿曾誤配右側人物姓名，經原圖座標核對訂正。第四、五頁仍不得接 runtime；
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
 候選聯集重建為 1006 字模，正式 loader 已回讀且零缺字；這仍只證明字型覆蓋。
 第五頁後的合法 Enter 也已量到第六頁 row 17–22 六行低階身分；低階翻譯代理建立

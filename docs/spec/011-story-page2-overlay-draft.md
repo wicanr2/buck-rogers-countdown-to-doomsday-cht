@@ -1,10 +1,16 @@
 # 011 — 第二頁劇情文字輸出端覆繪
 
-狀態：**READY（僅第二頁四行 typed adapter contract；尚未接 production，亦非 CONFORMED）**
+狀態：**CONFORMED（僅第二頁四行與已量 page2→page3 Enter 離頁；非全遊戲完成）**
 日期：2026-09-22
 前置：[第一百零七階段第二頁 DRAFT catalog](../re/phase-107-story-page2-draft.md)、
 [第一百三十二階段 READY 審查](../re/phase-132-story-page2-ready-review.md)、
 `text/story-page2-events.tsv`、`text/story-page2.zh-TW.tsv`。
+
+現況訂正：本規格原先的 READY 審查與「尚未接 production」敘述保留為實作前
+歷史。第二頁 adapter／RGBA presenter 已在本機 dosgolem commit `2f8c807` 實作，
+經[第一百四十一階段雙倍率同狀態收據](../re/phase-141-story-page2-runtime-conformance.md)
+及失敗即關閉矩陣驗證，故限縮升 CONFORMED。未量其他離頁、完整開機或遊戲內
+存讀檔；這個狀態不能轉移到第三頁或整款遊戲。
 
 ## 目的、範圍與停止線
 
@@ -148,6 +154,18 @@ rectangle。
 
 只有這些同狀態收據由 dosgolem 重生，才能將本規格標為 CONFORMED；結論仍只限第二頁四行與已量到的
 page2→page3 Enter exit。
+
+## CONFORMED 審查結果（2026-09-22）
+
+第一百四十一階段以相同原版 state／BIOS 排程重生 control、2×、3×穩定第二頁，
+及各自的合法 Enter 離頁；兩倍率四 key、零缺字、安全矩形外零差異，原版
+receipt 扣除 output-only metadata 後逐欄相同，完整 machine／DOS 正規化
+`state-compare` 也均相等。離頁在同一 `0CF4:1B3A` pre-write 前從四鍵清空，
+後續 RGBA 與 baseline 逐 byte 相同。正式 loader 鎖定已審核四筆身份；
+2×／3×負例測到真完整行 SHA mismatch、相對 return、非 READY TSV、font miss、
+partial／duplicate／restore、未知寫入、跨世代與無殘字。相關 Go vet、未快取
+race 測試通過。詳細 SHA-256、測試與權利邊界只在
+[第一百四十一階段](../re/phase-141-story-page2-runtime-conformance.md) 保存，不在此重複。
 
 ## 權利與散布邊界
 

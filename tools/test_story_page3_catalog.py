@@ -9,8 +9,18 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class StoryPage3CatalogTest(unittest.TestCase):
-    def test_formal_draft_pair(self):
+    def test_formal_ready_pair(self):
         validate(ROOT / "text/story-page3-events.tsv", ROOT / "text/story-page3.zh-TW.tsv")
+
+    def test_rejects_draft_catalog_status(self):
+        with tempfile.TemporaryDirectory() as temp:
+            events = Path(temp) / "events.tsv"
+            translations = Path(temp) / "translations.tsv"
+            text = (ROOT / "text/story-page3-events.tsv").read_text(encoding="utf-8").replace("\tconfirmed\tREADY", "\tconfirmed\tDRAFT", 1)
+            events.write_text(text, encoding="utf-8")
+            translations.write_bytes((ROOT / "text/story-page3.zh-TW.tsv").read_bytes())
+            with self.assertRaises(ValueError):
+                validate(events, translations)
 
     def test_rejects_row_24_status_event(self):
         with tempfile.TemporaryDirectory() as temp:

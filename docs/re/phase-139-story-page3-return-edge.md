@@ -41,3 +41,19 @@ entry step `291022040` 的 `SS=1841h,SP=3D66h`；緊前 RETF step `291022781`
 far-return 與已量 Enter 離頁前寫入證據，但不單獨授權 production watcher；仍須審查
 五行 exact identity、譯文與安全矩形、字型覆蓋、負例與同狀態驗收設計，通過 READY
 後才能實作。
+
+## 補充：全部 144 筆 entry／return stack 直接對照
+
+獨立 READY 審查指出上述原始 return-edge JSON 只含 return SS/SP，首筆有界指令
+trace 不能證明其餘 143 筆的相對 stack。故本機 dosgolem commit `a9f2afd` 為
+`glyph_return_edges` 增加 content-safe `entry_ss`／`entry_sp`，不輸出 stack words
+或原文，再從同一 state、同一 Enter 排程雙重重播。
+
+私有 `workplace/page3-return-probe/page3-entry-stack-{a,b}.json` 逐 byte 相同，
+SHA-256 `11427a055910594f3ecce309a3d0f6d7802e93ad728113c0adf5c13be5531943`。
+固定故事 caller／rows 篩出的 144 筆仍為 `34/37/31/37/5`；每一筆均有
+`entry_ss == return_ss`、`(return_sp-entry_sp) mod 65536 == 0x12`、緊前
+`0763:03D6` opcode `0xCA` 及實際返回 `0763:04FF`，反例數為零。首末筆同為
+entry `SS:SP=1841:3D66`、return `1841:3D78`；這些絕對值仍只作收據錨點。
+這次訂正把「首筆支持相對 guard」提高為「144 筆直接驗證」，保留先前收據，
+不改寫原歷史；第三頁 typed core 的負例審查仍未完成，規格維持 DRAFT。

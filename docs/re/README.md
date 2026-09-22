@@ -1,6 +1,10 @@
 # 原版觀測證據索引
 
-- [第一百三十九階段：第三頁五行 glyph 的真實 far-return](phase-139-story-page3-return-edge.md)：兩次一致收據證實五行 144 個 glyph 的 RETF caller；首筆有界 trace 證實相對 SS／SP+0x12，第三頁仍 DRAFT。
+- [第一百四十二階段：第三頁五行 typed adapter READY 審查](phase-142-story-page3-ready-review.md)：144 筆逐筆 stack、五行身分、清除契約、字型覆蓋與可丟棄核心負例通過；僅 adapter 契約升 READY，尚未接正式 runtime。
+- [第一百四十一階段：第二頁四行 runtime 限縮 CONFORMED](phase-141-story-page2-runtime-conformance.md)：最新程式的 2×／3×、控制組及合法 Enter 離頁同狀態重跑；結論僅及第二頁已量路徑。
+- [第一百四十階段：身體圖示 READY 前置證據停止線](phase-140-body-icon-ready-evidence-stop.md)：確認七筆仍只有高階 identity；列出低階 glyph return 與安全矩形 pre-write 的最小量測；已訂正可沿用現有 Go Docker image，未升 READY。
+
+- [第一百三十九階段：第三頁五行 glyph 的真實 far-return](phase-139-story-page3-return-edge.md)：兩次一致收據證實五行 144 個 glyph 的 RETF caller；補充雙重收據逐筆證實相對 SS／SP+0x12；當時仍是 DRAFT。
 - [第一百三十八階段：第三頁合法離頁的最早故事區 pre-write](phase-138-story-page3-exit-prewrite.md)：兩次一致原版重播證實第四頁出現前的最早安全矩形交集寫入早於首個可見像素差異；第三頁仍為 DRAFT，未接 runtime。
 - [第一百三十七階段：真實 host panel route 與 3× cleanup](phase-137-real-host-panel-route-and-3x-cleanup.md)：2×／3×真實 Open host hit 與 open-panel miss route、3× accepted Down 後 panel-open chrome release-only，以及正規化同狀態收據；spec 228 仍維持 DRAFT。
 - [第一百三十六階段：第九頁後合法 Enter 的第十頁停止線](phase-136-story-page10-enter-stop-line.md)：兩次一致重播只得到 row 15 command/status 重畫，沒有新的固定故事行，未建立第十頁 catalog。

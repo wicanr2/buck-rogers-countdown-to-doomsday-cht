@@ -1315,3 +1315,10 @@
 ## 2026-09-22 — 第一百三十九階段：第三頁控制流與 DRAFT 規格
 
 - 從第二頁合法終態送 Enter，兩次第三頁收據逐 byte 相同；固定故事五行的 144 個 glyph 全部經 `0763:03D6`、opcode `0xCA` 的真實 RETF 返回 `0763:04FF`。首筆有界指令 trace 證實 entry SS 不變、return SP 增 `0x12`；絕對 SS/SP 只當本次錨點。已建立[第一百三十九階段](docs/re/phase-139-story-page3-return-edge.md)與[spec 012 DRAFT](docs/spec/012-story-page3-overlay-draft.md)，等待獨立 READY 審查，不接 production。
+- 獨立審查指出首筆 stack trace 不足以代表全部 144 筆。本機 dosgolem `a9f2afd` 把 content-safe entry SS/SP 加入 return-edge JSON，從同一 state 雙重重播，144 筆逐一符合 same SS／相對 SP+`0x12`、RETF opcode 與 caller；收據逐 byte 相同。保留原收據並追加訂正，spec012 仍因純核心負例未審完維持 DRAFT。
+
+## 2026-09-22 — 第一百四十至四十二階段：身體圖示停止線、第二頁驗收與第三頁 READY
+
+- 身體圖示的七筆高階 identity 尚不足以實作；[第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)列出真實 glyph return 與最早安全矩形 pre-write 的缺口，維持 DRAFT。先前誤判缺 Go 工具鏈，已訂正為現有 `golang:1.26.7-bookworm` 可用。
+- 第二頁補齊真實 return、原子提交、雙倍率失敗矩陣及正式 catalog 身分鎖定；本機 dosgolem `2f8c807` 的 targeted vet/race 通過。從同一合法 state 以最新程式重跑 control／2×／3×及合法 Enter 離頁，原版狀態相同、覆繪只在安全矩形內，離頁後零殘字。[第一百四十一階段](docs/re/phase-141-story-page2-runtime-conformance.md)使 spec 011 只在這條路徑升 CONFORMED。
+- 第三頁 144 筆逐筆 entry／return stack 證據與可丟棄 typed 核心負例通過獨立審查。[第一百四十二階段](docs/re/phase-142-story-page3-ready-review.md)將 spec 012 及五筆身分目錄升 READY；尚未接正式 runtime、未做 A/B，不宣稱 CONFORMED。
