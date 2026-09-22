@@ -129,7 +129,11 @@ READY 只授權首屏 adapter 實作，尚未接 runtime 或通過原版／繁�
 尚未接 runtime。Chiagong 的「奇亞貢」目前只是未由中文手冊逐字確認的 DRAFT 音譯。
 `story-page3-events.tsv` 與 `story-page3.zh-TW.tsv` 是第三頁五行固定敘事的 DRAFT 候選；
 `tools/story_page3_catalog.py` 驗證 row 17–21、排除 row 24 動態狀態列與 39 格保守容量。
-五行均為依原版畫面語意建立的 editorial DRAFT，尚未接 runtime。
+`story-page4-events.tsv` 與 `story-page4.zh-TW.tsv` 是由既有 page4 PNG 反查出的六筆
+`visual-transcription` DRAFT；`tools/story_page4_catalog.py` 只驗證 screenshot-derived
+hash／幾何／翻譯容量，caller、glyph guard 與步數仍為 unknown，未達 runtime identity，
+不得接入正式覆繪。
+第三頁五行均為依原版畫面語意建立的 editorial DRAFT，尚未接 runtime。
 
 ## 驗證與 prototype 字型
 

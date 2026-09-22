@@ -1,0 +1,7 @@
+event_key	sequence	original_length	original_sha256	caller	glyph_guard	background	foreground	row	column	entry_step	post_call_step	evidence_level	catalog_status
+story.page4.line.001	1	33	faea4e715864605d192788c6331c6335b3a9bccc91fba21e72069a5336d64f12	unknown	unknown	0	10	17	1	0	0	visual-transcription	DRAFT
+story.page4.line.002	2	38	59206579c9802e1d04cea0730e6fafcf81da28d9df31bc898c9a0cb11b61db56	unknown	unknown	0	10	18	1	0	0	visual-transcription	DRAFT
+story.page4.line.003	3	33	9c8b8840aa76634ac107888c33017f57910b06e999d3199cb92810b8939759ea	unknown	unknown	0	10	19	1	0	0	visual-transcription	DRAFT
+story.page4.line.004	4	24	58cbe528d3e70d3188fbd9033e2cf6f40ecbdadb4491e193b1a7c8539ae771f7	unknown	unknown	0	10	20	1	0	0	visual-transcription	DRAFT
+story.page4.line.005	5	35	8e49dbd6d876f3772995c070f80036e0651d265abd9299cf12d07bd0af5d5ce0	unknown	unknown	0	10	21	1	0	0	visual-transcription	DRAFT
+story.page4.line.006	6	24	ab0a680e1bd4ba6ed62ac7438633c6559b22412508953561e0034d7440b65066	unknown	unknown	0	10	22	1	0	0	visual-transcription	DRAFT

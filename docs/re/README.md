@@ -9,6 +9,8 @@
 - [第一百一十階段：command/status 最小 inventory](phase-110-command-status-inventory.md)：以兩個不同 Enter 時間重播取得相同 row 24 identity 與終態畫面；固定詞／動態欄位仍待不同遊戲狀態比對，暫不建立翻譯 catalog。
 - [第一百一十一階段：command input 證據停止線](phase-111-command-input-stop-line.md)：既有資料沒有手冊返回後可移用的合法移動／查詢按鍵，因此不猜 scan code、不送新輸入，保留 phase110 的可比收據與停止條件。
 - [第一百一十二階段：手冊轉向按鍵與可逆 command/status 重播](phase-112-command-turn-manual-evidence.md)：以中文手冊第 10–12 頁明示的數字鍵盤 4／6 完成左右轉向 pair；row 24 重畫為 33-cell identity 且終態回復，固定詞仍未證實。
+- [第一百一十三階段：第四頁劇情勘誤與 screenshot-derived DRAFT](phase-113-story-page4-corrigendum.md)：勘誤 phase109–112 對 page4 的錯誤分類，確認既有 PNG 的固定六行劇情並建立 visual-transcription DRAFT；真正 dosgolem glyph identity 尚待找回原始 state／停止點。
+- [第一百一十五階段：page4 原始 state 找回停止線](phase-115-page4-state-recovery-stop.md)：窄查既有 300M 附近 state 與 final state，仍未找回能重生 `4f9d1bb…` 首次繪製的 checkpoint；page4 caller／entry／post 維持 unknown。
 - [第一百一十三階段：Ebitengine host 控制可丟棄原型](phase-113-ebiten-host-controls-prototype.md)：真實正常玩家畫面收據與本機倚天 host 字型在 Linux／Xvfb 開窗，驗證 2×／3×、Apply／Cancel 與面板鍵盤隔離；尚非 DOS 玩家前端。
 - [第一百一十四階段：首屏字元返回邊與 READY 輸入](phase-114-story-return-edge-ready.md)：合法手冊返回路徑重生 160 個 `RETF` 完成字元，確認 `0763:03D6` 與低位顯示 ABI；答案與原文仍只在本機。
 - [第一百零三階段：第三題手冊覆繪執行期抽樣](phase-103-manual-third-question-runtime.md)：以最新 961 glyph 字庫在原版錯答重抽路徑實際命中 #36，記錄雙倍率、同狀態、像素隔離與 #3／#39 未命中邊界。
