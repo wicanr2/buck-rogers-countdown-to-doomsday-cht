@@ -98,3 +98,4 @@ Issues 為唯一權威，研究證據則在 `docs/re/`。
 | [第九十一階段：手冊 watcher snapshot bridge 純核心](phase-91-manual-watcher-snapshot-bridge.md) | 完成（純核心） | 將 watcher defensive snapshot 交給 consumer，不接 command、字型或 DOS。 |
 | [第九十二階段：正式字型候選 manifest 驗證補強](phase-92-formal-font-candidate-manifest-validation.md) | 完成（候選審查工具） | 建立候選來源／授權／coverage 的 fail-closed 審查，不採用或散布字型。 |
 | [第九十三階段：倚天字型候選輸入盤點](phase-93-eten-font-candidate-intake.md) | 完成（DRAFT 候選清冊） | 已盤點使用者指定的本機倚天候選；權利與 16×15 對齊維持 DRAFT。 |
+| [第九十四階段：倚天字型本機建置與對齊原型（prototype）](phase-94-eten-font-local-build-prototype.md) | 完成（DRAFT；待對齊選定） | 兩個本機 16×16 對照均通過 691 個字模（glyph）、雙倍率與範圍約束（containment）；待使用者選定上下補列。 |

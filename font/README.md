@@ -25,8 +25,10 @@ python3 tools/catalog_font.py validate-candidate text/manual.zh-TW.tsv \
 manifest、來源與授權文字雜湊、691 glyph coverage、`local-validation-only` 與 `undecided` 發行狀態；
 通過只代表候選可進入後續權利審查，不代表採用、嵌入或可散布。
 
-第九十三階段已依使用者指定，唯讀盤點本機倚天 `ET353S/FILES/` 的 15 點字模；其對正式手冊 691
-碼點的定位結果、檔案雜湊與停止線見
+第九十三階段已依使用者指定，唯讀盤點本機倚天 `ET353S/FILES/` 的 15 點字模；第九十四階段再依
+使用者確認的已購買字型之**本機遊戲使用**範圍，建立未追蹤的 16×16／691 glyph 對齊 preview。其定位、
+檔案雜湊、兩案收據與停止線見
 [`docs/spec/007-eten-15-font-candidate-intake-draft.md`](../docs/spec/007-eten-15-font-candidate-intake-draft.md)。
-它不是既有 Unifont validator 的輸入：候選仍缺完整授權告知，且 16×15／8×15 至 runtime 16×16 的
-對齊尚未經 prototype 與使用者決定，因此不得建置任何字型產物。
+它不是既有 Unifont validator 的輸入：候選仍缺完整公開授權告知，`bottom-pad`／`top-pad` 也尚待使用者
+選定，且正式前景色來源與 ETen parser 均未 READY。因此不得把 preview 接入 runtime，也不得把任何字型
+產物加入 Git、GitHub、Release 或公開封包。

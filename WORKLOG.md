@@ -1157,3 +1157,15 @@
   缺字為零；`U+0020` 是唯一預期空白字模。`一`／`中`／`猴` 的 entry 0／66／2,690 結構錨點沒有位移。
 - 新增 spec 007 DRAFT 與 RE 收據，明定候選仍缺完整授權告知、既有 Unifont validator 不可冒充支援、
   以及 16×15／8×15→16×16 對齊必須先做 prototype 與使用者決定。
+
+## 2026-09-22 — 第九十四階段：倚天字型本機建置與對齊 prototype
+
+- 使用者明確確認先前購買的倚天字型可直接放入本機遊戲；此決定解鎖本機轉換／嵌入，不擴張為 Git、
+  GitHub、Release 或公開封包的再散布許可。
+- Docker 由 spec 007 固定雜湊的 15 點來源重生 bottom-pad、top-pad 兩份 16×16／691 glyph
+  `GOLEMFNT`，全量回讀通過；產物、重生器、畫面與 manifest 都僅在忽略的 `workplace/phase94/`。
+- 以固定 Deimos Prison state 與 `RuntimeManualOverlay` 建立兩案的 2×／3×預覽；四張均零缺字且 clear
+  rectangle 外零像素差。正文在原版畫面中全黑，故 preview 僅在 private `Frame` sampling 使用原題目區
+  palette index 10；DOS VRAM、輸入、答案、原版 EXE、runtime loop 與 dosgolem production code 均未改。
+- 對齊的使用者選擇仍待回覆；production ETen parser、正式前景色來源、runtime 接線與 normal-player A/B
+  繼續維持 DRAFT，不能宣稱手冊中文已完成。

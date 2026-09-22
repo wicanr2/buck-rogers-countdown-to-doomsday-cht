@@ -485,3 +485,11 @@ GNU Unifont 或改用其他候選。`ET353S/FILES/` 的 `STDFONT.15`、`SPCFONT.
 字元是唯一預期全空字模）。不過候選缺少完整授權告知，且 16×15／8×15 到 runtime 16×16 的對齊尚未
 經 prototype／使用者決定；spec 007 與 dosgolem spec 218 均維持 DRAFT，不得建置、嵌入、散布或接入
 runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
+
+第九十四階段依使用者後續明確確認的「以前購買的字型可直接使用」授權，解除**本機遊戲**的
+轉換／嵌入停止線（不含 GitHub 或公開散布）。真實倚天來源已重生 bottom-pad 與 top-pad 兩份 16×16、
+691 glyph、25,583-byte 本機候選，並以固定 Deimos Prison 手冊 state 透過 `RuntimeManualOverlay` 驗證
+2×／3×均零缺字且正文 clear rectangle 外零像素變更。正文原版區全黑，preview 以原題目區 palette index
+10 的受控 private sampling 使兩案可見；這不等於正式色彩策略。下一個阻塞決策是使用者從預覽選定底部或
+頂部補第 16 列；之後仍須為正式 ETen parser、前景色來源與 runtime 接線走 DRAFT→READY 審查。dosgolem
+branch 仍為本機未推送的 `a4a87aad48607ea6ff6e4646de1292f5caaeade9`，沒有 production code 變更。

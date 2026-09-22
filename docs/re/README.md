@@ -3,6 +3,7 @@
 - [第五十五階段：保存、名冊與加入隊伍繁中事件 catalog](phase-55-save-roster-join-translation-catalog.md)：鎖定 18 筆完整路徑 identity，隔離四筆動態姓名並建立七筆繁中 key。
 - [第五十六階段：保存、名冊與加入隊伍執行期繁中顯示請求](phase-56-save-roster-join-runtime-display-requests.md)：由唯一 guarded watcher 產生 14 筆請求，四筆動態姓名維持 miss。
 - [第九十三階段：倚天字型候選輸入盤點](phase-93-eten-font-candidate-intake.md)：使用者指定候選的字模清冊、691 glyph coverage、Big5 索引分級與權利／對齊停止線。
+- [第九十四階段：倚天字型本機建置與對齊原型（prototype）](phase-94-eten-font-local-build-prototype.md)：本機授權下的兩個 16×16 候選、固定手冊狀態（state）、雙倍率範圍約束（containment）與待決的顏色／對齊界線。
 
 此目錄保存 dosgolem 的原版行為收據與推論分級，不保存原版遊戲、手冊、可還原素材或
 其完整輸出。所有位址均須標明使用的位址空間；不可把 IDA 線性位址與 dosgolem 執行期
