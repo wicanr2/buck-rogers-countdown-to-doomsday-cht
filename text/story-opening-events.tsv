@@ -1,0 +1,6 @@
+event_key	sequence	original_length	original_sha256	caller	glyph_guard	background	foreground	row	column	entry_step	post_call_step	evidence_level	catalog_status
+story.opening.line.001	1	37	a989ceac7d0b25ad1a02fca8d158c5c47ab25aa28faa329f99016bcbd22d89d2	0763:04FF	0763:026B	0	10	17	1	268686427	270263541	confirmed	DRAFT
+story.opening.line.002	2	38	177bcfea0dd3bdba2390155791c7c48097736031d03e90eff9c1e594e7d24dc5	0763:04FF	0763:026B	0	10	18	1	270307529	271928281	confirmed	DRAFT
+story.opening.line.003	3	33	c6a67dbd38752114fcf6761f59a57ed0970d0c75ac63696466c8f99d658a963b	0763:04FF	0763:026B	0	10	19	1	271971771	273373887	confirmed	DRAFT
+story.opening.line.004	4	29	a0cb29721abfb85c6062169ef8d5c8a0d4e794570a007b472fc3f2c655dcd182	0763:04FF	0763:026B	0	10	20	1	273417761	274644543	confirmed	DRAFT
+story.opening.line.005	5	23	f686b3355b648d95981ec5c128fc4e07f0950c983e9543c49a258fbcd1ea5d74	0763:04FF	0763:026B	0	10	21	1	274689101	275652511	confirmed	DRAFT

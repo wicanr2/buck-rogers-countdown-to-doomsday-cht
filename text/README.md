@@ -118,6 +118,16 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 `manual-events.tsv` 是精確事件映射：只允許來源為 `confirmed` 的題目，以頁碼、英文標題及
 序數精確指向一筆文字鍵。它不含英文答案，也不會送鍵或改寫原版記憶體。
 
+`story-opening-events.tsv` 與 `story-opening.zh-TW.tsv` 是首屏劇情五行的 DRAFT 候選：
+保存 `0763:04FF`／`0763:026B`、row 17–21、原文長度與 SHA-256，不保存原文全文；
+繁中草稿依中文手冊 `SCAN0352_003.jpg`–`SCAN0352_004.jpg` 印刷頁 1–3 的「巴克羅吉斯」
+、「新地球組織（NEO）」與「美蘇貿易聯邦（RAM）」用語建立。`tools/story_opening_catalog.py`
+驗證五筆 identity、譯文雙向覆蓋、NFC、控制／格式字元與原版單列容量；尚未接 runtime，
+也尚未升級為 READY。
+`story-page2-events.tsv` 與 `story-page2.zh-TW.tsv` 是第二頁四行固定敘事的 DRAFT 候選；
+`tools/story_page2_catalog.py` 另外驗證 row 17–20、排除 row 24 動態狀態列與 39 格保守容量，
+尚未接 runtime。Chiagong 的「奇亞貢」目前只是未由中文手冊逐字確認的 DRAFT 音譯。
+
 ## 驗證與 prototype 字型
 
 以下命令必須在專案規範要求的隔離 Docker 容器內執行：

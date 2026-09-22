@@ -43,21 +43,55 @@ Buck Rogers 的 host 控制列與面板必須將完整 320×200 畫布下推；�
 5. API 與 state 只可表達通用的 output scale、canvas、host chrome、host hit event 與重繪；
    Buck Rogers 的題目、翻譯鍵、矩形、手冊答案與遊戲座標不可出現在通用層。
 
+## DRAFT：唯讀畫面快照邊界
+
+為免 Ebitengine renderer 直接持有 machine 或誤把畫面讀取與輸入轉送混在一起，通用層
+已建立最小的 `host` 純資料契約：
+
+```go
+type FrameSource interface {
+    ReadPresentationFrame() (IndexedFrame, error)
+}
+
+type IndexedFrame struct {
+    Canvas  Canvas
+    Indexed []uint8
+    Palette [256][3]uint8
+}
+```
+
+`host.PresentationSnapshotProvider.Snapshot` 必須剛好讀取一份 `IndexedFrame`、檢查
+`len(Indexed) == Canvas.Width * Canvas.Height`，並複製 indexed bytes 後才交給 renderer。
+Palette 為值型別。故 presenter 即使修改它拿到的 slice，也沒有回寫 VRAM、DAC、DOS memory、
+BIOS queue、IRQ、檔案或存檔的能力。這只是一條讀取邊界；它不處理 input、overlay Draw、
+host chrome 或 backend event loop。
+
+具體 frontend adapter 必須在同一個 machine-stepping thread 取得此 frame，不能在 machine
+並行 Step 時呼叫 source。這是避免取得跨幀 indexed／palette 配對的執行緒契約，而不是
+允許 presenter 控制 machine。現階段尚未把 `Machine` 直接放進 `host` package，以維持 host
+沒有 machine reference 的既有層次；Linux Ebitengine frontend 將以一個只實作
+`FrameSource` 的邊界 adapter 接上。
+
 ## 已確認操作語意與未決前沿
 
 使用者已選擇 option 點擊後「先選取、再按 Apply」（C），排除兩種立即套用。DRAFT host state
 至少區分 `activeScale` 與暫存 `selectedScale`：點選 option 只能改後者；只有 Apply 可將它提交為
 新的 output scale。第八十九階段已將這個 value-only transition 實作並 CONFORM；實際以同一 raw
-input、palette 與 active layer 重繪仍屬未接線 frontend 責任。這個確認不推定 Apply 後是否自動收合
-面板，也不推定跨重啟持久化。
+input、palette 與 active layer 重繪仍屬未接線 frontend 責任；不推定跨重啟持久化。
 
-- 實際視窗 backend、平台支援、host 文案／字型、鍵盤焦點、Apply 後面板狀態與設定跨重啟持久化均為未知；不是以
+- host 文案／字型與設定跨重啟持久化仍未知；不是以
   headless CLI 或 DOS mouse injection 推定。
 - 使用者於 2026-09-22 確認第一個可玩版本先支援 Linux，架構保留日後擴充
   Windows／macOS 的能力；第一版三平台同步打包與驗收已排除。這只定平台優先序，
-  不替視窗 backend、鍵盤焦點、面板收合或持久化定案。
+  不替持久化定案。
+- 使用者其後確認設定面板開啟時，鍵盤只由 host 面板處理，不向 DOS 轉送；
+  面板關閉後才恢復遊戲鍵盤。面板開啟仍能以鍵盤操作遊戲的分支已排除。
+  host 面板命中的滑鼠與鍵盤事件均須對 DOS BIOS queue／IRQ 零副作用。
+- 使用者看過 A／B 可丟棄原型後，確認按 Apply 提交倍率時自動收合面板，
+  立即恢復遊戲鍵盤；保持展開以便連續調整的分支已排除。Apply 不得額外送鍵進 DOS。
+- 不改原版 EXE、DOS 輸入、原版手冊驗證、存檔結構、遊戲規則或 adapter 的 exact output identity。
 
-### Linux 後端候選的可丟棄驗證（未定案）
+### Linux Ebitengine 後端的可丟棄驗證
 
 2026-09-22 在既有 `eob-remake-go:1.26.7-ebiten2.9.9` Docker image、`--network none`
 與 Xvfb 中，可丟棄 Ebitengine 2.9.9 原型已將 320×200 logical 畫布開成 960×600
@@ -68,13 +102,13 @@ Windows 與 macOS 的視窗／鍵盤／滑鼠能力；[安裝說明](https://ebi
 指出目前桌面標準後端仍需 X11／XWayland 與圖形驅動。SDL3 可作替代，
 但[官方建置文件](https://wiki.libsdl.org/SDL3/README-cmake)顯示須另處理 CMake／
 平台工具鏈；本專案目前沒有已驗證的 SDL3 Go 綁定或專用 image。Ebitengine
-  較快接通原是工程建議；使用者其後明確選定 Go／Ebitengine 作為
-  dosgolem 畫面前端，SDL3 分支已排除。原型仍不足以把本規格升為 READY。
-- 不改原版 EXE、DOS 輸入、原版手冊驗證、存檔結構、遊戲規則或 adapter 的 exact output identity。
+較快接通原是工程建議；使用者其後明確選定 Go／Ebitengine 作為 dosgolem
+畫面前端，SDL3 分支已排除。原型仍不足以把本規格升為 READY。
 
 ## READY 前置與未來驗收
 
-進入實作前，必須依選定的 C 語意補齊 backend、focus、Apply 後面板狀態與 session／持久化範圍。
+進入實作前，必須依已選定的 Linux／Ebitengine、C 語意與面板焦點隔離，補齊
+host 文案／字型及 session／持久化範圍。
 READY 後至少驗證：
 
 1. 2×與3×的 host canvas 與控制列幾何；畫布內容逐 byte 等於同一 raw input 的輸出投影。

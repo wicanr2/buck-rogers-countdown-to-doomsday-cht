@@ -1,6 +1,9 @@
 # 原版觀測證據索引
 
+- [第一百零六階段：Ebitengine host 前端 prototype](phase-106-ebiten-frontend-prototype.md)：Linux／Xvfb 的 Go 1.26.7＋Ebitengine 2.9.9 可丟棄視覺與輸入隔離證據；2×／3×、Apply 後兩個未定面板候選與 presentation snapshot provider 缺口，非 production／非正式玩家路徑。
 - [第一百零四階段：手冊正確作答後的遊戲內返回](phase-104-manual-success-return.md)：以本機手冊的合法正常 BIOS 輸入通過原版判定，驗證 2×／3× 中文覆繪在後續遊戲畫面清除、像素隔離與完整存態 A/B；不記錄答案，存讀檔仍待驗收。
+- [第一百零五階段：手冊成功返回後首個劇情畫面追蹤](phase-105-first-story-screen-trace.md)：確認首個玩家可見劇情畫面、五筆首屏 DRAFT identity 與第二頁失效候選；尚不接 runtime。
+- [第一百零七階段：第二頁固定劇情 DRAFT catalog](phase-107-story-page2-draft.md)：以正常 Enter 重播建立四筆第二頁固定敘事 glyph identity 與 DRAFT 繁中候選；row 24 動態狀態列排除，尚不接 runtime。
 - [第一百零三階段：第三題手冊覆繪執行期抽樣](phase-103-manual-third-question-runtime.md)：以最新 961 glyph 字庫在原版錯答重抽路徑實際命中 #36，記錄雙倍率、同狀態、像素隔離與 #3／#39 未命中邊界。
 - [第一百零二階段：手冊與快捷列覆繪稽核](phase-102-overlay-audit.md)：第一百階段 959 字模的雙倍率首題收據、504 字單頁／3× 密度、白色快捷字母，以及尚缺的玩家路徑驗收。
 - [第一百零一階段：身體圖示選擇文字目錄](phase-101-body-icon-text-catalog.md)：沿用正常移動／拒絕／確認 trace，建立七筆固定介面文字的 exact identity、繁中 catalog 與安全矩形；runtime overlay 尚待下一階段。

@@ -7,3 +7,7 @@ workplace/
 go.work
 go.work.sum
 dist-all/
+
+# 容器內 Python 驗證所產生的暫存檔。
+__pycache__/
+*.pyc
