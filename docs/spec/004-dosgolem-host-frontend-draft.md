@@ -151,6 +151,16 @@ Cancel 會回到 2×且重開仍顯示 2×；再次選 3×後 Apply 收合並切
 BIOS queue、IRQ、raw indexed VRAM 或 DOS mouse，關閉後 Enter 才排入已證實 BIOS key。這仍是 ignored
 prototype evidence；未命中 pointer 不轉 DOS mouse 只是安全 fallback，並非正式 UX 決定。
 
+使用者現已定案 pointer route：面板**關閉**時，host chrome 外、canvas 內的 pointer click 必須轉送
+原版 DOS mouse；面板**開啟**時所有 pointer（含 panel 外 miss）均由 host 消費。排除「關閉時永不
+轉送」方案。此決定只固定 route，尚未證實任一遊戲狀態的可見遊戲效果。
+
+MouseBridge 的 READY 候選邊界為：source 是 Ebitengine logical canvas 的 pointer down／up，destination
+是既有 DOS `MoveMouse`／`PressMouse`／`ReleaseMouse`；bridge 只在 closed panel、canvas rect 內工作，
+不得把 host chrome／panel 座標交給 DOS，不 Step machine、不製造 keyboard IRQ。2×／3×的座標換算、
+canvas 邊界、left button down/up 順序與拒絕無效按鍵須由純核心測試釘住。phase127 只證實 state mutation，
+尚未 Step，不能當玩家可見效果收據。
+
 1. Linux Ebitengine 後端的正式事件接線：將 prototype host chrome hit test、面板鍵盤隔離、Ebitengine key 到
    DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。
 2. 從遊戲開機到故事 state 的完整正常玩家路徑，以及 host 操作後繼續遊玩、存檔／讀檔的同狀態

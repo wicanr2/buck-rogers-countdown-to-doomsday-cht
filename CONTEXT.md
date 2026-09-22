@@ -10,6 +10,9 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 未 Apply 即關閉面板會取消暫選，再開時選取值回到目前已套用倍率；
 [spec 004](docs/spec/004-dosgolem-host-frontend-draft.md) 維持 DRAFT，工作項為
 [Issue #16](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/16)。
+同一真實面板外 click 的可丟棄 A/B 已證實：不轉送時 DOS mouse 座標不變，實驗性
+轉送時座標改變；兩組未 Step machine，不能推論玩家可見反應。正式 pointer miss
+轉送與 MouseBridge 仍待使用者決定及驗證，見[第一百二十七階段](docs/re/phase-127-pointer-miss-ab-prototype.md)。
 本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
 鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
 Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×
@@ -586,6 +589,11 @@ runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
 #12（ETen top-pad parser 與本機建置）、#13（原版前景色來源）與 #14（正常玩家 runtime 接線），三者均須
 走 DRAFT→READY 審查。dosgolem branch 仍為本機未推送的
 `a4a87aad48607ea6ff6e4646de1292f5caaeade9`，沒有 production code 變更。
+
+## 2026-09-22 — pointer route 決定與 MouseBridge DRAFT 邊界
+
+- 使用者定案：面板關閉時，host chrome 外的 canvas pointer click 轉送原版 DOS mouse；面板開啟時所有 pointer 由 host 消費。永不轉送方案已排除。
+- phase127 只量到同一 click 對 DOS mouse state 的差異，machine 未 Step，故尚未驗證玩家可見效果。下一切片先以 DRAFT/READY MouseBridge 純核心契約固定座標、down/up、canvas 邊界與焦點，再獨立取得 Step 收據。
 ## 2026-09-22 — 第一百二十五階段：實體 host input prototype
 
 - Docker/Xvfb 對真實 Ebitengine 視窗送出的 pointer／Enter 驗證：Cancel 丟棄 3× 暫選並重開回 2×，Apply 3×後自動收合；host hit 與開啟面板 Enter 不寫 DOS，關閉後 Enter 才排入 BIOS。Xvfb letterbox 座標換算僅屬 private runner。
