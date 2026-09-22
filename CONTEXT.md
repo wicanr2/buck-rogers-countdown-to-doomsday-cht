@@ -62,6 +62,11 @@ pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
 第三頁離頁的合法 Enter 已以兩次一致收據量到最早安全矩形交集 pre-write：step
 `301108549`，早於第一個可見差異 `301108573` 與第四頁首 glyph；第三頁仍為 DRAFT，
 見[第一百三十八階段](docs/re/phase-138-story-page3-exit-prewrite.md)。
+另從第二頁合法終態雙重重播第三頁，五行 144 個 glyph 均有已確認的 `RETF imm16`
+返回 caller；首筆有界指令 trace 證實 entry／return 同 SS、SP 相差 `0x12`。
+[第一百三十九階段](docs/re/phase-139-story-page3-return-edge.md)與
+[spec 012](docs/spec/012-story-page3-overlay-draft.md)已建立，仍待獨立 READY 審查，
+不得據 DRAFT 接 runtime。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
 初稿曾誤配右側人物姓名，經原圖座標核對訂正。第二至五頁均不得接 runtime，
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog

@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百三十九階段：第三頁五行 glyph 的真實 far-return](phase-139-story-page3-return-edge.md)：兩次一致收據證實五行 144 個 glyph 的 RETF caller；首筆有界 trace 證實相對 SS／SP+0x12，第三頁仍 DRAFT。
 - [第一百三十八階段：第三頁合法離頁的最早故事區 pre-write](phase-138-story-page3-exit-prewrite.md)：兩次一致原版重播證實第四頁出現前的最早安全矩形交集寫入早於首個可見像素差異；第三頁仍為 DRAFT，未接 runtime。
 - [第一百三十七階段：真實 host panel route 與 3× cleanup](phase-137-real-host-panel-route-and-3x-cleanup.md)：2×／3×真實 Open host hit 與 open-panel miss route、3× accepted Down 後 panel-open chrome release-only，以及正規化同狀態收據；spec 228 仍維持 DRAFT。
 - [第一百三十六階段：第九頁後合法 Enter 的第十頁停止線](phase-136-story-page10-enter-stop-line.md)：兩次一致重播只得到 row 15 command/status 重畫，沒有新的固定故事行，未建立第十頁 catalog。

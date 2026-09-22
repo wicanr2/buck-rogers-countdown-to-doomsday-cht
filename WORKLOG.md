@@ -1311,3 +1311,7 @@
 - 真實 Ebitengine 2×／3× host Open hit 與 open-panel 空白 miss、3× accepted Down 後 panel-open chrome Up 已補收據；DOS API 依已確認邊界隔離或只 release。面板核心對空白 miss 仍回未消費，不能冒稱完整 host route；MouseBridge 保持 DRAFT。
 - 第二頁 runtime 已有雙倍率同狀態正例與退出收據；獨立稽核發現 loader 漏驗 caller／guard、presenter 非原子 Apply，已在本機 dosgolem 修正並補部分負例。spec 011 暫維持 READY，等待完整雙倍率失敗矩陣與同幀核驗。
 - 本機 dosgolem `f6579d9` 新增 content-safe story fill pre-write 診斷與邊界測試。從第三頁合法 state 兩次 Enter 重播逐 byte 相同，最早與五行安全矩形相交的原版寫入為 step `301108549`、`0CF4:1B3A`、`A000:AA08`、304 bytes；首個可見差異晚 24 step。這只是第三頁 READY 前置證據，未接 runtime。見[第一百三十六階段](docs/re/phase-136-story-page10-enter-stop-line.md)、[第一百三十七階段](docs/re/phase-137-real-host-panel-route-and-3x-cleanup.md)及[第一百三十八階段](docs/re/phase-138-story-page3-exit-prewrite.md)。
+
+## 2026-09-22 — 第一百三十九階段：第三頁控制流與 DRAFT 規格
+
+- 從第二頁合法終態送 Enter，兩次第三頁收據逐 byte 相同；固定故事五行的 144 個 glyph 全部經 `0763:03D6`、opcode `0xCA` 的真實 RETF 返回 `0763:04FF`。首筆有界指令 trace 證實 entry SS 不變、return SP 增 `0x12`；絕對 SS/SP 只當本次錨點。已建立[第一百三十九階段](docs/re/phase-139-story-page3-return-edge.md)與[spec 012 DRAFT](docs/spec/012-story-page3-overlay-draft.md)，等待獨立 READY 審查，不接 production。

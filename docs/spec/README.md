@@ -16,3 +16,4 @@
 | [身體圖示畫面文字輸出端覆繪](009-body-icon-overlay-draft.md) | DRAFT | 七筆固定文字的 exact identity、安全矩形、動態圖示邊界與轉場／清除 READY 閘門。 |
 | [首屏劇情文字輸出端覆繪](010-story-opening-overlay-draft.md) | READY（僅首屏五行） | 手冊成功返回後五行固定敘事的 guarded glyph identity、文字安全矩形與 row-aware story-region 寫入失效契約。 |
 | [第二頁劇情文字輸出端覆繪](011-story-page2-overlay-draft.md) | READY（僅 typed adapter contract） | 四筆固定敘事的 exact identity、真實 far-return、relative SS/SP guard、safe rectangle 與第 2 頁→第 3 頁 pre-write 失效契約；尚未接 production 或完成 A/B。 |
+| [第三頁劇情文字輸出端覆繪](012-story-page3-overlay-draft.md) | DRAFT | 五行固定敘事的 exact identity、真實 far-return、第三頁→第四頁 pre-write 候選失效契約；待獨立 READY 審查，未接 runtime。 |
