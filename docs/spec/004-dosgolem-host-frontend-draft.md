@@ -146,7 +146,12 @@ indexed SHA-256 相同。3×會重建**僅 output-side**的 22×22 story present
 
 上述是 ignored prototype 的窄範圍證據，並沒有把本規格升為 READY。正式前端仍有下列最小缺口：
 
-1. Linux Ebitengine 後端的正式事件接線：host chrome hit test、面板鍵盤隔離、Ebitengine key 到
+第一百二十五階段的 Docker/Xvfb prototype 已由真實 Ebitengine pointer／Enter 事件驗證：暫選 3×後
+Cancel 會回到 2×且重開仍顯示 2×；再次選 3×後 Apply 收合並切至 3×。host hit 與面板開啟時鍵盤均不改
+BIOS queue、IRQ、raw indexed VRAM 或 DOS mouse，關閉後 Enter 才排入已證實 BIOS key。這仍是 ignored
+prototype evidence；未命中 pointer 不轉 DOS mouse 只是安全 fallback，並非正式 UX 決定。
+
+1. Linux Ebitengine 後端的正式事件接線：將 prototype host chrome hit test、面板鍵盤隔離、Ebitengine key 到
    DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。
 2. 從遊戲開機到故事 state 的完整正常玩家路徑，以及 host 操作後繼續遊玩、存檔／讀檔的同狀態
    收據；第一百二十階段的受控 direct host events 不可替代它。

@@ -1238,3 +1238,7 @@
 
 - 英文手冊與中文 Data Card 指明：讀檔可在主選單或隊員管理選單，保存僅在隊員管理選單並選 A–J 槽位。成功返回分支續按已證實的 Enter 至 330M 仍只見 command/status；依手冊 Num Lock 前進鍵送入數字鍵盤 8，以及無鍵延長，均沒有新畫面、dispatcher event 或檔案操作。
 - 這不能證明遊戲已進可操作冒險狀態，更不能拿建角分支的保存收據冒充手冊後 save/load。下一步是追 330M 的鍵盤 consumer 與選單轉場；未猜其他鍵、未改原版 state。見[第一百二十三階段](docs/re/phase-123-manual-return-save-load-entry-boundary.md)。
+## 2026-09-22 — 第一百二十五階段：實體 host input prototype
+
+- Docker/Xvfb／xdotool 對真實 Ebitengine 視窗驗證設定開啟、3×暫選、Cancel 回 2×且重開仍 2×、Apply 3×收合，以及面板開啟時 Enter 隔離、關閉後 Enter BIOS 排隊。
+- Xvfb 固定視窗與 logical layout letterbox 導致座標漂移，runner 已以當前 X11 geometry 與比例換算重播；這不是正式視窗規格。host hit 不寫 DOS；pointer miss 不轉送 DOS mouse 仍是待決 UX，不升 READY／可玩版。

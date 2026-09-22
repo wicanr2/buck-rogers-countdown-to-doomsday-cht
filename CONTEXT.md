@@ -581,3 +581,7 @@ runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
 #12（ETen top-pad parser 與本機建置）、#13（原版前景色來源）與 #14（正常玩家 runtime 接線），三者均須
 走 DRAFT→READY 審查。dosgolem branch 仍為本機未推送的
 `a4a87aad48607ea6ff6e4646de1292f5caaeade9`，沒有 production code 變更。
+## 2026-09-22 — 第一百二十五階段：實體 host input prototype
+
+- Docker/Xvfb 對真實 Ebitengine 視窗送出的 pointer／Enter 驗證：Cancel 丟棄 3× 暫選並重開回 2×，Apply 3×後自動收合；host hit 與開啟面板 Enter 不寫 DOS，關閉後 Enter 才排入 BIOS。Xvfb letterbox 座標換算僅屬 private runner。
+- prototype 仍非可玩版；pointer miss 不轉 DOS mouse 是安全 fallback，等待使用者 UX 決定。詳見[第一百二十五階段](docs/re/phase-125-ebiten-physical-host-input-prototype.md)。
