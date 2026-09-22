@@ -51,9 +51,12 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 [第一百零三階段](docs/re/phase-103-manual-third-question-runtime.md)。
 手冊題目正確作答後的正常返回亦已於 2×／3× 驗證覆繪完全失效、完整
 machine／DOS 狀態與控制組相等。由成功返回終態重新載入 dosgolem savestate 的
-無鍵 A/B 也證明衍生手冊層不會復活；這不是原版遊戲內存檔／讀檔，後者仍缺
-可銜接的合法保存入口與正常玩家路徑。見[第一百零四階段](docs/re/phase-104-manual-success-return.md)
-與[第一百二十一階段](docs/re/phase-121-manual-savestate-restore-boundary.md)。
+無鍵 A/B 也證明衍生手冊層不會復活；這不是原版遊戲內存檔／讀檔。手冊顯示
+保存需進隊員管理選單並選 A–J 槽位；成功返回分支至 330M 仍只有 command/status，
+已知的 Num Lock 前進鍵沒有可見或檔案效果，尚無可銜接的合法保存入口。
+見[第一百零四階段](docs/re/phase-104-manual-success-return.md)、
+[第一百二十一階段](docs/re/phase-121-manual-savestate-restore-boundary.md)與
+[第一百二十三階段](docs/re/phase-123-manual-return-save-load-entry-boundary.md)。
 
 操作列已在正常角色建立→技術技能頁接線；
 2× 維持逐位元不變、3× 中文字模改為 22×22 並縮緊字距，白色快捷字母不變。

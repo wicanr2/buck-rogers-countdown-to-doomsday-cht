@@ -1233,3 +1233,8 @@
 
 - 手冊成功返回後的 dosgolem savestate 無鍵恢復，2×／3× 均無舊中文覆繪復活、原版狀態與控制組相等；它不是原版遊戲內保存／讀檔。手冊後合法保存入口尚未證實，故不猜按鍵。保留 spec002 歷史 22／691 基準並追加現況 39／39 勘誤，見[第一百二十一階段](docs/re/phase-121-manual-savestate-restore-boundary.md)。
 - 從第四頁私有終態合法 Enter 量到第五頁底部五行敘事的低階 glyph 身分；最初的譯文誤配右側人物姓名，主代理檢視原圖後攔下並訂正，維持 DRAFT。新譯文使全部 catalog 需求增至 1006 字模；舊 997 字模正確拒絕九個新字，隨後以本機倚天重建並由 dosgolem 正式 loader 驗證 1006／1006 覆蓋。未接 runtime 或驗轉場，見[第一百二十二階段](docs/re/phase-122-story-page5-enter-trace.md)。
+
+## 2026-09-22 — 第一百二十三階段：手冊後遊戲內保存入口邊界
+
+- 英文手冊與中文 Data Card 指明：讀檔可在主選單或隊員管理選單，保存僅在隊員管理選單並選 A–J 槽位。成功返回分支續按已證實的 Enter 至 330M 仍只見 command/status；依手冊 Num Lock 前進鍵送入數字鍵盤 8，以及無鍵延長，均沒有新畫面、dispatcher event 或檔案操作。
+- 這不能證明遊戲已進可操作冒險狀態，更不能拿建角分支的保存收據冒充手冊後 save/load。下一步是追 330M 的鍵盤 consumer 與選單轉場；未猜其他鍵、未改原版 state。見[第一百二十三階段](docs/re/phase-123-manual-return-save-load-entry-boundary.md)。

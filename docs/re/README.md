@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百二十三階段：手冊成功返回分支的保存／讀檔入口邊界](phase-123-manual-return-save-load-entry-boundary.md)：手冊確認 save/load 的選單與槽位條件；從成功返回的最早可重播 command/status state 以 Num Lock 前進鍵驗證仍無轉場，故不拼接建角收據、不猜鍵、未做 save/load A/B。
 - [第一百二十二階段：第四頁後合法 Enter 的下一頁 trace](phase-122-story-page5-enter-trace.md)：確認第五頁底部五行敘事的 `0763:04FF → 0763:026B` content-safe identity，校正誤配人物名的初稿並重建 1006 字模；轉場失效與 runtime A/B 未驗，catalog 維持 DRAFT。
 - [第一百二十一階段：手冊成功返回 savestate restore 邊界](phase-121-manual-savestate-restore-boundary.md)：成功返回 state 的無鍵 2×／3× A/B 證實 restore 後不復活衍生手冊層；明示這不是遊戲內保存／讀檔，並記錄合法保存入口的停止線與 spec 002 現況勘誤。
 - [第一百零六階段：Ebitengine host 前端 prototype](phase-106-ebiten-frontend-prototype.md)：Linux／Xvfb 的 Go 1.26.7＋Ebitengine 2.9.9 可丟棄視覺與輸入隔離證據；2×／3×、Apply 後兩個未定面板候選與 presentation snapshot provider 缺口，非 production／非正式玩家路徑。
