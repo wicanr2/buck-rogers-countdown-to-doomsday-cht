@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第一百四十八階段：第五頁五行 runtime A/B 與待審負例](phase-148-story-page5-runtime-ab-pending-audit.md)：control／2×／3×與同執行 active→clear 離頁同狀態通過；失敗矩陣待獨立稽核，規格 014 暫維持 READY。
+- [第一百四十七階段：第四頁六行 runtime A/B 與待審負例](phase-147-story-page4-runtime-ab-pending-audit.md)：control／2×／3×與同執行 active→clear 離頁同狀態通過；失敗矩陣尚缺，規格 013 暫維持 READY。
 - [第一百四十六階段：修正後畫布內滑鼠放開的實體收據](phase-146-real-ebiten-inside-up-corrected.md)：真實 Ebitengine 2×／3× Down→Up 均驗得 Move→Press→Move→Release；滑鼠前端仍為 DRAFT。
 - [第一百四十五階段：第五頁 READY 審查](phase-145-story-page5-ready-evidence-draft.md)：雙重收據確認五行 168 glyph 的逐字 stack／RETF／高位遮罩與 page5→page6 最早安全矩形 pre-write；可丟棄 typed-core、正式 loader 與 2×／3×靜態墨跡檢查支持限縮 READY，runtime 尚未接通。
 - [第一百四十四階段：第三頁五行 runtime 限縮 CONFORMED](phase-144-story-page3-runtime-conformance.md)：最新程式的 control／2×／3×與合法 Enter 離頁同狀態重跑；只證實第三頁已量路徑。

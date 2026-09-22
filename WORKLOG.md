@@ -1347,3 +1347,11 @@
 - 修正後的 ignored MouseBridge 原型以真實 Ebitengine／Xvfb 在 2×、3× 重播畫布內 Down→Up；兩份私有收據分別記錄 `Move→Press→Move→Release`、button 0→1→0，輸入 API 邊界的 BIOS／IRQ／indexed／memory 不變。第一次 2× 執行因錯誤覆蓋 image 的 GOPATH 而觸發離線下載失敗，已中止並沿用 image 原設定乾淨重跑；證據見[第一百四十六階段](docs/re/phase-146-real-ebiten-inside-up-corrected.md)。MouseBridge 仍 DRAFT。
 - 第五頁 Terra 獨立審查補足五行 disposable typed-core 的原子／失敗即關閉負例，並以現行正式本機字型 loader 對 51 個譯文字元零缺字回讀、2×／3×靜態墨跡零越界。[規格 014](docs/spec/014-story-page5-overlay-ready.md)及五筆 exact catalog 限縮升 READY；尚未接正式 runtime 或同狀態 A/B。
 - 第四頁 watcher／catalog／presenter 的可測核心已在本機 dosgolem `63396bb` 提交，相關套件的 Docker test／vet／race 通過；CLI、A/B 與離頁收據未完成，不能升 CONFORMED。
+
+## 2026-09-23 — 第四頁正式接線與同執行離頁 A/B
+
+- 主代理在本機 dosgolem `1cf9ec4` 接通第四頁 CLI；Docker Go test／vet／race 通過。從合法第三頁終態的 control／2×／3×皆六 key 啟用、零缺字、安全矩形外零差、原版 JSON 與正規化存態全等；同一次執行送第二筆 Enter 後，兩倍率於已量 pre-write 由 active 6→0，終態 RGBA 等於 baseline。第一個從第四頁獨立 state 直接離頁的測試未曾建立 active，不足以驗清除，已以雙 Enter 重跑訂正；詳見[第一百四十七階段](docs/re/phase-147-story-page4-runtime-ab-pending-audit.md)。完整失敗矩陣尚缺，spec 013 暫維持 READY。
+
+## 2026-09-23 — 第五頁正式接線與同執行離頁 A/B
+
+- Terra 在本機 dosgolem `0f3ea89` 完成第五頁 watcher／presenter／CLI；主代理從提交後 runner 重跑穩定 2×及同執行雙 Enter 2×，與私有收據逐 byte 相同。control／2×／3×皆五 key 啟用、零缺字、安全矩形外零差，原版 JSON 與正規化存態全等；離頁 active 5→0，終態 RGBA 等於 baseline。詳見[第一百四十八階段](docs/re/phase-148-story-page5-runtime-ab-pending-audit.md)。完整失敗即關閉矩陣仍待獨立審查，spec 014 維持 READY。

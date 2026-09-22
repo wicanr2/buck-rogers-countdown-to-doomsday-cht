@@ -83,15 +83,23 @@ SP 相差 `0x12`，不再以首筆樣本外推其餘 143 筆。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
 初稿曾誤配右側人物姓名，經原圖座標核對訂正。第五頁五筆 exact catalog
 與[規格 014](docs/spec/014-story-page5-overlay-ready.md)已限縮升 READY；
-第五頁正式 runtime／A/B 仍未完成，不能宣稱已中文化。
+本機 dosgolem `0f3ea89` 已接正式 watcher／presenter／CLI，control／2×／3×及
+同執行 active→clear 離頁的同狀態 A/B 通過，見[第一百四十八階段](docs/re/phase-148-story-page5-runtime-ab-pending-audit.md)。
+失敗即關閉矩陣仍待獨立審查，規格 014 暫不升 CONFORMED；完整開機、
+其他離頁與存讀檔亦未驗，不宣稱整段故事已全部中文化。
 第四頁另有[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)
 逐筆 192 glyph 返回；但獨立審查發現原 `story-fill-trace` 只看前五行，
 不能單獨證明六行完整矩形的最早相交 pre-write。後續本機 dosgolem
 `ac1f7fb` 以受限六行診斷補齊 row 22，雙重重播的 48 筆相交 span
 一致；最早仍為 step `310023777`。typed 核心與字型覆蓋已有私有正反例，
 第四頁六筆 exact catalog 與[規格 013](docs/spec/013-story-page4-overlay-draft.md)
-已經獨立審查而限縮升 READY；正式 watcher／presenter 與 A/B 尚未完成，
-故第四頁仍不能宣稱已中文化。
+已經獨立審查而限縮升 READY；本機 dosgolem `1cf9ec4` 已接正式
+watcher／presenter／CLI，control／2×／3×及同執行 active→clear 離頁的
+同狀態 A/B 通過，見[第一百四十七階段](docs/re/phase-147-story-page4-runtime-ab-pending-audit.md)。
+失敗即關閉的完整負例矩陣仍待獨立審查，spec 013 暫不升 CONFORMED；
+審查曾發現 presenter `Apply` 對後段無效事件可能留下前段 stamp；
+本機 `cad9c3f` 已以兩階段驗證／提交與雙倍率負例修正，仍有其他失敗矩陣待補；
+其他離頁、完整開機與存讀檔亦未驗。
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
 候選聯集重建為 1006 字模，正式 loader 已回讀且零缺字；這仍只證明字型覆蓋。
 第五頁後的合法 Enter 也已量到第六頁 row 17–22 六行低階身分；低階翻譯代理建立
