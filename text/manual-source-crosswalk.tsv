@@ -1,7 +1,7 @@
 record_index	page	heading_ascii	status	source_scan	archive_order	source_sha256	printed_page	source_anchor_zh	note
 1	1	2456	confirmed	SCAN0352_004.jpg	31	08b8504eb4b9adffb0f8b165b157d893040d86b06b121d09977eda531c7c5a6c	3	2456年	年份與段落標題直接吻合。
 2	2	2456(Now)	confirmed	SCAN0352_004.jpg	31	08b8504eb4b9adffb0f8b165b157d893040d86b06b121d09977eda531c7c5a6c	4	2456年（現在）	年份與現在標記直接吻合。
-3	3	More on Abilities	strong-inference	SCAN0352_006.jpg	33	07c5a746521d13e0e91b33669021802d34746277845d4c0a384ba4a89eeab6eb	7	人物屬性（續）	內容連續說明技術、經驗值、等級與生命力，但繁中版沒有逐字對應總標題。
+3	3	More on Abilities	confirmed						勘誤：舊稿將中文掃描第 7 頁的技術／EXP／LEVEL／HP 誤視為 More on Abilities 全段；原版英文 Log Book 第 3 頁此標題下實際只有能力修正表與技能影響的索引句，因此直接由原書英文翻譯，不冒充中文掃描段落。來源 https://www.freegameempire.com/games/Buck-Rogers-Countdown-to-Doomsday/manual （2026-09-22 查閱）。
 4	4	Character Races	confirmed	SCAN0352_006.jpg	33	07c5a746521d13e0e91b33669021802d34746277845d4c0a384ba4a89eeab6eb	8	B. 人物種族	章節語意直接吻合，內容續至下一張掃描。
 5	5	Careers	confirmed	SCAN0352_007.jpg	34	3e83ad2dc6a4c173a3d862333195f4d6b793db43f97bd7b7bc2f36e102e56e38	10	C. 職業	章節語意直接吻合，內容續至 SCAN0352_009.jpg。
 6	6	Rogues	confirmed	SCAN0352_009.jpg	36	5cc135e72c8a165eb807f800606f229e3ab5faf7fb24877d32aa87bc10bcb717	14	4. 流浪漢（ROGUES）	中英職業名並列。
@@ -9,14 +9,14 @@ record_index	page	heading_ascii	status	source_scan	archive_order	source_sha256	p
 8	8	Unused Skills	confirmed	SCAN0352_011.jpg	38	0ad434a17ccc32f58e9dc0d0add09266e7ff4584d695967f63eaa9fcbc20ec61	17	5. 預設技能	段落明寫部分技能在本遊戲用不到。
 9	9	Medic Skills	confirmed	SCAN0352_012.jpg	39	dd4cec6e97c8077d59ede60bb9f40a6ff7bf8d73d274b178055a27e7436674be	20	c. 醫學技能（MEDIC SKILLS）	中英類別名並列，內容續至下一張掃描。
 10	10	Skills Mix	confirmed	SCAN0352_014.jpg	41	634eaea8e6caf753fd46de92e24cad4a5ad987cf9bc80cf5764571596f56d794	24	7. 組隊需知／b. 技能的混合	標題語意直接吻合。
-11	11	Money	strong-inference	SCAN0352_015.jpg	42	8a5c2c43412c649d05f46f7f353cb489c6fc3a43dcafd7cbce4fb6f38a6b42ce	25	金融卡（CREDIT CARDS）	段落完整說明星際銀行與貨幣，但繁中版沒有獨立「金錢」標題。
+11	11	Money	confirmed	SCAN0352_015.jpg	42	8a5c2c43412c649d05f46f7f353cb489c6fc3a43dcafd7cbce4fb6f38a6b42ce	25	F. 錢	勘誤：重新目視原圖見 F. 錢標題；原版英文 Log Book 第 11 頁 MONEY 的貨幣／金融卡內容同段，舊 OCR 漏掉標題。英文原書文字見 https://www.freegameempire.com/games/Buck-Rogers-Countdown-to-Doomsday/manual 。
 12	12	Damage	confirmed	SCAN0352_016.jpg	43	8a115364ffc3e565ca276d3f2c3a93926f456f5f76e12656d1caff6a0bce6824	28	C. 傷害	標題語意直接吻合。
 13	13	Range	confirmed	SCAN0352_017.jpg	44	a83b2512261937a80c9491051bd03b3aea73fb1cdf01555b497aaf197370f39c	30	J. 範圍	標題語意直接吻合。
 14	14	Rocketships	confirmed	SCAN0352_019.jpg	46	88ec475c179e5aeeed1a90ada1a410de8d417f670dc0ed886e4a36deefb36ba5	33	A. 火箭	章節介紹火箭船與系統，語意吻合。
 15	15	Mercury	confirmed	SCAN0352_019.jpg	46	88ec475c179e5aeeed1a90ada1a410de8d417f670dc0ed886e4a36deefb36ba5	34	D. 水星（MERCURY）	中英星名並列，內容續至下一張掃描。
 16	16	Earth	confirmed	SCAN0352_020.jpg	47	c668c2e6f30b788794c9c33eda9285f1d7a9902a4d9743ba3ebda3f1f3a6651d	36	F. 地球（EARTH）	中英星名並列。
 17	17	Mars	confirmed	SCAN0352_020.jpg	47	c668c2e6f30b788794c9c33eda9285f1d7a9902a4d9743ba3ebda3f1f3a6651d	36	H. 火星（MARS）	中英星名並列，內容續至下一張掃描。
-18	18	Salvage	strong-inference	SCAN0352_022.jpg	49	4c3ca194d1f9ce54790f04b428309b4c2e9529e3d7a0be14fc876cee9c3907e1	40	F. 接收	段落說明戰後由 NEO 拖船回收利品與補助金；繁中標題 OCR／印刷字形無法逐字對回 Salvage。
+18	18	Salvage	confirmed	SCAN0352_022.jpg	49	4c3ca194d1f9ce54790f04b428309b4c2e9529e3d7a0be14fc876cee9c3907e1	40	F. 接收敵艦	勘誤：重新目視原圖可讀為「接收敵艦」；原版英文 Log Book 第 18 頁 Salvage 的 NEO 拖船／回收補助同段，直接對應。英文原書文字見 https://www.freegameempire.com/games/Buck-Rogers-Countdown-to-Doomsday/manual 。
 19	19	Ranged Weapons	confirmed	SCAN0352_023.jpg	50	78d01f44f61b8eeadf811f13ecaf78691194959da35fff59122c13f295bed00a	41	B. 遠距離武器	標題語意直接吻合。
 20	21	Gear Quality	confirmed	SCAN0352_025.jpg	52	7540595fffc24cced974268bb82a61198110be9720217118e801642c3a918a3d	45	F. 裝備品質	標題語意直接吻合。
 21	22	Terrine	confirmed	SCAN0352_026.jpg	53	ed8299686882469d6c3df570dde98d131f73ceb1f00f405c38629a6217fec432	48	TERRINE（殺手）	英文生物名直接並列。
@@ -37,4 +37,4 @@ record_index	page	heading_ascii	status	source_scan	archive_order	source_sha256	p
 36	38	Lens Treatise	confirmed	SCAN0352_043.jpg	70	465f6b6e0e46f820493a4fb866f4d94bc03bc6c8db7fa5d3d22756144f247e6c	81	68. 有關透鏡的消息	段落解說透鏡聚集與反射太陽能。
 37	39	Appendix	confirmed	SCAN0352_044.jpg	71	e482c0c5522880f137922197e744b2ca49294b889d6e47eb3ff39542fe1e5743	83	附錄	標題直接吻合。
 38	41	Technical Skills	confirmed	SCAN0352_046.jpg	73	cb945ff43ab9d72b407fa87c5e20109cbd4fa4218a01109d402e35c3d81c4367	87	TECHNICAL SKILLS：技術性技能	中英類別名直接並列。
-39	42	Roll.	unknown						繁中掃描只到印刷頁 87；推定所需的下一頁未收錄，沒有可回查來源，禁止猜補。
+39	42	Roll.	confirmed						繁中掃描只到印刷頁 87；本題改以原版英文 Rule Book 第 42 頁 GLOSSARY OF GAME TERMS 的 ROLL. 原段直接翻譯，非中文掃描譯文；來源 https://www.freegameempire.com/games/Buck-Rogers-Countdown-to-Doomsday/manual （2026-09-22 查閱）。

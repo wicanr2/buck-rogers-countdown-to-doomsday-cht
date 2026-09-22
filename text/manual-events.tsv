@@ -1,16 +1,23 @@
 event_key	record_index	page	heading_ascii	ordinal	text_key
 manual.page1.2456.word4	1	1	2456	4	manual.lore.2456
 manual.page2.2456_now.word7	2	2	2456(Now)	7	manual.lore.2456_now
+manual.page3.more_on_abilities.word8	3	3	More on Abilities	8	manual.rules.more_on_abilities
+manual.page4.character_races.word8	4	4	Character Races	8	manual.rules.character_races
+manual.page5.careers.word9	5	5	Careers	9	manual.rules.careers
 manual.page6.rogues.word1	6	6	Rogues	1	manual.career.rogues
+manual.page7.skills.word5	7	7	Skills	5	manual.rules.skills
 manual.page8.unused_skills.word2	8	8	Unused Skills	2	manual.rules.unused_skills
 manual.page9.medic_skills.word8	9	9	Medic Skills	8	manual.rules.medic_skills
 manual.page10.skills_mix.word4	10	10	Skills Mix	4	manual.rules.skills_mix
+manual.page11.money.word10	11	11	Money	10	manual.rules.money
 manual.page12.damage.word9	12	12	Damage	9	manual.rules.damage
 manual.page13.range.word6	13	13	Range	6	manual.rules.range
 manual.page14.rocketships.word3	14	14	Rocketships	3	manual.world.rocketships
 manual.page15.mercury.word4	15	15	Mercury	4	manual.world.mercury
 manual.page16.earth.word5	16	16	Earth	5	manual.world.earth
 manual.page17.mars.word2	17	17	Mars	2	manual.world.mars
+manual.page18.salvage.word6	18	18	Salvage	6	manual.rules.salvage
+manual.page19.ranged_weapons.word1	19	19	Ranged Weapons	1	manual.rules.ranged_weapons
 manual.page21.gear_quality.word7	20	21	Gear Quality	7	manual.rules.gear_quality
 manual.page22.terrine.word2	21	22	Terrine	2	manual.bestiary.terrine
 manual.page23.scots_alarm.word4	22	23	Scot's Alarm	4	manual.log.5.scots_alarm
@@ -30,3 +37,4 @@ manual.page37.alert_screen.word3	35	37	Alert Screen	3	manual.log.63.alert_screen
 manual.page38.lens_treatise.word9	36	38	Lens Treatise	9	manual.log.68.lens_treatise
 manual.page39.appendix.word1	37	39	Appendix	1	manual.rules.appendix
 manual.page41.technical_skills.word2	38	41	Technical Skills	2	manual.rules.technical_skills
+manual.page42.roll.word4	39	42	Roll.	4	manual.rules.roll

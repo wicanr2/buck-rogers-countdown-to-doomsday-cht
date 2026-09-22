@@ -7,6 +7,9 @@
 > 本專案仍在開發中，尚無可供一般玩家下載的完成版或 Release。已證實範圍與下一個驗收
 > 閘門以 [CONTEXT.md](CONTEXT.md) 為準。
 
+原版 39 題手冊查閱事件均已有對應的遊戲內繁中說明段落；這不等於整本手冊逐字翻譯，
+逐題執行期試玩也尚未完成。翻譯與來源邊界見[第一百階段證據](docs/re/phase-100-manual-39-translation.md)。
+
 ## 遊戲與歷史背景
 
 《Buck Rogers: Countdown to Doomsday》由 Strategic Simulations, Inc.（SSI）開發及發行，

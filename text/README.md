@@ -76,8 +76,11 @@ Phase 75 已由 dosgolem guarded glyph watcher 將此清冊接成 typed events�
 `tools/skill_action_bar_text_safe_rects.py` 拒絕缺漏、孤兒、幾何／容量漂移與同畫面跨 action
 重疊；配色不屬於矩形資料。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
-`tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 只收錄
-已唯一核對中文掃描來源並回到原圖校字的段落，目前共有 31 筆；其餘題目不猜測或截斷來源段落。
+`tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 現有
+39 筆題目專用繁中說明段落，全部保持 504 字內；這是遊戲內的段落意譯，不是整章手冊
+逐字轉錄。37 題對照本機中文掃描，`More on Abilities` 與 `Roll.` 因中文對應頁缺失，
+直接依原版英文手冊翻譯並在 `manual-english-sources.tsv` 留下 URL、原書定位及本機快照
+SHA-256；不把這兩題冒充中文掃描來源。原版答案、判定和手冊全文均不在 TSV 中。
 
 `manual-overlay-layout.tsv` 是保留原版頁碼、標題與序數時唯一的正式正文幾何：只清除
 `[7,312)×[72,184)`，以 x=16、y=72 的 36 欄×14 行格顯示，單頁容量固定為 504 字。
@@ -88,12 +91,15 @@ Phase 75 已由 dosgolem guarded glyph watcher 將此清冊接成 typed events�
 執行期資料段透過 `tools/manual_ordinals.py` 重生。它只橋接題目顯示身分，不含答案。
 
 `manual-source-crosswalk.tsv` 逐筆記錄題目對應掃描、archive-order、SHA-256、印刷頁、
-中文錨點與證據等級。它是來源索引，不是可直接顯示的譯文 catalog；OCR 未經逐字校訂的
-內容不得搬入 `manual.zh-TW.tsv`。可用下列命令搭配本機解壓清冊驗證：
+中文錨點與證據等級；沒有中文掃描的兩題由 `manual-english-sources.tsv` 獨立記錄英文原書
+證據。兩表都是來源索引，不是可直接顯示的譯文 catalog；OCR 未經校訂的內容不得搬入
+`manual.zh-TW.tsv`。可用下列命令搭配本機清冊與被忽略的英文來源快照驗證：
 
 ```sh
 python3 tools/manual_crosswalk.py text/manual-questions.tsv text/manual-source-crosswalk.tsv \
-  --manifest workplace/inventory/manual-extracted-manifest.json
+  --manifest workplace/inventory/manual-extracted-manifest.json \
+  --english-sources text/manual-english-sources.tsv \
+  --english-snapshot workplace/buckrogers-original-manual-english.html
 python3 tools/manual_catalog.py text/manual-questions.tsv text/manual-source-crosswalk.tsv \
   text/manual-events.tsv text/manual.zh-TW.tsv
 python3 tools/manual_overlay_layout.py text/manual-overlay-layout.tsv text/manual.zh-TW.tsv
@@ -104,7 +110,7 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
   text/menu-events.tsv text/menu.zh-TW.tsv
 ```
 
-`manual-events.tsv` 是 DRAFT 事件映射：只允許來源為 `confirmed` 的題目，以頁碼、英文標題及
+`manual-events.tsv` 是精確事件映射：只允許來源為 `confirmed` 的題目，以頁碼、英文標題及
 序數精確指向一筆文字鍵。它不含英文答案，也不會送鍵或改寫原版記憶體。
 
 ## 驗證與 prototype 字型

@@ -181,7 +181,7 @@ class EtenFontTest(unittest.TestCase):
     def test_formal_catalog_character_list_is_fixed(self):
         catalog = Path(__file__).resolve().parents[1] / "text/manual.zh-TW.tsv"
         from catalog_font import read_catalog
-        self.assertEqual(hashlib.sha256(character_list_bytes(read_catalog(catalog))).hexdigest(), "e6016c2473c87fcd2504652fabd0b069354b7abbd3c70281b67dfbaec18c7367")
+        self.assertEqual(hashlib.sha256(character_list_bytes(read_catalog(catalog))).hexdigest(), "11fab7e2092b9f5c7c0055c3e0a6b3cc938b3f71e7c8910d8f5961a70370d282")
 
 
 if __name__ == "__main__":

@@ -65,6 +65,46 @@ class ManualCrosswalkTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "SHA-256"):
             subject.validate(self.questions, self.crosswalk, manifest)
 
+    def write_english(self, record="1", source_hash="a" * 64):
+        path = self.root / "english.tsv"
+        with path.open("w", encoding="utf-8", newline="") as out:
+            writer = csv.DictWriter(out, fieldnames=subject.ENGLISH_FIELDS, delimiter="\t", lineterminator="\n")
+            writer.writeheader()
+            writer.writerow({"record_index": record, "source_kind": "original-english-transcription",
+                             "source_url": "https://example.org/manual", "source_locator": "Rule Book p.42 ROLL.",
+                             "source_sha256": source_hash, "retrieved_on": "2026-09-22"})
+        return path
+
+    def test_accepts_confirmed_english_source_without_fake_scan(self):
+        self.write_crosswalk(lambda rows: rows[0].update(source_scan="", archive_order="", source_sha256="",
+                                                         printed_page="", source_anchor_zh="", note="原版英文原書直接翻譯"))
+        subject.validate(self.questions, self.crosswalk, None, self.write_english())
+
+    def test_rejects_missing_english_source_or_bad_digest(self):
+        self.write_crosswalk(lambda rows: rows[0].update(source_scan="", archive_order="", source_sha256="",
+                                                         printed_page="", source_anchor_zh="", note="原版英文原書直接翻譯"))
+        with self.assertRaisesRegex(ValueError, "來源欄位不完整"):
+            subject.validate(self.questions, self.crosswalk, None)
+        with self.assertRaisesRegex(ValueError, "英文原書來源不完整"):
+            subject.validate(self.questions, self.crosswalk, None, self.write_english(source_hash="bad"))
+
+    def test_english_snapshot_hash_is_verified_when_supplied(self):
+        self.write_crosswalk(lambda rows: rows[0].update(source_scan="", archive_order="", source_sha256="",
+                                                         printed_page="", source_anchor_zh="", note="原版英文原書直接翻譯"))
+        snapshot = self.root / "manual.html"
+        snapshot.write_bytes(b"original manual transcription")
+        import hashlib
+        digest = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+        subject.validate(self.questions, self.crosswalk, None, self.write_english(source_hash=digest), snapshot)
+        snapshot.write_bytes(b"changed")
+        with self.assertRaisesRegex(ValueError, "SHA-256"):
+            subject.validate(self.questions, self.crosswalk, None, self.write_english(source_hash=digest), snapshot)
+
+    def test_formal_sources_have_exact_39_records(self):
+        project = Path(__file__).resolve().parents[1]
+        subject.validate(project / "text/manual-questions.tsv", project / "text/manual-source-crosswalk.tsv",
+                         None, project / "text/manual-english-sources.tsv")
+
 
 if __name__ == "__main__":
     unittest.main()
