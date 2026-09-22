@@ -1210,3 +1210,5 @@
 - 2026-09-22 續推中文化：新增角色身體圖示畫面七筆 exact 譯文與安全矩形；原圖 `READY ACTION` 核對後譯為「準備動作」。11 份正式 catalog 倚天字庫重建為 961 字模，只留本機 `workplace/phase101-font/`；完整 Python 測試 181 項通過。此切片尚未接 runtime，見[第一百零一階段](docs/re/phase-101-body-icon-text-catalog.md)。
 - 同日手冊與快捷列稽核以第一百階段 959 字模重播首題，雙倍率正文外零差異；新 961 字模另由正式載入器回讀。稽核邊界見[第一百零二階段](docs/re/phase-102-overlay-audit.md)。使用者確認第一個可玩前端先支援 Linux、架構保留其他平台；新建 GitHub Issue #16，spec 004 仍為 DRAFT，未替使用者決定後端、焦點或設定持久化。
 - 手冊正常路徑的連續錯答實際命中第三題 `Acidic Victory`；最新 961 字模下 2×／3× 中文均可見、缺字與正文外差異為零，完整原版狀態等於控制組。純手冊收據不再因未啟用的操作列 watcher 中止；啟用時維持失敗即關閉，請求型 watcher 優先序已修正並由本機 dosgolem commit `640f918` 測試。#3／#39 未自然命中，不能外推全部題目；見[第一百零三階段](docs/re/phase-103-manual-third-question-runtime.md)。
+- 以本機手冊合法查答後，2×／3× 正常返回的手冊覆繪均完全失效、完整 machine／DOS 狀態與控制組相等；Escape 則被原版當錯答重抽，不能當返回。答案與可還原按鍵僅存忽略的 `workplace/`；存讀檔仍無可銜接的手冊後 checkpoint，見[第一百零四階段](docs/re/phase-104-manual-success-return.md)。
+- 前端選擇由使用者確認 Go／Ebitengine，排除 SDL3；既有 2.9.9 Docker image 的 Linux／Xvfb 可丟棄原型可開 320×200 logical、3× 視窗，但尚非遊戲前端。焦點與設定面板行為仍待決，spec 004 維持 DRAFT。

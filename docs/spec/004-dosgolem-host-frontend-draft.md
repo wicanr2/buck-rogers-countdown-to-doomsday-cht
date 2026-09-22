@@ -56,6 +56,20 @@ input、palette 與 active layer 重繪仍屬未接線 frontend 責任。這個�
 - 使用者於 2026-09-22 確認第一個可玩版本先支援 Linux，架構保留日後擴充
   Windows／macOS 的能力；第一版三平台同步打包與驗收已排除。這只定平台優先序，
   不替視窗 backend、鍵盤焦點、面板收合或持久化定案。
+
+### Linux 後端候選的可丟棄驗證（未定案）
+
+2026-09-22 在既有 `eob-remake-go:1.26.7-ebiten2.9.9` Docker image、`--network none`
+與 Xvfb 中，可丟棄 Ebitengine 2.9.9 原型已將 320×200 logical 畫布開成 960×600
+的 3× 視窗，三次更新後正常結束；暫存原型已清理。這只證明 Linux 視窗後端
+可啟動，沒有連接 dosgolem、輸入分流、繁中覆繪或設定面板。Ebitengine 的
+[官方功能矩陣](https://ebitengine.org/en/documents/features.html)列出 Linux、
+Windows 與 macOS 的視窗／鍵盤／滑鼠能力；[安裝說明](https://ebitengine.org/en/documents/install.html)
+指出目前桌面標準後端仍需 X11／XWayland 與圖形驅動。SDL3 可作替代，
+但[官方建置文件](https://wiki.libsdl.org/SDL3/README-cmake)顯示須另處理 CMake／
+平台工具鏈；本專案目前沒有已驗證的 SDL3 Go 綁定或專用 image。Ebitengine
+  較快接通原是工程建議；使用者其後明確選定 Go／Ebitengine 作為
+  dosgolem 畫面前端，SDL3 分支已排除。原型仍不足以把本規格升為 READY。
 - 不改原版 EXE、DOS 輸入、原版手冊驗證、存檔結構、遊戲規則或 adapter 的 exact output identity。
 
 ## READY 前置與未來驗收
