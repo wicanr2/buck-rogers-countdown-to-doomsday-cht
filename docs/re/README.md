@@ -2,7 +2,7 @@
 
 - [第一百五十一階段：真實 Ebitengine 畫布外放開與失焦清理](phase-151-ebiten-mouse-release-cleanup-prototype.md)：雙倍率畫布外／控制列／面板開啟／失焦 release-only，及 3×孤兒／重複 Up public API 停止線；只屬 ignored 原型。
 - [第一百五十階段：真實 Ebitengine 滑鼠四角與排除邊界](phase-150-ebiten-mouse-geometry-prototype.md)：2×／3×四角 DOS 座標與控制列／右／下 exclusive 邊界的 14 份實體事件收據；只屬 ignored 原型，MouseBridge 維持 DRAFT。
-- [第一百四十九階段：第六頁 READY 前逐字返回與離頁寫入診斷](phase-149-story-page6-ready-prerequisite-diagnostics.md)：200 glyph 逐筆 ABI／RETF 及 48 筆候選矩形相交寫入雙重原版收據；精確 runner 身分與正式矩形等前置仍缺，第六頁維持 DRAFT。
+- [第一百四十九階段：第六頁逐字返回、離頁寫入與 READY 審查](phase-149-story-page6-ready-prerequisite-diagnostics.md)：200 glyph 逐筆 ABI／RETF、48 筆相交寫入、精確 runner 重生與可丟棄核心後限縮升 READY；正式 runtime／A/B 未完成。
 - [第一百四十八階段：第五頁五行 runtime A/B 與追加負例稽核](phase-148-story-page5-runtime-ab-pending-audit.md)：control／2×／3×與同執行 active→clear 離頁同狀態通過；追加失敗矩陣後規格 014 僅固定路徑升 CONFORMED。
 - [第一百四十七階段：第四頁六行 runtime A/B 與追加負例稽核](phase-147-story-page4-runtime-ab-pending-audit.md)：control／2×／3×與同執行 active→clear 離頁同狀態通過；追加失敗矩陣後規格 013 僅固定路徑升 CONFORMED。
 - [第一百四十六階段：修正後畫布內滑鼠放開的實體收據](phase-146-real-ebiten-inside-up-corrected.md)：真實 Ebitengine 2×／3× Down→Up 均驗得 Move→Press→Move→Release；滑鼠前端仍為 DRAFT。

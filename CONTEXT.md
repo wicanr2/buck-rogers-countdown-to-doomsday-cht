@@ -120,9 +120,12 @@ watcher／presenter／CLI，control／2×／3×及同執行 active→clear 離�
 第五頁後的合法 Enter 也已量到第六頁 row 17–22 六行低階身分；低階翻譯代理建立
 繁中 DRAFT。後續[第一百四十九階段](docs/re/phase-149-story-page6-ready-prerequisite-diagnostics.md)
 補 200 glyph 的雙重 return／ABI 收據及第六頁離頁最早相交 pre-write；
-精確 runner 身分、正式安全矩形與 typed-core 負例仍缺，第六頁不升 READY。
+後續由本機 `6dcc427` 重建 runner 並逐 byte 重生兩組收據，私有 typed-core
+與雙倍率字型 containment 通過獨立審查。[規格 015](docs/spec/015-story-page6-overlay-ready.md)
+與六筆 event catalog 已限縮升 READY；正式 runtime／A/B 尚未完成。
 全部 17 份 catalog 的倚天聯集曾重建為 1014 glyph，dosgolem 正式 loader
-對當時譯文字元零缺字；這不代表現行完整字型已驗或第六頁接通 runtime。
+對當時譯文字元零缺字；第六頁現行字型另由本機 1024 字模 loader
+回讀零缺字，但仍不代表第六頁已接通 runtime。
 第六頁後的合法 Enter 又確認第七頁 row 17–22 六行；同狀態 indexed 畫面與色盤重生一致，
 六行繁中候選與 identity 已建為 DRAFT；全部 18 份 catalog 的本機倚天聯集重建為
 1022 字模，正式 loader 對 6136 個譯文字元零缺字。這仍尚未接 runtime 或做中文 A/B。
