@@ -12,6 +12,9 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 [Issue #16](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/16)。
 本機 dosgolem 已有通用唯讀畫面快照與純面板事件核心，但尚無 Ebitengine 玩家視窗、
 machine 接線或跨重啟設定；純核心測試不能取代正常玩家路徑驗收。
+使用真實正常玩家畫面收據與本機倚天字型的 Linux／Xvfb 可丟棄原型已驗證
+2×／3×、套用、取消與面板鍵盤隔離；它沒有附加 DOS machine，也不是可玩版。
+見[第一百一十三階段](docs/re/phase-113-ebiten-host-controls-prototype.md)。
 
 手冊成功返回後前三個劇情畫面的固定英文輸出，已有可重播的低階 glyph 身分
 （原文長度／雜湊、caller、列／欄與色號）及繁中 DRAFT 候選：第一頁五行、

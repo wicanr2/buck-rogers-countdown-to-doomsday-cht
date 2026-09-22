@@ -5,6 +5,11 @@
 - [第一百零五階段：手冊成功返回後首個劇情畫面追蹤](phase-105-first-story-screen-trace.md)：確認首個玩家可見劇情畫面、五筆首屏 DRAFT identity 與第二頁失效候選；尚不接 runtime。
 - [第一百零七階段：第二頁固定劇情 DRAFT catalog](phase-107-story-page2-draft.md)：以正常 Enter 重播建立四筆第二頁固定敘事 glyph identity 與 DRAFT 繁中候選；row 24 動態狀態列排除，尚不接 runtime。
 - [第一百零八階段：第三頁固定劇情 DRAFT catalog](phase-108-story-page3-draft.md)：以兩次正常 Enter 重播建立五筆第三頁固定敘事 glyph identity 與 DRAFT 繁中候選；row 24 動態狀態列排除，尚不接 runtime。
+- [第一百零九階段：第四次 Enter 後的 command loop 分類](phase-109-post-return-enter-4-command-loop.md)：以第三頁終態重播確認第四次 Enter 後只產生 row 24 命令／狀態輸出，沒有第四頁固定劇情 glyph identity；整行固定性待比對。
+- [第一百一十階段：command/status 最小 inventory](phase-110-command-status-inventory.md)：以兩個不同 Enter 時間重播取得相同 row 24 identity 與終態畫面；固定詞／動態欄位仍待不同遊戲狀態比對，暫不建立翻譯 catalog。
+- [第一百一十一階段：command input 證據停止線](phase-111-command-input-stop-line.md)：既有資料沒有手冊返回後可移用的合法移動／查詢按鍵，因此不猜 scan code、不送新輸入，保留 phase110 的可比收據與停止條件。
+- [第一百一十二階段：手冊轉向按鍵與可逆 command/status 重播](phase-112-command-turn-manual-evidence.md)：以中文手冊第 10–12 頁明示的數字鍵盤 4／6 完成左右轉向 pair；row 24 重畫為 33-cell identity 且終態回復，固定詞仍未證實。
+- [第一百一十三階段：Ebitengine host 控制可丟棄原型](phase-113-ebiten-host-controls-prototype.md)：真實正常玩家畫面收據與本機倚天 host 字型在 Linux／Xvfb 開窗，驗證 2×／3×、Apply／Cancel 與面板鍵盤隔離；尚非 DOS 玩家前端。
 - [第一百零三階段：第三題手冊覆繪執行期抽樣](phase-103-manual-third-question-runtime.md)：以最新 961 glyph 字庫在原版錯答重抽路徑實際命中 #36，記錄雙倍率、同狀態、像素隔離與 #3／#39 未命中邊界。
 - [第一百零二階段：手冊與快捷列覆繪稽核](phase-102-overlay-audit.md)：第一百階段 959 字模的雙倍率首題收據、504 字單頁／3× 密度、白色快捷字母，以及尚缺的玩家路徑驗收。
 - [第一百零一階段：身體圖示選擇文字目錄](phase-101-body-icon-text-catalog.md)：沿用正常移動／拒絕／確認 trace，建立七筆固定介面文字的 exact identity、繁中 catalog 與安全矩形；runtime overlay 尚待下一階段。
