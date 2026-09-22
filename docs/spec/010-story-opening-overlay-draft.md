@@ -82,7 +82,7 @@ LoadStoryOpeningCatalog(eventsTSV, translationsTSV) -> StoryOpeningCatalog
 NewStoryOpeningWatcher(catalog) -> watcher
 watcher.ObserveGlyphEntry(caller, ss, sp, ABI args, step)
 watcher.ObserveInstruction(at, ss, sp, step) -> []StoryOpeningEvent
-watcher.ObserveStoryRegion(indexed) -> invalidated bool
+watcher.ObserveVideoWrite(at, es, di, cx, step) -> invalidated bool
 NewRuntimeStoryOpeningOverlay(catalog, font, scale) -> presenter
 presenter.Apply(event); presenter.Frame(indexed, palette); presenter.Draw(indexed, palette)
 ```
