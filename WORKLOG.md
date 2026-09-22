@@ -1148,3 +1148,12 @@
 - project spec 006 已 CONFORM（候選審查工具）；dosgolem 本機提交
   `a4a87aad48607ea6ff6e4646de1292f5caaeade9` 僅回填 spec 218 邊界，未推送。字型來源／完整授權文字、
   採用、build、runtime 與 normal-player A/B 仍未完成。
+
+## 2026-09-22 — 第九十三階段：倚天字型候選輸入盤點
+
+- 依使用者選定的本機倚天來源，在 Docker 唯讀盤點 `ET353S/FILES/STDFONT.15`、`SPCFONT.15`、
+  `SPCFSUPP.15` 與 `ASCFONT.15`；只保存檔名、大小與 SHA-256，沒有複製字模、媒體或完整 README。
+- 以正式手冊 691 code points 重生 coverage：44 ASCII、12 symbol、634 common CJK、1 secondary CJK，
+  缺字為零；`U+0020` 是唯一預期空白字模。`一`／`中`／`猴` 的 entry 0／66／2,690 結構錨點沒有位移。
+- 新增 spec 007 DRAFT 與 RE 收據，明定候選仍缺完整授權告知、既有 Unifont validator 不可冒充支援、
+  以及 16×15／8×15→16×16 對齊必須先做 prototype 與使用者決定。

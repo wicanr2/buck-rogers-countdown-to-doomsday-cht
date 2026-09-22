@@ -11,3 +11,4 @@
 | [dosgolem host 前端與執行期倍率](004-dosgolem-host-frontend-draft.md) | DRAFT | 將 host canvas、輸入隔離、重繪與未決倍率操作語意分開。 |
 | [手冊繁中輸出端 presenter 整合](005-manual-runtime-presenter-draft.md) | DRAFT | 將 typed 手冊 request 接到 14 行 RGBA 段落，並明列 lifecycle 與字型 READY 缺口。 |
 | [手冊正式字型候選 manifest 驗證器](006-formal-font-candidate-manifest-validator.md) | CONFORMED（候選審查工具） | 審查本機候選的來源、授權 metadata 與 coverage；不採用、建置或散布字型。 |
+| [倚天 15 點字型候選輸入契約](007-eten-15-font-candidate-intake-draft.md) | DRAFT | 使用者指定倚天字模的來源、691 glyph coverage、16×15 轉換與權利缺口。 |

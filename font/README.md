@@ -24,3 +24,9 @@ python3 tools/catalog_font.py validate-candidate text/manual.zh-TW.tsv \
 命令只輸出檔名、SHA-256、format／version 與 glyph count metadata，不寫入 GOLEMFNT。它要求 strict
 manifest、來源與授權文字雜湊、691 glyph coverage、`local-validation-only` 與 `undecided` 發行狀態；
 通過只代表候選可進入後續權利審查，不代表採用、嵌入或可散布。
+
+第九十三階段已依使用者指定，唯讀盤點本機倚天 `ET353S/FILES/` 的 15 點字模；其對正式手冊 691
+碼點的定位結果、檔案雜湊與停止線見
+[`docs/spec/007-eten-15-font-candidate-intake-draft.md`](../docs/spec/007-eten-15-font-candidate-intake-draft.md)。
+它不是既有 Unifont validator 的輸入：候選仍缺完整授權告知，且 16×15／8×15 至 runtime 16×16 的
+對齊尚未經 prototype 與使用者決定，因此不得建置任何字型產物。

@@ -478,3 +478,10 @@ notice／license／glyph bytes、不寫 GOLEMFNT。158 項 Python 測試含正�
 通過；synthetic data 不是候選字型。dosgolem 本機 `a4a87aad48607ea6ff6e4646de1292f5caaeade9` 僅回填
 spec 218 的工具邊界，該 spec 仍 DRAFT：本機仍沒有 candidate source／完整授權文字，不能進入字型 build、
 手冊 runtime 或正常玩家 A/B。
+
+第九十三階段依使用者指定採用本機倚天候選 `/home/anr2/cht/etan_font` 作為研究輸入，排除下載
+GNU Unifont 或改用其他候選。`ET353S/FILES/` 的 `STDFONT.15`、`SPCFONT.15`、`ASCFONT.15`
+可定位正式手冊 691 glyph（44 ASCII、12 symbol、634 common CJK、1 secondary CJK，零缺字；空白
+字元是唯一預期全空字模）。不過候選缺少完整授權告知，且 16×15／8×15 到 runtime 16×16 的對齊尚未
+經 prototype／使用者決定；spec 007 與 dosgolem spec 218 均維持 DRAFT，不得建置、嵌入、散布或接入
+runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
