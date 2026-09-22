@@ -1186,3 +1186,11 @@
   source rows 至 runtime 16×16 row 1..15，row 0 為零；水平 ASCII 仍在 x=4..11。
 - 依賴已拆入 GitHub #12（正式 ETen parser／本機建置）、#13（原版前景色來源）與 #14（手冊 presenter
   正常玩家 runtime 接線）。第九十四階段的 private palette-index-10 取樣仍只屬對齊預覽，不能升格為正式策略。
+
+## 2026-09-22 — 第九十六階段：由調查轉入中文化實作
+
+- 依使用者要求指揮兩位 Terra，交付倚天正式建置器與手冊執行期接線；主代理加入獨立 RGBA 與完整狀態整合驗收。
+- 首題 2×／3× 中文實際顯示、正文外差異為零；錯答換題未命中 catalog 時清除舊段落，完整原版狀態不變。
+- 修正存態驗證方法：gob map 及 handle 序列順序可不同，改以完整既有 schema 解碼正規化比較；未變更原版存態格式。
+- Python 172 項及相關 Go 測試通過，手冊子代理完成 race／vet；原始資料、字型與圖片均留 workplace。
+- 詳細成果、重跑入口與限制見 [第九十六階段收據](docs/re/phase-96-eten-manual-runtime.md)。#14 尚有返回／存讀檔驗收，保持開啟。

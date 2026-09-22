@@ -1,6 +1,6 @@
 # 008 — 倚天 top-pad 本機字型建置器
 
-狀態：READY（只授權本機 builder implementation）
+狀態：CONFORMED（本機字型建置器）
 日期：2026-09-22
 前置：[倚天 15 點字型候選輸入契約](007-eten-15-font-candidate-intake-draft.md)、
 [第九十五階段索引證據](../re/phase-95-eten-top-pad-parser-evidence.md)、
@@ -24,7 +24,7 @@ Git、GitHub Issue、Release、公開封包或可散布 fixture。
 
 ## 預定命令與 typed input
 
-下列是 READY 後才可實作的命令外形；目前沒有此命令：
+正式命令如下；必須在 Docker 內使用本機唯讀字型來源：
 
 ```text
 python3 tools/eten_font.py build text/manual.zh-TW.tsv \
@@ -92,5 +92,7 @@ header／回讀不符都必須以非零結束，且不繪圖、不改 VRAM、不
 integration run 做 691 glyph 收據；公開 CI 在來源缺席時必須明確 skip，而不是下載、模擬或把字型塞進 fixture。
 
 READY 審查已逐項確認上述 typed input、分區、codec、對齊、輸出、失敗模式、權利邊界與測試設計均無未知。
-因此本規格只授權 #15 實作本機 builder；目前 builder、字型二進位與 runtime hook 都尚不存在。#13 前景色與
-#14 正常玩家 presenter 仍是獨立 gate，不能因本規格 READY 而提前接線或宣稱已中文化。
+本機建置器已實作為 `tools/eten_font.py`，12 項合成測試涵蓋來源身份、分區端點、字模格式、輸出路徑與
+第二次檔案替換失敗的回復。真實來源產出 25,583 bytes、691 字模，SHA-256 為
+`78c10dec8055110764013007899c4455b91256a78f94e212294ac9c51c01364e`；dosgolem `xlate.LoadFont`
+回讀為 16×16、691 字模。本工具的 CONFORMED 不代表全遊戲中文化或字型可公開散布。

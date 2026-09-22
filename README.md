@@ -42,8 +42,10 @@ DOS、Commodore 64 與 Amiga 版皆在 1990 年推出；DOS 版另有臺灣發�
 
 目前已完成可重播的原版啟動、文字 dispatcher／清除生命週期、手冊題庫與繁中段落映射、
 整數倍率點陣 renderer、手冊事件 Collector／Catalog，以及由真實原版事件產生繁中
-`DisplayRequest` 的 runtime watcher。繁中文字尚未接入正式玩家畫面；因此本專案不宣稱
-「已完成中文化」。詳細證據見 [原版觀測與研究索引](docs/re/README.md)。
+`DisplayRequest` 的 runtime watcher。倚天字型與手冊呈現鏈已接入 dosgolem 重播命令；
+首題的 2×／3× 中文正文及錯答換題清除已通過原版完整狀態與像素比較。
+尚未提供互動式玩家前端，也未完成全部題目與返回／存讀檔驗收，不宣稱全遊戲中文化完成。
+開發重跑入口與限制見 [手冊中文整合收據](docs/re/phase-96-eten-manual-runtime.md)。
 
 ## 原版資料與權利邊界
 

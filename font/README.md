@@ -29,6 +29,19 @@ manifest、來源與授權文字雜湊、691 glyph coverage、`local-validation-
 使用者確認的已購買字型之**本機遊戲使用**範圍，建立未追蹤的 16×16／691 glyph 對齊 preview。其定位、
 檔案雜湊、兩案收據與停止線見
 [`docs/spec/007-eten-15-font-candidate-intake-draft.md`](../docs/spec/007-eten-15-font-candidate-intake-draft.md)。
-它不是既有 Unifont validator 的輸入：候選仍缺完整公開授權告知，使用者已選定 `top-pad`，ETen builder
-契約已在 spec 008 READY，但 builder 尚未實作；正式前景色來源仍未 READY。因此不得把 preview 接入 runtime，也不得把任何字型
-產物加入 Git、GitHub、Release 或公開封包。
+倚天本機建置器已實作於 [`tools/eten_font.py`](../tools/eten_font.py)，使用者已選定 `top-pad`。
+以下命令在 Docker 容器內執行，專案掛在 `/project`、倚天來源唯讀掛在 `/eten`，工作目錄為 `/project`：
+
+```sh
+python3 tools/eten_font.py build text/manual.zh-TW.tsv \
+  --asc /eten/ET353S/FILES/ASCFONT.15 \
+  --spc /eten/ET353S/FILES/SPCFONT.15 \
+  --std /eten/ET353S/FILES/STDFONT.15 \
+  --out workplace/phase96-font/buckrogers-eten-top-pad.golemfnt \
+  --manifest-out workplace/phase96-font/buckrogers-eten-top-pad.json
+```
+
+目前固定手冊集合為 691 個字模；實際來源與輸出均驗證 SHA-256，建置失敗時保留既有產物。
+它不使用 Unifont validator；兩套來源解析保持各自格式。字型與生成產物只留在本機 `workplace/`，
+不得加入 Git、GitHub、Release 或公開封包。契約見
+[spec 008](../docs/spec/008-eten-top-pad-local-font-builder-draft.md)。
