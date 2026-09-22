@@ -10,24 +10,24 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 未 Apply 即關閉面板會取消暫選，再開時選取值回到目前已套用倍率；
 [spec 004](docs/spec/004-dosgolem-host-frontend-draft.md) 維持 DRAFT，工作項為
 [Issue #16](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/16)。
-本機 dosgolem 已有通用唯讀畫面快照與純面板事件核心，但尚無 Ebitengine 玩家視窗、
-machine 接線或跨重啟設定；純核心測試不能取代正常玩家路徑驗收。
-使用真實正常玩家畫面收據與本機倚天字型的 Linux／Xvfb 可丟棄原型已驗證
-2×／3×、套用、取消與面板鍵盤隔離；它沒有附加 DOS machine，也不是可玩版。
-見[第一百一十三階段](docs/re/phase-113-ebiten-host-controls-prototype.md)。
+本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
+鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
+Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×
+自動收合，以及面板開啟不送 BIOS 鍵、關閉後合法一鍵推進原版。此原型的
+`active_layer_connected=false`：仍是空覆繪層，未接上繁中故事層，且實體事件映射、
+完整玩家路徑與存讀檔未驗；不能稱可玩中文版。見[第一百一十六階段](docs/re/phase-116-game-loaded-ebiten-prototype.md)。
 
-手冊成功返回後前三個劇情畫面的固定英文輸出，已有可重播的低階 glyph 身分
-（原文長度／雜湊、caller、列／欄與色號）及繁中資料：第一頁五行的 catalog／
-spec010 已達 READY（只授權實作），第二頁四行、第三頁五行仍是 DRAFT；
-動態狀態列排除。首個換頁的劇情區視訊寫入已定位，
-不能誤用底部狀態列清除作為失效時機。本機倚天 14 份 catalog 候選聯集為
-990 字模，dosgolem 正式 loader 已回讀並覆蓋這三頁 139 個譯文字元；
-三頁均尚未接 runtime，不得宣稱已中文化。詳見[第一百零五階段](docs/re/phase-105-first-story-screen-trace.md)、
-[第一百零七階段](docs/re/phase-107-story-page2-draft.md)與
-[第一百零八階段](docs/re/phase-108-story-page3-draft.md)。
-第四次 Enter 的原版畫面下方仍有新劇情；早先只見 row 24 的 trace 不能證明
-沒有第四頁文字，已在[第一百零九階段](docs/re/phase-109-post-return-enter-4-command-loop.md)
-追加勘誤。第四頁 exact identity／譯文尚未建立。
+手冊成功返回後第一個固定劇情畫面有五筆 READY 身分與繁中譯文。本機 dosgolem
+commit `42193b0` 已接正式覆繪；同一合法 state／輸入排程的 2×／3× A/B 均命中五筆、
+缺字為零、故事安全矩形外零像素差，終態原版 indexed framebuffer／palette 相同。
+這只證實第一頁該重播狀態；Enter 轉頁清除、完整開機玩家路徑與存讀檔仍未驗，
+spec010 維持 READY，不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)。
+第二頁四行、第三頁五行有可重播低階 glyph 身分與繁中 DRAFT；第四頁六行只有
+既有畫面反查的 `visual-transcription` DRAFT，尚無首次繪製時的 caller／步數，
+不得接 runtime。動態狀態列一律排除。既有本機倚天 14 份 catalog 候選聯集為
+990 字模，需隨正式譯文重建。見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
+[第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)與
+[state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
 意譯，不是整章手冊逐字轉錄。37 題有中文掃描對照；第 3、39 題因缺少直接的中文

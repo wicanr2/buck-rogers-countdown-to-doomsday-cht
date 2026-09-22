@@ -1212,3 +1212,9 @@
 - 手冊正常路徑的連續錯答實際命中第三題 `Acidic Victory`；最新 961 字模下 2×／3× 中文均可見、缺字與正文外差異為零，完整原版狀態等於控制組。純手冊收據不再因未啟用的操作列 watcher 中止；啟用時維持失敗即關閉，請求型 watcher 優先序已修正並由本機 dosgolem commit `640f918` 測試。#3／#39 未自然命中，不能外推全部題目；見[第一百零三階段](docs/re/phase-103-manual-third-question-runtime.md)。
 - 以本機手冊合法查答後，2×／3× 正常返回的手冊覆繪均完全失效、完整 machine／DOS 狀態與控制組相等；Escape 則被原版當錯答重抽，不能當返回。答案與可還原按鍵僅存忽略的 `workplace/`；存讀檔仍無可銜接的手冊後 checkpoint，見[第一百零四階段](docs/re/phase-104-manual-success-return.md)。
 - 前端選擇由使用者確認 Go／Ebitengine，排除 SDL3；既有 2.9.9 Docker image 的 Linux／Xvfb 可丟棄原型可開 320×200 logical、3× 視窗，但尚非遊戲前端。焦點與設定面板行為仍待決，spec 004 維持 DRAFT。
+
+## 2026-09-22 — 第一百一十六至一百一十七階段：真實遊戲前端原型與首屏覆繪對拍
+
+- 使用者定案 Linux 首版以 Ebitengine 顯示，啟動預設 2×、倍率只在本次遊戲期間有效；設定面板開啟時停送遊戲鍵盤，Apply 後收合，未 Apply 關閉則取消暫選，再開回到目前倍率。真實原版 state 已於 Docker／Xvfb 的 Ebitengine 原型顯示並由明示 BIOS 鍵盤橋推進；原型仍以空 active layer 呈現，不是可玩中文版。見[第一百一十六階段](docs/re/phase-116-game-loaded-ebiten-prototype.md)。
+- dosgolem 本機分支接上第一頁五行 READY 劇情的 guarded return-edge watcher、覆繪及故事區失效。從合法手冊成功返回 state 以相同私有輸入重播，2×／3× 各命中五筆、零缺字、安全矩形外零差異，原版 indexed framebuffer／palette 相同；轉頁清除、完整開機玩家路徑與存讀檔仍待驗，spec010 保持 READY。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)。
+- 既有畫面證實第四頁另有六行劇情；早先將該頁判成僅命令列的說法已追加勘誤。六筆繁中僅為 visual-transcription DRAFT，尚未找回首次繪製前 state 或 glyph caller，不能接 runtime。見[第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)與[state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)。
