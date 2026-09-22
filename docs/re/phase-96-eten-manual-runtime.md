@@ -9,6 +9,26 @@ dosgolem 本機實作提交：`3e293cd`（`buck-rogers-cht-output-overlay` 分�
 - `tools/eten_font.py` 由本機倚天來源產出 691 個 16×16 top-pad 字模，大小 25583 bytes，
   SHA-256 `78c10dec8055110764013007899c4455b91256a78f94e212294ac9c51c01364e`。
   來源入口、命令及權利界線見 [字型入口](../../font/README.md)。
+
+### 前景色來源證據格式核對
+
+此處色彩位址是 **dosgolem 執行期實模式 `segment:offset`**，不是 IDA 線性位址或
+`GAME.OVR` 檔案 offset。被測 `START.EXE` SHA-256 為
+`58a34a38b1db455202d2d30daa82915982d7d905932b46bdc7371cb466226cf1`；
+`GAME.OVR` SHA-256 為 `3a4ad4856c08fe5973179f1d907feed1d870af99d08abd1cb884b316324f3cc0`。
+起始私有 state SHA-256 是 `8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269`；
+實作／觀測工具為本地 dosgolem commit `3e293cd`，以既有 `golang:1.24-bookworm` Docker
+建置，再以 `tools/manual_runtime_smoke.py` 重播；完整命令與終態檔案如下節。
+
+| 主張與分級 | 可回查證據 |
+| --- | --- |
+| **已證實**：手冊題首 style 取自原版文字分派參數，不取自空白正文的畫面採樣 | `Watcher.Install` 在 `0763:0424` dispatcher 入口讀取原版 `Arg(2)` 背景、`Arg(3)` 前景、`Arg(4)` row、`Arg(5)` column；只有精確 `2A33:01ED` 題首 begin 才保存 `ManualTextStyle`。`workplace/phase96-first-final/2x.json` 的 begin 位於 step `266486493`，style `{background:0,foreground:10,row:2,column:3}`。 |
+| **已證實**：該色彩資料只進輸出端 presenter | `RuntimeManualOverlay.SetStyle` 接收上述 metadata；缺 style 不繪製。首題 2×／3× 的中文像素差均只在正式正文矩形內，矩形外差異 0；control 與覆繪組的原版持久化機器／DOS 狀態相同。 |
+| **已證實**：這一固定 state 的原版 indexed／palette 基準 | 首題終態 step `266557247` 的 indexed SHA-256 為 `d53948dc2a75e255691e5c44287fe2e76cf7a630196f6d1546ac18c4730bd495`，palette SHA-256 為 `045796505f7ec3115cec8632ca7a29e6391687a2a013198e38dd68dd5b3564eb`；兩倍率使用同一原始色盤。 |
+| **未知**：新鮮正常玩家狀態中 index 15 的周邊英文可讀性 | 舊 state 的 palette 15 為黑；此問題與正文前景色來源分開，不得以硬編碼白色修補，也不擴稱其他情境已驗收。 |
+
+色號 `10` 是這一題、這一 state 的觀測值，不是所有題目的硬編碼預設。若觀測不到
+原版題首樣式，正式 presenter 失敗即關閉，不以 preview 色號或其他畫面像素猜補。
 - 本機 dosgolem 的 `cmd/buckrogers-text-receipt` 已接通 Watcher → Bridge → Consumer →
   RuntimeManualOverlay。前景／背景取自原題 dispatcher 參數；本次為 fg=10、bg=0，
   不改寫 VRAM。不具樣式證據時拒絕繪製；調色盤更新不復活已失效圖層。

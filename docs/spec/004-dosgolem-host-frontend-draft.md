@@ -159,7 +159,11 @@ MouseBridge 的 READY 候選邊界為：source 是 Ebitengine logical canvas 的
 是既有 DOS `MoveMouse`／`PressMouse`／`ReleaseMouse`；bridge 只在 closed panel、canvas rect 內工作，
 不得把 host chrome／panel 座標交給 DOS，不 Step machine、不製造 keyboard IRQ。2×／3×的座標換算、
 canvas 邊界、left button down/up 順序與拒絕無效按鍵須由純核心測試釘住。phase127 只證實 state mutation，
-尚未 Step，不能當玩家可見效果收據。
+尚未 Step，不能當玩家可見效果收據。使用者其後也決定：只有關面板且畫布內的 Left Down
+能建立新的 DOS 按鍵狀態；已轉送 Down 的 Up 若在畫布外、控制列、開啟面板或視窗失焦，
+仍須只呼叫一次 `ReleaseMouse(0)`，不移動最後有效 DOS 座標；無配對或重複 Up 不送 DOS。
+本地 dosgolem 分支的 `docs/spec/228-host-mouse-bridge-ready-candidate.md` 保存 DRAFT 契約與
+純 fake prototype 驗證；原版有界玩家效果仍待量測，不能升 READY。
 
 1. Linux Ebitengine 後端的正式事件接線：將 prototype host chrome hit test、面板鍵盤隔離、Ebitengine key 到
    DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。

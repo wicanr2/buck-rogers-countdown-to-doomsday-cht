@@ -11,8 +11,10 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 [spec 004](docs/spec/004-dosgolem-host-frontend-draft.md) 維持 DRAFT，工作項為
 [Issue #16](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/16)。
 同一真實面板外 click 的可丟棄 A/B 已證實：不轉送時 DOS mouse 座標不變，實驗性
-轉送時座標改變；兩組未 Step machine，不能推論玩家可見反應。正式 pointer miss
-轉送與 MouseBridge 仍待使用者決定及驗證，見[第一百二十七階段](docs/re/phase-127-pointer-miss-ab-prototype.md)。
+轉送時座標改變；兩組未 Step machine，不能推論玩家可見反應。使用者已決定：面板關閉時
+畫布內的滑鼠事件轉送原版，面板開啟時新事件由 host 消費；已轉送 Down 後，即使於畫布外、
+控制列、面板放開或視窗失焦，也要只送一次 Release 而不移動最後 DOS 座標。MouseBridge
+仍待真實有界收據與 READY 審查，見[第一百二十七階段](docs/re/phase-127-pointer-miss-ab-prototype.md)。
 本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
 鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
 Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×

@@ -3,6 +3,11 @@
 狀態：DRAFT（全範圍）；首題、錯答換題第二題及 restore 穩定點的窄範圍實作與收據見
 [第九十七階段](../re/phase-97-manual-cjk-density.md)及 dosgolem spec 222，遊戲內返回／存讀檔尚未驗收。
 日期：2026-09-21  
+現況訂正（2026-09-22）：下列「正式字型候選」「前景色未知」與未勾選字型／首題收據欄位
+記錄的是本規格起草時狀態，已由[第九十六階段](../re/phase-96-eten-manual-runtime.md)及
+dosgolem `222-buck-rogers-manual-runtime-presentation.md` 的窄範圍 CONFORMED 證據補足；
+不能再用那些舊列宣稱首題尚無正式色彩來源或字型。全範圍仍因正常返回、存讀檔與
+其餘題目抽測未完而維持 DRAFT。
 前置：[手冊段落覆繪](002-manual-paragraph-overlay-draft.md)、
 [手冊事件 adapter](003-manual-event-adapter.md)、[第十八階段 lifecycle 證據](../re/phase-18-manual-generation-invalidation.md)、
 [第八十五階段整合稽核](../re/phase-85-manual-presenter-integration-readiness-audit.md)、
