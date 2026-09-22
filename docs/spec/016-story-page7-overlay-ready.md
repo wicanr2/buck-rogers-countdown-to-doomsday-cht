@@ -39,6 +39,12 @@ length／SHA、step、row／column 是 exact identity。逐字 caller
 `mode, glyph, repeat, background, foreground, row, column`。
 entry A/B 原版收據逐 byte 相同。
 
+上述 TSV 的絕對 entry／post step 是**固定排程原版收據的精確來源定位**，
+不是正常玩家 runtime 必須等於的全域時鐘。玩家在不同時刻合法按 Enter
+仍應看到相同繁中；runtime 的 step gate 是每筆 entry<post、跨 glyph／
+行嚴格遞增，以及執行不連續即清空，不能用絕對步數鎖死合法路徑。
+TSV loader 仍須核對六筆固定觀測步數，防止 catalog provenance 漂移。
+
 已證實：從合法第七頁 state SHA-256
 `e869b67264539aff95ca5929a9858c74475feea47e0c7b3a505ea9cd0aa9a460`
 於 step `341000000` 接受 Enter，最早與六行安全矩形相交的
@@ -62,6 +68,8 @@ style、row／column、逐字 return、SS／SP、step 順序、七 ABI word
 缺 key、缺字、partial／duplicate／錯序、identity／style／ABI／
 return／stack／step drift、未知回呼與 execution discontinuity，
 一律不得產生局部繁中 stamp。
+此處 `step drift` 指 runtime entry／post 逆序、重複或跨事件倒退，
+不是與固定收據絕對步數不同。
 
 僅在 `0CF4:1B3A`、`ES=A000` 的 Mode 13h `DI/CX` 寫入半開 span
 **逐列實際相交**安全矩形時，於原版執行前清除 active／pending group。

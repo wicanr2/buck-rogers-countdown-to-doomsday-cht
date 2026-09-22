@@ -9,6 +9,10 @@ return／ABI、最早相交 pre-write、七 ABI 低位映射、逐列半開寫�
 2×／3×字型 containment 已核對；正式 dosgolem runtime 與同狀態 A/B
 尚未做，第七頁不得稱已中文化。證據與審查勘誤見
 [第一百五十三階段](docs/re/phase-153-story-page7-ready-prerequisite-diagnostics.md)。
+第八頁四行已有雙重原版收據補足 130 glyph 的 SS／SP+0x12／RETF 與
+合法 page8→page9 最早相交 pre-write；2×／3×正式字型 containment 與
+typed-core 失敗即關閉仍缺，因此維持 DRAFT，見
+[第一百五十五階段](docs/re/phase-155-story-page8-ready-prerequisite-evidence.md)。
 
 互動式玩家前端的第一個可玩版本已由使用者決定先支援 Linux，架構保留日後
 Windows／macOS 擴充；第一版三平台同步交付已排除。視窗後端也已選定
