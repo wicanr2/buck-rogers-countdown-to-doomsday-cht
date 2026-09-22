@@ -23,7 +23,11 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 同畫布 Down→Up；兩倍率均為 `Move→Press→Move→Release`，DOS button
 清除，輸入 API 邊界 BIOS／IRQ／indexed／memory 不變，見
 [第一百四十六階段](docs/re/phase-146-real-ebiten-inside-up-corrected.md)。
-其餘矩陣與玩家可見滑鼠因果未驗，MouseBridge 仍 DRAFT。
+後續[第一百五十階段](docs/re/phase-150-ebiten-mouse-geometry-prototype.md)
+以真實 X11／Ebitengine 補齊 2×／3×四角映射與 chrome／右／下排除邊界
+14 份私有收據；右／下 exclusive 邊界只用 ignored 原型 1 logical-pixel guard
+觀測，不是正式視窗設計。cleanup 其餘矩陣與玩家可見滑鼠因果未驗，
+MouseBridge 仍 DRAFT。
 另以真實 X11 失焦驗到已送 DOS 的 Down 會只 Release、不 Move；無前置 Down 的實體 Up
 及重複 Up 在 Ebitengine public input API 未產生新的 release edge，3× panel-open 前提下的
 新 Down／Up 也不觸 DOS。這些仍是可丟棄 harness 的限定收據，不代表完整前端路由或

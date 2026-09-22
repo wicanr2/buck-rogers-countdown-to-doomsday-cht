@@ -1360,3 +1360,7 @@
 
 - Terra 在本機 dosgolem `5652f11` 補第四頁 ABI、return、未知／不相交寫入負例；`a2dba44` 補第五頁 presenter 原子負例。主代理於 `6181e31` 再補第五頁完整 hash gate、return step、已啟用後未知／不相交寫入與雙倍率缺字、非 READY 負例；`6dcc427` 補第四頁正式 loader 的雙倍率缺字、DRAFT catalog 拒絕。Docker Go test／vet／race 通過；原先 control／2×／3×及離頁私有收據雜湊回讀相符，未修改 runtime code。因此[規格 013](docs/spec/013-story-page4-overlay-draft.md)與[規格 014](docs/spec/014-story-page5-overlay-ready.md)只在固定合法 Enter 進入／離頁路徑升 CONFORMED，完整開機、其他離頁與存讀檔未驗。
 - Terra 雙重重播第六頁 200 筆 glyph 的 return／ABI 與離頁 48 筆候選矩形相交 pre-write；主代理回讀兩組 state 及雙份收據 SHA-256。[第一百四十九階段](docs/re/phase-149-story-page6-ready-prerequisite-diagnostics.md)保留精確 runner 身分未記錄的限制，第六頁保持 DRAFT，不接 production。
+
+## 2026-09-23 — 真實 Ebitengine 雙倍率四角與排除邊界
+
+- Terra 將 ignored Linux／Xvfb 原型擴成資料驅動 geometry harness，真實 Ebitengine 2×／3×四角均映射到 DOS `(0|319,0|199)` 且 `Move→Press→Move→Release`；控制列、右與下 exclusive 邊界均零 DOS API。十四份私有收據、原型競態測試與 1 logical-pixel 觀測 guard 的非正式範圍見[第一百五十階段](docs/re/phase-150-ebiten-mouse-geometry-prototype.md)。MouseBridge／Linux 前端仍 DRAFT，cleanup 完整矩陣與正常玩家因果未驗。
