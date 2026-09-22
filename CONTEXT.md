@@ -1,6 +1,12 @@
 # 目前狀態
 
-更新：2026-09-21
+更新：2026-09-22
+
+第九十五階段已完成：使用者已選定倚天字型 `top-pad`（output row 0 為零、source rows 0..14
+落在 rows 1..15；排除 `bottom-pad`）。唯讀 Docker 探針已驗證正式手冊 691 glyph 的完整 Big5
+分區、來源雜湊、保留區拒絕與 `GOLEMFNT` 16×16 載入契約；spec 008 已 READY。這只授權
+GitHub Issue #15 實作本機 builder。第三方字型與衍生產物仍只准在 `workplace/`，不得進 Git、GitHub
+或公開封包；#13 的前景色來源與 #14 的正常玩家 presenter 接線尚未開始。
 
 第六十五階段已完成：角色資料／重擲頁 35 個靜態 request 已接入 dosgolem 明示 2×／3×
 runtime overlay。base／`Y` 各雙倍率雙重重播決定，安全矩形外差異為 0、raw framebuffer

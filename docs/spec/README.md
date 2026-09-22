@@ -12,3 +12,4 @@
 | [手冊繁中輸出端 presenter 整合](005-manual-runtime-presenter-draft.md) | DRAFT | 將 typed 手冊 request 接到 14 行 RGBA 段落，並明列 lifecycle 與字型 READY 缺口。 |
 | [手冊正式字型候選 manifest 驗證器](006-formal-font-candidate-manifest-validator.md) | CONFORMED（候選審查工具） | 審查本機候選的來源、授權 metadata 與 coverage；不採用、建置或散布字型。 |
 | [倚天 15 點字型候選輸入契約](007-eten-15-font-candidate-intake-draft.md) | DRAFT | 本機倚天來源、691 glyph coverage、兩個 16×15 對齊 preview 與待決的 production／公開界線。 |
+| [倚天 top-pad 本機字型建置器](008-eten-top-pad-local-font-builder-draft.md) | READY（僅本機 builder） | 鎖定本機倚天來源、Big5 分區、16×15→16×16 與失敗即關閉的建置契約；實作由 #15 負責。 |

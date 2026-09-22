@@ -1,5 +1,15 @@
 # 工作歷程
 
+## 2026-09-22：第九十五階段倚天 top-pad parser READY 規格（已完成）
+
+- 使用者選定 `top-pad`：output row 0 為零、source rows 0..14 寫入 rows 1..15；`bottom-pad` 已排除。
+- 以無網路、唯讀 Docker 探針核對 `ASCFONT.15`／`SPCFONT.15`／`STDFONT.15` 的固定身份與完整分區：
+  691 glyph 全數覆蓋，映射為 ASCII 44、全形符號 12、常用區 634、次常用區 1；唯一空 glyph 是空白。
+- 新增 phase 95 RE 收據與 spec 008，將 codec、保留區拒絕、top-pad、`GOLEMFNT` 回讀、原子輸出、
+  synthetic／本機 integration 測試與不可散布邊界列為 READY；既有 Unifont 工具沒有改動。
+- Docker 中正式 catalog lint、158 項 Python 測試與 691 glyph 探針皆通過。新增 #15 實作工作；本階段
+  沒有寫 parser、字型二進位或 runtime hook，dosgolem 本機分支也未推送。
+
 ## 2026-09-21：第六十五階段角色資料頁執行期繁中覆繪
 
 - 建立 35 筆安全矩形；`AC`／`THAC0` 只擴張到同列 col 35 動態值左界，其餘保持原文寬度。

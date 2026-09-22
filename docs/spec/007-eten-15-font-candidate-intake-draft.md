@@ -58,7 +58,7 @@ mapping；若未來譯文新增 codec 歧義符號，必須在資料規格新增
 | 項目 | 分級 | 目前結論與停止線 |
 | --- | --- | --- |
 | 16×15→執行期（runtime）16×16 | DRAFT | 第 94 階段已以真實候選重生 `bottom-pad`／`top-pad`，兩案皆為 16×16、691 個字模（glyph），2×／3×範圍約束（containment）均通過。使用者已選定 `top-pad`：CJK 與 ASCII source row 0..14 寫入 runtime row 1..15，row 0 為零；`bottom-pad` 已排除。ASCII 水平沿用既有 16-bit 版面的 x=4..11。正式 parser、前景色與 runtime 接線仍未 READY。 |
-| 倚天候選 parser | DRAFT | 既有 `validate-candidate` 僅支援 Unifont 十六進位字模，拒絕本候選是正確行為。只有本規格經 evidence review 升為 READY 後，才能新增獨立 ETen parser／manifest schema 與 synthetic tests。 |
+| 倚天候選 parser | READY 規格；未實作 | 既有 `validate-candidate` 僅支援 Unifont 十六進位字模，拒絕本候選是正確行為。獨立 ETen parser／本機建置器的契約已在 spec 008 READY；實作與 synthetic tests 由 GitHub Issue #15 負責，尚不得把 preview 接入 runtime。 |
 | 完整授權告知 | 已證實為缺席 | 候選目錄沒有 `LICENSE*`、`COPYING*`、`COPYRIGHT*` 或 `NOTICE*` 一般檔案。兩份非空 `README.DOC` 可被 CP950 解碼，但沒有可辨識的授權、散布或權利許可條款。這不足以證明世界上不存在權利條款，卻足以證明本候選尚未提供本專案所需的完整告知。 |
 | 本機採用／嵌入 | 已證實（使用者授權範圍） | 使用者已明確說明此為以前購買的字型，並授權直接用於本機遊戲。故可在被忽略的 `workplace/` 轉換與嵌入本機產物；這不是對第三方權利的法律判定。 |
 | GitHub／公開散布 | 未獲授權 | 使用者的本機授權不等於公開再散布許可。原檔、衍生 `GOLEMFNT`、媒體、完整告知與字模預覽均不得進 Git、GitHub Issue、Release 或公開封包。 |
