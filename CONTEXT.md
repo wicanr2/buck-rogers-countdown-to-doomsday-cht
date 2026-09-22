@@ -6,9 +6,15 @@
 [規格 016 READY](docs/spec/016-story-page7-overlay-ready.md)：合法第六頁終態
 Enter 進入 row 17–22 六行、合法第七頁 Enter 離頁。190 glyph 原版逐字
 return／ABI、最早相交 pre-write、七 ABI 低位映射、逐列半開寫入判定及
-2×／3×字型 containment 已核對；正式 dosgolem runtime 與同狀態 A/B
-尚未做，第七頁不得稱已中文化。證據與審查勘誤見
+2×／3×字型 containment 已核對；此 READY 審查階段正式 dosgolem runtime
+與同狀態 A/B 尚未做。證據與審查勘誤見
 [第一百五十三階段](docs/re/phase-153-story-page7-ready-prerequisite-diagnostics.md)。
+其後本機 dosgolem `d42567d` 已正式接通 watcher／loader／presenter／CLI；
+同狀態 control／2×／3×與同程序兩次 Enter 離頁 A/B 證實六 key、零缺字、
+安全矩形外零差、machine／DOS 全等，step `341018656` active 6→0
+且終態無殘字。正式雙倍率失敗即關閉矩陣尚待補，因此第七頁目前
+**仍為 READY 而非 CONFORMED**；見
+[第一百五十六階段](docs/re/phase-156-story-page7-runtime-ab-pending-failure-audit.md)。
 第八頁四行已有雙重原版收據補足 130 glyph 的 SS／SP+0x12／RETF 與
 合法 page8→page9 最早相交 pre-write；2×／3×正式字型 containment 與
 typed-core 失敗即關閉仍缺，因此維持 DRAFT，見

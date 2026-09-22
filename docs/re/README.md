@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百五十六階段：第七頁正式 runtime 雙倍率同狀態 A/B](phase-156-story-page7-runtime-ab-pending-failure-audit.md)：六行繁中安全矩形與 machine／DOS 全等、同程序 Enter active 6→0；失敗矩陣未全，維持 READY。
 - [第一百五十五階段：第八頁逐字返回與離頁 pre-write 證據](phase-155-story-page8-ready-prerequisite-evidence.md)：130 glyph 雙重 SS/SP／RETF 與 page8→page9 最早相交寫入；字型幾何及 typed-core 未完成，仍 DRAFT。
 - [第一百五十四階段：雙倍率面板空白點擊與滑鼠釋放原型](phase-154-ebiten-panel-pointer-miss-prototype.md)：真實 2×／3× host hit/miss 與 release-only 清理；空白 miss 核心未消費的正式契約缺口。
 - [第一百五十三階段：第七頁 READY 前逐字返回與離頁診斷](phase-153-story-page7-ready-prerequisite-diagnostics.md)：190 glyph 雙重返回、最早相交 pre-write、可丟棄核心與雙倍率字型 containment；尚待獨立審查。
