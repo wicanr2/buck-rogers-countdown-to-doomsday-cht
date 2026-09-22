@@ -125,7 +125,8 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 驗證五筆 identity、譯文雙向覆蓋、NFC、控制／格式字元與 39 格資料層上界；
 首屏五行已接 dosgolem runtime 並通過 2×／3× 同狀態 A/B 及 Enter 轉頁失效驗證；
 完整開機玩家路徑與存讀檔仍未驗，規格 010 保持 READY，不外推整款遊戲已中文化。
-`story-page2-events.tsv` 與 `story-page2.zh-TW.tsv` 是第二頁四行固定敘事的 DRAFT 候選；
+`story-page2-events.tsv` 的四筆固定敘事 identity 已依 spec 011 審核為 `confirmed/READY`；
+`story-page2.zh-TW.tsv` 的文字仍是需實際畫面驗收的編輯性候選；
 `tools/story_page2_catalog.py` 另外驗證 row 17–20、排除 row 24 動態狀態列與 39 格保守容量，
 尚未接 runtime。Chiagong 的「奇亞貢」目前只是未由中文手冊逐字確認的 DRAFT 音譯。
 `story-page3-events.tsv` 與 `story-page3.zh-TW.tsv` 是第三頁五行固定敘事的 DRAFT 候選；
@@ -147,6 +148,12 @@ stamp 失效候選，尚未完成 runtime A/B，不得接正式覆繪。
 固定敘事 DRAFT；`tools/story_page7_catalog.py` 驗證同狀態 glyph 身分與繁中候選格式。
 右側人物名及 row 24 排除；全部 18 份 catalog 的本機倚天聯集已重建為 1022 字模，
 dosgolem 正式 loader 對 6136 個譯文字元零缺字；仍未完成失效生命週期或 runtime A/B。
+`story-page8-events.tsv` 與 `story-page8.zh-TW.tsv` 是第七頁合法終態後 Enter 所見的第八頁
+下方四行固定敘事；事件檔只保存低階 glyph identity，不保存原文全文。右側人物姓名與
+row 24 動態狀態列排除；仍屬 DRAFT，未接 runtime。證據見
+[`docs/re/phase-131-story-page8-enter-trace.md`](../docs/re/phase-131-story-page8-enter-trace.md)。
+全部 19 份 catalog 的本機倚天子集為 1025 字模，dosgolem loader 對 6175 個譯文字元
+檢查零缺字；這仍不構成第八頁的中文覆繪 A/B。
 
 ## 驗證與 prototype 字型
 

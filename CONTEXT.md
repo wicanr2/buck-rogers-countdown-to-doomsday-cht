@@ -14,7 +14,11 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 轉送時座標改變；兩組未 Step machine，不能推論玩家可見反應。使用者已決定：面板關閉時
 畫布內的滑鼠事件轉送原版，面板開啟時新事件由 host 消費；已轉送 Down 後，即使於畫布外、
 控制列、面板放開或視窗失焦，也要只送一次 Release 而不移動最後 DOS 座標。MouseBridge
-仍待真實有界收據與 READY 審查，見[第一百二十七階段](docs/re/phase-127-pointer-miss-ab-prototype.md)。
+仍待完整真實事件矩陣與 READY 審查，見[第一百二十七階段](docs/re/phase-127-pointer-miss-ab-prototype.md)。
+其後可丟棄 Ebitengine／Xvfb bridge 已取得 2×／3×畫布內 Down→Up 及畫布內 Down→控制列 Up
+的真實事件、有界 Step 與滑鼠按鍵清除收據；3×兩組的起始 machine／DOS 正規化狀態相等。
+這些收據不證明遊戲可由滑鼠操作，MouseBridge 仍是 DRAFT，見
+[第一百三十三階段](docs/re/phase-133-real-ebiten-mouse-bounded-step.md)。
 本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
 鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
 Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×
@@ -39,6 +43,10 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 第三頁合法 state 的同一筆 Enter 重生為 `0763:04FF → 0763:026B` 六行；舊
 `visual-transcription` 前五筆 length／hash 與原版 trace 不符，僅第六筆相符，故繁中候選仍須
 編輯審查、catalog 維持 DRAFT 且不得接 runtime。
+第二頁其後另以同狀態原版收據量到四行完成、首屏失效、第二頁→第三頁的最早相交
+pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
+[spec 011](docs/spec/011-story-page2-overlay-draft.md) 已限縮升 READY，四筆事件身分資料也升
+`confirmed/READY`。這只授權第二頁 typed adapter 實作；尚未接 runtime 或通過 A/B。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
 初稿曾誤配右側人物姓名，經原圖座標核對訂正。第二至五頁均不得接 runtime，
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
@@ -49,13 +57,17 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 第六頁後的合法 Enter 又確認第七頁 row 17–22 六行；同狀態 indexed 畫面與色盤重生一致，
 六行繁中候選與 identity 已建為 DRAFT；全部 18 份 catalog 的本機倚天聯集重建為
 1022 字模，正式 loader 對 6136 個譯文字元零缺字。這仍尚未接 runtime 或做中文 A/B。
+第七頁後合法 Enter 又到第八頁，固定故事區四行已有低階身分與繁中 DRAFT；右側動態狀態列
+排除。全部 19 份 catalog 的私有倚天子集為 1025 字模，正式 loader 對 6175 個譯文字元
+零缺字；第八頁仍未接 runtime。
 見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
 [第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)、
 [state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)、
 [首次 glyph trace 勘誤](docs/re/phase-124-story-page4-first-glyph-trace.md)與
 [第五頁收據](docs/re/phase-122-story-page5-enter-trace.md)及
 [第六頁收據](docs/re/phase-128-story-page6-enter-trace.md)及
-[第七頁收據](docs/re/phase-129-story-page7-enter-trace.md)。
+[第七頁收據](docs/re/phase-129-story-page7-enter-trace.md)及
+[第八頁收據](docs/re/phase-131-story-page8-enter-trace.md)。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
 意譯，不是整章手冊逐字轉錄。37 題有中文掃描對照；第 3、39 題因缺少直接的中文

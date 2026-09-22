@@ -1282,3 +1282,15 @@
 
 - 從第六頁合法 state 送入一筆 BIOS Enter，兩次原版收據逐 byte 相同；另從同狀態重生 indexed 畫面、色盤與 PNG，固定敘事六行均可核對。
 - 低階翻譯代理依私有裁切建立六行繁中 DRAFT；identity、key、來源、NFC 與寬度驗證通過。右側人物姓名與動態狀態列排除。尚未接 runtime，見[第一百二十九階段](docs/re/phase-129-story-page7-enter-trace.md)。
+
+## 2026-09-22 — 手冊前景色契約證據格式與滑鼠邊界定案
+
+- 重新核對第九十六階段的私有首題收據與 dosgolem 原版 dispatcher 參數讀取端；補齊原版輸入／state／工具雜湊、實模式位址、事件 step、indexed／palette 雜湊與推論分級。色號 10 僅為該題該 state 的觀測值；缺樣式時不繪製。GitHub #13 的限定工作因此完成並關閉，#14 的返回、存讀檔與其餘題目仍開啟。
+- 使用者定案面板關閉時畫布內滑鼠轉 DOS；已轉送 Down 後，即使畫布外、控制列、面板放開或失焦，也要 Release 一次且不移動 DOS 座標。dosgolem 本機 spec228 仍 DRAFT；fake 2×／3× 事件矩陣通過，但真實有界原版收據與正式接線尚未完成。
+- 其後 2×／3×各自取得真實 Ebitengine／Xvfb 畫布內 Down→Up 與 Down→控制列 Up 的 dosgolem 有界 Step 收據；外部 Up 只 Release、不 Move。舊 gzip/gob 位元組 hash 不能跨 run 比較，已訂正並以 `cmd/state-compare` 確認 3×兩例的起始正規化狀態相等。完整矩陣、玩家操作因果 A/B 與正式接線仍待完成，見[第一百三十三階段](docs/re/phase-133-real-ebiten-mouse-bounded-step.md)。
+
+## 2026-09-22 — 第一百三十一／一百三十二階段：第八頁草稿與第二頁 READY 審查
+
+- 第七頁合法終態在第 341M step 送一筆 BIOS Enter；兩次第八頁收據逐 byte 相同，故事區四行 row 17–20 建立 content-safe identity 與繁中 DRAFT，row 24 動態列排除。19 份譯文聯集本機倚天子集為 1025 字模，正式 loader 對 6175 個譯文字元零缺字；全套 Python 測試 225 項通過。第八頁尚未接 runtime，見[第一百三十一階段](docs/re/phase-131-story-page8-enter-trace.md)。
+- 第二頁 READY 審查從合法首屏 state 重播到四行穩定 frame，控制組與既有首屏覆繪 2×／3×的原版終態相同，且前頁 active stamp 在首個相交 video-span 前失效；safe rectangle 與字模 containment 通過。續從第二頁穩定 state 合法 Enter，量到早於第三頁文字的最早相交原版 pre-write，並確認 far-return 與相對 SS/SP。
+- 獨立審查抓出可丟棄負向測試將合法四行誤當錯序的缺陷；修為真正錯序、partial drift 與 return-edge 負例後，主代理和審查代理各自在 Docker 未快取重跑通過。spec 011 因此限縮升 READY，四筆 event status 升 `confirmed/READY`；全套 Python 測試 226 項通過。這只授權第二頁 adapter 實作，尚未宣稱 runtime A/B 或中文化完成。
