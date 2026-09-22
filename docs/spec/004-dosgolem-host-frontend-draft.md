@@ -133,20 +133,25 @@ Windows 與 macOS 的視窗／鍵盤／滑鼠能力；[安裝說明](https://ebi
 
 第一百一十六階段已以私有原版 state 在 Docker／Xvfb 驗證真實 Machine step→snapshot→Draw、
 2×／Cancel／Apply 與 BIOS key forwarding；完整 receipt 見 `docs/re/phase-116-game-loaded-ebiten-prototype.md`。
-該原型的 `active_layer_connected=false`，故不得把此接線當成繁中 active layer 或完整可玩版。
+該原型的 `active_layer_connected=false`，故不能單獨當成繁中 active layer 或完整可玩版。
 
 其後本機 dosgolem `docs/spec/227-host-active-layer-snapshot-core.md` 已 CONFORM 純 projection：
-它將已由 lifecycle owner 定色的 active stamps clone 後繪製，保證 presenter 不改原 layer。這只
-收斂通用核心；尚未提供任何 Buck Rogers runtime 對其 private active layer 的接線，故本規格仍有
-下列三個最小缺口：
+它將已由 lifecycle owner 定色的 active stamps clone 後繪製，保證 presenter 不改原 layer。
+第一百二十階段進一步在同一 machine-stepping Ebitengine thread，將真實首屏 story watcher 的
+private active layer 接入這個 projection。指定 private state 中，host 的 2×、暫選 3×後 Cancel
+回到 2×，以及 Apply 3×後，RGBA 都逐像素等於第一百一十五階段 CLI 收據；host 操作前後 raw
+indexed SHA-256 相同。3×會重建**僅 output-side**的 22×22 story presenter 與其 font registry，
+不會把 2× 16×16 font 稀疏放大，也不會 Step／寫入 DOS。完整限定證據見
+`docs/re/phase-120-game-active-story-layer-prototype.md`。
 
-1. 實際 runtime 與同一 presentation instant 的 **indexed、palette 與 active xlate layer** 整體
-   接線；`xlate.Layer.Frame`／watcher／`OnDrop` 有可變 stamp 生命週期，必須由同執行緒的
-   lifecycle owner 先完成，不能以單獨 fixture、跨 goroutine 讀取或 clone 取代遊戲實際更新。
-2. Linux Ebitengine 後端的正式事件接線：host chrome hit test、面板鍵盤隔離、Ebitengine key 到
+上述是 ignored prototype 的窄範圍證據，並沒有把本規格升為 READY。正式前端仍有下列最小缺口：
+
+1. Linux Ebitengine 後端的正式事件接線：host chrome hit test、面板鍵盤隔離、Ebitengine key 到
    DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。
-3. 至少一條正常 Buck Rogers 玩家路徑的同狀態收據，證明 Open／Select／Apply／Cancel 的 host
-   操作未改 raw frame、DOS input／mouse、IRQ、記憶體或存檔，並在 2×／3× 保留 active 繁中 stamp。
+2. 從遊戲開機到故事 state 的完整正常玩家路徑，以及 host 操作後繼續遊玩、存檔／讀檔的同狀態
+   收據；第一百二十階段的受控 direct host events 不可替代它。
+3. 同一套 active-layer scale-switch lifecycle 對其他已接／未接 Buck Rogers overlay 的資料治理與
+   正常玩家路徑驗收；不得以首屏五行的成功外推全部繁中路徑。
 
 第 226 號規格僅為純核心 CONFORMED；它沒有把本規格升為 READY，也不構成可玩的 frontend。
 

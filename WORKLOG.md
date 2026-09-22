@@ -1223,3 +1223,8 @@
 
 - 從合法手冊成功排程延伸 Enter，2×／3× 都在 `281020548`、`0CF4:1B3A`、`A000:AA08`／`CX=304` 的 row 136 video span 執行前清除首屏五行。第二頁終態覆繪逐 byte 等於 baseline，原版記憶體／indexed 畫面／palette 與無覆繪控制組一致。
 - 舊研究在 `281020572`、row 137 量到的是第一筆可見像素差異，並非第一筆寫入；追加勘誤並修正 READY spec 010 的失效邊，保留舊收據與錯誤形成原因。存讀檔／restore 與完整開機玩家路徑仍未驗，spec010 不升 CONFORMED。見[第一百一十九階段收據](docs/re/phase-119-story-opening-enter-lifecycle.md)。
+
+## 2026-09-22 — 第一百二十階段：真實 Ebitengine 畫面接上作用中繁中劇情層
+
+- 本機 dosgolem 以穩定的 story active layer pointer 接到 host 只讀投影；真實原版 state 與合法輸入產生的五行 READY 繁中已在 Docker／Xvfb Ebitengine 視窗顯示。初版將 2× 16×16 字模直接放大至 3×，視覺檢查發現中文字距過大；隨後改在 host Apply 時重建 3× 22×22 CJK 輸出 presenter，2×、Cancel 後 2×、Apply 後 3× 的 RGBA 均逐像素等於正式 CLI，原版 indexed 不變。
+- 這是受控 host event 的 ignored prototype，不是正式可玩前端；pointer hit、實體鍵盤映射、完整玩家路徑、其他 overlay 的倍率切換與存讀檔仍待驗。見[第一百二十階段收據](docs/re/phase-120-game-active-story-layer-prototype.md)。

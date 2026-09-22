@@ -13,9 +13,13 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
 鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
 Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×
-自動收合，以及面板開啟不送 BIOS 鍵、關閉後合法一鍵推進原版。此原型的
-`active_layer_connected=false`：仍是空覆繪層，未接上繁中故事層，且實體事件映射、
-完整玩家路徑與存讀檔未驗；不能稱可玩中文版。見[第一百一十六階段](docs/re/phase-116-game-loaded-ebiten-prototype.md)。
+自動收合，以及面板開啟不送 BIOS 鍵、關閉後合法一鍵推進原版。第 116 階段最初
+仍用空覆繪層；其後第 120 階段已在真實遊戲執行緒接上第一頁五行的作用中繁中層，
+初始 2×、取消暫選後 2×、套用後 3× 均與正式 CLI RGBA 逐像素相同，修正了曾把
+2×字模稀疏放大至 3× 的原型缺陷。這仍是受控事件的私有原型；正式 pointer hit、
+實體鍵盤映射、完整開機玩家路徑、其他覆繪層切換與存讀檔未驗，不能稱可玩中文版。
+見[第一百一十六階段](docs/re/phase-116-game-loaded-ebiten-prototype.md)與
+[第一百二十階段](docs/re/phase-120-game-active-story-layer-prototype.md)。
 
 手冊成功返回後第一個固定劇情畫面有五筆 READY 身分與繁中譯文。本機 dosgolem
 commit `42193b0` 已接正式覆繪；同一合法 state／輸入排程的 2×／3× A/B 均命中五筆、
