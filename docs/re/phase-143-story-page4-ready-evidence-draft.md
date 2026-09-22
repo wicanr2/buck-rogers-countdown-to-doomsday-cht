@@ -1,7 +1,13 @@
 # 第一百四十三階段：第四頁 READY 前最小證據
 
 日期：2026-09-22
-狀態：**DRAFT；READY 前的原版低階證據已齊，仍待獨立審查；不接 production。**
+狀態：**DRAFT；192 筆逐字返回已證實，但六行完整矩形的最早 pre-write 尚未證實；不接 production。**
+
+> **勘誤（2026-09-22）**：本文件起草時把 `-story-fill-trace` 記下的第一筆
+> step `310023777` 稱為六行 `[8,320)×[136,184)` 的「最早相交」。獨立審查
+> 原始碼發現診斷函式 `storyFillIntersects` 的 bottom 固定為 `176`，只監測 rows
+> 17–21；它可能漏掉 row 22-only 更早的寫入。因此該筆只證明前五行子矩形的
+> 最早已記錄寫入，**不能**作為第四頁六行 overlay 的 READY 清除 gate。
 
 ## 問題與範圍
 
@@ -40,7 +46,7 @@ glyph bytes、畫面像素或玩家輸入內容。
 
 這是第四頁自身的逐字 stack 收據，不以第三頁結論外推。
 
-## 第四頁→第五頁的最早相交 pre-write 與可見差異
+## 第四頁→第五頁的前五行診斷 pre-write 與可見差異
 
 從私有第四頁合法終態
 `workplace/phase104-post-return-enter-4/control.state`（SHA-256
@@ -50,11 +56,12 @@ glyph bytes、畫面像素或玩家輸入內容。
 `9cd3204e9887eda457c4a1b2b2f8880a2a49a777d8fd839e1e79f5c1b8385d6c`，位於
 `workplace/page4-ready-evidence/page4-ready-current-{a,b}.json`。
 
-最早與安全矩形相交的 **pre-execution** write 是 step `310023777` 的
+此診斷在前五行子矩形 `[8,320)×[136,176)` 中記下的第一筆
+**pre-execution** write 是 step `310023777` 的
 `0CF4:1B3A`，`ES:DI=A000:AA08`、`CX=304`。其 Mode 13h half-open offset span
-`[0xAA08,0xAB38)` 與 `[8,320)×[136,184)` 相交（起點正是 row 136、column 8），
-故可在原版執行這筆寫入**前**使第四頁衍生層失效。收據共記錄 40 筆相交 span，未達
-64 筆上限。
+`[0xAA08,0xAB38)` 與前五行子矩形相交（起點正是 row 136、column 8）。
+它是第四頁衍生層的**候選**失效點；現有收據不能排除 row 22-only 的更早寫入，
+不得據此正式接線。收據共記錄 40 筆五行子矩形相交 span，未達 64 筆上限。
 
 第一筆**可見** story-region pixel 差異較晚，為 step `310023801` 的同一指令、
 `ES:DI=A000:AB48`、`CX=304`，bbox `x=10..270, y=137`；相差 24 steps，並早於
@@ -73,7 +80,8 @@ glyph bytes、畫面像素或玩家輸入內容。
 尚未建立正式 rect TSV；這不阻礙原版低階證據審查，但 adapter 實作前必須把它納入
 READY contract 並檢查本機字型覆蓋。
 
-本文件已補齊兩個低階缺口，但尚未做下列獨立 READY 審查項目：
+起草時誤以為兩個低階缺口都補齊；獨立審查後，以下是原先規劃的 READY 項目，
+其完成與訂正見下節：
 
 1. 將 rectangle、原子六行提交、已量 pre-write 清除與 restore／discontinuity 失敗即關閉
    轉為可丟棄 typed-core 測試，包含 partial、duplicate、錯序、identity／style、return edge、
@@ -85,3 +93,20 @@ READY contract 並檢查本機字型覆蓋。
 
 在此之前，`text/story-page4-events.tsv` 與譯文仍維持 `DRAFT`，不建立 watcher、renderer、
 安全矩形正式資料或任何 production path。
+
+## 獨立審查勘誤與剩餘唯一缺口
+
+審查者以已提交的本機 dosgolem `564d53f`、Go 1.26.7／
+`golang:1.26.7-bookworm` Docker 重建 content-safe runner，重新雙重驗證上述
+192 筆 return 與五行診斷寫入，兩組既有 receipt SHA 均未變。原先關於 Go image
+缺少編譯器的回報是工具調用錯誤，已訂正；不是本任務 blocker。
+
+ignored `workplace/page4-ready-atomic-core/` 的可丟棄 typed-core 三項測試涵蓋六行
+原子提交、DRAFT 拒絕、partial／duplicate、identity／style／return／stack／step、
+缺字、未知或非相交寫入、已量寫入與 discontinuity；正式 GOLEMFNT loader 對第四頁
+57 個譯文字元回讀零缺字，私有 coverage 收據留在同一工作區。這些只證明候選
+契約可行，沒有接 production。
+
+仍需將診斷範圍明確擴至第六行，從同一合法第四頁 state 雙重重生對完整
+`[8,320)×[136,184)` 的最早相交 pre-write。只要不能排除 row 22-only 的
+更早寫入，就不能把 `310023777` 定為第四頁正式失效 gate，也不能升 READY。

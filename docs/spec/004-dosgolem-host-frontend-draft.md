@@ -164,6 +164,11 @@ canvas 邊界、left button down/up 順序與拒絕無效按鍵須由純核心�
 仍須只呼叫一次 `ReleaseMouse(0)`，不移動最後有效 DOS 座標；無配對或重複 Up 不送 DOS。
 本地 dosgolem 分支的 `docs/spec/228-host-mouse-bridge-ready-candidate.md` 保存 DRAFT 契約與
 純 fake prototype 驗證；原版有界玩家效果仍待量測，不能升 READY。
+ignored `workplace/phase128-mousebridge-prototype/bridge.go` 曾對畫布內配對 Up
+也只 Release、不 Move；已在可丟棄純核心修正為 closed-canvas 內
+`Move→Release`、外部／panel／失焦只 Release，雙倍率四角與邊界 fake 測試通過。
+這不等於真實 Ebitengine／dosgolem 事件矩陣已通過；正式 bridge 前仍須取得
+實體畫布內 Up 的座標、呼叫順序與正常玩家因果收據，spec 228 維持 DRAFT。
 
 1. Linux Ebitengine 後端的正式事件接線：將 prototype host chrome hit test、面板鍵盤隔離、Ebitengine key 到
    DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。

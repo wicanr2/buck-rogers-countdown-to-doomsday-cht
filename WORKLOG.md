@@ -1328,3 +1328,14 @@
 - 第四頁代理雙重重播六行 192 個 glyph 的逐筆 RETF／同 SS／相對 SP+`0x12`，及 page4→page5 最早相交 `0CF4:1B3A` pre-write；[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)維持 DRAFT，等待獨立 READY 審查，沒有接 production。
 - Terra 代理於本機 dosgolem `aae577f` 接上第三頁五行正式 watcher／presenter／CLI；主代理審查 144 筆原版 ABI 高位均為零後，先補 spec 012，再以 `9a9b769` 對七個 word 的非零高位失敗即關閉並加測。相關 Go 套件 Docker vet／race 通過。
 - 從合法第二頁終態以同一 Enter 做 control／2×／3×，再以第二筆 Enter 做離頁三組；最新程式與本機倚天字型的同狀態驗證顯示五行可讀、矩形外零差異、原版 machine／DOS state 全等，離頁前寫入使 active 5→0，終態 RGBA 無殘字。專案 234 項 Python 測試及[第一百四十四階段](docs/re/phase-144-story-page3-runtime-conformance.md)的唯讀真實收據驗證通過；spec 012 只在此路徑升 CONFORMED。
+
+## 2026-09-22 — 第一百四十五階段：第五頁 READY 前低階證據
+
+- 從私有第四頁合法終態雙重重播第五頁，168 glyph（rows 17–21：34／38／35／36／25）逐筆直接證實 `0763:03D6`／`0xCA` RETF 回到 `0763:04FF`、entry／return 同 SS、相對 SP+`0x12`，七個 ABI word 的高位遮罩均為零；絕對 stack 值不作 runtime identity。
+- 從私有第五頁合法終態雙重重播第六頁，將舊「第一筆可見 story pixel」與最早 pre-write 分開：最早相交 `[8,320)×[136,176)` 候選矩形的 `0CF4:1B3A` fill 是 step `321118382`、`A000:AA08`、304 bytes；舊 step `321118406` 是晚 24 step 的首筆可見差異。rectangle 仍為強推論，未建立正式 TSV。
+- `story_page5_catalog` 的八項負例及 DRAFT 正例通過；本機 1014-glyph 倚天 top-pad 以 dosgolem loader 對第五頁 51 個譯文字元零缺字。收據、字型與原版只在 ignored `workplace/`。已建立[第一百四十五階段](docs/re/phase-145-story-page5-ready-evidence-draft.md)與索引；catalog 維持 DRAFT，未改 dosgolem production code、未 push。Docker 容器均為 `--rm`，無殘留容器。
+
+## 2026-09-22 — 第四頁診斷幾何勘誤與滑鼠純核心修正
+
+- 第四頁獨立 READY 審查指出[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)把只監測 rows 17–21 的 `storyFillIntersects()` 收據誤當成六行矩形最早 pre-write；已保留舊收據並追加勘誤。固定本機 dosgolem `564d53f` 雙重重跑 192 筆 return 一致，私有 typed 核心三項測試與第四頁 57 字元字型 coverage 通過；仍需擴至 row 22 的 committed content-safe 診斷，第四頁維持 DRAFT。
+- 滑鼠 ignored `phase128` 原型原先對畫布內 Up 也只 Release；依既有 DRAFT 契約修正為畫布內 `Move→Release`、畫布外／panel／失焦只 Release。雙倍率四角與邊界 fake 測試在 `golang:1.26.7-bookworm` Docker 的 vet／race 通過；真實 Ebitengine／dosgolem 矩陣未驗，spec 228 仍 DRAFT。本機 dosgolem 文件 commit `564d53f` 留存勘誤，未推上游。
