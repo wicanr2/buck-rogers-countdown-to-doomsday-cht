@@ -28,7 +28,7 @@ class StoryPage3CatalogTest(unittest.TestCase):
             translations = Path(temp) / "translations.tsv"
             events.write_bytes((ROOT / "text/story-page3-events.tsv").read_bytes())
             text = (ROOT / "text/story-page3.zh-TW.tsv").read_text(encoding="utf-8").replace(
-                "你們坐進不舒適的椅子，\t", "你們坐進不舒適的椅子，" + ("超" * 20) + "\t"
+                "你們坐進不舒服的椅子，\t", "你們坐進不舒服的椅子，" + ("超" * 20) + "\t"
             )
             translations.write_text(text, encoding="utf-8")
             with self.assertRaises(ValueError):
