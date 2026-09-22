@@ -1274,6 +1274,9 @@
   與未實作服務均空；完整記憶體雜湊不同但語意未知。未到主選單、隊員管理、A–J 或保存／讀檔。
 - IDA 9.4 的 file-offset 線索保持第一百二十六階段既有分級；本輪僅增加 content-safe BIOS poll
   instrumentation，未改正式 runtime 或遊戲規則。詳見[第一百三十階段](docs/re/phase-130-manual-return-numlock8-next-poll-boundary.md)。
+- 診斷程式已在 ignored 本機 dosgolem branch 提交 `6f828360d61696e822fd206c1fbef7c72ada02b1`
+  （未 push）；poll trace 預設關閉，啟用後由起點與 4096 筆上限限制。Docker Go 1.24 的
+  `go test ./internal/dos ./cmd/buckrogers-text-receipt -count=1` 通過，重跑入口已追加至 phase130。
 
 ## 2026-09-22 — 第一百二十九階段：第七頁固定敘事與繁中候選
 

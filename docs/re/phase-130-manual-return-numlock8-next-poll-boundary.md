@@ -64,3 +64,27 @@ key-poll，先到者停止」的界線。
 分析、IDA 9.4 和重播均使用一次性、無網路 Docker；原版與 state 唯讀掛載。所有原始 bytes、
 IDA DB、state、完整收據與診斷工具只留在 ignored `workplace/phase124-keytrace/` 或
 `workplace/dosgolem/`。本階段沒有改正式規則、runtime overlay、翻譯 catalog 或原版資料。
+
+鍵盤 poll metadata 的本機 dosgolem 診斷提交為 `6f828360d61696e822fd206c1fbef7c72ada02b1`
+（`buck-rogers-cht-output-overlay` branch；僅本機、未 push）。它預設不收集資料；唯有
+`buckrogers-text-receipt -key-trace` 才啟用，並從 `-instruction-trace-from` 起最多保留 4096 筆
+content-safe poll metadata。Docker `golang:1.24-bookworm` 下的
+`go test ./internal/dos ./cmd/buckrogers-text-receipt -count=1` 通過。
+
+在既有私有輸入與本機已建置 receipt runner 均存在時，下列 content-safe 重播會在首個後續 poll
+精確停止；它不包含手冊答案、原版文字或可散布輸入：
+
+```sh
+docker run --rm --network none --memory 3g --cpus 2 --pids-limit 256 \
+  -u 1000:1000 \
+  -v "$PWD/workplace/original/BRcdoom:/orig:ro" \
+  -v "$PWD/workplace/phase123-story-page6-enter:/state:ro" \
+  -v "$PWD/workplace/phase124-keytrace:/out" -w /orig \
+  fd2-go-test-local:latest /out/buckrogers-text-receipt \
+  -state /state/page6.state -until 340000000 \
+  -bios-key-at 331000000:48:38 -file-ops -unimplemented -key-trace \
+  -instruction-trace-from 331000229 -instruction-trace-limit 512 \
+  -stop-at-segment 0x0c10 -stop-at-offset 0x0305 -stop-after-step 331000229 \
+  -receipt-out /out/forward-numlock-next-poll.json \
+  -state-out /out/forward-numlock-next-poll.state
+```
