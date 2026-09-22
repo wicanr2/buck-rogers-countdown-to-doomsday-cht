@@ -1364,3 +1364,7 @@
 ## 2026-09-23 — 真實 Ebitengine 雙倍率四角與排除邊界
 
 - Terra 將 ignored Linux／Xvfb 原型擴成資料驅動 geometry harness，真實 Ebitengine 2×／3×四角均映射到 DOS `(0|319,0|199)` 且 `Move→Press→Move→Release`；控制列、右與下 exclusive 邊界均零 DOS API。十四份私有收據、原型競態測試與 1 logical-pixel 觀測 guard 的非正式範圍見[第一百五十階段](docs/re/phase-150-ebiten-mouse-geometry-prototype.md)。MouseBridge／Linux 前端仍 DRAFT，cleanup 完整矩陣與正常玩家因果未驗。
+
+## 2026-09-23 — 離開畫布仍放開的雙倍率實體矩陣
+
+- Terra 延伸 ignored Xvfb／Ebitengine harness，雙倍率各重播控制列、畫布外右側、面板預先開啟、失焦的已接受 Down→cleanup；皆只 Release、不 Move，DOS 最後有效座標不變，BIOS／IRQ 未觸。3×孤兒與重複 X11 mouseup 的 Ebitengine public API 未暴露新 release edge，據實記停止線。十份私有收據見[第一百五十一階段](docs/re/phase-151-ebiten-mouse-release-cleanup-prototype.md)；下邊界、正式面板 hit/miss 與 Linux 正式前端仍未完成。

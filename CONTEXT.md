@@ -28,6 +28,12 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 14 份私有收據；右／下 exclusive 邊界只用 ignored 原型 1 logical-pixel guard
 觀測，不是正式視窗設計。cleanup 其餘矩陣與玩家可見滑鼠因果未驗，
 MouseBridge 仍 DRAFT。
+其後[第一百五十一階段](docs/re/phase-151-ebiten-mouse-release-cleanup-prototype.md)
+又以真實事件補雙倍率控制列／畫布外右側／面板預先開啟／失焦的
+release-only cleanup：Down 後只 Release、不 Move，最後 DOS 座標不變；
+3×孤兒及重複 Up 的第二次 X11 mouseup 未由 Ebitengine public API
+暴露 release edge。面板開啟是 harness 前提而非玩家點擊完整路由，
+下邊界 cleanup 與正式前端仍未驗。
 另以真實 X11 失焦驗到已送 DOS 的 Down 會只 Release、不 Move；無前置 Down 的實體 Up
 及重複 Up 在 Ebitengine public input API 未產生新的 release edge，3× panel-open 前提下的
 新 Down／Up 也不觸 DOS。這些仍是可丟棄 harness 的限定收據，不代表完整前端路由或
