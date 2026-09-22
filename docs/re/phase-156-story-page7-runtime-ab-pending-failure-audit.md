@@ -1,7 +1,7 @@
 # 第一百五十六階段：第七頁正式 runtime 雙倍率同狀態 A/B
 
 日期：2026-09-23  
-狀態：**正常六行與同程序 Enter 離頁驗收通過；雙倍率失敗矩陣未通過前，規格 016 仍為 READY。**
+狀態：**正常六行、同程序 Enter 離頁與雙倍率失敗矩陣通過；規格 016 只在固定路徑限縮 CONFORMED。**
 
 ## 固定輸入、工具與權利
 
@@ -69,5 +69,33 @@ DOS SHA-256 同上。以 `-file-ops` 重跑兩筆 Enter，control／2×／3×
 各自完整失敗即關閉矩陣。獨立程式稽核已確認 loader／step 來源、
 discontinuity 舊事件及同程序 lifecycle 問題已修；完整雙倍率
 catalog／字型、group、ABI、return／stack／step、write／restore 到
-presenter 的零 stamp／零 draw 對照仍待驗。故本階段不能升
-CONFORMED，也不能外推完整開機、其他離頁、遊戲內存讀檔或全遊戲中文化。
+presenter 的零 stamp／零 draw 對照在這次初驗當時仍待驗，故當時不能升
+CONFORMED。後續完成情形見下節；即使升級也不能外推完整開機、其他離頁、
+遊戲內存讀檔或全遊戲中文化。
+
+## 2026-09-23 雙倍率失敗矩陣與限縮 CONFORMED
+
+本機 dosgolem commit
+`940e5f3ff9d6666e8f0b7e6d497008beb70f8355` 在 `d42567d` 正式實作上
+新增 `story_page7_failure_matrix_test.go` 與 CLI 負例，不改產品程式。
+2×／3×逐案覆蓋七 ABI word 高／低位（glyph 低位由末字 hash mismatch）、
+caller／guard、RETF 前址／opcode／caller、SS／SP、return step 非增、
+下一 entry step 非增、partial／mixed／duplicate、未知／不相交／相交
+pre-write、DRAFT／缺譯文／譯文來源漂移／缺字，以及 active→pre-write、
+restore／discontinuity 清除。每個失敗群組都驗 zero active、zero draw、
+零 missing 回傳與 RGBA==baseline；CLI 另驗每個缺旗標、無效倍率與
+scale-only 失敗即關閉。
+
+主代理在無網路、有界 Go 1.26.7 Docker 獨立重跑兩套件定向 test、vet
+及 race，皆通過。全樹 race 另有既有 `internal/cpu/TestSingleStep`
+超過 Go 10 分鐘 timeout、無資料競爭報告；`./...` 亦會掃到 ignored
+`workplace/fd2-input-parity-20260907` 的多個 `main`，兩者屬既有基建
+限制，不冒稱全樹 race 通過，也不阻擋本頁兩個變更套件的限定驗收。
+
+獨立稽核另訂正兩項初判：TSV absolute step 是固定原版收據 provenance，
+runtime 只應驗相對嚴格遞增，不可鎖死玩家 Enter 時機；同程序
+`twoenter-*` 已確實觀測 active 6→0，不能以另開程序的 inactive
+`exit-*` 否定它。[規格 016](../spec/016-story-page7-overlay-ready.md)
+因此只在本文固定 page6→page7 六行及 page7→page8 Enter 離頁升
+CONFORMED。完整開機、其他入口／出口、右側動態文字、restore／
+遊戲內存讀檔正常玩家路徑與全遊戲中文化仍未驗，不得外推。

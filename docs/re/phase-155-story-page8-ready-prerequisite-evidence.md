@@ -45,9 +45,28 @@ pre-execution fill 位於 step `351154334`、`0CF4:1B3A`、
 
 ## READY 前剩餘停止線
 
-第八頁安全矩形尚未經獨立正式審查；需以正式譯文與本機倚天
-GOLEMFNT 驗 2× 16×16、3× 24×24 cell／22×22 ink 的真實墨跡
-containment、缺字與右側動態欄排除。另須可丟棄 typed-core 驗證
+低階翻譯代理另從私有原版畫面逐行校對四行原文與
+`text/story-page8.zh-TW.tsv`；現有「接駁艇／太空站／基本裝備／解散」
+語意忠實、繁體用字一致，沒有為口吻改譯的必要。這只屬編輯審查，
+不改變 DRAFT 狀態。
+
+ignored `workplace/page8-ready-atomic-core/font-containment-receipt.json`
+SHA-256
+`a16590c89c9441682a85b0e0e9ce868ba8a2b5b7f3b6c729c3d68e37e4aac9f6`
+綁定現行 TSV SHA-256
+`252f4efba5c00361afd33a3ec4ebf011e4de5afca753fe4fc2a83b4ab4d78144`
+與 GOLEMFNT SHA-256
+`b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`。
+四行最多 11 個中文字格的最小靜態候選矩形為 logical
+`[8,96)×[136,168)`；2× 16×16 ink/cell 有 2,266 墨跡像素，
+3×正式 24×24 cell／22×22 ink／offset 1 有 4,269 墨跡像素，兩者
+零缺字、零越界且遠離右側動態區。可重跑工具／測試 SHA-256 分別為
+`3a78de04b745993325ba82199b58ab05f652aee76d8f000c4aa2ab54894e8473`、
+`9cd8a37c92f1fa49900a3ff556d555dbd064c4dd7e1a2de4ffcd359695721f78`；
+Docker unittest 通過且第二次收據逐 byte 相同。這仍是靜態候選，
+不是 runtime 安全矩形授權。
+
+仍須可丟棄 typed-core 驗證
 四行原子、七 ABI 高／低位映射、RETF／stack／step、partial／錯序／
 duplicate、未知／不相交／相交 write、restore／discontinuity 等失敗
 即關閉邊界；正式 catalog 目前仍為 DRAFT。完成獨立審查後才可

@@ -1,7 +1,11 @@
 # 016 — 第七頁固定劇情輸出端覆繪
 
-狀態：**READY；僅第七頁固定六行與已量合法 Enter 進出。尚未接正式 runtime。**  
+狀態：**CONFORMED；僅第七頁固定六行與已量合法 Enter 進出。**
 日期：2026-09-23
+
+正式 runtime、同狀態 A/B、同程序 active→clear 與雙倍率失敗矩陣的
+限縮驗收見[第一百五十六階段](../re/phase-156-story-page7-runtime-ab-pending-failure-audit.md)。
+完整開機、其他離頁及遊戲內存讀檔不在此狀態範圍。
 
 ## 玩家可見範圍與權利
 

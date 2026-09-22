@@ -1389,3 +1389,5 @@
 - 主代理以 dosgolem `d42567d` 從合法第六頁 state 重生第七頁 control／2×／3×：六 key、零缺字、安全矩形外零差；又在同一程序連排 331M／341M Enter，兩倍率都記錄 step `341018656` 的 active 6→0、終態 RGBA 與 baseline 相等，正規化 machine／DOS 與控制組相同。第七頁完整 failure matrix 尚待獨立通過，現況仍 READY 而非 CONFORMED。
 - 第八頁原版證據在[第一百五十五階段](docs/re/phase-155-story-page8-ready-prerequisite-evidence.md)補四行 130 glyph 的雙重 SS/SP／RETF 收據，以及 page8→page9 最早相交 pre-write；缺字型真實幾何與 typed-core，仍 DRAFT。
 - [第一百五十六階段](docs/re/phase-156-story-page7-runtime-ab-pending-failure-audit.md)固定第七頁 runner、六份 stable／同程序離頁 A/B 收據及正規化 state digest；同程序 pre-write active 6→0 與終態 RGBA==baseline 已證實。獨立稽核撤銷「runtime 必須鎖絕對 step」與「離頁未測 active 清除」兩項誤判，仍要求正式 2×／3×完整 failure matrix；規格 016 維持 READY。
+- 第八頁 DRAFT 候選由低階翻譯代理逐行核對原版畫面，現有四行譯文忠實且不需改動；另位代理以現行倚天字型重生 2×／3×正式幾何 containment，logical `[8,96)×[136,168)` 零缺字、零越界。私有收據與仍缺 typed-core 的停止線追加至[第一百五十五階段](docs/re/phase-155-story-page8-ready-prerequisite-evidence.md)。
+- 本機 dosgolem `940e5f3` 完成第七頁 2×／3×完整 failure matrix；主代理獨立重跑 apps／CLI 定向 test、vet、race 均通過。全樹 race 的既有 CPU 單步測試超過 10 分鐘且無 race report，未冒稱全樹通過。結合同狀態正例與同程序 active 6→0，[規格 016](docs/spec/016-story-page7-overlay-ready.md)只在固定六行與已量 Enter 離頁升 CONFORMED；完整開機及存讀檔仍未知。
