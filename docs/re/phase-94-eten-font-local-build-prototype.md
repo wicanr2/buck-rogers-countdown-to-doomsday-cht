@@ -31,11 +31,11 @@
 | `top-pad` 字型 | 已證實 | 16×16、691 glyph、25,583 bytes、SHA-256 `78c10dec8055110764013007899c4455b91256a78f94e212294ac9c51c01364e`。 |
 | 原版基準 state | 已證實 | VRAM SHA-256 `d53948dc2a75e255691e5c44287fe2e76cf7a630196f6d1546ac18c4730bd495`；palette SHA-256 `045796505f7ec3115cec8632ca7a29e6391687a2a013198e38dd68dd5b3564eb`。 |
 | 兩個變體（variant）的 2×／3×字模覆蓋 | 已證實 | 四張 `RuntimeManualOverlay` 預覽皆缺字 0，清除矩形外差異 0。 |
-| 上下對齊的產品選擇 | 未知／待使用者決定 | 兩案僅差 source 第 16 列的垂直位置；不可由 bit coverage 或 agent 偏好代替使用者選定。 |
+| 上下對齊的產品選擇 | 已證實（使用者決定） | 使用者選定 B：`top-pad`，source row 0..14 寫入 runtime row 1..15，output row 0 為零；`bottom-pad` 已排除。 |
 | 正式前景色來源 | 未知 | 正文安全區在這個原版狀態（state）是全黑；為使純對齊預覽可見，只在 `Frame` 的拷貝每行放入原版題目區的色盤索引 10，`Draw` 基準未改。這不是正式色彩策略或同狀態繪製器（same-state renderer）收據。 |
 
 ## 結論
 
-本機候選的資料、格式、全量 coverage 與 2×／3× safe-rectangle 均已通過，足以供使用者依畫面選擇
-`bottom-pad` 或 `top-pad`。但未選定前，轉換規格維持 DRAFT；正式解析器（parser）、前景色來源、命令
-（command）／迴圈（loop）接線及正常玩家 A/B 仍不可宣稱完成。
+本機候選的資料、格式、全量 coverage 與 2×／3× safe-rectangle 均已通過；使用者已採用 `top-pad`，
+排除 `bottom-pad`。轉換規格仍維持 DRAFT：正式解析器（parser）、前景色來源、命令（command）／迴圈
+（loop）接線及正常玩家 A/B 仍不可宣稱完成。

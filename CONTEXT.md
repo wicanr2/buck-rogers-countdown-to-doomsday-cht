@@ -490,6 +490,8 @@ runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
 轉換／嵌入停止線（不含 GitHub 或公開散布）。真實倚天來源已重生 bottom-pad 與 top-pad 兩份 16×16、
 691 glyph、25,583-byte 本機候選，並以固定 Deimos Prison 手冊 state 透過 `RuntimeManualOverlay` 驗證
 2×／3×均零缺字且正文 clear rectangle 外零像素變更。正文原版區全黑，preview 以原題目區 palette index
-10 的受控 private sampling 使兩案可見；這不等於正式色彩策略。下一個阻塞決策是使用者從預覽選定底部或
-頂部補第 16 列；之後仍須為正式 ETen parser、前景色來源與 runtime 接線走 DRAFT→READY 審查。dosgolem
-branch 仍為本機未推送的 `a4a87aad48607ea6ff6e4646de1292f5caaeade9`，沒有 production code 變更。
+10 的受控 private sampling 使兩案可見；這不等於正式色彩策略。使用者已選定 B：`top-pad`，排除
+`bottom-pad`；第 16 個空白列置頂，source row 0..14 轉為 output row 1..15。下一個可執行分支已拆為
+#12（ETen top-pad parser 與本機建置）、#13（原版前景色來源）與 #14（正常玩家 runtime 接線），三者均須
+走 DRAFT→READY 審查。dosgolem branch 仍為本機未推送的
+`a4a87aad48607ea6ff6e4646de1292f5caaeade9`，沒有 production code 變更。

@@ -29,6 +29,6 @@ manifest、來源與授權文字雜湊、691 glyph coverage、`local-validation-
 使用者確認的已購買字型之**本機遊戲使用**範圍，建立未追蹤的 16×16／691 glyph 對齊 preview。其定位、
 檔案雜湊、兩案收據與停止線見
 [`docs/spec/007-eten-15-font-candidate-intake-draft.md`](../docs/spec/007-eten-15-font-candidate-intake-draft.md)。
-它不是既有 Unifont validator 的輸入：候選仍缺完整公開授權告知，`bottom-pad`／`top-pad` 也尚待使用者
-選定，且正式前景色來源與 ETen parser 均未 READY。因此不得把 preview 接入 runtime，也不得把任何字型
+它不是既有 Unifont validator 的輸入：候選仍缺完整公開授權告知，使用者已選定 `top-pad`，但正式前景色來源
+與 ETen parser 均未 READY。因此不得把 preview 接入 runtime，也不得把任何字型
 產物加入 Git、GitHub、Release 或公開封包。

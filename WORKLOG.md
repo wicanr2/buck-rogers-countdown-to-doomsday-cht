@@ -1169,3 +1169,10 @@
   palette index 10；DOS VRAM、輸入、答案、原版 EXE、runtime loop 與 dosgolem production code 均未改。
 - 對齊的使用者選擇仍待回覆；production ETen parser、正式前景色來源、runtime 接線與 normal-player A/B
   繼續維持 DRAFT，不能宣稱手冊中文已完成。
+
+## 2026-09-22 — 第九十四階段後續：倚天字型對齊決定
+
+- 使用者選定 B：`top-pad`，第 16 個空白列置頂；排除 `bottom-pad`。這固定 16×15 CJK 與 8×15 ASCII
+  source rows 至 runtime 16×16 row 1..15，row 0 為零；水平 ASCII 仍在 x=4..11。
+- 依賴已拆入 GitHub #12（正式 ETen parser／本機建置）、#13（原版前景色來源）與 #14（手冊 presenter
+  正常玩家 runtime 接線）。第九十四階段的 private palette-index-10 取樣仍只屬對齊預覽，不能升格為正式策略。

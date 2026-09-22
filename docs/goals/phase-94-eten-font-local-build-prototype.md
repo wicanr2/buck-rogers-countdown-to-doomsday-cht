@@ -1,6 +1,6 @@
 # 第九十四階段：倚天字型本機建置與對齊 prototype
 
-狀態：完成（DRAFT；待使用者選定對齊）
+狀態：完成（採用 `top-pad`；後續 #12）
 
 ## 目標
 
@@ -60,8 +60,9 @@
   原版 VRAM 為基準（baseline），沒有寫入 DOS、接入迴圈（loop）或宣稱正式配色已完成。正式繪製器
   （renderer）仍須有經規格
   審查的前景色來源。
-- 使用者尚未選定「底部補空白列」或「頂部補空白列」，因此對齊與正式解析器（parser）／執行期（runtime）仍為
-  DRAFT；本階段只完成可逆的證據與選擇素材。
+- 使用者已選定 B：`top-pad`，第 16 個空白列置頂；`bottom-pad` 已排除。此決定固定 CJK 與 ASCII
+  source rows 於 runtime 16×16 格內向下移一個像素列。正式解析器（parser）／執行期（runtime）仍為 DRAFT；
+  後續由 GitHub Issue #12、#13、#14 分別處理。
 
 ## 退出條件
 

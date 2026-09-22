@@ -38,7 +38,7 @@
 | watcher snapshot bridge | 已證實／CONFORMED（純核心） | dosgolem spec 221 與第 91 階段：只將 `PresentationEvents()` defensive snapshot 轉送給 consumer，沒有第二份 cursor；未接 command、frame loop 或玩家畫面。 |
 | 字型需求清單 | 已證實 | 由正式 `manual.zh-TW.tsv` 重生的未追蹤清單有 691 個碼點，SHA-256 為 `dc656f0729ac3c02abe691d463e62454d1505fbe4d8122aa6056822332a6667f`。 |
 | 候選 manifest 驗證器 | 已證實／CONFORMED（候選審查工具） | project spec 006 的 `validate-candidate` 以 strict manifest 驗證 source／license SHA、既有 parser coverage 與 character-list SHA，無寫入字型路徑；它不採用候選或判定可散布。 |
-| 正式字型候選 | DRAFT | 使用者已授權其已購買的本機倚天 15 點字型用於本機遊戲。第 94 階段的兩份 16×16／691 glyph 對齊 preview 均通過，但上下補列尚待使用者選定，正式 ETen parser 與前景色來源亦未 READY；不接入 runtime，且不得公開散布。舊 GOLEMFNT 最大仍只有 81 glyph，不能當作正式來源。 |
+| 正式字型候選 | DRAFT | 使用者已授權其已購買的本機倚天 15 點字型用於本機遊戲，且已選定 `top-pad`。第 94 階段的 16×16／691 glyph 對齊 preview 均通過；正式 ETen parser 與前景色來源仍未 READY，故不接入 runtime，且不得公開散布。舊 GOLEMFNT 最大仍只有 81 glyph，不能當作正式來源。 |
 | 可直接重用的手冊 presenter | 已證實為否 | `RuntimeMenuOverlay` 驗證的是單列 `MenuOverlayRects`／`TextEvent` 幾何；它沒有讀取手冊 layout TSV、14 行段落分格或手冊 lifecycle 接線。可重用的是其 RGBA／`xlate.Layer` 模式，不是該 adapter。 |
 
 上表的 dosgolem source 均固定為本機 branch `buck-rogers-cht-output-overlay` 的
@@ -77,8 +77,8 @@ bridge／consumer 路徑消費 queue，不得倒回 `Observations()` 猜測世�
 
 第九十三階段已盤點可覆蓋 691 glyph 的本機倚天 15 點字模，第九十四階段則在使用者明確授權的本機
 範圍重生兩個 16×16／691 glyph 對齊 preview；完整檔案 metadata、Big5 分區、preview 收據與未決項目見
-spec 007。使用者授權的是本機使用，不是公開散布；候選目錄仍沒有完整授權告知。`bottom-pad`／`top-pad`
-尚待使用者選定，現有正文區也沒有正式前景色來源；不得把 preview 的 controlled sampling 當成 runtime
+spec 007。使用者授權的是本機使用，不是公開散布；候選目錄仍沒有完整授權告知。使用者已選定 `top-pad`，
+現有正文區仍沒有正式前景色來源；不得把 preview 的 controlled sampling 當成 runtime
 策略。正式 parser、每 glyph 回讀、配色契約與 normal-player A/B 仍須按 `font/README.md`、spec 007 與
 dosgolem spec 218 完成。第九十二階段的 `validate-candidate` 只支援 Unifont，因而正確拒絕此候選；不得
 為繞過停止線而假造 manifest 或把倚天格式宣稱為已通過。

@@ -57,7 +57,7 @@ mapping；若未來譯文新增 codec 歧義符號，必須在資料規格新增
 
 | 項目 | 分級 | 目前結論與停止線 |
 | --- | --- | --- |
-| 16×15→執行期（runtime）16×16 | DRAFT | 第 94 階段已以真實候選重生 `bottom-pad`／`top-pad`，兩案皆為 16×16、691 個字模（glyph），2×／3×範圍約束（containment）均通過。ASCII 水平沿用既有 16-bit 版面的 x=4..11；CJK 與 ASCII 的第 16 列仍待使用者在畫面對照中選定，未選前不得採用任一案。 |
+| 16×15→執行期（runtime）16×16 | DRAFT | 第 94 階段已以真實候選重生 `bottom-pad`／`top-pad`，兩案皆為 16×16、691 個字模（glyph），2×／3×範圍約束（containment）均通過。使用者已選定 `top-pad`：CJK 與 ASCII source row 0..14 寫入 runtime row 1..15，row 0 為零；`bottom-pad` 已排除。ASCII 水平沿用既有 16-bit 版面的 x=4..11。正式 parser、前景色與 runtime 接線仍未 READY。 |
 | 倚天候選 parser | DRAFT | 既有 `validate-candidate` 僅支援 Unifont 十六進位字模，拒絕本候選是正確行為。只有本規格經 evidence review 升為 READY 後，才能新增獨立 ETen parser／manifest schema 與 synthetic tests。 |
 | 完整授權告知 | 已證實為缺席 | 候選目錄沒有 `LICENSE*`、`COPYING*`、`COPYRIGHT*` 或 `NOTICE*` 一般檔案。兩份非空 `README.DOC` 可被 CP950 解碼，但沒有可辨識的授權、散布或權利許可條款。這不足以證明世界上不存在權利條款，卻足以證明本候選尚未提供本專案所需的完整告知。 |
 | 本機採用／嵌入 | 已證實（使用者授權範圍） | 使用者已明確說明此為以前購買的字型，並授權直接用於本機遊戲。故可在被忽略的 `workplace/` 轉換與嵌入本機產物；這不是對第三方權利的法律判定。 |
@@ -67,7 +67,7 @@ mapping；若未來譯文新增 codec 歧義符號，必須在資料規格新增
 ## READY 所需證據
 
 進入本機正式（production）實作前必須同時具備：(1) 使用者已授權的本機使用範圍（已具備，但不代表公開
-散布）、(2) 由真實倚天檔案建立、測試覆蓋 691 個碼點（code points）的失敗即關閉解析器（parser），(3) 使用者在可丟棄
-畫面對照後選定 15→16 與 8→16 對齊策略，(4) 生成後 `GOLEMFNT` header、長度、691 個字模（glyph）與每一 glyph
+散布）、(2) 由真實倚天檔案建立、測試覆蓋 691 個碼點（code points）的失敗即關閉解析器（parser），(3) 使用者已在可丟棄
+畫面對照後選定 `top-pad` 的 15→16 與 8→16 對齊策略，(4) 生成後 `GOLEMFNT` header、長度、691 個字模（glyph）與每一 glyph
 回讀，(5) 經證據審查的正式前景色來源，以及 (6) 本機／可散布產物的明確分類。缺任一項時本規格維持
 DRAFT；公開散布另需可回查的公開許可，不能由本機授權推定。
