@@ -3,6 +3,11 @@
 日期：2026-09-22
 狀態：**DRAFT；已取得固定英文 identity，並建立 DRAFT 候選 catalog 與失效候選；尚未完成 READY 審查。**
 
+後續狀態訂正（2026-09-22）：本文件保留當時的 DRAFT 研究歷程；後續返回邊、
+倚天字模與幾何證據已使首屏五行 catalog／[spec 010](../spec/010-story-opening-overlay-draft.md)
+升為 READY。READY 只授權實作，runtime A/B 未通過前仍不得宣稱已中文化；
+第二、三頁資料維持 DRAFT。
+
 ## 目的與範圍
 
 本階段只追查 phase104 手冊正確作答後，原版進入遊戲的第一個玩家可見畫面。

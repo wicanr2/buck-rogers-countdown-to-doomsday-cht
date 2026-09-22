@@ -1,8 +1,9 @@
 # 010 — 首屏劇情文字輸出端覆繪
 
-狀態：**DRAFT（不得據此接入正式 runtime）**
+狀態：**READY（僅首屏五行；不得擴張至第二、三頁）**
 日期：2026-09-22
 前置：[第一百零五階段首屏劇情追蹤](../re/phase-105-first-story-screen-trace.md)、
+[第一百一十四階段返回邊收據](../re/phase-114-story-return-edge-ready.md)、
 [功能選單輸出端覆繪原則](001-menu-text-output-overdraw-draft.md)、
 `text/story-opening-events.tsv` 與 `text/story-opening.zh-TW.tsv`。
 
@@ -25,7 +26,9 @@ BIOS 鍵盤佇列、原版答案比對、檔案或存檔。
 ## 已確認的原版身分與幾何
 
 從本機 `phase12-before-question.state` 的合法手冊成功返回，首屏五行均由低階
-`0763:026B` glyph primitive 畫出；每 glyph 的 guarded return 回到 `0763:04FF`。兩次 content-safe
+`0763:026B` glyph primitive 畫出；每 glyph 的 guarded return 回到 `0763:04FF`，其實際 return edge
+為 `0763:03D6` 的 `RETF imm16`（opcode `0xCA`）。七個 ABI word 僅以已證實的低位 byte 參與
+顯示 identity；高位以 content-safe mask 診斷、絕不進 hash 或文字判定。兩次 content-safe
 追蹤逐 byte 相同，沒有保存原文 bytes。正式候選必須同時命中全部欄位，不能只用 row、色彩或
 hash 近似比對。
 
@@ -37,12 +40,11 @@ hash 近似比對。
 | `story.opening.line.004` | 29 / `a0cb29721abfb85c6062169ef8d5c8a0d4e794570a007b472fc3f2c655dcd182` | `0763:04FF`／`0763:026B` | 0/10 | col 1, row 20 |
 | `story.opening.line.005` | 23 / `f686b3355b648d95981ec5c128fc4e07f0950c983e9543c49a258fbcd1ea5d74` | `0763:04FF`／`0763:026B` | 0/10 | col 1, row 21 |
 
-目前的 DRAFT clear／text-safe rectangle 候選為 logical
+已確認的 clear／text-safe rectangle 為 logical
 `[8,320)×[136,176)`，即 column `1..39`、row `17..21` 的半開聯集。每列的 text cell 是
 8×8 logical pixels，寬度上限 39 cells、單列 `single-line-reject`；譯文不可換行、截斷、
 縮寫或溢出到這個矩形以外。最長原文為 38 cells；最後一 cell 是畫布右緣前的候選餘裕，
-只能在實際 ETen advance 與 A/B containment 收據通過後升為 READY，不能把目前的 Unicode
-寬度近似誤報為已確認幾何。
+實際 ETen 2×／3× containment prototype 已通過；Unicode 寬度近似僅作 catalog lint，不取代幾何收據。
 
 右側動態資訊目前只在 row 2 與 row 4–9；底部狀態列是 row 24。因此其 y 區間分別不與
 `136..176` 相交，這五行 stamp 不得涵蓋任何右側動態欄或 row 24。這是幾何排除，而非
@@ -81,7 +83,7 @@ story region 的原版指令是 `0CF4:1B3A`，step `281020572`，修改 bounding
 LoadStoryOpeningCatalog(eventsTSV, translationsTSV) -> StoryOpeningCatalog
 NewStoryOpeningWatcher(catalog) -> watcher
 watcher.ObserveGlyphEntry(caller, ss, sp, ABI args, step)
-watcher.ObserveInstruction(at, ss, sp, step) -> []StoryOpeningEvent
+watcher.ObserveVerifiedGlyphReturn(entryStep, returnEdge, ss, sp, step) -> []StoryOpeningEvent
 watcher.ObserveVideoWrite(at, es, di, cx, step) -> invalidated bool
 NewRuntimeStoryOpeningOverlay(catalog, font, scale) -> presenter
 presenter.Apply(event); presenter.Frame(indexed, palette); presenter.Draw(indexed, palette)
@@ -97,24 +99,25 @@ indices、generation／group identity；不可含英文 bytes、作答內容或 
 
 ## READY 前置審查
 
-以下項目尚未全部滿足，所以本規格仍是 DRAFT：
+READY 審查結果：
 
 - [x] 五個首屏 glyph-run 的 exact identity、正常玩家起點、顏色、位置與雙重可重播收據。
 - [x] 以實際第二頁重繪反證 row-24 clear，並確認 first story-region indexed write 的可觀測邊界。
 - [x] 五行矩形與右側／狀態列的 y 軸不重疊分析。
-- [ ] `text/story-opening-events.tsv`、`story-opening.zh-TW.tsv` 經資料審查成為正式 catalog：嚴格
+- [x] `text/story-opening-events.tsv`、`story-opening.zh-TW.tsv` 經資料審查成為正式 catalog：嚴格
   TSV schema、唯一鍵、UTF-8／NFC、控制碼、逐列 39-cell 上限、來源分級及無孤兒 key 均要驗證。
-  最長原文只有 38 cells；第 39 cell 是候選餘裕，必須由實際 ETen advance 與 A/B containment
-  收據核可，不能僅由 Unicode 寬度估算升格。
-- [ ] 正式 961 glyph 以上的本機 top-pad union font 必須重建，並以 production `xlate.LoadFont`
+  最長原文只有 38 cells；第 39 cell 餘裕已由實際 ETen containment 核可，不能僅由 Unicode
+  寬度估算取代此結論。
+- [x] 正式 990 glyph 的本機 top-pad union font 已重建，並以 production `xlate.LoadFont`
   回讀覆蓋五行譯文；字型 bytes／倚天來源仍只能留在 `workplace/`。
-- [ ] `StoryOpeningWatcher` 的 ABI entry／guarded post-call、連續 run、錯序、partial run、miss、
+- [x] `StoryOpeningWatcher` 的 ABI entry／guarded post-call、連續 run、錯序、partial run、miss、
   stack guard、row-aware video-span intersection 與第二頁非重建的 synthetic tests；不能複用
   ActionBarWatcher 的 game-specific identity 或把 diagnostics 當 runtime。
-- [ ] 首屏→下一頁、返回／離開（若該流程存在）與可銜接存讀檔的正常玩家路徑需量出；尚未證實的
-  路徑只能使 group 保持失效，不能猜測恢復。
+- [x] 首屏→第二頁的正常 Enter 轉場已量到首筆 region write；其餘離開、存讀檔與 restore 不作
+  首屏建立依據。READY 契約是任何 restore／未知 lifecycle 一律建立無 active stamp 的 watcher，
+  只有五行重新完整 exact-hit 才可顯示；實際存讀檔玩家路徑保留在 CONFORMED 驗收。
 
-上述資料、字型與 watcher 審查完成後，可將本規格改為 READY 並開始 production adapter。
+已具備實作前所需契約，授權首屏 production adapter；第二、三頁與存讀檔不得隨此接線。
 
 ## CONFORMED 驗收
 

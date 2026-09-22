@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證首屏劇情 DRAFT exact identity 與繁中候選的雙向覆蓋。"""
+"""驗證首屏劇情 READY exact identity 與繁中譯文的雙向覆蓋。"""
 
 from __future__ import annotations
 
@@ -25,8 +25,8 @@ SHA256_RE = re.compile(r"[0-9a-f]{64}\Z")
 def conservative_cells(text: str) -> int:
     """估算 16px ETen 字模在原版 8px 格中的佔用格數。
 
-    這是 renderer 尚未接通前的 DRAFT 近似：全形／寬字元佔兩格，其餘字元佔一格。
-    不把此估算冒稱為 runtime 實測 advance；正式 READY 仍須以實際繪製器量測收斂。
+    這是資料層的保守上界：全形／寬字元佔兩格，其餘字元佔一格。
+    實際 2×／3× 字模邊界另依 spec010 的本機原型收據審查；此函式不冒稱 runtime A/B。
     """
     return sum(2 if unicodedata.east_asian_width(ch) in {"W", "F"} else 1 for ch in text)
 
@@ -55,7 +55,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
     events = _rows(events_path, EVENT_HEADER)
     translations = _rows(translations_path, TRANSLATION_HEADER)
     if len(events) != 5 or len(translations) != 5:
-        raise ValueError("DRAFT 首屏劇情必須恰有五筆")
+        raise ValueError("READY 首屏劇情必須恰有五筆")
     for index, (row, expected) in enumerate(zip(events, EXPECTED), start=1):
         key, length, digest, logical_row, entry, post = expected
         if row["event_key"] != key or int(row["sequence"]) != index:
@@ -70,8 +70,8 @@ def validate(events_path: Path, translations_path: Path) -> None:
             raise ValueError(f"顏色／欄位不符：{key}")
         if (int(row["row"]), int(row["entry_step"]), int(row["post_call_step"])) != (logical_row, entry, post):
             raise ValueError(f"步數／列不符：{key}")
-        if row["evidence_level"] != "confirmed" or row["catalog_status"] != "DRAFT":
-            raise ValueError(f"DRAFT 狀態或證據分級不符：{key}")
+        if row["evidence_level"] != "confirmed" or row["catalog_status"] != "READY":
+            raise ValueError(f"READY 狀態或證據分級不符：{key}")
     keys = [row["event_key"] for row in events]
     translation_keys = [row["key"] for row in translations]
     if keys != translation_keys or len(set(keys)) != len(keys) or len(set(translation_keys)) != len(translation_keys):
@@ -86,7 +86,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
             raise ValueError(f"譯文不得含控制或格式字元：{row['key']}")
         cells = conservative_cells(row["translation"])
         if cells > STORY_CELL_CAPACITY:
-            raise ValueError(f"譯文超過故事區 39 格安全矩形（DRAFT 保守估算 {cells} 格）：{row['key']}")
+            raise ValueError(f"譯文超過故事區 39 格安全矩形（資料層保守上界 {cells} 格）：{row['key']}")
         if row["translation"].endswith(" "):
             raise ValueError(f"譯文不得含尾端空白：{row['key']}")
 
@@ -100,7 +100,7 @@ def main(argv: list[str]) -> int:
     except (OSError, ValueError) as exc:
         print(f"失敗即關閉：{exc}", file=sys.stderr)
         return 1
-    print("story-opening DRAFT catalog OK")
+    print("story-opening READY catalog OK")
     return 0
 
 

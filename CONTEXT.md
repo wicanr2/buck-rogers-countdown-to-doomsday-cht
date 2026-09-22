@@ -17,8 +17,9 @@ machine 接線或跨重啟設定；純核心測試不能取代正常玩家路徑
 見[第一百一十三階段](docs/re/phase-113-ebiten-host-controls-prototype.md)。
 
 手冊成功返回後前三個劇情畫面的固定英文輸出，已有可重播的低階 glyph 身分
-（原文長度／雜湊、caller、列／欄與色號）及繁中 DRAFT 候選：第一頁五行、
-第二頁四行、第三頁五行；動態狀態列排除。首個換頁的劇情區視訊寫入已定位，
+（原文長度／雜湊、caller、列／欄與色號）及繁中資料：第一頁五行的 catalog／
+spec010 已達 READY（只授權實作），第二頁四行、第三頁五行仍是 DRAFT；
+動態狀態列排除。首個換頁的劇情區視訊寫入已定位，
 不能誤用底部狀態列清除作為失效時機。本機倚天 14 份 catalog 候選聯集為
 990 字模，dosgolem 正式 loader 已回讀並覆蓋這三頁 139 個譯文字元；
 三頁均尚未接 runtime，不得宣稱已中文化。詳見[第一百零五階段](docs/re/phase-105-first-story-screen-trace.md)、
