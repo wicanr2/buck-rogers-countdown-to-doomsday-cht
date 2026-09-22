@@ -1,7 +1,7 @@
 # 第一百四十三階段：第四頁 READY 前最小證據
 
 日期：2026-09-22
-狀態：**DRAFT；192 筆逐字返回已證實，但六行完整矩形的最早 pre-write 尚未證實；不接 production。**
+狀態：**DRAFT；192 筆逐字返回與六行完整矩形的最早 pre-write 已證實；第四頁覆繪仍未升 READY。**
 
 > **勘誤（2026-09-22）**：本文件起草時把 `-story-fill-trace` 記下的第一筆
 > step `310023777` 稱為六行 `[8,320)×[136,184)` 的「最早相交」。獨立審查
@@ -107,6 +107,24 @@ ignored `workplace/page4-ready-atomic-core/` 的可丟棄 typed-core 三項測�
 57 個譯文字元回讀零缺字，私有 coverage 收據留在同一工作區。這些只證明候選
 契約可行，沒有接 production。
 
-仍需將診斷範圍明確擴至第六行，從同一合法第四頁 state 雙重重生對完整
-`[8,320)×[136,184)` 的最早相交 pre-write。只要不能排除 row 22-only 的
-更早寫入，就不能把 `310023777` 定為第四頁正式失效 gate，也不能升 READY。
+此處記錄的是當時停止線；後續六行補證見下節。
+
+## 六行補證與目前閘門
+
+本機 dosgolem 提交 `ac1f7fb4f52680f3a96c42c475667ec7a9dd6b2d`
+加入受限的 `-story-fill-rows 6` 診斷。spec 229 僅授權此 content-safe
+收據，不授權第四頁覆繪。測試確認 row 22-only 寫入會命中、row 23-only 不會，
+非法列數拒絕，五行舊行為保持。從上述合法第四頁 state 與相同 Enter，
+以固定程式重建後雙重重播；私有收據
+`workplace/page4-ready-evidence/page4-six-row-ac1f7fb-{a,b}.json`
+逐 byte 相同，SHA-256 均為
+`4f1bd9940877601138f77e16dfa290d1243566506670db52344f707a94f20f3d`。
+兩份均明記 `story_fill_rows=6`，48 筆 bounded span 全部與
+`[8,320)×[136,184)` 相交，最早者仍為 pre-execution step `310023777`、
+`0CF4:1B3A`、`A000:AA08`、`CX=304`；第一可見 pixel 差異為
+`310023801`，第五頁首 glyph 為 `310025410`。因此前述五行診斷的
+幾何缺口已補齊；原勘誤保留為發現過程，不撤銷。
+
+第四頁正式資料目前仍為 DRAFT。接下來須獨立審查六筆繁中候選及 typed
+原子提交契約，將矩形、失效、字型與 A/B 驗收寫入限縮 READY 規格；
+在此之前不得接 watcher、catalog 或 renderer 的 production path。
