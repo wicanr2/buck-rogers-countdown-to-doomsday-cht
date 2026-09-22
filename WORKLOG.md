@@ -1304,3 +1304,10 @@
 
 - Docker／Xvfb 的真實 Ebitengine 2× canvas Down 後，另一視窗取得焦點使 `IsFocused` 由真轉假；bridge 只 `ReleaseMouse(0)`、不 Move，DOS 左鍵由 1 清為 0。孤兒與重複實體 `mouseup` 未經 Ebitengine public API 形成額外 release edge，故沒有額外 DOS 呼叫；不得冒稱 bridge 收到該事件。3× panel-open 前提的新 Down／Up 對 DOS 零呼叫。
 - 四個案例的起點以 dosgolem `cmd/state-compare` 正規化比較均相等；仍缺完整四角、實體 host hit/miss 路由與正常玩家因果 A/B，spec228 保持 DRAFT。詳見[第一百三十五階段](docs/re/phase-135-real-ebiten-mouse-focus-loss-and-release-edges.md)。
+
+## 2026-09-22 — 第一百三十六至三十八階段：故事停止線、滑鼠路由及第三頁清除
+
+- 第九頁後的合法 Enter 雙重重播只有 command/status 重畫，無固定故事第十頁；低階翻譯代理不建立猜測 catalog。另對照私有原版畫面，修正第 5 頁「終於」、第 7 頁 `salvage station` 與第 8 頁 `escorted to` 的三處繁中措辭，事件身分與 DRAFT 狀態不變。全套 Python 231 項通過；依現行 20 份 catalog 重建本機倚天 1024 字模，正式 dosgolem loader 對 6179 個譯文字元零缺字，私有 GOLEMFNT SHA-256 為 `b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`。
+- 真實 Ebitengine 2×／3× host Open hit 與 open-panel 空白 miss、3× accepted Down 後 panel-open chrome Up 已補收據；DOS API 依已確認邊界隔離或只 release。面板核心對空白 miss 仍回未消費，不能冒稱完整 host route；MouseBridge 保持 DRAFT。
+- 第二頁 runtime 已有雙倍率同狀態正例與退出收據；獨立稽核發現 loader 漏驗 caller／guard、presenter 非原子 Apply，已在本機 dosgolem 修正並補部分負例。spec 011 暫維持 READY，等待完整雙倍率失敗矩陣與同幀核驗。
+- 本機 dosgolem `f6579d9` 新增 content-safe story fill pre-write 診斷與邊界測試。從第三頁合法 state 兩次 Enter 重播逐 byte 相同，最早與五行安全矩形相交的原版寫入為 step `301108549`、`0CF4:1B3A`、`A000:AA08`、304 bytes；首個可見差異晚 24 step。這只是第三頁 READY 前置證據，未接 runtime。見[第一百三十六階段](docs/re/phase-136-story-page10-enter-stop-line.md)、[第一百三十七階段](docs/re/phase-137-real-host-panel-route-and-3x-cleanup.md)及[第一百三十八階段](docs/re/phase-138-story-page3-exit-prewrite.md)。

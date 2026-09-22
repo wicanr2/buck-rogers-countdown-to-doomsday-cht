@@ -23,6 +23,10 @@ Apply 提交倍率後自動收合面板並恢復遊戲鍵盤；倍率只保留�
 及重複 Up 在 Ebitengine public input API 未產生新的 release edge，3× panel-open 前提下的
 新 Down／Up 也不觸 DOS。這些仍是可丟棄 harness 的限定收據，不代表完整前端路由或
 滑鼠可操作，見[第一百三十五階段](docs/re/phase-135-real-ebiten-mouse-focus-loss-and-release-edges.md)。
+真實 X11／Ebitengine 的 2×／3× host Open hit 與 open-panel 空白 miss，以及 3× 已接受 Down
+後開面板再於 chrome Up 的 release-only cleanup 亦已量到；空白 miss 的面板核心本身仍回
+`ConsumedByHost=false`，不能冒稱完整 host hit/miss 路由已驗收。MouseBridge spec228 仍 DRAFT，
+見[第一百三十七階段](docs/re/phase-137-real-host-panel-route-and-3x-cleanup.md)。
 本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
 鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
 Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×
@@ -50,7 +54,14 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 第二頁其後另以同狀態原版收據量到四行完成、首屏失效、第二頁→第三頁的最早相交
 pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
 [spec 011](docs/spec/011-story-page2-overlay-draft.md) 已限縮升 READY，四筆事件身分資料也升
-`confirmed/READY`。這只授權第二頁 typed adapter 實作；尚未接 runtime 或通過 A/B。
+`confirmed/READY`。本機 dosgolem 已接第二頁四行 runtime：2×／3×正例與 control
+的原版 machine／DOS 正規化狀態相等，四鍵啟用、零缺字、安全矩形外零差異；兩倍率
+的 page2→page3 pre-write 均記錄 active 4→0、終態無殘字。獨立稽核發現 TSV caller／guard
+驗證及 presenter 原子 Apply 缺口，已於本機 `2fa5be4` 修正；`db1a281` 補部分負例。
+完整雙倍率失敗矩陣與同幀輸出驗證仍在進行，故 spec 011 保持 READY，**未升 CONFORMED**。
+第三頁離頁的合法 Enter 已以兩次一致收據量到最早安全矩形交集 pre-write：step
+`301108549`，早於第一個可見差異 `301108573` 與第四頁首 glyph；第三頁仍為 DRAFT，
+見[第一百三十八階段](docs/re/phase-138-story-page3-exit-prewrite.md)。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
 初稿曾誤配右側人物姓名，經原圖座標核對訂正。第二至五頁均不得接 runtime，
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
@@ -67,6 +78,10 @@ pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
 第八頁後的合法 Enter 又量到第九頁唯一固定故事行，繁中 DRAFT 已建立，右側姓名與動態列
 排除；全部 20 份 catalog 的本機倚天子集 1026 字模，正式 loader 對 6182 個譯文字元
 零缺字。第九頁尚未接 runtime 或做中文 A/B。
+第九頁後再送合法 Enter，兩次重播只見 row 15 command/status 重畫，無新固定故事行；
+因此沒有第十頁 catalog，不猜補譯文，見[第一百三十六階段](docs/re/phase-136-story-page10-enter-stop-line.md)。
+第 5、7、8 頁三處 DRAFT 譯文依私有原版畫面校訂後，20 份 catalog 的本機倚天子集
+重建為 1024 字模，正式 loader 對 6179 個現行譯文字元零缺字；此變更不升格上述頁面。
 見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
 [第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)、
 [state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)、

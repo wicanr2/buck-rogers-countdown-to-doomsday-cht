@@ -159,6 +159,9 @@ row 24 動態狀態列排除；仍屬 DRAFT，未接 runtime。證據見
 全部 20 份 catalog 的本機倚天子集為 1026 字模，正式 loader 對 6182 個譯文字元
 零缺字；尚未接 runtime 或完成 A/B。證據見
 [`docs/re/phase-134-story-page9-enter-trace.md`](../docs/re/phase-134-story-page9-enter-trace.md)。
+後續依私有原版畫面校訂第 5、7、8 頁三處譯文，未改 event identity 或 DRAFT 狀態；
+現行 20 份 catalog 重建後的本機倚天子集為 1024 字模，正式 loader 對 6179 個
+譯文字元零缺字。上述 1026／6182 是校訂前的第 134 階段收據，不是目前字型產物。
 
 ## 驗證與 prototype 字型
 
