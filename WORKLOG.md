@@ -1322,3 +1322,9 @@
 - 身體圖示的七筆高階 identity 尚不足以實作；[第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)列出真實 glyph return 與最早安全矩形 pre-write 的缺口，維持 DRAFT。先前誤判缺 Go 工具鏈，已訂正為現有 `golang:1.26.7-bookworm` 可用。
 - 第二頁補齊真實 return、原子提交、雙倍率失敗矩陣及正式 catalog 身分鎖定；本機 dosgolem `2f8c807` 的 targeted vet/race 通過。從同一合法 state 以最新程式重跑 control／2×／3×及合法 Enter 離頁，原版狀態相同、覆繪只在安全矩形內，離頁後零殘字。[第一百四十一階段](docs/re/phase-141-story-page2-runtime-conformance.md)使 spec 011 只在這條路徑升 CONFORMED。
 - 第三頁 144 筆逐筆 entry／return stack 證據與可丟棄 typed 核心負例通過獨立審查。[第一百四十二階段](docs/re/phase-142-story-page3-ready-review.md)將 spec 012 及五筆身分目錄升 READY；尚未接正式 runtime、未做 A/B，不宣稱 CONFORMED。
+
+## 2026-09-22 — 第一百四十三至四十四階段：第四頁低階證據與第三頁限縮驗收
+
+- 第四頁代理雙重重播六行 192 個 glyph 的逐筆 RETF／同 SS／相對 SP+`0x12`，及 page4→page5 最早相交 `0CF4:1B3A` pre-write；[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)維持 DRAFT，等待獨立 READY 審查，沒有接 production。
+- Terra 代理於本機 dosgolem `aae577f` 接上第三頁五行正式 watcher／presenter／CLI；主代理審查 144 筆原版 ABI 高位均為零後，先補 spec 012，再以 `9a9b769` 對七個 word 的非零高位失敗即關閉並加測。相關 Go 套件 Docker vet／race 通過。
+- 從合法第二頁終態以同一 Enter 做 control／2×／3×，再以第二筆 Enter 做離頁三組；最新程式與本機倚天字型的同狀態驗證顯示五行可讀、矩形外零差異、原版 machine／DOS state 全等，離頁前寫入使 active 5→0，終態 RGBA 無殘字。專案 234 項 Python 測試及[第一百四十四階段](docs/re/phase-144-story-page3-runtime-conformance.md)的唯讀真實收據驗證通過；spec 012 只在此路徑升 CONFORMED。

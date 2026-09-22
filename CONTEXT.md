@@ -69,10 +69,17 @@ pre-write、實際 far-return 與相對 SS/SP；獨立修正錯誤負例後，
 SP 相差 `0x12`，不再以首筆樣本外推其餘 143 筆。
 [第一百三十九階段](docs/re/phase-139-story-page3-return-edge.md)與
 [第一百四十二階段](docs/re/phase-142-story-page3-ready-review.md)獨立審查通過後，
-[spec 012](docs/spec/012-story-page3-overlay-draft.md)限縮升 READY，僅授權五行 typed adapter
-接正式 runtime；尚未做第三頁 A/B，**未升 CONFORMED**。
+[spec 012](docs/spec/012-story-page3-overlay-draft.md)當時限縮升 READY，授權五行 typed adapter。
+本機 dosgolem `aae577f` 接上第三頁正式 runtime，`9a9b769` 再拒絕七個 ABI word
+的非零高位；[第一百四十四階段](docs/re/phase-144-story-page3-runtime-conformance.md)
+以修正後程式完成 control／2×／3×與合法 Enter 離頁同狀態 A/B：五鍵啟用、零缺字、
+安全矩形外零差異，原版 machine／DOS state 全等，離頁 active 5→0、終態無殘字。
+因此 spec 012 **僅上述路徑升 CONFORMED**，完整開機與存讀檔仍未驗。
 從第四頁終態合法 Enter 已另量到第五頁底部五行的低階 glyph 身分與繁中 DRAFT；
 初稿曾誤配右側人物姓名，經原圖座標核對訂正。第四、五頁仍不得接 runtime；
+第四頁另有[第一百四十三階段](docs/re/phase-143-story-page4-ready-evidence-draft.md)
+逐筆 192 glyph 返回與 page4→page5 最早相交 pre-write 雙重收據，仍待獨立 READY
+審查，不能依 DRAFT 直接接正式覆繪。
 動態狀態列及右側人物姓名一律排除。第五頁譯文加入後，本機倚天完整 catalog
 候選聯集重建為 1006 字模，正式 loader 已回讀且零缺字；這仍只證明字型覆蓋。
 第五頁後的合法 Enter 也已量到第六頁 row 17–22 六行低階身分；低階翻譯代理建立

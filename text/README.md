@@ -133,7 +133,11 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 Chiagong 的「奇亞貢」仍只是未由中文手冊逐字確認的編輯性音譯。
 `story-page3-events.tsv` 是第三頁五行固定敘事的 READY 身分目錄；`story-page3.zh-TW.tsv` 仍是編輯性譯文；
 `tools/story_page3_catalog.py` 驗證 row 17–21、排除 row 24 動態狀態列與 39 格保守容量。
-第三頁五行依原版畫面語意翻譯，尚未接正式 runtime；READY 僅及 typed adapter 契約。
+第三頁五行依原版畫面語意翻譯，已接正式 dosgolem runtime；
+[`docs/re/phase-144-story-page3-runtime-conformance.md`](../docs/re/phase-144-story-page3-runtime-conformance.md)
+僅對同一合法 state 的五行與已量 Enter 離頁給出雙倍率限縮驗收。
+`tools/story_page3_ab_verify.py` 是唯讀收據驗證入口：逐欄比對 control 與 2×／3×
+原版欄位，並檢查覆繪差異只在五行安全矩形內；它不能取代正常玩家完整開機與存讀檔。
 `story-page4-events.tsv` 與 `story-page4.zh-TW.tsv` 是第四頁六行 DRAFT；原先
 `visual-transcription` 的前五筆身分已被兩次合法 Enter 的低階 glyph trace 否定並訂正，
 現有 `tools/story_page4_catalog.py` 驗證 exact hash、caller／guard、步數、幾何與翻譯容量。

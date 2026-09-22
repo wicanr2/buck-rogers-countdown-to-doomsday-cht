@@ -1,6 +1,6 @@
 # 012 — 第三頁固定劇情輸出端覆繪
 
-狀態：**READY；僅五行 typed adapter 契約可接 production，尚非 CONFORMED。**
+狀態：**CONFORMED；僅第三頁五行與已量 Enter 離頁，其他路徑仍未驗。**
 日期：2026-09-22
 
 ## 範圍與權利邊界
@@ -19,7 +19,7 @@ BIOS 輸入、檔案與存檔、答案判定或譯文的語意用途。right-sid
 | 項目 | 分級 | 證據 |
 | --- | --- | --- |
 | 五行 exact identity、順序、長度、SHA-256、樣式與座標 | 已證實 | [第 108 階段](../re/phase-108-story-page3-draft.md)、`text/story-page3-events.tsv`；caller `0763:04FF`、guarded primitive `0763:026B`、rows 17–21、column 1、mode/repeat `1/1`、背景／前景 `0/10`，長度 `34/37/31/37/5`。 |
-| 每個 glyph 的真實完成控制流 | 已證實 | [第 139 階段](../re/phase-139-story-page3-return-edge.md)：144 筆皆是緊前 `0763:03D6` opcode `0xCA` 的 RETF 後到 caller；補充的雙重收據逐筆證實相同 SS、`SP+0x12`。 |
+| 每個 glyph 的真實完成控制流與 ABI 高位 | 已證實 | [第 139 階段](../re/phase-139-story-page3-return-edge.md)：144 筆皆是緊前 `0763:03D6` opcode `0xCA` 的 RETF 後到 caller；補充的雙重收據逐筆證實相同 SS、`SP+0x12`，七個 ABI word 的 `high_word_mask` 全為 0。 |
 | page3→page4 已量 Enter 的最早視訊寫入 | 已證實 | [第 138 階段](../re/phase-138-story-page3-exit-prewrite.md)：`0CF4:1B3A`、`ES:DI=A000:AA08`、`CX=304`，step `301108549`；比首個可見差異早 24 step，且早於第四頁 glyph。 |
 | 五行繁中候選 | 編輯性 DRAFT | `text/story-page3.zh-TW.tsv`；來源為私有原版畫面語意校對，不是中文手冊逐字譯名。 |
 | 其他離頁方式、完整開機玩家路徑與遊戲內存讀檔 | 未知 | 不以這條 Enter 收據外推。 |
@@ -41,7 +41,8 @@ Go 1.26.7／`golang:1.26.7-bookworm` Docker 重生。固定 receipt step 與當�
 `PreExecutionVideoWrite{at,es,di,cx,step}` 與明示 execution discontinuity。
 
 五行只在各自完整、按 sequence 1..5 exact-hit original length／SHA-256、caller／guard、
-mode／repeat、style、row／column，並驗證每 glyph 真實 far-return、同 SS、相對
+mode／repeat、style、row／column，且七個 ABI word 高位必須全為 0；不得先截成
+8 位再比對。並驗證每 glyph 真實 far-return、同 SS、相對
 `SP+0x12` 及 `entry < post < next entry` 後，才原子輸出一個 group。暫存的原文 bytes
 在雜湊後丟棄；export event、presenter、JSON 不得保留原文、答案、ABI 高位或 machine pointer。
 TSV 必須精確五個 key、唯一、雙向 coverage、UTF-8/NFC、無控制字元、每行不超過
@@ -75,3 +76,13 @@ palette 全等；第三頁五行繁中可讀、零缺字、RGBA 安全矩形外�
 2×／3×各驗 identity、return、partial、duplicate、non-READY TSV、font miss、unknown
 write、restore／discontinuity 負例皆零繪製且不改原版狀態。這些由 dosgolem 重生且
 正常玩家路徑抽測通過後，才可限縮標為 CONFORMED。
+
+## 限縮 CONFORMED 結果
+
+[第一百四十四階段](../re/phase-144-story-page3-runtime-conformance.md)以本機 dosgolem
+`9a9b769` 從同一合法第二頁終態，分別重播 control、2×、3×及其下一筆正常
+Enter 離頁。五行原子啟用、雙倍率零缺字、安全矩形外零差異、完整 machine／DOS
+state 全等；離頁時已量原版 pre-write 先清五個 key，終態 RGBA 與 baseline
+逐 byte 相同。七個 ABI word 高位的失敗即關閉負例與雙倍率故障矩陣已通過。
+因此僅上述固定合法續行達 CONFORMED；完整開機、其他離頁方式、遊戲內存讀檔
+與其餘文字路徑仍未知，不能外推。

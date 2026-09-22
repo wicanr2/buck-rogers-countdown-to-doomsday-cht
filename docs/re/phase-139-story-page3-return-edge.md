@@ -55,5 +55,7 @@ SHA-256 `11427a055910594f3ecce309a3d0f6d7802e93ad728113c0adf5c13be5531943`。
 `entry_ss == return_ss`、`(return_sp-entry_sp) mod 65536 == 0x12`、緊前
 `0763:03D6` opcode `0xCA` 及實際返回 `0763:04FF`，反例數為零。首末筆同為
 entry `SS:SP=1841:3D66`、return `1841:3D78`；這些絕對值仍只作收據錨點。
+同一 144 筆的七個 ABI word `high_word_mask` 均為 0；後續 watcher 因此在任何
+8 位轉換前拒絕高位異常，不能只靠截斷後的低位冒充原版身分。
 這次訂正把「首筆支持相對 guard」提高為「144 筆直接驗證」，保留先前收據，
 不改寫原歷史；第三頁 typed core 的負例審查仍未完成，規格維持 DRAFT。

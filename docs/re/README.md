@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第一百四十四階段：第三頁五行 runtime 限縮 CONFORMED](phase-144-story-page3-runtime-conformance.md)：最新程式的 control／2×／3×與合法 Enter 離頁同狀態重跑；只證實第三頁已量路徑。
+- [第一百四十三階段：第四頁 READY 前最小證據](phase-143-story-page4-ready-evidence-draft.md)：雙重收據確認六行 192 glyph 的逐字 stack／RETF return，以及 page4→page5 最早安全矩形 pre-write；仍待獨立 READY 審查，維持 DRAFT。
 - [第一百四十二階段：第三頁五行 typed adapter READY 審查](phase-142-story-page3-ready-review.md)：144 筆逐筆 stack、五行身分、清除契約、字型覆蓋與可丟棄核心負例通過；僅 adapter 契約升 READY，尚未接正式 runtime。
 - [第一百四十一階段：第二頁四行 runtime 限縮 CONFORMED](phase-141-story-page2-runtime-conformance.md)：最新程式的 2×／3×、控制組及合法 Enter 離頁同狀態重跑；結論僅及第二頁已量路徑。
 - [第一百四十階段：身體圖示 READY 前置證據停止線](phase-140-body-icon-ready-evidence-stop.md)：確認七筆仍只有高階 identity；列出低階 glyph return 與安全矩形 pre-write 的最小量測；已訂正可沿用現有 Go Docker image，未升 READY。
