@@ -52,9 +52,13 @@ hash 近似比對。
 
 ## 轉場與失效契約候選
 
-首屏終態 state 在絕對 step `280000000`。正常 BIOS Enter 排於 `281000000` 後，第一個會改寫
-story region 的原版指令是 `0CF4:1B3A`，step `281020572`，修改 bounding box
-`[10,295)×[137,138)`。這是第二頁重繪第一條掃描線；二次重播一致。
+首屏終態 state 在絕對 step `280000000`。正常 BIOS Enter 排於 `281000000` 後，最早已證實
+碰到 story region 的原版指令是 `0CF4:1B3A`，step `281020548`，pre-execution
+`ES:DI=A000:AA08`、`CX=304`，即 row 136 的 x=`8..311`。這筆 fill 的值未必改變當時
+indexed framebuffer，故早期像素差異探針是在 24 instructions 後才記到 row 137 的
+`A000:AB48`／step `281020572`。兩者皆為同一轉場，正式 gate 只依 span intersection，
+不可硬編碼其中任一 step、row 或「像素有變」條件。完整勘誤見
+[第一百零五階段](../re/phase-105-first-story-screen-trace.md)。
 
 因此候選 adapter 必須在下列順序運作：
 
@@ -64,8 +68,10 @@ story region 的原版指令是 `0CF4:1B3A`，step `281020572`，修改 bounding
 2. 不得為此在每道 machine instruction 後掃描整個 story region。只在已確認的
    `0CF4:1B3A` 寫入指令 entry 讀取 `ES:DI` 與 `CX`，並以 row-aware 的 Mode 13h video-span
    intersection 判斷它是否實際碰到 `[8,320)×[136,176)`；命中時立即移除整組 stamp。偵測只讀
-   registers／原版畫面，不能反寫 VRAM。已重播的首個實例是 `ES:DI=A000:AB48`、`CX=304`，
-   即 row 137 的 x=`8..311`；它在 step `281020572` 寫入並與候選 story rectangle 相交。
+   registers／原版畫面，不能反寫 VRAM。已重播的最早實例是 `ES:DI=A000:AA08`、`CX=304`，
+   即 row 136 的 x=`8..311`；它在 step `281020548` 寫入並與候選 story rectangle 相交。
+   後續 row 137 的 `A000:AB48`／step `281020572` 只是第一筆可量到像素差異，不能取代較早
+   寫入作 lifecycle edge。
    `0CF4:1B3A` 是通用 fill primitive，故 segment、destination 與 count 均為 fail-closed
    gate，不得只憑 code address 對所有呼叫一律失效。
 3. 清除後不得因第二頁 glyph 或任何其他文字自動重建首屏 group。只有再次完整命中這五個

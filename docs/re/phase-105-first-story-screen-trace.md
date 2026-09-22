@@ -107,6 +107,7 @@ logical row `137`、x=`8..311`，確實與首屏劇情區相交。這給出可�
 因此 READY 的失效候選可精確表述為：當 output observer 看見 `0CF4:1B3A` 的此轉場，或看到其第一筆
 story-region framebuffer 改寫時，先使目前 story overlay 失效，再容許原版下一頁重繪。這仍是 DRAFT：
 需以 runtime A/B 證明在該邊界前失效不殘字，才可 CONFORMED。
+
 - dispatcher 下游的全部 178 個 glyph 呼叫皆經 `0763:049B`（mode `1`、repeat `1`）；診斷
   沒有保存 glyph bytes，兩次均 `glyph_drops=0`。這是 dispatcher ABI 的下游畫字，並非另一個
   可獨立攔截的故事文字路徑。
@@ -131,3 +132,18 @@ RE identity 與正常路徑重播已充分；尚不能越級接 runtime。READY 
 失敗即關閉的結構／identity／容量檢查；它不代表 READY，也不會被 production dispatcher
 讀取。READY 前仍不得建立 production hook 或宣稱已中文化；私有收據中的合法輸入排程與
 原文均不得進入版本控制。
+
+## 勘誤（2026-09-22）：較早但像素值未變的 fill span
+
+上述 `281020572`／`A000:AB48` 是當時以「indexed framebuffer 值真的變化」量測得到的
+row 137 收據；它不是所有原版 VRAM 寫入的第一筆。後續以完整合法成功返回排程、同一
+`phase12-before-question.state` 及首屏 runtime adapter 重播時，在更早的
+`281020548` 已觀測到同一 `0CF4:1B3A` 的 `REP STOSB`：
+`ES:DI=A000:AA08`、`CX=304`，即 row 136 的 x=`8..311`。它落於
+`[8,320)×[136,176)`，但該列填入值相同，故舊的「像素差異」探針不會把它列為改寫。
+
+因此舊的 row 137 收據仍是有效的「第一筆可量到像素差異」，但「第一筆 story-region
+寫入」的說法已被此新證據否定。正式契約不可綁定單一 step、row 或可見像素差異；它必須在
+每次 `0CF4:1B3A` entry 依 `ES:DI`、`CX` 與 Mode 13h row-aware span intersection 判定。
+[第一百一十九階段 runtime lifecycle A/B](phase-119-story-opening-enter-lifecycle.md) 已在
+2×／3×證實這個較早 span 發生時完整五行 stamp 存在，並在原版執行 write 前被移除。

@@ -20,8 +20,12 @@ Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×�
 手冊成功返回後第一個固定劇情畫面有五筆 READY 身分與繁中譯文。本機 dosgolem
 commit `42193b0` 已接正式覆繪；同一合法 state／輸入排程的 2×／3× A/B 均命中五筆、
 缺字為零、故事安全矩形外零像素差，終態原版 indexed framebuffer／palette 相同。
-這只證實第一頁該重播狀態；Enter 轉頁清除、完整開機玩家路徑與存讀檔仍未驗，
-spec010 維持 READY，不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)。
+這只證實第一頁該重播狀態。其後已以相同合法排程加 Enter 驗證：最早的 row 136
+story-region 視訊寫入前五行 stamp 即失效，第二頁終態無殘字，原版記憶體／indexed
+framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「首筆寫入」已訂正為
+首筆可見像素差異。完整開機玩家路徑與存讀檔／restore 仍未驗，spec010 維持 READY，
+不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)
+及[第一百一十九階段](docs/re/phase-119-story-opening-enter-lifecycle.md)。
 第二頁四行、第三頁五行有可重播低階 glyph 身分與繁中 DRAFT；第四頁六行只有
 既有畫面反查的 `visual-transcription` DRAFT，尚無首次繪製時的 caller／步數，
 不得接 runtime。動態狀態列一律排除。既有本機倚天 14 份 catalog 候選聯集為

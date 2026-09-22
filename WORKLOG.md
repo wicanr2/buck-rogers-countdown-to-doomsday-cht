@@ -1218,3 +1218,8 @@
 - 使用者定案 Linux 首版以 Ebitengine 顯示，啟動預設 2×、倍率只在本次遊戲期間有效；設定面板開啟時停送遊戲鍵盤，Apply 後收合，未 Apply 關閉則取消暫選，再開回到目前倍率。真實原版 state 已於 Docker／Xvfb 的 Ebitengine 原型顯示並由明示 BIOS 鍵盤橋推進；原型仍以空 active layer 呈現，不是可玩中文版。見[第一百一十六階段](docs/re/phase-116-game-loaded-ebiten-prototype.md)。
 - dosgolem 本機分支接上第一頁五行 READY 劇情的 guarded return-edge watcher、覆繪及故事區失效。從合法手冊成功返回 state 以相同私有輸入重播，2×／3× 各命中五筆、零缺字、安全矩形外零差異，原版 indexed framebuffer／palette 相同；轉頁清除、完整開機玩家路徑與存讀檔仍待驗，spec010 保持 READY。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)。
 - 既有畫面證實第四頁另有六行劇情；早先將該頁判成僅命令列的說法已追加勘誤。六筆繁中僅為 visual-transcription DRAFT，尚未找回首次繪製前 state 或 glyph caller，不能接 runtime。見[第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)與[state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)。
+
+## 2026-09-22 — 第一百一十九階段：首屏 Enter 轉場的實際失效邊
+
+- 從合法手冊成功排程延伸 Enter，2×／3× 都在 `281020548`、`0CF4:1B3A`、`A000:AA08`／`CX=304` 的 row 136 video span 執行前清除首屏五行。第二頁終態覆繪逐 byte 等於 baseline，原版記憶體／indexed 畫面／palette 與無覆繪控制組一致。
+- 舊研究在 `281020572`、row 137 量到的是第一筆可見像素差異，並非第一筆寫入；追加勘誤並修正 READY spec 010 的失效邊，保留舊收據與錯誤形成原因。存讀檔／restore 與完整開機玩家路徑仍未驗，spec010 不升 CONFORMED。見[第一百一十九階段收據](docs/re/phase-119-story-opening-enter-lifecycle.md)。

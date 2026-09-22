@@ -16,6 +16,7 @@
 - [第一百一十四階段：首屏字元返回邊與 READY 輸入](phase-114-story-return-edge-ready.md)：合法手冊返回路徑重生 160 個 `RETF` 完成字元，確認 `0763:03D6` 與低位顯示 ABI；答案與原文仍只在本機。
 - [第一百一十七階段：首屏劇情 runtime 2×／3× A/B](phase-117-story-opening-runtime-ab.md)：同一私有成功返回 state／排程下的五行首屏覆繪，確認雙倍率 indexed／palette 不變、safe rect 外零差異與可讀繁中；未驗轉頁、存讀檔與完整玩家路徑，spec010 維持 READY。
 - [第一百一十八階段：故事 DRAFT 字型重建與 loader 回讀](phase-118-story-draft-font-rebuild.md)：以本機倚天來源重建校訂後全部 catalog 的 997 glyph 子集，dosgolem 正式 loader 驗證 page2／page3／page4 與全集零缺字；僅為 DRAFT 字型涵蓋，不是 runtime 驗收。
+- [第一百一十九階段：首屏劇情 Enter 轉場 runtime lifecycle A/B](phase-119-story-opening-enter-lifecycle.md)：以完整私有成功返回重播驗證 2×／3×在最早 row 136 video-span 寫入前移除五行 stamp、終態與 control 一致；訂正舊 row 137「首筆寫入」說法，存讀檔仍待驗。
 - [第一百零三階段：第三題手冊覆繪執行期抽樣](phase-103-manual-third-question-runtime.md)：以最新 961 glyph 字庫在原版錯答重抽路徑實際命中 #36，記錄雙倍率、同狀態、像素隔離與 #3／#39 未命中邊界。
 - [第一百零二階段：手冊與快捷列覆繪稽核](phase-102-overlay-audit.md)：第一百階段 959 字模的雙倍率首題收據、504 字單頁／3× 密度、白色快捷字母，以及尚缺的玩家路徑驗收。
 - [第一百零一階段：身體圖示選擇文字目錄](phase-101-body-icon-text-catalog.md)：沿用正常移動／拒絕／確認 trace，建立七筆固定介面文字的 exact identity、繁中 catalog 與安全矩形；runtime overlay 尚待下一階段。
