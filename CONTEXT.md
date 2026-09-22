@@ -25,6 +25,9 @@ spec010 已達 READY（只授權實作），第二頁四行、第三頁五行仍
 三頁均尚未接 runtime，不得宣稱已中文化。詳見[第一百零五階段](docs/re/phase-105-first-story-screen-trace.md)、
 [第一百零七階段](docs/re/phase-107-story-page2-draft.md)與
 [第一百零八階段](docs/re/phase-108-story-page3-draft.md)。
+第四次 Enter 的原版畫面下方仍有新劇情；早先只見 row 24 的 trace 不能證明
+沒有第四頁文字，已在[第一百零九階段](docs/re/phase-109-post-return-enter-4-command-loop.md)
+追加勘誤。第四頁 exact identity／譯文尚未建立。
 
 目前正式手冊 catalog 已補齊 39／39 題，每題是一段不超過 504 字的遊戲內繁中
 意譯，不是整章手冊逐字轉錄。37 題有中文掃描對照；第 3、39 題因缺少直接的中文
