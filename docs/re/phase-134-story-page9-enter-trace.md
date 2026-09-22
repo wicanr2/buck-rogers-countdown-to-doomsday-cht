@@ -144,3 +144,24 @@ ignored `workplace/page9-lifecycle-search/`。
 pixel pre-write 或可授權的覆繪失效邊界。第九頁保持 DRAFT，未接 production。下一個
 候選必須先由手冊證實為適用於這個 page9 command state 的**不同**玩家動作；在取得該
 適用性證據前，不再擴大 scan-code 探索。
+
+### Num Lock 8 的下一輪詢停止線
+
+上述手冊也明示數字鍵盤 8 為前進，且本輪已量到 page9 的 4／6 與第一百二十六階段的
+8 都進入同一 `0C10:031C`／`37F1:1116 ← 328E:1732` keyboard consumer。因此 8 是
+可送入此 command state 的合法候選，但「前進」的玩家可見結果仍是未知，不能由較早
+state 的結果外推。
+
+從同一 page9 state 於 step `361000000` 排入單鍵 Num Lock 8（`48:38`），設定
+`0C10:0305` 且 `stop-after-step=361000200` 為第一個後續輪詢停止點，`362000000` 只作
+safety cap；沒有第二鍵或延長。固定 runner 與原版 provenance 同上。`key8-a.json`、
+`key8-b.json`（ignored `workplace/page9-lifecycle-search/`）逐 byte 相同，SHA-256 均為
+`fdb75c61c2a5f1d6c800be4088bea9ff92a4378b4ac51560b96cd685a17112a2`。兩次都在 step
+`361000150` 由 BIOS `INT 16h/AH=00h` 取走 `0x4838`，並精確停於 step `361000605`；
+`events`、`clears`、glyph、return edges 均為零，`story_fill_writes`／`story_pixel_write`
+均空，indexed／palette SHA-256 仍為上節數值。
+
+這證實合法 8 在下一次輪詢前沒有清除、填入、重畫或觸及 page9 故事矩形，且沒有
+command/status 輸出；它不證明 8 的遊戲語意為無效。依預先設定的停止條件，不延長這條
+分支，也不再猜鍵。現有手冊明示的 4／6／8 都未給出第九頁失效邊界，故 page9 保持
+DRAFT，沒有 READY 或 production 授權。

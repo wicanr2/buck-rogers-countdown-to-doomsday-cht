@@ -1408,6 +1408,7 @@
 - 以本機 dosgolem `c0f6d76` 建置固定 runner，從合法 page8 state 雙重重生第九頁；兩份 content-safe entry 收據逐 byte 相同，20 glyph 均直接證實 `0763:03D6`／`0xCA` 返回 `0763:04FF`、同 SS、SP+`0x12` 及七 ABI word 高位為零，與既有單行 DRAFT identity 一致。
 - 從合法 page9 state 在 361M 送 Enter 的兩份 exit 收據亦逐 byte相同，但到 370M 都沒有 story fill 或 story pixel write。有界 key probe 證實 Enter 在 step `361000150` 由 BIOS AH=00 消費，之後只於 row 15 產生 command/status glyph；不能把這個轉場當成 page9 覆繪失效。真正清除故事區的合法後續動作與最早相交 pre-write 尚未知，故停止 READY typed-core、不接 production，頁 9 維持 DRAFT。證據、runner 與限制見[第一百三十四階段](docs/re/phase-134-story-page9-enter-trace.md)；私有原版、state 與完整收據只留 ignored `workplace/`。
 - 續以中文手冊明示的數字鍵盤 4／6，各自從同一 page9 state 做雙重 361M–361.1M 有界重播；兩鍵均在 `361000150` 被 BIOS 消費，唯一寫入是 step `361028641` 的 row 24 command/status clear 與 33 glyph。四份 content-safe receipt 的 `story_fill_writes`／`story_pixel_write` 均空，未碰故事區；收據在 ignored `workplace/page9-lifecycle-search/`。固定 runner 與原版均沿用前項，Docker `--rm` 容器已清理。頁 9 仍 DRAFT；後續需先由手冊證實適用於此 state 的不同玩家動作，不能猜鍵。
+- 同一 consumer 使手冊明示的 Num Lock 8 成為合法候選；雙重 receipt 在 `361000150` 消費 `48:38` 後，依指定的下一 `0C10:0305` poll 於 `361000605` 停止（遠早於 362M safety cap）。兩份 SHA-256 均為 `fdb75c61c2a5f1d6c800be4088bea9ff92a4378b4ac51560b96cd685a17112a2`，無 event、clear、glyph、return、story fill 或 story pixel 寫入。這不是 8 無效的語意結論；只是 page9 失效仍未知，按停止條件不延長或猜鍵，頁 9 維持 DRAFT。Docker `--rm` 容器已清理。
 
 ## 2026-09-23 — 身體圖示低階 return／ABI 與 pre-write 停止線
 
