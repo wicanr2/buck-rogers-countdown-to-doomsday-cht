@@ -1435,3 +1435,17 @@
 
 - 本機 dosgolem `2755f7c` 以明示 body trace 補 `REP STOSB` 與 IDA 已證實 `0763:184D/1854` 單 byte glyph store；同值重畫亦可記錄，非 A000、未知 opcode／位址與不相交 span 不輸出。refuse A/B 逐 byte 相同，receipt SHA-256 `7971fd3aae514698cb8ee8846affb852b1e09b33e86640560bb6f79d2a880348`；六個已量 active 轉場的 earliest pre-write 與位址空間見[第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)。
 - ignored `workplace/body-icon-ready-atomic-core/` 新增可丟棄 typed-core，直接解析正式 catalog／rects、三路 return 與 pre-write receipts，鎖七 identity、首 glyph ABI mask `0x7c`／其餘零、verified RETF、generation／原子群組、restore／discontinuity 及 unknown／duplicate／partial 負例；正式 DRAFT catalog 被拒，正例只用暫存 READY fixture。正式 Phase 101 倚天字型的 2×／3× containment 通過。Docker 5 項測試全綠，typed receipt SHA-256 `22017162ace0bbaebbf16fcbddcd0478a6c346f0c66b1c99d6f3b6e7503e64bd`。spec009 與 catalog 維持 DRAFT，未接 production，等待另一代理獨立 READY 審查。
+
+## 2026-09-23 — 首屏固定五行限縮 CONFORMED
+
+- 本機 dosgolem `9f4c5f0` 補首屏 strict catalog／generation／receipt gate、未知 execution epoch
+  清除，及 2×／3× fail-closed 矩陣；partial、mixed、duplicate、錯 generation/key、缺字與
+  非 READY catalog 均零 stamp、零 draw。Docker 定向 `go test`／`go vet`／`go test -race` 的
+  apps 與 receipt CLI 通過。
+- 以固定 runner、合法 `phase12-before-question.state` 與既有私有 BIOS receipt 重生
+  `workplace/phase160-story-opening-replay/` 的 control／2×／3×首屏及同程序 Enter 離頁。
+  `state-compare` 證實 control↔兩倍率 normalized machine／DOS 全等；raw `.state` bytes
+  含序列化差異，不作 parity 比較。首屏 active 五 key、矩形外零差；Enter 在
+  `281020548`／`0CF4:1B3A`／`A000:AA08`／`CX=304` 使 active 5→0，終態 RGBA==baseline，
+  且沒有第二頁 overlay。spec010 只在此固定五行與已量正常 Enter 離頁升 CONFORMED；
+  第二頁、其他離頁、完整開機與實際存讀檔均排除。

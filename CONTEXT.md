@@ -97,14 +97,15 @@ Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×�
 見[第一百一十六階段](docs/re/phase-116-game-loaded-ebiten-prototype.md)與
 [第一百二十階段](docs/re/phase-120-game-active-story-layer-prototype.md)。
 
-手冊成功返回後第一個固定劇情畫面有五筆 READY 身分與繁中譯文。本機 dosgolem
-commit `42193b0` 已接正式覆繪；同一合法 state／輸入排程的 2×／3× A/B 均命中五筆、
-缺字為零、故事安全矩形外零像素差，終態原版 indexed framebuffer／palette 相同。
-這只證實第一頁該重播狀態。其後已以相同合法排程加 Enter 驗證：最早的 row 136
-story-region 視訊寫入前五行 stamp 即失效，第二頁終態無殘字，原版記憶體／indexed
-framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「首筆寫入」已訂正為
-首筆可見像素差異。完整開機玩家路徑與存讀檔／restore 仍未驗，spec010 維持 READY，
-不宣稱首屏生命週期 CONFORMED。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)
+手冊成功返回後第一個固定劇情畫面五行，已由本機 dosgolem `9f4c5f0` 在固定合法 state／
+私有 BIOS 排程重生 control／2×／3×穩定及同程序 Enter 離頁。兩倍率 active 時五 key、
+零缺字、安全矩形外零差；Enter 於 `281020548` 的 row-136 相交 pre-write 使 active 5→0，
+終態 RGBA==baseline，且第二頁沒有 overlay。`state-compare` 對 control↔兩倍率 normalized
+machine／DOS 均全等；raw state bytes 不能比較。strict catalog／generation／receipt gate 與
+2×／3× failure matrix 已拒絕 partial、mixed、duplicate、錯 generation/key、缺字、非 READY
+及未知 epoch 舊 stamp。因此[spec010](docs/spec/010-story-opening-overlay-draft.md) **只在固定
+首屏五行及已量正常 Enter 離頁限縮 CONFORMED**。第二頁、其他離頁、完整開機與實際
+存讀檔均明確排除；ABI 高位不屬 identity。見[第一百一十七階段](docs/re/phase-117-story-opening-runtime-ab.md)
 及[第一百一十九階段](docs/re/phase-119-story-opening-enter-lifecycle.md)。
 第二頁四行、第三頁五行與第四頁六行均有可重播低階 glyph 身分；以下記錄第四頁早期 DRAFT 勘誤，現況以後段規格 013 為準。第四頁由
 第三頁合法 state 的同一筆 Enter 重生為 `0763:04FF → 0763:026B` 六行；舊

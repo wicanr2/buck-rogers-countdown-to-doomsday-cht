@@ -1,7 +1,7 @@
 # 010 — 首屏劇情文字輸出端覆繪
 
-狀態：**READY（僅首屏五行；不得擴張至第二、三頁）**
-日期：2026-09-22
+狀態：**CONFORMED（僅固定首屏五行與已量正常 Enter 離頁；不得擴張至第二、三頁）**
+日期：2026-09-23
 前置：[第一百零五階段首屏劇情追蹤](../re/phase-105-first-story-screen-trace.md)、
 [第一百一十四階段返回邊收據](../re/phase-114-story-return-edge-ready.md)、
 [功能選單輸出端覆繪原則](001-menu-text-output-overdraw-draft.md)、
@@ -119,13 +119,13 @@ READY 審查結果：
 - [x] `StoryOpeningWatcher` 的 ABI entry／guarded post-call、連續 run、錯序、partial run、miss、
   stack guard、row-aware video-span intersection 與第二頁非重建的 synthetic tests；不能複用
   ActionBarWatcher 的 game-specific identity 或把 diagnostics 當 runtime。
-- [x] 首屏→第二頁的正常 Enter 轉場已量到首筆 region write；其餘離開、存讀檔與 restore 不作
-  首屏建立依據。READY 契約是任何 restore／未知 lifecycle 一律建立無 active stamp 的 watcher，
-  只有五行重新完整 exact-hit 才可顯示；實際存讀檔玩家路徑保留在 CONFORMED 驗收。
+- [x] 首屏→第二頁的正常 Enter 轉場已量到首筆 region write；其餘離開與完整開機不作
+  首屏建立依據。未知 execution epoch 的 watcher／presenter 單元矩陣必須清除衍生 group，
+  只有五行重新完整 exact-hit 才可顯示；這不是實際存讀檔玩家路徑收據。
 
 已具備實作前所需契約，授權首屏 production adapter；第二、三頁與存讀檔不得隨此接線。
 
-## CONFORMED 驗收
+## CONFORMED 驗收與限縮結論
 
 完成實作後，每個 2×、3× 都必須在同一 original state、同一合法 BIOS 輸入與同一停止點做
 原文／繁中 A/B：
@@ -139,7 +139,34 @@ READY 審查結果：
 4. catalog miss、缺字、非法倍率、guard failure、state restore 後未重播 identity 都必須零繪製；
    不得以舊 RGBA layer 或舊 stamp 延續顯示。
 
-只有以上收據通過，才能把本規格標為 CONFORMED，且完成聲明僅限首屏五行與已實測的轉場。
+上述 gate 已由本機 dosgolem `9f4c5f0` 完成並獨立審查通過。該修補使首屏 catalog 鍵名、
+generation、群組順序與 invalidation receipt 都嚴格 fail-closed；未知 execution epoch 清除
+pending、active 與 event 衍生狀態，presenter 的 partial／mixed／duplicate／wrong generation／
+wrong key、缺字與非 READY catalog 在 2×／3×均為零 stamp、零 draw、RGBA=baseline。Docker
+定向 `go test`、`go vet`、`go test -race`（`apps/buckrogers` 與
+`cmd/buckrogers-text-receipt`）均通過。
+
+以固定 `9f4c5f0` runner、同一合法 `phase12-before-question.state` 與既有私有 BIOS receipt，
+`workplace/phase160-story-opening-replay/` 重生 control／2×／3×的首屏穩定與同程序 Enter 離頁：
+
+- 首屏 active 收據為 control `62b764ab7740abcf2f117f647214169de42342649bdb08f0a7286cc5699631fd`、
+  2× `07e909f42d4fa0ef85217349651a30147a49eee555fef3d8372f1912c4931b98`、
+  3× `8e1d897fd7a6734b8628368f705928a4ce16a594adea43a8d05f09f51d8d909a`；兩倍率各五 key、零缺字、
+  rectangle 外差異 0，且未載入第二頁覆繪。
+- Enter 離頁收據為 control `e136ba7dfd0d59e31ae4c5c35d669f5b3a8407cc9e5cf0ad0e27c6c80a97cc0d`、
+  2× `d842ce9479b9452b8fcd7f5ce0005eecdc631d750a313d6aade71595177c064f`、
+  3× `374a0b2ba95f068461fc6c94f2754d31a98c2ca06d8aab4a85765801e1372e2b`。兩倍率均在
+  step `281020548`、`0CF4:1B3A`、`A000:AA08`、`CX=304`、generation 2、active 5→0
+  失效，終態零 draw、RGBA 逐 byte等於 baseline、rectangle 外差異 0，且第二頁保持無覆繪。
+- `state-compare` 正規化比較 control↔2×／3×均 `equal=true`：首屏 machine
+  `7dcaafdb979d749e906c78c8fb2b5226f9d50e7817157a13ec7a5f1ad485aac1`、DOS
+  `8dd5789e07b42a195c0bb392cd75e489af09521151ca25b4b3fea33a6e818a59`；Enter 終態 machine
+  `90d7d987370c518e0a92b0aeeb1095eb884525b26808d987c3065c8bda089278`、DOS 同值。
+  raw `.state` bytes 會含序列化差異，不能以檔案 SHA-256 取代此正規化 machine／DOS 比較。
+
+因此本規格限縮為 **CONFORMED**：只涵蓋固定首屏五行的同狀態 2×／3× A/B，以及已量的正常
+Enter→第二頁失效。第二頁及後續頁、其他離頁、完整開機玩家路徑與實際存讀檔均明確排除；
+七個 ABI word 的高位不屬 display identity，不能外推為高位值契約。
 
 ## 權利與散布邊界
 

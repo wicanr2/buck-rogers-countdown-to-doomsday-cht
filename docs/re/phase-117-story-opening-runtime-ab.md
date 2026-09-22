@@ -1,7 +1,7 @@
 # 第一百一十七階段：首屏劇情 runtime 2×／3× A/B
 
 日期：2026-09-22
-狀態：首屏五行 runtime A/B 已驗；`010-story-opening-overlay-draft` 維持 **READY**。
+狀態：首屏五行 runtime A/B 已重生並與 phase119 一併限縮 **CONFORMED**；範圍不含第二頁與其他生命週期。
 
 ## 範圍
 
@@ -44,14 +44,21 @@ glyph 交給 `StoryOpeningWatcher`。原版 indexed VRAM、CPU／DOS state、輸
 `workplace/phase115-story-opening-ab/{2x,3x}/`；其中 `verification.json` 只保留上表
 同類的 content-safe metadata，完整 receipt 仍含私有輸入而不得散布。
 
+## phase160 固定 runner 複驗與限縮結論
+
+本階段舊收據建立後，`9f4c5f0` 補齊首屏 strict catalog、restore／discontinuity 清除與完整
+2×／3×失敗即關閉矩陣。固定該 runner 的 `phase160-story-opening-replay` 重跑 control／2×／3×；
+2×／3× receipt SHA-256 仍分別為 `07e909f42d4fa0ef85217349651a30147a49eee555fef3d8372f1912c4931b98`、
+`8e1d897fd7a6734b8628368f705928a4ce16a594adea43a8d05f09f51d8d909a`，並以 `state-compare`
+確認 control↔兩倍率的 normalized machine／DOS 全等。raw `.state` bytes 含序列化差異，不是
+machine／DOS parity 的比較依據。
+
 ## 可宣稱範圍與未驗項
 
 可以宣稱：在既有合法手冊成功返回 state 的同一有界重播下，READY 首屏五行的
 dosgolem runtime adapter 在 2×／3×都只於批准 rectangle 產生可讀繁中 RGBA 覆繪，
 且未改變終態 indexed framebuffer 或 palette。
 
-不可宣稱「首屏已完全中文化」或將 spec010 標為 CONFORMED。本階段沒有在同一
-runtime A/B 走過 Enter 後 `0CF4:1B3A` 的實際第二頁改寫／同 frame 清除收據；也
-沒有驗證正常從遊戲開機至該 state 的完整玩家路徑、存檔／讀檔、restore，或其他
-離開首屏的生命週期。現有 watcher 的 video-span unit／synthetic 覆蓋不取代這些
-玩家路徑收據；第二、三頁仍在本規格範圍外。
+可宣稱本階段的固定五行 active A/B 已成為 spec010 CONFORMED 的一半 gate；另一半正常
+Enter 離頁見 phase119。不得外推為第二頁中文化、其他離頁、完整開機或實際存讀檔；
+restore／discontinuity 只有 fail-closed runtime matrix，沒有實際存讀檔玩家收據。
