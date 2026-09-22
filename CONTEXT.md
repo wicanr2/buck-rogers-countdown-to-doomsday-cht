@@ -2,6 +2,14 @@
 
 更新：2026-09-23
 
+第七頁固定故事文字已在三輪獨立審查後限縮升
+[規格 016 READY](docs/spec/016-story-page7-overlay-ready.md)：合法第六頁終態
+Enter 進入 row 17–22 六行、合法第七頁 Enter 離頁。190 glyph 原版逐字
+return／ABI、最早相交 pre-write、七 ABI 低位映射、逐列半開寫入判定及
+2×／3×字型 containment 已核對；正式 dosgolem runtime 與同狀態 A/B
+尚未做，第七頁不得稱已中文化。證據與審查勘誤見
+[第一百五十三階段](docs/re/phase-153-story-page7-ready-prerequisite-diagnostics.md)。
+
 互動式玩家前端的第一個可玩版本已由使用者決定先支援 Linux，架構保留日後
 Windows／macOS 擴充；第一版三平台同步交付已排除。視窗後端也已選定
 Go／Ebitengine，排除 SDL3；面板開啟時鍵盤由 host 消費、不送進 DOS，關閉後恢復。
@@ -42,6 +50,11 @@ release-only cleanup：Down 後只 Release、不 Move，最後 DOS 座標不變�
 後開面板再於 chrome Up 的 release-only cleanup 亦已量到；空白 miss 的面板核心本身仍回
 `ConsumedByHost=false`，不能冒稱完整 host hit/miss 路由已驗收。MouseBridge spec228 仍 DRAFT，
 見[第一百三十七階段](docs/re/phase-137-real-host-panel-route-and-3x-cleanup.md)。
+後續[第一百五十四階段](docs/re/phase-154-ebiten-panel-pointer-miss-prototype.md)
+補雙倍率真實 hit／miss、閉面板 canvas 轉送及畫布外／控制列／面板／失焦
+release-only 矩陣。空白 miss 仍由原型局部政策才完成 host 消費，正式
+`PanelController`／整體 route 尚未接線或升 READY；面板展開後同一實體
+點擊的 Up 座標重映射，也須依按下時的 host target 消費。
 本機 dosgolem 已有通用唯讀畫面、active layer 快照、純面板事件核心與明示 BIOS
 鍵盤橋。Linux／Xvfb 的真實遊戲載入 Ebitengine 原型已在同一事件迴圈驗證
 Machine step→snapshot→Draw、2× 預設、Cancel 暫選後重開仍為 2×、Apply 3×
@@ -132,8 +145,10 @@ watcher／presenter／CLI，control／2×／3×及同執行 active→clear 離�
 對當時譯文字元零缺字；第六頁現行字型另由本機 1024 字模 loader
 回讀零缺字，但仍不代表第六頁已接通 runtime。
 第六頁後的合法 Enter 又確認第七頁 row 17–22 六行；同狀態 indexed 畫面與色盤重生一致，
-六行繁中候選與 identity 已建為 DRAFT；全部 18 份 catalog 的本機倚天聯集重建為
-1022 字模，正式 loader 對 6136 個譯文字元零缺字。這仍尚未接 runtime 或做中文 A/B。
+六行繁中候選與 identity 當時先建為 DRAFT；後續三輪審查限縮升
+[規格 016 READY](docs/spec/016-story-page7-overlay-ready.md)。全部 18 份 catalog 的
+本機倚天聯集曾重建為 1022 字模，正式 loader 對當時 6136 個譯文字元
+零缺字。第七頁仍尚未接 runtime 或做中文 A/B。
 第七頁後合法 Enter 又到第八頁，固定故事區四行已有低階身分與繁中 DRAFT；右側動態狀態列
 排除。全部 19 份 catalog 的私有倚天子集為 1025 字模，正式 loader 對 6175 個譯文字元
 零缺字；第八頁仍未接 runtime。

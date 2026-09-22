@@ -170,6 +170,16 @@ ignored `workplace/phase128-mousebridge-prototype/bridge.go` 曾對畫布內配�
 這不等於真實 Ebitengine／dosgolem 事件矩陣已通過；正式 bridge 前仍須取得
 實體畫布內 Up 的座標、呼叫順序與正常玩家因果收據，spec 228 維持 DRAFT。
 
+[第一百五十四階段](../re/phase-154-ebiten-panel-pointer-miss-prototype.md)再以真實
+Ebitengine 2×／3×驗得閉面板畫布轉送及面板開啟時三種 pointer hit／miss
+對 DOS 零呼叫；雙倍率畫布外、控制列、面板、失焦的已接受 Down 清理也
+均只 Release、不 Move。這仍是 ignored 原型。正式 `PanelController` 在
+開面板空白 miss 目前回 `{consumed:false,forward:false}`，僅原型局部政策
+補成消費；正式接線前須令整體 host route 在面板開啟時直接保證
+`{consumed:true,forward:false}`，並以測試固定。面板展開造成的座標
+重映射不得將已按下的 host target 的 Up 轉送 DOS。這些是已定決策的
+實作契約，不是新增的遊戲輸入行為。
+
 [第一百四十六階段](../re/phase-146-real-ebiten-inside-up-corrected.md)已以修正後原型
 重跑真實 Ebitengine 2×／3×畫布內 Down→Up；兩倍率均觀測到
 `Move→Press→Move→Release`，DOS button 清除，輸入 API 邊界的 BIOS／IRQ／indexed

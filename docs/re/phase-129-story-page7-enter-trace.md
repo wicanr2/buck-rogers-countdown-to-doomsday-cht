@@ -13,3 +13,13 @@ row 17–22 六筆均為 dosgolem 實模式 `0763:04FF → 0763:026B`、mode/rep
 字型覆蓋另以本機唯讀倚天 15 點來源重建全部 18 份 catalog 的私有 GOLEMFNT 子集：1022 字模，SHA-256 `9c6ba4007ef02cb40b73cd21dbac5e98dd5dfa290f28e7899615c43cba47a1ba`；dosgolem 正式 `cmd/fontcheck` 回讀，6136 個譯文字元零缺字。產物與 manifest 僅留 ignored `workplace/phase129-font/`，不得公開散布。這只證明字型覆蓋，不是玩家畫面驗收。
 
 第七頁首 glyph 前的首個 story-region 原版寫入是 step `331026808`、`0CF4:1B3A`；這是第六頁 stamp 的候選失效邊界，非 runtime 實作授權。本階段不建立新幾何、watcher、renderer、A/B 或 READY 宣稱。
+
+## 2026-09-23 勘誤：最早相交 pre-write
+
+上段「首個原版寫入」不正確。後續同一起點的雙重逐字／fill 收據
+`workplace/page7-ready-atomic-core/entry-{a,b}.json` 均先記錄 step
+`331026784` 的 pre-execution `0CF4:1B3A`、`ES:DI=A000:AA08`、
+`CX=304`；`331026808` 是下一筆 fill，不是第一筆。先前觀察不得
+取代新的寫入事件順序。第六頁已量離頁採前者作最早相交失效錨點，
+證據與適用範圍見[第一百四十九階段](phase-149-story-page6-ready-prerequisite-diagnostics.md)；
+第七頁自身仍待 READY 審查，見[第一百五十三階段](phase-153-story-page7-ready-prerequisite-diagnostics.md)。

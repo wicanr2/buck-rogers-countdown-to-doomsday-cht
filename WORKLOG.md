@@ -1376,3 +1376,9 @@
 ## 2026-09-23 — 第六頁正式接線與限縮 CONFORMED
 
 - Terra 在本機 dosgolem `e3e1db1` 完成六行 core，主代理 `a7304e3` 補真正缺字及 presenter 原子負例，Terra `0ce4948` 接正式 CLI。主代理以最新 runner 從合法第五頁終態重生 control／2×／3×穩定及同執行 Enter 離頁：六 key 啟用、零缺字、安全矩形外零差、原版事件與正規化 machine／DOS 全等；離頁 active 6→0，終態 RGBA 等於 baseline。Docker Go test／vet／race 通過；[第一百五十二階段](docs/re/phase-152-story-page6-runtime-conformance.md)保存私有收據雜湊、工具與權利邊界。規格 015 只在固定路徑升 CONFORMED，不外推完整開機、存讀檔或其餘遊戲文字。
+
+## 2026-09-23 — 第七頁 READY 審查與面板 pointer 原型
+
+- Terra 以精確 runner 從合法第六／七頁 state 雙重重播，取得第七頁 190 glyph 的 return／ABI 與合法離頁最早相交 pre-write；可丟棄 typed-core、正式 DRAFT 拒絕與雙倍率靜態字模 containment 見[第一百五十三階段](docs/re/phase-153-story-page7-ready-prerequisite-diagnostics.md)。獨立審查指出 ABI 低位映射／drift 負例與正式 3× renderer 幾何兩缺口；Terra 已在 ignored 工具補上並重生收據。複審又找到 row137 左 margin 不相交寫入誤清覆繪的原型缺陷；Terra 改為逐列半開區間並補測，待末次獨立審查。舊第 129 階段「首筆寫入」亦已追加勘誤。第七頁仍 DRAFT，未接 production。
+- Terra 的 ignored Linux／Xvfb 原型補雙倍率面板 Open／一般命中／空白 miss、閉面板畫布轉送，以及外部／控制列／面板／失焦只 Release 的真實事件收據；[第一百五十四階段](docs/re/phase-154-ebiten-panel-pointer-miss-prototype.md)記錄面板核心空白 miss 尚回未消費的正式接線缺口。前端與 MouseBridge 仍 DRAFT。
+- Terra 修正第七頁 ignored pre-write 為逐列半開相交並重生私有收據；獨立末次審查核對雜湊與邊界反例後，確認[規格 016](docs/spec/016-story-page7-overlay-ready.md)及六筆 event catalog 可限縮升 READY。這只授權正式 watcher／presenter／CLI 接線；control／2×／3×同狀態 A/B 與離頁無殘字尚未做，未升 CONFORMED。
