@@ -84,7 +84,9 @@ host chrome 或 backend event loop。
 新的 output scale。第八十九階段已將這個 value-only transition 實作並 CONFORM；實際以同一 raw
 input、palette 與 active layer 重繪仍屬未接線 frontend 責任；不推定跨重啟持久化。
 
-- host 文案／字型仍未知；不是以
+- host 面板玩家可見文案使用繁體中文，按鈕至少以「設定／套用／取消」清楚表達；
+  2×／3× 倍率記號保留。中文採使用者指定的本機倚天字型來源，不把字型 bytes 或衍生
+  GOLEMFNT 放進 Git／公開包。具體字級、對齊與版面仍須實際截圖核對，不能由
   headless CLI 或 DOS mouse injection 推定。
 - 使用者於 2026-09-22 確認第一個可玩版本先支援 Linux，架構保留日後擴充
   Windows／macOS 的能力；第一版三平台同步打包與驗收已排除。這只定平台優先序，
@@ -119,7 +121,7 @@ Windows 與 macOS 的視窗／鍵盤／滑鼠能力；[安裝說明](https://ebi
 ## READY 前置與未來驗收
 
 進入實作前，必須依已選定的 Linux／Ebitengine、C 語意、面板焦點隔離及 session-only
-倍率、2× 啟動預設及未 Apply 的取消語意，補齊 host 文案／字型與實際事件接線。
+倍率、2× 啟動預設及未 Apply 的取消語意，補齊 host 文案／字型的實際視覺驗證與事件接線。
 READY 後至少驗證：
 
 1. 2×與3×的 host canvas 與控制列幾何；畫布內容逐 byte 等於同一 raw input 的輸出投影。

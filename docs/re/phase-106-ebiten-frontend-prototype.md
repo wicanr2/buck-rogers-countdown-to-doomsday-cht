@@ -34,6 +34,9 @@ prototype 以 `host.ScaleController` 明示 `Select` 後再 `Apply`，各以同�
 indexed framebuffer、palette 與覆繪狀態重建 2×／3× output。沒有重啟 DOS、沒有
 清除 VRAM，也不建立或改寫 DOS machine。
 
+本原型使用的 Unifont 僅是既有測試字型，不能外推為正式 host 面板字型；
+正式繁中面板應使用使用者指定的本機倚天字型，並另行驗證字級與版面。
+
 ## Host 輸入隔離收據
 
 host chrome hit 先由 output-space rectangle 消費，原型沒有可到達的 DOS coordinate
