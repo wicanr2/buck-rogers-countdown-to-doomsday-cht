@@ -45,7 +45,8 @@ framebuffer／palette 與無覆繪控制組一致；舊筆記所稱 row 137「�
 繁中 DRAFT；全部 17 份 catalog 的倚天聯集已重建為 1014 glyph，dosgolem 正式 loader
 對譯文字元零缺字。這仍不代表第六頁接通 runtime 或可散布字型。
 第六頁後的合法 Enter 又確認第七頁 row 17–22 六行；同狀態 indexed 畫面與色盤重生一致，
-六行繁中候選與 identity 已建為 DRAFT，尚未接 runtime 或做中文 A/B。
+六行繁中候選與 identity 已建為 DRAFT；全部 18 份 catalog 的本機倚天聯集重建為
+1022 字模，正式 loader 對 6136 個譯文字元零缺字。這仍尚未接 runtime 或做中文 A/B。
 見[第二、三頁證據](docs/re/phase-107-story-page2-draft.md)、
 [第四頁勘誤](docs/re/phase-113-story-page4-corrigendum.md)、
 [state 停止線](docs/re/phase-115-page4-state-recovery-stop.md)、

@@ -10,4 +10,6 @@ row 17–22 六筆均為 dosgolem 實模式 `0763:04FF → 0763:026B`、mode/rep
 
 `text/story-page7.zh-TW.tsv` 收錄六行繁中候選，保留原文行序；`runtime-editorial` 表示依同狀態私有畫面與 glyph identity 編輯，並非已完成覆繪驗收。`tools/story_page7_catalog.py` 檢查 identity、key、來源、NFC、控制字元與 39 格寬度；相應單元測試在 Docker 內通過。第七頁仍須 READY 規格、runtime 接線與同狀態原文／中文 A/B，方可稱已中文化。
 
+字型覆蓋另以本機唯讀倚天 15 點來源重建全部 18 份 catalog 的私有 GOLEMFNT 子集：1022 字模，SHA-256 `9c6ba4007ef02cb40b73cd21dbac5e98dd5dfa290f28e7899615c43cba47a1ba`；dosgolem 正式 `cmd/fontcheck` 回讀，6136 個譯文字元零缺字。產物與 manifest 僅留 ignored `workplace/phase129-font/`，不得公開散布。這只證明字型覆蓋，不是玩家畫面驗收。
+
 第七頁首 glyph 前的首個 story-region 原版寫入是 step `331026808`、`0CF4:1B3A`；這是第六頁 stamp 的候選失效邊界，非 runtime 實作授權。本階段不建立新幾何、watcher、renderer、A/B 或 READY 宣稱。
