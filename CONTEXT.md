@@ -2,11 +2,17 @@
 
 更新：2026-09-23
 
-目前 20 份正式 TSV 的倚天字型聯集已重建為 1024 字模：版控內
+目前 21 份正式 TSV（含一份尚未接通的 DRAFT 選單）的倚天字型聯集已重建為 1026 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的字元涵蓋完全一致，缺字為零。
-舊的 961／997 字模收據只代表當時譯文，不可作目前前端的字型輸入；來源與雜湊見
+舊的 961／997／1024 字模收據只代表當時譯文，不可作目前前端的字型輸入；來源與雜湊見
 [`font/README.md`](font/README.md)。這是字型覆蓋，不代表所有畫面都已中文化。
+
+從正常「加入角色 → 名冊 EXIT → 功能選單」雙重原版重播，新確認七項固定選單文字；
+繁中候選與原文雜湊已另存 [`post-join-menu`](text/README.md) DRAFT catalog，尚未接
+正式 runtime。「JOIN A GAME」與「SHOW CHARACTER'S GAME」仍只有字面譯法，操作語意未知；
+上方動態角色資料與反白狀態不納入這七項。私有原文／畫面證據只在
+`workplace/phase158-post-join-exit-probe/`；不能把此資料完成度算作已中文化畫面。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

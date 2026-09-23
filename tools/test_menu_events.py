@@ -52,6 +52,10 @@ class MenuEventsTest(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         subject.validate(root / "text/menu-events.tsv", root / "text/menu.zh-TW.tsv")
 
+    def test_post_join_draft_inventory_matches_its_own_catalog(self):
+        root = Path(__file__).resolve().parents[1]
+        subject.validate(root / "text/post-join-menu-events.tsv", root / "text/post-join-menu.zh-TW.tsv")
+
 
 if __name__ == "__main__":
     unittest.main()

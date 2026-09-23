@@ -1508,3 +1508,15 @@
 - 本機倚天 `top-pad` 產物位於被忽略的 `workplace/current-font/`，GOLEMFNT SHA-256
   `b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`；20 份 TSV
   全部譯文字元回讀零缺字、零多餘字模。字型與來源均未加入 Git。
+
+## 2026-09-23 — 加入角色後功能選單七項譯文候選
+
+- Terra 從 phase54 已加入角色的合法 state 以 Right→Enter 正常返回功能選單，雙重 receipt
+  及 framebuffer 逐 byte 相同；私有證據在 `workplace/phase158-post-join-exit-probe/`。
+  七項固定文字有原始 caller、列、色彩、長度／雜湊；動態隊伍資料與已收錄鄰項排除。
+- 較輕量模型依現有繁中術語與手冊文字提出七項譯法；主代理將其隔離成獨立
+  DRAFT catalog，不送入正式 runtime。兩項帶 `game` 的命令只依字面翻譯，未證實功能語意；
+  選取反白、安全矩形與清除生命週期仍待證據審查。
+- 因新譯文需求，Docker 以唯讀倚天來源重建 21 份 catalog 的本機字型：1026 字模，
+  `font/characters.txt` SHA-256 `04d33bb125b00dad647abadfb3c9da8f7a714d722581fc6676d393a32eb6a03f`，
+  GOLEMFNT SHA-256 `ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`。

@@ -1,0 +1,8 @@
+event_key	sequence	text_key	original_length	original_sha256	caller	background	foreground	row	column
+post_join_menu.option.purge_character	1	post_join_menu.purge_character	15	7becc6bbbf91dd65dbf3657b349ee8f207e05ec9385928cdddc87145c53d63f5	37F1:15BD	0	10	13	9
+post_join_menu.option.modify_character	2	post_join_menu.modify_character	16	733a7885c841ef139c75264e1e5daf6aac8e122383d481031e9aacaeaef8fb97	37F1:15BD	0	10	14	9
+post_join_menu.option.join_a_game	3	post_join_menu.join_a_game	11	2e98e6fc27b2dc5180220e4387e8dd2501b34353cbaabb489a43db3d9effc0c7	37F1:15BD	0	10	15	9
+post_join_menu.option.view_character	4	post_join_menu.view_character	14	ab741ba7a7a657e6de68f4f415415fb0082d5a159fdaf56cc2c9fc98783d41e9	37F1:15BD	0	10	16	9
+post_join_menu.option.remove_character_from_team	5	post_join_menu.remove_character_from_team	26	656bae52032142182b03028d4b71c2dd7f445a84d754547b4f1ec08321e24f6a	37F1:15BD	0	10	18	9
+post_join_menu.option.show_characters_game	6	post_join_menu.show_characters_game	17	b0b21f1298328f72d36cdc79cd9dac4cf284219c8ba540d965153037e72a7869	37F1:15BD	0	10	19	9
+post_join_menu.option.begin_adventuring	7	post_join_menu.begin_adventuring	17	c4e0e1d860943362f885c03069af504970b7ae20b123feeb5329039280d054eb	37F1:15BD	0	10	20	9

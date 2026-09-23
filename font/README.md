@@ -68,13 +68,21 @@ page2／page3／page4 分頁回讀結果見
 dosgolem 正式 loader 對全部譯文字元回讀為零缺字。這只是 DRAFT 字型覆蓋收據，
 並非第六頁 runtime 已接通或字型可公開散布。
 
-目前 20 份 `text/*.zh-TW.tsv` 的字元聯集為 1024 字。`font/characters.txt` 已用
+新增 post-join 選單前，20 份 `text/*.zh-TW.tsv` 的字元聯集為 1024 字。`font/characters.txt` 曾用
 `python3 tools/catalog_font.py chars text/*.zh-TW.tsv --out font/characters.txt` 在 Docker 內重建，
 SHA-256 為 `daa100bfbcc917a3f9dc811a2b34262a9e26dc5666c0b085c58c1d0815abbd93`。
 已接通的畫面容許不同 catalog 共用同一文字鍵，所以 `chars` 逐檔驗證格式後取字元聯集；
 `lint` 的跨檔唯一鍵檢查仍保留，不可用於這批共享鍵 catalog 的合併驗證。
-本機倚天產物 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的 SHA-256 為
+當時本機倚天產物 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的 SHA-256 為
 `b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`，manifest 為
 `06acf27f04027f473a29e14d221bbc64a1abfcc725ca8890d22940282777caa5`；兩者不加入版控。
 Docker 回讀確認全部 20 份 TSV 的譯文字元均有字模，缺字及多餘字模均為零。這僅證明
 字型覆蓋，不表示所有文字路徑均已接通或可公開散布。
+
+加入獨立 DRAFT `post-join-menu.zh-TW.tsv` 後，現行 21 份 catalog 的字元聯集為
+1026 字，`font/characters.txt` SHA-256 更新為
+`04d33bb125b00dad647abadfb3c9da8f7a714d722581fc6676d393a32eb6a03f`。
+同一路徑的本機 `top-pad` GOLEMFNT SHA-256 為
+`ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`，manifest 為
+`d4810497db8b47b1e67c329d3a2b373986b5b30656198ae9e67e1c7da126c66b`。
+舊 1024 字模產物已由本機新建置結果取代；它的雜湊只保留作歷史定位。

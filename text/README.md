@@ -7,6 +7,13 @@
 `menu-events.tsv` 以事件鍵、正式文字鍵、原文長度／SHA-256、caller、色號與文字格座標保存
 同一路徑的九筆 typed identity；不保存原文全文。`tools/menu_events.py` 驗證 schema、順序、
 唯一性、bounds 與 `menu.zh-TW.tsv` 雙向覆蓋。
+`post-join-menu-events.tsv` 與 `post-join-menu.zh-TW.tsv` 另存加入一名角色後，正常從名冊的
+EXIT 返回功能選單所見七項固定文字。事件身分由雙重原版重播與私有畫面逐列核對，原文
+只以長度／SHA-256 保存；譯文均為編輯性 DRAFT，並未接入正式 dosgolem runtime。
+其中「加入遊戲」與「顯示角色所屬遊戲」只依原文字面翻譯，選項真正的遊戲語意仍未知；
+不得擅自改譯為加入隊伍或存檔。上方角色姓名／數值、已收錄的鄰項及選取反白變體均不在
+這七筆內。可用 `tools/menu_events.py` 對這對獨立檔案驗證 schema 與 key 雙向覆蓋；
+正式覆繪仍須另證安全矩形、反白／清除生命週期與同狀態玩家路徑。
 `post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；這些事件
 已由 `gender-events.tsv` 接入繁中 request，但尚未加入正式 renderer。`tools/post_race_receipt.py` 會把它
 與既有選單 inventory、固定雙 Enter 收據及終點 framebuffer 一起驗證。
@@ -172,8 +179,11 @@ row 24 動態狀態列排除；後續正式 runtime 已完成雙倍率同狀態 
 零缺字；尚未接 runtime 或完成 A/B。證據見
 [`docs/re/phase-134-story-page9-enter-trace.md`](../docs/re/phase-134-story-page9-enter-trace.md)。
 後續依私有原版畫面校訂第 5、7、8 頁三處譯文，未改 event identity 或 DRAFT 狀態；
-現行 20 份 catalog 重建後的本機倚天子集為 1024 字模，正式 loader 對 6179 個
+當時 20 份 catalog 重建後的本機倚天子集為 1024 字模，正式 loader 對 6179 個
 譯文字元零缺字。上述 1026／6182 是校訂前的第 134 階段收據，不是目前字型產物。
+再加入 post-join 選單七項 DRAFT 譯文後，現行 21 份 catalog 的本機倚天子集
+重建為 1026 字模；這是新的字型需求，不是前述第 134 階段的同一份 1026 字收據。
+正式 runtime 仍未接 post-join 選單，細節見 [`font/README.md`](../font/README.md)。
 
 ## 驗證與 prototype 字型
 
