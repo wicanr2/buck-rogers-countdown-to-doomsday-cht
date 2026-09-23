@@ -1,7 +1,11 @@
 # 018 — 加入角色後功能選單輸出端覆繪
 
-狀態：**DRAFT；僅為 READY 審查候選，不授權正式實作。**  
+狀態：**READY；僅限七項固定選單文字、已量初畫與逐列 Down 重畫。尚未實作／驗收 runtime。**
 日期：2026-09-23
+
+獨立審查與固定輸入見[第一百八十一階段](../re/phase-181-post-join-menu-ready-review-candidate.md)。
+此 READY 僅授權 dosgolem 正式 loader、watcher、generation core 與 RGBA presenter 的限縮實作；
+原版／繁中同狀態 A/B 與失敗矩陣尚未通過，不能宣稱已中文化或 CONFORMED。
 
 ## 範圍、停止線與權利邊界
 
@@ -49,7 +53,7 @@ redraw `37F1:1856`／`0/10`、selected `37F1:175D`／`15/0`。三種 caller 不�
 `d0f70a73b80b1998c0744ae2bb2903dba4783104fbfccc3ded41d70e8eacc1cd` 相同；它們只支撐
 本節的有限路徑，不證明其他選單行為。
 
-## DRAFT 幾何、錨點與溢位策略
+## READY 幾何、錨點與溢位策略
 
 每列使用半開 logical text-safe rectangle
 `[72, 72+8×original_length) × [8×row, 8×row+8)`；draw anchor 是 `(72, 8×row)`。
@@ -59,14 +63,16 @@ redraw `37F1:1856`／`0/10`、selected `37F1:175D`／`15/0`。三種 caller 不�
 
 本機 `workplace/current-font/buckrogers-eten-top-pad.golemfnt`（SHA-256
 `ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`）對現有七筆 DRAFT 譯文的靜態 raster containment
-候選為零缺字、零墨跡外溢：2×使用 16×16 cell／ink，safe rect 與 anchor 均乘 2；3×
+固定 READY 字型輸入為零缺字、零墨跡外溢：2×使用 16×16 cell／ink，safe rect 與 anchor 均乘 2；3×
 使用 24×24 cell、22×22 ink、每 cell `(1,1)` offset，safe rect 乘 3、anchor 為
 `(72×3+1, 8×row×3+1)`。這是 content-safe 靜態驗證，**不是**正式 runtime A/B。
 
-## DRAFT typed request 與 generation 候選
+## READY typed request 與 generation 契約
 
-可丟棄模型只接受記憶體中的「已審查 READY fixture」；版控 TSV 是 DRAFT，必須遭
-正式 loader 拒絕。它從私有 receipt 驗到下列有限序列：
+已審查的版控 `post-join-menu-events.tsv`、`post-join-menu-variants.tsv` 與
+`post-join-menu.zh-TW.tsv` 僅作本限縮範圍的 immutable READY fixture；正式 loader
+須固定第一百八十一階段的雜湊、逐筆驗證 schema 與 exact identity，任何變更都須回到 DRAFT
+重審。可丟棄模型從私有 receipt 驗到下列有限序列：
 
 1. 初畫原子 generation：七筆依 sequence 的 `37F1:15BD` 普通請求，再接 row 13 的
    `37F1:175D` 反白請求。
@@ -80,23 +86,23 @@ clear 讓舊 stamp 繼續作用。
 
 此模型不推斷 Down 之後的 row 21／row 12，也不把 prompt row 24 重畫視為選單 lifecycle。
 
-## EXIT TO DOS 的 DRAFT pre-write 失效候選
+## EXIT TO DOS 的已量 clear 與 active pre-write 失效契約
 
 在選取 `EXIT TO DOS` 後，合法 Enter 由 `INT 16h AH=00` 於 step `125100053` 消費。
 step `125119490` 的 `026F:029C` 是第一筆與七列相交的全選單 clear；receipt 的含端點
 格座標 `left=1, top=2, right=38, bottom=22` 換算成半開像素矩形
 `[8,312)×[16,184)`。它保留為原版 clear 證據，但不是 complete cycle 的 active-generation
 boundary。完整 A000 observer 的勘誤見[第一百八十階段](../re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)：
-每代最早相交 pre-write 都是更早的 `0763:184D` glyph write，包含同值寫入。候選 watcher
+每代最早相交 pre-write 都是更早的 `0763:184D` glyph write，包含同值寫入。正式 watcher
 必須在任何相交 A000 pre-write 先失效，再僅依完整 exact variant generation 重建；不可只攔
 `026F:029C` 或依 framebuffer diff。
 
 Down 期間 prompt 清除格 `[25,40)×[24,25)`（像素 `[200,320)×[192,200)`）不相交，
 不得讓它清除選單 overlay。restore、machine stop、execution discontinuity、未知 writer
-或 generation 不一致均須失敗即關閉；這些是候選 adapter 契約，尚未授權接入正式
-`VideoWrite` hook。
+或 generation 不一致均須失敗即關閉；READY 僅授權依此契約接入正式 `VideoWrite`
+hook，尚無任何正式接線或 runtime 驗收。
 
-## 可丟棄驗證與 READY 缺口
+## READY 審查結果與實作後驗收
 
 `workplace/phase162-post-join-menu-ready-candidate/verify_post_join_menu.py` 僅是 ignored
 原型，從 phase 161 receipt 驗證 21 個 versioned identity（七初畫普通、七普通回寫、七反白），
@@ -104,21 +110,12 @@ Down 期間 prompt 清除格 `[25,40)×[24,25)`（像素 `[200,320)×[192,200)`�
 錯 caller／style、完整 A000 observer 與 row20→未知 row21 的負例。它的輸出
 `receipt.json` 記錄輸入雜湊、逐列 safe rectangle／anchor、pre-write 邊界與拒絕條件。
 
-主代理已在 Docker 內獨立回讀此原型並重跑七項測試；本候選仍維持 **DRAFT**，
-但不以正式 watcher／presenter 或 runtime A/B 作為 READY 的前置條件。真正仍缺的
-READY 證據是：
-
-- 21-row table、可丟棄 validator 與完整 A000 observer 已取得；仍待獨立審查把 source／
-  receipt hashes、variant 表與「先失效、後 exact 重建」串為狹窄契約。DRAFT TSV 不得直接
-  成為 production loader 輸入。
-- 需由獨立審查確認 unknown row21、restore／stop、unknown A000 writer、mixed／partial
-  generation 都是 READY core 的 fail-closed input，且正式 TSV／文本只作 immutable fixture。
-- 前述字型靜態 containment 與來源 SHA 已取得，但需由獨立審查把版控文字、變體身分、
-  幾何、原版收據及失敗矩陣串成一份狹窄可實作契約。
-
-若獨立審查通過，才可把**固定七項與已量 Down 重畫**限縮升 READY；正式 watcher、loader、
-generation core 與 presenter 是 READY 後的實作工作。完成後才做 2×／3× runtime 同狀態 A/B、
+主代理在 Docker 內獨立回讀 21 筆 variant、七筆譯文、phase 161 與權威 fork phase 180
+雙重收據、字型雜湊，並重跑七項可丟棄正反例通過；第一百八十一階段固定審查輸入。
+unknown row21、restore／stop、unknown A000 writer、mixed／partial generation 均明定為
+失敗即關閉。正式 watcher、loader、generation core 與 presenter 是 READY 後的實作工作；
+完成後才做 2×／3× runtime 同狀態 A/B、
 矩形外零差、同幀 pre-write active→empty、row20→未知 row21／restore／stop／unknown writer
 production failure matrix 與無殘字，符合者才可標 CONFORMED。其他功能選項、離頁／重入、
-完整開機或存讀檔不在此限縮範圍，不能外推。完整 READY 審查候選見
+完整開機或存讀檔不在此限縮範圍，不能外推。完整 READY 獨立審查見
 [第一百八十一階段](../re/phase-181-post-join-menu-ready-review-candidate.md)。

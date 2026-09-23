@@ -1561,3 +1561,12 @@
   權威 fork 來源與雜湊見[第一百八十階段](docs/re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)。
 - 曾以原 dosgolem HEAD `d9c0c27` 取得觀測，但 Machine／DOS／VideoWrite 與本案 fork
   存在差異，故不作正式依據；改由 fork 重生。spec018 仍 DRAFT，未接正式 runtime。
+
+## 2026-09-23 — 加入角色後選單限縮 READY 獨立審查
+
+- 主代理核對 21 筆精確變體、七筆繁中候選、phase161 與權威 fork phase180 各雙重收據，
+  並以 Docker 獨立重跑七項可丟棄正反例通過；字型零缺字、零溢位及所有輸入雜湊見
+  [第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)。
+- 依規格閘門，只把已量的七項初畫／逐列 Down 重畫限縮升 READY，授權下一步接正式
+  watcher／loader／generation core／RGBA presenter。row20→未收錄 row21、restore／stop／未知 writer
+  必須失敗即關閉。此階段未做 runtime A/B，不宣稱畫面已中文化或整個選單 CONFORMED。

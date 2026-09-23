@@ -29,8 +29,9 @@
 再以本案 dosgolem fork 雙重重播完整 A000 pre-write（包含同值寫入），將七列初畫／普通回寫／
 反白共 21 種精確變體寫入 TSV。各選取世代最早相交寫入其實是更早的 `0763:184D`
 原版 glyph 寫入，不是 Exit clear；必須先失效、再依完整 exact 變體重建。row 20 普通回寫後
-遇到未收錄 row 21 反白時失敗即關閉。這些仍是 DRAFT 證據，尚待獨立 READY 審查；正式
-watcher 與同狀態 A/B 屬 READY 後實作／CONFORMED 驗收，不能倒置閘門。
+遇到未收錄 row 21 反白時失敗即關閉。主代理回讀固定雜湊並獨立重跑七項正反例後，
+[第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)已將 spec018
+限縮升 READY；正式 watcher 與同狀態 A/B 屬 READY 後實作／CONFORMED 驗收，不能倒置閘門。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

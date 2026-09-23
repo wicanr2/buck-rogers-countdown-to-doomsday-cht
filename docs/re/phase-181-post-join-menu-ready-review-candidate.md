@@ -1,11 +1,11 @@
-# 第一百八十一階段：加入角色後功能選單 READY 獨立審查候選
+# 第一百八十一階段：加入角色後功能選單限縮 READY 獨立審查
 
-狀態：**DRAFT；等待獨立審查，不授權 production。**  
+狀態：**獨立審查通過；僅授權 spec 018 限縮 READY 實作，不代表 runtime 符合。**
 日期：2026-09-23
 
-本文件只把既有原版證據、幾何與失敗矩陣整理為狹窄 READY 審查輸入；它不自行把
-[spec 018](../spec/018-post-join-menu-overlay-draft.md)升為 READY，也不授權正式 watcher、
-loader、presenter 或 runtime A/B。
+本文件把既有原版證據、幾何與失敗矩陣整理為狹窄 READY 審查輸入；主代理已依本節
+核對並將 [spec 018](../spec/018-post-join-menu-overlay-draft.md)限縮升 READY。正式 watcher、
+loader、presenter 與 runtime A/B 仍待實作／驗收。
 
 ## 審查範圍與固定輸入
 
@@ -21,7 +21,7 @@ loader、presenter 或 runtime A/B。
   不得由相似 hash、座標或 caller 補配。
 - [`post-join-menu.zh-TW.tsv`](../../text/post-join-menu.zh-TW.tsv)仍是編輯性 DRAFT：七 key
   必須一對一、UTF-8／NFC、非空、無控制／格式字元，且不能改變原版語意路徑。它在本次
-  審查若被接受，只能作 immutable READY fixture；文案、key、source、字型或 variant 任一
+  審查已將其固定為 immutable READY fixture；文案、key、source、字型或 variant 任一
   改動都使本候選回到 DRAFT。
 
 ## READY 候選的 typed 生命週期
@@ -54,7 +54,19 @@ loader、presenter 或 runtime A/B。
   fork A/B observer，以及 ignored verifier 的 fail-closed matrix；任何輸入雜湊不符或
   原文素材意外進入版控即拒絕。
 
-## READY 之後才做的工作
+## 獨立審查收據與 READY 之後的工作
+
+主代理以權威 fork `4589bfe986a7414c418f7ec02d6da0888d7cfd11` 回讀：
+`post-join-menu-events.tsv` SHA-256 `92ebceaf691807118392d2e284660c14694e34281a64b8b14bc5e9dcfd160ec1`；
+21 筆 variant SHA-256 `8e81644e94213bd99e9f91c75e21e10e277f498a16257556516302da4e448eb5`；
+七筆譯文 SHA-256 `0c2ed04b6d5942b01b41670b38ce6d11fe8af798c04cf3fb54354474f6202eb3`；
+phase 161 雙重收據 SHA-256 `5b4c8f66ffd72651344c0dbb45de5946d273276b933dc9d4b902d69297841c36`；
+phase 180 權威 fork 雙重 A000 收據 SHA-256
+`7421d673aa5455fe243e01b11a2c6f261f0a07767904cbe82e70c274ac4d448c`；
+本機倚天 GOLEMFNT SHA-256 `ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`。
+七項可丟棄 verifier 正反例由主代理在 Docker 內重跑全通，輸出收據 SHA-256
+`6e50d26ffdbb22ec7d05fe9069b3fad4d36105883bf588fc57911fa82289b31e`。
+版控 TSV 無原版全文；上述字型與私有原版收據都仍在 ignored `workplace/`。
 
 READY 僅授權以審查 fixture 實作正式 loader、watcher、generation core 與 RGBA presenter。
 其實作與驗收不得倒灌為本次 READY 前置：production 必須再驗證 2×／3×同狀態 control A/B、
