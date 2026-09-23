@@ -171,3 +171,33 @@ production」不是 READY 阻擋，因 implementation 本來就位於 READY 之�
 step 視窗升為 READY。儲存詢問離頁、實際存讀檔／restore、完整開機、其他輸入路徑及
 未觀察 writer 仍排除；production 接線後仍須 control／2×／3× 同狀態與清除生命週期收據，
 通過前不得標為 CONFORMED。
+
+## 2026-09-23 production 接線與限縮 CONFORMED
+
+dosgolem 本機分支 `buck-rogers-cht-output-overlay` commit
+`ae36f540ee6097ab77c135d12d4c05c7520c315a` 已接入正式 watcher、A000 pre-write
+dirty-state 原子失效與倚天 2×／3× presenter；未推送上游。正式 app／receipt CLI 的
+定向 test、race、vet 均通過。全樹 `go test ./...` 會掃入 ignored workplace 內三個獨立
+研究 probe 的重複 `main`，屬既有探針包裝問題，不是本次正式 package 失敗。
+
+固定 move／refuse／confirm 各做 control／2×／3× A／B，共 18 份 production 收據。
+summary SHA-256 為
+`befbe1e11ffba4334dae1122da6e549b415f7d3b3583f3e374cd00007b6659a0`；最終 runner
+SHA-256 為 `44f04a5d88748cddb5598d709c6e9515433ab54b81a28373c219dfffc9dcf930`。
+驗證結果：
+
+- 各條件 A／B 的完整 JSON、stdout、indexed screen 與 2×／3× RGBA／baseline 逐 byte
+  相同；
+- control／2×／3× 的 machine／memory、indexed framebuffer、palette、DOS、37,021 筆
+  file ops、input、完整 events、transitions 與 A000 aggregate 逐欄相等；
+- move／refuse／confirm 的完整 A000 寫入分別為 730,752／760,256／735,040 次，安全矩形
+  相交為 61,248／66,176／64,000 次；
+- missing glyph、核准安全矩形外 RGBA 差異與動態圖示區污染皆為零；每個已量 transition
+  的 first-write invalidation 與 postwrite clear 均通過。
+
+獨立 Terra 審查重跑 production race／vet、typed verifier 14 項及 18 份收據雜湊後判定
+PASS。收據 runner 與最終 commit 的唯一差異是 catalog 恰為七列的防禦 guard；收據輸入已
+驗證恰為七列且 SHA 固定，因此有效輸入行為不可達該差異，不要求重新跑全量。
+
+spec 009 據此只在固定 move／refuse／confirm、七個 exact identity 與已量 step 視窗標為
+CONFORMED。save-prompt 離頁、restore、full boot、其他玩家輸入與未觀察 writer 仍未完成。

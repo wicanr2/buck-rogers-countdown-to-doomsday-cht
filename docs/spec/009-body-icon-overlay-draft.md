@@ -1,6 +1,6 @@
 # 009 — 身體圖示畫面文字輸出端覆繪
 
-狀態：READY（只授權固定 move／refuse／confirm 三條正常路徑；尚未 CONFORMED）
+狀態：CONFORMED（只涵蓋固定 move／refuse／confirm 三條正常路徑）
 範圍：角色建立流程的身體圖示選擇、圖示確認與 confirm 路徑的儲存詢問文字
 更新：2026-09-23
 
@@ -47,7 +47,7 @@ caller、色號、row 與 column。`body-icon-text-safe-rects.tsv` 由同一 ide
 矩形均為半開區間，8-pixel logical cell 對齊，單列且 overflow policy 為
 `single-line-reject`。同一畫面群組內矩形必須不重疊；不同群組的相同座標不是同時顯示證據。
 
-## READY 顯示與生命週期契約
+## CONFORMED 顯示與生命週期契約
 
 1. 原版事件必須先完整執行；覆繪只接受七個 exact identity，並以原版矩形清除其底色後
    在同一矩形內繪製繁中。不得送鍵、修改原版記憶體、改變圖示選取或儲存結果。
@@ -99,12 +99,26 @@ caller、色號、row 與 column。`body-icon-text-safe-rects.tsv` 由同一 ide
 - 完整 observer 證據只涵蓋三條固定排程及其已量 step 視窗。儲存詢問離頁、restore、
   完整開機、其他輸入路徑與未觀察 writer 仍排除，不得由本 READY 外推。
 
-本 READY 現在授權實作正式 runtime presenter。實作時另建立正式、失敗即關閉的
-`1C41` glyph watcher API，提供 catalog miss／drop／pending 收據；
-不得直接把可丟棄 projection／typed-core 併入正式玩家路徑。並建立同狀態 2×／3×
-A/B 收據：原版 bytes／輸入／檔案事件不變、七個矩形內可見差異、
-矩形外零差異、圖示像素與動態欄零污染、所有轉場零殘字；通過後才能標為
-CONFORMED。在此之前不得於 README 宣稱身體圖示畫面已中文化。
+## Implementation→CONFORMED 驗收結果
+
+dosgolem 本機分支 commit `ae36f540ee6097ab77c135d12d4c05c7520c315a` 已實作正式、
+失敗即關閉的 watcher、A000 pre-write dirty-state 原子失效與 2×／3× presenter。固定
+move／refuse／confirm 各自建立 control／2×／3× A／B，共 18 份 production 收據；摘要
+SHA-256 為 `befbe1e11ffba4334dae1122da6e549b415f7d3b3583f3e374cd00007b6659a0`。
+
+三條路徑的 control／2×／3× machine／memory、DOS、37,021 筆 file ops、輸入、完整事件、
+indexed framebuffer、palette、transition 與 A000 aggregate 均相等；同條件 A／B 的完整
+JSON、畫面與 RGBA 逐 byte 相同。2×／3× missing glyph 為零，差異只落在核准安全矩形，
+安全矩形外與動態圖示區污染均為零；每個已量 transition 的 first-write 清除與 active
+generation 生命週期均通過。正式 app／CLI 的 test、race、vet 及獨立收據審查亦通過。
+
+收據 runner 與最終 commit 只差 `LoadBodyIconCatalog` 的「正式 catalog 必須恰為七列」
+防禦 guard；收據已驗證輸入恰為七列且 SHA 固定，此分支對有效輸入不可達，獨立審查判定
+無須重跑全量收據。
+
+因此本規格只在固定 move／refuse／confirm、七個 exact identity 與已量 step 視窗標為
+CONFORMED。不得由此宣稱儲存詢問離頁、實際存讀檔／restore、完整開機、其他輸入路徑或
+未觀察 writer 已完成；擴充其中任一路徑必須重新走證據與規格閘門。
 
 本檔是窄規格，不取代 `001` 的通用 renderer、`004` 的 host 前端或字型／倍率決策；它只
 提供 body-icon adapter 可實作前必須滿足的 exact identity、幾何與生命週期條件。

@@ -1463,6 +1463,20 @@
   七 identity 與固定 move／refuse／confirm 路徑；離開儲存詢問、restore、完整開機、其他
   輸入與未觀察 writer 仍排除。production 尚未接線，未標 CONFORMED。
 
+## 2026-09-23 — 身體圖示固定三路限縮 CONFORMED
+
+- dosgolem 本機分支 commit `ae36f540ee6097ab77c135d12d4c05c7520c315a` 接入正式 body
+  icon watcher、A000 pre-write dirty-state 原子失效及倚天 2×／3× presenter；正式 app／CLI
+  的 test、race、vet 均通過。全樹測試只被 ignored workplace 多個研究 probe 的重複 `main`
+  擋住，已分類為探針包裝問題。
+- move／refuse／confirm 各做 control／2×／3× A／B，共 18 份收據；summary SHA-256
+  `befbe1e11ffba4334dae1122da6e549b415f7d3b3583f3e374cd00007b6659a0`。三路的核心
+  machine／DOS／indexed／palette／input／file events 與 A000 aggregate 跨倍率相等；A／B
+  逐 byte 相同，missing glyph、矩形外差異與動態圖示污染皆為零，first-write clear 通過。
+- 獨立 Terra 重跑 production race／vet、14 項 typed verifier 與收據雜湊後 PASS。收據 runner
+  與 final commit 只差有效七列 catalog 不會觸發的行數 guard，無須全量重跑。spec009 只在
+  固定三路與已量視窗標 CONFORMED；save-prompt 離頁、restore、full boot 及其他路徑仍排除。
+
 ## 2026-09-23 — 首屏固定五行限縮 CONFORMED
 
 - 本機 dosgolem `9f4c5f0` 補首屏 strict catalog／generation／receipt gate、未知 execution epoch

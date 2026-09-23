@@ -246,9 +246,11 @@ pre-write 後續已由通用 A000 pre-write observer 完整量測 move／refuse�
 可丟棄 typed-core 與雙倍率正式倚天 containment 亦通過。第一次獨立審查指出的兩項缺口
 後續已補：真實三路 receipt 時序直接驗證 event→group／transition→generation，A000
 dirty-state 原型也在 first intersecting write 前原子失效整代並通過負向矩陣。第二次獨立
-審查據此通過**限縮 READY**，只授權七個 identity 與固定 move／refuse／confirm 路徑；
-儲存詢問離頁、restore、完整開機及其他輸入仍排除。production runtime 覆繪尚未接線，
-因此尚未 CONFORMED；詳見
+審查據此通過限縮 READY；production 後續已在 dosgolem `ae36f54` 接入正式 watcher、
+A000 dirty-state 與雙倍率 presenter。固定 move／refuse／confirm 的 18 份 control／2×／3×
+A／B 收據證實核心語意與 indexed 畫面相等、矩形外及動態圖示區零污染、零缺字與
+first-write 清除生命週期；獨立 production 審查通過，現於此限縮範圍標為 CONFORMED。
+儲存詢問離頁、restore、完整開機及其他輸入仍排除；詳見
 [第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)與
 [第九十九階段收據](docs/re/phase-99-action-bar-3x-density.md)。
 身體圖示資料切片見[第一百零一階段](docs/re/phase-101-body-icon-text-catalog.md)，
