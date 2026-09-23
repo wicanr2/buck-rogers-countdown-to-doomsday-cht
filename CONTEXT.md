@@ -2,6 +2,18 @@
 
 更新：2026-09-24
 
+[第二百一十八階段](docs/re/phase-218-exit-prompt-runtime-ab.md)現已把真正
+Exit 後兩句 row 24 問句本體接上正式 dosgolem watcher／presenter；
+在一個合法加入角色存態的 N／Y→Y 路徑，control／2×／3× 各雙重重播，
+原版記憶體、indexed／palette、鍵盤與啟用追蹤的 FileOps 收據相同。
+兩句 active 的 RGBA 差異只在本體，原版六格多色尾碼與外側零差；
+N 返回與 DOS Stop 無殘層。正式生命週期軌跡另外證實 q2 pending 與
+q1 active 短暫共存、同值 A000 首寫清 q1、q2 guarded Return 後才顯示、
+Stop 清層。主代理與獨立審查通過，[規格 021](docs/spec/021-post-join-exit-prompt-body-only-draft.md)
+僅此固定無頭路徑**限縮 CONFORMED**；dosgolem workplace 分支本地
+commit 為 `a01e342`，未推送 dosgolem 遠端。其他初態、正式 Restore 事件來源、
+存讀檔及 Linux 可玩視窗仍未驗，不能說整款遊戲已完成中文化。
+
 [第二百一十三階段](docs/re/phase-213-exit-prompt-font-draft.md)已固定真正
 Exit 後兩句 row 24 問句的 DRAFT 繁中候選，現行本機倚天字型的 2×／3×
 墨跡皆零缺字、零本體越界，六格多色原版尾碼保護區的靜態遮罩零差。
@@ -11,10 +23,10 @@ Exit 後兩句 row 24 問句的 DRAFT 繁中候選，現行本機倚天字型的
 writer／錯序失敗即關閉。兩者都不是
 正式 runtime 或原版 A/B。[第二百一十五階段](docs/re/phase-215-exit-prompt-body-ready-review.md)
 獨立審查限縮核准兩句問句本體與原版多色尾碼保護；
-[規格 021](docs/spec/021-post-join-exit-prompt-body-only-draft.md)現為
-**限縮 READY**。正式 TSV、watcher、presenter 與原版 control／2×／3×
-同狀態 A/B 均未完成，故[Issue #19](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/19)
-仍開啟。
+[規格 021](docs/spec/021-post-join-exit-prompt-body-only-draft.md)當時僅為
+**限縮 READY**；其後正式接線與收據以上述第二百一十八階段為準。
+GitHub [Issue #19](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/19)
+記錄此固定路徑工作，整體中文化與可玩前端另由其他 Issue 追蹤。
 
 [第二百一十二階段](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
 證實原生倚天 24 點明體與符號可覆蓋 3× host 面板九個字元，

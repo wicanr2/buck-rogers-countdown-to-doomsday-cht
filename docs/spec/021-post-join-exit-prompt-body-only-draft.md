@@ -1,11 +1,21 @@
 # 021 — 加入角色後真正 Exit 確認問句本體覆繪
 
-狀態：**限縮 READY（僅兩句問句本體的輸出端契約）；正式 TSV、watcher、presenter 與原版 A/B 未完成。**
+狀態：**限縮 CONFORMED（固定合法加入角色存態的 N／Y→Y、兩句問句本體及已量生命週期）；其他原版路徑與 Linux 玩家視窗未驗。**
 日期：2026-09-24
 
 [第二百一十五階段](../re/phase-215-exit-prompt-body-ready-review.md)已完成獨立
 READY 前審查；本文較早的「候選」「待審查」措辭保存設計歷程，
 以本段與審查文件的限縮核准範圍為準。
+[第二百一十七階段](../re/phase-217-exit-prompt-full-body-writer-review.md)
+以可重生探針及固定合法 Y→Y 雙重原版收據，對 q1／q2 pending 的完整本體八列
+補充 writer 證據；它修訂下文第 6 點的已量 writer 範圍，不提高其他路徑或
+正式 A/B 的完成狀態。舊首列型程式的 q1／N 暫時綠燈已撤回。
+[第二百一十八階段](../re/phase-218-exit-prompt-runtime-ab.md)其後以正式
+watcher／presenter 在固定合法存態完成 N 與 Y→Y 的 control／2×／3×
+雙重同狀態 A/B、FileOps 零筆自證與正式生命週期軌跡；主代理及獨立
+審查均已核對。此後的**現行結論**只在上述固定路徑及本體範圍升為
+限縮 CONFORMED；下文較早的「待審查」「尚未實作」保留階段歷程，
+不得覆蓋本段。
 
 ## 範圍、來源與證據等級
 
@@ -93,8 +103,14 @@ q2「遊戲尚未儲存。仍要離開？」兩筆**DRAFT 顯示候選**。q1 �
    的全新 exact Entry→guarded Return 可重建；`Discontinuity`、`Fault`、
    錯序／未知 identity、無法正規化的 VideoWrite 及待處理或作用中本體的
    未知 writer 均清層並轉 terminal `Failed`／poison，同一 owner 不得 rearm。
-   `0763:184D` 只是目前原版相交 pre-write 的已量 writer，不代表所有
-   正常 writer 都已盤點；遇新 writer 應回到證據審查，不以靜默白名單猜補。
+   固定合法 Y→Y 路徑的兩筆 exact 問句，在各自 pending Entry 至同世代
+   guarded Return 前，對完整本體八列只量到 `0763:184D` 與
+   `0763:1854` 兩個正常初畫 writer；各自 768／1,920 個本體像素均被
+   收據覆蓋。這不是全域白名單：只有已辨識 pending、對應本體、對應
+   generation 與時窗可接受這兩個 writer；其他相交 writer 仍失敗即關閉。
+   q2 pending 與 q1 active 共存時，已量 q2 初畫寫入同時可以先清 q1，
+   不能因此清除 q2 pending。未量其他路徑或新 writer 應回到證據審查，
+   不以靜默白名單猜補。
 
 VideoWrite 的 `Offset` 若為 A000 **段內** offset，先拒絕不在 `[0,0x10000)`
 的值，再計算線性 `0xA0000 + Offset` 並以半開本體矩形判相交；線性值須落
@@ -127,6 +143,8 @@ typed fake 必須涵蓋上述 q2 pending／q1 active 重疊與實際事件先後
 entry→return、含同值首筆 pre-write、本體／尾碼分界、候選譯文、字型與
 typed 負例，明列未量 writer 及 Restore／Stop 事件來源的接線界限。
 只有上述已核准的限縮範圍才可新增正式 TSV、watcher 與 presenter。
+正式 watcher 對本體相交須檢查八列，不能只檢查 y=`192` 首列；
+第二百一十七階段的 writer 補充仍須接受正式同狀態 A/B 檢驗。
 實作後以同一合法初始存態、同一輸入／受控亂數條件，重生 control／2×／3×
 的 q1 active、N 返回選單、Y→Y q2 active 與 DOS Stop；每條至少雙重可重播。
 逐點比對原版 machine／DOS 狀態、BIOS／FileOps、indexed framebuffer 與
@@ -136,8 +154,10 @@ palette；active RGBA 差異只准在當前問句本體，六格尾碼與矩形�
 錯序／partial／越界的正式失敗即關閉矩陣。N、Y→Y 終態須無殘字；
 若有存讀檔或 Linux 玩家路徑聲明，還要另外取得各自正常路徑收據。
 
-目前僅有原版無頭證據、靜態字型檢查與 ignored fake；**沒有**正式 Exit
-問句 watcher、正式事件橋接或 control／2×／3× 同狀態 A/B。本規格保持
-限縮 READY，仍不得以[規格 020](020-skill-exit-confirmation-overlay-draft.md)的
-技能頁 CONFORMED 結論外推。原版遊戲、存態、字型與收據僅供本機研究，
+目前正式 Exit watcher、presenter、TSV 與文字收據 CLI 已實作，
+第二百一十八階段在一個合法加入角色存態完成 N／Y→Y 的雙倍率
+同狀態與同一步清層／交疊軌跡，故僅此範圍**限縮 CONFORMED**。
+Restore／Discontinuity／Fault 的正式 runtime 事件來源、其他初始狀態、
+異境 exact 字串重用、遊戲內存讀檔及 Linux 玩家視窗未驗，不能外推
+完整遊戲已中文化或可玩。原版遊戲、存態、字型與完整收據僅供本機研究，
 不得放入 Git 或公開包。

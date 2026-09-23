@@ -1964,3 +1964,28 @@
   因而只核准兩句本體為 READY。正式 watcher／TSV 與原版 A/B 尚未做。
 - 另一個 ignored 2× 冷開機原型同時接選單與手冊 watcher，但本次只
   觸發選單、手冊事件為零；故不是多層呈現驗收。限制已回填 Issue #16。
+
+## 2026-09-24 — 真正 Exit 問句本體正式雙倍率對拍
+
+- 使用者確認設定面板展開期間暫停 DOS；先前正式 `Game.Update`
+  雙倍率暫停排程已限縮驗過，但完整 Linux 可玩 session 仍未完成。
+- 真正 row 21 Exit 的兩句繁中問句新增正式 TSV 及 dosgolem
+  watcher／presenter，只覆繪 row 24 本體並保護六格原版多色尾碼。
+  完整字型與原版素材均留本機 ignored `workplace/`。
+- 首次正式 A/B 的 q1／N 暫時綠燈被下七列正常 `0763:1854` 寫入推翻；
+  撤回舊結論後，先以[第二百一十六階段](docs/re/phase-216-exit-q2-glyph-writer-draft-corrigendum.md)
+  首列勘誤及[第二百一十七階段](docs/re/phase-217-exit-prompt-full-body-writer-review.md)
+  可重生八列雙重原版收據補證，再限縮修訂規格 021，沒有直接加全域
+  writer 白名單。正式 watcher 的相交判定由首列修成完整八列。
+- [第二百一十八階段](docs/re/phase-218-exit-prompt-runtime-ab.md)的
+  24 份啟用 FileOps 追蹤的控制組／2×／3× 雙重端點收據，及六份
+  N／Y→Y／Stop 正式生命週期軌跡，均逐位元組可重播。主代理與獨立
+  審查核對原版記憶體、畫面、鍵盤與零筆 FileOps 自證；兩句中文 RGBA
+  差異只在本體，N／退出無殘層，q2 Entry 與 q1 active 交疊、同值
+  A000 首寫失效、q2 guarded Return 及 Stop 均由正式 hook 證實。
+  主代理在唯讀、無網路 Docker 獨立重跑 Go app／receipt 測試通過。
+- 因此規格 021 只對此固定合法加入角色存態的 N／Y→Y、雙倍率無頭
+  路徑及已量生命週期限縮升 CONFORMED；Restore 後重入、其他玩家
+  路徑、存讀檔與 Linux 實體視窗仍未驗。私有完整收據及字型未加入
+  Git 或 GitHub。dosgolem workplace 分支已於本地提交 `a01e342`，
+  未推送其遠端；主專案提交、Issue 狀態與 Docker 清理在本輪末另核對。

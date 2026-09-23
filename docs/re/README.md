@@ -1,5 +1,8 @@
 # 原版觀測證據索引
 
+- [第二百一十八階段：真正 Exit 問句本體正式無頭 A/B](phase-218-exit-prompt-runtime-ab.md)：固定合法加入角色存態的 N／Y→Y、control／2×／3× 雙重正式重播，含 FileOps 零筆自證與正式生命週期軌跡；獨立審查後僅此本體範圍限縮 CONFORMED。
+- [第二百一十七階段：真正 Exit 問句八列初畫寫入審查](phase-217-exit-prompt-full-body-writer-review.md)：可重生探針與固定 Y→Y 雙重收據盤點 q1／q2 pending 八列，限縮核准 `0763:184D`、`0763:1854`；舊首列型 q1／N 綠燈撤回，當時正式 A/B 尚未完成。
+- [第二百一十六階段：真正 Exit 第二問繪字寫入勘誤](phase-216-exit-q2-glyph-writer-draft-corrigendum.md)：固定合法 Y→Y 雙重原版重播證實 `0763:1854` 的 q2 pending 首列寫入屬正常 glyph run，並聚合該首列兩個寫入點；仍為 DRAFT，不擴張正式 writer 白名單。
 - [第二百一十五階段：真正 Exit 問句本體限縮 READY 審查](phase-215-exit-prompt-body-ready-review.md)：核對 exact 身分、q2 pending／q1 active 真實時序、雙倍率字型與訂正後 fake；僅兩句本體升 READY，正式接線與同狀態 A/B 未完成。
 - [第二百一十四階段：Exit 問句本體生命週期合成原型](phase-214-exit-prompt-body-lifecycle-fake-draft.md)：ignored typed fake 驗 row21／第一問與第一問／第二問 pending 的兩種短暫共存、含同值 A000 清層、DOS Stop、未知 writer 與錯序失敗即關閉；仍 DRAFT，未接正式程式。
 - [第二百一十三階段：Exit 提示繁中候選與倚天字型 DRAFT 靜態收據](phase-213-exit-prompt-font-draft.md)：固定兩個 post-join Exit 提示的 DRAFT 用字，倚天 2×／3×本體 containment 零缺字零越界，尾碼六格採 body-only 遮罩零差；未接正式 TSV 或 watcher。
