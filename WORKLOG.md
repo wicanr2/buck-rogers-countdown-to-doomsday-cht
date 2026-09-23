@@ -2026,3 +2026,33 @@
   私有收據；主專案 private `main` 已提交並推送 `7118d73`。
   交接前 `docker ps -a` 無本專案容器，工作樹無 root-owned 產物或
   誤建 `.md` 目錄；其他專案容器未動。
+
+## 2026-09-24 — 第九頁正式入頁對拍、前端批次契約與 A 字型選擇
+
+- 使用者重申設定面板展開時暫停 DOS；既有正式 `Game.Update` 僅對
+  callback 排程限縮符合，完整 DOS state／session 尚未完成。
+- Issue #18 的 ignored typed owner 已接真實合成 COM `Machine.Steps`
+  差分。真實 bridge 負例發現直接提交 canvas Down 後遇非法 Apply
+  會留下 DOS 左鍵；規格 019 與審查紀錄補上整批純路由預檢、
+  不可變 DOS action 清單、來源狀態核對及正反例矩陣。
+  正式橋接未改，規格仍 READY 候選。
+- 規格 022 經獨立審查只將第九頁固定入頁單行升限縮 READY，
+  TSV identity 同步標 READY。dosgolem fork 新增正式 watcher、
+  catalog、presenter、owner 與 CLI 接線；[第二百一十九階段](docs/re/phase-219-story-page9-runtime-entry-ab.md)
+  的 control／2×／3× 私有同狀態收據中，machine snapshot、DOS、
+  indexed 及正規化 metadata 一致，中文字像素只在核准矩形。
+  主代理另以唯讀 Docker 重跑 Go 測試、`go vet`、私有存態讀回及
+  逐像素檢查。首次私有測試漏掛既有 `/orig/GAME.OVR` 而在還原前
+  失敗，補上唯讀原版目錄後原樣比較通過，屬容器設定錯誤。
+  自然離頁與清層後畫面仍未量，Issue #20 保持 OPEN，規格不升
+  CONFORMED。已驗 page9 正式程式在本機 dosgolem fork 分支提交為
+  `7930b7a`；未推送 dosgolem 遠端，ignored 原版探針不入版控。
+  後續以同一合法第九頁存態，對手冊明示前進 8／後退 2 各雙重
+  有界重播到 `370000000`：兩鍵被讀取、均無故事矩形 pre-write、
+  故事像素變化或 DOS 結束。達硬停止線即止，不擴新鍵位；
+  真實出口與清層後 A/B 仍待正常玩家流程或來源證據。
+- 使用者看過 A／B 圖後選 A 原生倚天 24 點、排除 B 衍生 22 點。
+  主代理獨立核對原型收據與正式字型 API，僅將規格 004 的 3×
+  host 字型子契約限縮升 READY；整體前端仍 DRAFT，正式字型
+  接線與實體 3× Apply 另行驗收。原版、已購字型、PNG 與完整
+  私有收據均留 ignored `workplace/`，不送 Git／GitHub。

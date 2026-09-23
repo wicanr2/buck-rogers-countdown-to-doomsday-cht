@@ -9,7 +9,7 @@
 | [選單文字輸出端覆繪](001-menu-text-output-overdraw-draft.md) | DRAFT | 第一個功能選單的字串分派事件與未解生命週期。 |
 | [手冊查詢繁中段落覆繪](002-manual-paragraph-overlay-draft.md) | DRAFT | 依原版題目 metadata 顯示對應中文段落，保留原版答案判定。 |
 | [手冊事件 adapter 整合邊界](003-manual-event-adapter.md) | DRAFT | 指向 dosgolem READY 純核心，並隔離尚未獲准的 hook／renderer 整合。 |
-| [dosgolem host 前端與執行期倍率](004-dosgolem-host-frontend-draft.md) | DRAFT | 將 host canvas、輸入隔離、重繪與未決倍率操作語意分開。 |
+| [dosgolem host 前端與執行期倍率](004-dosgolem-host-frontend-draft.md) | DRAFT；3× 原生倚天字型子契約限縮 READY | host canvas、輸入隔離與重繪仍 DRAFT；使用者已選 A 原生 24 點，正式接線與實體 3× Apply 未驗。 |
 | [手冊繁中輸出端 presenter 整合](005-manual-runtime-presenter-draft.md) | CONFORMED（明確 presenter 範圍） | 39 題 catalog／版面／字型預檢與已量題目抽樣、返回清除；其餘逐題執行期、存讀檔及視窗仍待驗。 |
 | [手冊正式字型候選 manifest 驗證器](006-formal-font-candidate-manifest-validator.md) | CONFORMED（候選審查工具） | 審查本機候選的來源、授權 metadata 與 coverage；不採用、建置或散布字型。 |
 | [倚天 15 點字型候選輸入契約](007-eten-15-font-candidate-intake-draft.md) | DRAFT | 本機倚天來源、691 glyph coverage、兩個 16×15 對齊 preview 與待決的 production／公開界線。 |
@@ -27,4 +27,4 @@
 | [Linux 前端失敗即關閉 session 回合邊界](019-linux-frontend-session-turn-boundary-draft.md) | 限縮 READY 候選待獨立審查 | 最小 typed session 回合、整批面板鍵盤隔離、零步暫停、step receipt 與失敗後 Close；不含 cold boot、多作用層、存讀檔或可玩前端。 |
 | [技能頁離開確認提示繁中覆繪](020-skill-exit-confirmation-overlay-draft.md) | 限縮 CONFORMED（僅兩句本體與固定無頭路徑） | 兩個合法 state 的 Escape→N／Y、2×／3× 正式 A/B 已驗；尾碼零覆繪且終態無殘層。存讀檔、Restore bridge、Linux 視窗與冷開機未驗。 |
 | [加入角色後真正 Exit 問句本體覆繪](021-post-join-exit-prompt-body-only-draft.md) | 限縮 CONFORMED（固定 N／Y→Y 路徑、兩句本體） | 正式 watcher／presenter 已完成 2×／3× 同狀態 A/B 與已量生命週期驗收；原版多色六格尾碼保留，其他路徑與 Linux 玩家視窗未驗。 |
-| [第九頁固定單行劇情輸出端覆繪](022-story-page9-overlay-draft.md) | 限縮 READY 候選待獨立審查 | 20 字 exact entry／return 的單行本體與任何相交 A000 pre-write 清層；自然離頁、正式接線及 A/B 未驗。 |
+| [第九頁固定單行劇情輸出端覆繪](022-story-page9-overlay-draft.md) | 限縮 READY（僅固定入頁本體） | 正式 watcher／presenter 及 control／2×／3× 入頁 A/B 已驗；自然離頁與實際清層後畫面未驗，不升 CONFORMED。 |

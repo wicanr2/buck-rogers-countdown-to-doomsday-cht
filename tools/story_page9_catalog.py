@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證第九頁 content-safe identity 與繁中 DRAFT 譯文。"""
+"""驗證第九頁限縮 READY identity 與繁中譯文。"""
 from __future__ import annotations
 
 import csv
@@ -34,13 +34,13 @@ def _rows(path: Path, header: list[str]) -> list[dict[str, str]]:
 def validate(events_path: Path, translations_path: Path) -> None:
     events, translations = _rows(events_path, EVENT_HEADER), _rows(translations_path, TRANSLATION_HEADER)
     if len(events) != 1 or len(translations) != 1:
-        raise ValueError("第九頁 DRAFT 必須恰有一筆")
+        raise ValueError("第九頁限縮 READY catalog 必須恰有一筆")
     row = events[0]
     key, length, digest, logical_row, entry, post = EXPECTED
     actual = (row["event_key"], int(row["sequence"]), int(row["original_length"]), row["original_sha256"], int(row["row"]), int(row["entry_step"]), int(row["post_call_step"]))
     if actual != (key, 1, length, digest, logical_row, entry, post):
         raise ValueError("identity 不符：story.page9.line.001")
-    if row["caller"] != "0763:04FF" or row["glyph_guard"] != "0763:026B" or (row["background"], row["foreground"], row["column"], row["evidence_level"], row["catalog_status"]) != ("0", "10", "1", "confirmed", "DRAFT") or not re.fullmatch(r"[0-9a-f]{64}", digest):
+    if row["caller"] != "0763:04FF" or row["glyph_guard"] != "0763:026B" or (row["background"], row["foreground"], row["column"], row["evidence_level"], row["catalog_status"]) != ("0", "10", "1", "confirmed", "READY") or not re.fullmatch(r"[0-9a-f]{64}", digest):
         raise ValueError("metadata 不符：story.page9.line.001")
     translation = translations[0]
     if translation["key"] != key:
@@ -55,4 +55,4 @@ if __name__ == "__main__":
     if len(sys.argv) != 3:
         raise SystemExit(f"用法：{sys.argv[0]} EVENTS.tsv TRANSLATIONS.tsv")
     validate(Path(sys.argv[1]), Path(sys.argv[2]))
-    print("story-page9 DRAFT catalog OK")
+    print("story-page9 limited READY catalog OK")

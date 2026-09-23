@@ -1,6 +1,7 @@
 # 原版觀測證據索引
 
-- [Issue #18：Linux session-turn 限縮 READY 候選審查紀錄](issue-18-session-turn-ready-candidate-review.md)：重跑 ignored fake／合成 machine，收斂同批交付、實步／epoch／停止分類及同步 Draw fault owner；待獨立審查，非正式 session 收據。
+- [第二百一十九階段：第九頁固定單行正式入頁 A/B](phase-219-story-page9-runtime-entry-ab.md)：合法第八頁存態的 control／2×／3× 正式接線、完整 machine／DOS 同狀態與矩形內 RGBA 差異；自然離頁未量，規格 022 保持限縮 READY。
+- [Issue #18：Linux session-turn 限縮 READY 候選審查紀錄](issue-18-session-turn-ready-candidate-review.md)：ignored typed owner 已接合成真實 machine 收據；正式橋接後段失敗可留下 DOS 左鍵，整批純預檢契約仍待正式驗證，不升 READY。
 
 - [第二百一十八階段：真正 Exit 問句本體正式無頭 A/B](phase-218-exit-prompt-runtime-ab.md)：固定合法加入角色存態的 N／Y→Y、control／2×／3× 雙重正式重播，含 FileOps 零筆自證與正式生命週期軌跡；獨立審查後僅此本體範圍限縮 CONFORMED。
 - [第二百一十七階段：真正 Exit 問句八列初畫寫入審查](phase-217-exit-prompt-full-body-writer-review.md)：可重生探針與固定 Y→Y 雙重收據盤點 q1／q2 pending 八列，限縮核准 `0763:184D`、`0763:1854`；舊首列型 q1／N 綠燈撤回，當時正式 A/B 尚未完成。
@@ -8,7 +9,7 @@
 - [第二百一十五階段：真正 Exit 問句本體限縮 READY 審查](phase-215-exit-prompt-body-ready-review.md)：核對 exact 身分、q2 pending／q1 active 真實時序、雙倍率字型與訂正後 fake；僅兩句本體升 READY，正式接線與同狀態 A/B 未完成。
 - [第二百一十四階段：Exit 問句本體生命週期合成原型](phase-214-exit-prompt-body-lifecycle-fake-draft.md)：ignored typed fake 驗 row21／第一問與第一問／第二問 pending 的兩種短暫共存、含同值 A000 清層、DOS Stop、未知 writer 與錯序失敗即關閉；仍 DRAFT，未接正式程式。
 - [第二百一十三階段：Exit 提示繁中候選與倚天字型 DRAFT 靜態收據](phase-213-exit-prompt-font-draft.md)：固定兩個 post-join Exit 提示的 DRAFT 用字，倚天 2×／3×本體 containment 零缺字零越界，尾碼六格採 body-only 遮罩零差；未接正式 TSV 或 watcher。
-- [第二百一十二階段：3× 設定面板倚天字型 A/B 原型](phase-212-host-only-3x-eten-font-ab-draft.md)：本機原生 24 點與既有原型 22 點並列，九字零缺字、五項標籤安全矩形內；正式 3× 字型選擇待使用者確認。
+- [第二百一十二階段：3× 設定面板倚天字型 A/B 原型](phase-212-host-only-3x-eten-font-ab-draft.md)：使用者已選 A 原生 24 點；獨立審查只將 3× host 字型子契約升限縮 READY，正式接線與 3× Apply 未驗。
 - [第二百一十一階段：合成 typed session 收據候選與負例](phase-211-synthetic-session-receipt-candidate-draft.md)：ignored 原型以 DOS 退出前置檢查、step 差分與 error 優先保存候選收據；五組合成測試通過，零預算與 Epoch 未定。
 - [第二百一十階段：session 停止收據與 DOS 退出的合成探針](phase-210-session-stop-receipt-probe-draft.md)：正常 DOS 退出仍可回 `StopBudget`、已退出後再呼叫仍會多嘗試一步；舊 phase206 釘選探針已精確恢復，規格 019 仍 DRAFT。
 - [第二百零九階段：冷開機選單的實體視窗回合與面板暫停](phase-209-cold-boot-live-ebiten-panel-pause-draft.md)：ignored 原型從 `START.EXE` 第零步到選單後，正式 Ebitengine `Update` 實際推進同一 machine；2×實體 Open／Cancel 暫停零步、下一回合恢復，仍非正式可玩版。
@@ -66,7 +67,7 @@
 - [第一百三十八階段：第三頁合法離頁的最早故事區 pre-write](phase-138-story-page3-exit-prewrite.md)：兩次一致原版重播證實第四頁出現前的最早安全矩形交集寫入早於首個可見像素差異；第三頁仍為 DRAFT，未接 runtime。
 - [第一百三十七階段：真實 host panel route 與 3× cleanup](phase-137-real-host-panel-route-and-3x-cleanup.md)：2×／3×真實 Open host hit 與 open-panel miss route、3× accepted Down 後 panel-open chrome release-only，以及正規化同狀態收據；spec 228 仍維持 DRAFT。
 - [第一百三十六階段：第九頁後合法 Enter 的第十頁停止線](phase-136-story-page10-enter-stop-line.md)：兩次一致重播只得到 row 15 command/status 重畫，沒有新的固定故事行，未建立第十頁 catalog。
-- [第一百三十四階段：第八頁後合法 Enter 的第九頁 trace](phase-134-story-page9-enter-trace.md)：一筆 `0763:04FF → 0763:026B` DRAFT identity、20 筆返回、兩次一致收據與私有畫面核對；限縮 READY 候選見[規格 022](../spec/022-story-page9-overlay-draft.md)，自然離頁仍未知，未接 runtime。
+- [第一百三十四階段：第八頁後合法 Enter 的第九頁 trace](phase-134-story-page9-enter-trace.md)：一筆 `0763:04FF → 0763:026B` identity、20 筆返回、兩次一致收據與獨立審查；入頁本體已限縮 READY，正式接線與 A/B 見第二百一十九階段，自然離頁仍未知。
 
 - [第一百三十二階段：第二頁劇情 READY 審查與首屏轉場收據](phase-132-story-page2-ready-review.md)：第 2 頁四行穩定 frame、catalog／字型／矩形、glyph far-return／relative stack guard 與第 2 頁→第 3 頁最早視訊寫入收據；錯序假負例已勘誤，獨立無快取測試全綠，spec 011 已升 READY typed adapter contract，尚未接 production 或完成 A/B。
 - [第一百三十一階段：第七頁後合法 Enter 的第八頁 trace](phase-131-story-page8-enter-trace.md)：四行 `0763:04FF → 0763:026B` DRAFT identity、同狀態畫面與繁中候選；右側動態列排除，未接 runtime。

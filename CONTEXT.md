@@ -2,23 +2,40 @@
 
 更新：2026-09-24
 
+使用者已選定 3× 設定面板的 **A 倚天原生 24 點**，排除 B 衍生 22 點。
+[第二百一十二階段 A／B 證據](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
+仍是 host-only 原型；獨立審查已將[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md)
+的 3× 字型子契約**限縮升 READY**，正式前端現有 22×22 驗證器、
+字型接線與實體 3× Apply 尚待調整和驗收，2× 已確認的外觀不變。
+
 使用者再次確認 Linux 設定面板開啟時暫停 DOS，排除背景持續推進；
 Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這項排程已有
 [第一百九十四階段](docs/re/phase-194-formal-ebiten-panel-pause-conformance.md)
 的正式 `Game.Update` 限縮 CONFORMED 收據，但尚非完整 machine／DOS
 狀態或可玩前端驗收。[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
 現為 session-turn 限縮 READY **候選**；[Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)
-已補成功批次 epoch、零預算與整批路由拒絕的 ignored fake 測試，仍缺
-同一 typed owner 的真實 machine 收據與正式橋接提交驗證，不能升 READY。
+已補成功批次 epoch、零預算、整批路由拒絕，並在同一 ignored typed owner
+接上合成 COM 的真實 `Machine.Steps`／raw stop／error 收據；仍缺正式
+橋接提交原子性、`Draw` 同步故障通知與真實資源關閉，不能升 READY。
+真實橋接的 Down→非法 Apply 負例已證明逐事件提交會留下 DOS 左鍵；
+整批純預檢與單次提交契約已寫為待審候選，尚未改正式橋接。
 
 [GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
 追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)
-為限縮 READY 候選，TSV 仍 DRAFT。合法第八頁→第九頁重播證實原版
+經獨立審查限縮升 READY，單筆 identity TSV 亦標為 READY；正式
+watcher／presenter 已接入 dosgolem fork 本地 `7930b7a`（未推遠端）。
+[第二百一十九階段](docs/re/phase-219-story-page9-runtime-entry-ab.md)
+的合法第八頁→第九頁 control／2×／3× 收據：完整 machine snapshot、
+DOS state、indexed 與正規化 JSON 同值；RGBA 差異僅在核准單行矩形，
+2× 1,253、3× 2,615 像素，零缺字。先前原版重播亦證實
 20 個 glyph frame 內共有 1,280 筆故事矩形 A000 寫入，故原先「任何
-相交寫入都清 pending」的想法已撤回；候選改為建構中只接受當前字格的
-已量寫入，active 後任何相交 pre-write 才清層。倚天 2×／3× 本體幾何
-零越界；自然離頁、正式 watcher 與原文／繁中同狀態 A/B 尚未驗，
-不能稱第九頁已中文化。
+相交寫入都清 pending」的想法已撤回；限縮契約改為建構中只接受當前字格的
+已量寫入，active 後任何相交 pre-write 才清層。自然離頁、實際
+清層後畫面、Restore 重入及正常玩家路徑仍未知；規格 022 保持
+限縮 READY，Issue #20 仍 OPEN，不能宣稱第九頁完整中文化。
+同一合法第九頁存態的前進 8／後退 2 單鍵各雙重重播至固定
+`370000000` 步，均已被讀取但沒有故事矩形 pre-write 或 DOS 結束；
+此負結果只限該狀態與時窗，已停止擴鍵與延長探針。
 
 [第二百一十八階段](docs/re/phase-218-exit-prompt-runtime-ab.md)現已把真正
 Exit 後兩句 row 24 問句本體接上正式 dosgolem watcher／presenter；

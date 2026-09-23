@@ -62,3 +62,66 @@ A／B 的九個相異 host 字元都不缺字，五項文字的 advance 與墨�
 和數值欄位，沒有將字型、PNG 或原版畫面送入工具通道。原始
 倚天檔與生成圖片只留本機，不進 GitHub 或公開包；本階段不記錄
 尚未由使用者作出的視覺選擇。
+
+## 2026-09-24 使用者視覺決定
+
+使用者在並列圖上選擇 **A 原生倚天 24 點**，排除 B 的 16→22 衍生原型；
+前文「未選方案」僅保留當時的原型形成歷程。正式 3× host 字型必須保留
+原生 24 點筆畫，調整目前只接受 22×22 的前端驗證與繪製契約，並重驗
+控制項安全矩形、2× 不變及實體 3× Apply。這項決定不是正式接線或
+玩家路徑驗收；原版與已購字型仍只留本機 ignored `workplace/`。
+
+## A 方案獨立審查補記（2026-09-24）
+
+依已確認的視覺選擇 A，已於[規格 004](../spec/004-dosgolem-host-frontend-draft.md)
+追加**3× host 字型限縮 READY 候選**。排除 B 的 16→22 衍生原型及
+24→22 裁切；不變更 2× 16×16 字型。此補記是現行決策與最小接線
+審查，前文「未選方案」保留 phase212 原型製作當時的歷史狀態。
+
+本次只在受限 Docker 唯讀核對現有 `receipt.json` 與 `render.py`，
+其 SHA-256 分別仍為
+`2b3128a2487fb3d376fc3034b4a8ed03376cfb2dba1baf353bf03da28d94c48a`、
+`f9f4422f602e077f4915f0c02993977c57db9bb71cd1573b23fc22ee4dd232c3`；
+dosgolem fork HEAD `a01e34253fa59cc92c3fde1bf4b33577e318e9e7`。
+沒有開啟倚天原始字型、GOLEMFNT 或 PNG bytes，沒有將其加入 Git。
+原型收據的 A 覆蓋九個相異字元，`2×`／`3×` advance 各 40px、
+「設定／套用／取消」各 48px；
+五個控制項的 advance 與 ink box 全部 contained。此處釐清
+「五項文字」是設定、兩個倍率選項、套用、取消，不是五個中文標籤。
+
+正式路徑核對：`frontend/ebiten/game.go` 的 `Config.HostFont3`
+仍是單一 `*xlate.Font`；`validateHostFont` 對 3× 固定要求
+`W=H=22`，對每字以同一 `font.W` 計算安全矩形；`drawChrome`
+依倍率選 `fontForScale`，`drawText` 對每字以該固定 W 前進。
+`xlate.LoadFont` 的 GOLEMFNT 一份檔只有一組 W／H，不能在同一份
+載入結果內表達 A 的 24×24 漢字／符號與 16×24 ASCII。
+ignored `cold-boot-live-turn-proto/main.go` 載入本機 16×16
+GOLEMFNT 後以 `font22(hostFont)` 填 `HostFont3`；那是已排除的 B
+方向，不是原生 24 點接線。正式 `Game.New` 仍不能接 A，3×
+Apply 與返回 2× 的實體路徑未驗。
+
+最小正式變更候選：保留 `HostFont2` 與 2× 驗證、字距、畫筆；只把
+3× config 改成分別持有 24×24 Wide 與 16×24 ASCII 的 typed view，
+以逐字來源選擇、同一 advance 量測／繪製函式完成五個控制項。
+本機抽字流程用 `STD.24M`、`SPCFONT.24`、`ASCFONT.24` 建立兩份
+ignored 子集，不能把私有字型、衍生 GOLEMFNT 或字形圖加入正式
+程式或發行包。phase212 host-only 圖不能證明 `Game.New` 的 fail-closed
+驗證、3×實體 Apply、2×往返不變或真實 DOS 零副作用，故規格 004
+維持 DRAFT；本限縮子契約的後續獨立 READY 審查如下，正反例列於規格 004。
+
+## 2026-09-24 獨立 READY 審查
+
+主代理獨立在唯讀、無網路 Docker 重算 A／B `receipt.json` 與
+`render.py` 的 SHA-256，均與本文件所列相同；直接核對 A 五項
+advance／ink box 及安全矩形，未缺字、未越界。另核對正式
+`frontend/ebiten/game.go`：現行 `HostFont3` 為單一 `*xlate.Font`、
+`validateHostFont` 限 22×22、`drawText` 逐字以同一 `font.W` 前進；
+`xlate.LoadFont` 的單一檔頭也只載一組 W/H。這證明 A 的兩種字寬
+必須由 3× 專用 typed view／量測與繪製同一分支接線，不能只換
+字型檔或裁切。使用者已明確選 A；規格 004 的限縮 3× 字型節
+列出來源雜湊、輸入型別、逐字 advance、2× 保持不變、負例及
+私有素材邊界，足以授權**僅此字型接線**升 READY。
+
+此審查不核准修改 DOS、原版輸入、完整 cold boot 或玩家路徑；
+也不宣稱正式 3× Apply 已完成。這些須待正式程式、合成負例與
+私有 Xvfb 收據通過後，才可於相同限縮範圍討論 CONFORMED。

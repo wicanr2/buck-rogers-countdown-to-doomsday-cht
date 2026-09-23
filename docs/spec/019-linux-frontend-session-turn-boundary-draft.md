@@ -230,6 +230,115 @@ focus、host transition 與 keyboard transport 後才提交；若提交階段的
 既有無錯誤回傳 DOS queue／mouse 呼叫之外仍可能失敗，必須另證明
 不會造成部分送入，否則這批交付不能宣稱原子拒絕。
 
+#### 整批純路由預檢與單次 DOS 提交：待審 typed 契約
+
+此段是 READY 前的**待審契約**，不是現行 API 已有的能力。「單次提交」
+指同一個 `Update` 只有一個通過完整預檢的提交階段；`MoveMouse`、
+`PressMouse`、`ReleaseMouse` 與 `DOS.PushKey` 仍是數個既有呼叫，
+不宣稱 DOS 提供交易或回滾。原型中的 canvas Down → 關閉面板時
+`PanelEventApply` 已實測：逐事件提交在後段回錯時留下 DOS 左鍵；
+證據見[審查紀錄](../re/issue-18-session-turn-ready-candidate-review.md)。
+
+建議型別的**必要資訊**如下；實際名稱、欄位歸屬與封裝可於 READY
+審查調整，但不可遺失其狀態或憑空重算跨設備時間順序：
+
+```go
+type CapturedUpdate struct {
+    StartedPanel host.PanelState
+    Layout host.MouseLayout // 本批擷取所用的完整值，含 Epoch
+    PointerDown, PointerUp *host.MouseEvent
+    Focused bool
+    Keys []MappedKeyCandidate // 原始順序、明示 transport、payload／未映射結果
+}
+type MouseRouteState struct {
+    HasCurrent, Pressed, HostCaptured bool
+    Current host.MouseLayout
+    PressedEpoch uint64
+}
+type RouteBase struct {
+    Panel host.PanelState
+    Mouse MouseRouteState
+    FrontendLayout host.MouseLayout
+    OwnerPhase SessionPhase
+    PendingUpdate bool
+}
+type PreparedUpdate struct {
+    Base RouteBase
+    FinalPanel host.PanelState
+    FinalMouse MouseRouteState
+    Pause bool
+    HostTransition bool
+    DOSActions []PreparedDOSAction // 已定序的 mouse 操作與 BIOS／IRQ transport
+}
+```
+
+`MappedKeyCandidate` 不可只保留 `dos.Key`：需保留來源候選是否受現有
+`mapKey` 支援、選定的 BIOS／IRQ transport 及已驗 payload。現行
+`Game.key` 對未映射鍵直接略過；此契約不得默默把它猜成 BIOS key。
+若正式政策仍允許略過，plan 要明列為「不交付」並加測；要改為整批
+拒絕則先審其玩家可見影響。`PreparedDOSAction` 只記已驗的參數與順序，
+不持有可於提交時重新分類的原始 pointer 或視窗座標。
+
+預檢在唯一 session owner 的同一 goroutine 讀取 `RouteBase`，對獨立
+值狀態依 `Game.Update` 的 Down → Up → focus loss → 鍵盤候選順序
+模擬整批。pointer hit test 使用擷取當下的 layout；每個 host transition
+使後續事件使用的 panel／layout 狀態變化必須按正式 `refreshLayout`
+語意預先算出，不可把舊 epoch 當新 layout。`MouseBridge.Handle` 的
+pressed、pressedEpoch、hostCaptured 與 current layout 必須由其內部
+狀態的唯讀快照或同一純 evaluator 取得；公開 `Pressed()`、
+`HostCaptured()` 和 `Layout()` 仍缺 pressedEpoch，不能完整重建 Up
+的 epoch-changed-release 分支。預檢不得碰正式 `PanelController`、
+正式 `MouseBridge`、DOS mouse／keyboard queue、`Machine.Steps`、
+視窗尺寸或 session epoch。
+
+路由結果須分辨「轉送」、「host 消費」、「依既有語意可接受的無動作」
+與「拒絕整批」。例如 `MouseBridge` 對既有 pressed 的 Up、非 canvas Up
+或失焦會釋放；沒有 pressed 的 focus loss 仍會清除 host capture，
+不可因其回傳 `unmatched-up-rejected` 就跳過清理。沒有 pressed 的
+普通 Up、重複 Down、畫布外 Down 目前由正式 `Game.routePointer`
+忽略其 route reason；是否保留無動作或改為拒絕，須在 READY 審查
+列舉理由並固定測試，不得靠字尾 `rejected` 一概判定。stale layout、
+未知 event／button、非法 host transition 或錯誤鍵盤 transport／payload
+必須在任何 DOS 動作前被預檢拒絕。host transition、起點或終點面板
+開啟時的整批鍵盤隔離沿用上節，不因 Apply／Cancel 收合而改判。
+
+預檢成功後、第一個 DOS 動作前，提交端一次核對 `RouteBase` 仍與
+目前 panel、mouse、layout、phase、pending 回合相同；沒有相同狀態
+就拒絕且 DOS 零新副作用。提交不得再呼叫可失敗的 hit test、鍵盤
+映射、layout 驗證或 `ApplyLayout`。若以現行 `PanelController.Route`
+或 `MouseBridge.Handle` 重播 plan，必須證明其每一步在已核對的狀態
+下不會出現新的普通拒絕；只比對批次起點而不驗後續狀態轉移不足以
+證明這一點。較小的通用 API 方案是由 host 層提供 panel 與 mouse
+的純預檢／不可變計畫，並提供在核對來源狀態後**不再做可失敗路由**
+的提交操作；session adapter 只負責編排既有 DOS 輸出與鍵盤 transport。
+若無法實作此保證，規格仍停在 DRAFT／READY 候選，不以 fake 計數
+或一次成功批次宣稱原子拒絕。
+
+提交完成後才將同一批接納為一個 session epoch，記錄 host 終態、
+DOS action 數與 pause 決定；拒絕批次不增加 epoch、不送 DOS、不
+呼叫 `Advance`，首次可回報錯誤依本規格進 `Failed` 並 Close 一次。
+這裡的「零副作用」限 DOS button／座標／mouse callback queue、
+BIOS／IRQ queue 與 `Machine.Steps` 的**新增**副作用；既有按住的左鍵
+與既有佇列不可被錯誤測試誤判為本批新增。失焦清理若是有效批次，
+其 Release 是有意提交，不應歸成拒絕批次的零副作用。此契約不宣稱
+記憶體耗盡、程序中止或 Ebitengine 繪圖呼叫可交易式回滾。
+
+READY 前的具體矩陣：
+
+| 起點／批次 | 預期可觀測結果 |
+| --- | --- |
+| 未按住、canvas Down 後非法 Apply 或 stale Up | 整批拒絕；DOS button／座標／callback／keyboard queue 及 Steps 均無新增；phase Failed、epoch 不增。 |
+| 已按住、有效 canvas Up／非 canvas Up／跨 epoch Up | 預檢與提交一致，恰一次 Release；不得留下 pressed 或重複 release。 |
+| hostCaptured Down 後 Up；失焦時有／無 DOS pressed | host capture 清理與 DOS Release 分別符合來源狀態；無 pressed 的失焦不能產生多餘 DOS Release。 |
+| 同批 Down＋Up；layout／倍率轉移；舊 layout event | 以本批固定順序和各事件正確 layout 計畫；錯誤 epoch 在提交前拒絕，成功時最終 mouse／panel／frontend layout 與 plan 相同。 |
+| 起點開啟的 Apply／Cancel＋Enter；起點關閉的 Open＋Enter | 整批 BIOS／IRQ 零交付、零 machine step；下一個關閉回合才可恢復。 |
+| 合法 canvas pointer＋多個已映射鍵；末尾未映射或非法 transport | 有效批次依原序交付且計數吻合；未映射處理須符合已審政策，非法 transport 在第一個 DOS 動作前拒絕。 |
+| 預檢後狀態／layout token 改變；提交階段可注入錯誤 | 不得部分送入 DOS；若做不到，需縮小或改寫正式提交 API，再審 READY。 |
+
+矩陣須在真實 bridge 與實際 `readFrameInput` adapter、無原版素材的
+可重播測試中完成；純資料 fake 只能證明前置邏輯。此子契約的
+READY 不等於規格 004 的 cold boot、正常玩家路徑或同狀態完成。
+
 ### epoch、預算與停止收據
 
 `Epoch` 是每個**成功接納的 Update 批次**的單調序號，從 1 開始，

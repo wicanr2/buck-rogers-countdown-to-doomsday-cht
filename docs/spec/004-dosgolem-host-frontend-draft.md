@@ -5,8 +5,99 @@
 2026-09-24 3× host 字型前置：[第二百一十二階段](../re/phase-212-host-only-3x-eten-font-ab-draft.md)
 已用不載原版的並列原型核對原生倚天 24 點與既有原型 22 點，
 均不缺字且在 host 控制項矩形內；24→22 直接裁切會損筆畫。
-正式 `Game.New` 仍要求 22×22，3× Apply 未執行。視覺選擇及
-後續 validator／字型接線待使用者確認，本規格維持 DRAFT。
+使用者現已選擇 A：3× 設定面板使用倚天原生 24 點，排除 22 點衍生原型。
+正式 `Game.New` 仍要求 22×22，3× Apply 未執行；validator／字型接線與
+實體驗收尚待完成，本規格維持 DRAFT。
+
+## 3× host 字型限縮 READY：倚天原生 24 點
+
+狀態：**限縮 READY；僅授權本節的 3× host 字型接線，004 整體仍 DRAFT。**
+[獨立證據審查](../re/phase-212-host-only-3x-eten-font-ab-draft.md#2026-09-24-獨立-ready-審查)
+已核對 A 版原型收據雜湊、正式 `Game.New`／`drawText` 與 `xlate.LoadFont`
+的現行能力；尚未取得正式 3× Apply 或完整玩家路徑收據。
+使用者在 phase212 A/B 並列原型後選擇 A：3× 設定面板中文字與全形
+符號使用倚天原生 24×24、ASCII 數字使用原生 16×24；B 的 16→22
+衍生字型及把 24×24 裁成 22×22 均排除。此決定只及於 host 控制列
+與設定面板，不改遊戲畫布、繁中覆繪字型、輸入、規則或存檔。
+
+證據等級與輸入：phase212 的 ignored host-only 收據記錄九個相異
+標籤字元均有墨跡，A 五項文字的 advance 與實際墨跡均位於既有
+控制項安全矩形；直接裁切 24→22 的九種整數偏移都損筆畫，最好
+偏移仍合計少 57 點。這是**已證實的本機字型／幾何原型**，不是
+正式 `Game.New`、3× Apply、真實視窗或原版畫面收據。來源是使用者
+本機 `ET353S/FILES/STD.24M`（SHA-256
+`347ae2655807fc250a18673e6634a363dfba7feee6c3355b886a0810d2d9c030`）、
+`SPCFONT.24`（`da7574d2eee10b9d3b2a2d90bbc39e2ba482b9b2b73a9803f1e4dbefdd91a92a`）
+與 `ASCFONT.24`（`7e69f74bfedf57579fad41a1bc2f0c3a6da873cba1734fd30a1c4afc64893ada`）；
+解壓器與產物雜湊見[phase212 審查紀錄](../re/phase-212-host-only-3x-eten-font-ab-draft.md)。
+這些檔及抽字所得點陣均只可作本機唯讀輸入／ignored 產物，不能加入
+Git、GitHub、公開包或可散布測試語料。
+
+正式 3× host 輸入需能表達兩種**各自有固定字模尺寸**的本機來源，
+例如下列 typed view；名稱可調，但不能把混合字寬塞回單一等寬
+`xlate.Font{W:22,H:22}`：
+
+```go
+type HostFont3 struct {
+    Wide  *xlate.Font // 倚天 24×24：標籤中的漢字與「×」
+    ASCII *xlate.Font // 倚天 16×24：標籤中的「2」「3」
+}
+```
+
+兩份本機子集可分別經既有 `xlate.LoadFont` 讀入，但建立者須記錄上列
+來源 SHA-256、ETUNPACK 解壓器版本／雜湊、抽字清單及輸出雜湊；
+漢字／符號按標籤 Unicode rune → Big5 區段索引抽取，ASCII 按原生
+字元索引抽取，不得把自訂碼位直接當 Big5 索引；
+`xlate.Font` 的 GOLEMFNT 檔頭只載單一 W／H，來源位元組本身不可
+由型別或檔名推定。`Game.New` 在任何 Draw 前失敗即關閉地驗證：
+Wide 為 24×24、ASCII 為 16×24；每個標籤 rune 僅按既定分類取
+指定來源，存在、列長為 72／48 bytes、至少有一個墨點；不得
+缺字 fallback、縮放、裁切或把衍生 22 點冒稱原生。來源身分另以
+本機輸入雜湊與可重建流程核對；單看 `W`／`H` 不能驗證字形出處。
+字距（advance）與繪製共用同一個逐字量測器：漢字／「×」每字 24px，
+ASCII 數字每字 16px，字模高度一律 24px；`2×`／`3×` 各 40px，
+「設定／套用／取消」各 48px。任何後續新增 host 標籤也必須先
+驗 coverage、advance、實際墨跡及安全矩形，不能只改文案後讓畫筆裁切。
+
+3× 文字仍以目前 `drawChrome` 的起點與控制項／hit rectangle 作
+定位，不移動遊戲畫布：設定 `(744,8)`、`2×` `(36,114)`、`3×`
+`(216,114)`、套用 `(450,198)`、取消 `(675,198)`，單位為 3×
+output 像素。對應安全矩形依序為 `[732,6,948,45)`、
+`[24,105,186,174)`、`[204,105,366,174)`、`[435,189,639,261)`、
+`[660,189,864,261)`；量測 advance box 與逐像素 ink box 均須
+完整落入各自矩形，左右與上下都檢查。phase212 A 的右邊界分別
+為 792、76、256、498、723，均小於安全矩形右界；這只是
+host-only 原型收據，正式畫筆要重測相同幾何。
+
+2× `HostFont2` 繼續使用現有 16×16 等寬 `xlate.Font`、每字
+advance 16 與既有驗證／畫筆；切到 3× 再返回 2×，2× 標籤與
+控制項像素、hit rectangle、畫布 origin 應與切換前一致。不得
+為了共用 3× 混合字寬而改動 2× 的字距或字型來源。
+
+現行正式 `frontend/ebiten/game.go` 的 `Config.HostFont3`、
+`validateHostFont`、`fontForScale` 與 `drawText` 都使用單一
+`*xlate.Font`，3× 驗證固定 22×22、`drawText` 每字增加 `font.W`。
+因此最小正式改動是新增上述 3× 專用 typed view 與 3× 專用
+驗證／量測／繪製選字；`HostFont2` 及 2× 分支維持原契約。
+本機載入端須以三份原生來源建立兩份僅含 host 標籤的子集，
+將 Wide／ASCII 注入 `Config`；不在正式程式內硬編私有字型路徑、
+攜帶字模或把字型嵌進二進位。3× 啟用前若任一來源缺席、雜湊不符、
+解壓／抽字失敗、尺寸／列長錯誤、缺字或超出安全矩形，應回明確
+錯誤且不得以 22 點原型或 2× 拉伸字型靜默代替。
+
+Docker 驗收矩陣（限縮實作後逐項驗證）：
+
+| 條件 | 必要結果 |
+| --- | --- |
+| 無私有來源的合成 24／16 點 glyph | 3× validator、逐字 advance 與安全矩形正例；尺寸 22、錯列長、空白或漏一字均在 `Game.New` 前拒絕，不需原版素材。 |
+| 已鎖雜湊的本機三份倚天來源 | 在有界、無網路 Docker 內唯讀掛載並重建兩份 ignored 子集；量到九字 coverage、24／16×24 來源、40／48px advance、逐像素 ink containment，輸出可重播雜湊。 |
+| 正式 3× `Game.New`、Open／Select／Apply／Cancel | 本機 Docker／Xvfb 以正式 adapter 跑實際 3× Apply 與返回 2×，檢查文字未裁切、控制項點擊／焦點、面板回合零 `Advance`，並保存有界畫面與步數收據。 |
+| 同一初始狀態的 2× 基線及 2×→3×→2× | 2× 標籤／控制項與畫布像素不變，DOS raw indexed、BIOS／IRQ／mouse、存檔不因純倍率切換而改；未完成正常玩家路徑不得聲稱整體前端符合。 |
+| 缺少本機字型或公開工作樹檢查 | 正式啟動明確拒絕 3× 必需字型、無 22 點 fallback；Git／封包不含原生字型、GOLEMFNT 子集、字形圖或可還原素材。 |
+
+所有原型、截圖與本機子集留在 ignored `workplace/`。這份限縮
+字型契約不解決規格 004 的 cold boot、session、原版同狀態或
+完整玩家路徑；只有上列限縮範圍升 READY，未通過其正式驗收前不得稱 CONFORMED。
 
 2026-09-24 實體 live-turn 原型：[第二百零九階段](../re/phase-209-cold-boot-live-ebiten-panel-pause-draft.md)
 從第零步到選單後，正式 `frontend/ebiten.Game.Update` 已在 2× X11 視窗
@@ -125,6 +216,8 @@ input、palette 與 active layer 重繪仍屬未接線 frontend 責任；不推�
   2×／3× 倍率記號保留。中文採使用者指定的本機倚天字型來源，不把字型 bytes 或衍生
   GOLEMFNT 放進 Git／公開包。具體字級、對齊與版面仍須實際截圖核對，不能由
   headless CLI 或 DOS mouse injection 推定。
+- 3× 面板的中文字型已選 A：倚天原生 24 點；不得以裁切 24→22 或既有
+  16→22 衍生原型冒充正式字型。2× 已確認的字距與外觀不隨此決定更動。
 - 使用者於 2026-09-22 確認第一個可玩版本先支援 Linux，架構保留日後擴充
   Windows／macOS 的能力；第一版三平台同步打包與驗收已排除。這只定平台優先序，
   不替持久化定案。

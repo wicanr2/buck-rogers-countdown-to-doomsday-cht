@@ -165,3 +165,152 @@ fake mouse 只是計數器；不能外推真實 layout epoch、滑鼠狀態機�
 Ebitengine `Draw` 同步 fault 或真實資源 Close。
 故本次**不升 READY、不改 production**，仍須以正式 API 與同一
 typed session 的 machine 差分負例完成獨立審查。
+
+## READY 前可丟棄補證：同一 typed owner 的 Machine 收據（2026-09-24）
+
+在 ignored `workplace/dosgolem/workplace/phase211-session-receipt-candidate/`
+新增 `turn_owner.go` 與 `turn_owner_test.go`。`TurnOwner` 在一個物件內持有
+合成純資料路由、接納批次序號、pending 回合、phase、合成 BIOS／mouse 計數，
+以及**真實** dosgolem `Machine`／`DOS`。它用合成 COM 載入，透過
+`Machine.RunUntil` 取得 raw stop／error，直接以呼叫前後 `Machine.Steps`
+計算嘗試數。路由 token（`LayoutEpoch=1`）和交付計數仍是可丟棄模型，
+不代表正式 bridge 或《拯救地球》的輸入語意。
+
+重播環境：本機 ignored dosgolem fork HEAD
+`a01e34253fa59cc92c3fde1bf4b33577e318e9e7`；Go 1.26.7；既有
+`eob-remake-go:1.26.7-ebiten2.9.9` image ID
+`sha256:39d6e05c9abc60a566e376cde6afd29c24aa21c30eeec1e1fd92c8b16e62aa60`。
+確認 `/home/anr2/cht/golden_box/拯救地球/workplace/dosgolem` 為既有目錄後，
+以其唯讀掛載 `/dosgolem`，工作目錄 `/dosgolem` 執行
+`/usr/local/go/bin/go test -count=1 ./workplace/phase211-session-receipt-candidate`。
+容器使用 `timeout 90s docker run --rm --network none --read-only --memory 2g
+--cpus 2 --pids-limit 256 -u "$(id -u):$(id -g)"`、512 MiB 可執行
+`/tmp` tmpfs、`GOCACHE=/tmp/go-cache GOWORK=off GOPROXY=off`；全套通過。
+格式化時同 image 暫以工作樹可寫掛載，寫後抽查兩檔皆為 UID/GID
+`1000:1000`。兩個新 ignored 檔 SHA-256 分別為
+`79ea27ded94fe91b6d387328aeabee209cd46a5a85fa269d8f1502f68b21087d` 與
+`0d175e42a51b912dcb9e0e32a319738371a12bda692f662d52d14275e1ecc366`。
+
+同一 owner 的測試實測：Open、保持開啟、Close 三個成功接納批次的 epoch
+為 1、2、3，皆 `PanelPaused`、零 `Machine.Steps`、零合成 BIOS；下一
+關閉批次 epoch 4 以 budget 2 執行真實兩步，前後 Steps 為 0→2，
+raw `StopBudget`、`BudgetExhausted`。epoch 5 的 predicate 提早停止於
+2→3，raw `StopPredicate` 與 `PredicateStopped` 分離；另一回合的 breakpoint
+亦保留 raw `StopBreakpoint` 與兩步差分。晚到的非法鍵、非法 pointer、
+stale layout token 及 host transition 後非法鍵都在接納前拒絕，epoch、
+Machine 步數及合成 BIOS／mouse 計數維持零。重疊或重複 Advance、
+零或超過原型上限的 budget 均使 owner `Failed` 且沒有新增步數。
+DOS 正常退出即使 raw stop 為 `StopBudget` 仍回 `ProgramStopped`；
+已退出的起點零步且不呼叫 `RunUntil`。非法 opcode 的 machine error
+伴 raw `StopBudget` 時，故障收據仍保留 0→2 的兩次嘗試，phase 為
+`Failed`，再次輸入被拒。
+
+此補證閉合先前「epoch／budget／phase 與真實 Machine 差分從未同處一個
+typed owner」的**合成原型**缺口；它不把規格 019 升 READY。原型的
+`TurnBatch` 沒有正式 `readFrameInput` payload、實際 layout epoch 或
+`PanelController`／`MouseBridge`／`KeyboardBridge` 提交，因此提交階段能否
+在無部分 DOS 交付下失敗仍待正式橋接證明。合成 owner 也未接
+`Game.Draw` 同步 `ReportDrawFault`、下一次 `Update` 的零步閘門、真實資源
+Close 一次與 close error 保存；這些維持實作後驗收邊界。原版素材與
+正常玩家路徑完全未參與，不能聲稱原版同狀態或中文化完成。
+
+## READY 前可丟棄補證：真實橋接的後段 route 失敗（2026-09-24）
+
+本輪唯讀核對同一 fork 的正式 API：`host/mouse_bridge.go` 的
+`MouseBridge.Handle` 回 `MouseRoute` 而非 error，成功的 canvas Down
+立即呼叫 `MouseOutput.MoveMouse`／`PressMouse` 並改自己的 pressed state；
+Up／focus loss 可立即 Release。`host/panel.go` 的 `PanelController.Route`
+在 Open／Select／Apply／Cancel 成功時立即改面板或倍率狀態，時序或倍率
+錯誤則回 error。`presentation/keyboard.go` 的
+`KeyboardBridge.DeliverBIOSKey` 先呼叫該 Route，允許時立即呼叫
+`DOS.PushKey`；`DOS.PushKey` 先試 BDA 環形緩衝，滿載退入 DOS 自有 queue，
+其簽名無 error。`MouseBridge.ApplyLayout` 可因無效或未遞增的 epoch
+回 error；`Game.refreshLayout` 目前在呼叫它前還會改 frontend layout
+並呼叫 `ebiten.SetWindowSize`。因此路由預檢與正式提交不得混用，也不能
+把已送的 DOS 動作視為可回滾。
+
+在同一 ignored `phase211-session-receipt-candidate/` 新增
+`real_bridge_batch_test.go`，以**真實** `PanelController`、
+`MouseBridge`、`KeyboardBridge`、DOS mouse 與 BIOS queue 重播合成
+canvas Down → 非法 Apply（面板仍關閉）。逐事件直接提交時，後段
+`Panel.Route` 回錯，但 `MouseBridge.Pressed()` 與 `DOS.Mouse.Buttons`
+左鍵位已設，證明部分 DOS 副作用。另一組先用**獨立的暫態**
+`PanelController` 與 `MouseBridge`（後者接計數 sink）預檢相同批次，
+在任何真實橋接提交前拒絕；真實 DOS mouse button 與
+`DOS.KeysPending()` 均為零。合法 canvas Down＋BIOS key 批次則於
+預檢後經正式橋接成功提交，DOS button 設定且 pending key 為 1。
+這些測試不執行原版 EXE，也沒有觸及私有素材。
+
+重跑命令及容器限制沿用上節；`go test -count=1
+./workplace/phase211-session-receipt-candidate` 全套通過。新 ignored
+測試檔 SHA-256 為
+`6dd2bb45a622260cd96f0d8aefecc483fa805043267905339b22135cbc903380`，
+UID/GID `1000:1000`。初次編譯因測試誤將 `dos.KeyForRune` 當成單一回傳
+值而失敗，改為接收 `(Key, bool)` 後以同一容器、同一測試命令乾淨重跑；
+這是測試原型的編譯錯誤，不是橋接產品缺陷。
+
+此原型**只從新建、關閉、未按住滑鼠的狀態**開始。正式最小改動應在
+同一 typed session／單一 goroutine 建立完整批次的純資料 route plan：
+從當前 `PanelState`、`MouseBridge` 的 pressed／pressedEpoch／hostCaptured、
+current layout 與焦點狀態複製到獨立暫態；按 Down→Up→focus loss→有序
+鍵盤順序驗證每個 route、layout epoch、host transition、鍵盤 transport
+與 payload，並產出不可變提交清單。`pressedEpoch` 現為私有欄位，
+不能靠現有公開 `Pressed()`／`HostCaptured()` 完整重建；可在通用 host
+層新增唯讀狀態快照及無輸出 route evaluator，或讓 `MouseBridge`
+本身提供使用相同內部狀態的純預檢方法。正式提交前需確認 plan 的
+來源狀態／layout 仍一致，且提交階段不再執行可失敗的分類、
+`ApplyLayout` 或 payload 判定；若仍可能出現普通錯誤，必須證明它
+發生在第一個 DOS 動作之前，否則不可宣稱整批原子拒絕。
+
+READY 閘門因此是：以實際前端擷取 batch 和正式 bridge 在已按鍵、
+host capture、layout 切換、focus loss、混合 pointer＋鍵盤及後段
+非法 route 中驗證「拒絕時 DOS button／座標／callback queue／BIOS queue
+皆無新增副作用」，並核對成功 plan 的提交次序及結果與預檢相符。
+此處的「原子」只指已列出的普通、可回報路由錯誤；不主張記憶體耗盡
+或程序中止等不可恢復情境有交易保證。正式 production 未更動，
+規格 019 繼續維持 READY 候選。
+
+## 整批提交契約審查補記（2026-09-24）
+
+依上節真實橋接負例，已在[規格 019](../spec/019-linux-frontend-session-turn-boundary-draft.md)
+的限縮 READY 候選下追加「整批純路由預檢與單次 DOS 提交」待審契約。
+本輪只改規格與本審查紀錄，沒有修改 `workplace/dosgolem` 正式
+`host`、`presentation`、`frontend`、page9 程式或原版素材。
+
+唯讀重核的現行順序是：`Game.Update` 取得一次 `frameInput`，先 Down、
+Up、失焦清理，再按有序鍵盤清單處理；`routePointer` 的 host hit
+先呼叫 `MouseBridge.Handle`，後呼叫可能回錯的 `PanelController.Route`，
+一般 pointer 則忽略 `MouseRoute.Reason`。`MouseBridge.Handle` 的
+Down／Up 可立即改 DOS mouse；`KeyboardBridge.DeliverBIOSKey` 在
+`Panel.Route` 成功後立即 `DOS.PushKey`，其普通呼叫無 error 回傳。
+`MouseBridge.ApplyLayout` 可回無效／非遞增 epoch error；目前
+`Game.refreshLayout` 在呼叫它之前已改 frontend layout 並設定視窗大小。
+因此僅把後段錯誤處理改成 fail-close，不能回復已發生的 DOS 動作。
+
+新契約把擷取 batch、panel／mouse／frontend layout 來源快照、逐事件
+值狀態預檢、不可變 DOS action 清單、提交前狀態核對及單次提交階段
+分開。mouse 快照必含 `pressedEpoch`；現行公開 getter 缺此欄，不能
+從 `Pressed()`、`HostCaptured()`、`Layout()` 還原跨 epoch Up 路由。
+預檢需涵蓋 Down→Up→失焦→keys，並列清 host 消費、DOS 轉送、
+既有可接受 no-op 與整批拒絕；失焦無 pressed 時雖可能回
+`unmatched-up-rejected`，仍必須清 host capture。正式 bridge 的
+`duplicate-down-rejected`、`outside-canvas-rejected`、普通 unmatched Up
+目前被 `Game` 忽略，其 fail-close 或 no-op 政策須由 READY 審查定案，
+不能只靠 reason 字串推測。
+
+最小通用改動候選：host 層提供 mouse 完整唯讀狀態及與正式
+`Handle` 共用判讀的純預檢，panel 層提供同樣的值狀態 transition；
+兩者的已驗計畫在單一 owner、來源狀態一致時交由不再執行可失敗
+路由的提交操作，session adapter 才將已驗 mouse 操作與 BIOS／IRQ
+payload 送 DOS。若沿用現行 `Route`／`Handle` 逐筆重播，還需以
+正式測試證明其每個提交步驟都不會產生新的普通拒絕；目前沒有
+這份證據。`Game.refreshLayout` 的可失敗驗證和外部視窗尺寸變更
+必須在第一個 DOS action 前處理或隔離，不能夾在提交清單中。
+
+目前仍阻塞限縮 READY 的具體項目：完整既有 mouse state 的可觀測
+快照／純 evaluator、提交階段不再出現後段普通拒絕的證明、實際
+`readFrameInput` adapter 對 layout／未映射鍵的定案，以及規格 019
+矩陣中已按鍵、host capture、跨 epoch Up、失焦、混合鍵鼠、後段
+錯誤與來源 token 改變的正式 bridge 收據。上節合成新建狀態原型
+不能替代這些收據；規格 019 不升 READY。拒絕時的零新增 DOS
+副作用只針對可回報的普通路由錯誤，不推及記憶體耗盡或程序中止。

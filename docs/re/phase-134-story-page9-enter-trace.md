@@ -209,3 +209,66 @@ SHA-256 為
 `0afb4bb32a79fbdf700a6efb2ff60448f52e6169c3842cd1282b791355a76379`。
 這補上候選的字型幾何，不是原版 A/B，也不升格
 `text/story-page9-events.tsv` 的 DRAFT 狀態。
+
+## 2026-09-24 獨立證據審查：固定單行入頁本體
+
+結論：**規格 022 的合法 page8→page9、row 17／column 1 固定 20-glyph
+入頁本體，可限縮升 READY，准許依該規格接正式 watcher／presenter；
+不核准完整第九頁、自然離頁、正常玩家路徑或 CONFORMED 聲明。**
+此審查不把尚未量到的自然離頁誤寫成已證實。若後續轉場沒有相交 A000
+pre-write，也沒有 Stop／Restore，現有契約不能保證即時清除覆繪；該出口
+仍須返回 RE／DRAFT。Enter、4／6／8 的既有短窗及 row 15／24 重畫
+不得充當該出口收據。
+
+審查核對原版 `GAME.OVR` SHA-256
+`3a4ad4856c08fe5973179f1d907feed1d870af99d08abd1cb884b316324f3cc0`、
+合法 page8 state SHA-256
+`327dc1cb8baf4bee71cdcd0173538af123c47266c8bbf556b28f38d89355b0a9`、
+entry A/B 收據 SHA-256
+`0d27b6948399aff772aa2533a2b0b8ca19b5b9495c1c51bee94cd197eeec3873`、
+indexed SHA-256
+`fb65f3b36e019caa8d0e74d72aa71ab9908b76ec03fc1f5c301ca563473647b0`。
+位址均為 dosgolem 實模式 `segment:offset`；A000 是視訊 byte offset。
+本次重跑的 dosgolem 工作樹含 ignored 一次性 probe；probe SHA-256
+`46a2980172a55ada9f5d4aa8b1713d6cb2dfa178b9bc998cefea251afb8d63f3`。
+`golang:1.26.7-bookworm`／Go 1.26.7、無網路、有界 Docker 重跑得到
+20 個 frame 各 64 筆相交 pre-write、總數 1,280、frame 外／錯字格 0；
+writer `0763:184D` 1,028 筆及 `0763:1854` 252 筆。這些寫入都在
+guarded return 以前建構原文，必須容許於 pending；第 20 筆返回後才
+能啟用 active。active 後任一相交 byte pre-write，包括同值寫入，應在
+原版 write 前清 event／stamp；Stop／Restore／epoch 中斷亦清層。
+
+目前正式第九頁 TSV 的 SHA-256 分別為 events
+`7813dc686a398c0355040387cd60f41140d7b2649ea1e89607c4bd8d18fe63b5`、
+譯文 `baf9ba8b56757261ba1e022e69c2df34c971c5679b593c83a694c0b4b809cb2e`；
+本機現用 1,028 字倚天 top-pad GOLEMFNT SHA-256
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+其 manifest 鎖住本筆譯文雜湊與三份唯讀來源字型雜湊。它與本頁前段
+1,026 字的舊字型是不同版本；幾何驗證採**現用 1,028 字版**。
+`PYTHONPATH=tools python3 -m unittest tools/test_story_page9_catalog.py`
+六項通過，catalog lint 通過。一次性幾何 probe SHA-256
+`0afb4bb32a79fbdf700a6efb2ff60448f52e6169c3842cd1282b791355a76379`
+以正式 `xlate.Layer.Draw`／`manualThreeXFont` 測得 2×／3× 零缺字且
+核准矩形外零差；這只證明合成畫布的 containment，並非原版同狀態 A/B。
+規格 022 已訂正一處幾何語意：`xlate.Stamp` 每個 rune 實際前進一個
+8-pixel 邏輯字格，TSV 的中文字元兩格僅是保守 lint。
+
+正式實作最小清單：先鎖單筆 TSV／譯文／字型版本，再驗 20 筆逐字
+caller、guard、style、座標、bytes SHA、ABI、`0763:03D6`／`0xCA`、
+SS／SP 與時間次序；pending 每 frame 僅准上述兩個 writer 在當前字格
+的 64 筆 pre-write，異常即清；第 20 筆 verified return 才原子提交；
+active 後任何相交 A000 byte pre-write、Stop、Restore 或 epoch 中斷
+清 watcher、queued event 及 RGBA stamp；2×／3× presenter 只畫核准矩形。
+正式 typed 假資料失敗矩陣及合法 page8 state 的 control／2×／3×
+同狀態 A/B 仍是接線後必過的 CONFORMED 閘門，不是本次 READY 證據。
+
+### 審查後 catalog 狀態同步
+
+主代理依上述獨立審查，僅將固定入頁單行的規格 022 與
+`text/story-page9-events.tsv` 從 DRAFT 升為**限縮 READY**，正式接線得以開始；
+譯文未改。升級後 events TSV SHA-256 為
+`1acc41cf8f904e3363e1f22d753c91a75ba00767fe531d4152bb1ad618bdd735`，
+譯文仍為 `baf9ba8b56757261ba1e022e69c2df34c971c5679b593c83a694c0b4b809cb2e`。
+原先 DRAFT 檔案雜湊保留於上節，作為審查當時的輸入，不可誤認為現行 TSV。
+READY catalog lint 七項測試通過，其中一項明確拒絕退回 DRAFT status；
+這不表示 watcher、原版 A/B、自然離頁或整頁中文化已完成。

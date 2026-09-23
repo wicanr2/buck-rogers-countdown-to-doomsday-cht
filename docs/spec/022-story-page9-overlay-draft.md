@@ -1,7 +1,17 @@
 # 022 — 第九頁固定單行劇情輸出端覆繪
 
-狀態：**限縮 READY 候選，待獨立證據審查；尚未授權正式接線，也未達 CONFORMED。**
+狀態：**限縮 READY（僅合法 page8→page9 的固定單行入頁本體）；正式入頁 A/B 已驗，自然離頁與清層後畫面未驗。**
 日期：2026-09-24
+
+[第二百一十九階段正式入頁 A/B](../re/phase-219-story-page9-runtime-entry-ab.md)
+已把 watcher／presenter 接到 dosgolem，固定合法 state 的 control／2×／3×
+machine、DOS、indexed 同狀態，RGBA 差異只在核准單行矩形；
+但實際自然離頁及清層後畫面尚未量到，故本規格不升 CONFORMED。
+
+[第一百三十四階段獨立審查](../re/phase-134-story-page9-enter-trace.md#2026-09-24-獨立證據審查固定單行入頁本體)
+已核准本單行入頁本體進入正式實作；下文較早的「候選」「待審查」
+字樣保存形成歷程，以本段限縮 READY 範圍為準。自然離頁、完整生命週期、
+正常玩家路徑、存讀檔及整頁 CONFORMED 均未核准。
 
 ## 範圍與證據等級
 
@@ -26,7 +36,7 @@
 | 合法 Enter 於 step `351000000` 從第八頁到達此單行；雙重入頁重播 indexed 與 JSON 一致 | 已證實；第一百三十四階段的 `entry-a/b` 私有收據 |
 | `0763:04FF → 0763:026B` 的 row 17／column 1，`mode/repeat=1/1`、`bg/fg=0/10`，連續 20 glyph | 已證實；`text/story-page9-events.tsv` 與雙重 glyph trace |
 | 20 筆均從 `0763:03D6` 的 `0xCA` 返回；同 SS、相對 `SP+0x12`，七個 ABI high-word mask 皆零 | 已證實；第一百三十四階段的兩份 entry return-edge 收據 |
-| 原版入頁單行的安全矩形是 `[8,168)×[136,144)` | 由已證實的 col 1、row 17、20×8×8 text cells 推得；正式 2×／3× 實字墨跡 containment 尚待驗 |
+| 原版入頁單行的安全矩形是 `[8,168)×[136,144)` | 由已證實的 col 1、row 17、20×8×8 text cells 推得；正式 renderer／現用字型的合成 2×／3× 實字墨跡 containment 已驗，原版同狀態 A/B 待驗 |
 | Enter、數字鍵盤 4／6，以及 8 的已量短窗未改寫故事矩形 | 已證實，**僅限各收據停止點**；row 15／24 重畫不是離頁事件 |
 | 入頁 20 個 glyph frame 內共有 1,280 筆相交 A000 pre-write，各 frame 64 筆；writer 為 `0763:184D`／`0763:1854` | 已證實；合法 page8 state 的有界逐 byte probe，細節見下節；這些是**建構原文**，不能清 pending |
 | 之後必定由某一 A000 相交寫入、Stop 或 Restore 離開第九頁 | 未知；不以本候選聲稱自然離頁已量或全部出口安全 |
@@ -40,8 +50,9 @@
 
 ## 單行 typed 候選與失敗即關閉
 
-`text/story-page9-events.tsv` 及 `text/story-page9.zh-TW.tsv` 現仍是 DRAFT；
-只有獨立審查核准後，才可把 status 升為 READY 並作正式載入。候選譯文
+`text/story-page9-events.tsv` 的單筆身分已依獨立審查標為 READY；
+`text/story-page9.zh-TW.tsv` 的單筆譯文不另設 status 欄。正式 loader 只能
+接受這一筆 READY identity 與精確譯文 key。現行譯文
 「你們列隊離開。」是 `runtime-editorial`，不代表手冊逐字引文；任何改譯
 都要重新跑字型與幾何驗證。
 
@@ -93,11 +104,13 @@ command/status glyph 當作 page9 exit；它們已量的短窗並未碰本行。
 
 ## 幾何、字型與驗收界線
 
-邏輯畫面只覆繪 `[8,168)×[136,144)`，單行 20 cells；中文一字跨兩個
-8-pixel cell，不換行、截斷或溢出。2× 輸出矩形為
+邏輯畫面只覆繪 `[8,168)×[136,144)`，單行 20 cells；現有
+`xlate.Stamp` 的 `CellW=8` 讓每個 rune 前進一個邏輯字格。TSV 將中文字元
+保守計為兩格僅供容量 lint，不代表 renderer 的實際 advance；本行不換行、
+截斷或溢出。2× 輸出矩形為
 `[16,336)×[272,288)`；3× 為 `[24,504)×[408,432)`，沿用倚天
 top-pad 16×16 字模及既有 3× 的 22×22 ink／24×24 cell 規則。
-`tools/story_page9_catalog.py` 已收緊為 20 格的 DRAFT 基本 lint，且有
+`tools/story_page9_catalog.py` 已收緊為 20 格的 READY catalog lint，且有
 20／21 格失敗邊界測試；Unicode 寬度近似**不足以**證明實字墨跡安全。
 本輪使用 ignored `workplace/current-font/buckrogers-eten-top-pad.golemfnt`
 （SHA-256 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`）
@@ -107,11 +120,11 @@ RGBA 差異 4,663 pixels、矩形外 0，範圍 `[16,336)×[272,288)`；
 3× 差異 10,649 pixels、矩形外 0，範圍 `[24,504)×[408,432)`；
 兩倍率均零缺字，右側 x=168 邏輯邊界外為零差。此測試用合成
 indexed／palette，證明字型與 renderer 的本體 containment，**不**是
-原版畫面的同狀態 A/B。READY 審查仍須確認來源、唯一鍵、NFC、控制字元、
-正式字型版本及本機測試可重生；任何譯文或字型更動都要重跑。
+原版畫面的同狀態 A/B。獨立審查已確認來源、唯一鍵、NFC、控制字元、
+現用字型版本及本機測試可重生；任何譯文或字型更動都要重跑。
 
-獨立審查前，允許在 ignored `workplace/` 用**純 content-safe typed fake**
-檢驗上述狀態機：假 20 bytes、相對時序與合成 SHA，不含原版 bytes／字型；
+正式接線的測試須用**純 content-safe typed fake**檢驗上述狀態機：
+假 20 bytes、相對時序與合成 SHA，不含原版 bytes／字型；
 測試 19/20 不顯示、20/20 才啟用、每 frame 64 筆預期字格寫入、
 pending 錯 writer／錯字格／frame 外寫入清空、錯返回／hash／ABI 清層、
 active 後邊界相交與同值 pre-write、row 15／24 非相交、

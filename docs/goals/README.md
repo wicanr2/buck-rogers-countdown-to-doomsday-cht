@@ -1,6 +1,7 @@
 # 分期目標索引
 
-目前實作：[第九十六階段：倚天字型建置與手冊中文執行期整合](phase-96-eten-manual-runtime.md)。
+目前已超過第九十六階段；現行能力與未完成閘門請以
+[CONTEXT.md](../../CONTEXT.md)及 private GitHub Issues 為準。本索引只保存分期目標的範圍與退出條件。
 
 此目錄只保存每一階段的範圍、成功定義與退出條件；可執行工作與其遠端狀態以 GitHub
 Issues 為唯一權威，研究證據則在 `docs/re/`。
