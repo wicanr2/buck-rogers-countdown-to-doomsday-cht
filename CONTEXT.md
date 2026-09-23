@@ -2,6 +2,24 @@
 
 更新：2026-09-24
 
+使用者再次確認 Linux 設定面板開啟時暫停 DOS，排除背景持續推進；
+Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這項排程已有
+[第一百九十四階段](docs/re/phase-194-formal-ebiten-panel-pause-conformance.md)
+的正式 `Game.Update` 限縮 CONFORMED 收據，但尚非完整 machine／DOS
+狀態或可玩前端驗收。[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+現為 session-turn 限縮 READY **候選**；[Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)
+已補成功批次 epoch、零預算與整批路由拒絕的 ignored fake 測試，仍缺
+同一 typed owner 的真實 machine 收據與正式橋接提交驗證，不能升 READY。
+
+[GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
+追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)
+為限縮 READY 候選，TSV 仍 DRAFT。合法第八頁→第九頁重播證實原版
+20 個 glyph frame 內共有 1,280 筆故事矩形 A000 寫入，故原先「任何
+相交寫入都清 pending」的想法已撤回；候選改為建構中只接受當前字格的
+已量寫入，active 後任何相交 pre-write 才清層。倚天 2×／3× 本體幾何
+零越界；自然離頁、正式 watcher 與原文／繁中同狀態 A/B 尚未驗，
+不能稱第九頁已中文化。
+
 [第二百一十八階段](docs/re/phase-218-exit-prompt-runtime-ab.md)現已把真正
 Exit 後兩句 row 24 問句本體接上正式 dosgolem watcher／presenter；
 在一個合法加入角色存態的 N／Y→Y 路徑，control／2×／3× 各雙重重播，
@@ -36,8 +54,9 @@ A 原生 24 點／B 原型衍生 22 點並列圖片，五項文字安全矩形�
 
 [第二百一十一階段](docs/re/phase-211-synthetic-session-receipt-candidate-draft.md)
 已在 ignored 合成 typed 原型驗過「DOS 退出前置檢查→Step 嘗試數
-差分→error 優先」候選收據與五組負例；退出後零新步。
-零預算、`Epoch`、正式 Draw fault owner 尚未決定，規格 019 未升 READY。
+差分→error 優先」候選收據與五組負例；退出後零新步。該階段尚未
+決定零預算、`Epoch`、正式 Draw fault owner；目前以本頁頂端的
+Issue #18 審查紀錄為準，規格 019 仍未升 READY。
 
 [第二百一十階段](docs/re/phase-210-session-stop-receipt-probe-draft.md)
 以獨立合成 COM 探針補證：DOS 正常退出仍可得 raw `StopBudget`；

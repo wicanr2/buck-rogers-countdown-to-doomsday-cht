@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [Issue #18：Linux session-turn 限縮 READY 候選審查紀錄](issue-18-session-turn-ready-candidate-review.md)：重跑 ignored fake／合成 machine，收斂同批交付、實步／epoch／停止分類及同步 Draw fault owner；待獨立審查，非正式 session 收據。
+
 - [第二百一十八階段：真正 Exit 問句本體正式無頭 A/B](phase-218-exit-prompt-runtime-ab.md)：固定合法加入角色存態的 N／Y→Y、control／2×／3× 雙重正式重播，含 FileOps 零筆自證與正式生命週期軌跡；獨立審查後僅此本體範圍限縮 CONFORMED。
 - [第二百一十七階段：真正 Exit 問句八列初畫寫入審查](phase-217-exit-prompt-full-body-writer-review.md)：可重生探針與固定 Y→Y 雙重收據盤點 q1／q2 pending 八列，限縮核准 `0763:184D`、`0763:1854`；舊首列型 q1／N 綠燈撤回，當時正式 A/B 尚未完成。
 - [第二百一十六階段：真正 Exit 第二問繪字寫入勘誤](phase-216-exit-q2-glyph-writer-draft-corrigendum.md)：固定合法 Y→Y 雙重原版重播證實 `0763:1854` 的 q2 pending 首列寫入屬正常 glyph run，並聚合該首列兩個寫入點；仍為 DRAFT，不擴張正式 writer 白名單。
@@ -64,7 +66,7 @@
 - [第一百三十八階段：第三頁合法離頁的最早故事區 pre-write](phase-138-story-page3-exit-prewrite.md)：兩次一致原版重播證實第四頁出現前的最早安全矩形交集寫入早於首個可見像素差異；第三頁仍為 DRAFT，未接 runtime。
 - [第一百三十七階段：真實 host panel route 與 3× cleanup](phase-137-real-host-panel-route-and-3x-cleanup.md)：2×／3×真實 Open host hit 與 open-panel miss route、3× accepted Down 後 panel-open chrome release-only，以及正規化同狀態收據；spec 228 仍維持 DRAFT。
 - [第一百三十六階段：第九頁後合法 Enter 的第十頁停止線](phase-136-story-page10-enter-stop-line.md)：兩次一致重播只得到 row 15 command/status 重畫，沒有新的固定故事行，未建立第十頁 catalog。
-- [第一百三十四階段：第八頁後合法 Enter 的第九頁 trace](phase-134-story-page9-enter-trace.md)：一筆 `0763:04FF → 0763:026B` DRAFT identity、兩次一致收據與私有畫面核對；右側動態列排除，未接 runtime。
+- [第一百三十四階段：第八頁後合法 Enter 的第九頁 trace](phase-134-story-page9-enter-trace.md)：一筆 `0763:04FF → 0763:026B` DRAFT identity、20 筆返回、兩次一致收據與私有畫面核對；限縮 READY 候選見[規格 022](../spec/022-story-page9-overlay-draft.md)，自然離頁仍未知，未接 runtime。
 
 - [第一百三十二階段：第二頁劇情 READY 審查與首屏轉場收據](phase-132-story-page2-ready-review.md)：第 2 頁四行穩定 frame、catalog／字型／矩形、glyph far-return／relative stack guard 與第 2 頁→第 3 頁最早視訊寫入收據；錯序假負例已勘誤，獨立無快取測試全綠，spec 011 已升 READY typed adapter contract，尚未接 production 或完成 A/B。
 - [第一百三十一階段：第七頁後合法 Enter 的第八頁 trace](phase-131-story-page8-enter-trace.md)：四行 `0763:04FF → 0763:026B` DRAFT identity、同狀態畫面與繁中候選；右側動態列排除，未接 runtime。

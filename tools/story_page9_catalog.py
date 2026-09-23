@@ -46,7 +46,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
     if translation["key"] != key:
         raise ValueError("事件與譯文 key 非雙向一對一")
     text = translation["translation"]
-    if not text or translation["source"] != "runtime-editorial" or text != unicodedata.normalize("NFC", text) or text.endswith(" ") or conservative_cells(text) > 39 or any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in text):
+    if not text or translation["source"] != "runtime-editorial" or text != unicodedata.normalize("NFC", text) or text.endswith(" ") or conservative_cells(text) > 20 or any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in text):
         raise ValueError("譯文格式或寬度不符")
 
 

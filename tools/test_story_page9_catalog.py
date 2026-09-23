@@ -39,6 +39,12 @@ class StoryPage9CatalogTest(unittest.TestCase):
     def test_conservative_mixed_advance(self):
         self.assertEqual(conservative_cells("甲A（NEO）"), 2 + 1 + 2 + 3 + 2)
 
+    def test_single_line_20_cell_boundary(self):
+        accepted = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "甲" * 10))
+        validate(EVENTS, accepted)
+        rejected = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "甲" * 11))
+        with self.assertRaises(ValueError): validate(EVENTS, rejected)
+
 
 if __name__ == "__main__":
     unittest.main()

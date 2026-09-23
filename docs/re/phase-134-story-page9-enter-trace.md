@@ -165,3 +165,47 @@ safety cap；沒有第二鍵或延長。固定 runner 與原版 provenance 同�
 command/status 輸出；它不證明 8 的遊戲語意為無效。依預先設定的停止條件，不延長這條
 分支，也不再猜鍵。現有手冊明示的 4／6／8 都未給出第九頁失效邊界，故 page9 保持
 DRAFT，沒有 READY 或 production 授權。
+
+## 2026-09-24 限縮範圍勘誤：入頁單行 READY 候選
+
+前述「沒有自然離頁相交 pre-write，因此整個第九頁不可升 READY」的停止線
+對完整生命週期仍有效；它未考慮僅核准**已量入頁單行本體**、並用機器層
+任何相交 A000 byte pre-write 與 Stop／Restore 失敗即關閉的更窄契約。
+現有 `machine.ObserveVideoWrites` 在 `VGA.Write` 前回呼所有 A000 byte，
+包括同值寫入；這是 dosgolem 目前工作樹的 API 能力，並非本輪新量到
+一筆第九頁自然離頁。據此提出[規格 022](../spec/022-story-page9-overlay-draft.md)
+作**限縮 READY 候選待獨立審查**。本節保留先前收據與結論形成脈絡；
+`text/story-page9-events.tsv` 仍為 DRAFT，正式 watcher／renderer、
+2×／3× 幾何及同狀態 A/B 均未接通。Enter、4、6、8 的 row 15／24 重畫
+仍不得被解釋為故事區退出。
+
+### 入頁原文寫入與本體幾何補證
+
+本輪對上述合法 page8 state 以原排程於 step `351000000` 送 Enter、
+固定跑至 `352100000`，在現有 `machine.ObserveVideoWrites` 掛 content-safe
+一次性 probe；`GAME.OVR` 雜湊與位址空間同本頁前述，工具為
+`golang:1.26.7-bookworm` 的 Go 1.26.7、dosgolem 工作樹
+`a01e34253fa59cc92c3fde1bf4b33577e318e9e7`（另有下列一次性未追蹤
+測試檔）。probe 與私有輸入只在
+ignored `workplace/dosgolem/apps/buckrogers/story_page9_candidate_prewrite_test.go`
+及 `workplace/` 原始資料；probe SHA-256
+`46a2980172a55ada9f5d4aa8b1713d6cb2dfa178b9bc998cefea251afb8d63f3`，
+沒有匯出原文 bytes 或 framebuffer。
+`351155910..351988536` 的 20 個 glyph entry／return frame 內，安全矩形
+`[8,168)×[136,144)` 有 **1,280 筆 A000 byte pre-write**，每 frame 64 筆，
+frame 外 0、錯字格 0；首筆 `351156027`，末筆 `351988519`，writer
+`0763:184D` 1,028 筆、`0763:1854` 252 筆。因此「相交 A000 寫入
+連 pending 一律清掉」會把正常原文建構誤判為離頁，不能作 READY 契約。
+[規格 022](../spec/022-story-page9-overlay-draft.md)已把 pending 的已證實
+glyph frame 寫入與 active 後任何相交寫入分開；後者仍未量到自然離頁。
+
+另用既有本機 GOLEMFNT（SHA-256
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`）
+與正式 `xlate.Layer.Draw`／`manualThreeXFont`，在合成畫布對
+「你們列隊離開。」量到 2×／3× 矩形外零差、零缺字，右側 x=168
+邊界未被改動。一次性
+`workplace/dosgolem/apps/buckrogers/story_page9_candidate_geometry_test.go`
+SHA-256 為
+`0afb4bb32a79fbdf700a6efb2ff60448f52e6169c3842cd1282b791355a76379`。
+這補上候選的字型幾何，不是原版 A/B，也不升格
+`text/story-page9-events.tsv` 的 DRAFT 狀態。

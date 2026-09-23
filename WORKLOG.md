@@ -1995,3 +1995,32 @@
   執行中或已停止容器；Docker 內掃描工作樹無 root-owned 產物或
   誤建 `.md` 目錄。完整原版輸入、字型、RGBA 與私有收據仍留 ignored
   `workplace/`，未推送遠端。
+
+## 2026-09-24 — 面板暫停重申、session READY 前補證與第九頁勘誤
+
+- 使用者再次定案：設定面板展開時暫停 DOS，Cancel／Apply 收合同回合
+  仍零步，下一個關閉回合恢復。唯讀核對正式 `Game.Update` 與
+  [第一百九十四階段](docs/re/phase-194-formal-ebiten-panel-pause-conformance.md)：
+  此規則已有 callback 排程的限縮 CONFORMED，並非完整可玩版。
+- [規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+  收斂成 session-turn 限縮 READY 候選。獨立審查發現原 fake 的 epoch
+  對暫停回合不增，且 pointer／keyboard 尚無整批純資料預檢；
+  [Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)
+  保留此阻塞與 `phase193` 正確 Docker 掛載勘誤。ignored fake 隨後補驗
+  成功批次 epoch 遞增、零預算拒絕、單次 `Advance` 及混合輸入原子拒絕，
+  有界無網路 Docker 的 fake 測試通過。仍缺同一 typed owner 的真實
+  machine 收據與正式橋接提交驗證，未改 production、未升 READY。
+  主代理獨立重跑時，首個容器因未指定 Go 快取目錄而遭唯讀權限拒絕；
+  改依審查文件指定可寫 `/tmp` 與既有 Ebitengine 映像，以同一 fake
+  測試乾淨重跑通過。此為驗證環境設定錯誤，不是產品失敗。
+- 新建 private GitHub Issue #20 追蹤第九頁固定單行，
+  [規格 022](docs/spec/022-story-page9-overlay-draft.md)與索引已建立。
+  合法 page8→page9 Docker 重播推翻初稿「所有相交 A000 寫入皆清 pending」：
+  原版 20 個 glyph frame 內有 1,280 筆相交 pre-write，每格 64 筆；
+  已在[第一百三十四階段勘誤](docs/re/phase-134-story-page9-enter-trace.md)
+  保留原錯誤與新證據。候選規格區分建構中預期字格寫入與 active 後清層；
+  私有倚天字型在正式 renderer 的 2×／3× 本體幾何零越界，catalog 六項
+  測試通過。自然離頁與正式 A/B 未驗，TSV 仍 DRAFT、規格仍待獨立審查。
+- 修正規格索引的 021 過時 READY 說法，與既有固定 N／Y→Y 路徑
+  限縮 CONFORMED 結論一致。本批未提交原版素材、掃描手冊、字型或
+  私有收據；工作區及 Docker 清理狀態於交接前再核對。

@@ -300,3 +300,15 @@ budget、step receipt 或 session phase；`Update` 也不保證面板 Open／Sel
 Cancel／Apply 回合零 Step。正式 cold-boot preflight、多繁中作用層聚合、
 錯誤 teardown 與 `Close` 責任仍未成為 typed contract。此結論只描述
 固定 commit 的前端 API，沒有否定既有可丟棄真實視窗收據；本規格仍 DRAFT。
+
+## 2026-09-24：session-turn 限縮 READY 候選交接
+
+[規格 019](019-linux-frontend-session-turn-boundary-draft.md)現將同批事件的
+固定處理順序、接納批次 epoch、正預算／實際 machine step 嘗試差分、
+DOS 退出與 raw stop／error 優先序，以及 `Draw` 同步故障通知唯一
+session owner 的責任寫成**待獨立審查的限縮 READY 候選**。
+[Issue #18 審查紀錄](../re/issue-18-session-turn-ready-candidate-review.md)
+列出目前正式 API、可丟棄 fake 及合成 COM 的證據界線。
+規格 019 尚未獲獨立 READY 審查；本規格 004 的原版根／存檔根
+preflight、observer 安裝、多作用層、正常玩家路徑與存讀檔仍待補，
+故本規格整體維持 **DRAFT**，現有 `Game` 亦非正式 cold-boot session。

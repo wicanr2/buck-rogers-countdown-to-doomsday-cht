@@ -1,7 +1,11 @@
 # 019 — Linux 前端失敗即關閉 session 回合邊界
 
-狀態：**DRAFT；不授權 production 實作，不使規格 004 升 READY。**
+狀態：**限縮 session-turn 子契約 READY 候選，待獨立審查；尚不授權 production 實作，規格 004 仍 DRAFT。**
 日期：2026-09-24
+
+目前供審查的收斂契約見本文末〈限縮 READY 候選〉；上方 DRAFT 型別與
+未決敘述保留當時的研究歷程，不作為現行實作依據。候選證據與未驗範圍見
+[Issue #18 session-turn 審查紀錄](../re/issue-18-session-turn-ready-candidate-review.md)。
 
 同日合成 typed 原型：[第二百一十一階段](../re/phase-211-synthetic-session-receipt-candidate-draft.md)
 以退出前置檢查、machine Step 差分及 error 優先組成候選收據，
@@ -187,3 +191,99 @@ READY 審查前至少以 ignored fake（不載原版／字型）固定：
 授權下一個 production 切片；它不代表 cold boot、Linux 玩家前端、中文多作用層、存讀檔或
 原版同狀態 A/B 已完成，更不使規格 004 整體升級。production 完成後仍須依規格 004 的
 正常 cold-boot／同狀態驗收另行決定 CONFORMED。
+
+## 限縮 READY 候選：一回合的可實作責任
+
+本節是待獨立審查的規範候選，覆蓋上文尚未決定的同批交付、epoch、
+停止分類與 `Draw` 故障通報。它只接通通用 session-turn 邊界；原版冷開機
+前置、多作用層、玩家路徑與存讀檔仍由規格 004 維持 DRAFT。
+正式型別至少須能分別表達 pointer 候選、焦點與有序鍵盤候選；
+`TickReceipt` 除 epoch／phase／reason 外須包含 budget、machine 前後
+steps、實際差分、原始 stop 及錯誤來源。停止原因須明示
+`PanelPaused`、`BudgetExhausted`、`ProgramStopped`、
+`PredicateStopped`、`BreakpointStopped`、`OriginalFault`、
+`ObserverFault` 與 `FrontendFault`，不能沿用上文四值 DRAFT enum
+而把不同停止條件合併。對外 API 是否以欄位或附屬 detail struct
+承載原始 stop 可由實作決定，但收據資訊不得遺失。
+
+### 批次輸入與交付順序
+
+`InputBatch` 必須分別攜帶本次 `Update` 擷取的 `PointerDown`、`PointerUp`、
+焦點狀態及有序鍵盤候選清單，並記錄擷取前的面板狀態。候選清單不是
+跨設備時間戳；前端不得聲稱知道鍵盤與 pointer 的物理先後。對現有
+`readFrameInput`，規範順序固定為 pointer Down → pointer Up → 焦點失去
+清理 → 鍵盤候選。先分類並完成整批 host 路由，才交付任何 DOS 鍵。
+
+只要起點面板開啟、批次中出現 Open／Select／Cancel／Apply 面板轉移，
+或終點面板仍開啟，整批鍵盤候選都由 host 消費，`DOSDelivered=0`。
+因此 Apply／Cancel＋Enter 及 Open＋Enter 都不會把 Enter 送入 BIOS。
+起終皆關閉且沒有面板轉移時，僅依現有明示映射按鍵盤候選清單順序
+交付 DOS；任何未分類輸入或 route error 必須在交付前拒絕整批。
+pointer 對 DOS 的已定案路由沿用規格 004 與 MouseBridge 契約；本節
+不推定未支援滑鼠按鍵或鍵盤映射。已交付的 DOS pointer 動作無法在
+後續 route error 時回滾，故正式實作須先對整批 route 做可失敗預檢，
+再按固定順序提交；預檢不得改 DOS 狀態。現行
+`PanelController.Route` 會改 host state，`MouseBridge.Handle` 可能立即
+呼叫 DOS mouse，不能拿這兩個正式物件「試跑再回滾」。需用純資料
+route plan 或等價的獨立暫態完成預檢，確認所有 payload、layout epoch、
+focus、host transition 與 keyboard transport 後才提交；若提交階段的
+既有無錯誤回傳 DOS queue／mouse 呼叫之外仍可能失敗，必須另證明
+不會造成部分送入，否則這批交付不能宣稱原子拒絕。
+
+### epoch、預算與停止收據
+
+`Epoch` 是每個**成功接納的 Update 批次**的單調序號，從 1 開始，
+同一批的 `InputReceipt`、暫停或執行的 `TickReceipt` 與 snapshot 共用它。
+面板零步批次也增加一次；拒絕批次、重試失敗呼叫、單獨 `Draw`／`Close`
+都不增加。它不是 `Machine.Steps`、畫面 layout epoch、虛擬時間或
+`Advance` 呼叫次數。`Deliver` 恰一次建立本回合 epoch；`Advance`
+只能消費該回合一次。未經 `Deliver`、重複 `Advance` 或未完成上回合
+便開新回合，均是前端契約錯誤，進入 `Failed`。
+
+暫停回合不呼叫 `Machine.RunUntil`，回傳 `Steps=0`、`PanelPaused`；
+它的 budget 不參與判讀。可執行回合必須給正數、有界的
+`InstructionBudget`；零預算在呼叫 machine 前拒絕，記為前端契約錯誤，
+進入 `Failed`，不能將 `RunUntil(0)` 的原始停止碼解為耗盡預算。
+budget 的具體常數由正式 caller 明示並另行驗證，不由本契約猜定。
+
+`Steps` 定義為本回合 `Machine.Steps` 後值減前值，即**Step 嘗試數**；
+失敗的嘗試也可能計入，不能稱為成功執行的指令數。前值大於後值、
+差分大於 budget 或計數溢位均視為契約故障，停止後續回合。
+每次執行前先查 `DOS.Exited`：已退出則不呼叫 `RunUntil`，回傳
+`ProgramStopped, Steps=0` 並進入 `Stopped`。執行後依下列優先序
+分類，收據同時保留原始 `machine.Stop` 與原始 error 供稽核：
+
+1. 非空 error 優先；觀測者已明示包裝的錯誤為 `ObserverFault`，
+   其餘 machine 錯誤為 `OriginalFault`，phase 轉 `Failed`，即使原始
+   stop 是 `StopBudget` 或 DOS 同時設為 exited 亦同。
+2. 無 error 且 `DOS.Exited` 為 true，`ProgramStopped`，phase 轉 `Stopped`；
+   raw `StopBudget` 不能覆蓋這個已觀測的 DOS 狀態。
+3. 無 error 且未退出時，`StopPredicate` 與 `StopBreakpoint` 分別回
+   `PredicateStopped`、`BreakpointStopped`，不得偽稱程式結束或預算耗盡。
+   正式 caller 若未宣告這類停止用途，將其視為 `OriginalFault`。
+4. 只有無 error、未退出、raw `StopBudget` 且 `Steps=budget` 才回
+   `BudgetExhausted`。其他組合為 `OriginalFault`，不得猜測成功。
+
+`TickReceipt` 即使故障也必須保留已量到的 epoch、budget、前後
+`Machine.Steps`、實際 `Steps`、raw stop、error 類別與 phase，
+避免把故障前已發生的嘗試寫成零步。`Stopped`／`Failed` 後的
+`Advance` 一律零**新**步；`Stopped` 可回相同終止原因，`Failed`
+回原始故障，不得重新進入 `Running`。
+
+### `Draw` 故障通知與關閉 owner
+
+Ebitengine 的 `Game.Draw` 無 error 回傳值。正式接線須把可檢查的
+`Panel.Snapshot`、session `Snapshot`、`validateSnapshot` 等失敗，
+在發現當下以同 goroutine 的 `ReportDrawFault(error)` 同步通知唯一
+session owner；`Game` 同時鎖存該 error，下一次 `Update` 先回錯，
+不得再交付輸入或推進 DOS。通知至多一次，且不得僅靠下一次
+`Update` 才使 session 轉 `Failed`。Ebitengine 繪圖 API 本身未提供
+error 回傳；本契約只涵蓋可檢查的錯誤，不虛構 GPU 故障收據。
+
+session owner 收到 `Deliver`、`Advance`、observer／Frame、`Snapshot`
+或 `ReportDrawFault` 的首次故障時，立即鎖存根因、轉 `Failed`、
+停止後續階段並呼叫一次資源關閉；重複失敗或 `Close` 不重複副作用。
+對外明示 `Close` 可重複呼叫，正常視窗結束也由同一 owner 呼叫。
+`Closed` 及 `Failed` 均拒絕新輸入與新步進；關閉不抹除先前故障
+收據。正式接線必須實測 `Draw` 同步通知、下一次 `Update` 零步、
+資源只關一次，以及關閉錯誤的保存；既有 fake 只證明控制流程模型。
