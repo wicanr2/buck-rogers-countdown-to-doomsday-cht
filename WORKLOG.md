@@ -1655,3 +1655,36 @@
 - Exit row21 與兩個提示另建可丟棄 typed／A000 探針；權威 fork 原始碼重跑仍與
   既有 runner 的停止點差六步，已保存[第一百八十四階段](docs/re/phase-184-exit-prompt-draft-prototype.md)
   勘誤與候選邊界，沒有把 DRAFT 翻譯塞進正式 catalog。
+
+## 2026-09-23 — 校正翻譯目錄與前端規格的目前狀態
+
+- `text/README.md` 的「post-join 選單尚未接 runtime」與「舊全選單 clear 屬 Exit」
+  均與第一百八十二／一百八十三階段收據矛盾；已訂正為七列正式 runtime 局部 A/B
+  通過、舊 clear 屬 row 12、真正 row 21 Exit 仍 DRAFT。
+- spec004 末尾追加第一百八十五階段真實繁中作用層接入通用 Ebitengine Game 的現況，
+  保留從私有 checkpoint 到正式可玩前端的未完成門檻，不回寫早期原型歷史。
+- 在 Docker 內重跑 22 份正式 TSV 的字元聯集，與 `font/characters.txt` 完全相等，
+  計 1028 字模；`tools/test_catalog_font.py` 14 項通過。第一次 unittest 指令因
+  `PYTHONPATH` 未含 `tools` 而匯入失敗，明示環境路徑後在同一 image 重跑通過，
+  非產品程式缺陷。
+- 同一 Docker-only 邊界另以 `PYTHONPATH=tools python3 -m unittest discover -s tools
+  -p 'test_*.py'` 重跑全部既有文字／幾何工具測試，240 項通過；這驗證工具內部
+  自洽，不代表尚未接通的原版玩家路徑已中文化。
+
+## 2026-09-23 — Exit 停止點控制組與冷開機前端 READY 缺口
+
+- 同 fork／同 state／同 13 筆鍵盤步點下，A000 探針及原 text runner 都在
+  `125006324` 停止，前者與既有收據相同、後者兩次逐位元組相同；
+  step `125006323` 執行前為 `0CF4:0192`、`Exited=false`，執行後退出。
+  因此六步差異不由 A000 observer 造成；舊 `125006330` 收據仍保留，
+  其環境／產物來源未證實。詳見[第一百八十七階段](docs/re/phase-187-exit-stop-six-step-corrigendum.md)。
+- 獨立前端稽核確認正式 `frontend/ebiten.Game` 只有視窗 loop，沒有 cold-boot
+  composition root 或多作用層 owner；typed session、失敗邊界與正常玩家驗收
+  矩陣見[第一百八十六階段](docs/re/phase-186-linux-ebiten-cold-boot-lifecycle-ready-gap-audit.md)。
+  當時設定面板展開期間是否暫停 DOS CPU 尚未定案，未以原型現況冒充需求。
+  使用者其後明確選定「開面板暫停 DOS CPU；關閉／Apply 收合後恢復」，
+  排除原型持續 Step；已記入 spec004，後續需以有界回合實測。
+- 代理初次離線前端測試缺 Ebitengine module cache；主代理沿用既有專用 image
+  重跑，首次因沒有 `DISPLAY`／Xvfb 而使 GLFW 初始化失敗，加入有界 Xvfb 後
+  `frontend/ebiten`、`host`、`presentation`、`apps/buckrogers` 四套 Go 測試
+  全通。這是容器環境訂正，不是冷開機玩家路徑驗收。

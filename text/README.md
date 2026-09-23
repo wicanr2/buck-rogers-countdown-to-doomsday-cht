@@ -13,22 +13,28 @@ host 輸出端介面文字，不是原版 DOS 字串。字型子集必須一併�
 唯一性、bounds 與 `menu.zh-TW.tsv` 雙向覆蓋。
 `post-join-menu-events.tsv` 與 `post-join-menu.zh-TW.tsv` 另存加入一名角色後，正常從名冊的
 EXIT 返回功能選單所見七項固定文字。事件身分由雙重原版重播與私有畫面逐列核對，原文
-只以長度／SHA-256 保存；七筆編輯性譯文已於 spec 018 限縮 READY 審查固定，
-但尚未接入正式 dosgolem runtime。
+只以長度／SHA-256 保存；七筆編輯性譯文已於 spec 018 限縮 READY 審查固定。
+本機 dosgolem fork 已以正式 catalog loader／watcher／presenter 做選單七列的
+2×／3× 局部同狀態 A/B；逐幀 active→empty 與真正 Exit 分支仍未驗，故此
+限縮路徑不得稱為 CONFORMED，見[第一百八十二階段](../docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
 其中「加入遊戲」與「顯示角色所屬遊戲」只依原文字面翻譯，選項真正的遊戲語意仍未知；
 不得擅自改譯為加入隊伍或存檔。上方角色姓名／數值及已收錄的鄰項不在這七筆內；
 七項的選取反白變體另列 `post-join-menu-variants.tsv`。可用 `tools/menu_events.py`
 對基本事件與譯文驗證 schema 與 key 雙向覆蓋；
 後續[第一百六十一階段](../docs/re/phase-161-post-join-menu-selection-and-exit.md)已量到七項
-普通／反白重畫與一條 `EXIT TO DOS` 全選單清除；完整 A000 observer 的失效勘誤及
+普通／反白重畫與一條當時誤判為 `EXIT TO DOS` 的全選單清除；
+[第一百八十三階段](../docs/re/phase-183-post-join-exit-identity-corrigendum.md)以原版
+bytes 訂正：該 Enter 前選中的是 row 12 `Create New Character`，真正 row 21
+`Exit to DOS` 是兩次確認後才退出。完整 A000 observer 的失效勘誤及
 限縮 READY 見[第一百八十階段](../docs/re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)與
-[spec 018](../docs/spec/018-post-join-menu-overlay-draft.md)。正式覆繪及雙倍率同狀態玩家路徑
-仍待實作／驗收，不外推其他選項的退出生命週期。
+[spec 018](../docs/spec/018-post-join-menu-overlay-draft.md)。不能用舊 row 12
+清除收據替真正 Exit 或其他選項背書。
 `post-join-menu-variants.tsv` 以同一七筆的長度／SHA-256、caller、配色與格座標展開
 21 筆初畫普通／普通回寫／反白 exact identity；不保存原文。它包含 row 20 在移向
 未收錄 row 21 時的普通回寫，因此 production candidate 必須在這一筆後原子失效，
 不得假定 `EXIT TO DOS` 的稍後清除仍能清除作用中 generation。此表已固定為限縮
-READY fixture，但尚未作為 runtime loader 輸入。
+READY fixture，且已作為本機 fork 正式 runtime loader 輸入；有限的終態 A/B
+不能取代完整逐幀失效驗收。
 `post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；這些事件
 已由 `gender-events.tsv` 接入繁中 request，但尚未加入正式 renderer。`tools/post_race_receipt.py` 會把它
 與既有選單 inventory、固定雙 Enter 收據及終點 framebuffer 一起驗證。

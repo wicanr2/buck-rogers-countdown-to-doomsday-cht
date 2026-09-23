@@ -224,3 +224,25 @@ READY 後至少驗證：
 這沒有接通正式 Linux 玩家視窗，也沒有關閉本規格的 Ebitengine hit-test、
 鍵盤映射、active-layer 全路徑、完整開機或存讀檔驗收。3× cleanup 與實體
 right／bottom exclusive 邊界亦未由這批正式收據驗證。**spec004 整體仍 DRAFT。**
+
+## 2026-09-23：真實繁中層與通用 Game 的 DRAFT 接線現況
+
+[第一百八十五階段](../re/phase-185-ebiten-real-active-layer-router-draft.md)已在
+ignored caller 從合法私有 checkpoint 取得首屏五行真實繁中作用層，再接入
+本機 fork 的 `frontend/ebiten.Game`。實體 X11 滑鼠完成 2×→3× Apply，
+畫格期間原版持續 Step；兩倍率畫布 RGBA 與既有 CLI 收據逐位元組相同。
+這訂正本規格早期「所有實體視窗原型都是空 active layer」的現況，
+但不使 caller 成為正式玩家程式。完整冷開機、手冊、存讀檔、其他覆繪生命週期
+及相同 step 的 DOS A/B 仍未驗；本規格保持 **DRAFT**。
+
+### 已確認：設定面板展開時暫停 DOS CPU
+
+使用者於 2026-09-23 確認：正式 Linux 可玩版的設定面板開啟期間，
+不只攔截送往原版的鍵盤與滑鼠，也**暫停 DOS CPU Step**；面板關閉
+或按 Apply 自動收合後才恢復。排除 ignored 原型目前「面板開著仍呼叫
+`Advance`」的行為。這只控制 host 的 instruction 排程，不改原版 EXE、
+虛擬時間或遊戲規則；暫停期間可重畫既有 snapshot 與 host 面板，
+但不可消費原版輸入、推進 watcher 或改 DOS 狀態。故 READY 驗收需含：
+面板開啟前後的 step／DOS state 錨點、選項暫選與 Cancel、Apply 收合，
+以及恢復後第一個有界回合；任一面板展開回合均不得 Step。
+這是使用者決策，不表示上述生命週期已正式實作或驗收；規格仍 DRAFT。

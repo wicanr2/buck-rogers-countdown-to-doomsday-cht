@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第一百八十七階段：Exit 六步停止點差異的重播勘誤](phase-187-exit-stop-six-step-corrigendum.md)：固定 fork／存態／按鍵下，A000 探針與原 text runner 都在同一步退出；否定探針致差，舊收據產生環境仍未知，Exit 保持 DRAFT。
+- [第一百八十六階段：Linux Ebitengine 冷開機玩家前端 READY 缺口稽核](phase-186-linux-ebiten-cold-boot-lifecycle-ready-gap-audit.md)：從私有 checkpoint 視窗到正常 cold boot 的 composition root、typed lifecycle、失敗界線與測試矩陣；規格 004 仍 DRAFT。
 - [第一百八十五階段：真實繁中作用層接入 Ebitengine 輸入路由原型](phase-185-ebiten-real-active-layer-router-draft.md)：實體 2×／3× 視窗、連續原版 Step、設定 Apply 與 CLI RGBA 逐位元組相等；仍是 ignored DRAFT caller。
 - [第一百八十四階段：Exit 與確認提示 DRAFT 原型](phase-184-exit-prompt-draft-prototype.md)：row21／兩個 row24 prompt 的雙重 N、Y→Y 收據、矩形、2×／3×靜態 containment 與 fail-closed typed 原型；未接正式 watcher。
 

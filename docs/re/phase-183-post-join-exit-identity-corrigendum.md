@@ -72,7 +72,7 @@ Enter」的清除證據。是否進入建角的完整狀態轉移仍未量；row
 | 只按 Enter | `4f10d8144cf764eeb2f1e33fadaa7bb2628abdc6bf6625c76391a8358cd7d8a6` | row 21 普通回寫 step `124800641`；row 24／column 0 的 12-byte `Quit to DOS ` 提示在 step `124811496` 輸出，原始 SHA-256 `c38a515358859a10e7a2104cab69fe10ee2d492d94024b7d8f17d69b1a409032`；至上限 `126000000` 未退出。 |
 | 再按 Y（step `124900000`） | `f1157b2b9dcdab551e431c0b7999646e3cdbda718e8b17594559a916b9539a46` | BIOS 於 `124900053` 消費 Y；row 24 的 30-byte `Game NOT saved.  Quit anyway? ` 在 step `124906585` 輸出，原始 SHA-256 `35023ac3208312fb1c932ec15a737aae88817925d6cabb26d83281bf755bdcb8`；至上限仍未退出。 |
 | 改按 N（step `124900000`） | `776f2ded2cd6d0edc42edc78a12fb2a934c2183f7b1be4112c40707971bc9d86` | BIOS 於 `124900053` 消費 N；step `124905852` 清掉選單區，之後重畫原選單，step `125241457` row 21 再反白；至上限仍在遊戲中。 |
-| 連按兩次 Y（第二次 step `125000000`） | `d2e4ccba17048518e706762cd6a0b04b3851fb120c270dd14ff2ae79fbcb3a4f` | 第二個 Y 於 `125000111` 被 BIOS 消費；dosgolem runner 在 step `125006330` 停止，早於 `126000000` 上限。runner 主迴圈條件為 `m.Steps < until && !d.Exited`，該次無執行錯誤，故可判定 DOS `Exited`。收據沒有顯示此前全選單清除，不能虛構一筆 Exit clear。 |
+| 連按兩次 Y（第二次 step `125000000`） | `d2e4ccba17048518e706762cd6a0b04b3851fb120c270dd14ff2ae79fbcb3a4f` | 第二個 Y 於 `125000111` 被 BIOS 消費；當時的 dosgolem runner 記錄在 step `125006330` 停止，早於 `126000000` 上限。runner 主迴圈條件為 `m.Steps < until && !d.Exited`，該次無執行錯誤，故可判定 DOS `Exited`。收據沒有顯示此前全選單清除，不能虛構一筆 Exit clear。後續同 fork 重播訂正見[第一百八十七階段](phase-187-exit-stop-six-step-corrigendum.md)。 |
 
 兩個提示的短 bytes 經對 `GAME.OVR` 全檔定長 SHA-256 掃描，各自唯一對上
 offset `0x17B0D` 與 `0x17B1A`；這證實提示身分，不授權將英文提示原文放入正式

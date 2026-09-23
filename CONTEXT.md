@@ -16,6 +16,12 @@
 在實體視窗連續推進原版並用滑鼠 Apply 2×→3×；雙倍率 RGBA 與既有 CLI 私有收據
 逐位元組相同。它仍從私有 checkpoint 起跑、未驗完整玩家路徑或 save/load，
 所以規格 004 和 Issue #16 仍未完成。
+[第一百八十六階段](docs/re/phase-186-linux-ebiten-cold-boot-lifecycle-ready-gap-audit.md)
+把最短正式前端缺口定為 fail-closed 冷開機 session 整合入口：在第一步前安裝
+observer、分離唯讀原版與可寫存檔根、同 goroutine 管輸入／Step／作用層聚合／畫面；
+目前沒有正式玩家 command。使用者已確認面板開啟期間暫停 DOS CPU Step，
+關閉或 Apply 收合後恢復；這訂正既有原型持續 `Advance` 的行為，
+其正式接線與同狀態驗收仍待 spec004 READY。
 
 目前 22 份正式 TSV（含已限縮 READY、尚未接通的選單與 host UI）的倚天字型聯集已重建為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
@@ -64,6 +70,9 @@ N 返回及兩次 Y 退出的覆繪生命週期、中文候選幾何、逐幀 ac
 後續[第一百八十四階段](docs/re/phase-184-exit-prompt-draft-prototype.md)補兩個提示
 的 2×／3×靜態候選與 A000 相交寫入，但自訂探針的退出步數較舊 runner 早六步，
 提示覆繪仍 DRAFT；沒有改動正式 watcher 或原版離開判定。
+[第一百八十七階段](docs/re/phase-187-exit-stop-six-step-corrigendum.md)用同一 fork／state／
+按鍵分別重跑最小 A000 探針和原 text runner，兩者都在 `125006324` 退出，
+排除了「A000 observer 造成六步差異」；舊 `125006330` 的環境來源仍未證實。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

@@ -71,5 +71,9 @@ ignored `workplace/phase184-exit-prompt-draft/verify_exit_prompt_draft.py` 直�
 與無 active 的 pre-write 一律拒絕。
 
 這是靜態 containment 和 DRAFT 模型，不是 runtime A/B，也不改變原版 Y/N 判定。下一門檻是：
-釐清兩種 runner 的六步差異、確認提示矩形與逐幀失效，再獨立審查 typed lifecycle 及候選譯文；
+以目前可重生的 `125006324` 控制組確認提示矩形與逐幀失效，再獨立審查 typed lifecycle 及候選譯文；
 通過 READY 前不得接 watcher。
+
+後續固定同一 fork 與 state 的原文字收據工具控制組也停在 `125006324`，
+否定「A000 觀測器導致六步差異」；舊 `125006330` 的環境來源仍未知。
+詳見[第一百八十七階段勘誤](phase-187-exit-stop-six-step-corrigendum.md)。
