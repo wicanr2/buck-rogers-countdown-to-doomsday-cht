@@ -2,6 +2,23 @@
 
 更新：2026-09-24
 
+規格 [019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)的獨立
+READY 前審查仍判 DRAFT：同批鍵盤事件順序、真實 step／epoch／stop
+映射與正式 Draw 故障回報尚未閉合；完整冷開機不是這個限縮子契約的
+READY 前置，但仍是 Linux 可玩版必需的後續驗收。
+
+[第二百零八階段](docs/re/phase-208-cold-boot-menu-ebiten-prototype-draft.md)
+以 ignored 原型從原版 `START.EXE` 第零步在唯讀來源／獨立 scratch 下
+跑到首個已量選單；終態繁中覆繪缺字零，Ebitengine／Xvfb 顯示三幀。
+這是開窗前算好的靜態影格，沒有 live 玩家輸入或面板／session，
+不能稱 Linux 可玩版；規格 004、Issue #16／#18 仍開啟。
+
+[第二百零七階段](docs/re/phase-207-linux-session-six-stage-fault-fake.md)
+以 ignored `TurnFake` 補測前端回合六階段故障：面板開啟時假 DOS 零步而
+host 畫面仍可更新，Snapshot 純讀；每個故障點後皆拒絕新輸入／步進且
+Close 副作用一次。這不是正式 Ebitengine 或原版收據；正式 Draw 故障回報、
+資源釋放與冷開機仍待解，規格 004／019 與 Issue #18 維持 DRAFT／開啟。
+
 [第二百零六階段](docs/re/phase-206-linux-session-machine-step-delta-draft.md)
 以無原版素材的合成 COM 探針、同來源雙重播確認 machine 的
 `Steps` 前後差分：提前停止少於 budget，CPU 出錯時失敗嘗試也

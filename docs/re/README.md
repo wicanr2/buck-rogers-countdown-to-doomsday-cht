@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第二百零八階段：從第零步啟動的選單繁中視窗原型](phase-208-cold-boot-menu-ebiten-prototype-draft.md)：原版 `START.EXE` 唯讀冷開機至首個已量選單，繁中終態於 Ebitengine／Xvfb 繪製；靜態影格、單次重播，不是可玩前端。
+- [第二百零七階段：Linux session 六階段故障矩陣 fake](phase-207-linux-session-six-stage-fault-fake.md)：ignored 可丟棄模型驗證面板暫停仍繪圖、Snapshot 純讀，以及六階段故障後拒絕復活與 Close 一次；正式 Ebitengine Draw 錯誤邊界仍未知。
 - [第二百零六階段：Linux session machine 步數差分 DRAFT](phase-206-linux-session-machine-step-delta-draft.md)：合成 COM 雙重播證明早停時 `Steps<budget`，CPU 故障時原始 `StopBudget` 須由非空 error 覆蓋；計數包含失敗嘗試，非可玩前端收據。
 - [第二百零五階段：Linux session 故障後拒絕推進與單次關閉 fake](phase-205-linux-session-failed-close-once-fake.md)：可丟棄 typed fake 在 Deliver／Advance 故障後拒絕新輸入與重試步進、Close 計數恰一次；規格 004／019 仍 DRAFT。
 - [第二百零四階段：技能操作列完整清底正式 A/B](phase-204-action-bar-runtime-conformance.md)：修正短譯文後殘留原版英文，八條操作列路徑與技術頁 Escape→Y 雙倍率雙重播、負控制及獨立審查，僅固定範圍限縮 CONFORMED。

@@ -2,6 +2,12 @@
 
 狀態：DRAFT（正式面板暫停 `Advance` 呼叫排程另有局部 CONFORMED）
 
+2026-09-24 冷開機原型：[第二百零八階段](../re/phase-208-cold-boot-menu-ebiten-prototype-draft.md)
+已從原版 `START.EXE` 第零步跑到首個已量選單，並以 Ebitengine 顯示
+繁中終態；然而 DOS 在開窗前已推進完畢，視窗只重畫靜態影格，沒有 live
+玩家輸入、host 面板或正式 session。故此原型補上冷開機可達性證據，
+不使本規格 READY，也不取代以下完整前端驗收。
+
 2026-09-24 Issue #18 進度：[第二百零三階段](../re/phase-203-linux-session-mixed-batch-fake-review.md)
 補齊可丟棄 session fake 的 Open／Apply／Cancel＋Enter 混合批次隔離；
 這只涉及 host 回合候選鍵，不涵蓋 cold-boot preflight、observer 安裝、

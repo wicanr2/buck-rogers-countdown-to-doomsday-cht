@@ -3,6 +3,26 @@
 狀態：**DRAFT；不授權 production 實作，不使規格 004 升 READY。**
 日期：2026-09-24
 
+同日獨立 READY 前審查：本限縮子契約仍有三個未閉合邊界：
+`InputBatch` 內 DOS 鍵與 Open 的先後交付、`Steps`／`Epoch`／停止原因對
+真實 machine 早停與 error 的映射，以及正式 `Draw` 故障回報 owner 的路徑。
+因此下列 fake 與合成 machine 結果只授權繼續補證，不可將本規格升 READY。
+規格 004 的完整冷開機／玩家路徑是後續 production 驗收，不應冒充本
+限縮子契約的 READY 前置。
+
+正式程式唯讀核對：本機 dosgolem fork `frontend/ebiten/game.go` 的
+`Draw` 在 `Panel.Snapshot`、presentation `Snapshot` 或
+`validateSnapshot` 回錯時只把 error 存入 `Game.err`，下一次 `Update`
+於任何 `Advance` 前回傳該 error；這能擋住**下一次**推進，卻沒有通知
+session owner 轉 `Failed` 或執行 Close。正式 `Draw` 不能回傳 error，故
+READY 前須明定可實作的同步故障通知／收束邊界，且把 Ebitengine 本身
+無 error 回傳的繪圖呼叫與可檢查的 snapshot／validation 故障分開。
+
+同日六階段 fake：[第二百零七階段](../re/phase-207-linux-session-six-stage-fault-fake.md)
+補上 Observer、Frame、Snapshot、Draw 的可丟棄故障注入，並驗面板暫停仍可畫
+host 面板、Snapshot 純讀。這只驗 fake；正式 `Ebitengine.Game.Draw` 無 error
+回傳，故障如何通報 session owner 尚未解決，本規格仍為 DRAFT。
+
 同日 machine 收據：[第二百零六階段](../re/phase-206-linux-session-machine-step-delta-draft.md)
 以合成 COM 及現行 dosgolem `Machine.RunUntil` 雙重播證實：
 `TickReceipt.Steps` 若取前後 `Machine.Steps` 差分，量到的是含失敗

@@ -1856,3 +1856,35 @@
 - 曾嘗試讀取既有冷開機原版 PNG 供視覺檢查；權限審查因完整受限
   影像會進入工具通道而拒絕。未改以其他通道繞過，該張圖未作本輪
   視覺證據；步數實驗使用無原版素材的合成 COM，與此限制無關。
+
+## 2026-09-24 — 前端回合六階段故障 fake
+
+- 在既有 ignored session fake 旁新增 `TurnFake` 與測試，驗證面板開啟時
+  零 fake DOS 步而 host 畫面繼續更新、Snapshot 純讀、六階段各別故障後
+  不再執行後續階段／不復活，以及 Close 副作用一次。
+- 唯讀、無網路 Docker 中以 Go 1.26.7 執行 `go test -count=1 -v ./...`，
+  八組頂層測試全通；來源雜湊、限制與重生條件見
+  [第二百零七階段](docs/re/phase-207-linux-session-six-stage-fault-fake.md)。
+  正式 Draw 故障回報、實際 machine 步數與冷開機未由此驗收；規格 019
+  維持 DRAFT。原型沒有原版素材，未改 production。
+
+## 2026-09-24 — 原版冷開機至繁中選單的靜態視窗原型
+
+- 代理在 ignored `workplace/cold-boot-frontend-proto/` 從 `START.EXE` 第零步
+  建立 DOS、先安裝選單 watcher，再用既有輸入於 1 億步界線內到達已量選單。
+  原版唯讀、scratch 獨立可寫；Ebitengine／Xvfb 將預先算好的 2×繁中
+  終態繪出三幀。缺字零，watcher misses 24；收據見
+  [第二百零八階段](docs/re/phase-208-cold-boot-menu-ebiten-prototype-draft.md)。
+- 主代理以唯讀 Docker 核對來源、收據雜湊與安全統計，未做第二次完整
+  冷開機重播，也未把原版影像傳入工具通道。原型尚無 live DOS 視窗回合，
+  未改正式程式，不作 READY／可玩完成聲明。
+- 本輪專用映像的執行中／已停止容器清單為空；兩個本輪研究工作目錄均無
+  root-owned 檔案或誤建的 `.md` 目錄。私有 `out/`／`scratch/` 留在 ignored
+  `workplace/`，未加入版控。
+- 規格 019 經子代理獨立唯讀審查仍判 DRAFT：事件順序、實際步數／停止
+  原因映射及正式 Draw 錯誤回報三項仍缺明確可實作契約。已委派合成
+  machine 的補證切片；不以靜態冷開機畫面代替 READY。
+- 主代理唯讀核對本機 fork `frontend/ebiten/game.go`：`Draw` 的三個可檢查
+  錯誤會鎖在 `Game.err`，下次 `Update` 可阻止推進；但 session owner
+  未同步收到 Failed／Close。已把這個 DRAFT 邊界補進規格 019，
+  未直接改正式前端。
