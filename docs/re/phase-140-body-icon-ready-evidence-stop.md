@@ -110,3 +110,41 @@ unknown／duplicate／partial、restore／discontinuity 與 pre-write 漂移失�
 因此原先 return／ABI 與已量 lifecycle pre-write 的實質缺口已補足，可交獨立 READY
 審查；本筆不自行升級 `text/body-icon-events.tsv` 或 spec 009，不接 production，也不宣稱
 未量的儲存詢問離頁、完整開機或存讀檔生命週期。
+
+## 2026-09-23 獨立審查勘誤：完整 A000 observer 取代 selective trace
+
+前節 `2755f7c` 的 selective `REP STOSB`／glyph-store trace 只能列出已知 writer，不能排除
+其他 A000 writer；其「確認分支 confirmation→save prompt 的 first 是 F3AA
+`106227779`」結論亦被完整觀察推翻。後續 dosgolem `9eb9457` 在 `Machine.Write8` 實際
+寫入前提供通用、預設關閉的 A000 observer，同值寫入也會被觀察。aggregate runner 是在
+基底 `a16b028` 加入之後提交為 `9eb9457` 的來源上建置，binary SHA-256 為
+`baaecad626494102281b22e8102d8fef42bc961bcc55565e525047cbf036abd5`；建置收據另保存實際
+來源檔雜湊，不能與非 aggregate runner `a5313c...` 混用。
+
+固定 move、refuse、confirm 三條排程均做 A／B；各組完整收據逐 byte 相同：
+
+- move：SHA-256 `4c800ee0a4e96ecf9e9a9c0e452b8a7295b66dbf70445127530f5e043f075f72`，
+  全 A000 730,752 次、安全矩形相交 61,248 次；
+- refuse：SHA-256 `e5c53001cf00aadaed54fe3cc337581597b029a0f571a4fc11f08188fa3ecb86`，
+  全 A000 760,256 次、安全矩形相交 66,176 次；
+- confirm：SHA-256 `04ff0f4db1e47f294d37a4bc7c3a57ebd11c49f79e0baf049cd4ada4c653b8da`，
+  全 A000 735,040 次、安全矩形相交 64,000 次。
+
+完整 observer 證實：refuse 初始 selection 的 first 仍是 `106000488`、
+`0CF4:1B3A`、`A000:F000`；confirmation／save prompt 的 first 則是 glyph store
+`0763:184D`、`A000:F000`，confirm 為 `106216585`，refuse 為 `106679837`。稍後的
+F3AA fill 不得再稱為 first。observer step 位於實際 pre-write callback，較舊 pre-exec
+記錄多一個 step，兩者不可混寫成同一量測時點。
+
+可丟棄 typed-core 現有 11 項測試通過，包含逐 glyph 低階 ABI、非法混合／部分群組、
+偽造較早寫入、錯誤 F3AA-first confirmation、真實 GOLEMFNT 2×／3× raster containment
+與全零字模負例；receipt 仍正確輸出 `ready:false`。獨立審查拒絕升 READY，原因有二：
+
+1. 正式 watcher／dirty-state 尚未證明能在任何 A000 writer 的 first intersecting write 前
+   失敗即關閉地介入；完整 observer 目前只量測原版，不能代替 production interception。
+2. 真實 move／refuse／confirm receipt 的時間序列尚未直接餵入 watcher，故
+   event→group／transition→generation 的垂直綁定仍未證實；現有群組測試只是人工序列。
+
+本階段因此維持 DRAFT。下一步先補上述兩個可否證的核心契約；不得先接 production 再反向
+宣稱 READY。完整 observer 僅涵蓋三條固定合法排程，亦不得外推到未量的儲存詢問離頁、
+完整開機或存讀檔生命週期。

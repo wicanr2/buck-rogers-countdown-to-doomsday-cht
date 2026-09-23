@@ -17,7 +17,7 @@
 - [第一百四十三階段：第四頁 READY 前最小證據與幾何勘誤](phase-143-story-page4-ready-evidence-draft.md)：192 glyph 逐筆 return；保留舊五行 fill 勘誤，後續六行補證與獨立審查已支持規格 013 限縮 READY，runtime 尚未接通。
 - [第一百四十二階段：第三頁五行 typed adapter READY 審查](phase-142-story-page3-ready-review.md)：144 筆逐筆 stack、五行身分、清除契約、字型覆蓋與可丟棄核心負例通過；僅 adapter 契約升 READY，尚未接正式 runtime。
 - [第一百四十一階段：第二頁四行 runtime 限縮 CONFORMED](phase-141-story-page2-runtime-conformance.md)：最新程式的 2×／3×、控制組及合法 Enter 離頁同狀態重跑；結論僅及第二頁已量路徑。
-- [第一百四十階段：身體圖示 READY 前置證據停止線](phase-140-body-icon-ready-evidence-stop.md)：確認七筆仍只有高階 identity；列出低階 glyph return 與安全矩形 pre-write 的最小量測；已訂正可沿用現有 Go Docker image，未升 READY。
+- [第一百四十階段：身體圖示 READY 前置證據停止線](phase-140-body-icon-ready-evidence-stop.md)：低階 glyph／ABI 與完整 A000 first pre-write 已量；獨立審查仍因正式 watcher first-write 介入及真實時序垂直綁定未證而拒絕升 READY。
 
 - [第一百三十九階段：第三頁五行 glyph 的真實 far-return](phase-139-story-page3-return-edge.md)：兩次一致收據證實五行 144 個 glyph 的 RETF caller；補充雙重收據逐筆證實相對 SS／SP+0x12；當時仍是 DRAFT。
 - [第一百三十八階段：第三頁合法離頁的最早故事區 pre-write](phase-138-story-page3-exit-prewrite.md)：兩次一致原版重播證實第四頁出現前的最早安全矩形交集寫入早於首個可見像素差異；第三頁仍為 DRAFT，未接 runtime。

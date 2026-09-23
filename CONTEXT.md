@@ -241,10 +241,12 @@ machine／DOS 狀態與控制組相等。由成功返回終態重新載入 dosgo
 安全矩形、字模覆蓋與離線 request projection。ignored、由 `git archive` 建立的
 可丟棄 probe 已在正常移動／拒絕／確認雙重重播確認七筆低階 glyph 均經
 `0763:03D6` 的 `0xCA` RETF 回到 `0763:049B`、同 SS、SP+`0x12`；每次字串首 glyph
-的 ABI 高位 mask 為 `0x7c`，其餘 glyph 為零。production 未改；先前無法證明的
-各安全矩形最早相交 pre-write，後續已由受限 `REP STOSB` 與 `0763:184D/1854` glyph-store
-診斷已補足 move／refuse／confirm 已量 lifecycle，可丟棄 typed-core 與雙倍率正式倚天
-containment 亦通過。現正等待獨立 READY 審查；身體圖示仍為 DRAFT，未接 runtime 覆繪；詳見
+的 ABI 高位 mask 為 `0x7c`，其餘 glyph 為零。production 未改；各安全矩形最早相交
+pre-write 後續已由通用 A000 pre-write observer 完整量測 move／refuse／confirm 固定排程，
+可丟棄 typed-core 與雙倍率正式倚天 containment 亦通過。獨立 READY 審查已拒絕升級：
+正式 watcher／dirty-state 尚未證明能在 first intersecting write 前失敗即關閉地介入，
+真實三路 receipt 時序也尚未直接驗證 event→group／transition→generation。身體圖示仍為
+DRAFT，未接 runtime 覆繪；詳見
 [第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)與
 [第九十九階段收據](docs/re/phase-99-action-bar-3x-density.md)。
 身體圖示資料切片見[第一百零一階段](docs/re/phase-101-body-icon-text-catalog.md)，

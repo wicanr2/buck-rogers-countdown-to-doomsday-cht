@@ -1436,6 +1436,21 @@
 - 本機 dosgolem `2755f7c` 以明示 body trace 補 `REP STOSB` 與 IDA 已證實 `0763:184D/1854` 單 byte glyph store；同值重畫亦可記錄，非 A000、未知 opcode／位址與不相交 span 不輸出。refuse A/B 逐 byte 相同，receipt SHA-256 `7971fd3aae514698cb8ee8846affb852b1e09b33e86640560bb6f79d2a880348`；六個已量 active 轉場的 earliest pre-write 與位址空間見[第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)。
 - ignored `workplace/body-icon-ready-atomic-core/` 新增可丟棄 typed-core，直接解析正式 catalog／rects、三路 return 與 pre-write receipts，鎖七 identity、首 glyph ABI mask `0x7c`／其餘零、verified RETF、generation／原子群組、restore／discontinuity 及 unknown／duplicate／partial 負例；正式 DRAFT catalog 被拒，正例只用暫存 READY fixture。正式 Phase 101 倚天字型的 2×／3× containment 通過。Docker 5 項測試全綠，typed receipt SHA-256 `22017162ace0bbaebbf16fcbddcd0478a6c346f0c66b1c99d6f3b6e7503e64bd`。spec009 與 catalog 維持 DRAFT，未接 production，等待另一代理獨立 READY 審查。
 
+## 2026-09-23 — 身體圖示完整 A000 證據與 READY 審查拒絕
+
+- dosgolem `9eb9457` 新增預設關閉的通用 A000 pre-write observer；aggregate 收據仍觀察
+  每筆寫入並保存順序摘要、writer groups、連續 spans 與各矩形 first，不再逐像素輸出。
+  move／refuse／confirm 三組 A／B 均逐 byte 相同；refuse 安全矩形命中 66,176 次，證實
+  舊 65,536 cap 會截斷。完整觀察訂正 confirmation／save prompt first：confirm 為
+  `106216585`、refuse 為 `106679837`，兩者都是 `0763:184D` glyph store；舊文件所列稍後
+  F3AA fill 不是 first。
+- typed-core 擴充為 11 項測試並通過，會拒絕偽造較早寫入、舊 F3AA-first confirmation、
+  非法低階 ABI、混合／部分群組及全零字模；receipt 明示 `ready:false`。獨立 Terra 審查
+  另以 Docker 重跑 Python 11/11 與 dosgolem Go test／vet，拒絕升 READY：正式 watcher／
+  dirty-state 尚未證明能在任何 writer 的 first intersecting write 前安全介入，且真實三路
+  event 時序尚未直接驗證 group／transition／generation。spec009、catalog 維持 DRAFT，
+  未接 production。
+
 ## 2026-09-23 — 首屏固定五行限縮 CONFORMED
 
 - 本機 dosgolem `9f4c5f0` 補首屏 strict catalog／generation／receipt gate、未知 execution epoch
