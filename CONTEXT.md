@@ -2,6 +2,16 @@
 
 更新：2026-09-24
 
+[第二百零二階段](docs/re/phase-202-skill-exit-runtime-ab.md)已讓
+職業／技術技能頁兩句離開問句的正式 watcher／presenter，在兩個各自
+合法的原版 Escape 前 state 中完成 control／2×／3× 同狀態 A/B。
+active 中文像素僅落問句本體，六格原版多色尾碼零差；職業／技術
+各 N／Y 的四條終態 JSON、indexed 與 RGBA 分別相等、無殘層。
+[規格 020](docs/spec/020-skill-exit-confirmation-overlay-draft.md)因此只在
+此無頭固定路徑升為**限縮 CONFORMED**。遊戲內存讀檔、正式 Restore
+bridge、冷開機及 Linux 玩家視窗均未驗，Issue #17 繼續開啟；
+下述較早的 READY 敘述是當時狀態，不覆蓋本段結論。
+
 [第一百九十七階段](docs/re/phase-197-skill-exit-confirmation-prewrite-draft.md)
 已從合法技能頁路徑量到職業／技術兩句離開問句的首次變值 A000
 相交寫入、原版六格多色選擇尾碼與各自本體安全矩形；兩種起始

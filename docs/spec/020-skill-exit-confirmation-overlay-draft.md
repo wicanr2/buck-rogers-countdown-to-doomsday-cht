@@ -1,7 +1,12 @@
 # 020 — 技能頁離開確認提示的繁中輸出端覆繪
 
-狀態：**限縮 READY（僅職業／技術兩句問句本體）；正式 watcher／presenter 與同狀態 A/B 尚未完成。**
+狀態：**限縮 CONFORMED（僅職業／技術兩句問句本體、兩個固定合法 state 的無頭 Escape→N／Y 與 2×／3×）；其餘仍 DRAFT。**
 日期：2026-09-24
+
+[第二百零二階段](../re/phase-202-skill-exit-runtime-ab.md)已完成本規格
+限縮 READY 後的正式 watcher／presenter 接線與同狀態 A/B。下文
+「READY 證據與實作後驗收」保留當時准入條件及研究史；以本段及末節
+的目前驗收結論為準。尾碼仍完全保留原版，不將其逐格語意冒稱已知。
 
 ## 玩家可見範圍與原版證據
 
@@ -38,10 +43,11 @@ A000 store；三筆首寫會被舊變值 watcher 漏掉。這只證明首筆時�
 | 職業 | `career.skill.exit.exit_confirmation_prompt.001` | `[0,264)×[192,200)` | `[264,312)×[192,200)` |
 | 技術 | `technical.skill.exit.exit_confirmation_prompt.001` | `[0,272)×[192,200)` | `[272,320)×[192,200)` |
 
-原句身分與初態尾碼幾何為**已證實**。兩筆繁中譯文目前是
-`text/skill-exit-confirmation.zh-TW.tsv` 的**編輯性 DRAFT**；不得
-讓譯文參與原版條件比較。N／Y 後問句應失效是由正常控制流與
-終態畫面支持的**強推論**，尚無完整含同值 A000 清除證據。
+原句身分與初態尾碼幾何為**已證實**。兩筆繁中譯文存於
+`text/skill-exit-confirmation.zh-TW.tsv`；不得讓譯文參與原版條件
+比較。早期 N／Y 後問句失效僅屬**強推論**；其後含同值 A000 首寫
+與正式有界終態無殘層已由第一百九十八、二百零二階段實測，
+但不擴張成未量出口的完整生命週期。
 
 ## READY 輸出契約
 
@@ -67,15 +73,16 @@ A000 store；三筆首寫會被舊變值 watcher 漏掉。這只證明首筆時�
    正規化為 `0xA0000 + Offset`；正規化後的線性位址必在 `[0xA0000,0xB0000)`。
    不得把段內 `0xF0A8` 和線性 `0xAF0A8` 混比。
 
-上述契約已由[第二百階段](../re/phase-200-skill-exit-body-only-lifecycle-fake-draft.md)
+上述契約先由[第二百階段](../re/phase-200-skill-exit-body-only-lifecycle-fake-draft.md)
 的 typed fake 與[第二百零一階段](../re/phase-201-skill-exit-body-only-ready-review.md)
-的獨立審查限縮核准。它授權依此契約實作，不表示正式程式或原版 A/B 已驗。
+的獨立審查限縮核准；當時只授權實作。後續正式程式與原版 A/B
+的限縮驗收另見第二百零二階段，不能回溯把早期 fake 當成實測。
 
 ## READY 證據與實作後驗收
 
 兩頁問句的 exact dispatcher identity 與 entry→return 時序、兩頁 N／Y 本體最早
 **含同值** A000 相交寫入與本體／尾碼分界已量到；guarded return 是依此時序
-提出的 DRAFT watcher 機制，尚未被正式 hook 驗證。初畫的 same-value first store
+提出的 DRAFT watcher 機制；正式 hook 後已在兩個固定起點驗證。初畫的 same-value first store
 仍未知，故 layer 必須在該 verified return 後才可啟用。technical Y 的本體首筆為
 `103906680 AF0A8 0CF4:1B3A`，是 same-value；因此清層不得只接受
 `0763:184D` 或變值寫入。尾碼逐格重畫／清除不要求作為 body-only READY
@@ -84,8 +91,9 @@ A000 store；三筆首寫會被舊變值 watcher 漏掉。這只證明首筆時�
 現行倚天字型對兩筆 TSV 的 2×／3×靜態 containment、鍵值與字型 coverage
 已通過；typed Entry／pending／Return、四條 N／Y 任意 writer 本體 pre-write、
 Stop／Restore／Discontinuity／錯誤清層、段內 offset 正規化及雙倍率尾碼
-sentinel 的 DRAFT fake 與獨立審查亦已通過。READY 只限兩句本體；正式
-guarded-return hook、session bridge、raster 與同狀態 A/B 仍待實作及驗收。
+sentinel 的 DRAFT fake 與獨立審查亦已通過。這是當時限兩句本體的
+READY 前置；正式 guarded-return hook、raster 與固定路徑同狀態 A/B
+現已由第二百零二階段驗收。完整 session bridge 仍待接通。
 
 依規格 019 的同一 session `Closed`／`Failed` 不得被新輸入復活契約，DOS Stop 在
 本候選中必須同步清層並轉為 terminal `Closed`；同一 owner 不得以新 Entry／generation
@@ -99,8 +107,17 @@ Discontinuity、Fault 不只在 active layer，也必須在 pending Entry→Retu
 pending 與 presenter；Restore 是唯一仍可由較大 generation 的完整 exact Entry／Return
 重新建立 layer 的非 terminal bridge。
 
-實作後分別由 dosgolem 從相同初態重生 control／2×／3× 的
-Escape→N、Escape→Y；檢查原版 memory、indexed、palette、BIOS、
-FileOps 與存檔語意不因繁中覆繪改變，差異只在核准本體像素，
-返回／離頁無殘字。這些是後續 CONFORMED 條件，不能用目前的
-DRAFT glyph 或終態控制組替代。
+## 目前限縮 CONFORMED 與未驗範圍
+
+第二百零二階段已由 dosgolem 從職業、技術各自相同合法初態重生
+control／2×／3× 的 Escape→N、Escape→Y。active 2×／3× RGBA
+皆只在核准的問句本體有差異，六格原版尾碼與矩形外零差；四條
+N／Y 有界終態的 JSON、indexed 與 RGBA 在各自 control／overlay
+之間逐位元組相等，包含已記錄的 memory、palette、BIOS／FileOps
+metadata。這只支持兩句本體及上述固定無頭路徑的 CONFORMED。
+
+未驗：遊戲內存檔／讀檔語意、正式 Snapshot／Restore bridge、
+Discontinuity 的 session 事件來源、冷開機正常玩家全流程、Linux
+視窗與焦點、其他離頁條件及尾碼逐格重畫。核心對 Restore／
+Discontinuity 的測試不是正式事件來源接通證據。新增路徑仍須按
+原版證據、READY、實作、同狀態驗證的順序獨立推進。

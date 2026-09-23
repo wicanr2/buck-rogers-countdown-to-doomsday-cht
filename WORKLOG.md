@@ -1,5 +1,17 @@
 # 工作歷程
 
+## 2026-09-24 — 技能頁離開問句本體正式 A/B
+
+- 本機 dosgolem fork 將兩句 exact 問句接到正式 watcher／presenter／收據
+  runner；補上任意 writer、含同值 A000 首寫的本體 pre-write 清層，
+  以及實際 DOS Exit 清層。Stop／Restore／Discontinuity／Fault 核心負例、
+  雙倍率六格尾碼 sentinel 與定向 Go test／vet／race 通過。
+- 從職業／技術各自合法 Escape 前 state，取得 control／2×／3× 的
+  active、N、Y 私有收據；像素只改問句本體，四條終態全畫面無殘層，
+  原版 JSON 與 indexed 逐 byte 相同。獨立審查核准
+  [第二百零二階段](docs/re/phase-202-skill-exit-runtime-ab.md)的限縮
+  CONFORMED；存讀檔、Restore 正式接線、前端與冷開機不在本次驗收。
+
 ## 2026-09-24 — 技能頁離開提示原版寫入與尾碼 DRAFT
 
 - 從合法技能頁原版 state 以本機診斷 runner／probe 取得職業與技術
