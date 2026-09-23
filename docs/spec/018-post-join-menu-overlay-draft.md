@@ -99,24 +99,26 @@ Down 期間 prompt 清除格 `[25,40)×[24,25)`（像素 `[200,320)×[192,200)`�
 ## 可丟棄驗證與 READY 缺口
 
 `workplace/phase162-post-join-menu-ready-candidate/verify_post_join_menu.py` 僅是 ignored
-原型，從 phase 161 receipt 驗證 20 個已接受 request（七初畫普通、初始反白、六組
-Down normal/selected），四個 unit tests 包含 2×／3×字型 containment、zero-ink、partial、
-duplicate、reorder、錯 caller／style 與非相交 prompt clear 的負例。它的輸出
+原型，從 phase 161 receipt 驗證 21 個 versioned identity（七初畫普通、七普通回寫、七反白），
+七個 unit tests 包含 2×／3×字型 containment、zero-ink、partial、duplicate、reorder、
+錯 caller／style、完整 A000 observer 與 row20→未知 row21 的負例。它的輸出
 `receipt.json` 記錄輸入雜湊、逐列 safe rectangle／anchor、pre-write 邊界與拒絕條件。
 
-主代理已在 Docker 內獨立回讀此原型並重跑四項測試；本候選仍維持 **DRAFT**，
+主代理已在 Docker 內獨立回讀此原型並重跑七項測試；本候選仍維持 **DRAFT**，
 但不以正式 watcher／presenter 或 runtime A/B 作為 READY 的前置條件。真正仍缺的
 READY 證據是：
 
 - 21-row table、可丟棄 validator 與完整 A000 observer 已取得；仍待獨立審查把 source／
   receipt hashes、variant 表與「先失效、後 exact 重建」串為狹窄契約。DRAFT TSV 不得直接
   成為 production loader 輸入。
-- 正式 watcher 尚未證明能在所有 observed／unknown A000 writer 的同幀 pre-write fail-closed；
-  混合／部分 generation、row20→未知 row21、restore／stop 負例也尚未進 production matrix。
+- 需由獨立審查確認 unknown row21、restore／stop、unknown A000 writer、mixed／partial
+  generation 都是 READY core 的 fail-closed input，且正式 TSV／文本只作 immutable fixture。
 - 前述字型靜態 containment 與來源 SHA 已取得，但需由獨立審查把版控文字、變體身分、
   幾何、原版收據及失敗矩陣串成一份狹窄可實作契約。
 
-若這些證據通過，才可把**固定七項與已量 Exit 路徑**限縮升 READY，接著實作正式
-watcher／presenter；完成後再做 2×／3× runtime 同狀態 A/B、矩形外零差、離頁無殘字與
-production failure matrix，符合者才可標 CONFORMED。其他功能選項、離頁／重入、
-完整開機或存讀檔不在此限縮範圍，不能外推。
+若獨立審查通過，才可把**固定七項與已量 Down 重畫**限縮升 READY；正式 watcher、loader、
+generation core 與 presenter 是 READY 後的實作工作。完成後才做 2×／3× runtime 同狀態 A/B、
+矩形外零差、同幀 pre-write active→empty、row20→未知 row21／restore／stop／unknown writer
+production failure matrix 與無殘字，符合者才可標 CONFORMED。其他功能選項、離頁／重入、
+完整開機或存讀檔不在此限縮範圍，不能外推。完整 READY 審查候選見
+[第一百八十一階段](../re/phase-181-post-join-menu-ready-review-candidate.md)。
