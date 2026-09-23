@@ -1570,3 +1570,14 @@
 - 依規格閘門，只把已量的七項初畫／逐列 Down 重畫限縮升 READY，授權下一步接正式
   watcher／loader／generation core／RGBA presenter。row20→未收錄 row21、restore／stop／未知 writer
   必須失敗即關閉。此階段未做 runtime A/B，不宣稱畫面已中文化或整個選單 CONFORMED。
+
+## 2026-09-23 — Host 介面文案補入倚天字型子集
+
+- 真實 Ebitengine／Xvfb 前端原型的倚天字型檢查發現主機面板「套用」缺字；
+  因原子集只由遊戲譯文 TSV 產生，這是資料清單缺口，不是 DOS 原版問題。
+- 新增 `text/host-ui.zh-TW.tsv` 作「設定／套用／取消／2×／3×」唯一正式文案來源，
+  Docker 以 22 份 TSV 重建 1028 字模。字元清單、私有 GOLEMFNT 與 manifest 雜湊見
+  [字型入口](font/README.md)，輸出所有權為目前使用者，未把字型 bytes 加入 Git。
+- 同一有界實體 X11 測試在新字型下通過：2×／3×畫面分別為 640×436／960×654，
+  設定按鈕可量到白色字模墨跡，Open→Apply 3×→canvas click 的 DOS 呼叫為
+  `Move,Press,Move,Release`。這仍是空遊戲畫布的 DRAFT 前端原型，不是可玩中文版。

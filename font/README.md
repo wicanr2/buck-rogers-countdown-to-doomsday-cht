@@ -86,3 +86,13 @@ Docker 回讀確認全部 20 份 TSV 的譯文字元均有字模，缺字及多�
 `ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`，manifest 為
 `d4810497db8b47b1e67c329d3a2b373986b5b30656198ae9e67e1c7da126c66b`。
 舊 1024 字模產物已由本機新建置結果取代；它的雜湊只保留作歷史定位。
+
+正式 Linux host 面板需顯示「設定／套用／取消／2×／3×」；先前 21 份遊戲 catalog 的
+1026 字模不含所有 host 標籤，真實 Ebitengine 測試因缺「套」而正確拒絕。
+新增 [`text/host-ui.zh-TW.tsv`](../text/host-ui.zh-TW.tsv) 作唯一正式文案來源後，
+22 份 TSV 的字元聯集為 1028 字，`font/characters.txt` SHA-256
+`3931dd4d7825feefe3fadf7ea8f35925991d07a6947894a4651d2d909cb5f578`。
+本機 `top-pad` GOLEMFNT SHA-256 為
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+manifest SHA-256 為 `39eb11a95d95eed749fefa4d358230e5e449339eb2e189f1a8296f0cde8cd00f`；
+兩者仍只在 ignored `workplace/current-font/`，不得公開散布。

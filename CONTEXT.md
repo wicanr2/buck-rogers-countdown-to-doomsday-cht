@@ -8,10 +8,10 @@
 這只驗收 320×200 的通用滑鼠橋接元件，**不**表示 Linux 玩家前端已接線；
 [spec 004](docs/spec/004-dosgolem-host-frontend-draft.md) 與 Issue #16 仍未完成。
 
-目前 21 份正式 TSV（含一份尚未接通的 DRAFT 選單）的倚天字型聯集已重建為 1026 字模：版控內
+目前 22 份正式 TSV（含已限縮 READY、尚未接通的選單與 host UI）的倚天字型聯集已重建為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的字元涵蓋完全一致，缺字為零。
-舊的 961／997／1024 字模收據只代表當時譯文，不可作目前前端的字型輸入；來源與雜湊見
+舊的 961／997／1024／1026 字模收據只代表當時譯文，不可作目前前端的字型輸入；來源與雜湊見
 [`font/README.md`](font/README.md)。這是字型覆蓋，不代表所有畫面都已中文化。
 
 從正常「加入角色 → 名冊 EXIT → 功能選單」雙重原版重播，新確認七項固定選單文字；

@@ -1,0 +1,6 @@
+key	translation	source
+host.settings	設定	runtime-interface
+host.apply	套用	runtime-interface
+host.cancel	取消	runtime-interface
+host.scale2	2×	runtime-interface
+host.scale3	3×	runtime-interface
