@@ -1,5 +1,8 @@
 # 原版觀測證據索引
 
+- [第二百零一階段：技能頁離開問句本體覆繪 READY 審查](phase-201-skill-exit-body-only-ready-review.md)：兩筆 exact 問句本體限縮 READY，尾碼零覆繪；正式接線與原版 A/B 尚未完成。
+- [第二百階段：技能離開問句 body-only lifecycle fake](phase-200-skill-exit-body-only-lifecycle-fake-draft.md)：以已證實 entry→return 時序提出 guarded-return 啟用候選、N／Y 任意 writer 本體 pre-write 清層、Stop／Restore／Discontinuity／錯誤同步清除及尾碼 sentinel 零覆繪的 DRAFT fake；此 fake 未接 production，後續 READY 結論見第二百零一階段。
+
 - [第一百九十九階段：技能頁離開問句雙倍率字型靜態檢查](phase-199-skill-exit-font-containment-draft.md)：兩句 DRAFT 譯文在本機倚天 2×／3×安全矩形內零缺字、零越界；未驗 N／Y 清除及執行期。
 - [第一百九十六階段：設定面板同批鍵盤不漏入 DOS](phase-196-ebiten-panel-batch-keyboard-gate.md)：正式 `Game.Update` 修正 Apply／Cancel 同批鍵盤隔離，僅此 host 分流邊界限縮 CONFORMED。
 - [第一百九十五階段：加入角色後七列選單逐寫入清層](phase-195-post-join-prewrite-runtime-receipt.md)：正式收據記錄七次 watcher／presenter 清層，雙倍率 row20 回寫後無殘字；只限合法固定路徑 CONFORMED。

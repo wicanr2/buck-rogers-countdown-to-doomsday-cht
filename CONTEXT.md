@@ -7,12 +7,16 @@
 相交寫入、原版六格多色選擇尾碼與各自本體安全矩形；兩種起始
 state 的證據已明確分開，不能混稱同狀態。
 [規格 020](docs/spec/020-skill-exit-confirmation-overlay-draft.md)保存此
-DRAFT 覆繪邊界；[第一百九十九階段](docs/re/phase-199-skill-exit-font-containment-draft.md)
+覆繪邊界；[第一百九十九階段](docs/re/phase-199-skill-exit-font-containment-draft.md)
 已驗兩句現行倚天字型在 2×／3× 的靜態墨跡 containment、零缺字。
 [第一百九十八階段](docs/re/phase-198-skill-exit-ny-all-store-prewrite-draft.md)
 已量 N／Y 各兩條合法重播的本體與尾碼首筆相交 A000 store，包含舊變值
-watcher 漏掉的三個同值首寫；完整尾碼生命週期、DOS 停止清理、正式
-watcher／presenter 與 A/B 仍缺，Issue #17 未完成。
+watcher 漏掉的三個同值首寫。[第二百階段](docs/re/phase-200-skill-exit-body-only-lifecycle-fake-draft.md)
+用 typed fake 鎖住 entry→return、清層、故障與雙倍率尾碼零覆繪；
+[第二百零一階段](docs/re/phase-201-skill-exit-body-only-ready-review.md)獨立審查後，
+規格 020 **僅兩句本體限縮 READY**，不再為不觸碰的尾碼追逐格生命週期。
+正式 watcher／presenter、DOS 停止／還原接線與原版同狀態 A/B 仍缺，
+Issue #17 未完成。
 
 [第一百九十六階段](docs/re/phase-196-ebiten-panel-batch-keyboard-gate.md)
 修正正式 Ebitengine `Game.Update` 的同批鍵盤分流：面板起點開啟，

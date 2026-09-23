@@ -20,6 +20,15 @@
   本體均早於舊變值 watcher 的首筆，故正式清層不得依賴變值事件。
   八筆私有收據與可重生診斷來源已固定；完整尾碼清除、DOS 停止與
   執行期覆繪仍待驗。
+- [第二百階段](docs/re/phase-200-skill-exit-body-only-lifecycle-fake-draft.md)
+  建立 ignored typed fake，固定兩句 exact Entry／Return、四條 N／Y
+  首筆、段內 offset 正規化、雙倍率尾碼 sentinel、pending／active 的
+  Stop／Restore／Discontinuity／Fault 失效矩陣；主代理補兩個 Entry
+  caller 負例後於 Docker 重跑全通過。
+- [第二百零一階段](docs/re/phase-201-skill-exit-body-only-ready-review.md)
+  獨立審查核准規格 020 的 body-only 限縮 READY，尾碼保留原版且
+  不再要求逐格尾碼研究；正式 watcher／presenter、session bridge
+  與同狀態 A/B 留待後續實作／CONFORMED，Issue #17 仍開啟。
 
 ## 2026-09-24 — 設定面板同批鍵盤隔離
 

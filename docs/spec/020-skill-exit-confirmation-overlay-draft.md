@@ -1,6 +1,6 @@
 # 020 — 技能頁離開確認提示的繁中輸出端覆繪
 
-狀態：**DRAFT；尚未授權 watcher／presenter 正式接線。**
+狀態：**限縮 READY（僅職業／技術兩句問句本體）；正式 watcher／presenter 與同狀態 A/B 尚未完成。**
 日期：2026-09-24
 
 ## 玩家可見範圍與原版證據
@@ -43,7 +43,7 @@ A000 store；三筆首寫會被舊變值 watcher 漏掉。這只證明首筆時�
 讓譯文參與原版條件比較。N／Y 後問句應失效是由正常控制流與
 終態畫面支持的**強推論**，尚無完整含同值 A000 清除證據。
 
-## DRAFT 的候選輸出契約
+## READY 輸出契約
 
 1. exact event 必須同時比對原文長度、SHA-256、caller、row／column、
    背景／前景與頁面上下文；只用相同文字或座標不得啟用覆繪。
@@ -53,20 +53,51 @@ A000 store；三筆首寫會被舊變值 watcher 漏掉。這只證明首筆時�
 3. 兩句譯文單行顯示；現行候選字型的 2×／3× 靜態檢查已通過，
    正式實作仍須重驗墨跡完全落於本體安全矩形且不覆蓋尾碼。
    不得為遷就缺字改譯。
-4. watcher 須在原版對本體最早相交 A000 pre-write 前失效，包含
-   同值寫入；N／Y 返回或離頁後不得殘字。未知 writer、錯序、
-   partial 身分、restore／stop／discontinuity 必須失敗即關閉。
+4. layer 只能在 exact dispatcher 已完成 guarded return 後建立；初畫的
+   same-value first store 仍是未知，故不得以首次 A000 store 當成啟用條件。
+   已啟用 layer 遇到原版對**本體**最早相交 A000 pre-write 必須先失效，
+   包含同值寫入與任意 writer。N／Y 返回或離頁後不得殘字。Stop、Restore、
+   Discontinuity、未知 writer、錯序、partial 身分與任何錯誤必須同步清除
+   watcher 與 presenter，失敗即關閉。
+5. lifecycle 僅觀察本體矩形；尾碼不是 watcher 的 identity 或清除條件。
+   presenter 必須以尾碼 sentinel 證明每次 Draw 對尾碼保護矩形是零覆繪。
+   尾碼逐格重畫／清除不屬本限縮 READY 的前置，亦不得由本契約假稱已知。
+   本規格與 phase-197／198 的 `AF…` 位址均為**線性 A000**位址；正式接線若收到
+   `machine.VideoWrite.Offset`，必須先拒絕不在 `[0,0x10000)` 的**段內 offset**，再
+   正規化為 `0xA0000 + Offset`；正規化後的線性位址必在 `[0xA0000,0xB0000)`。
+   不得把段內 `0xF0A8` 和線性 `0xAF0A8` 混比。
 
-以上第 3、4 項的精確失效點與驗收矩陣仍未達 READY，不能將此候選
-直接搬進正式程式。
+上述契約已由[第二百階段](../re/phase-200-skill-exit-body-only-lifecycle-fake-draft.md)
+的 typed fake 與[第二百零一階段](../re/phase-201-skill-exit-body-only-ready-review.md)
+的獨立審查限縮核准。它授權依此契約實作，不表示正式程式或原版 A/B 已驗。
 
-## READY 前置與實作後驗收
+## READY 證據與實作後驗收
 
-兩頁問句本體與尾碼在相同合法原版 state、相同 N／Y 排程下的最早
-**含同值** A000 相交寫入已量到；仍須確認初畫及必要重畫邊界、
-尾碼每格重畫／清除與 DOS 終止清理。現行倚天字型對兩筆 TSV 的 2×／3× 靜態
-containment、鍵值與字型 coverage 已通過；仍須獨立審查 typed watcher／presenter
-的 generation、失敗矩陣與保存狀態影響；合格才可升 READY。
+兩頁問句的 exact dispatcher identity 與 entry→return 時序、兩頁 N／Y 本體最早
+**含同值** A000 相交寫入與本體／尾碼分界已量到；guarded return 是依此時序
+提出的 DRAFT watcher 機制，尚未被正式 hook 驗證。初畫的 same-value first store
+仍未知，故 layer 必須在該 verified return 後才可啟用。technical Y 的本體首筆為
+`103906680 AF0A8 0CF4:1B3A`，是 same-value；因此清層不得只接受
+`0763:184D` 或變值寫入。尾碼逐格重畫／清除不要求作為 body-only READY
+前置，但每次 presenter draw 必須以 sentinel 證明尾碼零覆繪。
+
+現行倚天字型對兩筆 TSV 的 2×／3×靜態 containment、鍵值與字型 coverage
+已通過；typed Entry／pending／Return、四條 N／Y 任意 writer 本體 pre-write、
+Stop／Restore／Discontinuity／錯誤清層、段內 offset 正規化及雙倍率尾碼
+sentinel 的 DRAFT fake 與獨立審查亦已通過。READY 只限兩句本體；正式
+guarded-return hook、session bridge、raster 與同狀態 A/B 仍待實作及驗收。
+
+依規格 019 的同一 session `Closed`／`Failed` 不得被新輸入復活契約，DOS Stop 在
+本候選中必須同步清層並轉為 terminal `Closed`；同一 owner 不得以新 Entry／generation
+rearm，新的合法 session 必須由新 owner 建立。Restore 只清空當前層，後續仍必須以
+大於舊值的 generation 重走完整 exact Entry／Return；正式 restore hook 的來源與接線
+仍是 DRAFT，不能由 fake 冒稱已驗。
+
+Discontinuity 與 A000 範圍外／無法正規化的 VideoWrite 都是不可信事件；本候選要求
+同步 clear 後轉為 terminal `Failed`／poison，同一 owner 不得 rearm。Stop、Restore、
+Discontinuity、Fault 不只在 active layer，也必須在 pending Entry→Return 期間清除
+pending 與 presenter；Restore 是唯一仍可由較大 generation 的完整 exact Entry／Return
+重新建立 layer 的非 terminal bridge。
 
 實作後分別由 dosgolem 從相同初態重生 control／2×／3× 的
 Escape→N、Escape→Y；檢查原版 memory、indexed、palette、BIOS、
