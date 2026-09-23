@@ -1581,3 +1581,17 @@
 - 同一有界實體 X11 測試在新字型下通過：2×／3×畫面分別為 640×436／960×654，
   設定按鈕可量到白色字模墨跡，Open→Apply 3×→canvas click 的 DOS 呼叫為
   `Move,Press,Move,Release`。這仍是空遊戲畫布的 DRAFT 前端原型，不是可玩中文版。
+
+## 2026-09-23 — 新字型再審與 Linux 前端實體事件
+
+- `host-ui.zh-TW.tsv` 使倚天子集變成 1028 字模，與 post-join 限縮 READY 原先釘選的
+  1026 字模 SHA 不同；正式接線先暫停。主代理用新字型在 Docker 重跑七項 verifier
+  全通，21 個 exact variant、雙倍率七列零缺字／零越界；新字型與收據 SHA、歷史 pin
+  的關係已追加於[第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)。
+- dosgolem 本機分支 `97e5f4f` 將 Linux host 面板標籤改為呼叫端注入，測試從正式 TSV
+  取字；Docker／Xvfb 真正執行 2× 開面板、選 3×、Apply、畫布點擊，
+  `go test`／`go vet` 均通。實體收據與截圖只在 ignored `workplace/`，
+  詳見 fork `docs/re/phase-180-linux-ebiten-router-draft.md`；仍無原版玩家畫布。
+- 子代理以本機 fork `ab1731c` 把 post-join READY 的 loader／watcher／presenter 小切片
+  接入 `cmd/buckrogers-text-receipt`，定向測試與 vet 通過；私有正常玩家路徑 2×／3×
+  同狀態 A/B 尚未取得，故 spec018 不能升 CONFORMED。

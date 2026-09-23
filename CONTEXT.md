@@ -15,7 +15,7 @@
 [`font/README.md`](font/README.md)。這是字型覆蓋，不代表所有畫面都已中文化。
 
 從正常「加入角色 → 名冊 EXIT → 功能選單」雙重原版重播，新確認七項固定選單文字；
-繁中候選與原文雜湊已另存 [`post-join-menu`](text/README.md) DRAFT catalog，尚未接
+繁中候選與原文雜湊已另存 [`post-join-menu`](text/README.md) catalog，現為 spec018 的限縮 READY fixture，尚未接
 正式 runtime。「JOIN A GAME」與「SHOW CHARACTER'S GAME」仍只有字面譯法，操作語意未知；
 上方動態角色資料不納入這七項；七列的反白與普通回寫另列精確變體。
 私有原文／畫面證據只在
@@ -32,6 +32,10 @@
 遇到未收錄 row 21 反白時失敗即關閉。主代理回讀固定雜湊並獨立重跑七項正反例後，
 [第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)已將 spec018
 限縮升 READY；正式 watcher 與同狀態 A/B 屬 READY 後實作／CONFORMED 驗收，不能倒置閘門。
+主機介面譯文導致本機字型擴為 1028 glyph 後，原 1026-glyph READY 字型 pin 曾暫停；
+主代理以新字型在 Docker 重跑七項 verifier、21 變體與雙倍率逐列 containment 全通，
+已於同一[第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)
+記錄新 SHA 與再審，恢復**相同限縮範圍**的 READY。正式 CLI A/B 尚未完成。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →
