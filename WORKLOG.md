@@ -1915,3 +1915,13 @@
 - 本批 Docker 結束後專用映像容器清單為空；live-turn、phase206、phase210
   工作目錄沒有 root-owned 檔案或誤建的 `.md` 目錄。私有收據與
   scratch 均留在 ignored `workplace/`。
+
+## 2026-09-24 — 合成 typed session 收據候選
+
+- 子代理在全新 ignored phase211 原型中，以退出前置檢查、Step
+  差分、error 優先及原始停止碼保存組成候選收據；合成 DOS 退出、
+  CPU error、predicate／breakpoint、零預算兩方案與兩種 epoch
+  候選量均有負例。主代理以唯讀無網路 Docker 獨立重跑五組測試全通。
+  證據與未定契約見[第二百一十一階段](docs/re/phase-211-synthetic-session-receipt-candidate-draft.md)。
+- 本批未更動 phase206／phase210 釘選探針或正式程式；零預算／Epoch
+  不因 fake 綠燈而被默認決定，規格 019 繼續 DRAFT。

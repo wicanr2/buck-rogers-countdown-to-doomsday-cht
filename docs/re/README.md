@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第二百一十一階段：合成 typed session 收據候選與負例](phase-211-synthetic-session-receipt-candidate-draft.md)：ignored 原型以 DOS 退出前置檢查、step 差分與 error 優先保存候選收據；五組合成測試通過，零預算與 Epoch 未定。
 - [第二百一十階段：session 停止收據與 DOS 退出的合成探針](phase-210-session-stop-receipt-probe-draft.md)：正常 DOS 退出仍可回 `StopBudget`、已退出後再呼叫仍會多嘗試一步；舊 phase206 釘選探針已精確恢復，規格 019 仍 DRAFT。
 - [第二百零九階段：冷開機選單的實體視窗回合與面板暫停](phase-209-cold-boot-live-ebiten-panel-pause-draft.md)：ignored 原型從 `START.EXE` 第零步到選單後，正式 Ebitengine `Update` 實際推進同一 machine；2×實體 Open／Cancel 暫停零步、下一回合恢復，仍非正式可玩版。
 - [第二百零八階段：從第零步啟動的選單繁中視窗原型](phase-208-cold-boot-menu-ebiten-prototype-draft.md)：原版 `START.EXE` 唯讀冷開機至首個已量選單，繁中終態於 Ebitengine／Xvfb 繪製；靜態影格、單次重播，不是可玩前端。

@@ -3,6 +3,11 @@
 狀態：**DRAFT；不授權 production 實作，不使規格 004 升 READY。**
 日期：2026-09-24
 
+同日合成 typed 原型：[第二百一十一階段](../re/phase-211-synthetic-session-receipt-candidate-draft.md)
+以退出前置檢查、machine Step 差分及 error 優先組成候選收據，
+五組合成測試通過。它不決定零預算與 Epoch 語意，不處理正式
+Draw 故障或真實 session owner，故本規格仍為 DRAFT。
+
 同日合成退出探針：[第二百一十階段](../re/phase-210-session-stop-receipt-probe-draft.md)
 證明正常 DOS 退出時原始 `RunUntil` 仍可回 `StopBudget`，起點已退出
 卻以正預算再次呼叫時還會多嘗試一步。正式 session 必須在呼叫前
@@ -117,6 +122,17 @@ type Session interface {
 同一 goroutine；frontend 只提交 batch／顯示 snapshot，不得持有 machine 或自行推進。
 `Snapshot` 是純讀投影：不得 step、讀盤、消費 watcher、呼叫 `Layer.Frame`、清 stamp 或
 猜測未登錄 layer。
+
+`InputBatch.Events` 目前仍是 DRAFT 型別佔位，**不是**實體事件的時間戳序列。
+現有 Ebitengine `readFrameInput` 一次取回 pointer edge 與鍵盤候選清單，
+`Game.Update` 依 pointer Down、Up 再到鍵盤的固定程序順序處理，無法還原
+同一 Update 內「鍵先於點擊」的實際時間順序。沿用[第一百九十六階段](../re/phase-196-ebiten-panel-batch-keyboard-gate.md)
+已驗的 host 優先批次政策：只要起點面板開啟、pointer 路由中有任一
+面板轉移，或批次結束仍開啟，**整批**鍵盤候選都不送 DOS；起終皆
+關閉且無 host 面板轉移時，才可依鍵盤候選清單順序送已明示映射的鍵。
+若 host 路由失敗，立即停止，不可先交付部分 DOS 鍵。正式 typed
+事件型別仍須把 pointer 候選與鍵盤候選分開表達並以負例驗證；本段
+只釘住現行正式 frontend 與 fake 一致的可觀測語意，不宣稱 READY。
 
 ## 一回合輸入與暫停契約
 

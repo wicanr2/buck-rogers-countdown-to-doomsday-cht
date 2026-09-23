@@ -2,6 +2,11 @@
 
 更新：2026-09-24
 
+[第二百一十一階段](docs/re/phase-211-synthetic-session-receipt-candidate-draft.md)
+已在 ignored 合成 typed 原型驗過「DOS 退出前置檢查→Step 嘗試數
+差分→error 優先」候選收據與五組負例；退出後零新步。
+零預算、`Epoch`、正式 Draw fault owner 尚未決定，規格 019 未升 READY。
+
 [第二百一十階段](docs/re/phase-210-session-stop-receipt-probe-draft.md)
 以獨立合成 COM 探針補證：DOS 正常退出仍可得 raw `StopBudget`；
 已退出後再次正預算 `RunUntil` 還會多嘗試一步。正式 session 必須
