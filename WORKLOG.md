@@ -1530,3 +1530,22 @@
   `026F:029C` pre-write；雙重 JSON 與 framebuffer 各逐 byte 相同。主代理回讀原始
   hash／事件／clear 範圍後寫入[第一百六十一階段](docs/re/phase-161-post-join-menu-selection-and-exit.md)。
   其他選項語意及中文覆繪仍未知，catalog 維持 DRAFT。
+
+## 2026-09-23 — 正式 MouseBridge 限縮符合性
+
+- dosgolem 本機分支 `429c6e8` 將 spec228 限縮升 READY；Terra 隨後以
+  `023e1dd` 實作 generic `host.MouseBridge`，`1dafb0a` 補極大尺寸溢位與 host
+  capture 重複 Down 的失敗即關閉。主代理獨立重跑 host vet／test／race 通過。
+- ignored Ebitengine/Xvfb harness 改為直接使用正式 bridge；phase179 七份 2×／3×
+  control／click 及 2× release-only 收據，與舊原型的 API 與完整 phases 逐欄相等。
+  主代理核對來源／收據雜湊後，本機 dosgolem `c20ab29` 限縮標 CONFORMED，
+  `4589bfe` 訂正首頁狀態文字。證據與未驗範圍見[第一百七十九階段](docs/re/phase-179-formal-mousebridge-conformance.md)。
+- 尚未接正式 Linux 玩家視窗；spec004、Issue #16 保持開啟。dosgolem 專用分支未推上游。
+
+## 2026-09-23 — 加入角色後選單 DRAFT 規格獨立審查
+
+- Terra 建立規格 018 的安全矩形、雙倍率倚天靜態 containment 與 20 筆 request 的
+  可丟棄世代原型；主代理在 Docker 內獨立重跑四項正反例通過。
+- 審查維持 DRAFT：七筆首次繪製之外的反白／普通回寫變體尚未進版本化 exact 表，
+  `026F:029C` clear 收據也不能排除其他 A000 writer 更早碰中文字區。READY 前只補
+  這些證據與 typed 失敗矩陣；正式程式與同狀態 A/B 留到 READY 後，不製造驗收迴圈。

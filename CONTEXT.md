@@ -2,6 +2,12 @@
 
 更新：2026-09-23
 
+本機 dosgolem 正式 `host.MouseBridge` 已由雙倍率真實 Ebitengine 同狀態 A/B 與
+2×畫布外／面板／失焦清理收據限縮標為 CONFORMED；正式與可丟棄原型七組 API／
+完整 phase 逐欄相等，見[第一百七十九階段](docs/re/phase-179-formal-mousebridge-conformance.md)。
+這只驗收 320×200 的通用滑鼠橋接元件，**不**表示 Linux 玩家前端已接線；
+[spec 004](docs/spec/004-dosgolem-host-frontend-draft.md) 與 Issue #16 仍未完成。
+
 目前 21 份正式 TSV（含一份尚未接通的 DRAFT 選單）的倚天字型聯集已重建為 1026 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的字元涵蓋完全一致，缺字為零。
@@ -17,6 +23,10 @@
 以及 `026F:029C` 在 `125119490` 的第一筆全選單相交 pre-write；見
 [`第一百六十一階段`](docs/re/phase-161-post-join-menu-selection-and-exit.md)。
 中文安全矩形、可丟棄 typed lifecycle 與正式 A/B 仍缺，維持 DRAFT。
+其後[規格 018](docs/spec/018-post-join-menu-overlay-draft.md)與 ignored 幾何／typed 原型
+已補七項 2×／3×靜態字模 containment 及 20 筆已量 request 世代測試；主代理獨立重跑
+四項測試通過。READY 前仍須版本化反白／普通回寫身份，以及整段轉場的通用 A000
+pre-write 證據；正式 watcher 與 A/B 屬 READY 後實作／CONFORMED 驗收，不能倒置閘門。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

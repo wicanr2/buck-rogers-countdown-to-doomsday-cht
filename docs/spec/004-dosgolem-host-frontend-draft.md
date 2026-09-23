@@ -162,13 +162,13 @@ canvas 邊界、left button down/up 順序與拒絕無效按鍵須由純核心�
 尚未 Step，不能當玩家可見效果收據。使用者其後也決定：只有關面板且畫布內的 Left Down
 能建立新的 DOS 按鍵狀態；已轉送 Down 的 Up 若在畫布外、控制列、開啟面板或視窗失焦，
 仍須只呼叫一次 `ReleaseMouse(0)`，不移動最後有效 DOS 座標；無配對或重複 Up 不送 DOS。
-本地 dosgolem 分支的 `docs/spec/228-host-mouse-bridge-ready-candidate.md` 保存 DRAFT 契約與
-純 fake prototype 驗證；原版有界玩家效果仍待量測，不能升 READY。
+本地 dosgolem 分支的 `docs/spec/228-host-mouse-bridge-ready-candidate.md` 當時保存 DRAFT 契約與
+純 fake prototype 驗證；後續限縮符合性結果見本規格最末的現況勘誤。
 ignored `workplace/phase128-mousebridge-prototype/bridge.go` 曾對畫布內配對 Up
 也只 Release、不 Move；已在可丟棄純核心修正為 closed-canvas 內
 `Move→Release`、外部／panel／失焦只 Release，雙倍率四角與邊界 fake 測試通過。
-這不等於真實 Ebitengine／dosgolem 事件矩陣已通過；正式 bridge 前仍須取得
-實體畫布內 Up 的座標、呼叫順序與正常玩家因果收據，spec 228 維持 DRAFT。
+這在當時不等於真實 Ebitengine／dosgolem 事件矩陣已通過；後續已補實體
+畫布內 Up 的座標、呼叫順序與固定 checkpoint 因果收據，見本規格最末現況勘誤。
 
 [第一百五十四階段](../re/phase-154-ebiten-panel-pointer-miss-prototype.md)再以真實
 Ebitengine 2×／3×驗得閉面板畫布轉送及面板開啟時三種 pointer hit／miss
@@ -183,11 +183,11 @@ Ebitengine 2×／3×驗得閉面板畫布轉送及面板開啟時三種 pointer 
 [第一百四十六階段](../re/phase-146-real-ebiten-inside-up-corrected.md)已以修正後原型
 重跑真實 Ebitengine 2×／3×畫布內 Down→Up；兩倍率均觀測到
 `Move→Press→Move→Release`，DOS button 清除，輸入 API 邊界的 BIOS／IRQ／indexed
-與 memory 不變。這只補上述畫布內 Up 呼叫順序；四角／邊界、其他 cleanup、
-正式 backend route 與正常玩家因果 A/B 仍缺，spec 228／本規格仍維持 DRAFT。
+與 memory 不變。這在當時只補上述畫布內 Up 呼叫順序；後續 spec228 的限縮結果
+另見下節，**本規格 004** 仍維持 DRAFT。
 
 1. Linux Ebitengine 後端的正式事件接線：將 prototype host chrome hit test、面板鍵盤隔離、Ebitengine key 到
-   DOS scan code 的明示映射，以及未命中 pointer 的 mouse forwarding 決定。
+   DOS scan code 的明示映射，以及已定案的畫布 pointer forwarding 接到正式玩家視窗。
 2. 從遊戲開機到故事 state 的完整正常玩家路徑，以及 host 操作後繼續遊玩、存檔／讀檔的同狀態
    收據；第一百二十階段的受控 direct host events 不可替代它。
 3. 同一套 active-layer scale-switch lifecycle 對其他已接／未接 Buck Rogers overlay 的資料治理與
@@ -210,3 +210,17 @@ READY 後至少驗證：
    presentation pixels 與 host chrome 範圍。
 
 在上述項目完成前，本規格維持 DRAFT，不能作為 production 視窗前端或手冊 presenter 的許可。
+
+## 2026-09-23：MouseBridge 限縮符合性現況勘誤
+
+本機 dosgolem `host.MouseBridge` 已依獨立審查的 spec228 限縮 READY 實作，並以
+正式程式連接 ignored Ebitengine/Xvfb harness，完成 320×200 的 2×／3×同 state
+無滑鼠控制組與畫布點擊 A/B，以及 2×畫布外、面板、失焦的 release-only 清理。
+七份正式收據在 DOS API 與完整 phase 欄位逐項等於舊原型，來源雜湊與未驗停止線見
+[第一百七十九階段](../re/phase-179-formal-mousebridge-conformance.md)。
+因此 spec228 **僅此範圍限縮 CONFORMED**；前文關於 spec228「仍 DRAFT」的段落是
+早期證據狀態，不再代表此元件現況。
+
+這沒有接通正式 Linux 玩家視窗，也沒有關閉本規格的 Ebitengine hit-test、
+鍵盤映射、active-layer 全路徑、完整開機或存讀檔驗收。3× cleanup 與實體
+right／bottom exclusive 邊界亦未由這批正式收據驗證。**spec004 整體仍 DRAFT。**
