@@ -3,6 +3,13 @@
 狀態：**DRAFT；不授權 production 實作，不使規格 004 升 READY。**
 日期：2026-09-24
 
+同日 machine 收據：[第二百零六階段](../re/phase-206-linux-session-machine-step-delta-draft.md)
+以合成 COM 及現行 dosgolem `Machine.RunUntil` 雙重播證實：
+`TickReceipt.Steps` 若取前後 `Machine.Steps` 差分，量到的是含失敗
+嘗試的 machine Step 次數，不是保證成功執行的指令數；提前停會小於
+budget，`RunUntil` 的 `StopBudget` 遇非空 error 時不得解為預算用完。
+正常 DOS 退出、觀測者／前端故障的映射仍未定，本規格維持 DRAFT。
+
 同日 fake 補驗：[第二百零五階段](../re/phase-205-linux-session-failed-close-once-fake.md)
 在既有可丟棄 typed session 中，固定 Deliver／Advance 注入故障後的後續輸入拒絕、
 重試零步及 Close 計數一次。此結果不涵蓋 Snapshot／Draw／observer 故障或真實資源，

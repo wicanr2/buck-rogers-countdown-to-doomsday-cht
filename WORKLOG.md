@@ -1842,3 +1842,17 @@
   [第二百零五階段](docs/re/phase-205-linux-session-failed-close-once-fake.md)。
 - 這只是可丟棄模型。Snapshot／Draw／observer、真實 DOS 指令數、
   cold boot 與資源收束未接；規格 004／019 均維持 DRAFT。
+
+## 2026-09-24 — machine 步數與停止原因最小實驗
+
+- 獨立審查指出 session fake 把 epoch 直接加 budget，不能代表真實
+  machine 指令差分。在 ignored dosgolem `workplace/` 建立合成 COM
+  可丟棄探針，Docker 唯讀雙重執行結果逐位元組相同：零預算零步、
+  預算耗盡兩步、條件／斷點兩步早停、未實作指令在第二次 Step 回錯。
+- 最重要的勘誤是錯誤案例仍回原始 `StopBudget`，但非空 error 應
+  優先分類；`m.Steps` 已計入失敗嘗試。詳見
+  [第二百零六階段](docs/re/phase-206-linux-session-machine-step-delta-draft.md)。
+  規格 019 只補 DRAFT 收據，不升 READY，不改正式前端。
+- 曾嘗試讀取既有冷開機原版 PNG 供視覺檢查；權限審查因完整受限
+  影像會進入工具通道而拒絕。未改以其他通道繞過，該張圖未作本輪
+  視覺證據；步數實驗使用無原版素材的合成 COM，與此限制無關。

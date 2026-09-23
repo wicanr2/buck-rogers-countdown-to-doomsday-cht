@@ -2,6 +2,12 @@
 
 更新：2026-09-24
 
+[第二百零六階段](docs/re/phase-206-linux-session-machine-step-delta-draft.md)
+以無原版素材的合成 COM 探針、同來源雙重播確認 machine 的
+`Steps` 前後差分：提前停止少於 budget，CPU 出錯時失敗嘗試也
+計入，`RunUntil` 的原始 `StopBudget` 不能蓋過非空 error。
+這是 Issue #18 的 DRAFT 步數證據，不是正式 session 或玩家路徑。
+
 [第二百零五階段](docs/re/phase-205-linux-session-failed-close-once-fake.md)
 在 ignored 前端 session fake 補驗：先前進七個 fake steps，再注入
 Deliver／Advance 故障；後續輸入與步進均拒絕，重複 Close 的副作用

@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第二百零六階段：Linux session machine 步數差分 DRAFT](phase-206-linux-session-machine-step-delta-draft.md)：合成 COM 雙重播證明早停時 `Steps<budget`，CPU 故障時原始 `StopBudget` 須由非空 error 覆蓋；計數包含失敗嘗試，非可玩前端收據。
 - [第二百零五階段：Linux session 故障後拒絕推進與單次關閉 fake](phase-205-linux-session-failed-close-once-fake.md)：可丟棄 typed fake 在 Deliver／Advance 故障後拒絕新輸入與重試步進、Close 計數恰一次；規格 004／019 仍 DRAFT。
 - [第二百零四階段：技能操作列完整清底正式 A/B](phase-204-action-bar-runtime-conformance.md)：修正短譯文後殘留原版英文，八條操作列路徑與技術頁 Escape→Y 雙倍率雙重播、負控制及獨立審查，僅固定範圍限縮 CONFORMED。
 - [第二百零三階段：Linux session 同批輸入 fake 勘誤](phase-203-linux-session-mixed-batch-fake-review.md)：可丟棄 fake 現將 DOS 鍵視為同批候選；Open／Apply／Cancel＋Enter 零 DOS 副作用、零步及下一關閉回合恢復通過，規格 004／019 仍 DRAFT。
