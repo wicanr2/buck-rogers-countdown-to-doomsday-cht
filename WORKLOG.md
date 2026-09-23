@@ -1639,3 +1639,8 @@
   真實 320×200 原版畫布，實體 X11 輸入完成面板攔截、2×→3× Apply 與關面板後
   Enter 送入 DOS；收據與限制在 fork 的 `docs/re/phase-180-linux-ebiten-router-draft.md`。
   這不是完整冷開機、正式中文覆繪生命週期或可玩版本的驗收。
+- 後續 ignored row21 A000 觀測器以唯一 `[72,160)×[168,176)` 矩形雙重重播，
+  找到 Enter 後普通回寫的首筆相交 pre-write：step `124800903`、`0763:184D`、
+  像素 `(72,168)`；修正舊探針註解後再次重播 SHA 一致。原始檔與收據雜湊
+  見[第一百八十三階段](docs/re/phase-183-post-join-exit-identity-corrigendum.md)。
+  N／Y-Y 後續邊界與正式中文覆繪仍待驗，不因此升格 spec018。

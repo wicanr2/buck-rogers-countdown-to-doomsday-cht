@@ -4,7 +4,7 @@
 - [第一百八十階段：加入角色後功能選單完整 A000 pre-write 勘誤](phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)：21 個 exact variant、含同值 observer 與較早 glyph pre-write；維持 DRAFT。
 - [第一百八十一階段：加入角色後功能選單限縮 READY 獨立審查](phase-181-post-join-menu-ready-review-candidate.md)：固定 21 變體、pre-write 失效／pair 重建、未知 row 21 與 2×／3×字型條件；僅授權正式實作，未驗 runtime。
 - [第一百八十二階段：加入角色後選單正式輸出覆繪局部 A/B](phase-182-post-join-menu-runtime-ab-partial.md)：已收錄觀測量同狀態相同、七列安全矩形外零像素差，row 21 未收錄 identity 拒絕；逐幀失效與真正 Exit Enter 尚待驗，spec 018 不升 CONFORMED。
-- [第一百八十三階段：功能選單 Exit 身分與舊清除收據勘誤](phase-183-post-join-exit-identity-corrigendum.md)：原版 bytes 證實 row 21 為 `Exit to DOS`、舊 Enter 前的 row 12 為 `Create New Character`；新雙收據證實 Enter→Y→Y 才退出、N 返回選單，row 21 覆繪仍 DRAFT。
+- [第一百八十三階段：功能選單 Exit 身分與舊清除收據勘誤](phase-183-post-join-exit-identity-corrigendum.md)：原版 bytes 證實 row 21 為 `Exit to DOS`、舊 Enter 前的 row 12 為 `Create New Character`；新雙收據量到 Enter→Y→Y 才退出、N 返回選單及 row 21 Enter 後首筆相交 A000 寫入，覆繪仍 DRAFT。
 - [第一百六十一階段：加入角色後功能選單反白與選取清除](phase-161-post-join-menu-selection-and-exit.md)：七項固定文字的 normal／selected 身分、底部提示列不相交清除及一條後來證實為 row 12 Enter 的全選單清除；舊 Exit 解讀見第一百八十三階段勘誤。
 - [第一百五十七階段：第八頁四行 runtime 限縮 CONFORMED](phase-157-story-page8-runtime-conformance.md)：control／2×／3×、同程序 active 4→0、正規化 machine／DOS 全等及獨立失敗即關閉審查。
 - [第一百五十六階段：第七頁正式 runtime 雙倍率同狀態 A/B](phase-156-story-page7-runtime-ab-pending-failure-audit.md)：六行繁中、machine／DOS 全等、同程序 active 6→0 與雙倍率完整失敗矩陣；固定路徑限縮 CONFORMED。

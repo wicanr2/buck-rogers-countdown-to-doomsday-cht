@@ -7,6 +7,10 @@
 完整 phase 逐欄相等，見[第一百七十九階段](docs/re/phase-179-formal-mousebridge-conformance.md)。
 這只驗收 320×200 的通用滑鼠橋接元件，**不**表示 Linux 玩家前端已接線；
 [spec 004](docs/spec/004-dosgolem-host-frontend-draft.md) 與 Issue #16 仍未完成。
+本機 dosgolem fork `3092dad` 的 opt-in Ebitengine 測試已以私有加入角色存態顯示
+真實原版畫布，並於實體 X11 驗證面板攔鍵、2×→3×套用及收合後的 DOS 鍵盤轉送；
+詳細限制見 fork `docs/re/phase-180-linux-ebiten-router-draft.md`。這是**DRAFT 原型**，
+未接正式中文覆繪與完整冷開機，不能稱為可玩版。
 
 目前 22 份正式 TSV（含已限縮 READY、尚未接通的選單與 host UI）的倚天字型聯集已重建為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
@@ -47,8 +51,11 @@ framebuffer 與 palette 逐 byte 相同，七列安全矩形外 RGBA 差異皆�
 真正 row 21 `Exit to DOS` 路徑已有 DRAFT 雙重原版收據：Enter 出現第一個離開詢問，
 首次 Y 再詢問未存檔是否仍離開，N 會清除並重畫選單，兩次 Y 則使 DOS 於上限前退出；
 詳見[第一百八十三階段](docs/re/phase-183-post-join-exit-identity-corrigendum.md)。
-row 21 中文候選、最早相交 A000 pre-write、逐幀 active→empty 與正式同狀態 A/B
-仍未驗，故 spec018 **仍為 READY，不是 CONFORMED**。
+另以 ignored 雙重觀測器已量到 Enter 後 row 21 普通回寫的首筆相交
+A000 pre-write：step `124800903`、`0763:184D`、像素 `(72,168)`。
+N 返回及兩次 Y 退出的覆繪生命週期、中文候選幾何、逐幀 active→empty
+與正式同狀態 A/B 仍未驗，
+故 spec018 **仍為 READY，不是 CONFORMED**。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →
