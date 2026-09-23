@@ -127,3 +127,13 @@ unknown row21、restore／stop、unknown A000 writer、mixed／partial generatio
 production failure matrix 與無殘字，符合者才可標 CONFORMED。其他功能選項、離頁／重入、
 完整開機或存讀檔不在此限縮範圍，不能外推。完整 READY 獨立審查見
 [第一百八十一階段](../re/phase-181-post-join-menu-ready-review-candidate.md)。
+
+## 2026-09-23：真正 Exit 提示的 DRAFT 排除範圍
+
+[第一百八十八階段](../re/phase-188-exit-prompts-draft-evidence.md)以雙重正常 N 與
+Y→Y 原版重播確認 row 21 選取與兩個 row 24 提示的 exact identity，並量到
+其間相交 A000 pre-write。row 24 的六格可見選擇尾碼另走 glyph path，具有
+隨狀態變化的多色／反白段落；不能套用「快捷字母一律白色」的假設。
+第二提示在 DOS 退出前沒有自然相交清除，終止時須另有失效契約。
+這些仍屬 DRAFT，**不**擴張上述七列 READY fixture，也不授權提示 watcher、
+譯文 TSV 或正式 Exit 覆繪。

@@ -246,3 +246,12 @@ ignored caller 從合法私有 checkpoint 取得首屏五行真實繁中作用�
 面板開啟前後的 step／DOS state 錨點、選項暫選與 Cancel、Apply 收合，
 以及恢復後第一個有界回合；任一面板展開回合均不得 Step。
 這是使用者決策，不表示上述生命週期已正式實作或驗收；規格仍 DRAFT。
+
+### 暫停／恢復的實體 DRAFT 收據
+
+[第一百八十九階段](../re/phase-189-ebiten-panel-pause-resume-draft.md)已在 ignored
+caller 以真實 Ebitengine/X11 點擊驗證 Cancel 與 Apply：面板展開 89 個更新回合
+沒有 DOS Step，收合同回合也略過，下一個關閉回合各恢復 16 步；首屏五行
+繁中在 2×／3× 仍與既有 CLI 私有 RGBA 收據逐位元組相等。這只是
+`-router-pause-draft` 的排程原型；正式 `frontend/ebiten.Game` 未改，
+冷開機、完整 DOS 狀態 A/B、存讀檔和其他輸出路徑仍待 READY 後實作與驗證。

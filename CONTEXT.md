@@ -22,6 +22,11 @@ observer、分離唯讀原版與可寫存檔根、同 goroutine 管輸入／Step
 目前沒有正式玩家 command。使用者已確認面板開啟期間暫停 DOS CPU Step，
 關閉或 Apply 收合後恢復；這訂正既有原型持續 `Advance` 的行為，
 其正式接線與同狀態驗收仍待 spec004 READY。
+[第一百八十九階段](docs/re/phase-189-ebiten-panel-pause-resume-draft.md)現已在 ignored
+真實繁中 Ebitengine caller 以實體 X11 完成 Cancel 與 Apply：面板開啟的 89 回合
+零 Step、收合當回合零 Step、下一關閉回合各恢復 16 步，雙倍率畫布仍逐位元組等於
+既有 CLI 私有收據。這只證實原型排程；正式前端、冷開機與完整 DOS 同狀態
+A/B 尚未完成。
 
 目前 22 份正式 TSV（含已限縮 READY、尚未接通的選單與 host UI）的倚天字型聯集已重建為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
@@ -73,6 +78,10 @@ N 返回及兩次 Y 退出的覆繪生命週期、中文候選幾何、逐幀 ac
 [第一百八十七階段](docs/re/phase-187-exit-stop-six-step-corrigendum.md)用同一 fork／state／
 按鍵分別重跑最小 A000 探針和原 text runner，兩者都在 `125006324` 退出，
 排除了「A000 observer 造成六步差異」；舊 `125006330` 的環境來源仍未證實。
+[第一百八十八階段](docs/re/phase-188-exit-prompts-draft-evidence.md)再以 N／Y→Y
+各雙重原版重播確認兩個 row 24 提示的 guarded identity、選擇尾碼的多色／反白
+狀態與同值 pre-write。第二提示在 DOS 退出前沒有自然相交清除；尾碼不能
+直接套用「白色 Y/N」假設。Exit 提示仍 DRAFT，尚未接正式 watcher。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

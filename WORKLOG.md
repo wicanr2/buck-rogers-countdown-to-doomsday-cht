@@ -1688,3 +1688,23 @@
   重跑，首次因沒有 `DISPLAY`／Xvfb 而使 GLFW 初始化失敗，加入有界 Xvfb 後
   `frontend/ebiten`、`host`、`presentation`、`apps/buckrogers` 四套 Go 測試
   全通。這是容器環境訂正，不是冷開機玩家路徑驗收。
+
+## 2026-09-23 — 真實繁中視窗的面板暫停／恢復原型
+
+- 在 ignored caller 增加獨立 `-router-pause-draft`，不改正式
+  `frontend/ebiten.Game`。既有私有合法 checkpoint 的五行首屏繁中作用層透過
+  真實 X11 點擊完成「開面板→暫選 3×→Cancel→重開→3×→Apply」；開面板
+  89 個回合與兩次收合當回合均零 DOS Step，下一關閉回合各前進 16 步。
+- 2×／3× 的 RGBA 均逐位元組等於既有 CLI 收據；完整 JSON 雜湊、來源 pin、
+  step 錨點與停止線見[第一百八十九階段](docs/re/phase-189-ebiten-panel-pause-resume-draft.md)。
+  本次未證實完整 DOS 狀態不變，也不是冷開機玩家前端或正式規格符合性。
+
+## 2026-09-23 — 真正 Exit 提示的文字身分與多色尾碼
+
+- 代理以固定 fork／私有加入角色 state，對 N 與 Y→Y 各重播兩次；兩分支收據
+  各自逐位元組一致，退出步點重生為 `125006324`。兩個 row 24 提示的
+  guarded identity、row21→提示及提示間的 A000 首筆相交寫入見
+  [第一百八十八階段](docs/re/phase-188-exit-prompts-draft-evidence.md)。
+- 可見六格選擇尾碼走另一條 glyph path，會依狀態多色／反白；因此沒有假定
+  白色 Y/N，也沒有把提示加入正式 TSV 或 watcher。第二提示到 DOS 退出前
+  未見自然相交清除，仍需終止清理與獨立 READY 審查。

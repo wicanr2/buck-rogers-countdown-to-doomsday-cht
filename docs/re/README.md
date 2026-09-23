@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第一百八十九階段：真實繁中視窗的面板暫停／恢復 DRAFT 原型](phase-189-ebiten-panel-pause-resume-draft.md)：實體 Cancel／Apply 共 89 個開面板回合零 DOS Step、收合同回合略過、下一回合各恢復 16 步；雙倍率 RGBA 對既有 CLI 逐位元組相等，正式前端仍 DRAFT。
+- [第一百八十八階段：真正 Exit 提示身分、色彩與失效邊界](phase-188-exit-prompts-draft-evidence.md)：以雙重正常 N／Y→Y 原版重播確認 row 21、兩個 row 24 prompt 的 guarded identity、可見六格多色選擇尾碼、A000 pre-write 與 DOS terminal 邊界；仍是 DRAFT，未接 watcher。
 - [第一百八十七階段：Exit 六步停止點差異的重播勘誤](phase-187-exit-stop-six-step-corrigendum.md)：固定 fork／存態／按鍵下，A000 探針與原 text runner 都在同一步退出；否定探針致差，舊收據產生環境仍未知，Exit 保持 DRAFT。
 - [第一百八十六階段：Linux Ebitengine 冷開機玩家前端 READY 缺口稽核](phase-186-linux-ebiten-cold-boot-lifecycle-ready-gap-audit.md)：從私有 checkpoint 視窗到正常 cold boot 的 composition root、typed lifecycle、失敗界線與測試矩陣；規格 004 仍 DRAFT。
 - [第一百八十五階段：真實繁中作用層接入 Ebitengine 輸入路由原型](phase-185-ebiten-real-active-layer-router-draft.md)：實體 2×／3× 視窗、連續原版 Step、設定 Apply 與 CLI RGBA 逐位元組相等；仍是 ignored DRAFT caller。
