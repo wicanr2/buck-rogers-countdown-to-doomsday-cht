@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第二百一十二階段：3× 設定面板倚天字型 A/B 原型](phase-212-host-only-3x-eten-font-ab-draft.md)：本機原生 24 點與既有原型 22 點並列，九字零缺字、五項標籤安全矩形內；正式 3× 字型選擇待使用者確認。
 - [第二百一十一階段：合成 typed session 收據候選與負例](phase-211-synthetic-session-receipt-candidate-draft.md)：ignored 原型以 DOS 退出前置檢查、step 差分與 error 優先保存候選收據；五組合成測試通過，零預算與 Epoch 未定。
 - [第二百一十階段：session 停止收據與 DOS 退出的合成探針](phase-210-session-stop-receipt-probe-draft.md)：正常 DOS 退出仍可回 `StopBudget`、已退出後再呼叫仍會多嘗試一步；舊 phase206 釘選探針已精確恢復，規格 019 仍 DRAFT。
 - [第二百零九階段：冷開機選單的實體視窗回合與面板暫停](phase-209-cold-boot-live-ebiten-panel-pause-draft.md)：ignored 原型從 `START.EXE` 第零步到選單後，正式 Ebitengine `Update` 實際推進同一 machine；2×實體 Open／Cancel 暫停零步、下一回合恢復，仍非正式可玩版。

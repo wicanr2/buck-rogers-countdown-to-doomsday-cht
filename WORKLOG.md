@@ -1925,3 +1925,17 @@
   證據與未定契約見[第二百一十一階段](docs/re/phase-211-synthetic-session-receipt-candidate-draft.md)。
 - 本批未更動 phase206／phase210 釘選探針或正式程式；零預算／Epoch
   不因 fake 綠燈而被默認決定，規格 019 繼續 DRAFT。
+
+## 2026-09-24 — 3× host 倚天字型視覺前置
+
+- 在未載原版的唯讀 Docker 中，既有 `psychic-war` ETUNPACK 工具成功
+  解出本機倚天 24 點明體 13,094 字；面板六個中文字元與數字／符號
+  都有原生字模。九種 24→22 直接裁切全會損墨點，因此不能把
+  22×22 validator 與原生 24 點素材硬湊成已完成 3× Apply。
+- ignored host-only A/B 將原生 24 點與原型衍生 22 點並列，九字零缺字、
+  五項控制項均無越界。主代理核對本機輸入、工具、收據及 PNG 雜湊；
+  未把字型或影像送入工具通道，未改 production。證據及選擇停止線見
+  [第二百一十二階段](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)。
+- 本批專用 Docker 映像的容器清單為空；兩個字型研究工作目錄沒有
+  root-owned 檔案或誤建 `.md` 目錄。產生的字型／PNG／收據均只在
+  ignored `workplace/`，不進 GitHub。

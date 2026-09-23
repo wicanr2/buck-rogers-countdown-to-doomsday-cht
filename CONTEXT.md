@@ -2,6 +2,12 @@
 
 更新：2026-09-24
 
+[第二百一十二階段](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
+證實原生倚天 24 點明體與符號可覆蓋 3× host 面板九個字元，
+但直接裁成正式前端要求的 22×22 會損筆畫。已做不載原版遊戲的
+A 原生 24 點／B 原型衍生 22 點並列圖片，五項文字安全矩形均通過；
+使用者尚未選外觀，正式 3× Apply 暫停於此分支。
+
 [第二百一十一階段](docs/re/phase-211-synthetic-session-receipt-candidate-draft.md)
 已在 ignored 合成 typed 原型驗過「DOS 退出前置檢查→Step 嘗試數
 差分→error 優先」候選收據與五組負例；退出後零新步。

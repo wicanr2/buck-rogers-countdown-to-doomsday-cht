@@ -2,6 +2,12 @@
 
 狀態：DRAFT（正式面板暫停 `Advance` 呼叫排程另有局部 CONFORMED）
 
+2026-09-24 3× host 字型前置：[第二百一十二階段](../re/phase-212-host-only-3x-eten-font-ab-draft.md)
+已用不載原版的並列原型核對原生倚天 24 點與既有原型 22 點，
+均不缺字且在 host 控制項矩形內；24→22 直接裁切會損筆畫。
+正式 `Game.New` 仍要求 22×22，3× Apply 未執行。視覺選擇及
+後續 validator／字型接線待使用者確認，本規格維持 DRAFT。
+
 2026-09-24 實體 live-turn 原型：[第二百零九階段](../re/phase-209-cold-boot-live-ebiten-panel-pause-draft.md)
 從第零步到選單後，正式 `frontend/ebiten.Game.Update` 已在 2× X11 視窗
 繼續推進同一部 DOS machine；Open／展開／Cancel 收合當回合零步，下一
