@@ -16,6 +16,11 @@ EXIT 返回功能選單所見七項固定文字。事件身分由雙重原版重
 後續[第一百六十一階段](../docs/re/phase-161-post-join-menu-selection-and-exit.md)已量到七項
 普通／反白重畫與一條 `EXIT TO DOS` 清除邊界。正式覆繪仍須中文安全矩形、typed 世代／
 失敗即關閉模型及雙倍率同狀態玩家路徑，不外推其他選項的退出生命週期。
+`post-join-menu-variants.tsv` 以同一七筆的長度／SHA-256、caller、配色與格座標展開
+21 筆初畫普通／普通回寫／反白 exact identity；不保存原文。它包含 row 20 在移向
+未收錄 row 21 時的普通回寫，因此 production candidate 必須在這一筆後原子失效，
+不得假定 `EXIT TO DOS` 的稍後清除仍能清除作用中 generation。此表仍是 DRAFT 證據，
+不是 runtime loader 輸入。
 `post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；這些事件
 已由 `gender-events.tsv` 接入繁中 request，但尚未加入正式 renderer。`tools/post_race_receipt.py` 會把它
 與既有選單 inventory、固定雙 Enter 收據及終點 framebuffer 一起驗證。

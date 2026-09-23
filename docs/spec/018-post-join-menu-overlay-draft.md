@@ -28,11 +28,11 @@ Enter 離頁；其他項目的 Enter、row 12／17／21、上方動態角色資�
 dosgolem `1dafb0a857c42fbda7058157b7615e214a64ec64`、Docker 內 Go 1.24.13，位址是
 dosgolem 8086 實模式 `segment:offset`。
 
-七筆正式 DRAFT identity 位於
-`text/post-join-menu-events.tsv`：初次普通繪製皆是 `37F1:15BD`、色號 `0/10`；
-逐列 Down 時，離開列的普通重畫是 `37F1:1856`、色號 `0/10`，進入列的反白重畫是
-`37F1:175D`、色號 `15/0`。三種 caller 不能互換。每一請求必須同時驗證 length、
-SHA-256、caller、色號、row、column；不得只按字串雜湊或座標匹配。
+七筆 base identity 位於 `text/post-join-menu-events.tsv`；21 個持久 exact variants 位於
+`text/post-join-menu-variants.tsv`，每列各有 initial normal `37F1:15BD`／`0/10`、normal
+redraw `37F1:1856`／`0/10`、selected `37F1:175D`／`15/0`。三種 caller 不能互換。
+每一請求必須同時驗證 length、SHA-256、caller、色號、row、column；不得只按雜湊或
+座標匹配。row 20 normal redraw 雖已證實，隨後的 row 21 selected 仍未收錄，必須 fail-closed。
 
 | sequence | event key | row | 原版欄數 | 原文安全寬度 | 繁中 rune 數 |
 | --- | --- | ---: | ---: | ---: | ---: |
@@ -75,14 +75,21 @@ SHA-256、caller、色號、row、column；不得只按字串雜湊或座標匹�
 3. partial、duplicate、reordered、caller／style／identity 不符，或未證實 row 的請求都
    使 pending 與 active 全部失效；不得保留半組 stamp。
 
+row 20 normal redraw 必須先失效第七代；不得以未收錄 row 21 selected 或稍後 `EXIT TO DOS`
+clear 讓舊 stamp 繼續作用。
+
 此模型不推斷 Down 之後的 row 21／row 12，也不把 prompt row 24 重畫視為選單 lifecycle。
 
 ## EXIT TO DOS 的 DRAFT pre-write 失效候選
 
 在選取 `EXIT TO DOS` 後，合法 Enter 由 `INT 16h AH=00` 於 step `125100053` 消費。
-step `125119490` 的 `026F:029C` 是第一筆與七列相交的清除 pre-write；receipt 的含端點
+step `125119490` 的 `026F:029C` 是第一筆與七列相交的全選單 clear；receipt 的含端點
 格座標 `left=1, top=2, right=38, bottom=22` 換算成半開像素矩形
-`[8,312)×[16,184)`。它必須在原版寫入前，原子清除完整 active generation 的七個 stamp。
+`[8,312)×[16,184)`。它保留為原版 clear 證據，但不是 complete cycle 的 active-generation
+boundary。完整 A000 observer 的勘誤見[第一百八十階段](../re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)：
+每代最早相交 pre-write 都是更早的 `0763:184D` glyph write，包含同值寫入。候選 watcher
+必須在任何相交 A000 pre-write 先失效，再僅依完整 exact variant generation 重建；不可只攔
+`026F:029C` 或依 framebuffer diff。
 
 Down 期間 prompt 清除格 `[25,40)×[24,25)`（像素 `[200,320)×[192,200)`）不相交，
 不得讓它清除選單 overlay。restore、machine stop、execution discontinuity、未知 writer
@@ -101,12 +108,11 @@ duplicate、reorder、錯 caller／style 與非相交 prompt clear 的負例。�
 但不以正式 watcher／presenter 或 runtime A/B 作為 READY 的前置條件。真正仍缺的
 READY 證據是：
 
-- 版本化 exact identity 目前只有七筆首次普通繪製；反白 `37F1:175D` 與普通回寫
-  `37F1:1856` 雖已由原版雙重重播證實，仍須建立可失敗即關閉的正式變體清單與
-  validator，讓 typed request 不倚賴散落於實作的推測常數。
-- phase161 的 `clears` 僅列 `026F:029C` 矩形清除；須以可丟棄、通用的 A000
-  pre-write 觀測核對整個合法轉場，證實不存在更早碰到七項安全矩形的其他 writer
-  或同值寫，並測混合／部分 generation 及未知 writer 的原子失效負例。
+- 21-row table、可丟棄 validator 與完整 A000 observer 已取得；仍待獨立審查把 source／
+  receipt hashes、variant 表與「先失效、後 exact 重建」串為狹窄契約。DRAFT TSV 不得直接
+  成為 production loader 輸入。
+- 正式 watcher 尚未證明能在所有 observed／unknown A000 writer 的同幀 pre-write fail-closed；
+  混合／部分 generation、row20→未知 row21、restore／stop 負例也尚未進 production matrix。
 - 前述字型靜態 containment 與來源 SHA 已取得，但需由獨立審查把版控文字、變體身分、
   幾何、原版收據及失敗矩陣串成一份狹窄可實作契約。
 

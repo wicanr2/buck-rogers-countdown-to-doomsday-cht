@@ -45,3 +45,11 @@ step `125119490`，格 `[1,39)×[2,23)`，換成像素為 `[8,312)×[16,184)`。
 安全矩形、錨點及溢位策略、原版印字 guard 的可丟棄 typed request／失敗即關閉模型，
 以及上述選取／清除世代的原子失效驗證。正式 watcher／presenter 只能在 READY 後實作；
 CONFORMED 另需 2×／3×同狀態 A/B 與適用的正常玩家路徑驗收。
+
+## 2026-09-23 勘誤：完整 A000 observer 的較早邊界
+
+本文件的 `026F:029C` step／矩形與「Enter 後第一筆全選單 clear」結論保留；但它不是
+完整 Down→Exit cycle 的 active overlay first intersecting pre-write。後續完整 observer 證實，
+每代普通／反白重畫前的 `0763:184D` 已先碰到作用中列；row 20 普通回寫後又進入未收錄
+row 21 selected，必須 fail-closed，不能假定 layer 活到 Exit。舊收據與結論保留供回查；
+新證據見[第一百八十階段](phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)。

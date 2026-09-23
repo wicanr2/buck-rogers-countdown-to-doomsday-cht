@@ -1,6 +1,7 @@
 # 原版觀測證據索引
 
 - [第一百七十九階段：正式 MouseBridge 限縮符合性](phase-179-formal-mousebridge-conformance.md)：雙倍率同狀態點擊 A/B、2×三種 release-only 清理與正式 bridge／原型收據逐欄全等；完整前端仍 DRAFT。
+- [第一百八十階段：加入角色後功能選單完整 A000 pre-write 勘誤](phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)：21 個 exact variant、含同值 observer 與較早 glyph pre-write；維持 DRAFT。
 - [第一百六十一階段：加入角色後功能選單反白與離頁清除](phase-161-post-join-menu-selection-and-exit.md)：七項固定文字的 normal／selected 身分、底部提示列不相交清除及一條 Exit 離頁最早相交 pre-write；譯文仍 DRAFT。
 - [第一百五十七階段：第八頁四行 runtime 限縮 CONFORMED](phase-157-story-page8-runtime-conformance.md)：control／2×／3×、同程序 active 4→0、正規化 machine／DOS 全等及獨立失敗即關閉審查。
 - [第一百五十六階段：第七頁正式 runtime 雙倍率同狀態 A/B](phase-156-story-page7-runtime-ab-pending-failure-audit.md)：六行繁中、machine／DOS 全等、同程序 active 6→0 與雙倍率完整失敗矩陣；固定路徑限縮 CONFORMED。
