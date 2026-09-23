@@ -30,3 +30,7 @@ Docker 內完整 `go test`、`go vet` 與 race detector（`apps/buckrogers`、
 
 目前僅驗證技術技能頁正常進入時的五個操作列文案；職業技能頁各焦點、技術頁
 Prev／Next／Done、離頁與返回仍待各自正常路徑收據，不以本收據外推完成。
+
+2026-09-24 勘誤：此收據驗的是 3× 中文大小／字距和矩形外隔離，**未**驗
+較短譯文後的原版英文尾字；其後發現確有殘字。完整清底修正與八條固定路徑
+的限縮驗收見[第二百零四階段](phase-204-action-bar-runtime-conformance.md)。

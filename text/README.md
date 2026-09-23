@@ -15,8 +15,11 @@ host 輸出端介面文字，不是原版 DOS 字串。字型子集必須一併�
 EXIT 返回功能選單所見七項固定文字。事件身分由雙重原版重播與私有畫面逐列核對，原文
 只以長度／SHA-256 保存；七筆編輯性譯文已於 spec 018 限縮 READY 審查固定。
 本機 dosgolem fork 已以正式 catalog loader／watcher／presenter 做選單七列的
-2×／3× 局部同狀態 A/B；逐幀 active→empty 與真正 Exit 分支仍未驗，故此
-限縮路徑不得稱為 CONFORMED，見[第一百八十二階段](../docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
+2×／3× 局部同狀態 A/B；後續[第一百九十五階段](../docs/re/phase-195-post-join-menu-prewrite-runtime-receipt.md)
+另以正式逐寫入收據驗證七列 active→empty 與 row 20 普通回寫前清層，
+因此**僅固定七列路徑限縮 CONFORMED**。真正 Exit、選單重入及存讀檔
+仍未驗，不能將此結論擴張成整體選單完成。較早局部收據見
+[第一百八十二階段](../docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
 其中「加入遊戲」與「顯示角色所屬遊戲」只依原文字面翻譯，選項真正的遊戲語意仍未知；
 不得擅自改譯為加入隊伍或存檔。上方角色姓名／數值及已收錄的鄰項不在這七筆內；
 七項的選取反白變體另列 `post-join-menu-variants.tsv`。可用 `tools/menu_events.py`
@@ -33,8 +36,8 @@ bytes 訂正：該 Enter 前選中的是 row 12 `Create New Character`，真正 
 21 筆初畫普通／普通回寫／反白 exact identity；不保存原文。它包含 row 20 在移向
 未收錄 row 21 時的普通回寫，因此 production candidate 必須在這一筆後原子失效，
 不得假定 `EXIT TO DOS` 的稍後清除仍能清除作用中 generation。此表已固定為限縮
-READY fixture，且已作為本機 fork 正式 runtime loader 輸入；有限的終態 A/B
-不能取代完整逐幀失效驗收。
+READY fixture，且已作為本機 fork 正式 runtime loader 輸入；固定七列的
+逐寫入清層驗收見第一百九十五階段，不代表未收錄 row 21 的真正 Exit 已中文化。
 `post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；這些事件
 已由 `gender-events.tsv` 接入繁中 request，但尚未加入正式 renderer。`tools/post_race_receipt.py` 會把它
 與既有選單 inventory、固定雙 Enter 收據及終點 framebuffer 一起驗證。
@@ -90,10 +93,12 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 加後減、Escape→`N` 回復及 Escape→`Y` 進入身體圖示選擇的 exact identity；不含動態點數
 或原版提示全文。
 `skill-exit-confirmation.zh-TW.tsv` 另收錄職業／技術技能頁 Escape 離開確認的兩句
-繁中 DRAFT：原句 bytes 與既有事件 SHA 已逐筆核實，沿用正式技能頁術語；
-仍未量到清除生命週期及雙倍率安全矩形，故未接正式 watcher，也不能算已中文化。
-證據及舊 career 原文未知結論的勘誤見
-[第一百九十一階段](../docs/re/phase-191-skill-exit-confirmation-translation-draft.md)。
+繁中譯文：原句 bytes 與既有事件 SHA 已逐筆核實，沿用正式技能頁術語。
+後續已接正式 watcher／presenter，職業、技術各一個合法固定起點的
+Escape→N／Y 在 2×／3× 通過本體像素及無殘層 A/B，僅此無頭路徑
+限縮 CONFORMED；六格多色原版尾碼不覆繪。存讀檔、Restore bridge、
+冷開機及視窗未驗，見[第二百零二階段](../docs/re/phase-202-skill-exit-runtime-ab.md)。
+原句勘誤見[第一百九十一階段](../docs/re/phase-191-skill-exit-confirmation-translation-draft.md)。
 `body-icon-events.tsv` 與 `body-icon.zh-TW.tsv` 沿用第四十八階段移動／拒絕／確認的正常
 玩家 trace，整理身體圖示畫面的七筆固定介面文字；`tools/body_icon_catalog.py` 會回查三份
 既有事件清冊、驗證容量與雙向 coverage。`body-icon-text-safe-rects.tsv` 依同一 exact
@@ -115,6 +120,11 @@ Phase 75 已由 dosgolem guarded glyph watcher 將此清冊接成 typed events�
 矩形只使用已證實的 `y=192..200`，同一 action 的 variant 共用幾何。
 `tools/skill_action_bar_text_safe_rects.py` 拒絕缺漏、孤兒、幾何／容量漂移與同畫面跨 action
 重疊；配色不屬於矩形資料。
+本機 dosgolem fork 已將五筆譯文接到正式 `RuntimeActionBarOverlay`；
+短譯文後的原版英文殘字現以完整核准矩形清底修正。八條固定操作路徑、
+一條技術頁 Escape→Y 離頁在 2×／3× 的控制組同狀態 A/B 僅限縮
+CONFORMED，見[第二百零四階段](../docs/re/phase-204-action-bar-runtime-conformance.md)。
+disabled、未量重入、存讀檔、冷開機及 Linux 玩家視窗不在此結論內。
 `manual-questions.tsv` 是原版 39 筆可抽題的頁碼、標題與序數清冊，不含答案；可由
 `tools/manual_questions.py` 對執行期 `0EC0:0000` 資料段重生。`manual.zh-TW.tsv` 現有
 39 筆題目專用繁中說明段落，全部保持 504 字內；這是遊戲內的段落意譯，不是整章手冊

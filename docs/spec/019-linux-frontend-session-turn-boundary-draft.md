@@ -3,6 +3,12 @@
 狀態：**DRAFT；不授權 production 實作，不使規格 004 升 READY。**
 日期：2026-09-24
 
+同日 fake 勘誤：[第二百零三階段](../re/phase-203-linux-session-mixed-batch-fake-review.md)
+將 `InputBatch.DOSInputs` 從「已分類輸入」改為同批候選鍵，補驗
+Open／Apply／Cancel＋Enter 的零 fake DOS 副作用、零步及下一關閉回合恢復。
+這只補本規格輸入批次負例；實際 machine steps、其他 fault 與
+cold-boot 前置仍未驗，本規格維持 DRAFT。
+
 同日勘誤：[第一百九十六階段](../re/phase-196-ebiten-panel-batch-keyboard-gate.md)
 已依本機 dosgolem spec 232 的獨立 READY 審查，修正正式 `Game.Update`
 的 Apply／Cancel 同批鍵盤漏入 BIOS。下文「現行缺口」保存修正前基線，

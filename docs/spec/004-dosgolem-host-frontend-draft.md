@@ -2,6 +2,11 @@
 
 狀態：DRAFT（正式面板暫停 `Advance` 呼叫排程另有局部 CONFORMED）
 
+2026-09-24 Issue #18 進度：[第二百零三階段](../re/phase-203-linux-session-mixed-batch-fake-review.md)
+補齊可丟棄 session fake 的 Open／Apply／Cancel＋Enter 混合批次隔離；
+這只涉及 host 回合候選鍵，不涵蓋 cold-boot preflight、observer 安裝、
+多作用層、實際 DOS 指令收據或正常玩家路徑，本規格整體仍 DRAFT。
+
 2026-09-24 補充：[第一百九十六階段](../re/phase-196-ebiten-panel-batch-keyboard-gate.md)
 另將正式 `Game.Update` 的 Apply／Cancel 同批鍵盤隔離限縮驗收；
 面板起點開啟時，即使同批收合，也不把該批鍵盤送入 DOS。

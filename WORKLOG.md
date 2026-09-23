@@ -1818,3 +1818,18 @@
   嚴格 runner 拒絕停止點以後的鍵與大寫 scan hex，依原有十筆
   步點、兩位小寫十六進位重跑。這些是命令／環境錯誤，沒有改原版
   或放寬 watcher。Go module stat cache 權限警告非致命，測試仍通過。
+
+## 2026-09-24 — 技能操作列英文尾字修正與限縮驗收
+
+- 檢查正式 PNG 發現短譯文後仍殘留原版英文。於本機 dosgolem fork
+  `674e3e3` 將操作列 presenter 改為先清除完整核准矩形，再畫白色
+  助記字母與原版配色繁中；補正常／焦點 2×／3×、部分顯示群組
+  失敗即關閉的回歸測試。
+- 從同一合法 state 重播八條操作路徑及技術頁 Escape→Y；修正前
+  runner 被英文尾段負控制拒絕，修正後乾淨建置的九條 control／2×／3×
+  各雙重播通過原版 JSON、indexed 同狀態及安全矩形差分，離頁無殘層。
+  正式 Go test、vet、race 與獨立審查通過；收據及未驗範圍見
+  [第二百零四階段](docs/re/phase-204-action-bar-runtime-conformance.md)。
+- Linux session 可丟棄 fake 另補同批 Open／Apply／Cancel＋Enter 負例；
+  收合後下一關閉回合才恢復 DOS。這是 DRAFT 模型，不是正式前端
+  完成收據，見[第二百零三階段](docs/re/phase-203-linux-session-mixed-batch-fake-review.md)。

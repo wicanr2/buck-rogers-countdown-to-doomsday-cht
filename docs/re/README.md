@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第二百零四階段：技能操作列完整清底正式 A/B](phase-204-action-bar-runtime-conformance.md)：修正短譯文後殘留原版英文，八條操作列路徑與技術頁 Escape→Y 雙倍率雙重播、負控制及獨立審查，僅固定範圍限縮 CONFORMED。
+- [第二百零三階段：Linux session 同批輸入 fake 勘誤](phase-203-linux-session-mixed-batch-fake-review.md)：可丟棄 fake 現將 DOS 鍵視為同批候選；Open／Apply／Cancel＋Enter 零 DOS 副作用、零步及下一關閉回合恢復通過，規格 004／019 仍 DRAFT。
 - [第二百零二階段：技能頁離開問句本體正式 A/B](phase-202-skill-exit-runtime-ab.md)：兩個合法固定 state 的 Escape→N／Y 無頭 2×／3× 正式覆繪；active 僅本體有像素差、尾碼零差，四條終態同狀態且無殘層，限縮 CONFORMED。
 - [第二百零一階段：技能頁離開問句本體覆繪 READY 審查](phase-201-skill-exit-body-only-ready-review.md)：兩筆 exact 問句本體限縮 READY，尾碼零覆繪；正式接線與原版 A/B 尚未完成。
 - [第二百階段：技能離開問句 body-only lifecycle fake](phase-200-skill-exit-body-only-lifecycle-fake-draft.md)：以已證實 entry→return 時序提出 guarded-return 啟用候選、N／Y 任意 writer 本體 pre-write 清層、Stop／Restore／Discontinuity／錯誤同步清除及尾碼 sentinel 零覆繪的 DRAFT fake；此 fake 未接 production，後續 READY 結論見第二百零一階段。

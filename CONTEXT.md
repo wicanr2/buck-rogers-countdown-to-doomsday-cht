@@ -2,6 +2,23 @@
 
 更新：2026-09-24
 
+[第二百零四階段](docs/re/phase-204-action-bar-runtime-conformance.md)已訂正
+技能操作列短譯文後殘留原版英文的缺陷：本機 dosgolem fork
+`674e3e3` 先清除完整已核准標籤矩形，再覆繪白色助記字母與原色
+繁中。八條職業／技術技能固定路徑及一條技術 Escape→Y 離頁，
+control／2×／3× 各雙重播；原版 JSON（扣除呈現欄）、indexed
+同狀態相同，RGBA 差異僅在安全矩形，英文尾段已清淨，離頁無殘層。
+故 [fork 規格 215](workplace/dosgolem/docs/spec/215-buck-rogers-skill-action-bar-runtime-overlay.md)
+僅此九條無頭路徑**限縮 CONFORMED**；disabled、其他重入、冷開機、
+存讀檔與 Linux 視窗仍未驗。第九十九階段只證字型密度，不能再當作
+英文完整清除的證據。
+
+[第二百零三階段](docs/re/phase-203-linux-session-mixed-batch-fake-review.md)
+將前端 session fake 的 DOS 鍵改為同批候選，驗證 Open／Apply／Cancel
+與 Enter 同批時 BIOS 零副作用、DOS 零步，收合後下一回合才恢復。
+這僅是 ignored fake 的 DRAFT 勘誤，未接正式冷開機玩家前端；
+規格 004／019 與 Issue #18 仍待 READY／實作／驗收。
+
 [第二百零二階段](docs/re/phase-202-skill-exit-runtime-ab.md)已讓
 職業／技術技能頁兩句離開問句的正式 watcher／presenter，在兩個各自
 合法的原版 Escape 前 state 中完成 control／2×／3× 同狀態 A/B。
