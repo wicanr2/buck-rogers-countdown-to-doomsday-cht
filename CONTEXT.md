@@ -2,6 +2,14 @@
 
 更新：2026-09-24
 
+[第一百九十六階段](docs/re/phase-196-ebiten-panel-batch-keyboard-gate.md)
+修正正式 Ebitengine `Game.Update` 的同批鍵盤分流：面板起點開啟，
+即使 Apply／Cancel 同回合收合，Enter 等鍵也不再進 DOS BIOS queue；
+closed canvas 鍵盤仍正常轉送。本機 dosgolem `71f19cb`／spec 232 只在
+此 host 鍵盤邊界限縮 CONFORMED。[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+新列完整 typed session 的剩餘契約，仍為 DRAFT；冷開機、原版同狀態
+與 Linux 可玩入口未完成。
+
 [第一百九十四階段](docs/re/phase-194-formal-ebiten-panel-pause-conformance.md)已將
 正式 `frontend/ebiten.Game.Update` 的面板暫停接線，雙倍率實體 X11 的
 Cancel／Apply 收合當回合零 `Advance`、下一關閉回合恢復；本機 dosgolem

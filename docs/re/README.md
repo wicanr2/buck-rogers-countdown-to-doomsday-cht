@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百九十六階段：設定面板同批鍵盤不漏入 DOS](phase-196-ebiten-panel-batch-keyboard-gate.md)：正式 `Game.Update` 修正 Apply／Cancel 同批鍵盤隔離，僅此 host 分流邊界限縮 CONFORMED。
 - [第一百九十五階段：加入角色後七列選單逐寫入清層](phase-195-post-join-prewrite-runtime-receipt.md)：正式收據記錄七次 watcher／presenter 清層，雙倍率 row20 回寫後無殘字；只限合法固定路徑 CONFORMED。
 - [第一百九十四階段：正式 Ebitengine 面板暫停閘門](phase-194-formal-ebiten-panel-pause-conformance.md)：正式 `Game.Update` 與實體 X11 雙倍率 Cancel／Apply 的零 `Advance`／下一回合恢復；只限回合排程 CONFORMED。
 - [第一百九十三階段：面板暫停與前端 session 的可丟棄 fake 測試](phase-193-frontend-session-fake-draft.md)：Open／Select／Cancel／Apply 零 Step、下回合恢復及故障後拒絕再推進；僅 DRAFT fake，不是正式前端驗收。

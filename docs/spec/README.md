@@ -23,4 +23,5 @@
 | [第六頁劇情文字輸出端覆繪](015-story-page6-overlay-ready.md) | CONFORMED（僅六行與已量 Enter 離頁） | 六行正式 runtime、雙倍率同狀態 A/B、失敗即關閉矩陣與 page6→page7 pre-write 清除已驗；完整開機及存讀檔未驗。 |
 | [第七頁劇情文字輸出端覆繪](016-story-page7-overlay-ready.md) | CONFORMED（僅六行與已量 Enter 進出） | 六行正式 runtime、雙倍率同狀態 A/B、同程序 active 6→0 及完整失敗即關閉矩陣已驗；完整開機及存讀檔未驗。 |
 | [第八頁劇情文字輸出端覆繪](017-story-page8-overlay-ready.md) | CONFORMED（僅四行與已量 Enter 進出） | 130 return edge、正式雙倍率 runtime／A/B、完整英文清除矩形及 page8→9 失效已驗；其他路徑未驗。 |
-| [加入角色後功能選單輸出端覆繪](018-post-join-menu-overlay-draft.md) | 限縮 READY | 七項固定文字的 21 種 exact 變體、2×／3×字型 containment 與完整 A000 pre-write 已獨立審查；正式 runtime 與同狀態 A/B 尚未做。 |
+| [加入角色後功能選單輸出端覆繪](018-post-join-menu-overlay-draft.md) | 固定七列路徑限縮 CONFORMED；其餘 DRAFT | 合法加入角色存態的七列重畫與 row20 普通回寫前清層已有正式逐寫入收據、雙倍率同狀態 A/B；真正 Exit、提示、重入與存讀檔仍未驗。 |
+| [Linux 前端失敗即關閉 session 回合邊界](019-linux-frontend-session-turn-boundary-draft.md) | DRAFT | 最小 typed session 回合、整批面板鍵盤隔離、零步暫停、step receipt 與失敗後 Close；不含 cold boot、多作用層、存讀檔或可玩前端。 |

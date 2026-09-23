@@ -1,5 +1,17 @@
 # 工作歷程
 
+## 2026-09-24 — 設定面板同批鍵盤隔離
+
+- 獨立稽核指出正式 `Game.Update` 的 Apply＋Enter 同一更新回合會在
+  面板收合後把 Enter 放入 BIOS；依使用者既定面板鍵盤隔離決策，
+  先建 dosgolem READY spec 232，再以本機 fork `71f19cb` 修正。
+  Apply／Cancel 同批多鍵均零 BIOS，關面板畫布鍵盤仍可轉送；
+  Docker／Xvfb Go test、vet、race 及獨立程式審查通過。只將這個
+  host 鍵盤邊界限縮標 CONFORMED，見[第一百九十六階段](docs/re/phase-196-ebiten-panel-batch-keyboard-gate.md)。
+- 另由獨立代理建立[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+  的 DRAFT typed session 回合契約；instruction budget／step receipt、
+  cold boot、active composite 與 Close 尚未正式實作，不因此升格規格 004。
+
 ## 2026-09-24 — 正式面板暫停與加入角色後七列逐寫入清層
 
 - 本機 dosgolem `c273db6` 依獨立審查的 READY spec 231，讓正式

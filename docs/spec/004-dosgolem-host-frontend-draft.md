@@ -2,6 +2,11 @@
 
 狀態：DRAFT（正式面板暫停 `Advance` 呼叫排程另有局部 CONFORMED）
 
+2026-09-24 補充：[第一百九十六階段](../re/phase-196-ebiten-panel-batch-keyboard-gate.md)
+另將正式 `Game.Update` 的 Apply／Cancel 同批鍵盤隔離限縮驗收；
+面板起點開啟時，即使同批收合，也不把該批鍵盤送入 DOS。
+這仍不是 typed session、實體 X11 同批事件或可玩前端驗收。
+
 2026-09-24 現況勘誤：[第一百九十四階段](../re/phase-194-formal-ebiten-panel-pause-conformance.md)
 已以本機 dosgolem `docs/spec/231-linux-ebiten-panel-pause-gate.md` 的 READY→實作→
 驗收流程，證實正式 `Game.Update` 在面板展開、Open／Select／Cancel／Apply
