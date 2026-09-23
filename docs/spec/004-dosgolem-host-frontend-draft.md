@@ -255,3 +255,12 @@ caller 以真實 Ebitengine/X11 點擊驗證 Cancel 與 Apply：面板展開 89 
 繁中在 2×／3× 仍與既有 CLI 私有 RGBA 收據逐位元組相等。這只是
 `-router-pause-draft` 的排程原型；正式 `frontend/ebiten.Game` 未改，
 冷開機、完整 DOS 狀態 A/B、存讀檔和其他輸出路徑仍待 READY 後實作與驗證。
+
+### 正式 session 的 API 缺口
+
+[第一百九十階段](../re/phase-190-linux-frontend-session-ready-prerequisites.md)
+對目前 fork API 的唯讀稽核確認：`Game.Advance func() error` 沒有 instruction
+budget、step receipt 或 session phase；`Update` 也不保證面板 Open／Select／
+Cancel／Apply 回合零 Step。正式 cold-boot preflight、多繁中作用層聚合、
+錯誤 teardown 與 `Close` 責任仍未成為 typed contract。此結論只描述
+固定 commit 的前端 API，沒有否定既有可丟棄真實視窗收據；本規格仍 DRAFT。

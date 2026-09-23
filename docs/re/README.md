@@ -1,5 +1,8 @@
 # 原版觀測證據索引
 
+- [第一百九十二階段：加入角色後選單第七列清層執行期 A/B](phase-192-post-join-menu-prewrite-runtime-ab.md)：相同原版 state／十筆鍵的控制組與 2×／3×收據逐 byte 相同；row20 普通回寫後兩倍率繁中層均清空，另以正式元件測試固定同值 pre-write，spec 018 保持限縮 READY。
+- [第一百九十一階段：技能頁離開確認提示原文勘誤與繁中草稿](phase-191-skill-exit-confirmation-translation-draft.md)：原版 bytes 推翻職業技能提示「原句未知」舊結論，兩筆 exact identity 與 DRAFT 繁中 TSV 已固定；幾何／清除／runtime 尚未驗。
+- [第一百九十階段：Linux 前端正式 session 的 READY 前置 API 稽核](phase-190-linux-frontend-session-ready-prerequisites.md)：固定 dosgolem API 的唯讀稽核；確認現有 Ebitengine backend 缺少 typed session 回合、cold-boot composition root、active composite 與 failure teardown，規格 004 仍 DRAFT。
 - [第一百八十九階段：真實繁中視窗的面板暫停／恢復 DRAFT 原型](phase-189-ebiten-panel-pause-resume-draft.md)：實體 Cancel／Apply 共 89 個開面板回合零 DOS Step、收合同回合略過、下一回合各恢復 16 步；雙倍率 RGBA 對既有 CLI 逐位元組相等，正式前端仍 DRAFT。
 - [第一百八十八階段：真正 Exit 提示身分、色彩與失效邊界](phase-188-exit-prompts-draft-evidence.md)：以雙重正常 N／Y→Y 原版重播確認 row 21、兩個 row 24 prompt 的 guarded identity、可見六格多色選擇尾碼、A000 pre-write 與 DOS terminal 邊界；仍是 DRAFT，未接 watcher。
 - [第一百八十七階段：Exit 六步停止點差異的重播勘誤](phase-187-exit-stop-six-step-corrigendum.md)：固定 fork／存態／按鍵下，A000 探針與原 text runner 都在同一步退出；否定探針致差，舊收據產生環境仍未知，Exit 保持 DRAFT。

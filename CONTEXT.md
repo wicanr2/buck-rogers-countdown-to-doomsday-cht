@@ -27,16 +27,20 @@ observer、分離唯讀原版與可寫存檔根、同 goroutine 管輸入／Step
 零 Step、收合當回合零 Step、下一關閉回合各恢復 16 步，雙倍率畫布仍逐位元組等於
 既有 CLI 私有收據。這只證實原型排程；正式前端、冷開機與完整 DOS 同狀態
 A/B 尚未完成。
+[第一百九十階段](docs/re/phase-190-linux-frontend-session-ready-prerequisites.md)
+又核對固定 fork API：正式 `Game.Advance` 尚無 budget／step receipt／session phase，
+也缺冷開機 preflight、多作用層 owner 與失敗後 `Close`；故暫停原型不能
+直接升為正式可玩入口。
 
-目前 22 份正式 TSV（含已限縮 READY、尚未接通的選單與 host UI）的倚天字型聯集已重建為 1028 字模：版控內
+目前 23 份繁中 TSV（含一份技能 Exit DRAFT、已限縮 READY 與尚未接通的 host UI）的倚天字型聯集仍為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的字元涵蓋完全一致，缺字為零。
 舊的 961／997／1024／1026 字模收據只代表當時譯文，不可作目前前端的字型輸入；來源與雜湊見
 [`font/README.md`](font/README.md)。這是字型覆蓋，不代表所有畫面都已中文化。
 
 從正常「加入角色 → 名冊 EXIT → 功能選單」雙重原版重播，新確認七項固定選單文字；
-繁中候選與原文雜湊已另存 [`post-join-menu`](text/README.md) catalog，現為 spec018 的限縮 READY fixture，尚未接
-正式 runtime。「JOIN A GAME」與「SHOW CHARACTER'S GAME」仍只有字面譯法，操作語意未知；
+繁中候選與原文雜湊已另存 [`post-join-menu`](text/README.md) catalog，現為 spec018 的限縮 READY fixture，
+且已有正式 runtime 的局部 A/B。「JOIN A GAME」與「SHOW CHARACTER'S GAME」仍只有字面譯法，操作語意未知；
 上方動態角色資料不納入這七項；七列的反白與普通回寫另列精確變體。
 私有原文／畫面證據只在
 `workplace/phase158-post-join-exit-probe/`；不能把此資料完成度算作已中文化畫面。
@@ -64,6 +68,10 @@ control、2×、3×局部終態 A/B：收據中的事件、BIOS 按鍵、記憶�
 framebuffer 與 palette 逐 byte 相同，七列安全矩形外 RGBA 差異皆為零；
 未收錄 row 21 selected 明確 fail-closed。完整 DOS 內部狀態與檔案副作用不在該收據內。
 詳見[第一百八十二階段](docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
+[第一百九十二階段](docs/re/phase-192-post-join-menu-prewrite-runtime-ab.md)進一步
+沿相同固定 state／十筆鍵量到 row20 普通回寫前、返回後的 2×／3×控制組
+同狀態 A/B：後點兩倍率覆繪 RGBA 皆逐 byte 等於 baseline，另有正式
+同值 A000 首寫清層元件測試；尚未取得逐指令 runtime active→empty 收據。
 真正 row 21 `Exit to DOS` 路徑已有 DRAFT 雙重原版收據：Enter 出現第一個離開詢問，
 首次 Y 再詢問未存檔是否仍離開，N 會清除並重畫選單，兩次 Y 則使 DOS 於上限前退出；
 詳見[第一百八十三階段](docs/re/phase-183-post-join-exit-identity-corrigendum.md)。
@@ -82,6 +90,10 @@ N 返回及兩次 Y 退出的覆繪生命週期、中文候選幾何、逐幀 ac
 各雙重原版重播確認兩個 row 24 提示的 guarded identity、選擇尾碼的多色／反白
 狀態與同值 pre-write。第二提示在 DOS 退出前沒有自然相交清除；尾碼不能
 直接套用「白色 Y/N」假設。Exit 提示仍 DRAFT，尚未接正式 watcher。
+[第一百九十一階段](docs/re/phase-191-skill-exit-confirmation-translation-draft.md)
+另從原版 `GAME.OVR` bytes／既有事件 SHA 核實職業與技術技能頁兩句
+離開確認原文，推翻舊「職業提示原句未知」。兩句繁中已存獨立 DRAFT
+TSV，未接 watcher；它們與功能選單 Exit 的多色尾碼不是同一輸出路徑。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

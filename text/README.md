@@ -89,6 +89,11 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 `technical-skill-refusal-events.tsv` 與 `technical-skill-exit-events.tsv` 保存技術技能列下移、
 加後減、Escape→`N` 回復及 Escape→`Y` 進入身體圖示選擇的 exact identity；不含動態點數
 或原版提示全文。
+`skill-exit-confirmation.zh-TW.tsv` 另收錄職業／技術技能頁 Escape 離開確認的兩句
+繁中 DRAFT：原句 bytes 與既有事件 SHA 已逐筆核實，沿用正式技能頁術語；
+仍未量到清除生命週期及雙倍率安全矩形，故未接正式 watcher，也不能算已中文化。
+證據及舊 career 原文未知結論的勘誤見
+[第一百九十一階段](../docs/re/phase-191-skill-exit-confirmation-translation-draft.md)。
 `body-icon-events.tsv` 與 `body-icon.zh-TW.tsv` 沿用第四十八階段移動／拒絕／確認的正常
 玩家 trace，整理身體圖示畫面的七筆固定介面文字；`tools/body_icon_catalog.py` 會回查三份
 既有事件清冊、驗證容量與雙向 coverage。`body-icon-text-safe-rects.tsv` 依同一 exact
@@ -202,9 +207,10 @@ row 24 動態狀態列排除；後續正式 runtime 已完成雙倍率同狀態 
 後續依私有原版畫面校訂第 5、7、8 頁三處譯文，未改 event identity 或 DRAFT 狀態；
 當時 20 份 catalog 重建後的本機倚天子集為 1024 字模，正式 loader 對 6179 個
 譯文字元零缺字。上述 1026／6182 是校訂前的第 134 階段收據，不是目前字型產物。
-再加入 post-join 選單七項 DRAFT 譯文後，現行 21 份 catalog 的本機倚天子集
+再加入 post-join 選單七項 DRAFT 譯文後，當時 21 份 catalog 的本機倚天子集
 重建為 1026 字模；這是新的字型需求，不是前述第 134 階段的同一份 1026 字收據。
-正式 runtime 仍未接 post-join 選單，細節見 [`font/README.md`](../font/README.md)。
+後續七列已完成正式 runtime 局部 A/B，但完整生命週期尚待驗；見
+[第一百八十二階段](../docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
 
 ## 驗證與 prototype 字型
 

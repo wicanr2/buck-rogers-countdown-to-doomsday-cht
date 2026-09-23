@@ -79,7 +79,7 @@ SHA-256 為 `daa100bfbcc917a3f9dc811a2b34262a9e26dc5666c0b085c58c1d0815abbd93`�
 Docker 回讀確認全部 20 份 TSV 的譯文字元均有字模，缺字及多餘字模均為零。這僅證明
 字型覆蓋，不表示所有文字路徑均已接通或可公開散布。
 
-加入獨立 DRAFT `post-join-menu.zh-TW.tsv` 後，現行 21 份 catalog 的字元聯集為
+加入獨立 DRAFT `post-join-menu.zh-TW.tsv` 後，當時 21 份 catalog 的字元聯集為
 1026 字，`font/characters.txt` SHA-256 更新為
 `04d33bb125b00dad647abadfb3c9da8f7a714d722581fc6676d393a32eb6a03f`。
 同一路徑的本機 `top-pad` GOLEMFNT SHA-256 為
@@ -96,3 +96,10 @@ Docker 回讀確認全部 20 份 TSV 的譯文字元均有字模，缺字及多�
 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
 manifest SHA-256 為 `39eb11a95d95eed749fefa4d358230e5e449339eb2e189f1a8296f0cde8cd00f`；
 兩者仍只在 ignored `workplace/current-font/`，不得公開散布。
+
+第一百九十一階段新增兩句技能 Exit DRAFT TSV 後，現為 23 份繁中 TSV；
+Docker 內以全部 `text/*.zh-TW.tsv` 重生的字元聯集仍與版控
+`font/characters.txt` 逐 byte 相同（1028 字、SHA-256
+`3931dd4d7825feefe3fadf7ea8f35925991d07a6947894a4651d2d909cb5f578`）。
+兩句共用現有字模，無需替換上述已釘選的本機 GOLEMFNT；這只證明
+靜態字元覆蓋，不代表新提示的版面或執行期已驗收。

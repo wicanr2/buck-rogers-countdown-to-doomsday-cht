@@ -137,3 +137,13 @@ Y→Y 原版重播確認 row 21 選取與兩個 row 24 提示的 exact identity�
 第二提示在 DOS 退出前沒有自然相交清除，終止時須另有失效契約。
 這些仍屬 DRAFT，**不**擴張上述七列 READY fixture，也不授權提示 watcher、
 譯文 TSV 或正式 Exit 覆繪。
+
+## 2026-09-23：row20 普通回寫的限縮清層 A/B
+
+[第一百九十二階段](../re/phase-192-post-join-menu-prewrite-runtime-ab.md)沿相同
+合法加入角色 state 與十筆鍵，在 row20 普通回寫前、return 後但未知 row21
+entry 前各停一次。control、2×、3× 的 JSON 在兩個停點逐 byte 相等；
+回寫後 2×／3×覆繪 RGBA 均逐 byte 等於同畫面 baseline。正式元件測試
+另固定同值 A000 pre-write 也清空作用層。這補足固定分支的**回寫後**
+無殘字證據，仍不是逐指令 runtime active→empty 收據，更不覆蓋真正 Exit
+Enter、兩個提示或其他選單分支；spec 018 繼續維持七列限縮 READY。

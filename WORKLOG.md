@@ -1708,3 +1708,37 @@
 - 可見六格選擇尾碼走另一條 glyph path，會依狀態多色／反白；因此沒有假定
   白色 Y/N，也沒有把提示加入正式 TSV 或 watcher。第二提示到 DOS 退出前
   未見自然相交清除，仍需終止清理與獨立 READY 審查。
+
+## 2026-09-23 — 技能離開提示原文勘誤與正式前端 session 稽核
+
+- 低階翻譯代理從本機原版 `GAME.OVR` offset 與事件 SHA 重新核實職業、
+  技術技能兩句 Exit 確認提示，推翻前一輪「職業原句未知」；新 DRAFT
+  譯文集中於 `text/skill-exit-confirmation.zh-TW.tsv`，未接正式 watcher。
+  在 Docker 內 lint 通過；23 份繁中 TSV 的字元聯集仍逐 byte 等於現有
+  1028 字模 `font/characters.txt`，不需為此換掉已釘選字型。
+  原始定位與未驗邊界見[第一百九十一階段](docs/re/phase-191-skill-exit-confirmation-translation-draft.md)。
+- 前端代理按固定 dosgolem fork API 審核冷開機 session：正式 `Game.Update`
+  尚無 typed budget／step receipt／phase，單層 snapshot 也未聚合所有中文
+  watcher，且缺 preflight／teardown；只寫 DRAFT 稽核，不改正式前端。
+  代理使用的乾淨 Go 映像缺離線 Ebitengine module cache，未把 frontend 編譯失敗
+  冒稱產品缺陷或通過；見[第一百九十階段](docs/re/phase-190-linux-frontend-session-ready-prerequisites.md)。
+  主代理其後以既有 `eob-remake-go:1.26.7-ebiten2.9.9`、非登入 shell
+  及有界 Xvfb 重跑 frontend／host／presentation／Buck Rogers 四套測試
+  全通；已在同一研究文件追加環境勘誤，API 缺口仍在。
+
+## 2026-09-23 — 加入角色後第七列的正式清層 A/B
+
+- 沿同一合法 state 與十筆原版按鍵，在 row20 普通回寫前與返回後各取
+  control、2×、3×收據，四個覆繪輸出又各重播一次，JSON／RGBA
+  逐 byte 重生。兩停點三模式原版 JSON 逐 byte 相同；返回後的
+  2×／3×覆繪 RGBA 均等於各自 baseline，證實這條固定分支
+  回寫後不留七列繁中層。完整限制見
+  [第一百九十二階段](docs/re/phase-192-post-join-menu-prewrite-runtime-ab.md)。
+- 本機 dosgolem fork 新增雙倍率、同值 A000 pre-write 的 presenter
+  清層回歸測試；定向與 `apps/buckrogers` 全套測試、vet 通過。
+  CLI 不接受在 dispatcher pending 的單步停止點做成功收據，故未將
+  回寫前／後兩張圖冒稱逐指令 active→empty 驗收。
+- 首輪容器使用登入 shell 導致 Go 不在 PATH，改非登入 shell；後續
+  嚴格 runner 拒絕停止點以後的鍵與大寫 scan hex，依原有十筆
+  步點、兩位小寫十六進位重跑。這些是命令／環境錯誤，沒有改原版
+  或放寬 watcher。Go module stat cache 權限警告非致命，測試仍通過。
