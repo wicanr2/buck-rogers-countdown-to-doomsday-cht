@@ -65,7 +65,9 @@ identity；玩家輸入不是譯文，Backspace 的直接像素清除則由 fram
 玩家 trace，整理身體圖示畫面的七筆固定介面文字；`tools/body_icon_catalog.py` 會回查三份
 既有事件清冊、驗證容量與雙向 coverage。`body-icon-text-safe-rects.tsv` 依同一 exact
 identity 建立七筆 logical 安全矩形，並以 `tools/body_icon_text_safe_rects.py` 驗證同一畫面
-群組內不重疊；這一階段仍只完成前置資料，尚未接 runtime overlay。
+群組內不重疊。後續 dosgolem 已將七筆固定文字接入正式 runtime；固定 move／refuse／confirm
+的雙倍率同狀態與清除生命週期已限縮驗收，見
+[`spec 009`](../docs/spec/009-body-icon-overlay-draft.md)。其他路徑仍待證據。
 `skill-action-bar-events.tsv` 保存職業／技術技能頁底部五個操作標籤的長度、
 SHA-256、逐字 caller、幾何與一般／焦點色彩。這些標籤經 `0763:026B`
 的低階字元路徑，不是現有高階 dispatcher 事件；disabled 狀態尚未觀測，固定為
@@ -124,7 +126,8 @@ python3 tools/menu_receipt.py workplace/phase27/menu-receipt.json \
 、「新地球組織（NEO）」與「美蘇貿易聯邦（RAM）」用語建立。`tools/story_opening_catalog.py`
 驗證五筆 identity、譯文雙向覆蓋、NFC、控制／格式字元與 39 格資料層上界；
 首屏五行已接 dosgolem runtime 並通過 2×／3× 同狀態 A/B 及 Enter 轉頁失效驗證；
-完整開機玩家路徑與存讀檔仍未驗，規格 010 保持 READY，不外推整款遊戲已中文化。
+完整開機玩家路徑與存讀檔仍未驗；規格 010 僅在固定首屏五行與已量 Enter 離頁
+限縮 CONFORMED，不外推整款遊戲已中文化。
 `story-page2-events.tsv` 的四筆固定敘事 identity 已依 spec 011 審核為 `confirmed/READY`；
 `story-page2.zh-TW.tsv` 的文字屬編輯性譯文，已於已量原版畫面完成 2×／3× A/B 驗收；
 `tools/story_page2_catalog.py` 另外驗證 row 17–20、排除 row 24 動態狀態列與 39 格保守容量，
@@ -141,27 +144,28 @@ Chiagong 的「奇亞貢」仍只是未由中文手冊逐字確認的編輯性�
 `story-page4-events.tsv` 是第四頁六行 READY 身分目錄，`story-page4.zh-TW.tsv` 保持編輯性
 繁中候選；原先 `visual-transcription` 的前五筆身分已被兩次合法 Enter 的低階 glyph trace
 否定並訂正。`tools/story_page4_catalog.py` 驗證 exact hash、caller／guard、步數、幾何、READY
-狀態與翻譯容量。READY 僅授權依規格 013 實作；尚未接入 runtime、未做 2×／3× A/B，
-不得稱為已中文化。
+狀態與翻譯容量。後續正式 runtime 已完成雙倍率同狀態 A/B、轉頁失效與失敗即關閉
+驗證；規格 013 僅在固定六行及已量 Enter 離頁限縮 CONFORMED。
 `story-page5-events.tsv` 與 `story-page5.zh-TW.tsv` 是第四頁後合法 Enter 所見的
 第五頁下方五行固定敘事 READY；`tools/story_page5_catalog.py` 驗證低階 glyph
 length／hash、caller／guard、row 17–21、39 格容量與 READY 狀態。右側人物姓名未納入此
-catalog；READY 僅授權依規格 014 實作，runtime A/B、清除與正常玩家路徑仍未驗，不得稱為
-已中文化。
+catalog；後續正式 runtime 已完成雙倍率同狀態 A/B 與 page5→page6 清除，規格 014
+僅在固定五行及已量 Enter 離頁限縮 CONFORMED。
 `story-page6-events.tsv` 與 `story-page6.zh-TW.tsv` 是第五頁後合法 Enter 的第六頁下方六行
-固定敘事 DRAFT；`tools/story_page6_catalog.py` 驗證低階 glyph 身分、譯文 key／來源、NFC、
-控制字元與保守 39 格寬度。右側人物名與 row 24 狀態列排除；首筆原版清除僅為前頁
-stamp 失效候選，尚未完成 runtime A/B，不得接正式覆繪。
+固定敘事；`tools/story_page6_catalog.py` 驗證低階 glyph 身分、譯文 key／來源、NFC、
+控制字元與保守 39 格寬度。右側人物名與 row 24 狀態列排除；後續正式 runtime 已完成
+雙倍率同狀態 A/B 與 page6→page7 清除，規格 015 僅在此固定路徑限縮 CONFORMED。
 `story-page7-events.tsv` 與 `story-page7.zh-TW.tsv` 是第六頁後合法 Enter 所見的第七頁下方六行
-固定敘事 DRAFT；`tools/story_page7_catalog.py` 驗證同狀態 glyph 身分與繁中候選格式。
-右側人物名及 row 24 排除；全部 18 份 catalog 的本機倚天聯集已重建為 1022 字模，
-dosgolem 正式 loader 對 6136 個譯文字元零缺字；仍未完成失效生命週期或 runtime A/B。
+固定敘事；`tools/story_page7_catalog.py` 驗證同狀態 glyph 身分與繁中格式。
+右側人物名及 row 24 排除；後續正式 runtime 已完成雙倍率同狀態 A/B、合法 Enter 離頁
+及失敗即關閉矩陣，規格 016 僅在固定六行與已量進出限縮 CONFORMED。
 `story-page8-events.tsv` 與 `story-page8.zh-TW.tsv` 是第七頁合法終態後 Enter 所見的第八頁
 下方四行固定敘事；事件檔只保存低階 glyph identity，不保存原文全文。右側人物姓名與
-row 24 動態狀態列排除；仍屬 DRAFT，未接 runtime。證據見
+row 24 動態狀態列排除；後續正式 runtime 已完成雙倍率同狀態 A/B 與 Enter 離頁清除，
+規格 017 僅在固定四行與已量進出限縮 CONFORMED。原版定位證據見
 [`docs/re/phase-131-story-page8-enter-trace.md`](../docs/re/phase-131-story-page8-enter-trace.md)。
 全部 19 份 catalog 的本機倚天子集為 1025 字模，dosgolem loader 對 6175 個譯文字元
-檢查零缺字；這仍不構成第八頁的中文覆繪 A/B。
+檢查零缺字；這組字型清冊是早期靜態證據，正式中文覆繪 A/B 另見規格 017。
 `story-page9-events.tsv` 與 `story-page9.zh-TW.tsv` 是第八頁合法終態後 Enter 的第九頁唯一
 固定敘事行；只保存 content-safe identity 與繁中 DRAFT，排除右側姓名、row 24 動態列。
 全部 20 份 catalog 的本機倚天子集為 1026 字模，正式 loader 對 6182 個譯文字元
