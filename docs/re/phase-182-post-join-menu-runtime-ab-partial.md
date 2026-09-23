@@ -31,7 +31,10 @@ active 後的未知 writer 仍失敗即關閉。這是接線時機勘誤，不�
 `94f63d37be11bb68daf5f48a14b76177164bef7b0f835fbef97db6ee0bb20af1`、
 indexed framebuffer `454375c9642d96f8c865c384687b373d3d878441ce293f1fd55685616e256fca`、
 palette `3f85bab8365683af5d0e87c45bb6a6596ad3779ffd68694b39fcd894b4a587e6`
-也逐次相同。這確認本次覆繪沒有改變該終態的原版語意層；不代表未量路徑。
+也逐次相同。JSON 實際欄位只有 `state_start`、`stopped_at`、`events`、
+`bios_keys`、`memory_sha256`、`indexed_sha256` 與 `palette_sha256`；因此可確認
+**這些已收錄觀測量**未因覆繪改變，不能由此宣稱所有 DOS 內部狀態、檔案副作用或
+未量路徑全等。
 
 以 320×200 原始畫布分別乘 2、3，逐 RGBA 像素比對 baseline 與覆繪：
 

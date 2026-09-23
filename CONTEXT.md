@@ -37,8 +37,9 @@
 已於同一[第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)
 記錄新 SHA 與再審，恢復**相同限縮範圍**的 READY；當時正式 CLI A/B 尚未完成。
 其後本機 dosgolem fork `cb3ca77` 已接通正式 CLI，並以相同 state／keys 做
-control、2×、3×局部終態 A/B：machine／DOS／indexed framebuffer／palette 收據逐 byte
-相同，七列安全矩形外 RGBA 差異皆為零；未收錄 row 21 selected 明確 fail-closed。
+control、2×、3×局部終態 A/B：收據中的事件、BIOS 按鍵、記憶體、indexed
+framebuffer 與 palette 逐 byte 相同，七列安全矩形外 RGBA 差異皆為零；
+未收錄 row 21 selected 明確 fail-closed。完整 DOS 內部狀態與檔案副作用不在該收據內。
 詳見[第一百八十二階段](docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
 逐幀 active→empty 與 `EXIT TO DOS` clear 後無殘字仍未驗，故 spec018 **仍為 READY，
 不是 CONFORMED**。

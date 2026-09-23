@@ -1602,7 +1602,8 @@
   row gate，`157ec93` 依 phase180 證據只在 active layer 監看 A000 失效；初畫期
   `0CF4:1B3A` 不再誤報未知 active writer。主代理獨立 Docker 重跑 apps／CLI test
   與 vet 通過。
-- fork `cb3ca77` 修正 3× 覆繪後，control／2×／3× 同狀態終態 JSON 逐位元組相同；
+- fork `cb3ca77` 修正 3× 覆繪後，control／2×／3× 同狀態終態 JSON 的已收錄欄位
+  逐位元組相同（事件、BIOS 按鍵、記憶體、原始畫面與色盤；不涵蓋完整 DOS／檔案狀態）；
   主代理獨立回讀私有 RGBA，七列安全矩形外零差、內部 2× 6521／3× 13659
   個變動像素。row 21 未收錄 identity 以退出碼 1 拒絕，不產生新覆繪收據。
   雜湊、原版位址基準與驗收限制見[第一百八十二階段](docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
