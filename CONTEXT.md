@@ -7,8 +7,10 @@
 相交寫入、原版六格多色選擇尾碼與各自本體安全矩形；兩種起始
 state 的證據已明確分開，不能混稱同狀態。
 [規格 020](docs/spec/020-skill-exit-confirmation-overlay-draft.md)保存此
-DRAFT 覆繪邊界；N／Y 後**含同值**的最早清除寫入、尾碼完整生命週期、
-雙倍率字型與正式 A/B 仍缺，Issue #17 未完成。
+DRAFT 覆繪邊界；[第一百九十九階段](docs/re/phase-199-skill-exit-font-containment-draft.md)
+已驗兩句現行倚天字型在 2×／3× 的靜態墨跡 containment、零缺字。
+N／Y 後**含同值**的最早清除寫入、尾碼完整生命週期與正式 A/B
+仍缺，Issue #17 未完成。
 
 [第一百九十六階段](docs/re/phase-196-ebiten-panel-batch-keyboard-gate.md)
 修正正式 Ebitengine `Game.Update` 的同批鍵盤分流：面板起點開啟，
@@ -23,8 +25,8 @@ closed canvas 鍵盤仍正常轉送。本機 dosgolem `71f19cb`／spec 232 只�
 Cancel／Apply 收合當回合零 `Advance`、下一關閉回合恢復；本機 dosgolem
 `c273db6`／spec 231 只在此 callback 排程限縮 CONFORMED。並非實際 DOS
 指令數、冷開機或可玩玩家前端的完成證據；[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md)
-與 Issue #16／#18 仍為 DRAFT／待完成。Apply 與 Enter 同回合的既有輸入
-分流仍待完整 session 契約處理。
+與 Issue #16／#18 仍為 DRAFT／待完成。Apply 與 Enter 同回合的鍵盤漏入
+已由第一百九十六階段限縮修正；完整 session 契約仍待處理。
 
 [第一百九十五階段](docs/re/phase-195-post-join-prewrite-runtime-receipt.md)
 以本機 dosgolem `540a522` 的正式不含內容 pre-write 收據補上加入角色後

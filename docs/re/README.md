@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百九十九階段：技能頁離開問句雙倍率字型靜態檢查](phase-199-skill-exit-font-containment-draft.md)：兩句 DRAFT 譯文在本機倚天 2×／3×安全矩形內零缺字、零越界；未驗 N／Y 清除及執行期。
 - [第一百九十六階段：設定面板同批鍵盤不漏入 DOS](phase-196-ebiten-panel-batch-keyboard-gate.md)：正式 `Game.Update` 修正 Apply／Cancel 同批鍵盤隔離，僅此 host 分流邊界限縮 CONFORMED。
 - [第一百九十五階段：加入角色後七列選單逐寫入清層](phase-195-post-join-prewrite-runtime-receipt.md)：正式收據記錄七次 watcher／presenter 清層，雙倍率 row20 回寫後無殘字；只限合法固定路徑 CONFORMED。
 - [第一百九十四階段：正式 Ebitengine 面板暫停閘門](phase-194-formal-ebiten-panel-pause-conformance.md)：正式 `Game.Update` 與實體 X11 雙倍率 Cancel／Apply 的零 `Advance`／下一回合恢復；只限回合排程 CONFORMED。

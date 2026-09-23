@@ -9,7 +9,11 @@
   主代理以固定 probe binary 分別重跑兩筆 watch-file，SHA 均相同。
 - 新建[規格 020](docs/spec/020-skill-exit-confirmation-overlay-draft.md)
   作 DRAFT typed 覆繪邊界；N／Y 後含同值清除、尾碼完整重畫、
-  2×／3×字型 containment 與正式同狀態 A/B 未完成，不能接 production。
+  正式同狀態 A/B 未完成，不能接 production。
+- [第一百九十九階段](docs/re/phase-199-skill-exit-font-containment-draft.md)
+  沿用既有本機字型解析器，在 Docker 對兩筆 DRAFT TSV 做 2×／3×
+  靜態安全矩形與缺字檢查，兩者均零越界、零缺字；這不是正式
+  原版執行期或 N／Y 清層收據。
 
 ## 2026-09-24 — 設定面板同批鍵盤隔離
 

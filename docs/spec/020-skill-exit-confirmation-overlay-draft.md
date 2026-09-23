@@ -24,6 +24,11 @@ RGBA 輸出端以 exact identity 清除問句本體、覆繪繁中。N／Y 的�
 dispatcher 外六格原版選擇尾碼。原版與存態、glyph／A000 私有收據均
 只留 ignored `workplace/`；工具版本、各 state／收據雜湊與位址空間見該階段。
 
+[第一百九十九階段](../re/phase-199-skill-exit-font-containment-draft.md)
+另用現行本機倚天字型確認兩筆 DRAFT 譯文在 2×／3×上述矩形
+零缺字、零靜態墨跡越界。這只補足幾何候選，不驗原版清除或
+正式執行期。
+
 | 頁面 | 問句 exact key | 本體安全矩形（logical、半開） | 原版尾碼保護矩形 |
 | --- | --- | --- | --- |
 | 職業 | `career.skill.exit.exit_confirmation_prompt.001` | `[0,264)×[192,200)` | `[264,312)×[192,200)` |
@@ -41,8 +46,9 @@ dispatcher 外六格原版選擇尾碼。原版與存態、glyph／A000 私有�
 2. 只清除本體安全矩形；六格選擇尾碼完整保留原版的顏色與反白。
    不把尾碼併入譯文 TSV，亦不預設其顏色固定。使用者對中文
    快捷字母的白色規則不等於授權更改這個多色尾碼。
-3. 兩句譯文單行顯示；正式字型需在 2×／3× 分別檢查缺字、
-   墨跡完全落於本體安全矩形且不覆蓋尾碼。不得為遷就缺字改譯。
+3. 兩句譯文單行顯示；現行候選字型的 2×／3× 靜態檢查已通過，
+   正式實作仍須重驗墨跡完全落於本體安全矩形且不覆蓋尾碼。
+   不得為遷就缺字改譯。
 4. watcher 須在原版對本體最早相交 A000 pre-write 前失效，包含
    同值寫入；N／Y 返回或離頁後不得殘字。未知 writer、錯序、
    partial 身分、restore／stop／discontinuity 必須失敗即關閉。
@@ -54,8 +60,8 @@ dispatcher 外六格原版選擇尾碼。原版與存態、glyph／A000 私有�
 
 先以同一合法原版 state、相同 N／Y 排程，量到兩頁問句本體與尾碼
 在確認／拒絕後最早**含同值** A000 相交寫入、尾碼每格重畫／清除
-及 DOS 終止清理。再以現行倚天字型對兩筆 TSV 做 2×／3× 靜態
-containment、鍵值與字型 coverage，獨立審查 typed watcher／presenter
+及 DOS 終止清理。現行倚天字型對兩筆 TSV 的 2×／3× 靜態
+containment、鍵值與字型 coverage 已通過；仍須獨立審查 typed watcher／presenter
 的 generation、失敗矩陣與保存狀態影響；合格才可升 READY。
 
 實作後分別由 dosgolem 從相同初態重生 control／2×／3× 的

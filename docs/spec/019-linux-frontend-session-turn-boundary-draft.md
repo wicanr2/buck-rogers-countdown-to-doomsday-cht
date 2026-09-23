@@ -97,10 +97,11 @@ capture batch 起點 panel state → classify/Deliver 全批事件
 5. 每個成功 `Advance` 都回傳該 epoch 的**實際** `Steps` 和 `Reason`；callback 被呼叫
    次數不能取代 DOS 指令數或 machine／DOS 同狀態證據。
 
-現行 `Game.Update` 對 Apply + Enter 的處理仍是缺口：pointer Apply 先收合面板，隨後
-`key()` 透過 `KeyboardBridge.DeliverBIOSKey` 觀察到 closed panel，可能將 Enter 排入 BIOS；
-雖然 `panelEventThisUpdate` 令本回合不呼叫 `Advance`，但不符合本規格第一條的整批隔離。
-本 DRAFT 不授權直接修改該程式。
+修正前的 `Game.Update` 曾在 Apply + Enter 同批時，於 pointer Apply 收合面板後，
+讓 `key()` 透過 `KeyboardBridge.DeliverBIOSKey` 將 Enter 排入 BIOS；
+`panelEventThisUpdate` 雖阻止當回合 `Advance`，卻未隔離整批鍵盤。
+此缺口已由 [第一百九十六階段](../re/phase-196-ebiten-panel-batch-keyboard-gate.md)
+限縮修正並驗證；本 DRAFT 的 typed session、實際 step receipt 與失敗模型仍未因此完成。
 
 ## 失敗即關閉與最小審查矩陣
 
