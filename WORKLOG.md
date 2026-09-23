@@ -2077,3 +2077,12 @@
 - 以上是 host-only 限縮實作與畫面收據，沒有正式 cold boot 玩家
   入口、原版 DOS raw／BIOS／IRQ／存檔同狀態 A/B，故規格 004
   整體 DRAFT，3× 字型子契約保持 READY、不升 CONFORMED。
+- 本輪主專案 private `main` 先後提交並推送 `2396a76`（第九頁
+  入頁收據、session 契約與 A 決定）及 `6eba525`（A 字型重建
+  工具與正式畫筆收據）；Issue #20、#18、#16 均已追加限縮
+  進度，保持 OPEN。dosgolem workplace 分支本地提交 `7930b7a`
+  與 `cc0b17a`，未推送其遠端。三個一次性第九頁 probe Go 檔
+  仍在 fork 工作樹未追蹤，未納入提交；原版、已購字型、
+  GOLEMFNT 子集及完整收據均在 ignored `workplace/`。
+- 結束檢查 `docker ps -a` 僅見其他專案容器，本專案無殘留；
+  Docker 內掃描本工作樹無 root-owned 產物或誤建 `.md` 目錄。
