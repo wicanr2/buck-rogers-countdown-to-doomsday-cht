@@ -1,5 +1,8 @@
 # 原版觀測證據索引
 
+- [第二百一十五階段：真正 Exit 問句本體限縮 READY 審查](phase-215-exit-prompt-body-ready-review.md)：核對 exact 身分、q2 pending／q1 active 真實時序、雙倍率字型與訂正後 fake；僅兩句本體升 READY，正式接線與同狀態 A/B 未完成。
+- [第二百一十四階段：Exit 問句本體生命週期合成原型](phase-214-exit-prompt-body-lifecycle-fake-draft.md)：ignored typed fake 驗 row21／第一問與第一問／第二問 pending 的兩種短暫共存、含同值 A000 清層、DOS Stop、未知 writer 與錯序失敗即關閉；仍 DRAFT，未接正式程式。
+- [第二百一十三階段：Exit 提示繁中候選與倚天字型 DRAFT 靜態收據](phase-213-exit-prompt-font-draft.md)：固定兩個 post-join Exit 提示的 DRAFT 用字，倚天 2×／3×本體 containment 零缺字零越界，尾碼六格採 body-only 遮罩零差；未接正式 TSV 或 watcher。
 - [第二百一十二階段：3× 設定面板倚天字型 A/B 原型](phase-212-host-only-3x-eten-font-ab-draft.md)：本機原生 24 點與既有原型 22 點並列，九字零缺字、五項標籤安全矩形內；正式 3× 字型選擇待使用者確認。
 - [第二百一十一階段：合成 typed session 收據候選與負例](phase-211-synthetic-session-receipt-candidate-draft.md)：ignored 原型以 DOS 退出前置檢查、step 差分與 error 優先保存候選收據；五組合成測試通過，零預算與 Epoch 未定。
 - [第二百一十階段：session 停止收據與 DOS 退出的合成探針](phase-210-session-stop-receipt-probe-draft.md)：正常 DOS 退出仍可回 `StopBudget`、已退出後再呼叫仍會多嘗試一步；舊 phase206 釘選探針已精確恢復，規格 019 仍 DRAFT。

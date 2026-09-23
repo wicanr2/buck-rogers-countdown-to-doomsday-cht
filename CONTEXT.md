@@ -2,6 +2,20 @@
 
 更新：2026-09-24
 
+[第二百一十三階段](docs/re/phase-213-exit-prompt-font-draft.md)已固定真正
+Exit 後兩句 row 24 問句的 DRAFT 繁中候選，現行本機倚天字型的 2×／3×
+墨跡皆零缺字、零本體越界，六格多色原版尾碼保護區的靜態遮罩零差。
+[第二百一十四階段](docs/re/phase-214-exit-prompt-body-lifecycle-fake-draft.md)
+的 ignored typed fake 又驗第一問與 row 21 短暫共存、同值 A000 清層、
+第二問 pending 與第一問 active 的真實先後、DOS Stop 清層及未知
+writer／錯序失敗即關閉。兩者都不是
+正式 runtime 或原版 A/B。[第二百一十五階段](docs/re/phase-215-exit-prompt-body-ready-review.md)
+獨立審查限縮核准兩句問句本體與原版多色尾碼保護；
+[規格 021](docs/spec/021-post-join-exit-prompt-body-only-draft.md)現為
+**限縮 READY**。正式 TSV、watcher、presenter 與原版 control／2×／3×
+同狀態 A/B 均未完成，故[Issue #19](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/19)
+仍開啟。
+
 [第二百一十二階段](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
 證實原生倚天 24 點明體與符號可覆蓋 3× host 面板九個字元，
 但直接裁成正式前端要求的 22×22 會損筆畫。已做不載原版遊戲的

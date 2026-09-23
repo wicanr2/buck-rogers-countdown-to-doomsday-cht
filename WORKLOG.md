@@ -1939,3 +1939,28 @@
 - 本批專用 Docker 映像的容器清單為空；兩個字型研究工作目錄沒有
   root-owned 檔案或誤建 `.md` 目錄。產生的字型／PNG／收據均只在
   ignored `workplace/`，不進 GitHub。
+
+## 2026-09-24 — 面板暫停確認與真正 Exit 問句前置
+
+- 使用者確認設定面板開啟時暫停 DOS；既有正式 `Game.Update` 的局部
+  CONFORMED 排程與專案規格已採相同語意。主代理以無網路 Docker／
+  有界 Xvfb 重跑 `frontend/ebiten` 測試通過；這不是完整玩家前端。
+- 翻譯代理盤點 23 份繁中 TSV、194 筆資料列（手冊 39 筆），現有
+  catalog、選單與手冊檢查通過；穩定 key 無安全漏譯。真正 Exit 問句
+  另建 GitHub #19，依賴 #8；不把 DRAFT identity 猜成正式 catalog。
+- [第二百一十三階段](docs/re/phase-213-exit-prompt-font-draft.md)固定兩句
+  DRAFT 用字並驗倚天 2×／3× 靜態墨跡及原版尾碼保護區；
+  [第二百一十四階段](docs/re/phase-214-exit-prompt-body-lifecycle-fake-draft.md)
+  的 ignored 模型補上兩層短暫共存、含同值首寫與未知 writer 負例。
+  主代理審查時發現第二問 Entry 其實早於第一問清層，已訂正原型並
+  補 Return-before-clear 負例；唯讀 Docker 重跑七組頂層測試通過。
+  兩者仍不授權 production。
+- [規格 021](docs/spec/021-post-join-exit-prompt-body-only-draft.md)已把兩句
+  問句本體的 exact 身分、原版多色尾碼零覆繪、失效與終止條件寫為
+  DRAFT，並掛入現有規格索引。獨立審查先抓到 row 21 Enter 上下文未在
+  fake 建立；再次核對專案原文＋callsite＋座標辨識原則後，將其保留為
+  已驗來源路徑，不設成 watcher 必需 guard。此限縮不改原版判定，
+  [第二百一十五階段](docs/re/phase-215-exit-prompt-body-ready-review.md)
+  因而只核准兩句本體為 READY。正式 watcher／TSV 與原版 A/B 尚未做。
+- 另一個 ignored 2× 冷開機原型同時接選單與手冊 watcher，但本次只
+  觸發選單、手冊事件為零；故不是多層呈現驗收。限制已回填 Issue #16。
