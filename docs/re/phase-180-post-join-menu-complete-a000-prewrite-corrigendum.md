@@ -7,15 +7,16 @@
 
 - 原版 `GAME.OVR` SHA-256：`3a4ad4856c08fe5973179f1d907feed1d870af99d08abd1cb884b316324f3cc0`。
 - 合法 `a-joined.state` SHA-256：`1bb95276ccb4c1976175d381e0d03bc148a8b0f4da908fb155764a4b71bfd48d`。
-- dosgolem source commit `d9c0c27ca9af8239c7e96272a7165e03d7da04bf`、Docker Go `go1.26.7`；
-  實模式定位與 linear A000 observer range 不混用。
+- 本案權威 dosgolem fork commit `4589bfe986a7414c418f7ec02d6da0888d7cfd11`、Docker Go
+  `go1.26.7`；實模式定位與 linear A000 observer range 不混用。先前誤用的 upstream
+  `d9c0c27` 與 fork 的 Machine／VideoWrite／DOS 層存在相關差異，故本節不以其收據外推。
 - ignored `workplace/phase180-post-join-menu-a000-observer/` 的一次性 Go probe（SHA-256
   `ca85b78ade1ff26b743dd341eddc7174f7240618f6158b96f26e2ccc2dd6dd1c`）以通用
   `Machine.WatchWrite` 在每 byte 寫入前觀測 `A0000-AFFFF`，**同值也記錄**。它只將
   source 複製至 ignored workspace 以取得 Go `internal/` 可見性，未修改 shared dosgolem。
 - phase 161 的 BIOS Right、Enter、九次 Down、Enter 排程從同一 state 重播兩次到
   step `126000000`；兩份私有 observer JSON 逐 byte 相同，皆 SHA-256
-  `36069f617d932cf4b611dfd2b5e8b4e983a870b0cb6ed49276c0e056aab6b523`。
+  `7421d673aa5455fe243e01b11a2c6f261f0a07767904cbe82e70c274ac4d448c`。
 
 ## 21 個 exact variants
 
