@@ -55,8 +55,11 @@ palette `3f85bab8365683af5d0e87c45bb6a6596ad3779ffd68694b39fcd894b4a587e6`
 在 step `124714336` 進入未收錄 identity；CLI 以
 `post-join fail-closed: unknown post-join identity` 退出碼 1 停止，沒有輸出新的 RGBA
 或 JSON。這證實沒有把 row 21 猜補成中文，但尚無逐幀收據證明 row 20 普通回寫的
-第一筆相交 pre-write 當幀就使 active→empty，也未完成 `EXIT TO DOS` Enter clear
-後的無殘字比對。完整玩家前端、其他選單動作、重入與存讀檔均不在本次驗證。
+第一筆相交 pre-write 當幀就使 active→empty，也未完成真正 row 21
+`Exit to DOS` Enter 後的清除／無殘字比對。過去 step `125119490` 的清除
+其實是在 row 12 `Create New Character` Enter 後，見
+[第一百八十三階段勘誤](phase-183-post-join-exit-identity-corrigendum.md)。
+完整玩家前端、其他選單動作、重入與存讀檔均不在本次驗證。
 
-因此 spec 018 保持 READY；下一個最小門檻是同狀態逐幀失效／Exit clear 收據，
+因此 spec 018 保持 READY；下一個最小門檻是同狀態逐幀失效與真正 Exit 路徑的 DRAFT 證據，
 而非擴大逆向或直接宣稱整個選單已中文化。

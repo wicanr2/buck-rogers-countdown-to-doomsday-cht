@@ -1,4 +1,11 @@
-# 第一百六十一階段：加入角色後功能選單的反白與離頁清除
+# 第一百六十一階段：加入角色後功能選單的反白與後續清除
+
+**2026-09-23 語意勘誤：**本階段原始 step、caller、格座標及雙重收據保留；
+但當時把 step `125100053` 的 Enter 誤判為 `Exit to DOS`。原版 bytes 與
+同份事件順序現已證實 Enter 前選取的是 row 12 `Create New Character`，
+row 21 `Exit to DOS` 已回復普通。詳細對照與受影響規格見
+[第一百八十三階段](phase-183-post-join-exit-identity-corrigendum.md)。下文舊說僅保存
+錯誤形成史，不可作現行 Exit 離頁證據。
 
 ## 輸入、工具與權利邊界
 
@@ -8,8 +15,9 @@
 - dosgolem 本機分支 commit：`1dafb0a857c42fbda7058157b7615e214a64ec64`；
   Docker 內 Go 1.24.13。本文的位址均為 dosgolem 8086 實模式 `segment:offset`，
   文字列及清除格為原版 8×8 格座標，不與 IDA 線性位址混用。
-- 從原版正常 Right→Enter 離開名冊，接著以合法 Down 巡過功能選單；離頁僅抽測
-  `EXIT TO DOS` 的 Enter。雙重 content-safe receipt 與 320×200 framebuffer 留在
+- 從原版正常 Right→Enter 離開名冊，接著以合法 Down 巡過功能選單；當時意圖抽測
+  `Exit to DOS` Enter，實際多按一次 Down 而在 row 12 `Create New Character` 選取時 Enter。
+  雙重 content-safe receipt 與 320×200 framebuffer 留在
   被忽略的 `workplace/phase161-post-join-menu-selection/`；原版、存態、字型及圖片不入版控。
   `cycle-exit-a/b.json` 均為 SHA-256
   `5b4c8f66ffd72651344c0dbb45de5946d273276b933dc9d4b902d69297841c36`，
@@ -29,15 +37,15 @@
 `026F:029C` 清除只涵蓋格 `[25,40)×[24,25)`，即像素
 `[200,320)×[192,200)`，與七列文字均不相交；不能因提示列重畫就失效整組譯文。
 
-## 已證實的一條離頁清除與停止線
+## 已證實的一條 Enter 後清除與停止線（舊離頁解讀已推翻）
 
-選到原版 `EXIT TO DOS` 後的合法 Enter 在 step `125100053` 由 BIOS
+選到原版 row 12 `Create New Character` 後的合法 Enter 在 step `125100053` 由 BIOS
 `INT 16h AH=00` 消費。該 Enter 之後第一筆與七列相交的 `026F:029C` 清除 pre-write 在
 step `125119490`，格 `[1,39)×[2,23)`，換成像素為 `[8,312)×[16,184)`。
 七列原文 glyph 的 y 範圍分別為 `[104,112)`、`[112,120)`、`[120,128)`、
 `[128,136)`、`[144,152)`、`[152,160)`、`[160,168)`，均被此清除覆蓋。
-因此這一條已量路徑可作整組作用中覆繪在相交寫入前失效的候選邊界；
-不外推其他選項 Enter、其他出口、存讀檔或重新進入選單。
+此 clear 的原始定位仍已證實；但七列 overlay 更早已因 row 20 普通回寫而失效，
+它不能作 active overlay 的首次失效邊界，更不能外推真正 Exit Enter、存讀檔或重入。
 
 上述為「已證實」的輸出事件、座標、配色與有限生命週期；七個選項的實際操作語意
 仍為「未知」。譯文 [`post-join-menu.zh-TW.tsv`](../../text/post-join-menu.zh-TW.tsv)
@@ -53,3 +61,5 @@ CONFORMED 另需 2×／3×同狀態 A/B 與適用的正常玩家路徑驗收。
 每代普通／反白重畫前的 `0763:184D` 已先碰到作用中列；row 20 普通回寫後又進入未收錄
 row 21 selected，必須 fail-closed，不能假定 layer 活到 Exit。舊收據與結論保留供回查；
 新證據見[第一百八十階段](phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)。
+舊清除收據保留；其 `Exit` 語意已由[第一百八十三階段](phase-183-post-join-exit-identity-corrigendum.md)
+撤回，不能把錯誤解讀本身當成事實。

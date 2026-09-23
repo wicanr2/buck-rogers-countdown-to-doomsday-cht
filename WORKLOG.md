@@ -1612,3 +1612,30 @@
   `workplace/phase182-postjoin-ab` 空目錄，主代理確認無內容後只移除該精確目錄，
   並改用存在且 owner 1000 的輸出路徑。尚缺逐幀 active→empty 與 Exit clear
   後無殘字，spec018 保持 READY。
+
+## 2026-09-23 — 功能選單 Enter 路徑的原版身分勘誤
+
+- 舊 phase161、spec018、上述歷程把 step `125100053` 的 Enter 說成
+  `Exit to DOS` 離頁。主代理重新對 `START.EXE` SHA-256
+  `58a34a38b1db455202d2d30daa82915982d7d905932b46bdc7371cb466226cf1`
+  定長逐 byte 回查：row 21／offset `0xE421` 是 `Exit to DOS`，但舊收據
+  Enter 前最後反白的是 row 12／offset `0xE2E9` 的 `Create New Character`。
+  兩筆原文各自唯一吻合雙重顯示事件 SHA；舊清除的 step／矩形仍有效，
+  「Exit clear」語意撤回。詳見新索引的
+  [第一百八十三階段](docs/re/phase-183-post-join-exit-identity-corrigendum.md)。
+- 低階翻譯代理已為 row 21 提出「返回 DOS」等短譯，但只是 DRAFT 候選；
+  新 row 21 生命週期與真正 Exit Enter 當時仍須原版雙重重播，再經獨立 READY 審查。
+  這次只訂正文獻與安排 DRAFT 探針，沒有修改原版資料、正式譯文或
+  既有七列 READY watcher。
+
+## 2026-09-23 — 真正 Exit to DOS 確認分支與 Linux 真實畫布原型
+
+- 從合法加入角色存態選到 row 21 後直接 Enter，雙收據證實先顯示離開詢問；
+  首次 Y 再顯示未存檔確認，N 清除並重畫原選單，兩次 Y 則在步數上限前使
+  DOS `Exited`。四組雙收據 SHA、原版短提示的檔案 offset、BIOS 消費 step 與
+  仍未量的最早 A000 pre-write 見[第一百八十三階段](docs/re/phase-183-post-join-exit-identity-corrigendum.md)。
+  未把舊 row 12 clear 重新命名為 Exit clear，也未接 row 21 正式覆繪。
+- 本機 dosgolem fork 的 Linux Ebitengine DRAFT 原型已由私有加入角色存態顯示
+  真實 320×200 原版畫布，實體 X11 輸入完成面板攔截、2×→3× Apply 與關面板後
+  Enter 送入 DOS；收據與限制在 fork 的 `docs/re/phase-180-linux-ebiten-router-draft.md`。
+  這不是完整冷開機、正式中文覆繪生命週期或可玩版本的驗收。

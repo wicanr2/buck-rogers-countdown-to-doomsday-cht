@@ -20,15 +20,18 @@
 上方動態角色資料不納入這七項；七列的反白與普通回寫另列精確變體。
 私有原文／畫面證據只在
 `workplace/phase158-post-join-exit-probe/`；不能把此資料完成度算作已中文化畫面。
-後續雙重正常 Down／Exit Enter 收據已證實七項普通／反白重畫、提示列清除不相交，
-以及 `026F:029C` 在 `125119490` 的 Enter 後第一筆全選單 clear；見
+後續雙重正常 Down／Enter 收據已證實七項普通／反白重畫、提示列清除不相交，
+以及 `026F:029C` 在 `125119490` 的 Enter 後第一筆全選單 clear；但該 Enter 前
+選取的是 row 12 `Create New Character`，不是 row 21 `Exit to DOS`。原始
+`START.EXE` bytes／檔案 offset、事件 SHA 與勘誤見
+[`第一百八十三階段`](docs/re/phase-183-post-join-exit-identity-corrigendum.md)；舊重播見
 [`第一百六十一階段`](docs/re/phase-161-post-join-menu-selection-and-exit.md)。
 其後[規格 018](docs/spec/018-post-join-menu-overlay-draft.md)與 ignored 幾何／typed 原型
 已補七項 2×／3×靜態字模 containment 及 20 筆已量 request 世代測試；主代理獨立重跑
 四項測試通過。[第一百八十階段](docs/re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)
 再以本案 dosgolem fork 雙重重播完整 A000 pre-write（包含同值寫入），將七列初畫／普通回寫／
 反白共 21 種精確變體寫入 TSV。各選取世代最早相交寫入其實是更早的 `0763:184D`
-原版 glyph 寫入，不是 Exit clear；必須先失效、再依完整 exact 變體重建。row 20 普通回寫後
+原版 glyph 寫入，不是後續 row 12 Enter clear；必須先失效、再依完整 exact 變體重建。row 20 普通回寫後
 遇到未收錄 row 21 反白時失敗即關閉。主代理回讀固定雜湊並獨立重跑七項正反例後，
 [第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)已將 spec018
 限縮升 READY；正式 watcher 與同狀態 A/B 屬 READY 後實作／CONFORMED 驗收，不能倒置閘門。
@@ -41,8 +44,11 @@ control、2×、3×局部終態 A/B：收據中的事件、BIOS 按鍵、記憶�
 framebuffer 與 palette 逐 byte 相同，七列安全矩形外 RGBA 差異皆為零；
 未收錄 row 21 selected 明確 fail-closed。完整 DOS 內部狀態與檔案副作用不在該收據內。
 詳見[第一百八十二階段](docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
-逐幀 active→empty 與 `EXIT TO DOS` clear 後無殘字仍未驗，故 spec018 **仍為 READY，
-不是 CONFORMED**。
+真正 row 21 `Exit to DOS` 路徑已有 DRAFT 雙重原版收據：Enter 出現第一個離開詢問，
+首次 Y 再詢問未存檔是否仍離開，N 會清除並重畫選單，兩次 Y 則使 DOS 於上限前退出；
+詳見[第一百八十三階段](docs/re/phase-183-post-join-exit-identity-corrigendum.md)。
+row 21 中文候選、最早相交 A000 pre-write、逐幀 active→empty 與正式同狀態 A/B
+仍未驗，故 spec018 **仍為 READY，不是 CONFORMED**。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

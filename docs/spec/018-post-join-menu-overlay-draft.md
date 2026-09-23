@@ -1,11 +1,12 @@
 # 018 — 加入角色後功能選單輸出端覆繪
 
-狀態：**READY；僅限七項固定選單文字、已量初畫與逐列 Down 重畫。尚未實作／驗收 runtime。**
+狀態：**READY；僅限七項固定選單文字、已量初畫與逐列 Down 重畫。已有局部 runtime A/B，未達 CONFORMED。**
 日期：2026-09-23
 
 獨立審查與固定輸入見[第一百八十一階段](../re/phase-181-post-join-menu-ready-review-candidate.md)。
 此 READY 僅授權 dosgolem 正式 loader、watcher、generation core 與 RGBA presenter 的限縮實作；
-原版／繁中同狀態 A/B 與失敗矩陣尚未通過，不能宣稱已中文化或 CONFORMED。
+局部原版／繁中同狀態 A/B 見[第一百八十二階段](../re/phase-182-post-join-menu-runtime-ab-partial.md)，
+逐幀失效與範圍外離頁仍缺，不能宣稱整個選單已中文化或 CONFORMED。
 
 ## 範圍、停止線與權利邊界
 
@@ -14,8 +15,9 @@ identity 辨識、清除該列原版英文安全矩形後繪製繁中。不得�
 記憶體、indexed framebuffer、BIOS 輸入、檔案、存檔、遊戲規則或比較／查找。
 
 本候選只涵蓋正常「Right → Enter 離開名冊 → 功能選單」後的七項固定文字，及該
-畫面從第 13 列依序 Down 到第 20 列的普通／反白重畫。只量到 `EXIT TO DOS` 的
-Enter 離頁；其他項目的 Enter、row 12／17／21、上方動態角色資料、row 24 提示、
+畫面從第 13 列依序 Down 到第 20 列的普通／反白重畫。舊收據中的 Enter
+實際發生於 row 12 `Create New Character` 選取後，**不是** row 21 `Exit to DOS`；
+真正 Exit Enter 尚未完成審查。其他項目的 Enter、row 12／17／21、上方動態角色資料、row 24 提示、
 重新進入選單、存讀檔與完整開機都在範圍外。七項操作語意也仍為未知，這些譯文僅是
 顯示層候選。
 
@@ -84,18 +86,21 @@ redraw `37F1:1856`／`0/10`、selected `37F1:175D`／`15/0`。三種 caller 不�
 3. partial、duplicate、reordered、caller／style／identity 不符，或未證實 row 的請求都
    使 pending 與 active 全部失效；不得保留半組 stamp。
 
-row 20 normal redraw 必須先失效第七代；不得以未收錄 row 21 selected 或稍後 `EXIT TO DOS`
-clear 讓舊 stamp 繼續作用。
+row 20 normal redraw 必須先失效第七代；不得以未收錄 row 21 selected 或稍後
+row 12 Enter 的全選單 clear 讓舊 stamp 繼續作用。
 
 此模型不推斷 Down 之後的 row 21／row 12，也不把 prompt row 24 重畫視為選單 lifecycle。
 
-## EXIT TO DOS 的已量 clear 與 active pre-write 失效契約
+## 已量 row 12 Enter clear 與 active pre-write 失效契約
 
-在選取 `EXIT TO DOS` 後，合法 Enter 由 `INT 16h AH=00` 於 step `125100053` 消費。
+雙重原版事件顯示，row 21 `Exit to DOS` 於 step `124900535` 已回復普通，
+row 12 `Create New Character` 於 `124909479` 反白；其後合法 Enter 由
+`INT 16h AH=00` 於 step `125100053` 消費。原始短字串、檔案 offset 與
+SHA 對照見[第一百八十三階段勘誤](../re/phase-183-post-join-exit-identity-corrigendum.md)。
 step `125119490` 的 `026F:029C` 是第一筆與七列相交的全選單 clear；receipt 的含端點
 格座標 `left=1, top=2, right=38, bottom=22` 換算成半開像素矩形
 `[8,312)×[16,184)`。它保留為原版 clear 證據，但不是 complete cycle 的 active-generation
-boundary。完整 A000 observer 的勘誤見[第一百八十階段](../re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)：
+boundary，亦**不是** Exit Enter 的清除證據。完整 A000 observer 的勘誤見[第一百八十階段](../re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)：
 每代最早相交 pre-write 都是更早的 `0763:184D` glyph write，包含同值寫入。正式 watcher
 必須在任何相交 A000 pre-write 先失效，再僅依完整 exact variant generation 重建；不可只攔
 `026F:029C` 或依 framebuffer diff。
@@ -103,7 +108,7 @@ boundary。完整 A000 observer 的勘誤見[第一百八十階段](../re/phase-
 Down 期間 prompt 清除格 `[25,40)×[24,25)`（像素 `[200,320)×[192,200)`）不相交，
 不得讓它清除選單 overlay。restore、machine stop、execution discontinuity、未知 writer
 或 generation 不一致均須失敗即關閉；READY 僅授權依此契約接入正式 `VideoWrite`
-hook，尚無任何正式接線或 runtime 驗收。
+hook；正式接線已有局部收據，但未覆蓋真正 Exit Enter。
 
 ## READY 審查結果與實作後驗收
 
