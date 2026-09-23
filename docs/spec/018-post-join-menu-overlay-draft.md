@@ -45,7 +45,7 @@ redraw `37F1:1856`／`0/10`、selected `37F1:175D`／`15/0`。三種 caller 不�
 | 3 | `post_join_menu.option.join_a_game` | 15 | 11 | 88 | 4 |
 | 4 | `post_join_menu.option.view_character` | 16 | 14 | 112 | 4 |
 | 5 | `post_join_menu.option.remove_character_from_team` | 18 | 26 | 208 | 7 |
-| 6 | `post_join_menu.option.show_characters_game` | 19 | 17 | 136 | 7 |
+| 6 | `post_join_menu.option.show_characters_game` | 19 | 17 | 136 | 8 |
 | 7 | `post_join_menu.option.begin_adventuring` | 20 | 17 | 136 | 4 |
 
 兩份私有 `cycle-exit-a/b.json` 均為 SHA-256
@@ -61,9 +61,12 @@ redraw `37F1:1856`／`0/10`、selected `37F1:175D`／`15/0`。三種 caller 不�
 單列、8-pixel cell 對齊、`single-line-reject`；任何缺字、空譯文、超出 cell 容量、
 非 8-pixel 高度或不在這七筆的 key 一律失敗即關閉，不能截斷、換行或自行改譯。
 
-本機 `workplace/current-font/buckrogers-eten-top-pad.golemfnt`（SHA-256
-`ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`）對現有七筆 DRAFT 譯文的靜態 raster containment
-固定 READY 字型輸入為零缺字、零墨跡外溢：2×使用 16×16 cell／ink，safe rect 與 anchor 均乘 2；3×
+本機 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 現行 READY 字型 SHA-256 為
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`。原先已審查的
+1026-glyph SHA-256 `ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`
+僅保留為歷史定位；加入主機介面 catalog 後曾暫停此 READY，完成新字型獨立重審才恢復。
+現行字型對七筆譯文的靜態 raster containment 為零缺字、零墨跡外溢：
+2×使用 16×16 cell／ink，safe rect 與 anchor 均乘 2；3×
 使用 24×24 cell、22×22 ink、每 cell `(1,1)` offset，safe rect 乘 3、anchor 為
 `(72×3+1, 8×row×3+1)`。這是 content-safe 靜態驗證，**不是**正式 runtime A/B。
 

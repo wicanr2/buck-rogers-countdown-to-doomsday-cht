@@ -46,7 +46,7 @@ loader、presenter 與 runtime A/B 仍待實作／驗收。
 - 每列 logical safe rect 與 anchor 沿用 spec 018：
   `[72,72+8×original_length) × [8×row,8×row+8)`、單列 `single-line-reject`；無截斷、
   換行、擴寬或自行改譯。
-- 固定字型輸入 SHA-256 `ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`
+- 現行固定字型輸入 SHA-256 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`
   對七筆 text 的 2×／3×靜態 containment 必須維持零缺字、零墨跡外溢、非零 ink。
   2×為 16×16 cell／ink；3×為 24×24 cell、22×22 ink、`(1,1)` offset。這是 READY
   的幾何準入，不是 runtime A/B。
@@ -67,6 +67,27 @@ phase 180 權威 fork 雙重 A000 收據 SHA-256
 七項可丟棄 verifier 正反例由主代理在 Docker 內重跑全通，輸出收據 SHA-256
 `6e50d26ffdbb22ec7d05fe9069b3fad4d36105883bf588fc57911fa82289b31e`。
 版控 TSV 無原版全文；上述字型與私有原版收據都仍在 ignored `workplace/`。
+
+## 2026-09-23 主機介面字型擴充後的再審
+
+新增 [`host-ui.zh-TW.tsv`](../../text/host-ui.zh-TW.tsv) 後，正式 TSV 增為 22 份、
+字元聯集由 1026 增至 1028；因此原 1026-glyph 字型 SHA-256
+`ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`
+**只是先前審查的歷史輸入**，不能再拿來代表現行 `workplace/current-font/`。
+主代理先暫停依賴該 pin 的正式接線，再於 Docker 獨立重跑同一份七項可丟棄 verifier：
+21 筆 exact variants、phase 161 與權威 fork phase 180 收據、七筆譯文及負例均通過；
+2×／3×七列逐一為零缺字、非零墨跡、零 cell／像素外溢，3×仍採 24×24 cell、22×22 ink
+及 `(1,1)` anchor。新收據 SHA-256 為
+`24100af2e74f17e5c22ae07ce1c452ba390c634e7c52bcd36541feeadb003536`，
+`inputs.font` 明列新 SHA-256
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`；
+`post-join-menu.zh-TW.tsv` 仍為 `0c2ed04b6d5942b01b41670b38ce6d11fe8af798c04cf3fb54354474f6202eb3`。
+本機 manifest SHA-256 `39eb11a95d95eed749fefa4d358230e5e449339eb2e189f1a8296f0cde8cd00f`
+列明 16×16／1028 glyph、`top-pad`、`local-only-not-for-distribution`，並逐一釘選
+`ASCFONT.15`、`SPCFONT.15`、`STDFONT.15` 的 SHA-256；字型來源與建置命令見
+[`font/README.md`](../../font/README.md)。因此僅字型輸入更新後的同一狹窄幾何範圍
+重新准入 READY；verifier 內的 `ready=false` 是它不自行裁決規格狀態的既有設計，
+並非 runtime 通過。正式同狀態 A/B 與正常玩家路徑仍未驗收。
 
 READY 僅授權以審查 fixture 實作正式 loader、watcher、generation core 與 RGBA presenter。
 其實作與驗收不得倒灌為本次 READY 前置：production 必須再驗證 2×／3×同狀態 control A/B、
