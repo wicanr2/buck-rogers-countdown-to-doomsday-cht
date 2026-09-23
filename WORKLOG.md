@@ -14,6 +14,12 @@
   沿用既有本機字型解析器，在 Docker 對兩筆 DRAFT TSV 做 2×／3×
   靜態安全矩形與缺字檢查，兩者均零越界、零缺字；這不是正式
   原版執行期或 N／Y 清層收據。
+- [第一百九十八階段](docs/re/phase-198-skill-exit-ny-all-store-prewrite-draft.md)
+  用兩個固定合法 Escape 前 state 各重播 N／Y，對本體與尾碼各量
+  首筆含同值 A000 store；career N、technical N 的尾碼和 technical Y
+  本體均早於舊變值 watcher 的首筆，故正式清層不得依賴變值事件。
+  八筆私有收據與可重生診斷來源已固定；完整尾碼清除、DOS 停止與
+  執行期覆繪仍待驗。
 
 ## 2026-09-24 — 設定面板同批鍵盤隔離
 
