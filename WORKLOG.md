@@ -1549,3 +1549,15 @@
 - 審查維持 DRAFT：七筆首次繪製之外的反白／普通回寫變體尚未進版本化 exact 表，
   `026F:029C` clear 收據也不能排除其他 A000 writer 更早碰中文字區。READY 前只補
   這些證據與 typed 失敗矩陣；正式程式與同狀態 A/B 留到 READY 後，不製造驗收迴圈。
+
+## 2026-09-23 — 加入角色後選單完整 A000 寫入勘誤
+
+- Terra 從同一合法 state 以本案 dosgolem fork `4589bfe` 雙重重播完整 A000 pre-write；
+  含同值寫入的兩份私有收據逐 byte 相同。七個 active generation 最早相交寫入均為
+  `0763:184D` 原版 glyph primitive，早於原先只量到的 Exit 全選單 clear。
+- 七列初畫、普通回寫、反白共 21 個 exact 變體已寫入可版控 TSV；row 20 普通回寫後的
+  row 21 反白未收錄，候選契約先失效並拒絕殘留。原先 Exit clear 收據保留，
+  在[第一百六十一階段](docs/re/phase-161-post-join-menu-selection-and-exit.md)追加勘誤；
+  權威 fork 來源與雜湊見[第一百八十階段](docs/re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)。
+- 曾以原 dosgolem HEAD `d9c0c27` 取得觀測，但 Machine／DOS／VideoWrite 與本案 fork
+  存在差異，故不作正式依據；改由 fork 重生。spec018 仍 DRAFT，未接正式 runtime。

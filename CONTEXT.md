@@ -17,16 +17,20 @@
 從正常「加入角色 → 名冊 EXIT → 功能選單」雙重原版重播，新確認七項固定選單文字；
 繁中候選與原文雜湊已另存 [`post-join-menu`](text/README.md) DRAFT catalog，尚未接
 正式 runtime。「JOIN A GAME」與「SHOW CHARACTER'S GAME」仍只有字面譯法，操作語意未知；
-上方動態角色資料與反白狀態不納入這七項。私有原文／畫面證據只在
+上方動態角色資料不納入這七項；七列的反白與普通回寫另列精確變體。
+私有原文／畫面證據只在
 `workplace/phase158-post-join-exit-probe/`；不能把此資料完成度算作已中文化畫面。
 後續雙重正常 Down／Exit Enter 收據已證實七項普通／反白重畫、提示列清除不相交，
-以及 `026F:029C` 在 `125119490` 的第一筆全選單相交 pre-write；見
+以及 `026F:029C` 在 `125119490` 的 Enter 後第一筆全選單 clear；見
 [`第一百六十一階段`](docs/re/phase-161-post-join-menu-selection-and-exit.md)。
-中文安全矩形、可丟棄 typed lifecycle 與正式 A/B 仍缺，維持 DRAFT。
 其後[規格 018](docs/spec/018-post-join-menu-overlay-draft.md)與 ignored 幾何／typed 原型
 已補七項 2×／3×靜態字模 containment 及 20 筆已量 request 世代測試；主代理獨立重跑
-四項測試通過。READY 前仍須版本化反白／普通回寫身份，以及整段轉場的通用 A000
-pre-write 證據；正式 watcher 與 A/B 屬 READY 後實作／CONFORMED 驗收，不能倒置閘門。
+四項測試通過。[第一百八十階段](docs/re/phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)
+再以本案 dosgolem fork 雙重重播完整 A000 pre-write（包含同值寫入），將七列初畫／普通回寫／
+反白共 21 種精確變體寫入 TSV。各選取世代最早相交寫入其實是更早的 `0763:184D`
+原版 glyph 寫入，不是 Exit clear；必須先失效、再依完整 exact 變體重建。row 20 普通回寫後
+遇到未收錄 row 21 反白時失敗即關閉。這些仍是 DRAFT 證據，尚待獨立 READY 審查；正式
+watcher 與同狀態 A/B 屬 READY 後實作／CONFORMED 驗收，不能倒置閘門。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →
