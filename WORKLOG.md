@@ -1,5 +1,16 @@
 # 工作歷程
 
+## 2026-09-24 — 技能頁離開提示原版寫入與尾碼 DRAFT
+
+- 從合法技能頁原版 state 以本機診斷 runner／probe 取得職業與技術
+  問句的首次變值 A000 相交寫入，以及 dispatcher 外六格多色選擇
+  尾碼；私有收據與兩個不同起始 state 的雜湊見
+  [第一百九十七階段](docs/re/phase-197-skill-exit-confirmation-prewrite-draft.md)。
+  主代理以固定 probe binary 分別重跑兩筆 watch-file，SHA 均相同。
+- 新建[規格 020](docs/spec/020-skill-exit-confirmation-overlay-draft.md)
+  作 DRAFT typed 覆繪邊界；N／Y 後含同值清除、尾碼完整重畫、
+  2×／3×字型 containment 與正式同狀態 A/B 未完成，不能接 production。
+
 ## 2026-09-24 — 設定面板同批鍵盤隔離
 
 - 獨立稽核指出正式 `Game.Update` 的 Apply＋Enter 同一更新回合會在

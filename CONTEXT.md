@@ -2,6 +2,14 @@
 
 更新：2026-09-24
 
+[第一百九十七階段](docs/re/phase-197-skill-exit-confirmation-prewrite-draft.md)
+已從合法技能頁路徑量到職業／技術兩句離開問句的首次變值 A000
+相交寫入、原版六格多色選擇尾碼與各自本體安全矩形；兩種起始
+state 的證據已明確分開，不能混稱同狀態。
+[規格 020](docs/spec/020-skill-exit-confirmation-overlay-draft.md)保存此
+DRAFT 覆繪邊界；N／Y 後**含同值**的最早清除寫入、尾碼完整生命週期、
+雙倍率字型與正式 A/B 仍缺，Issue #17 未完成。
+
 [第一百九十六階段](docs/re/phase-196-ebiten-panel-batch-keyboard-gate.md)
 修正正式 Ebitengine `Game.Update` 的同批鍵盤分流：面板起點開啟，
 即使 Apply／Cancel 同回合收合，Enter 等鍵也不再進 DOS BIOS queue；
