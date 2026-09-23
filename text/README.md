@@ -13,7 +13,9 @@ EXIT 返回功能選單所見七項固定文字。事件身分由雙重原版重
 其中「加入遊戲」與「顯示角色所屬遊戲」只依原文字面翻譯，選項真正的遊戲語意仍未知；
 不得擅自改譯為加入隊伍或存檔。上方角色姓名／數值、已收錄的鄰項及選取反白變體均不在
 這七筆內。可用 `tools/menu_events.py` 對這對獨立檔案驗證 schema 與 key 雙向覆蓋；
-正式覆繪仍須另證安全矩形、反白／清除生命週期與同狀態玩家路徑。
+後續[第一百六十一階段](../docs/re/phase-161-post-join-menu-selection-and-exit.md)已量到七項
+普通／反白重畫與一條 `EXIT TO DOS` 清除邊界。正式覆繪仍須中文安全矩形、typed 世代／
+失敗即關閉模型及雙倍率同狀態玩家路徑，不外推其他選項的退出生命週期。
 `post-race-events.tsv` 保存選定預設種族後性別畫面的四筆 content-safe identity；這些事件
 已由 `gender-events.tsv` 接入繁中 request，但尚未加入正式 renderer。`tools/post_race_receipt.py` 會把它
 與既有選單 inventory、固定雙 Enter 收據及終點 framebuffer 一起驗證。

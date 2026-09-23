@@ -13,6 +13,10 @@
 正式 runtime。「JOIN A GAME」與「SHOW CHARACTER'S GAME」仍只有字面譯法，操作語意未知；
 上方動態角色資料與反白狀態不納入這七項。私有原文／畫面證據只在
 `workplace/phase158-post-join-exit-probe/`；不能把此資料完成度算作已中文化畫面。
+後續雙重正常 Down／Exit Enter 收據已證實七項普通／反白重畫、提示列清除不相交，
+以及 `026F:029C` 在 `125119490` 的第一筆全選單相交 pre-write；見
+[`第一百六十一階段`](docs/re/phase-161-post-join-menu-selection-and-exit.md)。
+中文安全矩形、可丟棄 typed lifecycle 與正式 A/B 仍缺，維持 DRAFT。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

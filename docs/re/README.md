@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百六十一階段：加入角色後功能選單反白與離頁清除](phase-161-post-join-menu-selection-and-exit.md)：七項固定文字的 normal／selected 身分、底部提示列不相交清除及一條 Exit 離頁最早相交 pre-write；譯文仍 DRAFT。
 - [第一百五十七階段：第八頁四行 runtime 限縮 CONFORMED](phase-157-story-page8-runtime-conformance.md)：control／2×／3×、同程序 active 4→0、正規化 machine／DOS 全等及獨立失敗即關閉審查。
 - [第一百五十六階段：第七頁正式 runtime 雙倍率同狀態 A/B](phase-156-story-page7-runtime-ab-pending-failure-audit.md)：六行繁中、machine／DOS 全等、同程序 active 6→0 與雙倍率完整失敗矩陣；固定路徑限縮 CONFORMED。
 - [第一百五十五階段：第八頁逐字返回與離頁 pre-write 證據](phase-155-story-page8-ready-prerequisite-evidence.md)：130 glyph 雙重 SS/SP／RETF 與 page8→page9 最早相交寫入；字型幾何及 typed-core 未完成，仍 DRAFT。

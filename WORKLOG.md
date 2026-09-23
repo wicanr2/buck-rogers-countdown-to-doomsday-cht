@@ -1520,3 +1520,13 @@
 - 因新譯文需求，Docker 以唯讀倚天來源重建 21 份 catalog 的本機字型：1026 字模，
   `font/characters.txt` SHA-256 `04d33bb125b00dad647abadfb3c9da8f7a714d722581fc6676d393a32eb6a03f`，
   GOLEMFNT SHA-256 `ef9fb6c9c2206a98286089888d3cf554a8fb491738f76fe0559bf7bcdcdbbc2d`。
+
+## 2026-09-23 — 加入角色後功能選單選取與離頁收據
+
+- Terra 以同一合法 `a-joined.state` 雙重重播七項 normal／selected 變體；普通回寫
+  `37F1:1856`、反白 `37F1:175D`，色號分別 `0/10`、`15/0`。正常 Down 僅清除
+  row 24 prompt，不觸七項文字。
+- 正常 `EXIT TO DOS` Enter 於 step `125119490` 取得第一筆覆蓋七列的
+  `026F:029C` pre-write；雙重 JSON 與 framebuffer 各逐 byte 相同。主代理回讀原始
+  hash／事件／clear 範圍後寫入[第一百六十一階段](docs/re/phase-161-post-join-menu-selection-and-exit.md)。
+  其他選項語意及中文覆繪仍未知，catalog 維持 DRAFT。
