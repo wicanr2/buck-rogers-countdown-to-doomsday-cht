@@ -1833,3 +1833,12 @@
 - Linux session 可丟棄 fake 另補同批 Open／Apply／Cancel＋Enter 負例；
   收合後下一關閉回合才恢復 DOS。這是 DRAFT 模型，不是正式前端
   完成收據，見[第二百零三階段](docs/re/phase-203-linux-session-mixed-batch-fake-review.md)。
+
+## 2026-09-24 — 前端 session 故障後拒絕復活的 DRAFT 負例
+
+- ignored typed fake 先成功前進七步，再分別注入 Deliver／Advance 故障；
+  後續 Open＋DOS 候選鍵遭拒、兩次重試零步且 epoch 不變，重複 Close
+  副作用恰一次。Docker 內五組 fake 測試全通過；見
+  [第二百零五階段](docs/re/phase-205-linux-session-failed-close-once-fake.md)。
+- 這只是可丟棄模型。Snapshot／Draw／observer、真實 DOS 指令數、
+  cold boot 與資源收束未接；規格 004／019 均維持 DRAFT。

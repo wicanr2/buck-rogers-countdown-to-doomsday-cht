@@ -3,6 +3,11 @@
 狀態：**DRAFT；不授權 production 實作，不使規格 004 升 READY。**
 日期：2026-09-24
 
+同日 fake 補驗：[第二百零五階段](../re/phase-205-linux-session-failed-close-once-fake.md)
+在既有可丟棄 typed session 中，固定 Deliver／Advance 注入故障後的後續輸入拒絕、
+重試零步及 Close 計數一次。此結果不涵蓋 Snapshot／Draw／observer 故障或真實資源，
+本規格仍為 DRAFT。
+
 同日 fake 勘誤：[第二百零三階段](../re/phase-203-linux-session-mixed-batch-fake-review.md)
 將 `InputBatch.DOSInputs` 從「已分類輸入」改為同批候選鍵，補驗
 Open／Apply／Cancel＋Enter 的零 fake DOS 副作用、零步及下一關閉回合恢復。

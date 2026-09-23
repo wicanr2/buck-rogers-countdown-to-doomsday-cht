@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第二百零五階段：Linux session 故障後拒絕推進與單次關閉 fake](phase-205-linux-session-failed-close-once-fake.md)：可丟棄 typed fake 在 Deliver／Advance 故障後拒絕新輸入與重試步進、Close 計數恰一次；規格 004／019 仍 DRAFT。
 - [第二百零四階段：技能操作列完整清底正式 A/B](phase-204-action-bar-runtime-conformance.md)：修正短譯文後殘留原版英文，八條操作列路徑與技術頁 Escape→Y 雙倍率雙重播、負控制及獨立審查，僅固定範圍限縮 CONFORMED。
 - [第二百零三階段：Linux session 同批輸入 fake 勘誤](phase-203-linux-session-mixed-batch-fake-review.md)：可丟棄 fake 現將 DOS 鍵視為同批候選；Open／Apply／Cancel＋Enter 零 DOS 副作用、零步及下一關閉回合恢復通過，規格 004／019 仍 DRAFT。
 - [第二百零二階段：技能頁離開問句本體正式 A/B](phase-202-skill-exit-runtime-ab.md)：兩個合法固定 state 的 Escape→N／Y 無頭 2×／3× 正式覆繪；active 僅本體有像素差、尾碼零差，四條終態同狀態且無殘層，限縮 CONFORMED。

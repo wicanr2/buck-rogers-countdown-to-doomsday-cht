@@ -2,6 +2,12 @@
 
 更新：2026-09-24
 
+[第二百零五階段](docs/re/phase-205-linux-session-failed-close-once-fake.md)
+在 ignored 前端 session fake 補驗：先前進七個 fake steps，再注入
+Deliver／Advance 故障；後續輸入與步進均拒絕，重複 Close 的副作用
+計數恰一次。這不含 Snapshot／Draw／observer 或真實資源，
+規格 004／019 與 Issue #18 繼續 DRAFT／開啟。
+
 [第二百零四階段](docs/re/phase-204-action-bar-runtime-conformance.md)已訂正
 技能操作列短譯文後殘留原版英文的缺陷：本機 dosgolem fork
 `674e3e3` 先清除完整已核准標籤矩形，再覆繪白色助記字母與原色
