@@ -35,7 +35,13 @@
 主機介面譯文導致本機字型擴為 1028 glyph 後，原 1026-glyph READY 字型 pin 曾暫停；
 主代理以新字型在 Docker 重跑七項 verifier、21 變體與雙倍率逐列 containment 全通，
 已於同一[第一百八十一階段](docs/re/phase-181-post-join-menu-ready-review-candidate.md)
-記錄新 SHA 與再審，恢復**相同限縮範圍**的 READY。正式 CLI A/B 尚未完成。
+記錄新 SHA 與再審，恢復**相同限縮範圍**的 READY；當時正式 CLI A/B 尚未完成。
+其後本機 dosgolem fork `cb3ca77` 已接通正式 CLI，並以相同 state／keys 做
+control、2×、3×局部終態 A/B：machine／DOS／indexed framebuffer／palette 收據逐 byte
+相同，七列安全矩形外 RGBA 差異皆為零；未收錄 row 21 selected 明確 fail-closed。
+詳見[第一百八十二階段](docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
+逐幀 active→empty 與 `EXIT TO DOS` clear 後無殘字仍未驗，故 spec018 **仍為 READY，
+不是 CONFORMED**。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

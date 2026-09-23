@@ -1595,3 +1595,19 @@
 - 子代理以本機 fork `ab1731c` 把 post-join READY 的 loader／watcher／presenter 小切片
   接入 `cmd/buckrogers-text-receipt`，定向測試與 vet 通過；私有正常玩家路徑 2×／3×
   同狀態 A/B 尚未取得，故 spec018 不能升 CONFORMED。
+
+## 2026-09-23 — 加入角色後選單局部正常路徑 A/B
+
+- 本機 dosgolem fork `35bd3fb` 釘選現行倚天 SHA，`ce0cdb8` 修正 entry／return
+  row gate，`157ec93` 依 phase180 證據只在 active layer 監看 A000 失效；初畫期
+  `0CF4:1B3A` 不再誤報未知 active writer。主代理獨立 Docker 重跑 apps／CLI test
+  與 vet 通過。
+- fork `cb3ca77` 修正 3× 覆繪後，control／2×／3× 同狀態終態 JSON 逐位元組相同；
+  主代理獨立回讀私有 RGBA，七列安全矩形外零差、內部 2× 6521／3× 13659
+  個變動像素。row 21 未收錄 identity 以退出碼 1 拒絕，不產生新覆繪收據。
+  雜湊、原版位址基準與驗收限制見[第一百八十二階段](docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
+- 原始壓縮檔、savestate、字型與 RGBA 留在 ignored `workplace/`；本輪 Docker
+  容器皆一次性清理。曾發現 dockerd 因不存在掛載來源代建的 root-owned
+  `workplace/phase182-postjoin-ab` 空目錄，主代理確認無內容後只移除該精確目錄，
+  並改用存在且 owner 1000 的輸出路徑。尚缺逐幀 active→empty 與 Exit clear
+  後無殘字，spec018 保持 READY。
