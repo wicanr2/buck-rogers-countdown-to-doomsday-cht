@@ -99,6 +99,9 @@ Escape→N／Y 在 2×／3× 通過本體像素及無殘層 A/B，僅此無頭�
 限縮 CONFORMED；六格多色原版尾碼不覆繪。存讀檔、Restore bridge、
 冷開機及視窗未驗，見[第二百零二階段](../docs/re/phase-202-skill-exit-runtime-ab.md)。
 原句勘誤見[第一百九十一階段](../docs/re/phase-191-skill-exit-confirmation-translation-draft.md)。
+`post-join-exit-prompt.zh-TW.tsv` 保存加入角色後真正 Exit 確認畫面的兩句限縮 READY 繁中譯文；
+`post-join-exit-prompt-events.tsv` 保存其原版 step、caller、色彩、座標與長度／SHA-256 身分，不含原文全文。
+正式 watcher、presenter 與原版 A/B 尚未完成；範圍依[規格 021](../docs/spec/021-post-join-exit-prompt-body-only-draft.md)。
 `body-icon-events.tsv` 與 `body-icon.zh-TW.tsv` 沿用第四十八階段移動／拒絕／確認的正常
 玩家 trace，整理身體圖示畫面的七筆固定介面文字；`tools/body_icon_catalog.py` 會回查三份
 既有事件清冊、驗證容量與雙向 coverage。`body-icon-text-safe-rects.tsv` 依同一 exact
