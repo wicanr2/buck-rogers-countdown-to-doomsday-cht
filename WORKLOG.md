@@ -1644,3 +1644,14 @@
   像素 `(72,168)`；修正舊探針註解後再次重播 SHA 一致。原始檔與收據雜湊
   見[第一百八十三階段](docs/re/phase-183-post-join-exit-identity-corrigendum.md)。
   N／Y-Y 後續邊界與正式中文覆繪仍待驗，不因此升格 spec018。
+
+## 2026-09-23 — 真實繁中作用層接入 host 視窗與 Exit 提示 DRAFT
+
+- ignored Ebitengine caller 現在以正式通用 `frontend/ebiten.Game` 驅動已 READY 的
+  首屏五行繁中 watcher；真實 X11 滑鼠完成設定、2×→3× Apply，期間原版連續
+  推進 3904 instructions。程式內 2×／3× 私有 RGBA 與既有 CLI 收據逐位元組
+  相等，詳細 SHA、來源與限制見[第一百八十五階段](docs/re/phase-185-ebiten-real-active-layer-router-draft.md)。
+  這是從合法私有 checkpoint 開始的 DRAFT 原型，未收進正式玩家 launcher。
+- Exit row21 與兩個提示另建可丟棄 typed／A000 探針；權威 fork 原始碼重跑仍與
+  既有 runner 的停止點差六步，已保存[第一百八十四階段](docs/re/phase-184-exit-prompt-draft-prototype.md)
+  勘誤與候選邊界，沒有把 DRAFT 翻譯塞進正式 catalog。

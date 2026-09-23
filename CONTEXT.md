@@ -10,7 +10,12 @@
 本機 dosgolem fork `3092dad` 的 opt-in Ebitengine 測試已以私有加入角色存態顯示
 真實原版畫布，並於實體 X11 驗證面板攔鍵、2×→3×套用及收合後的 DOS 鍵盤轉送；
 詳細限制見 fork `docs/re/phase-180-linux-ebiten-router-draft.md`。這是**DRAFT 原型**，
-未接正式中文覆繪與完整冷開機，不能稱為可玩版。
+該路徑未接正式中文覆繪與完整冷開機，不能稱為可玩版。其後另一條
+[第一百八十五階段](docs/re/phase-185-ebiten-real-active-layer-router-draft.md) ignored 原型
+已把真實首屏五行繁中 watcher 作用層交給正式通用 `frontend/ebiten.Game` 輸入路由，
+在實體視窗連續推進原版並用滑鼠 Apply 2×→3×；雙倍率 RGBA 與既有 CLI 私有收據
+逐位元組相同。它仍從私有 checkpoint 起跑、未驗完整玩家路徑或 save/load，
+所以規格 004 和 Issue #16 仍未完成。
 
 目前 22 份正式 TSV（含已限縮 READY、尚未接通的選單與 host UI）的倚天字型聯集已重建為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
@@ -56,6 +61,9 @@ A000 pre-write：step `124800903`、`0763:184D`、像素 `(72,168)`。
 N 返回及兩次 Y 退出的覆繪生命週期、中文候選幾何、逐幀 active→empty
 與正式同狀態 A/B 仍未驗，
 故 spec018 **仍為 READY，不是 CONFORMED**。
+後續[第一百八十四階段](docs/re/phase-184-exit-prompt-draft-prototype.md)補兩個提示
+的 2×／3×靜態候選與 A000 相交寫入，但自訂探針的退出步數較舊 runner 早六步，
+提示覆繪仍 DRAFT；沒有改動正式 watcher 或原版離開判定。
 
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →

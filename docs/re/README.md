@@ -1,5 +1,8 @@
 # 原版觀測證據索引
 
+- [第一百八十五階段：真實繁中作用層接入 Ebitengine 輸入路由原型](phase-185-ebiten-real-active-layer-router-draft.md)：實體 2×／3× 視窗、連續原版 Step、設定 Apply 與 CLI RGBA 逐位元組相等；仍是 ignored DRAFT caller。
+- [第一百八十四階段：Exit 與確認提示 DRAFT 原型](phase-184-exit-prompt-draft-prototype.md)：row21／兩個 row24 prompt 的雙重 N、Y→Y 收據、矩形、2×／3×靜態 containment 與 fail-closed typed 原型；未接正式 watcher。
+
 - [第一百七十九階段：正式 MouseBridge 限縮符合性](phase-179-formal-mousebridge-conformance.md)：雙倍率同狀態點擊 A/B、2×三種 release-only 清理與正式 bridge／原型收據逐欄全等；完整前端仍 DRAFT。
 - [第一百八十階段：加入角色後功能選單完整 A000 pre-write 勘誤](phase-180-post-join-menu-complete-a000-prewrite-corrigendum.md)：21 個 exact variant、含同值 observer 與較早 glyph pre-write；維持 DRAFT。
 - [第一百八十一階段：加入角色後功能選單限縮 READY 獨立審查](phase-181-post-join-menu-ready-review-candidate.md)：固定 21 變體、pre-write 失效／pair 重建、未知 row 21 與 2×／3×字型條件；僅授權正式實作，未驗 runtime。
