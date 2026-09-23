@@ -385,10 +385,14 @@ def main(argv: list[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
     try:
-        entries = read_catalogs(args.catalog)
         if args.command == "chars":
+            # 字型字元聯集不帶跨檔文字鍵語意；已接通的畫面可合法共用 key。
+            # 每份檔案仍分別通過 read_catalog 的完整 schema／唯一鍵檢查。
+            entries = [entry for path in args.catalog for entry in read_catalog(path)]
             _write_if_changed(args.out, character_list_bytes(entries))
-        elif args.command == "build":
+        else:
+            entries = read_catalogs(args.catalog)
+        if args.command == "build":
             _write_if_changed(args.out, build_golemfnt(entries, args.font))
         elif args.command == "validate-candidate":
             print(candidate_validation_json(validate_font_candidate(entries, args.manifest, args.source, args.license)))

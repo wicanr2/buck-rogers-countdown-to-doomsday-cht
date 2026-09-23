@@ -2,6 +2,12 @@
 
 更新：2026-09-23
 
+目前 20 份正式 TSV 的倚天字型聯集已重建為 1024 字模：版控內
+[`font/characters.txt`](font/characters.txt) 與本機
+`workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的字元涵蓋完全一致，缺字為零。
+舊的 961／997 字模收據只代表當時譯文，不可作目前前端的字型輸入；來源與雜湊見
+[`font/README.md`](font/README.md)。這是字型覆蓋，不代表所有畫面都已中文化。
+
 功能選單／種族建立的[spec 001](docs/spec/001-menu-text-output-overdraw-draft.md)已回填一條
 限縮 CONFORMED 路徑：固定 #99,999,999 state 的 Create New Character → Pick Race → Down → Up →
 Enter，以 dosgolem `2755f7c` immutable runner、正式 menu TSV 與倚天字型做 2×／3×各兩次

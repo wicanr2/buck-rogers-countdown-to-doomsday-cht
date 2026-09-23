@@ -94,6 +94,17 @@ class CatalogFontTest(unittest.TestCase):
         with self.assertRaises(CatalogError):
             read_catalogs([first, second])
 
+    def test_chars_unions_glyphs_from_catalogs_with_shared_keys(self):
+        first = self.root / "first.tsv"
+        second = self.root / "second.tsv"
+        output = self.root / "chars.txt"
+        first.write_text("key\ttranslation\tsource\nshared\t甲乙\truntime\n", encoding="utf-8")
+        second.write_text("key\ttranslation\tsource\nshared\t乙人\truntime-interface\n", encoding="utf-8")
+        self.assertEqual(main(["chars", str(first), str(second), "--out", str(output)]), 0)
+        self.assertEqual(output.read_bytes(), "U+4E59\t乙\nU+4EBA\t人\nU+7532\t甲\n".encode())
+        with self.assertRaises(CatalogError):
+            read_catalogs([first, second])
+
     def test_catalog_rejects_invalid_utf8(self):
         with self.assertRaises(CatalogError):
             read_catalog(self.write_catalog(b"key\ttranslation\tsource\nkey\t\xff\truntime\n"))

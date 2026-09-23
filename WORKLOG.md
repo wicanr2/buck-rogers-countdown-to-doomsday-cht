@@ -1497,3 +1497,14 @@
   `docs/spec/README.md` 原先仍列 DRAFT／READY 的舊狀態；同步訂正 `text/README.md`
   對身體圖示與劇情第 1、4–8 頁「未接 runtime」的過時敘述。只修現況入口，保留各階段
   歷史證據及限縮範圍；本次沒有變更譯文、遊戲程式或原版資料。
+
+## 2026-09-23 — 現行倚天字型字元清單同步
+
+- 發現版控內 `font/characters.txt` 仍只有早期 24 字，而完整 20 份 TSV 已需 1024 字；
+  也發現跨畫面共享的文字鍵會使原本 `chars` 的跨檔唯一鍵檢查誤拒字型聯集。
+- `chars` 改為逐檔驗證後取 Unicode 字元聯集，`lint`／`build` 的跨檔唯一鍵限制不變，
+  並新增共享鍵回歸測試。Docker 14 項字型工具測試通過；重生清單 SHA-256
+  `daa100bfbcc917a3f9dc811a2b34262a9e26dc5666c0b085c58c1d0815abbd93`。
+- 本機倚天 `top-pad` 產物位於被忽略的 `workplace/current-font/`，GOLEMFNT SHA-256
+  `b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`；20 份 TSV
+  全部譯文字元回讀零缺字、零多餘字模。字型與來源均未加入 Git。
