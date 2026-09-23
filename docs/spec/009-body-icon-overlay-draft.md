@@ -1,8 +1,8 @@
 # 009 — 身體圖示畫面文字輸出端覆繪
 
-狀態：DRAFT（禁止據此接入 production runtime）  
-範圍：角色建立流程的身體圖示選擇、圖示確認與儲存詢問文字  
-更新：2026-09-22
+狀態：READY（只授權固定 move／refuse／confirm 三條正常路徑；尚未 CONFORMED）
+範圍：角色建立流程的身體圖示選擇、圖示確認與 confirm 路徑的儲存詢問文字
+更新：2026-09-23
 
 本規格沿用 [001 功能選單文字輸出端覆繪](001-menu-text-output-overdraw-draft.md) 的
 「原版完整繪製、輸出端另建覆繪層、清除／轉場使 stamp 失效」原則；本規格只補上
@@ -28,6 +28,8 @@
 - 身體圖示本身的像素、選取位置與任何角色／姓名／數值；它們不是文字 catalog。
 - 原版儲存判定、`CHARS.DAX`、輸入按鍵、角色規則與任何 DOS／CPU 狀態。
 - 依相同 hash、相似座標或相似 caller 模糊擴張出的其他字串。
+- 儲存詢問離頁、實際存讀檔／restore、完整開機、固定三條重播以外的輸入路徑，以及
+  未觀察到的 writer；它們須另取原版證據後才能擴充 READY 範圍。
 
 ## 已證實的輸出事件與矩形
 
@@ -45,7 +47,7 @@ caller、色號、row 與 column。`body-icon-text-safe-rects.tsv` 由同一 ide
 矩形均為半開區間，8-pixel logical cell 對齊，單列且 overflow policy 為
 `single-line-reject`。同一畫面群組內矩形必須不重疊；不同群組的相同座標不是同時顯示證據。
 
-## DRAFT 顯示與生命週期契約
+## READY 顯示與生命週期契約
 
 1. 原版事件必須先完整執行；覆繪只接受七個 exact identity，並以原版矩形清除其底色後
    在同一矩形內繪製繁中。不得送鍵、修改原版記憶體、改變圖示選取或儲存結果。
@@ -64,9 +66,9 @@ caller、色號、row 與 column。`body-icon-text-safe-rects.tsv` 由同一 ide
    framebuffer、CPU／DOS／檔案事件與輸入事件必須逐項一致，RGBA 差異只能落在本表核准矩形。
    2×／3× 都需各自檢查矩形外零差異及清除／重建後零殘字。
 
-## DRAFT→READY 證據審查閘門
+## DRAFT→READY 證據審查結論
 
-目前已具備（2026-09-23 完整 A000 觀察證據；獨立審查拒絕升 READY）：
+目前已具備（2026-09-23 完整 A000 觀察證據與第二次獨立審查）：
 
 - 七筆文字 identity、來源清冊、繁中 catalog 與七筆安全矩形已由獨立驗證器鎖定。
 - Phase 48／49 已證實移動、拒絕、確認、儲存詢問的正常玩家 trace 與逐 byte 重播。
@@ -77,22 +79,28 @@ caller、色號、row 與 column。`body-icon-text-safe-rects.tsv` 由同一 ide
   契約。正常 move／refuse／confirm 固定排程已由 `Machine.Write8` 前的通用 A000 observer
   完整觀察，包含同值寫入；三組 A／B 逐 byte 相同，並訂正 confirmation／save prompt
   的 earliest pre-write 是 glyph store，而非稍後的 F3AA fill。可丟棄 typed-core 及
-  2×／3×正式倚天 containment 已通過；正例只用暫存 READY fixture，正式 catalog 仍為
-  DRAFT。
+  2×／3×正式倚天 containment 已通過。
+- 真實 move／refuse／confirm return-event 收據已依 step 直接餵入 watcher，分別驗證
+  body-selection→selection-redraw、body-selection→confirmation→body-selection、
+  body-selection→confirmation→save-prompt 的原子群組與 generation。
+- A000 dirty-state 原型把完整 span 與 event commit 依 recorded step 合併；任何 first
+  intersecting write 都先使完整 active generation 原子失效。同值寫、未知 writer／key、
+  提早或缺失 first、錯 generation、partial／mixed／duplicate、跨 group 與 span 跨 commit
+  均有失敗即關閉負例。14 項 typed-core 測試通過，receipt SHA-256 為
+  `982e29362e5b98d812f91ba481b21fb8388932acee28f108d70d47444b7b1985`。
 
-獨立審查確認仍需完成，未達 READY：
+第二次獨立審查判定上述證據足以形成**限縮 READY**。尚未接 production 不是 READY
+阻擋，而是下一階段 implementation 的工作；實作不得擴張以下邊界：
 
-- 正式 watcher／dirty-state 路徑必須在任何 A000 writer 首次相交安全矩形前，依已證實
-  identity 失敗即關閉地介入；並以提早寫入、未知 writer、錯 generation／key 與部分群組
-  等反例證明不會留下半套 stamp。目前完整 observer 只證明固定合法排程的原版 first，
-  尚未證明正式攔截路徑能安全處理該 first。
-- move／refuse／confirm 的真實 receipt event 時序必須直接餵入 watcher，垂直驗證
-  event→合法 group／transition→generation；現有 group 測試仍是人工序列，不足以替代。
-- 完整 observer 證據只涵蓋三條固定排程；儲存詢問離開功能選單尚未量，不得納入 READY
-  範圍。
+- 只接受七個 exact identity 與固定 move／refuse／confirm 的已驗群組及 generation；任何
+  未知、部分或混合事件都不得安裝 stamp。
+- 正式 watcher／dirty-state 必須保留 prototype 的 pre-write 順序與整代原子失效契約；
+  不得以像素是否改變跳過同值寫入，也不得把稍後 F3AA fill 當成 glyph-store first。
+- 完整 observer 證據只涵蓋三條固定排程及其已量 step 視窗。儲存詢問離頁、restore、
+  完整開機、其他輸入路徑與未觀察 writer 仍排除，不得由本 READY 外推。
 
-完成證據審查後才可把本檔升為 READY、實作正式 runtime presenter。實作後另建立
-正式、失敗即關閉的 `1C41` glyph watcher API，提供 catalog miss／drop／pending 收據；
+本 READY 現在授權實作正式 runtime presenter。實作時另建立正式、失敗即關閉的
+`1C41` glyph watcher API，提供 catalog miss／drop／pending 收據；
 不得直接把可丟棄 projection／typed-core 併入正式玩家路徑。並建立同狀態 2×／3×
 A/B 收據：原版 bytes／輸入／檔案事件不變、七個矩形內可見差異、
 矩形外零差異、圖示像素與動態欄零污染、所有轉場零殘字；通過後才能標為

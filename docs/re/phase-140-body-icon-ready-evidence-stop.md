@@ -148,3 +148,26 @@ F3AA fill 不得再稱為 first。observer step 位於實際 pre-write callback�
 本階段因此維持 DRAFT。下一步先補上述兩個可否證的核心契約；不得先接 production 再反向
 宣稱 READY。完整 observer 僅涵蓋三條固定合法排程，亦不得外推到未量的儲存詢問離頁、
 完整開機或存讀檔生命週期。
+
+## 2026-09-23 第二次獨立審查：限縮 READY 通過
+
+上述第一次審查的兩項證據缺口已在 ignored typed-core 補足，仍未接 production：
+
+- 真實 move／refuse／confirm return-event 收據按 step 直接餵入 watcher，驗得合法群組依序為
+  body-selection→selection-redraw、body-selection→confirmation→body-selection、
+  body-selection→confirmation→save-prompt，generation 分別到 2、3、3；不再只靠人工序列。
+- A000 dirty-state adapter 將完整 observer spans 與 event commit 依 recorded step 合併；三路
+  均無 span 跨越 commit。first intersecting write 發生時會先原子失效整個 active generation，
+  不以同值寫入或已知 writer 作捷徑。未知 writer／key、提早或缺失 first、錯 generation、
+  partial／mixed／duplicate、跨 group 事件與 span 跨 commit 都有失敗即關閉負例。
+
+typed-core 14 項測試通過；receipt SHA-256 為
+`982e29362e5b98d812f91ba481b21fb8388932acee28f108d70d47444b7b1985`。第二位獨立 Terra
+審查另在 Docker 重跑 14/14 與 dosgolem machine／receipt CLI 測試，判定「尚未接
+production」不是 READY 阻擋，因 implementation 本來就位於 READY 之後；現有證據已能形成
+可實作且可否證的限縮契約。
+
+因此 spec 009 只在七個 exact identity、固定 move／refuse／confirm 三條正常重播與已量
+step 視窗升為 READY。儲存詢問離頁、實際存讀檔／restore、完整開機、其他輸入路徑及
+未觀察 writer 仍排除；production 接線後仍須 control／2×／3× 同狀態與清除生命週期收據，
+通過前不得標為 CONFORMED。

@@ -243,10 +243,12 @@ machine／DOS 狀態與控制組相等。由成功返回終態重新載入 dosgo
 `0763:03D6` 的 `0xCA` RETF 回到 `0763:049B`、同 SS、SP+`0x12`；每次字串首 glyph
 的 ABI 高位 mask 為 `0x7c`，其餘 glyph 為零。production 未改；各安全矩形最早相交
 pre-write 後續已由通用 A000 pre-write observer 完整量測 move／refuse／confirm 固定排程，
-可丟棄 typed-core 與雙倍率正式倚天 containment 亦通過。獨立 READY 審查已拒絕升級：
-正式 watcher／dirty-state 尚未證明能在 first intersecting write 前失敗即關閉地介入，
-真實三路 receipt 時序也尚未直接驗證 event→group／transition→generation。身體圖示仍為
-DRAFT，未接 runtime 覆繪；詳見
+可丟棄 typed-core 與雙倍率正式倚天 containment 亦通過。第一次獨立審查指出的兩項缺口
+後續已補：真實三路 receipt 時序直接驗證 event→group／transition→generation，A000
+dirty-state 原型也在 first intersecting write 前原子失效整代並通過負向矩陣。第二次獨立
+審查據此通過**限縮 READY**，只授權七個 identity 與固定 move／refuse／confirm 路徑；
+儲存詢問離頁、restore、完整開機及其他輸入仍排除。production runtime 覆繪尚未接線，
+因此尚未 CONFORMED；詳見
 [第一百四十階段](docs/re/phase-140-body-icon-ready-evidence-stop.md)與
 [第九十九階段收據](docs/re/phase-99-action-bar-3x-density.md)。
 身體圖示資料切片見[第一百零一階段](docs/re/phase-101-body-icon-text-catalog.md)，

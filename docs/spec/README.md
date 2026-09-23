@@ -13,7 +13,7 @@
 | [手冊正式字型候選 manifest 驗證器](006-formal-font-candidate-manifest-validator.md) | CONFORMED（候選審查工具） | 審查本機候選的來源、授權 metadata 與 coverage；不採用、建置或散布字型。 |
 | [倚天 15 點字型候選輸入契約](007-eten-15-font-candidate-intake-draft.md) | DRAFT | 本機倚天來源、691 glyph coverage、兩個 16×15 對齊 preview 與待決的 production／公開界線。 |
 | [倚天 top-pad 本機字型建置器](008-eten-top-pad-local-font-builder-draft.md) | CONFORMED（本機建置器） | 三來源固定身份、691 字模、top-pad、雙檔失敗回復與 dosgolem 回讀已驗證。 |
-| [身體圖示畫面文字輸出端覆繪](009-body-icon-overlay-draft.md) | DRAFT | 七筆固定文字的 exact identity、安全矩形、動態圖示邊界與轉場／清除 READY 閘門。 |
+| [身體圖示畫面文字輸出端覆繪](009-body-icon-overlay-draft.md) | READY（限縮） | 七筆固定文字；只授權已驗 move／refuse／confirm 群組、generation 與 first-write 原子失效契約。 |
 | [首屏劇情文字輸出端覆繪](010-story-opening-overlay-draft.md) | READY（僅首屏五行） | 手冊成功返回後五行固定敘事的 guarded glyph identity、文字安全矩形與 row-aware story-region 寫入失效契約。 |
 | [第二頁劇情文字輸出端覆繪](011-story-page2-overlay-draft.md) | CONFORMED（僅四行與已量 Enter 離頁） | 雙倍率 runtime、exact identity、真實 far-return／相對 stack、同狀態 A/B、安全矩形與 pre-write 清除已驗；其他離頁、完整開機與存讀檔未驗。 |
 | [第三頁劇情文字輸出端覆繪](012-story-page3-overlay-draft.md) | CONFORMED（僅五行與已量 Enter 離頁） | 雙倍率正式 runtime、五行 exact identity、逐筆 far-return、同狀態 A/B 與 pre-write 清除已驗；其他離頁、完整開機與存讀檔未驗。 |

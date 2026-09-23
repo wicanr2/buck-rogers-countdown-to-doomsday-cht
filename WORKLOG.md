@@ -1451,6 +1451,18 @@
   event 時序尚未直接驗證 group／transition／generation。spec009、catalog 維持 DRAFT，
   未接 production。
 
+## 2026-09-23 — 身體圖示限縮 READY 通過
+
+- ignored typed-core 再將真實 move／refuse／confirm return-event 收據按 step 直接餵入
+  watcher，驗得 2／3／3 代合法群組；A000 dirty-state adapter 以完整 spans 與 commit 合併，
+  在 first intersecting write 前原子失效整代。未知 writer／key、提早或缺失 first、錯
+  generation、partial／mixed／duplicate、同值寫、跨 group 與 span 跨 commit 等負例均
+  失敗即關閉。14/14 通過，新 receipt SHA-256 `982e29362e5b98d812f91ba481b21fb8388932acee28f108d70d47444b7b1985`。
+- 第二位獨立 Terra 以 Docker 重跑 typed-core 與 dosgolem 定向測試後判定限縮 READY 通過；
+  「尚未接 production」屬 READY 後的 implementation，不再形成循環阻擋。spec009 只授權
+  七 identity 與固定 move／refuse／confirm 路徑；離開儲存詢問、restore、完整開機、其他
+  輸入與未觀察 writer 仍排除。production 尚未接線，未標 CONFORMED。
+
 ## 2026-09-23 — 首屏固定五行限縮 CONFORMED
 
 - 本機 dosgolem `9f4c5f0` 補首屏 strict catalog／generation／receipt gate、未知 execution epoch
