@@ -2,6 +2,12 @@
 
 狀態：DRAFT（正式面板暫停 `Advance` 呼叫排程另有局部 CONFORMED）
 
+2026-09-24 實體 live-turn 原型：[第二百零九階段](../re/phase-209-cold-boot-live-ebiten-panel-pause-draft.md)
+從第零步到選單後，正式 `frontend/ebiten.Game.Update` 已在 2× X11 視窗
+繼續推進同一部 DOS machine；Open／展開／Cancel 收合當回合零步，下一
+關閉回合恢復。這補的是單次原型步數收據，**不**涵蓋 3×、完整狀態
+A/B、其他作用層、存讀檔或正式 typed session，本規格仍 DRAFT。
+
 2026-09-24 冷開機原型：[第二百零八階段](../re/phase-208-cold-boot-menu-ebiten-prototype-draft.md)
 已從原版 `START.EXE` 第零步跑到首個已量選單，並以 Ebitengine 顯示
 繁中終態；然而 DOS 在開窗前已推進完畢，視窗只重畫靜態影格，沒有 live

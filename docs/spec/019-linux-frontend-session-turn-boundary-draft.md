@@ -3,6 +3,12 @@
 狀態：**DRAFT；不授權 production 實作，不使規格 004 升 READY。**
 日期：2026-09-24
 
+同日合成退出探針：[第二百一十階段](../re/phase-210-session-stop-receipt-probe-draft.md)
+證明正常 DOS 退出時原始 `RunUntil` 仍可回 `StopBudget`，起點已退出
+卻以正預算再次呼叫時還會多嘗試一步。正式 session 必須在呼叫前
+自檢終止狀態，error 判讀優先於 raw stop；零預算、Epoch 與
+停止原因的完整映射仍屬 DRAFT。
+
 同日獨立 READY 前審查：本限縮子契約仍有三個未閉合邊界：
 `InputBatch` 內 DOS 鍵與 Open 的先後交付、`Steps`／`Epoch`／停止原因對
 真實 machine 早停與 error 的映射，以及正式 `Draw` 故障回報 owner 的路徑。

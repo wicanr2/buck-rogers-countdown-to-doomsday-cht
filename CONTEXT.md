@@ -2,6 +2,19 @@
 
 更新：2026-09-24
 
+[第二百一十階段](docs/re/phase-210-session-stop-receipt-probe-draft.md)
+以獨立合成 COM 探針補證：DOS 正常退出仍可得 raw `StopBudget`；
+已退出後再次正預算 `RunUntil` 還會多嘗試一步。正式 session 必須
+先查 terminal state，再判 error／停止碼；零預算、Epoch 與完整
+停止原因映射仍未定，規格 019 保持 DRAFT。舊 phase206 釘選來源
+已精確恢復。
+
+[第二百零九階段](docs/re/phase-209-cold-boot-live-ebiten-panel-pause-draft.md)
+已從原版第零步到已量選單，再於真實 2× Ebitengine／X11 視窗的
+`Update` 推進同一 machine：前兩回合各 16 步；實體 Open、持續展開、
+Cancel 收合當回合零步，下一關閉回合恢復 16 步。只限 ignored
+單次原型與選單；3×、完整狀態 A/B、存讀檔及正式 session 未驗。
+
 規格 [019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)的獨立
 READY 前審查仍判 DRAFT：同批鍵盤事件順序、真實 step／epoch／stop
 映射與正式 Draw 故障回報尚未閉合；完整冷開機不是這個限縮子契約的

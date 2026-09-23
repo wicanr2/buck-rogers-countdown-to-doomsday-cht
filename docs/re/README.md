@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第二百一十階段：session 停止收據與 DOS 退出的合成探針](phase-210-session-stop-receipt-probe-draft.md)：正常 DOS 退出仍可回 `StopBudget`、已退出後再呼叫仍會多嘗試一步；舊 phase206 釘選探針已精確恢復，規格 019 仍 DRAFT。
+- [第二百零九階段：冷開機選單的實體視窗回合與面板暫停](phase-209-cold-boot-live-ebiten-panel-pause-draft.md)：ignored 原型從 `START.EXE` 第零步到選單後，正式 Ebitengine `Update` 實際推進同一 machine；2×實體 Open／Cancel 暫停零步、下一回合恢復，仍非正式可玩版。
 - [第二百零八階段：從第零步啟動的選單繁中視窗原型](phase-208-cold-boot-menu-ebiten-prototype-draft.md)：原版 `START.EXE` 唯讀冷開機至首個已量選單，繁中終態於 Ebitengine／Xvfb 繪製；靜態影格、單次重播，不是可玩前端。
 - [第二百零七階段：Linux session 六階段故障矩陣 fake](phase-207-linux-session-six-stage-fault-fake.md)：ignored 可丟棄模型驗證面板暫停仍繪圖、Snapshot 純讀，以及六階段故障後拒絕復活與 Close 一次；正式 Ebitengine Draw 錯誤邊界仍未知。
 - [第二百零六階段：Linux session machine 步數差分 DRAFT](phase-206-linux-session-machine-step-delta-draft.md)：合成 COM 雙重播證明早停時 `Steps<budget`，CPU 故障時原始 `StopBudget` 須由非空 error 覆蓋；計數包含失敗嘗試，非可玩前端收據。

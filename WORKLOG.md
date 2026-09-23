@@ -1888,3 +1888,30 @@
   錯誤會鎖在 `Game.err`，下次 `Update` 可阻止推進；但 session owner
   未同步收到 Failed／Close。已把這個 DRAFT 邊界補進規格 019，
   未直接改正式前端。
+
+## 2026-09-24 — 冷開機後真實視窗回合的 DOS 暫停／恢復
+
+- 代理另建 ignored live-turn 原型，不動釘選的靜態原型或正式程式。
+  原版從第零步到已量選單後，正式 `frontend/ebiten.Game.Update` 每個
+  關閉面板回合讓同一 machine 增加 16 步；實體 X11 點擊 Open、
+  持續展開、Cancel 收合當回合零步，下個關閉回合恢復 16 步。
+- 主代理唯讀 Docker 核對原型／收據雜湊、步數與工作目錄擁有權；
+  完整數值與限制見[第二百零九階段](docs/re/phase-209-cold-boot-live-ebiten-panel-pause-draft.md)。
+  首輪舊 host 字型缺 `×`，改用已驗 current-font 後成功；未做 3×、
+  同狀態 A/B 或存讀檔，規格 004／019 仍 DRAFT。
+
+## 2026-09-24 — DOS 退出與停止收據合成補證
+
+- 子代理以合成 COM 量到：DOS 正常退出仍可回 raw `StopBudget`；
+  正預算呼叫對起點已成立的 predicate 會多嘗試一步，CPU error
+  也可與 raw `StopBudget` 並存。主代理在唯讀無網路 Docker
+  另從新路徑重跑一致；表格與輸入版本見
+  [第二百一十階段](docs/re/phase-210-session-stop-receipt-probe-draft.md)。
+- 新實驗曾覆寫 phase206 已釘選的 ignored 原始來源。發現後用
+  `apply_patch` 將新探針分開存放，舊檔 SHA-256 已精確恢復為
+  `4edf58d7cd13aef2bca7c9a686b523c844680730e69b4efd1f70e69b1d935bda`；
+  主代理再次獨立核對。這次只補現行 API 證據，未決定正式
+  receipt 政策或改 production。
+- 本批 Docker 結束後專用映像容器清單為空；live-turn、phase206、phase210
+  工作目錄沒有 root-owned 檔案或誤建的 `.md` 目錄。私有收據與
+  scratch 均留在 ignored `workplace/`。
