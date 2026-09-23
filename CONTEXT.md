@@ -26,7 +26,7 @@ writer／錯序失敗即關閉。兩者都不是
 [規格 021](docs/spec/021-post-join-exit-prompt-body-only-draft.md)當時僅為
 **限縮 READY**；其後正式接線與收據以上述第二百一十八階段為準。
 GitHub [Issue #19](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/19)
-記錄此固定路徑工作，整體中文化與可玩前端另由其他 Issue 追蹤。
+已按此固定路徑的完成條件關閉；整體中文化與可玩前端另由其他 Issue 追蹤。
 
 [第二百一十二階段](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
 證實原生倚天 24 點明體與符號可覆蓋 3× host 面板九個字元，

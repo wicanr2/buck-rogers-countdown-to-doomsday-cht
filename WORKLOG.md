@@ -1988,4 +1988,10 @@
   路徑及已量生命週期限縮升 CONFORMED；Restore 後重入、其他玩家
   路徑、存讀檔與 Linux 實體視窗仍未驗。私有完整收據及字型未加入
   Git 或 GitHub。dosgolem workplace 分支已於本地提交 `a01e342`，
-  未推送其遠端；主專案提交、Issue 狀態與 Docker 清理在本輪末另核對。
+  未推送其遠端；主專案 private `main` 已提交並推送 `78e05f4`。
+  GitHub Issue #19 已追加限縮範圍並以 completed 關閉；較廣的中文化、
+  Restore 與 Linux 玩家視窗仍由其他 Issue／規格追蹤。
+- 本輪結束核對 `docker ps -a`：所列容器皆屬其他專案，沒有本專案
+  執行中或已停止容器；Docker 內掃描工作樹無 root-owned 產物或
+  誤建 `.md` 目錄。完整原版輸入、字型、RGBA 與私有收據仍留 ignored
+  `workplace/`，未推送遠端。
