@@ -125,3 +125,85 @@ advance／ink box 及安全矩形，未缺字、未越界。另核對正式
 此審查不核准修改 DOS、原版輸入、完整 cold boot 或玩家路徑；
 也不宣稱正式 3× Apply 已完成。這些須待正式程式、合成負例與
 私有 Xvfb 收據通過後，才可於相同限縮範圍討論 CONFORMED。
+
+## 2026-09-24 A 原生字型正式畫筆的本機限縮收據
+
+依上述限縮 READY，`workplace/dosgolem/frontend/ebiten` 已把
+`Config.HostFont3` 接成 `HostFont3{Wide, ASCII}`，3× 共用逐字選字、
+量測與繪製分類，`Game.New` 在 Draw 前拒絕尺寸、缺字、壞列長、
+空白字模、不支援的 ASCII 及安全矩形溢出；2× 的 16×16 畫筆與
+驗證分支未改。無私有素材的合成 Go 正反例均通過。此處的「正式」
+只指 dosgolem fork 中的 `frontend/ebiten` 程式，**不**等於本專案
+已具正式玩家入口或規格 004 整體 READY。
+
+本機三份倚天來源與 ETUNPACK 解壓器先以本文件列出的 SHA-256
+在唯讀掛載內核對，再產生 ignored 兩份 GOLEMFNT：`host-wide24.golemfnt`
+SHA-256 `621ed2c62e387916473cfcaefdd93585f085bfd4c2fc973e80cf691acac0fe49`
+（7 字、24×24）；`host-ascii16x24.golemfnt` SHA-256
+`7c411be15bee6911e1fec199af5643099831bd4f27b8a5676e20f96becbf2193`
+（2 字、16×24）。ignored manifest SHA-256
+`fe2da642b45b24ee086a5af4004d2835d952ed6a564dd0afc71e234b642ff9ff`。
+本次子集 builder SHA-256
+`5e82ddd8534ba580838fc8c43c9d313785a31bdb249150ff8ed1ab5f4f72494a`；
+它仍位於 ignored `workplace/host-only-3x-panel-ab/`，且匯入同樣 ignored
+`render.py` 的 `native24()`。因此**目前只能以本機現存工作區重播**，
+尚不能宣稱由版控工具鏈從合法本機輸入乾淨重建。後續須把不含字模
+bytes 的獨立 24 點抽字器放入既有 `tools/`，將三份本機來源與解壓器
+設為明示且鎖雜湊的輸入，只向 ignored `workplace/` 寫產物，並有
+來源缺席／雜湊錯誤／壞字模負例；這是 Issue #16 的未完條件。
+
+`TestNativeHostFont3LocalPixels` 在受限、無網路、唯讀來源的
+Docker/Xvfb 中，透過隔離測試子進程的真實 `ebiten.RunGame`，依序
+`Game.New`、2× Open／Select 3×／Apply、3× Open／Select 2×／Apply，
+於 `Draw` 回呼直接讀回 `screen.ReadPixels` RGBA。每個 pointer edge
+各佔一個 `Update`；宿主面板指標送至 DOS mouse 次數為 0，關閉
+回合 `Advance` 為 5。3× 五標籤白色墨點數依序為設定 334、2× 135、
+3× 132、套用 356、取消 366；讀回像素逐點符合兩份原生字模，
+全 chrome 的白色墨點均落在各自安全矩形。原生 24 點字模在
+22×22 裁切邊界以外尚有 102 個墨點且畫面逐點相符，所以這份
+收據沒有 22 點裁切。2×→3×→2× 前後，整張 640×436 RGBA
+共 1,116,160 bytes 完全相同。`go test -count=1 -v ./frontend/ebiten`
+和 `go vet ./frontend/ebiten` 同一唯讀 Docker/Xvfb 批次通過。
+
+這是**合成畫布、合成 2× 字型、本機私有 3× 字模的 host-only 收據**：
+實際測到正式 `Game.New`／`Update`／`Draw` 畫筆與倍率往返，
+未載原版遊戲、未驗真正玩家入口、DOS raw 同狀態、存讀檔或完整
+字型可散布性。先前將 `RunGame` 和其他 Ebitengine 繪圖測試放同一
+進程，會在 `RunGame` 結束後的 `NewImage` 觸發測試生命週期 panic；
+現以測試子進程隔離並全套乾淨重跑通過，該 panic 不屬產品缺陷。
+
+## 2026-09-24 字型重建入口與 Draw 錯誤負例補證
+
+上節所記「builder 仍依賴 ignored `render.py`」是該時點的缺口，
+現已由可版控的 [`tools/eten_host_font3.py`](../../tools/eten_host_font3.py)
+補上，不回寫或抹除先前原型的形成歷程。新工具從正式
+`text/host-ui.zh-TW.tsv` 取五項標籤，明示接收本機 `STD.24M`、
+`SPCFONT.24`、`ASCFONT.24` 與 ETUNPACK 路徑，先核對四份固定
+SHA-256，借用既有 `tools/eten_font.py` 的 Big5 原始索引與
+`workplace/` 輸出限制，不匯入 ignored `render.py`，不在版控保存
+任何私有字模。三份輸出先完整驗證與暫存，才替換既有檔；合成測試
+驗過來源缺失、SHA 不符、空白字模、第二檔替換失敗時舊輸出保留。
+穩定命令入口見 [`font/README.md`](../../font/README.md)。
+
+在來源唯讀、僅 ignored 輸出目錄可寫的受限 Docker 重建後，Wide
+與 ASCII GOLEMFNT 分別仍為上節的
+`621ed2c62e387916473cfcaefdd93585f085bfd4c2fc973e80cf691acac0fe49`、
+`7c411be15bee6911e1fec199af5643099831bd4f27b8a5676e20f96becbf2193`；
+新版 manifest SHA-256 為
+`fd7a1da202bfdbcb3cb97172d33834871894f7e01bbd36bbd9d5f8b45b146af4`
+（先前 `fe2da...` 是 ignored builder 格式，非字模差異）。正式
+host catalog SHA-256
+`c430f4424da2f090c4031a4079c1043fbd47dd6fa779c6eb208abcc5abf36b76`。
+本輪工具 SHA-256 `ffac06f7623a8024664e3acec30ecaa15bdf0910a954d831eae8bfb876a763e6`；
+五個不含私有字模的合成工具測試均通過。此收據解決「版控工具可由
+合法本機輸入重建 A 子集」的窄缺口，不使字型或原版素材可散布。
+
+另加 `TestNativeHostFont3DrawFailureLatchesBeforeNextDOSInput`：
+`Game.New` 先接受合成有效字型並切到 3×，再刪除必要字模讓
+`Draw` 的 `drawChrome` 回缺字錯誤；其後連續兩次帶畫布 Down 與
+Enter 的 `Update` 都回同一鎖存錯誤，`Advance`、`Machine.Steps`、
+BIOS pending 與 DOS mouse 次數均未增加。唯讀 Docker/Xvfb 的
+frontend 全套 `go test -count=1 -v ./frontend/ebiten` 與
+`go vet ./frontend/ebiten` 已通過。這只驗繪製錯誤發生後的
+失敗即關閉（fail-closed）邊界，不代替 Issue #18 的整批 route
+原子提交或完整 session owner。

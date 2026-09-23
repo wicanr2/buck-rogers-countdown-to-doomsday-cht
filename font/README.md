@@ -12,6 +12,41 @@ SIL Open Font License 1.1 條款，仍須連同實際採用版本重新核對完
 
 建置及驗證命令見 [`text/README.md`](../text/README.md)。
 
+## 3× host 設定面板原生字型
+
+使用者已為 3× host 面板選擇倚天原生 24 點：漢字與「×」24×24、
+ASCII 數字 16×24；2× 仍用既有 16×16 字型。可版控的
+[`tools/eten_host_font3.py`](../tools/eten_host_font3.py) 只保存抽字規則、
+來源 SHA-256 與安全輸出邏輯，不含私有字模。它從正式
+[`text/host-ui.zh-TW.tsv`](../text/host-ui.zh-TW.tsv) 取得五個標籤，
+核對本機三份 24 點來源及 ETUNPACK 解壓器的固定雜湊，並把兩份
+GOLEMFNT 與 manifest 寫到已存在的 ignored `workplace/` 子目錄。
+
+以下命令**只在受限 Docker 內執行**：專案掛於 `/project`，本機倚天
+來源唯讀掛於 `/etan`，已核雜湊的解壓器所在目錄唯讀掛於
+`/decoder`，只有 `/project/workplace/host-only-3x-panel-ab` 可寫；
+執行容器須另設 `--rm`、`--network none`、資源上限及目前 UID/GID。
+輸出目錄須先存在，來源路徑須在掛載前逐項驗證存在且為檔案。
+
+```sh
+python3 tools/eten_host_font3.py \
+  --catalog /project/text/host-ui.zh-TW.tsv \
+  --std /etan/ET353S/FILES/STD.24M \
+  --spc /etan/ET353S/FILES/SPCFONT.24 \
+  --ascii /etan/ET353S/FILES/ASCFONT.24 \
+  --etunpack /decoder/etunpack.py \
+  --out-dir /project/workplace/host-only-3x-panel-ab
+```
+
+工具在來源缺失、雜湊不符、解壓截斷、空白／損壞字模或輸出位置不合規
+時失敗即關閉，不以 22 點衍生字型補位；驗證失敗保留舊產物，發布中
+若後續檔案替換失敗會回復已替換檔案。合成負例在
+[`tools/test_eten_host_font3.py`](../tools/test_eten_host_font3.py)。
+兩份字型、manifest、原始字型及衍生圖像均不可加入 Git、GitHub
+或公開發行包。實際 A 子集雜湊及 host-only 畫面收據見
+[phase212](../docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)；
+這不表示原版玩家路徑或規格 004 整體符合。
+
 使用者提供候選與完整授權文字後，必須先在 Docker 內執行候選審查：
 
 ```sh

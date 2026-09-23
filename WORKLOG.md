@@ -2056,3 +2056,24 @@
   host 字型子契約限縮升 READY；整體前端仍 DRAFT，正式字型
   接線與實體 3× Apply 另行驗收。原版、已購字型、PNG 與完整
   私有收據均留 ignored `workplace/`，不送 Git／GitHub。
+
+## 2026-09-24 — A 原生字型正式畫筆與版控重建入口
+
+- 本機 dosgolem fork `cc0b17a` 將 3× 設定面板改成原生倚天
+  Wide 24×24＋ASCII 16×24 typed 字型；2× 16×16 既有畫筆保留。
+  合成 Game.New 負例、2×→3×→2×、Draw 缺字後阻止下一回合
+  DOS 輸入／步進均通過。使用本機私有 A 子集的真實
+  Ebitengine／Xvfb `RunGame` 讀回 RGBA，五個標籤像素逐點符合
+  字模，22 點裁切界外的 102 個墨點仍在；切回 2× 的 1,116,160
+  bytes 畫面全同。主代理另以唯讀 Docker/Xvfb 獨立重跑
+  `frontend/ebiten` 全套測試與 `go vet` 通過。
+- 新增不含字模的[版控抽字工具](tools/eten_host_font3.py)及合成
+  測試，四份本機來源先鎖 SHA-256，輸出限定 ignored `workplace/`
+  並在失敗時保留舊三檔。主代理以唯讀原始倚天與解壓器、只寫
+  ignored 輸出目錄獨立重建，Wide／ASCII 字型及 manifest SHA
+  與[第二百一十二階段](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
+  新收據一致；專案工具測試 247 例通過。字型、衍生 GOLEMFNT、
+  圖片與原版仍不入 Git。
+- 以上是 host-only 限縮實作與畫面收據，沒有正式 cold boot 玩家
+  入口、原版 DOS raw／BIOS／IRQ／存檔同狀態 A/B，故規格 004
+  整體 DRAFT，3× 字型子契約保持 READY、不升 CONFORMED。

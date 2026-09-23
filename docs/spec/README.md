@@ -9,7 +9,7 @@
 | [選單文字輸出端覆繪](001-menu-text-output-overdraw-draft.md) | DRAFT | 第一個功能選單的字串分派事件與未解生命週期。 |
 | [手冊查詢繁中段落覆繪](002-manual-paragraph-overlay-draft.md) | DRAFT | 依原版題目 metadata 顯示對應中文段落，保留原版答案判定。 |
 | [手冊事件 adapter 整合邊界](003-manual-event-adapter.md) | DRAFT | 指向 dosgolem READY 純核心，並隔離尚未獲准的 hook／renderer 整合。 |
-| [dosgolem host 前端與執行期倍率](004-dosgolem-host-frontend-draft.md) | DRAFT；3× 原生倚天字型子契約限縮 READY | host canvas、輸入隔離與重繪仍 DRAFT；使用者已選 A 原生 24 點，正式接線與實體 3× Apply 未驗。 |
+| [dosgolem host 前端與執行期倍率](004-dosgolem-host-frontend-draft.md) | DRAFT；3× 原生倚天字型子契約限縮 READY | A 原生 24 點已接正式畫筆並通過 host-only 像素／2× 往返；原版 DOS／存檔同狀態與可玩入口未驗，不升整體 CONFORMED。 |
 | [手冊繁中輸出端 presenter 整合](005-manual-runtime-presenter-draft.md) | CONFORMED（明確 presenter 範圍） | 39 題 catalog／版面／字型預檢與已量題目抽樣、返回清除；其餘逐題執行期、存讀檔及視窗仍待驗。 |
 | [手冊正式字型候選 manifest 驗證器](006-formal-font-candidate-manifest-validator.md) | CONFORMED（候選審查工具） | 審查本機候選的來源、授權 metadata 與 coverage；不採用、建置或散布字型。 |
 | [倚天 15 點字型候選輸入契約](007-eten-15-font-candidate-intake-draft.md) | DRAFT | 本機倚天來源、691 glyph coverage、兩個 16×15 對齊 preview 與待決的 production／公開界線。 |

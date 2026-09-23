@@ -4,9 +4,14 @@
 
 使用者已選定 3× 設定面板的 **A 倚天原生 24 點**，排除 B 衍生 22 點。
 [第二百一十二階段 A／B 證據](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
-仍是 host-only 原型；獨立審查已將[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md)
-的 3× 字型子契約**限縮升 READY**，正式前端現有 22×22 驗證器、
-字型接線與實體 3× Apply 尚待調整和驗收，2× 已確認的外觀不變。
+已接續成 host-only 實際畫面收據：[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md)
+的 3× 字型子契約限縮 READY；本機 dosgolem fork `cc0b17a` 已將
+正式 `Game.New`／`Draw` 改接 24×24 Wide＋16×24 ASCII，
+2×→3×→2× 的合成畫布 RGBA 像素與安全矩形驗證通過，2× 往返全畫面
+不變。[版控抽字工具](tools/eten_host_font3.py)能由已購本機字型
+重建相同子集，字模仍只留 ignored `workplace/`。這些沒有
+原版 DOS／存檔同狀態或完整玩家入口；規格 004 整體 DRAFT，
+3× 字型也不升 CONFORMED。
 
 使用者再次確認 Linux 設定面板開啟時暫停 DOS，排除背景持續推進；
 Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這項排程已有

@@ -9,7 +9,7 @@
 - [第二百一十五階段：真正 Exit 問句本體限縮 READY 審查](phase-215-exit-prompt-body-ready-review.md)：核對 exact 身分、q2 pending／q1 active 真實時序、雙倍率字型與訂正後 fake；僅兩句本體升 READY，正式接線與同狀態 A/B 未完成。
 - [第二百一十四階段：Exit 問句本體生命週期合成原型](phase-214-exit-prompt-body-lifecycle-fake-draft.md)：ignored typed fake 驗 row21／第一問與第一問／第二問 pending 的兩種短暫共存、含同值 A000 清層、DOS Stop、未知 writer 與錯序失敗即關閉；仍 DRAFT，未接正式程式。
 - [第二百一十三階段：Exit 提示繁中候選與倚天字型 DRAFT 靜態收據](phase-213-exit-prompt-font-draft.md)：固定兩個 post-join Exit 提示的 DRAFT 用字，倚天 2×／3×本體 containment 零缺字零越界，尾碼六格採 body-only 遮罩零差；未接正式 TSV 或 watcher。
-- [第二百一十二階段：3× 設定面板倚天字型 A/B 原型](phase-212-host-only-3x-eten-font-ab-draft.md)：使用者已選 A 原生 24 點；獨立審查只將 3× host 字型子契約升限縮 READY，正式接線與 3× Apply 未驗。
+- [第二百一十二階段：3× 設定面板倚天字型 A/B 原型與後續畫筆收據](phase-212-host-only-3x-eten-font-ab-draft.md)：使用者已選 A 原生 24 點；版控抽字器與正式畫筆的 host-only 像素／2× 往返已驗，原版 DOS／存檔及完整玩家路徑未驗，字型子契約仍限縮 READY。
 - [第二百一十一階段：合成 typed session 收據候選與負例](phase-211-synthetic-session-receipt-candidate-draft.md)：ignored 原型以 DOS 退出前置檢查、step 差分與 error 優先保存候選收據；五組合成測試通過，零預算與 Epoch 未定。
 - [第二百一十階段：session 停止收據與 DOS 退出的合成探針](phase-210-session-stop-receipt-probe-draft.md)：正常 DOS 退出仍可回 `StopBudget`、已退出後再呼叫仍會多嘗試一步；舊 phase206 釘選探針已精確恢復，規格 019 仍 DRAFT。
 - [第二百零九階段：冷開機選單的實體視窗回合與面板暫停](phase-209-cold-boot-live-ebiten-panel-pause-draft.md)：ignored 原型從 `START.EXE` 第零步到選單後，正式 Ebitengine `Update` 實際推進同一 machine；2×實體 Open／Cancel 暫停零步、下一回合恢復，仍非正式可玩版。
