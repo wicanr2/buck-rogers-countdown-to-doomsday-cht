@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第一百九十三階段：面板暫停與前端 session 的可丟棄 fake 測試](phase-193-frontend-session-fake-draft.md)：Open／Select／Cancel／Apply 零 Step、下回合恢復及故障後拒絕再推進；僅 DRAFT fake，不是正式前端驗收。
 - [第一百九十二階段：加入角色後選單第七列清層執行期 A/B](phase-192-post-join-menu-prewrite-runtime-ab.md)：相同原版 state／十筆鍵的控制組與 2×／3×收據逐 byte 相同；row20 普通回寫後兩倍率繁中層均清空，另以正式元件測試固定同值 pre-write，spec 018 保持限縮 READY。
 - [第一百九十一階段：技能頁離開確認提示原文勘誤與繁中草稿](phase-191-skill-exit-confirmation-translation-draft.md)：原版 bytes 推翻職業技能提示「原句未知」舊結論，兩筆 exact identity 與 DRAFT 繁中 TSV 已固定；幾何／清除／runtime 尚未驗。
 - [第一百九十階段：Linux 前端正式 session 的 READY 前置 API 稽核](phase-190-linux-frontend-session-ready-prerequisites.md)：固定 dosgolem API 的唯讀稽核；確認現有 Ebitengine backend 缺少 typed session 回合、cold-boot composition root、active composite 與 failure teardown，規格 004 仍 DRAFT。

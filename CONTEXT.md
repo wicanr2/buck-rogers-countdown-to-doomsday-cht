@@ -31,6 +31,9 @@ A/B 尚未完成。
 又核對固定 fork API：正式 `Game.Advance` 尚無 budget／step receipt／session phase，
 也缺冷開機 preflight、多作用層 owner 與失敗後 `Close`；故暫停原型不能
 直接升為正式可玩入口。
+[第一百九十三階段](docs/re/phase-193-frontend-session-fake-draft.md)另以 ignored
+純 Go fake 重跑 Open／Select／Cancel／Apply 零 Step、下回合恢復與故障後
+拒絕再推進；仍未驗真實事件分類、冷開機或 DOS 同狀態，規格 004 維持 DRAFT。
 
 目前 23 份繁中 TSV（含一份技能 Exit DRAFT、已限縮 READY 與尚未接通的 host UI）的倚天字型聯集仍為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機

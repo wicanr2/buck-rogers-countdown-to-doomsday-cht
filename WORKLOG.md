@@ -1,5 +1,14 @@
 # 工作歷程
 
+## 2026-09-23 — 前端面板暫停的 fake 回合契約
+
+- 依使用者已確認的「面板展開時暫停 DOS」決定，以 ignored 純 Go fake 驗證
+  Open／Select／Cancel／Apply 同回合零 Step、下一關閉回合恢復，以及故障後
+  `Close` 一次且不得再推進。主代理在既有無網路 Docker 映像重跑測試通過。
+- 此收據只限 fake；正式前端仍缺 typed session、冷開機及混合事件分類。
+  限制與來源雜湊見[第一百九十三階段](docs/re/phase-193-frontend-session-fake-draft.md)，
+  規格 004 未升 READY。
+
 ## 2026-09-23 — 種族建立 runtime 覆繪與離頁限縮收據
 
 - 從固定 `after-bios-space-100m.state` 以 Enter `100010000`、Down `100240000`、Up
