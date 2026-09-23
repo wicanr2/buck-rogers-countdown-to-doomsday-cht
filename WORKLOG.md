@@ -1,5 +1,18 @@
 # 工作歷程
 
+## 2026-09-24 — 正式面板暫停與加入角色後七列逐寫入清層
+
+- 本機 dosgolem `c273db6` 依獨立審查的 READY spec 231，讓正式
+  `Game.Update` 在面板展開、Open／Select／Cancel／Apply 回合略過 `Advance`；
+  2×／3× 真實 X11 測試驗收收合當回合零呼叫、下一關閉回合恢復。
+  [第一百九十四階段](docs/re/phase-194-formal-ebiten-panel-pause-conformance.md)
+  只將 callback 排程標為 CONFORMED，冷開機與完整 DOS session 未完成。
+- 本機 dosgolem `540a522` 在正式收據加入不含原文／像素的 A000 pre-write
+  watcher transition 記錄；以同一合法 state／十筆鍵量到七次 active→empty，
+  row20 普通回寫後兩倍率覆繪均與 baseline 相同。獨立審查只將固定七列
+  與第七列清層限縮標 CONFORMED；真正 Exit 等仍 DRAFT。
+  詳見[第一百九十五階段](docs/re/phase-195-post-join-prewrite-runtime-receipt.md)。
+
 ## 2026-09-23 — 前端面板暫停的 fake 回合契約
 
 - 依使用者已確認的「面板展開時暫停 DOS」決定，以 ignored 純 Go fake 驗證

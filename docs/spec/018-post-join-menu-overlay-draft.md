@@ -1,6 +1,6 @@
 # 018 — 加入角色後功能選單輸出端覆繪
 
-狀態：**READY；僅限七項固定選單文字、已量初畫與逐列 Down 重畫。已有局部 runtime A/B，未達 CONFORMED。**
+狀態：**固定七列正常路徑及 row20 普通回寫清層限縮 CONFORMED；真正 Exit 與整體選單仍為 DRAFT。**
 日期：2026-09-23
 
 獨立審查與固定輸入見[第一百八十一階段](../re/phase-181-post-join-menu-ready-review-candidate.md)。
@@ -147,3 +147,17 @@ entry 前各停一次。control、2×、3× 的 JSON 在兩個停點逐 byte 相
 另固定同值 A000 pre-write 也清空作用層。這補足固定分支的**回寫後**
 無殘字證據，仍不是逐指令 runtime active→empty 收據，更不覆蓋真正 Exit
 Enter、兩個提示或其他選單分支；spec 018 繼續維持七列限縮 READY。
+
+## 2026-09-24：固定七列與 row20 清層的限縮 CONFORMED 勘誤
+
+上述 2026-09-23 結論保留為當時的證據狀態，不回寫歷史。[第一百九十五階段](../re/phase-195-post-join-prewrite-runtime-receipt.md)
+已用正式 CLI 在同一原版路徑補上七次逐寫入 watcher `active→inactive` 與
+presenter keys `7→0`；第七次位於 row20 普通回寫前的 `0763:184D`。
+2×／3× 回寫後各自的覆繪與 baseline RGBA 逐 byte 相同，回寫前則有實際差異；
+正式測試涵蓋未知 row21、未知 writer、同值 pre-write、execution discontinuity
+及 presenter 故障。獨立審查因此只將合法 `a-joined.state` 的
+`Right → Enter → rows 13、14、15、16、18、19、20` 及第七代清層標為
+CONFORMED，停止於未知 row21 selected entry 前。
+
+真正 Exit Enter、row24 提示、重入、完整開機、遊戲內存讀檔及其他選單分支
+未因這份收據升格；本規格標題不能解讀成整體選單已 CONFORMED。

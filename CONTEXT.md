@@ -1,6 +1,23 @@
 # 目前狀態
 
-更新：2026-09-23
+更新：2026-09-24
+
+[第一百九十四階段](docs/re/phase-194-formal-ebiten-panel-pause-conformance.md)已將
+正式 `frontend/ebiten.Game.Update` 的面板暫停接線，雙倍率實體 X11 的
+Cancel／Apply 收合當回合零 `Advance`、下一關閉回合恢復；本機 dosgolem
+`c273db6`／spec 231 只在此 callback 排程限縮 CONFORMED。並非實際 DOS
+指令數、冷開機或可玩玩家前端的完成證據；[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md)
+與 Issue #16／#18 仍為 DRAFT／待完成。Apply 與 Enter 同回合的既有輸入
+分流仍待完整 session 契約處理。
+
+[第一百九十五階段](docs/re/phase-195-post-join-prewrite-runtime-receipt.md)
+以本機 dosgolem `540a522` 的正式不含內容 pre-write 收據補上加入角色後
+七列選單逐寫入 active→empty：合法 `a-joined.state` 的固定
+`Right → Enter → rows 13、14、15、16、18、19、20` 與 row20 普通回寫
+前清層，雙倍率無殘字，獨立審查只核准此範圍 CONFORMED。真正 Exit、
+提示、重入、完整開機及存讀檔仍 DRAFT／未驗；[規格 018](docs/spec/018-post-join-menu-overlay-draft.md)
+不得解讀為整體選單完成。下文較早的 READY 描述為當時狀態，以上述
+2026-09-24 限縮勘誤為目前真相。
 
 本機 dosgolem 正式 `host.MouseBridge` 已由雙倍率真實 Ebitengine 同狀態 A/B 與
 2×畫布外／面板／失焦清理收據限縮標為 CONFORMED；正式與可丟棄原型七組 API／

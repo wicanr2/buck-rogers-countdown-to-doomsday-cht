@@ -1,6 +1,14 @@
 # 004 — dosgolem host 前端與執行期倍率
 
-狀態：DRAFT
+狀態：DRAFT（正式面板暫停 `Advance` 呼叫排程另有局部 CONFORMED）
+
+2026-09-24 現況勘誤：[第一百九十四階段](../re/phase-194-formal-ebiten-panel-pause-conformance.md)
+已以本機 dosgolem `docs/spec/231-linux-ebiten-panel-pause-gate.md` 的 READY→實作→
+驗收流程，證實正式 `Game.Update` 在面板展開、Open／Select／Cancel／Apply
+及收合同回合均不呼叫注入的 `Advance`，下一個關閉回合恢復。這**只**是 callback
+排程，不是原版 DOS 指令或完整 machine／DOS 同狀態收據；冷開機 session、
+多作用層、存讀檔與可玩玩家入口仍保持 DRAFT。後文較早的「正式 `Game.Update`
+仍無條件呼叫 `Advance`」描述是修正前的歷史觀測，不再代表目前程式。
 
 前置：[第八十二階段 host 面板 prototype](../re/phase-82-host-settings-panel-visual-prototype.md)、
 [第八十四階段能力盤點](../re/phase-84-dosgolem-host-frontend-capability-audit.md)
