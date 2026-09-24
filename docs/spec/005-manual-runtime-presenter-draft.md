@@ -323,6 +323,25 @@ production 共用 API；主代理於 Docker 獨立重跑 39／39 私有 catalog 
 `manual_ascii3_wordwrap_draft_test.go` 只提供無原版素材的定向測試與
 私有 audit，不是 production test suite。
 
+### 2026-09-25 E1 implementation 後局部驗收（狀態仍 READY）
+
+本機未推送的 dosgolem fork `c39f72a` 與 `5fcc1d6` 已實作
+正式 3× E1 plan／owner；正式 39／39 私有字型 preflight、
+checked draw、Snapshot／Restore、2× 合成 golden bytes，
+以及換題／清除舊 ticket 失效負例均通過。以現行 catalog
+及既有合法原版 checkpoint，首題終態、錯答換題、答對返回的
+2×／3× 新版 owner 同狀態測試均通過：原版 indexed／palette／
+記憶體、輸入排程與正規化 machine／DOS 狀態相同；RGBA 只在
+核准手冊矩形內有變化，返回清除後零差且不可再建立可見 ticket。
+兩條後續情境的 2× RGBA 與舊收據逐位元相同。完整量測及
+原始 `.state` 非決定性序列化的比較勘誤，見
+[第二百二十三階段研究紀錄](../re/phase-223-manual-first-question-host-mixed-script-draft.md)。
+
+這些是固定 checkpoint 的無頭局部收據，不包含正式 Linux
+session 的冷開機玩家視窗、其餘 38 題逐題重播或不同英文
+專名的 runtime 樣本。因此 E1 分支不升 CONFORMED，Issue #21
+與 #14 仍開放；上表未驗的範圍不因三條收據而被推定完成。
+
 ## 與 host 倍率控制的關係
 
 使用者已選擇「先選取，再按套用」（選項 C）。手冊 presenter 只接收明示的 2 或 3，因此可在

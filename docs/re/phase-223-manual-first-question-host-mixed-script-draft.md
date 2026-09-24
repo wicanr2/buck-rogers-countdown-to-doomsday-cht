@@ -288,3 +288,47 @@ immutable 3× E1 plan、正式首題／換題／返回同狀態收據，
 驗證。規格 005 的 E1 分支仍是 READY，不升 CONFORMED；
 [Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
 維持 OPEN。
+
+## 2026-09-25：答錯換題與答對返回的新版 E1 同狀態補證
+
+沿用既有私有 `workplace/phase156-manual-runtime-matrix-v4/` 的兩條
+合法原版輸入序列，測試入口為本機被忽略的
+`TestManualSnapshotOwnerOriginalLifecycleOracle`。`target-002`
+以錯答 `x` 加 Enter 換題；`return-clear` 以 `to` 加 Enter
+答對返回。原版收據的輸入排程、終點步數、presentation 事件、
+indexed framebuffer、palette 與記憶體摘要，在 control／2×／3×
+之間一致。新版 owner 只從**現行正式 catalog** 建立待顯示文字；
+舊收據的首題譯文字數為 73、現行為 99，因此舊 3× 固定字格
+RGBA 不是新版 E1 的相等判準。
+
+主代理以無網路 Docker 獨立重跑
+`go test -race ./apps/buckrogers -run '^TestManualSnapshotOwnerOriginalLifecycleOracle$' -count=1 -v`
+通過；本機完整私有收據保存在
+`workplace/manual-owner-e1-20260925/{target-002,return-clear}/`，
+不得加入 Git。量測如下，矩形仍為 `[7,312)×[72,184)`：
+
+| 情境 | 倍率 | owner RGBA SHA-256 | 矩形內差異像素 | 矩形外 |
+| --- | --- | --- | ---: | ---: |
+| 錯答換題 | 2× | `d4f2af6b4242cd522bac1c4a2de61a7edec179c2c848347ab17bade53146a1c6` | 8,971 | 0 |
+| 錯答換題 | 3× E1 | `81772069e584de53ea195209dfc1feed60a96eeec6c59fbea0d7ae659087cd40` | 17,248 | 0 |
+| 答對返回 | 2× | `edbbe358864dfca403cb6c0978a44b8c54c86b773781754b4bf2edd7f5b5db9d` | 0 | 0 |
+| 答對返回 | 3× E1 | `7a101b0f1aa301d5e684b9b9bd3cca2d2e4024294208c45ec68e0f6841bb6544` | 0 | 0 |
+
+換題後舊 ticket 失效，3× 新題具有效 E1 physical plan；
+答對返回後舊 ticket 失效、沒有 E1 plan、`PrepareFrame`
+拒絕為不可見 group 建立新 ticket，正式 overlay 與原版
+baseline 完全相同。兩情境的 2× RGBA 也與各自既有收據
+逐位元相同。主代理另獨立以 `cmd/state-compare -left ... -right ...`
+比較每案 control 與 2×／3× owner 前後、以及 owner 前後本身，
+共 12 組正規化 machine／DOS 狀態皆 `equal:true`：換題 machine
+SHA-256 為
+`fc19bc6391234f59ae9b122681227ca4384ca6992e8c3cdd3da90a124e16c532`，
+返回 machine 為
+`7dcaafdb979d749e906c78c8fb2b5226f9d50e7817157a13ec7a5f1ad485aac1`，
+兩案 DOS 均為
+`8dd5789e07b42a195c0bb392cd75e489af09521151ca25b4b3fea33a6e818a59`。
+
+這些是既有合法 checkpoint 的**無頭局部同狀態**證據，仍不是
+冷開機至返回的正式 Linux 玩家視窗，也不證明其餘 38 題逐題
+執行或不同英文專名的實際玩家路徑。規格 005 的 E1 分支仍
+READY；Issue #21 與 #14 保持 OPEN。

@@ -68,8 +68,12 @@ A/B：2× RGBA 與歷史收據逐位元同值；3× E1 僅改核准手冊矩形�
 原版 indexed、palette、記憶體及正規化 machine／DOS 狀態皆
 同值。原始 gzip／gob `.state` bytes 並非語意相等判準；證據與
 勘誤見[第二百二十三階段](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md#2026-09-25新版-owner-的首題-e1-局部同狀態收據)。
-答錯換題、成功返回的新版 E1 原版同狀態 A/B 尚在進行；
-E1 分支仍 READY，#21／#14 保持開放。
+後續既有合法 checkpoint 的錯答換題與答對返回，2×／3×
+新版 owner A/B 亦已由主代理獨立重跑：換題僅在核准矩形內
+變色，返回清除後內外皆零差，舊 ticket 失效；每案 control
+與倍率／owner 前後共 12 組正規化狀態比較均相等。這仍是
+無頭固定 checkpoint，不等於 Linux 正常玩家路徑；E1 分支
+仍 READY，#21／#14 保持開放。
 
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定

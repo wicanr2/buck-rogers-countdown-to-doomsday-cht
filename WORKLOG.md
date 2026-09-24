@@ -3043,3 +3043,19 @@
 - 此時僅首題終態有新版 E1 原版收據；答錯換題、成功返回、
   正式 Linux session 與其餘 38 題未因此驗收。規格 005
   E1 分支維持 READY，Issue #21 不關閉。
+
+## 2026-09-25 — E1 換題／返回局部同狀態補證
+
+- 獨立代理沿用 phase156 兩條合法原版 checkpoint，為錯答 `x`
+  加 Enter 換題及答對 `to` 加 Enter 返回建立被忽略的本機
+  owner oracle；主代理在無網路 Docker 重跑 `-race` 通過。
+  換題的 2×／3× 差異只在核准矩形內，返回清除後內外零差；
+  兩案舊 ticket 均失效，2× 終態 RGBA 與舊收據逐位元相同。
+- 原版 control／2×／3× 的輸入排程、indexed、palette、
+  記憶體一致；主代理另用 `cmd/state-compare` 獨立比較
+  control、owner 前後共 12 組 machine／DOS 正規化狀態，
+  全為 `equal:true`。精確 RGBA／狀態摘要見 phase 223，
+  原版存態及原始收據留在被忽略的本機工作區。
+- 此為固定 checkpoint 的局部驗收，不是冷開機 Linux 玩家
+  視窗，也未覆蓋其餘 38 題或不同英文詞界的 runtime 樣本。
+  規格 005 E1 分支仍 READY，Issue #21／#14 不關閉。
