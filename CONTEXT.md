@@ -2,6 +2,19 @@
 
 更新：2026-09-24
 
+本輪 #18 新增本機 fork 的自包含 tagged Oracle 回圈 DRAFT 收據，
+獨立複審與 Docker 定向測試通過：同一組 Owner 私有合成 machine／DOS
+可觸發正式 Buck Watcher 的動態 return hook；`Oracle.RunUntil` 的
+`Steps(n)` 配恰好 `Budget(n)` 會在走滿 n 步後回預算錯誤，不能
+直接映射目前裸 `Machine.RunUntil` 的 `TickReceipt`。正式
+`Owner.Advance`、原版冷開機與玩家視窗均未改；觀測器仍 DRAFT，
+見[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+與[#18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)。
+低階翻譯代理另完成[第二百二十四階段負面盤點](docs/re/phase-224-translation-batch-negative-inventory-20260924.md)：
+24 份 TSV／196 筆、十個已有安全矩形的靜態家族未見缺少譯文 key，
+1,025 字元清單可重生；row 15 等未證實固定詞不猜譯。
+這不代表其餘遊戲畫面已翻完，Issue #8／#18 與完整中文化仍開放。
+
 本輪 #18：規格 019 的**輸入擷取值型 View／來源版本核對**限縮 READY
 契約已由本機 dosgolem fork `a7cb0eb` 接進正式 `session.Owner`。
 `CapturedUpdate` 必須攜帶同份 View 的版本與版面；鍵盤、面板、失焦

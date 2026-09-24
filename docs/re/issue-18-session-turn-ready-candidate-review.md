@@ -758,3 +758,31 @@ Commit、單調 receipt、同步 `ReportDrawFault` 與冪等真實 Close。現�
 唯一會推翻 READY 的最小反例是：在不洩漏目標的 owner 內，仍無法讓預檢後 Commit
 避免 ordinary error 或外部重入，因而可能在第一筆 DOS 副作用後失敗。若出現此反例，
 不得逐 action 補救，應把 019 子契約退回 DRAFT，先設計可強制的封閉提交 primitive。
+
+## 2026-09-24：Owner 私有資源接入 Oracle 回圈的 DRAFT 順序收據
+
+本機 dosgolem fork 新增自包含、帶 `draft_session_oracle_loop` build tag 的
+`session/owner_oracle_loop_draft_test.go`，SHA-256
+`a23aa7142e8a293dcdbce9d71e0d020b892ac11475f0b4a928efb4e1807c5938`。
+它只在測試中以反射／`unsafe` 令 Oracle 指向同一個合成 Owner 的
+machine／DOS，不修改正式 API。合成輸入包括 NOP、far call、
+`RETF 0Ch` 與測試堆疊；沒有原版 EXE、手冊、字型或玩家存態，
+原版檔案雜湊與 IDA 位址空間不適用。工具為本機既有
+`eob-remake-go:1.26.7-ebiten2.9.9` 映像中的 Go 1.26.7；測試內
+`0763:0424` 是合成 watcher 觸發位址，不是本收據重新證成的原版定位。
+
+主代理獨立在唯讀、無網路、有界 Docker 重跑 tagged 定向 `go test`、
+正式 `go test ./session` 與 tagged `go vet ./session`，全部通過；
+獨立 reviewer 再對照 `oracle/run.go`、`session/owner.go` 與
+`apps/buckrogers/watcher.go`，核准**僅作 DRAFT 局部順序證據**。
+測試顯示初始條件在 exit／HLT／A0000 守衛前，`OnCall` 在 stub／
+`Step` 前；正式 Buck Watcher 可在合成 `RETF 0Ch` 後動態收到一筆
+`post-call`。`Steps(2), Budget(2)` 執行兩步卻回
+`*oracle.BudgetError`，`Budget(3)` 才於下一輪條件檢查回 nil；
+正式 `Owner.Advance(0)` 的前端故障也不同於 Oracle 零預算錯誤。
+
+本收據**沒有**走正式 `Owner.Advance`、沒有檢查 `TickReceipt`，
+exit／HLT 只量起始已終止且條件為 false，未量中途終止、
+條件與終止同時成立、具體 HLT／守衛錯誤型別或原版手冊全路徑。
+測試專用 `unsafe` 不能進 production；規格 019 的 observer-aware
+Advance 部分仍 DRAFT，Issue #18 保持開啟。

@@ -711,3 +711,28 @@ session、競態與 vet，以及 reviewer 的獨立 tagged session 測試通過�
 倍率往返各有新票，不是同一票跨倍率。它**未**觸發正式
 `Layer.Frame`、Clear／Restore 或原版觀測器，故僅縮小 DRAFT
 契約缺口，不授權正式 `Owner.Snapshot` 或升 READY。
+
+### 2026-09-24 後續 DRAFT：既有 Oracle 回圈與 Owner 的觀測順序
+
+本機 fork 的 tagged `draft_session_oracle_loop` 合成測試以**測試專用**
+反射／`unsafe`，讓一個 Oracle 暫時別名同一個 `Owner` 私有的 machine／DOS；
+正式 API、`Owner.Advance` 與遊戲檔均未改。獨立審查及 Docker 定向測試確認：
+現行 `Oracle.RunUntil` 依序檢查回合條件、DOS exit、HLT、未遮蔽的
+`A0000` 禁區，然後執行 `OnCall`、stub 與 `Step`。合成 `RETF 0Ch`
+可使正式 `buckrogers.Watcher.Install` 動態註冊 return hook，收到一筆
+`post-call`；這只證現有 hook 機制能在同一組私有資源上觸發，不證真實
+手冊題目的完整生命週期。
+
+停止值不能直接沿用：`Steps(2)` 配 `Budget(2)` 已走兩步但回
+`*oracle.BudgetError`；配 `Budget(3)` 則在下一輪條件檢查回 `nil`、
+仍只走兩步。Oracle 零預算回預算錯誤、零步；正式 Owner 的零預算
+則是前端錯誤並失敗即關閉。既有 `Owner.Advance` 仍呼叫裸
+`machine.RunUntil(nil,budget)`，不觸發 Watcher。合成測試也只量起點
+已有 exit／HLT、條件為 false 的情形；中途終止、同時成立的優先序、
+具體錯誤類別與 session `TickReceipt` 映射尚未驗。不得把測試中的
+`unsafe` 別名搬入正式程式，或據此將 observer-aware Advance 升 READY。
+
+下一個限縮審查須固定：不暴露 machine／DOS 的正式接線方式、
+每回合 budget 與 Oracle 停止值／錯誤的 typed 映射、動態 hook 安裝
+在第一步前、退出／HLT／守衛與 stub 的負例，以及原版手冊 checkpoint
+的同狀態收據；規格確定後才可修改正式 `Advance`。

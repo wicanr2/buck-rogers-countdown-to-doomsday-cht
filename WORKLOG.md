@@ -2708,3 +2708,16 @@
   事件鍵，無空譯、重複鍵或確定新漏譯；row 15 與動態 status
   欄不猜補，正式譯文零變更。Docker 批次均 `--rm`；本輪不
   建立發行包或搬運原版／已購字型。
+
+## 2026-09-24 — Oracle 觀測順序 DRAFT 與未譯安全區盤點
+
+- Terra 在本機 dosgolem fork 新增自包含的 tagged 合成 Oracle
+  回圈測試；主代理獨立 Docker 重跑，reviewer 複審後僅核准 DRAFT
+  局部順序證據。合成 Buck Watcher 動態 return hook 可觸發，
+  `Steps(n)`／`Budget(n)` 的預算邊界與正式 Owner 收據不同；
+  測試以 `unsafe` 暫時別名私有資源，不進正式路徑。
+- 低階模型盤點 24 份正式 TSV 共 196 筆與十個已有安全矩形的
+  靜態輸出家族，未找到有足夠證據卻漏譯的固定短字串。主代理
+  獨立重生 1,025 字元清單並訂正紀錄中的跨 catalog 唯一性聲明；
+  未動正式譯文或本機字型。原版／手冊與私有字模仍留 ignored
+  `workplace/`，#8／#18 及 Linux 玩家入口保持開放。
