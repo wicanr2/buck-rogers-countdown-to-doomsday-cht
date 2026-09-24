@@ -2530,3 +2530,13 @@
   NumLock-8→Enter；row 15 各六筆整串身分逐筆相同，僅有一個
   孤立 ASCII 字母、無可辨固定英文詞，正式 TSV 未改。
   收據與限制已追加[第二百二十一階段](docs/re/phase-221-command-status-columns-draft.md)。
+- 主代理再使 `Game.Draw` 首次故障後停止重讀 snapshot，提交本機 fork
+  `6e85c32`；Terra 子代理依規格 019 的限縮 READY 新建私有
+  `session.Owner` 生命週期外殼，提交本機 fork `117e0cc`。
+  主代理複核時發現初稿在 LoadEXE 前呼叫 `DOS.Install()`，已請
+  子代理撤回並固定 Booting 不可推進；建構失敗路徑亦補
+  `DOS.Close()`。owner 的 OS 資源測試只證單次 Close 能力，
+  不冒稱 DOS handle 收據。主代理以既有 Docker／Xvfb image
+  獨立重跑 session／frontend／host／presentation、session `-race`、
+  `go vet` 與格式檢查通過；私有 Boot、整批 Commit、step 收據及
+  Draw→owner 接線仍待實作。

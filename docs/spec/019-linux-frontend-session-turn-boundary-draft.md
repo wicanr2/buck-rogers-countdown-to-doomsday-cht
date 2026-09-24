@@ -11,8 +11,13 @@
 implementation 起點：本機 dosgolem fork `b062c5b` 已加入不呼叫 DOS 的
 `host.PlanMouseRoute` 單事件純值計畫，以及 `Game.Draw` 首次可檢查
 故障的同步 `OnDrawFault` 通知。二者各有正式程式定向測試，
-但尚未組成封閉 session owner，也未完成整批 Prepare／排他 Commit、
-step receipt、phase、實際 Close 與正常玩家路徑；本規格仍未 CONFORMED。
+後續 `6e85c32` 使首次故障後不再重讀 snapshot；`117e0cc` 新建
+私有 machine／DOS／panel／bridge 的 `session.Owner` 生命週期外殼，
+只完成 Booting、首次 fault→Failed、單次 Close 與 Close error 保存。
+Booting 尚未載入 EXE，故不得提前呼叫 `DOS.Install()` 或推進。
+整批 Prepare／排他 Commit、實際 step receipt、私有 LoadEXE→Install→
+Running、與 `Game.OnDrawFault` 的真正 owner 接線及正常玩家路徑
+仍未完成；本規格仍未 CONFORMED。
 
 同日獨立路由複核：現行正式 `Game.Update` 在合成 DOS／真實 bridge
 矩陣中，對未映射 F1、畫布外 Down、普通 unmatched Up、重複 Down

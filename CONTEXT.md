@@ -11,8 +11,10 @@
 最新 #18：規格 019 經獨立審查，只將「新建封閉 session owner」
 的回合契約升為限縮 READY，現有 `Game.New(Config)` 與規格 004
 仍未達 READY。dosgolem fork `b062c5b` 已加入單事件純值滑鼠路由計畫與
-`Game.Draw` 首次可檢查故障的同步回呼；正式封閉 owner、整批
-排他提交、單調收據與實際資源 Close 尚未實作，#18 保持開啟。
+`Game.Draw` 首次可檢查故障的同步回呼；`6e85c32` 停止故障後重讀，
+`117e0cc` 新建私有 `session.Owner` 的 Booting／Failed／Closed
+生命週期外殼。它尚未 LoadEXE／Install／Running，也未接整批
+排他提交、step 收據、Draw→owner 或正常玩家路徑，#18 保持開啟。
 [規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
 與[獨立審查](docs/re/issue-18-session-turn-ready-candidate-review.md)。
 
