@@ -13,11 +13,14 @@ implementation 起點：本機 dosgolem fork `b062c5b` 已加入不呼叫 DOS �
 故障的同步 `OnDrawFault` 通知。二者各有正式程式定向測試，
 後續 `6e85c32` 使首次故障後不再重讀 snapshot；`117e0cc` 新建
 私有 machine／DOS／panel／bridge 的 `session.Owner` 生命週期外殼，
-只完成 Booting、首次 fault→Failed、單次 Close 與 Close error 保存。
-Booting 尚未載入 EXE，故不得提前呼叫 `DOS.Install()` 或推進。
-整批 Prepare／排他 Commit、實際 step receipt、私有 LoadEXE→Install→
-Running、與 `Game.OnDrawFault` 的真正 owner 接線及正常玩家路徑
-仍未完成；本規格仍未 CONFORMED。
+先完成 Booting、首次 fault→Failed、單次 Close 與 Close error 保存。
+後續本機 fork `b8c6bca` 的實作切片已加入合成 COM 的 typed `Advance` 收據與
+私有 `startLoadedMachine`／`acceptTurn`；這些測試只在無觀測者的
+`Machine.RunUntil` 成立，沒有遊戲文字 Watcher。Booting 仍未載入
+原版 EXE，故不得提前呼叫 `DOS.Install()` 或推進。整批 Prepare／
+排他 Commit、原版冷開機、observer-aware runner、
+`Game.OnDrawFault` 的真正 owner 接線及正常玩家路徑仍未完成；
+本規格仍未 CONFORMED。
 
 同日獨立路由複核：現行正式 `Game.Update` 在合成 DOS／真實 bridge
 矩陣中，對未映射 F1、畫布外 Down、普通 unmatched Up、重複 Down

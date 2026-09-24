@@ -2563,3 +2563,24 @@
 - 原版遊戲、手冊掃描、本機字型及 ignored 實驗檔均未加入上述
   fork commits。一次性 Docker／Xvfb 容器於工作後清理；未發現
   本專案 root-owned 檔案或誤建的 `.md` 目錄。
+
+## 2026-09-24 — 手冊校譯、字型新鮮度與 session 收據
+
+- 低階翻譯子代理複核第 11–20 筆已確認手冊映射，依中文掃描印刷頁 33
+  與英文 Log Book 頁 14 修正 `manual.world.rocketships` 的維生系統
+  誤譯；未猜補原文未證實的句子。catalog lint、crosswalk、手冊上限與
+  覆繪版面檢查通過。
+- 24 份正式 TSV 重生 `font/characters.txt`，本機 2× 倚天字型重建為
+  1,035 字模，`eten_font.py verify` 通過。dosgolem 前檢現在核對
+  2× manifest 列出的全部目前譯文 SHA-256，以及 3× host 文案；
+  合成負例與本機實際 2×／A 版 3× 載入收據通過。這只防止舊譯文
+  子集被載入，不代表正式啟動器已接線。
+- Terra 子代理在本機 fork 實作限縮 READY 的合成 typed `Advance`
+  收據，主代理重跑 session／frontend 測試與 vet 通過。裸 machine
+  推進不觸發 Buck Rogers Watcher；observer-aware runner、整批提交、
+  原版冷開機、Draw 故障接線與正常玩家驗收仍待完成，Issue #18 保持開啟。
+- 上述 dosgolem 改動僅提交在本機分支 `b8c6bca`，沒有推送 fork；
+  主專案的文字、字元清單與交接文件另行提交至 private `main`。
+- 工作僅在受限 Docker／Xvfb 容器測試與建字型；本機原版、掃描與
+  倚天檔未納入 Git。一次性容器已清理，未見 root-owned 檔案或
+  誤建 `.md` 目錄。

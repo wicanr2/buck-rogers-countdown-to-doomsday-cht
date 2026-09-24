@@ -2,6 +2,17 @@
 
 更新：2026-09-24
 
+本輪交接：第 11–20 筆手冊映射又確認並修正
+`manual.world.rocketships` 的維生系統敘述；正式 24 份 TSV
+重生的 `font/characters.txt` 為 1,035 字，本機 2× 倚天字型
+已重建且 `eten_font.py verify` 通過。dosgolem 本機 fork `b8c6bca` 的
+2×／3× 字型前檢新增「目前 catalog 與建置 manifest 完全一致」
+閘門，實際本機 A 版 3× 原生 24 點與 2× 均通過。`session.Owner`
+已有合成、無觀測者的 typed `Advance` 收據，但原版文字 Watcher
+只在 `oracle.RunUntil` 觸發；目前 owner 的裸 `Machine.RunUntil`
+不會觸發它。故冷開機、正式中文覆繪與 Linux 玩家版均仍未完成，
+不得把合成測試當成正常玩家路徑收據。
+
 最新 #6／#16／#18：手冊前十筆已確認映射的翻譯稽核，只修正
 `manual.career.rogues` 與 `manual.rules.medic_skills` 兩處明確誤譯；
 TSV 格式與字型覆蓋檢查通過。dosgolem 本機 fork `00b5663`
