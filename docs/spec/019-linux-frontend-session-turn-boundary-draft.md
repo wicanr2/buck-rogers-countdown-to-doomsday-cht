@@ -993,6 +993,19 @@ machine 零步。合法原版首題 checkpoint 與獨立 `Watcher.Install` 基�
 也未接線。故不得因 Delta 原型與首題配對通過就把觀測器升 READY，
 更不得搬入 production 或宣稱 Linux 可玩版完成。
 
+**2026-09-25 並行逸出重現，仍為 DRAFT。** 被忽略的
+`oracle/draft_delta_concurrent_probe_test.go` 以 callback 捕獲 runner、
+從另一 goroutine 同時呼叫 `Run`；競態偵測器實際指出
+`draft_real_observer_runner.go` 讀取 machine steps 與
+`internal/machine/machine.go` 寫入 steps 並行，證實上段風險，
+而非僅推測。另有 test-local、非 production 的 atomic CAS gate
+`oracle/draft_delta_gate_probe_test.go`，把 `Run`／`Install`／
+callback 重入競爭都收束為零新步的鎖存 fault；主代理於 Docker
+以 `go test -race -tags 'draft_manual_checkpoint draft_gate_probe' ./oracle -run '^TestDraftGate' -count=1`
+重跑通過。這只證明一個受限排他候選可行，不證明正式 Owner、
+冷開機、Close 或 Linux 玩家 session 已安全；正式接線前仍須
+獨立審查排他範圍及正常原版路徑。
+
 #### 候選 READY 契約（待上述最小缺項關閉後再審查）
 
 正式實作時，Owner 的私有 boot 在第一個 instruction 前建立 runner；Owner 唯一持有

@@ -2973,3 +2973,36 @@
   故不在缺少來源核對時改動共用 key 或字型子集。
 - 本輪未改原版遊戲、手冊與私有字型；未發布產物。Docker 工作均為
   `--rm`／無網路／有資源限制；收尾仍需核對容器及 root-owned 殘留。
+
+## 2026-09-25 — 共用 3× 實體像素字首封存與 E1 adapter 草案
+
+- 依使用者的共用引擎選擇，本機 dosgolem fork 的 `1e05ff6` 將
+  physical glyph 納入 sealed group：來源字型指標先核對，投影以
+  `DrawChecked` 全層預檢；錯倍率、未登錄字型在讀原版影格前拒絕，
+  舊單層投影不再靜默漏畫。規格 234 補記於 `1d13dba`。
+- `5fe9707` 加入局部 Clear 與三幀來源變動無殘字測試；
+  `go test ./xlate ./presentation` 及 `go test -race` 均在有界、
+  無網路 Docker 通過，規格 234 再補記於 `6136d2f`。
+  測試使用合成字型，不能替代手冊正式同狀態收據。
+- 獨立複審又以 `2702c56` 補上 physical glyph 部分 Add、錨定格
+  全失效、sealed group generation／epoch 變造的正式合成負例；
+  主代理重跑 `go test -race ./xlate ./presentation -count=1`
+  通過，規格 234 補記於本機 fork `4935435`。
+- E1 14px adapter 的 14 行純值版面、零寬行界空白 source span、
+  雙字型身分與固定編碼 layout hash 已形成規格 005 DRAFT 候選；
+  針對可變指標、漏入 hash 的矩形／列欄位及非 ASCII 重疊，
+  代理已迭代修正。獨立審查再指出窄括號過寬會越左界、
+  39 段測試未建 plan、空尾列表示不合法；補上明確拒絕、
+  真字型 39／39 plan checked draw／Snapshot／Restore、
+  source span 與 hash 變造負例後，主代理於 Docker 獨立重跑
+  `-race -count=2` 通過，獨立複審准許規格 005 E1 分支升 READY。
+  這只開啟 production 實作，未改正式 `ManualSnapshotOwner` 或 2× 路徑。
+- 低階翻譯代理覆核故事第 5–8 頁：四份 lint 與字型覆蓋均通過、
+  目前 TSV 雜湊符合既有收據，未取得可證實的新增誤譯；
+  因原文收據只有雜湊而非全文，這不構成逐字英中人工校對。
+  正式 TSV 與本機字型未因此修改。
+- #18 的 tagged Delta runner 並行 probe 由競態偵測器重現
+  machine steps 讀寫競爭；test-local atomic CAS gate 的
+  `Run`／`Install`／callback 重入零步負例經主代理 Docker
+  `-race` 重跑通過。兩者都只是 DRAFT，正式 Owner／Linux
+  session 尚未接線，規格 019 已追加停止線與測試入口。

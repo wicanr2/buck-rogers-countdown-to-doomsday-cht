@@ -17,12 +17,14 @@
 規格決定，不使 test-local 原型自動成為 production；獨立 READY
 審查已指出共用 `xlate.Stamp` 無法表達精確 14px、owner 仍硬驗
 固定 36-rune 行、39 段混合標點／字模負例不足；新混排契約
-保持 DRAFT，正式 presenter 接線與新版同狀態驗收仍待完成。
+當時保持 DRAFT；後續 READY 狀態見下文，正式 presenter 接線與
+新版同狀態驗收仍待完成。
 像素精度層的架構分支已由使用者於下段定案。後續
 39 段 test-local 版已把原 3 個行首、11 個行尾 ASCII 空白
 保留為零寬 soft separator，補 `…` 禁行首與跨 run 墨跡
 負例；字元 round-trip 與 14px 字模測量通過，但仍未接入
-正式不可變版面計畫／owner，故手冊 adapter 保持 DRAFT。
+正式不可變版面計畫／owner，當時手冊 adapter 因此保持 DRAFT；
+後續 READY 訂正見下文。
 詳見[第二百二十三階段勘誤](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md#2026-09-25-全-39-段詞界補證與行界勘誤)。
 
 使用者已選擇**擴充 dosgolem 共用繪字引擎**以支援精確 14px
@@ -38,6 +40,22 @@ production；共用 API 的 `docs/spec/234-xlate-physical-pixel-glyph-plan.md`
 與 vet 通過，正式測試涵蓋舊 2× JSON／RGBA bytes、
 跨倍率拒絕與壞計畫零寫；封存群組、手冊 owner 和實際
 3× E1 presenter 尚未接線，整份 234 與 Issue #21 保持未完成。
+
+2026-09-25 續進度：上述「封存群組未接線」是第一段當時的狀態；
+本機 dosgolem fork 後續 `1e05ff6` 已把共用 sealed group 的
+physical glyph 字型核對與 checked 投影接通，`5fe9707` 補
+部分 Clear／原文三幀失效無殘字的正式合成測試，規格 234
+追加證據於 `6136d2f`。`go test -race ./xlate ./presentation` 通過。
+其後 `2702c56` 又補部分 Add、錨定格全失效與 sealed group
+generation／epoch 變造的正式合成回歸，主代理重跑全套
+`-race` 通過；規格補記於 `4935435`。
+這僅完成共用元件的部分矩陣，並非 Buck 手冊 E1 adapter、
+原版 3× 同狀態或 Linux 玩家 session 已完成；#21 仍開放。
+手冊 adapter 的純值 plan／source span／固定編碼 hash 已有
+39／39 真字型、checked draw／Snapshot／Restore 的私有候選收據；
+窄括號過寬拒絕與 plan 變造負例補齊後，規格 005 的 E1 分支
+已通過獨立 READY 複審，可開始 production 第一片。這不是
+正式 `ManualSnapshotOwner` 已接線或新版同狀態 CONFORMED。
 
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定
@@ -57,6 +75,10 @@ DRAFT 測試中通過動態 hook、凍結視圖、錯誤零步與合法首題
 checkpoint 配對；獨立複審仍留有跨 goroutine 排他及正式 Owner
 私有 boot／Close 缺口，不能升 READY，也不是 Linux 可玩入口。
 詳見[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)。
+後續並行 probe 已由競態偵測器實際重現 Delta runner 對
+machine steps 的讀寫競爭；test-local atomic CAS gate 的
+零步鎖存負例經 Docker `-race` 重跑通過，但尚非正式 Owner
+或 Linux session 的安全證明。規格 019 仍 DRAFT、#18 開放。
 手冊前 18 筆來源核對另訂正 9 筆確證誤譯；39 段 catalog／版面
 檢查通過，24 份 TSV 的字元聯集重生為 1,046 字（SHA-256
 `7aa7ed9f4fbff670cdba023b8c5f3a20486423c42393b94495c3c7da6eace55b`）。

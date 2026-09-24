@@ -4,6 +4,8 @@
 14 行 renderer、2×／3× RGBA，以及已量測的首題、錯答換題、第三題與成功返回同狀態收據。
 **不包含 39 題逐題正常玩家路徑、存檔／讀檔或正式互動視窗；39／39 catalog 不等於
 39／39 runtime 驗收。**
+2026-09-25 新增的 3× E1／14px adapter 分支僅為 **READY 契約**，尚未實作或取得新版
+原版同狀態收據；上方 CONFORMED 不外推至 E1。
 日期：2026-09-23
 現況訂正（2026-09-23）：第九十六至一百零四階段與 dosgolem spec 216、217、220、221、
 222 已推翻本文件早期的「正式字型候選」「前景色未知」「尚未接 runtime」及「尚未驗證
@@ -163,6 +165,163 @@ dosgolem fork 的 `docs/spec/234-xlate-physical-pixel-glyph-plan.md`
 checked 字首繪製與 optional Snapshot／Restore 的定向
 測試通過；仍未把本規格的 3× 手冊版面計畫送進正式
 `ManualSnapshotOwner`，也未做正式原版同狀態 A/B。
+
+## 2026-09-25：3× E1 adapter（**READY 契約，尚未實作**）
+
+本節是 Issue #21／#14 的 adapter 契約。它把已確認的 E1
+14px、39／39 私有 catalog tokenization 收據，以及共用 `xlate`
+規格 234 的 READY API 邊界，收束成可實作的 typed immutable layout plan。
+本節已經獨立 READY 複審，准許進入 production 實作；它不改寫本文件
+先前固定格 presenter 的 CONFORMED 範圍，不得以本節或其定向測試宣稱 3× E1 已
+CONFORMED。
+
+### 輸入與不可變輸出
+
+每個 catalog hit 在 `request(generation, DisplayRequest)` 後，僅可由
+adapter 以該 request 的已驗 `eventKey`、`textKey`、UTF-8 translation、
+正式 layout、當前 3× E1 字型登錄，建立一個新的
+`ManualE1ImmutablePlan`。此 plan 是值物件：所有 rune slice、token、
+glyph crop、字型身分與 hash 必須深複製並在建立後不可由 caller、catalog、
+font map 或 renderer 修改；它不是 `RuntimeManualOverlay`、`xlate.Layer`
+或 `ManualFrameTicket` 的別名。
+
+最小型別語意如下（欄位名稱可按 Go 慣例調整，但語意與 hash 編碼不可改）：
+
+```text
+ManualE1ImmutablePlan {
+  Generation, EventKey, TextKey
+  TranslationUTF8, TranslationRuneCount
+  Scale = 3, LatinAdvancePx = 14
+  ClearRectPhysical = [21,936) × [216,552)
+  TextRectPhysical  = [48,912) × [216,552)
+  Base16Font{Name, FontSealSHA256}
+  Derived22Font{Name, FontSealSHA256}
+  Lines[14] ManualE1Line
+  CanonicalLayoutSHA256
+}
+ManualE1Line { Row, YPhysical, UsedPixels, Tokens[] }
+ManualE1Token {
+  Kind, SourceRuneStart, SourceRuneEnd, Runes, XPhysical, AdvancePixels,
+  Glyphs[] ManualE1GlyphSpec
+}
+ManualE1GlyphSpec {
+  Rune, FontRole, FontName, FontSealSHA256,
+  SrcX, SrcY, SrcW, SrcH, XPhysical, YPhysical
+}
+```
+
+`CanonicalLayoutSHA256` 須涵蓋上述每個決定繪製或 source-span 的欄位，
+使用下列固定、非 map 的二進位編碼：先寫 ASCII domain
+`buckrogers-manual-e1-layout-v1\\x00`，再依序寫 `Scale`、
+`LatinAdvancePx`、`ClearRectPhysical` 的 X、Y、W、H、`TextRectPhysical` 的
+X、Y、W、H、固定值 `14`（line count），皆為 little-endian u32；每一列依
+row 0 至 13 寫 `Row`、`YPhysical`、`UsedPixels` 與 token count（u32）；每個 token 固定寫
+`Kind` UTF-8 byte length（u32）與 bytes、`SourceRuneStart`、
+`SourceRuneEnd`、`XPhysical`、`AdvancePixels`（u32；負值在編碼前拒絕）、
+rune count（u32）及每一碼點（u32）、glyph count（u32）；每個 glyph 依序寫
+`Rune`（u32）、`FontRole` UTF-8 length＋bytes、`FontName` UTF-8 length＋bytes、
+32-byte `FontSealSHA256`、`SrcX`、`SrcY`、`SrcW`、`SrcH`、`XPhysical`、
+`YPhysical`（u32；負值或不合法 crop 在編碼前拒絕）。最後寫 plan 的
+`Generation`、`EventKey` UTF-8 length＋bytes、`TextKey` UTF-8 length＋bytes、
+`TranslationRuneCount`（u32）、`TranslationUTF8` byte length（u32）與 bytes，
+以及 base-16／derived-22 各自的 name UTF-8 length＋bytes 和 32-byte hash。
+這些數值欄位的順序是 hash 契約；不得使用 `%v`、JSON 或 Go map。
+
+`FontSealSHA256` 固定來自 `presentation.FontFingerprint`，其輸入包含
+`Font.Name`、尺寸與排序後的 glyph bytes，是 adapter／封存群組的字型身分。
+它**不是** `xlate-font-v1` canonical bytes hash：後者只由 `xlate.Snapshot`／
+`Restore` 驗證實體 glyph 的可還原來源；兩種 hash 必須分欄儲存與核對，不得
+混稱或互相取代。`ManualE1GlyphSpec` 是純值，不得含 `*xlate.Font`、map、layer、ticket 或
+其他可變指標。它的 `X/Y` 是最終 RGBA 的絕對實體像素，crop 是非空半開
+source rect。owner 只可在建立 text stamp 時，從私有、已驗的字型 registry
+以 `FontRole`＋`FontName` 解出 `*xlate.Font`，再核對 `FontSealSHA256`；
+這個解出的指標不得回寫或逃逸到 plan。ASCII glyph 使用已封存 base-16，CJK
+與全形標點使用已封存 derived-22；不得只比較字型名稱，亦不得讓後續的
+`manualThreeXFont` 重建結果悄悄取代 plan 所封存的身分。
+
+同一 token 有多個非 ASCII glyph 時，每個 glyph 的 `XPhysical` 必須是其
+各自的共同 cursor 位置，不可全部復用 token 起點。CJK 依 24px advance
+逐字前進；窄全形括號依已量測 bbox advance 前進；其餘全形標點依其 token
+measure 前進。每筆 glyph 的 crop 與 X/Y 都必須可單獨驗證，不可把「同一
+token 的寬度正確」當成逐 glyph 不重疊的證據。
+
+每一列仍以既有 logical parent text stamp `[16,304)×[y,y+8)` 作為
+clear／anchor／失效語意的 parent，背景 stamp 仍清除
+`[7,312)×[72,184)`。實體 glyph 必須完全落入該 parent 的 3× 範圍，
+並經 `Layer.ValidatePixelGlyphPlan(3)` 與 `DrawChecked(..., 3)` 的全層
+預檢；不得以直接 RGBA compositor 旁路清層、Snapshot 或 Restore。
+2× 不建立也不消費此 plan，必須維持現有 2× stamp、Snapshot JSON 與
+RGBA 位元組。
+
+14 列中有 source token 的列必須建立 `PixelScale=3` 且非空
+`PixelGlyphs` 的 physical text stamp；無 token 的尾端列必須建立
+`PixelScale=0`、無 `PixelGlyphs`、無 `Text` 的 legacy empty stamp，不能以
+空 physical plan 充數。owner 一律封存 14 列；Snapshot／Restore 後須保留
+每列是否 physical 的身分，並在投影前再驗。
+
+### E1 token 化與版面不變量
+
+- 識別字為 ASCII 英數，連接符 `.`、`/`、`+`、`-` 只可夾在兩個英數
+  run 之間；`%` 只可作該識別字的尾碼。整個識別字不可拆行。確證
+  advance 是第一個 ASCII glyph 16px、後續 glyph 各 14px；不是 14px
+  字寬的猜測。
+- 配對 `（）、()、「」、『』、【】、《》、〈〉` 必須巢狀正確且不拆開。
+  短括號識別字是一個 token；其餘配對把開括號併到第一個內部 token、
+  閉括號併到最後一個。未配對開／閉括號失敗即關閉。
+- `、，。！？：；…` 不可在可見行首，必須併到前一 token；開括號不可
+  在可見行尾。這包含已補證的 `…`，不能沿用舊 prototype 漏列的集合。
+- source 的 ASCII space 必須原樣保存在 `SourceRuneStart/End` 與
+  `TranslationUTF8` round-trip；首尾或連續 space 拒絕。若換行使 space
+  位於行首或行尾，它是 `soft_separator`：glyph 數為零、advance 為零、
+  不產生可見墨跡，卻仍參與 source-span 與 canonical hash。39／39
+  私有收據已確認共有 3 個此類行首及 11 個行尾 separator；該數量是
+  該固定 catalog／字型版本的 audit anchor，不是一般演算法常數。
+- 每列由左至右使用共同實體像素 cursor，範圍 `[48,912)`，高 24px，
+  最多 14 列，行距 24px。CJK cell advance 24px；一般 interior space
+  advance 8px；窄全形括號以 derived-22 實際 ink bbox 加兩側各 2px
+  導出。若 `bboxW + 4 > 20`，必須失敗即關閉；不可 clamp 成 20、裁切
+  墨跡或把 glyph 推到 parent 外。合法窄括號 advance 為 `[8,20]`，不得以
+  未量測常數代替。每個 ASCII glyph
+  實際 ink bbox 都須在其 token range 內，且相鄰 run ink 不得重疊。
+- 任何空 translation、未知 glyph、空／越界 crop、無法容納的 token／
+  paragraph、溢位座標或尺寸、非 3× scale、字型 hash 不符、canonical
+  hash 不符、或建立後可觀測的 plan 變造，皆不得交付部分 plan、部分
+  layer 或 RGBA。
+
+### owner lifecycle 與失敗收束
+
+`ManualSnapshotOwner` 必須從「重算 36-rune `manualRows`」改為驗證已
+封存 `ManualE1ImmutablePlan`，但僅在 E1 3× owner。它必須同時驗
+generation／event identity／text identity／layout hash／兩個字型 hash／
+scale，並把 plan 與 14 background + 14 text parent stamps 封存成同一
+group。`PrepareFrame` 前、`Snapshot` 前、Restore 後與投影前均重驗；
+任一不符即回錯、使 ticket 失效且不產生 RGBA。
+
+`begin`、accepted `clear`、新 request、`SetStyle`、Restore、來源不連續、
+stop／Close、scale replacement 與 consumer prefix error 都必須退休舊
+plan 和所有 ticket；不能讓舊 E1 glyph 在 clear 後復活。新 request 只在
+完整 immutable plan、兩層 layer 與 seal 均成功後才可原子可見。owner
+仍是同 machine-step goroutine 的唯一可變持有者；frontend 不得取得
+plan 內部 slice、layer、font map 或可重畫 ticket。
+
+### READY 審查收據與實作後驗收矩陣
+
+| 面向 | READY 前無原版素材已驗 | 待 implementation／oracle 驗收 |
+| --- | --- | --- |
+| 39 段輸入 | 固定 39／39 私有 catalog 逐段建立 immutable plan，以現行本機 base／derived 字型的 `presentation.FontFingerprint` seal 檢查 source span、canonical hash 重算、crop 與位置；3 行首＋11 行尾 soft separator 必為零寬 | 不把 private translation、font 或 receipt 加入 Git；由審查者在本機重生 anchor |
+| E1 幾何 | 14px ASCII 字首、16px 首 glyph、22px CJK、窄括號實際 ink-bbox `SrcX/SrcY/SrcW/SrcH` crop、token bbox、跨 run ink collision、14×24px 行界與安全矩形 | 每段以 spec 234 `ValidatePixelGlyphPlan`／`DrawChecked` preflight；對 14 列 Snapshot／Restore 再繪製，驗 legacy 尾端空列與 physical 非空列均保留 |
+| 字串規則 | 英數及 `./+-%`、巢狀括號、`…` 與其餘禁行首標點、超寬 token、來源首尾／連續 space 全有正反例；每個 token 的連續 source rune span 重組必須逐 rune 等於 UTF-8 原文，包括零寬 soft separator | 將 token source-span 與固定 domain／欄位／長度前綴的 canonical encoding 交叉檢查，拒絕 mutation／hash drift |
+| owner | 共用 sealed group 的 generation／epoch 變造在讀影格前拒絕；E1 plan 純值／hash／來源位置的合成變造在轉 xlate 前拒絕 | 正式 owner 的 generation、clear、換題、Restore、Close、stale ticket、雙字型同名異 bytes、跨倍率均失敗即關閉；2× 不變 checkpoint 逐 byte 回歸 |
+| 同狀態 | 不以 unit test 冒稱原版 parity | 合法首題、答錯換題、成功返回的 3× E1 A/B；indexed、machine、DOS、input、save 同值，RGBA 差異僅在核准 clear rect |
+
+READY 複審已確認固定編碼、純值 plan 與字型封印、39／39 現行本機字型
+preflight、窄括號過寬拒絕、14 列 Snapshot／Restore，以及 spec 234
+production 共用 API；主代理於 Docker 獨立重跑 39／39 私有 catalog 的
+`-race -count=2` 通過。這些收據只准許建立 production plan／改動
+`ManualSnapshotOwner`；owner 全生命週期負例與表中同狀態收據完成後，
+才可將 E1 分支稱為 CONFORMED。被忽略的
+`manual_ascii3_wordwrap_draft_test.go` 只提供無原版素材的定向測試與
+私有 audit，不是 production test suite。
 
 ## 與 host 倍率控制的關係
 
