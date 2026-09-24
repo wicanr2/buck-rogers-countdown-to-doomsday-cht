@@ -477,3 +477,13 @@ READY 審查前，不得將此原型搬入 production 或宣稱已修復同批
 實際輸出身分、完整純預檢後不可失敗的已定序動作，以及失敗前
 DOS 副作用零新增列為同一契約；不能把一次檢查稱為原子提交。
 此為原型反證，非原版玩家路徑收據；本規格維持 DRAFT。
+
+後續[Issue #18 同指標 callback 反例](../re/issue-18-session-turn-ready-candidate-review.md)
+把前項阻塞具體化：`DOS.MoveMouse`／`PressMouse` 的 handler callback
+會再讀公開 `DOS.M`，因此同一 `*DOS` 指標也能在提交中把 move
+callback 留在舊 machine、press callback 與 BIOS key 送進新 machine。
+每筆 action 前核對雖能晚拒，拒絕時卻已留下滑鼠／callback 副作用。
+READY 候選必須指定可強制的 session 專有 DOS／machine 目標，
+消除提交期間外部改指／直接 bridge mutator 的路徑，再做整批
+純預檢與不可失敗的提交；不能只以同指標或逐 action 檢查替代。
+這仍是可丟棄合成反例，未修改正式前端，規格維持 **DRAFT**。

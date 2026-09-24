@@ -554,3 +554,33 @@ READY 前必須能核對 MouseBridge 實際輸出與 KeyboardBridge 的
 BIOS transport 指向同一 DOS／machine，並在完整提交區間封閉所有
 公開 `DOS.M` 改指及其他來源變更。只在開始前比指標、只禁止
 owner 自身 rebind、或提交後再檢查，都不能倒銷已交付的 DOS 副作用。
+
+## 同一 DOS 指標下仍可分裂 callback 與 BIOS（2026-09-24）
+
+子代理於同一 ignored
+`workplace/dosgolem/frontend/ebiten/route_commit_target_alias_draft_test.go`
+補上滑鼠 Handler 啟用與逐動作核對反例；新全檔 SHA-256
+`1f12ac86a696d18969ea2764e98ee85cc3cd4b63693271341fb05ab6e84b8768`。
+主代理逐行檢視後，以唯讀、無網路 Go 1.26.7／Ebitengine 2.9.9
+Docker／Xvfb 獨立重跑五項定向測試與 `go vet ./frontend/ebiten`
+通過。以下皆為**合成提交原型**，不證明原版遊戲實際改指。
+
+- 同一 `*DOS`、滑鼠 Handler 同時監看 move／left-down：先 move，
+  再在提交中直接改公開 `DOS.M`，接著 press 與 BIOS key。原 machine
+  得到一個 move callback；另一 machine 得到一個 press callback
+  與一個 BIOS key。DOS 滑鼠座標為 `(100,32)`、左鍵按下；兩台
+  machine 均未 Step。故「兩橋同一 DOS 指標」**不足以**固定實際
+  callback／鍵盤目標。
+- 若在每筆 action 前補 `DOS.M` 核對，分別於 move 後與 press 後
+  改指，可得到晚期拒絕；但原 machine 已有 1／2 個 callback，
+  且 DOS 滑鼠位置或按鍵已改。拒絕時 epoch 雖不增加，仍不滿足
+  「零 DOS 副作用」；逐動作檢查不是整批原子提交。
+
+最短 READY 缺口因此不是再多加一個指標比較，而是能強制的單一
+session owner：固定 DOS／machine 的私有擁有權、兩橋同源建立、
+提交期間排除外部 `DOS.M` 改指或直接呼叫 bridge mutator，完整批次
+先純預檢，再以固定目標提交所有已知不會失敗的動作。若仍允許
+任意外部程式直接改公開 `DOS.M`，目前 owner 自己的 mutex 或
+generation 無法保證整批排他。拒絕收據須核對滑鼠、callback、
+BIOS／IRQ 佇列、machine steps 及 epoch 全無新增副作用；正式 API
+未具備此契約前，規格 019 維持 DRAFT。

@@ -2327,7 +2327,12 @@
   主代理只修四處義務語氣「必需」及一個多餘「處」。手冊 39 題
   catalog／504 字容量及 11 個單元測試通過；依全部正式譯文重建
   本機 ignored 倚天字型與 manifest，唯讀 `verify` 通過，
-  1,028 字模／GOLEMFNT SHA-256 保持不變。
+  1,028 字模／GOLEMFNT SHA-256 保持不變。新版
+  `text/manual.zh-TW.tsv` SHA-256 為
+  `dbdeb6f476502a04e65d825e5f2dff60d466f972b664f303dffd3c3ef9681eb2`，
+  本機 manifest SHA-256 為
+  `10717ce16a85db92e8630114b7868c75818f7ac8e5540ea11608d0e1d8baa405`；
+  兩個私有字型產物都留在 ignored `workplace/current-font/`。
 - 訂正 `text/README.md` 的選單事件數、Exit 問句與第九頁舊狀態
   描述；正式譯文專名與尚無充分來源的風格建議均未擅改。
 - 獨立 READY 複審發現原 DRAFT 混淆單次 builder 與逐事件 runtime，
@@ -2335,3 +2340,8 @@
   canonical `MenuCatalog.Resolve`、逐事件失敗上送及同 session
   封存 owner 邊界；僅十鍵 3× 畫布字模子契約限縮升 READY，
   正式程式與原版同狀態驗收仍未完成。
+- #18 的 ignored callback 反例由主代理在唯讀 Docker／Xvfb 獨立
+  重跑五項定向測試與 `go vet` 通過：同一 DOS 指標仍可因公開
+  `DOS.M` 改指，把 move／press callback 及 BIOS key 分流；
+  逐 action 補檢只會在已有 DOS 副作用後晚拒。規格 019 仍 DRAFT，
+  不把合成反例當成原版發生過的事件。

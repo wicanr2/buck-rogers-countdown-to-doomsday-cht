@@ -14,6 +14,12 @@ ignored manifest 因譯文 SHA 更新。選單 3× 的十鍵白名單、字型
 3× 畫布字模子契約**經獨立複審限縮升 READY，正式接線與驗收尚未
 完成，不能宣稱字距已修好。[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)
 記錄精確邊界。
+Issue #18 的新合成反例另證實：兩橋即使共用同一 `*DOS`，
+提交期間公開 `DOS.M` 改指仍把 move／press callback 與 BIOS key
+分送兩台 machine；逐 action 晚拒會留下副作用。
+[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+仍 DRAFT，最短缺口是可強制的單一 session 目標擁有權與整批
+排他提交，未改正式 bridge。
 
 前一進度：手冊首題的已驗原版終態已經由正式 `ManualSnapshotOwner` 接到
 實體 Ebitengine 視窗，在 host 面板實際 2×→3× Apply 後仍逐張
