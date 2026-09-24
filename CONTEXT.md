@@ -2,7 +2,21 @@
 
 更新：2026-09-24
 
-最新：原版冷開機功能選單已在實體 Ebitengine 視窗完成 2×→3×
+最新：手冊首題的已驗原版終態已經由正式 `ManualSnapshotOwner` 接到
+實體 Ebitengine 視窗，在 host 面板實際 2×→3× Apply 後仍逐張
+等於既有同狀態 RGBA 收據；這是終態顯示原型，非 Linux 直播
+session。[第二百二十三階段](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)
+另釐清畫面裡鬆散的英文字母來自正式中文 TSV 保留的專名，不是
+原版英文殘留；A／B／C／D 私有圖已比較，手冊專名保留／繁中化
+仍待使用者決定，未動正式譯文。子代理的原版主選單 Down→Up
+補證已由主代理重跑：2× 不變、3× 22 點候選差異限核准矩形；
+正式字距尚未接線。Issue #18 又有提交期間公開 `DOS.M` 改指
+的反例，整批 owner 仍非 READY。#14／#16／#18 均保持 OPEN。
+選單 3× 獨立 READY 審查仍判 DRAFT：21 個 identity 中僅 10 個
+主選單完整鍵值可入候選，尚缺精確白名單、穩定衍生字型身分及
+共用 builder 失敗即關閉測試；不需重做原版 Down→Up。
+
+前一進度：原版冷開機功能選單已在實體 Ebitengine 視窗完成 2×→3×
 Apply；3× host 面板使用使用者選定的倚天原生 24 點 A 版，
 正式本機像素測試再次通過。遊戲畫布主選單的 16／22 點 A/B
 只屬可丟棄原型：九個 `function.menu.*` 變體通過合成幾何、

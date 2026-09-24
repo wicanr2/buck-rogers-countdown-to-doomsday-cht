@@ -2299,3 +2299,19 @@
 - Issue #18 的共同 DOS／machine、generation、一次提交合成 owner
   測試與 `go vet` 通過；正式 bridge 仍可遭外部 `DOS.M` 改指，
   規格 019 保持候選，不能宣稱 Linux session 已完成。
+
+## 2026-09-24 — 原版選單動態字距與手冊首題實體視窗
+
+- 子代理從已驗原版選單 state 送 Down→Up，量到 normal／selected
+  四筆精確 post-call；主代理在唯讀 Docker／Xvfb 獨立重播通過。
+  兩個停點 2× 候選與正式 16 點逐 byte 相同，3× 22 點候選的
+  改動限核准文字矩形；正式程式未改，送限縮 READY 審查。
+- 原版手冊首題終態與 formal begin→clear→request 值由正式
+  `ManualSnapshotOwner` 交真正 Ebitengine 視窗，實體 Apply 後
+  2×／3× 分別有 39／15 張逐 byte 等於舊收據的畫面，原版
+  indexed／步數不變。初看像殘字的 `RAM` 等英文字母，其實在
+  正式繁中 TSV 裡；已訂正誤判，留下四版私有排版原型，專名
+  取捨待使用者答覆。[第二百二十三階段](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)
+- #18 獨立反例確認：合成 owner 禁止自身 rebind 仍擋不住
+  公開 `DOS.M` 在提交區間改指，滑鼠與 BIOS 鍵可分流；規格 019
+  不升 READY，不以一次預檢冒稱原子性。

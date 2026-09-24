@@ -80,3 +80,52 @@ READY 尚需固定衍生字型契約，並驗 2× 不變及原版正常／select
 PC-98／黃金盒的繁中版面研究只提供「字模尺寸、advance、行高分開量」
 的方法；本案仍保留《拯救地球》DOS 的 320×200 邏輯畫布、原版
 色彩角色與文字區，不複製其他遊戲畫面或把 PC-98 當行為 oracle。
+
+## 原版 Down→Up normal／selected 補證（2026-09-24）
+
+獨立子代理新增 ignored
+`workplace/cold-boot-live-turn-proto/menu3x_lifecycle_original_draft_test.go`
+（SHA-256 `742cfff3f4578358e7cc6d7af609c347cead5a15aaa31bf78b14d65d112d928a`）。
+原版 checkpoint `after-bios-space-100m.state` SHA-256
+`cfe15d3c66c9fe3c2e684815740a0cc0165e59d08ab5866370608d49f8a8e164`，
+`START.EXE` 雜湊沿用上節；來源唯讀。於 step 100010000 送 BIOS Down，
+停在 100060000；再送 BIOS Up，停在 100120000。正式 watcher 的
+`transition.old.create`、`selected.add`、`normal.add`、`selected.create`
+依序在 100025959、100042542、100080268、100096042 完成 guarded
+post-call，顏色各為原版 0／10、15／0、0／10、15／0。兩個停點的
+active keys 均與預期 normal／selected 轉移相符，無上一個選項的
+舊 stamp。
+
+主代理用同一 Go 1.26.7／Ebitengine 2.9.9 唯讀 Docker／Xvfb
+獨立重播通過。兩個停點的 2× 候選與正式 16 點 RGBA 逐 byte 相同；
+3× 現行 16 點與可丟棄 22 點候選分別改動 1,259／1,488 個像素，
+核准作用中選單矩形外均為零。投影前後原版 step、indexed 與 palette
+未變。這補上原版 normal／selected 的短路徑證據，**未**建立正式
+長存 22 點 layer，也未驗它在真正視窗內反覆切換／存讀檔。
+
+目前可送限縮 READY 審查的候選僅是功能主選單官方事件集；
+`RuntimeMenuOverlay` 同時服務 race 等其他文字路徑，不能因這批
+收據就把共用 constructor 的所有 3× 字型無條件換成 22 點。
+若正式接線須改共用 builder，必須以精確 event／catalog 範圍隔離，
+並保留其他路徑現行畫面，才不會將主選單證據外推。
+
+## 限縮 READY 審查結論（2026-09-24）
+
+獨立審查確認原版 Down→Up 已覆蓋 transition 的正常重繪；接下來
+不需再延長這條原版逆向。正式事件全集是 21 個 identity：1 個
+`menu.transition.*`、9 個 `function.menu.*`、11 個 `race.*`；先前
+「13 筆」指譯文筆數，不能拿來當事件白名單。規格仍是 **DRAFT**，
+最短 READY 補證如下：
+
+1. 用完整鍵值的十鍵白名單限制主選單 3× 分支，對合成
+   `menu.transition` 驗幾何及 2× 不變；對 `race.*`、post-join
+   與偽前綴鍵做不變反例。不可用字串前綴擴大範圍。
+2. 衍生 22 點字型須有穩定 `Name`、精確指標 registry、可核對的
+   fingerprint，並通過快照／還原測試。現有原型的空 `Name` 不能
+   直接進正式層。
+3. 共用 builder 應保留原 16×16 基礎分支；22 點分支須在來源、
+   輸出、樣式、倍率、文字安全矩形及混合批次方面完成失敗即關閉
+   的預檢測試。
+
+以上是規格與合成測試的缺口，不是再去猜原版行為；正式長存 layer、
+同狀態及視窗反覆切換則屬 READY 後的 CONFORMED 驗收。

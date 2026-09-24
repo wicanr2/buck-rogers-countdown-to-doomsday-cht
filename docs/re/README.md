@@ -208,3 +208,4 @@
 | [第一百九十七階段：技能頁離開確認提示 pre-write DRAFT](phase-197-skill-exit-confirmation-prewrite-draft.md) | 兩頁 row24 prompt 的 A000 首次變值相交、六格尾碼與矩形；N／Y clear 仍未量到，未達 READY。 |
 | [第一百九十八階段：技能頁離開確認 N／Y all-store pre-write DRAFT](phase-198-skill-exit-ny-all-store-prewrite-draft.md) | 同 phase-197 合法 pre-ESC state 的 Escape→N／Y，分別量到本體與六格尾碼首筆 A000 store；career／technical N 尾碼有較早同值 store，維持 DRAFT。 |
 | [第二百二十二階段：原版主選單 3× 實體切換與中文字距](phase-222-original-menu-3x-typography-draft.md) | 真實冷開機選單的 2×→3× Apply、24 點 host 面板、16／22 點繁中畫布 A/B；限可丟棄 DRAFT，不代表完整 session。 |
+| [第二百二十三階段：手冊首題實體視窗與中英混排](phase-223-manual-first-question-host-mixed-script-draft.md) | 正式手冊 owner 終態影格接實體 2×→3× host，釐清拉丁專名不是原版殘字，保留 A／B／C／D 私有視覺原型與待決取捨。 |

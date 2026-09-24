@@ -436,3 +436,35 @@ indexed／palette 下只有核准選單文字矩形內不同；它並未修改
 限縮 READY；之後才可修改 `apps/buckrogers` 正式字型接線，並以
 原版 control／2×／3× 同狀態和真實視窗回切驗收。單一主選單截圖
 不能取代全遊戲其他文字路徑或 Linux session 原子輸入的驗收。
+
+後續[第二百二十二階段原版 Down→Up 收據](../re/phase-222-original-menu-3x-typography-draft.md)
+補上 normal／selected 轉場：兩停點的 2× 候選與正式畫面逐 byte
+相同，3× 可丟棄 22 點與現行 16 點的差異只在核准 active 選單
+矩形。這足以提出**限功能主選單**的 3× 字型 READY 審查，尚未
+定稿正式 font identity、共用 `RuntimeMenuOverlay` 的事件分流或
+長存層驗收，故本節仍 DRAFT。`RuntimeMenuOverlay` 也供 race 等
+介面使用；不得把主選單結果無條件套到所有呼叫者。
+
+獨立 READY 審查後仍維持 **DRAFT**。主選單僅允許 1 個
+`menu.transition.*` 加 9 個 `function.menu.*` 的精確完整鍵值；
+`race.*` 等另 11 個 identity、post-join 與偽前綴鍵不得落入
+22 點分支。進正式程式前須固定衍生字型 `Name`／registry／
+fingerprint／快照還原契約，並在共用 builder 測 16 點原分支及
+22 點分支的來源、樣式、倍率、矩形與混合批次失敗即關閉。
+原版 Down→Up 不需重複逆向；上述合成規格通過後再安排接線與
+同狀態驗收，不把「13 筆譯文」錯算為 13 個事件。
+
+候選十鍵須逐字匹配下列 `text/menu-events.tsv` identity：
+
+```text
+menu.transition.old.create_new_character
+function.menu.option.create_new_character
+function.menu.option.add_character_to_team
+function.menu.option.load_saved_game
+function.menu.option.joystick_mouse_initialize
+function.menu.option.exit_to_dos
+function.menu.selected.create_new_character
+function.menu.instruction.choose_function
+function.menu.selected.add_character_to_team
+function.menu.normal.add_character_to_team
+```

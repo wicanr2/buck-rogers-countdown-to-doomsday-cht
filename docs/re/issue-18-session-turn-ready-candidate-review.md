@@ -532,3 +532,25 @@ ignored `frontend/ebiten/route_commit_owner_draft_test.go` SHA-256
 2.9.9 的唯讀、無網路 Docker／Xvfb 重跑定向測試及 `go vet` 通過。
 本模型直接寫合成 DOS，未接正式 bridge；外部仍能改 `DOS.M`，
 故未消除正式回合阻塞，也不升 READY。
+
+## 提交期間公開 `DOS.M` 改指的獨立反例（2026-09-24）
+
+獨立子代理於 ignored
+`workplace/dosgolem/frontend/ebiten/route_commit_target_alias_draft_test.go`
+新增 `TestDraftPublicDOSMRebindInsideCommitEscapesOwnerGuard`；整檔
+SHA-256 `5e59fb921e7964d7b99898c957c03b408166c043eb864430f0c6f29ca9afb2ca`。
+`draftBoundOwner` 的純預檢及提交起點核對均成功，且 owner 自己的
+`rebind` 被提交中閘門拒絕；但 reentrant hook 直接改公開的 `d.M`
+後，原型仍完成提交、epoch 增至 1。滑鼠座標 `(100,32)` 與左鍵留在
+原 DOS，BIOS 鍵卻送至另一台 machine。兩台 machine 的 Steps 均為零。
+主代理沒有將這個合成反例解讀為原版遊戲已發生改指；它證明目前
+owner **不能保證**提交全程目標排他。子代理在有界、唯讀、無網路
+Docker／Xvfb 重跑新舊定向 Go 測試通過；正式 bridge 仍未接共同
+owner，規格 019 保持 DRAFT／限縮 READY 候選。
+主代理亦在同一唯讀 Docker／Xvfb 獨立重跑新反例與既有共同
+owner 正反例，全部通過。
+
+READY 前必須能核對 MouseBridge 實際輸出與 KeyboardBridge 的
+BIOS transport 指向同一 DOS／machine，並在完整提交區間封閉所有
+公開 `DOS.M` 改指及其他來源變更。只在開始前比指標、只禁止
+owner 自身 rebind、或提交後再檢查，都不能倒銷已交付的 DOS 副作用。

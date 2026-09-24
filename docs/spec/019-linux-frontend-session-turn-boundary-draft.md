@@ -466,3 +466,14 @@ owner rebind 與舊計畫 replay 被拒。主代理在唯讀 Docker／Xvfb
 `readFrameInput` 的完整提交矩陣及故障 Close 亦未通過。獨立
 READY 審查前，不得將此原型搬入 production 或宣稱已修復同批
 部分副作用。
+
+## 2026-09-24：提交區間改指反例的訂正
+
+[Issue #18 獨立反例](../re/issue-18-session-turn-ready-candidate-review.md)
+證實前節合成 owner 的提交起點指標／generation 核對不足：
+其自身 rebind 即使被鎖住，外部仍可在首筆 action 前直接改公開
+`DOS.M`，使滑鼠與 BIOS 鍵分送不同 machine，owner 卻增加 epoch。
+因此 READY 候選必須把**整個提交區間**的目標獨占、兩座正式橋
+實際輸出身分、完整純預檢後不可失敗的已定序動作，以及失敗前
+DOS 副作用零新增列為同一契約；不能把一次檢查稱為原子提交。
+此為原型反證，非原版玩家路徑收據；本規格維持 DRAFT。
