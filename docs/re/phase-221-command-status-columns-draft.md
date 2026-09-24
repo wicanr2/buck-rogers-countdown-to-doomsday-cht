@@ -238,3 +238,26 @@ dispatcher entry、受保護返回；對照步數依序為
 限縮 CONFORMED 路徑。row 15 的數值／狀態欄、row 24 的
 33 格直接 glyph 與其他動態身分、冷開機玩家路徑、存讀檔仍未知；
 先前的 DRAFT 停止線對它們繼續有效。
+
+## 2026-09-24 row 15 跨兩個合法進度的方向欄負例
+
+獨立翻譯代理以手冊返回前與第九頁兩個合法原版 state 重播，
+主代理再於既有 Go 1.26.7／dosgolem fork `2c96d19` 的一次性、
+無網路 Docker 唯讀重跑 `TestCommandStatusCrossStateProbe` 通過。
+原版 `GAME.OVR` SHA-256 仍為本頁輸入表所列；早期 state 為
+`8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269`，
+第九頁 state 為
+`563ed40ba276c6857c57b05344949dec5891e4596ad783a9fc89b805eae8c2a4`。
+ignored 一次性探針 SHA-256
+`20c08c967a8a2b5a1d0980cb27207297b239c52d1ee5054390704d52c2760d66`；
+完整輸入排程、工具及重生命令只留在本機
+`workplace/phase224-row15-command-change/row15-two-progress-draft.md`，
+不把原版文字與私有輸入排程搬入 Git。
+
+兩個進度的同一路徑 `1FEB:2AF5 → 0763:0424` 都在 row 15 col 17、
+背景／前景 0／10；相同長度的兩筆整串僅方向字母所在的一格由
+`N` 變為 `E`。該欄是方向狀態值，不是玩家快捷鍵；白色快捷字母
+政策不適用，保留原版前景色 10。其餘已量 byte 只有數字、標點、
+空白與時間形狀，沒有可核准的固定英文詞。方向來源讀寫端、時間
+數值更新及自然離頁失效仍未知，正式 TSV、watcher 與安全矩形
+均不改；本項維持 DRAFT。

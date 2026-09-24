@@ -366,3 +366,41 @@ GOLEMFNT 的**同一次讀入 bytes**核對 SHA-256、字模尺寸、必需字�
 manifest、正式 Linux composition root、封閉 session、完整
 machine／DOS 同狀態、正常遊戲與存讀檔已完成；規格 004／019
 仍維持 DRAFT。
+
+## 2026-09-24 字型來源清單先驗接入本機冷開機原型
+
+上節的原型只鎖輸出檔雜湊；其 2× 子集仍指向舊版
+`150c93af…`，而 24 份現行譯文重建後的 1,025 字子集已是
+`78c43d0758db5aaa97b60574c06ba1fdccc27b187cd465c3deb8b37c4b0e226f`。
+本次只修改 ignored `workplace/cold-boot-live-turn-proto/main.go`：
+在建立 DOS machine 前，改呼叫正式的
+`LoadHostFontsFromReviewedManifests`，以獨立固定的倚天 15 點／
+24 點來源身分核對兩份本機清單、目前 TSV 雜湊、輸出檔雜湊、
+字模尺寸與面板必需字元。3× 設定面板仍使用使用者選定的
+原生 24×24 中文與 16×24 ASCII，不採 22 點衍生字模；遊戲畫布的
+3× 中文 22×22 墨跡契約不變。
+
+輸入清單 SHA-256：2× `5622d07bfd97f4f52ab5c6e8c411963e8e06d0e18fcddc635675c58a3a63c6a0`，
+3× `fd7a1da202bfdbcb3cb97172d33834871894f7e01bbd36bbd9d5f8b45b146af4`。
+本機原型 `main.go` SHA-256
+`c9e4a9062bf75e1748b65552089d1cb74a5ff68d432c119878cc557dd8358c03`。
+輸出字模雜湊為 2× 上述 `78c43d…`、3× Wide
+`621ed2c62e387916473cfcaefdd93585f085bfd4c2fc973e80cf691acac0fe49`、
+3× ASCII `7c411be15bee6911e1fec199af5643099831bd4f27b8a5676e20f96becbf2193`；
+原版及已購字型 bytes 均未入 Git。
+
+在既有 `eob-remake-go:1.26.7-ebiten2.9.9`、Go 1.26.7、
+無網路、2 GiB／2 CPU／256 PID、目前 UID/GID 的一次性 Docker／
+Xvfb 中，以唯讀 `/orig`、`/project`、`/dosgolem` 和獨立
+可寫 `/proto`、`/scratch`、`/out` 重跑
+`go test -mod=mod -run '^TestOriginalColdBootMenuAppliesPhysicalThreeX$' -count=1 -v .`
+通過。原版冷開機至 100,000,000 步；Apply 於 100,000,480，
+終點 100,000,976；3× 快照 31 次，最後 RGBA SHA-256
+`d2f6a13aae1ba412ba042b5be161a199f5ab80eb524f7ae733c313ca349797b8`。
+步數與快照次數受 X11 驅動時序影響，不作固定驗收值。首次未提供
+DISPLAY 的測試於 Ebitengine 初始化前因 GLFW 失敗；補容器內有
+trap 的 Xvfb 後原樣重跑通過，屬測試環境修正。
+
+**範圍仍是 DRAFT 原型。** 這證實啟動前清單檢查可接到現有實體
+3× 路徑，不證明正式封閉 session、完整 DOS 同狀態、手冊與
+存讀檔玩家路徑已完成。

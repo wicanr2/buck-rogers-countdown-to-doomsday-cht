@@ -793,3 +793,61 @@ SHA-256 都先核對；缺本機輸入時測試跳過，不把私有檔納入版
 先前待補的「合法原版手冊事件局部配對」因此有了 DRAFT 收據，
 但 observer-aware runner 的來源封閉、停止收據、完整 hook 清冊與
 作用層快照仍未 READY，規格 019 及 Issue #18 不因此完成。
+
+### 2026-09-24 獨立審查追加：observer runner 限縮 READY 候選（仍為 DRAFT）
+
+本節只提出使 `session.Owner.Advance` 能消費既有 Buck Rogers
+`Watcher` 的最小候選，不授權實作或把本規格升為 READY。現行
+`Owner.Advance` 明確是無 observer 的 `Machine.RunUntil(nil, budget)`
+切片；它不會觸發 `oracle.OnCall`。反之，現行 `Oracle.RunUntil` 每次
+嘗試 Step 前固定依序判定 condition、DOS exit、HLT、未遮蔽 A0000
+守衛、`OnCall` hooks、stub，最後才 Step；手冊 `Watcher.Install` 又會在
+dispatcher entry 動態安裝 guarded post-call hook。因此不得以裸
+`Machine.RunUntil`、通用「每步 callback」或測試用 Oracle 別名替代該
+執行順序。
+
+獨立審查發現兩個不能跳過的介面衝突：現行 `Watcher.Install(*Oracle)`
+與 `OnCall(func(*Oracle))` 會把 runner 資源交給 Buck 回呼；現行
+`Oracle.RunUntil` 的 `BudgetError` 與 `ExitError` 也可能是正常停止，
+不能把所有非 nil error 都歸類為故障。候選正式邊界須由 Owner 私有：
+在第一個 instruction 前，以限時、唯讀呼叫視圖和 hook 註冊能力
+安裝 Buck watcher；frontend、adapter 與 watcher 回呼均不得持有可重綁
+的 `*oracle.Oracle`、`*machine.Machine` 或 `*dos.DOS`。通用逐步核心應
+保留 Oracle 已量到的順序，再提供固定預算切片的 typed 停止結果；
+正常預算耗盡、DOS 結束和條件達成先與觀測／原版故障分流。各類
+`TickReceipt` 映射必須先逐例量測，保存原始停止原因、前後 Steps
+與 DOS exit；不能直接套用現有 `RunUntil` 的 error 或裸 Machine stop。
+
+升格限縮 READY 前，審查者必須逐項確認：
+
+1. 不使用 reflection／`unsafe`、公開 resource getter 或 caller 可注入 runner；
+   private boot、install、run 與 Close 的所有權鏈可由正式 API 證明。
+2. hook 清冊含手冊 dispatcher、clear 與動態 return hook；靜態
+   dispatcher／clear 須在本次續行第一步前安裝，動態 return hook
+   則在 dispatcher 回呼取得 returnTo 後、對應返回指令前安裝。
+   callback 重入、hook／stub／Step 次序及 callback 錯誤都各有負例。
+3. 正式 runner 對本切片會用到的 exit、HLT、A0000 guard、hook、Step
+   與 budget 邊界以現行 `Oracle.RunUntil` 的已量順序為基準；
+   condition／stub 用少量合成反例固定共用核心順序。若最後一步
+   造成 DOS exit，Oracle 會先回 `BudgetError`、下一回圈才見
+   `ExitError`，現行 Owner 卻在當回合後置檢查回 `ProgramStopped`；
+   typed slice 應採哪一種玩家回合收據須明確決定並逐項審核，
+   不得用「保留順序」掩蓋差異。正常停止與真正故障均有 typed
+   mapping；不得以零值 condition 呼叫舊 API。
+4. `2c96d19` 的合法原版 checkpoint paired receipt 改由正式 Owner 路徑重跑：
+   同一原版／checkpoint hash、第一步前安裝、相同 budget，且 begin／clear／
+   request 順序、終點 steps、CPU／memory／indexed／palette 摘要與 DOS exit
+   均與獨立 Oracle continuation 相同。原版缺席時明確 skip。
+5. observer callback、hook 安裝或 runner 失敗時，不再 Step、不再送輸入，
+   首次故障可稽核且第二次 Advance 為零新增步；Owner 的 Close-once
+   依既有生命週期契約驗證。presentation Frame／Snapshot 各守自己的
+   DRAFT 閘門，不列為此 runner 切片升格的先決條件。
+6. 同一原版 checkpoint 的無 watcher A/B 仍相同；有 watcher 時差異僅為
+   核准的值型 observation，不得改變 DOS input、記憶體、返回值或
+   已量的 DOS 終點。完整檔案／存檔、畫面 Snapshot／2×／3× 與正常玩家
+   路徑另依既有 DRAFT 閘門驗收，不能用此小窗收據取代。
+
+現有 `session/manual_checkpoint_owner_pair_draft_test.go`（commit `2c96d19`）
+只完成第 4 項的 DRAFT 對照前半：它以測試專用反射／`unsafe` 建立 Oracle
+別名，未經 `Owner.Advance`，亦未驗證上述正式所有權、停止收據與失敗收束。
+它可保留為私有原版輸入的回歸探針，不能提升為 production 接線證據。
