@@ -28,5 +28,5 @@
 | [技能頁離開確認提示繁中覆繪](020-skill-exit-confirmation-overlay-draft.md) | 限縮 CONFORMED（僅兩句本體與固定無頭路徑） | 兩個合法 state 的 Escape→N／Y、2×／3× 正式 A/B 已驗；尾碼零覆繪且終態無殘層。存讀檔、Restore bridge、Linux 視窗與冷開機未驗。 |
 | [加入角色後真正 Exit 問句本體覆繪](021-post-join-exit-prompt-body-only-draft.md) | 限縮 CONFORMED（固定 N／Y→Y 路徑、兩句本體） | 正式 watcher／presenter 已完成 2×／3× 同狀態 A/B 與已量生命週期驗收；原版多色六格尾碼保留，其他路徑與 Linux 玩家視窗未驗。 |
 | [第九頁固定單行劇情輸出端覆繪](022-story-page9-overlay-draft.md) | 限縮 READY（僅固定入頁本體） | 正式 watcher／presenter 及 control／2×／3× 入頁 A/B 已驗；自然離頁與實際清層後畫面未驗，不升 CONFORMED。 |
-| [row 15／row 24 命令狀態列輸出端](023-command-status-overlay-draft.md) | DRAFT | 已量 row 15 跨進度不同身分、欄位遮罩及原版清除／A000 首寫；row 24 無不同值，仍未證實固定詞及完整失效，無譯文或正式接線授權。 |
+| [row 15／row 24 命令狀態列輸出端](023-command-status-overlay-draft.md) | 既有 `roster.loading` 第三頁轉場限縮 CONFORMED；其餘 DRAFT | 21-byte 既有 exact key 的 2×／3× 同狀態入頁、自然清層與負例已驗；row 15、33 格直接 glyph 和其他動態身分未核准新譯文或正式接線。 |
 | [手冊背景／正文作用層群組與字型身分](024-manual-layer-group-font-identity-ready-candidate.md) | DRAFT | Clear 後舊 layer 別名、未命名 3× 衍生字型與正式 provider 先讀 frame 的缺口已證實；待無別名 owner 與正式預檢契約重審。 |

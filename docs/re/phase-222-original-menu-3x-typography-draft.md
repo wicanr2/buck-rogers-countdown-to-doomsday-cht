@@ -281,3 +281,22 @@ SHA-256 `2edac5caadb4e7388cd3cb790b0d74e22a8bbc0168e717002dd04d4b681813af`。
 此收據補齊十鍵主選單字距的限縮實體回切，但 CLI 正式收據仍
 無終態錨定、#18 正式輸入原子性、正常玩家入口與存讀檔仍未知；
 規格 004 十鍵子契約維持 READY，不升整體 CONFORMED。
+
+## 2026-09-24 CLI 驗證失敗半份收據的限縮修正
+
+本機 ignored dosgolem 分支 `18575d2` 將選單、加入角色選單、技能離頁
+及 Exit 問句四條 CLI 覆繪路徑的基準 RGBA 寫入移到 `Draw` 與
+`validateOverlayDraw` 成功之後；這是收據工具的輸出順序修正，
+**不**改終態 `Pending`／`OnFrame` 語意或原版執行。
+
+主代理於 Go 1.26.7 的唯讀、無網路、有界 Docker 執行
+`go test -count=1 ./cmd/buckrogers-text-receipt` 與同套件 `go vet`，
+均通過。再由已驗 `after-bios-space-100m.state` 從相同步數排入 Down，
+於 `100060000` 跑正式 scoped 3× CLI：仍按既有契約以
+`drew=false active=3` 失敗，但容器暫存區的 baseline 與 overlay
+兩檔均不存在；原版輸入唯讀。用同一 state 於 `100000000` 跑
+2× 有效停點，CLI 成功且兩檔與 JSON 均非空。
+
+這只證明繪製／驗證錯誤不再先留下 baseline；若第一個輸出檔已寫入、
+第二個輸出檔的 I/O 才失敗，仍可能有單邊檔。完整多檔提交策略及
+終態 A／B／C 收據語意尚未決定，不能宣稱 CLI 已取得 3× 覆繪收據。

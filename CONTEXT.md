@@ -2,6 +2,28 @@
 
 更新：2026-09-24
 
+最新 #8 限縮補證：合法第三頁轉場的 row 24 21-byte 原文事件
+命中既有 `roster.loading`，沒有新增譯文或正式接線。主代理重跑
+2×／3× control A/B、自然清層及 11 筆身分負例：原版 machine／DOS
+同值，繁中差異只在安全矩形，清層後為零。此一路徑限縮
+CONFORMED；row 15、row 24 其他動態身分、冷開機與存讀檔仍 DRAFT。
+[第二百二十一階段](docs/re/phase-221-command-status-columns-draft.md)與
+[規格 023](docs/spec/023-command-status-overlay-draft.md)已回填舊結論。
+
+最新 #18 補證：dosgolem fork `7ff0581` 增加滑鼠橋唯讀值快照，
+主代理重跑套件／競態測試及 vet 通過。ignored 私有 session v2
+已覆蓋 Down＋Up、多鍵、跨 layout、失焦、Open／Apply／Cancel
+及漂移拒絕；但獨立反例證實舊 `pressedEpoch` 鏡像不足以預檢
+真實橋接器狀態。正式私有 owner／無失敗提交及 Draw／Close
+尚未接通，規格 019 不升 READY。
+
+最新 #16 工具修正：本機 dosgolem 分支 `18575d2` 已讓四條文字收據
+CLI 路徑先 `Draw`／驗證，再寫 baseline 與 overlay。原版選單
+`100060000` 的舊／新 3× 終態仍如實以 `drew=false active=3` 失敗，
+但重跑確認不再留下半份 RGBA；同 state 的 2× 有效停點仍成功
+產生雙檔與 JSON。第二個輸出檔的 I/O 失敗尚無多檔交易保證，
+終態呈現方式仍待使用者選擇，#16 未完成。
+
 最新 #18 複審：被忽略的 typed 推進原型已修正首次原版故障後重試
 遺失停止原因與根因的問題；主代理在 Docker 獨立重跑 package 測試
 與 `go vet` 通過。另以完整路由矩陣證實私有 session 原型目前只支援
@@ -25,8 +47,9 @@ dosgolem 分支 `3b02f88`，獨立重跑套件測試與原版 Down→Up 四模�
 
 CLI 的舊／新 3× `Pending` 失敗已縮至停止格未經原版 `OnFrame`：
 同狀態補錨可丟棄原型由主代理重跑通過，但須明示其不是原版
-真實畫格；現行 CLI 又在繪製驗證前寫 baseline，錯誤會留半份
-收據。正式收據語意尚待決定，CLI 未修，詳見[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)。
+真實畫格；繪製驗證前寫 baseline 的缺口已由 `18575d2` 限縮修正，
+但多檔 I/O 原子性與正式終態收據語意尚待處理，詳見
+[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)。
 
 前一補證：#18 的私有目標 session 合成原型證明自建且不外洩
 DOS／machine／兩橋可避開公開別名反例；僅驗一種 Down＋Enter
@@ -188,7 +211,8 @@ glyph 路徑不能合併。A000 首寫與部分清除邊界已量，但跨狀態
 不同的 11／12 格身分，部分 byte 固定、部分變動；但字節類別只有
 數字、空白與其他非英文字母，不能辨識可核准的固定英文詞界。
 row 24 的既有收據仍沒有同路徑的第二個不同值。故規格 023
-維持 DRAFT，沒有 READY 譯文或正式接線。
+原先維持 DRAFT，沒有**新建**譯文或正式接線；後續既有
+`roster.loading` 的第三頁轉場已另行限縮驗收，見本檔頂端。
 
 [第二百一十八階段](docs/re/phase-218-exit-prompt-runtime-ab.md)現已把真正
 Exit 後兩句 row 24 問句本體接上正式 dosgolem watcher／presenter；

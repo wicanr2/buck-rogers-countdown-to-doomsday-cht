@@ -631,3 +631,34 @@ SHA-256 `11ed3fd23a81bb5ca951d2135f137a1b6ea701be71c00da51c5147775edd9899`，
 專用無網路、唯讀、有界 Docker 獨立重跑該 package 全測試與 `go vet`
 通過，並核對三檔雜湊。修正只使推進收據原型可再審；正式 session
 尚無共同私有 owner、整批提交或 Draw 故障收束，規格 019 不升 READY。
+
+## 私有批次 v2 與滑鼠快照複審（2026-09-24）
+
+ignored `route_private_batch_v2_draft_test.go` SHA-256
+`6e54e763695976ec58f3c3b9c7996448ee0b7220b4a1a2cbc8cfddcdf670c67c`
+已以私有合成 DOS／machine／panel／mouse／keyboard owner 擴至
+Down＋Up、多 BIOS 鍵、跨 layout epoch 放開、失焦、host capture、
+Open／Apply／Cancel＋Enter、無效晚到輸入、generation ABA、layout／
+DOS target 漂移與重入。主代理獨立重跑定向測試及 `go vet` 通過；
+這仍是忽略清單中的可丟棄原型，不是正式 `Game.Update`。
+
+獨立反例 `route_sealed_matrix_gap_draft_test.go` 的新版 SHA-256
+`b119eed889196d60a08e356e77556885ceea8d7eeda55691672be74de0eacc1d`：
+若橋內發生失焦→新 epoch 按下，而 owner 仍只持有舊 `pressedEpoch`
+鏡像，純計畫認為 Up 僅 Release，實際橋會 Move＋Release；結果
+改變 DOS 座標，末態與 epoch 檢查仍可能通過。此測試刻意繞過私有
+owner mutator，並非證明真正封閉 owner 必然錯誤；它精確指出
+目前 `inspect` 不能證明純計畫與橋接器動作等價。v2 仍可能在
+首筆 DOS 副作用後遇到可失敗的 panel／layout／keyboard 呼叫，
+也未閉合 Draw／Close／fault 與正式 `readFrameInput`，故不升 READY。
+
+dosgolem fork `7ff0581` 增加 `MouseBridge.Snapshot()`：只回傳
+`Current`、`HasCurrent`、`Pressed`、`PressedEpoch`、`HostCaptured`
+的純值複本，nil 回零值，不給可變指標或輸出能力。主代理審閱
+`host/mouse_bridge.go` SHA-256
+`c8f2e7570d3d19490ffc7c05785a29b56e337b1519b179f55dff612b39ac44e6`
+與測試 SHA-256
+`75aace8fee5c63fa30d2612e5a3abe39dd6aa6688c0eb95e94d8b0dc6b40af70`，
+在 Go 1.26.7 無網路有界 Docker 重跑 `go test -count=1 ./host`、
+`go test -race -count=1 ./host`、`go vet ./host` 通過。此 API
+只補預檢觀測材料，不等於擁有排他提交或正式 session。

@@ -1,6 +1,6 @@
 # 023 — row 15／row 24 命令與狀態列輸出端
 
-狀態：**DRAFT；不授權新增翻譯 TSV 或正式 watcher／presenter**
+狀態：**row 15 與其餘 row 24 維持 DRAFT；既有 `roster.loading` 之第三頁轉場限縮 CONFORMED；不授權新增翻譯 TSV 或正式 watcher／presenter**
 日期：2026-09-24
 
 原版欄位與寫入證據見[第二百二十一階段](../re/phase-221-command-status-columns-draft.md)；
@@ -78,3 +78,16 @@ A000 offset 是 320×200 Mode 13h byte 位移，不與 IDA 位址混用。
 伴隨相同 caller／row／col 的不同原文；再以私有畫面與來源讀寫端
 辨識詞界／動態欄，量完整返回與覆繪失效邊界。不得僅因 byte
 相同就建立 catalog key，也不得把此 probe 接成 production。
+
+## 2026-09-24 既有譯文的限縮回填
+
+[第二百二十一階段末節](../re/phase-221-command-status-columns-draft.md#2026-09-24-既有載入訊息的合法轉場補證)
+證實：上述 row 24 Enter 的 21-byte 整串 SHA，於合法第三頁轉場
+正是已核准 `roster.loading` 的輸出事件。既有正式 catalog／presenter
+以完整原文身分辨識它，未採用本規格所討論的欄位拆解或新譯文。
+主代理獨立重播 control／2×／3× 入頁及自然清層，同狀態 machine／DOS
+與原版事件相同，繁中差異只在 `[0,168)×[192,200)`；11 筆近似
+身分負例皆不誤命中。因此**只對此 key、此原版入口與清層路徑**
+補記限縮 CONFORMED。上文「沒有核准繁中詞」及「沒有完整失效收據」
+是對其餘 row 15／24 候選的歷史結論，不再適用於這條既有訊息。
+33 格直接 glyph、其他動態身分、冷開機與存讀檔均未因此升格。

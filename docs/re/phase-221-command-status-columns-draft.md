@@ -1,7 +1,7 @@
 # 第二百二十一階段：命令／狀態列欄位與清除邊界
 
 日期：2026-09-24
-狀態：**DRAFT 原版觀測；沒有可授權翻譯的固定詞**
+狀態：**row 15 與其餘 row 24 維持 DRAFT；既有 `roster.loading` 之合法第三頁轉場另有限縮驗收，見末節**
 
 ## 問題與停止線
 
@@ -163,3 +163,45 @@ ASCII 英文字母**。P 不推定為特定符號或詞。即使有逐 byte 不�
 因此 row 24 仍缺「同 caller／row／col，且來源可證的不同值」；
 row 15 則雖有跨進度不同內容，仍缺可核准翻譯的固定詞與失效驗收。
 不延長第九頁盲目按鍵，不新增 TSV 或正式覆繪。
+
+## 2026-09-24 既有載入訊息的合法轉場補證
+
+上述「row 24 尚無可授權固定詞」是當時對**新建命令／狀態列譯文**的結論，
+不能抹去已在角色名冊 catalog 中核准的 `roster.loading`。後續從本頁所列
+`phase104-post-return-enter-3/control.state` 合法排程 Enter
+（`300000000`），在第三頁轉場觀察到同一 21-byte 整串身分
+SHA-256 `e920b38b45dd6a828b466a06f4c4c4f63645f1c6a82e488599dc3da46b5280f2`，
+row 24 col 0、背景 0／前景 10、caller `0763:1307 → 0763:0424`。
+原版 `START.EXE` SHA-256 為
+`58a34a38b1db455202d2d30daa82915982d7d905932b46bdc7371cb466226cf1`；
+`GAME.OVR` 身分見本頁輸入表。`1841:3E4E`（線性 `1C25E`）是
+dosgolem 執行期字串來源，非 EXE 檔案偏移；該記憶體緩衝區會重用，
+不可只憑指標辨識譯文。原版 entry `300001389`、guarded return
+`300017636`；下一筆不同 caller `37F1:0337 → 0763:026B` 的
+glyph entry `308525665` 後，最早相交 A000 pre-write 為 `308525782`。
+
+沿用現有 `text/save-roster-join-runtime-events.tsv` 的 exact key 與
+`text/save-roster-join-text-safe-rects.tsv` 的 `[0,168)×[192,200)`
+安全矩形，**沒有新增 TSV、watcher 或 presenter**。ignored 原版探針
+`command_status_literal_probe_test.go` SHA-256
+`ac7f6bb779051a1e4b846da1792ab8c0c85da92be424168149aca53da2f58879`；
+11 筆近似身分負例探針 `command_status_roster_identity_negative_test.go`
+SHA-256 `e49d46d0bf513935ce715ecc080aaff12d389e93718a6742a5ee18bf1d72e271`。
+兩者均由主代理在 Go 1.26.7 的無網路有界 Docker 獨立重跑兩次通過。
+
+正式 CLI 與 state-compare 重生腳本
+`workplace/command_status_roster_ab_probe.sh`（ignored；SHA-256
+`9d4efaeea05cd05cbc23b25376d4bd7c3a2d4af0b75b6d38084d56d8940a309d`）
+亦由主代理獨立執行。硬停 `308000000` 時 2×／3× 均為
+`active=roster.loading`、`drew=true`；安全矩形內分別變動
+1,272／2,669 像素，外部皆為零。硬停 `309000000` 時自然清層，
+兩倍率 `active=null`、`drew=false`，矩形內外差異皆零。
+四組 control／覆繪的事件、BIOS 鍵、記憶體、indexed、palette
+SHA 均一致，state-compare 的 machine／DOS digest 亦一致。
+原始 gob/gzip state 位元組不作相等判據。此處 3× 正式 runtime
+仍使用 16×16 字型縮放，不能把另外的 22 點離線候選算入驗收。
+
+這只讓**同一個已核准的固定載入訊息**在第三頁合法轉場增列
+限縮 CONFORMED 路徑。row 15 的數值／狀態欄、row 24 的
+33 格直接 glyph 與其他動態身分、冷開機玩家路徑、存讀檔仍未知；
+先前的 DRAFT 停止線對它們繼續有效。

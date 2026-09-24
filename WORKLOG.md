@@ -2391,3 +2391,24 @@
   不再呼叫 machine。主代理逐行審查、核對 SHA，於 Docker 獨立重跑
   該 package 測試與 `go vet` 通過。正式程式未改，規格 019 與
   Issue #18 仍是 DRAFT／開放；不得把原型當作 Linux 可玩 session。
+
+## 2026-09-24 — 第 16 項 CLI 驗證後才寫檔
+
+- 本機 dosgolem fork `18575d2` 調整四條文字收據 CLI 路徑：先完成
+  覆繪與驗證，再寫 baseline／overlay。正式套件測試與 `go vet`
+  於無網路、唯讀、有界 Docker 通過。
+- 原版選單已驗 Down 停點仍因 `Pending` 回 `drew=false active=3`，
+  但不再建立任一 RGBA；同 state 有效 2× 停點仍產出兩份 RGBA
+  與 JSON。只修繪製驗證失敗留下半份收據；第二檔 I/O 失敗的
+  多檔交易與終態收據選項仍待處理，未將 #16 宣稱完成。
+
+## 2026-09-24 — 第 8 項既有載入訊息轉場與第 18 項滑鼠快照
+
+- 第三頁合法 Enter 的 row 24 21-byte 訊息沿用既有 `roster.loading`。
+  主代理重跑原版探針、11 筆身分負例及 control／2×／3× 入頁和
+  自然清層；machine／DOS digest 與事件相同，安全矩形外零差。
+  規格 023 僅就此一路徑回填限縮 CONFORMED，其餘 DRAFT。
+- ignored 私有 session v2 原型已擴充合法輸入矩陣；獨立反例揭露
+  `pressedEpoch` 鏡像可漏掉橋內轉態。dosgolem fork `7ff0581`
+  新增唯讀值快照，主代理重跑 host 測試、競態測試與 vet 通過。
+  尚無正式 owner／提交排他／Draw 收束，#18 仍未完成。
