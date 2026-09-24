@@ -251,18 +251,8 @@ def _catalog_metadata(paths: list[Path]) -> list[dict[str, str]]:
     )
 
 
-def build(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path, out: Path, manifest_out: Path, repository: Path | None = None) -> dict[str, object]:
-    repository = (repository or Path(__file__).resolve().parents[1]).resolve()
-    safe_out = _workplace_path(out, repository)
-    safe_manifest = _workplace_path(manifest_out, repository)
-    if safe_out == safe_manifest:
-        raise CatalogError("字型與 manifest 輸出不得相同")
-    if safe_out.exists() and safe_manifest.exists() and os.path.samefile(safe_out, safe_manifest):
-        raise CatalogError("字型與 manifest 輸出不得是同一檔案或 hard link")
-    inputs = [*catalogs, asc_path, spc_path, std_path]
-    input_paths = {path.resolve() for path in inputs}
-    if safe_out in input_paths or safe_manifest in input_paths:
-        raise CatalogError("輸出不得與 catalog 或字型來源重疊")
+def _bundle_bytes(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path) -> tuple[bytes, bytes, dict[str, object]]:
+    """以同一份嚴格規則產生 build 與唯讀 verify 的預期內容。"""
     entries = _read_catalog_glyph_entries(catalogs)
     character_sha = _sha256(character_list_bytes(entries))
     codepoints = catalog_codepoints(entries)
@@ -287,7 +277,44 @@ def build(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path, 
         "top_pad": {"ascii_x": [4, 11], "source_rows": [0, 14], "output_rows": [1, 15]},
     }
     manifest_data = (json.dumps(manifest, ensure_ascii=False, sort_keys=True, separators=(",", ":")) + "\n").encode("utf-8")
+    return font_data, manifest_data, manifest
+
+
+def build(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path, out: Path, manifest_out: Path, repository: Path | None = None) -> dict[str, object]:
+    repository = (repository or Path(__file__).resolve().parents[1]).resolve()
+    safe_out = _workplace_path(out, repository)
+    safe_manifest = _workplace_path(manifest_out, repository)
+    if safe_out == safe_manifest:
+        raise CatalogError("字型與 manifest 輸出不得相同")
+    if safe_out.exists() and safe_manifest.exists() and os.path.samefile(safe_out, safe_manifest):
+        raise CatalogError("字型與 manifest 輸出不得是同一檔案或 hard link")
+    inputs = [*catalogs, asc_path, spc_path, std_path]
+    input_paths = {path.resolve() for path in inputs}
+    if safe_out in input_paths or safe_manifest in input_paths:
+        raise CatalogError("輸出不得與 catalog 或字型來源重疊")
+    font_data, manifest_data, manifest = _bundle_bytes(catalogs, asc_path, spc_path, std_path)
     _publish_pair(safe_out, font_data, safe_manifest, manifest_data)
+    return manifest
+
+
+def verify(asc_path: Path, spc_path: Path, std_path: Path, font_path: Path, manifest_path: Path, repository: Path | None = None) -> dict[str, object]:
+    """不寫入任何檔案，核對完整正式譯文、原始字型與本機產物。"""
+    repository = (repository or Path(__file__).resolve().parents[1]).resolve()
+    catalog_dir = repository / "text"
+    if not catalog_dir.is_dir():
+        raise CatalogError("缺少正式 text/ 目錄")
+    catalogs = sorted(catalog_dir.glob("*.zh-TW.tsv"))
+    if not catalogs or any(not path.is_file() or path.is_symlink() for path in catalogs):
+        raise CatalogError("正式 catalog 集合為空或含非一般檔案")
+    safe_font = _workplace_path(font_path, repository)
+    safe_manifest = _workplace_path(manifest_path, repository)
+    if safe_font == safe_manifest or not safe_font.is_file() or not safe_manifest.is_file():
+        raise CatalogError("本機字型與 manifest 必須是兩個現有檔案")
+    expected_font, expected_manifest, manifest = _bundle_bytes(catalogs, asc_path, spc_path, std_path)
+    if safe_font.read_bytes() != expected_font:
+        raise CatalogError("本機 GOLEMFNT 與正式譯文／倚天來源不符")
+    if safe_manifest.read_bytes() != expected_manifest:
+        raise CatalogError("本機 manifest 與正式 catalog／來源／字型不符")
     return manifest
 
 
@@ -301,9 +328,18 @@ def main(argv: list[str] | None = None) -> int:
     command.add_argument("--std", required=True, type=Path)
     command.add_argument("--out", required=True, type=Path)
     command.add_argument("--manifest-out", required=True, type=Path)
+    command = subparsers.add_parser("verify", help="唯讀核對 text/ 全部正式繁中 catalog、本機來源與既有字型／manifest")
+    command.add_argument("--asc", required=True, type=Path)
+    command.add_argument("--spc", required=True, type=Path)
+    command.add_argument("--std", required=True, type=Path)
+    command.add_argument("--font", required=True, type=Path)
+    command.add_argument("--manifest", required=True, type=Path)
     args = parser.parse_args(argv)
     try:
-        manifest = build(args.catalog, args.asc, args.spc, args.std, args.out, args.manifest_out)
+        if args.command == "build":
+            manifest = build(args.catalog, args.asc, args.spc, args.std, args.out, args.manifest_out)
+        else:
+            manifest = verify(args.asc, args.spc, args.std, args.font, args.manifest)
     except (CatalogError, OSError) as exc:
         print(f"錯誤：{exc}", file=sys.stderr)
         return 1

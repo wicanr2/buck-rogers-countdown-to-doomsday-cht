@@ -2,6 +2,16 @@
 
 更新：2026-09-24
 
+最新：本機倚天子集已由 `tools/eten_font.py verify` 以全部 24 份正式 TSV、
+三個固定來源及現有 GOLEMFNT／manifest 唯讀逐 byte 核驗，15 項合成測試
+通過；正式 Linux session 尚未在啟動時呼叫。手冊 `ManualSnapshotOwner`
+用正式原版 runner 的首題 begin／clear／request 收據和同一終態影格，
+2×／3× 投影與正式 presenter 逐 byte 相同，差異只在核准矩形，
+owner 前後 DOS／machine state 不變；這是收據重播，不是直播接線。
+另有正式 `Game.Update` 合成反證確認滑鼠／鍵盤橋可指向不同 DOS，
+前檢後改 `DOS.M` 亦會在鍵盤拒絕前留下滑鼠動作。規格 019 因而仍非
+READY；Issue #14／#18／#16 均未完成。
+
 第四／五頁跨頁引號已校正：第四頁末不提早閉引號，第五頁末補閉引號。
 沿用已量合法進頁及 Enter 離頁路徑，以新 TSV、目前本機字型重跑雙頁
 各六組 control／2×／3×；全部原版 JSON 與存態相同，繁中差異只在

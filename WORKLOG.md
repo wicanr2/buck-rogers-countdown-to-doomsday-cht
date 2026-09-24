@@ -2260,3 +2260,28 @@
 - [Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)
   已追加驗收與停止線。規格 019 的整批路由、session owner、
   正常玩家路徑仍未完成，不宣稱 Linux 可玩版已完成。
+
+## 2026-09-24 — 手冊首題 owner 原版收據與字型唯讀核驗
+
+- `tools/eten_font.py verify` 使用全部 24 份正式 TSV、固定 SHA-256 的三個
+  倚天來源，唯讀重算本機 GOLEMFNT 及 sidecar 並逐 byte 通過：1,028
+  字模，字型 SHA-256 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`。
+  15 項合成測試涵蓋 catalog／字模／sidecar／來源變動拒絕，不寫輸出。
+  正式 Linux session 尚未呼叫此入口；用法與邊界記於[規格 008](docs/spec/008-eten-top-pad-local-font-builder-draft.md)。
+- 子代理用正式原版 runner 的首題固定 state，重播 control／2×／3×，
+  memory／indexed／palette／DOS state 相同；再把 begin／clear／request
+  收據與終態影格交正式 `ManualSnapshotOwner`。主代理在唯讀 Docker
+  獨立重跑 2×／3×：owner 與正式 presenter RGBA 逐 byte 同值，僅
+  `[7,312)×[72,184)` 內分別變更 3,776／6,591 像素，外側零；
+  owner 前後 machine／DOS state 相同。第一次漏掛 `/orig` 導致
+  `GAME.OVR` 還原失敗，補上已驗來源唯讀掛載後同測試通過。
+  私有檔案僅在 ignored `workplace/manual-owner-oracle-20260924/`；
+  [規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)
+  保持限縮 READY，不能推定正式 Linux 直播接線或其他 38 題完成。
+- 另一子代理以正式 `Game.New`／`Update` 證實同批滑鼠與鍵盤可指向
+  不同 DOS，或在回合前檢後改 `DOS.M`，使鍵盤拒絕前留下左鍵與座標。
+  主代理在唯讀 Docker／Xvfb 獨立重跑兩個合成負例及 `go vet` 通過。
+  [規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)與
+  [Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)
+  已補共同 DOS／machine 身分及提交排他性停止線，未改正式回合，
+  Issue #18 繼續開放。

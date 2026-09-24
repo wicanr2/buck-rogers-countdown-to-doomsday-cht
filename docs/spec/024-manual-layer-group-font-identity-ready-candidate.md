@@ -296,3 +296,26 @@ sidecar SHA-256 為 `d359ee25ae89b301daded39a1ba253b2324850f2b935ae57276e3a1377a
 正式 Linux session 尚未調用此 owner，真實手冊首題／答錯換題、
 清除／返回、存讀檔及其他 overlay 並存仍待原版收據；不能把元件存在
 當成玩家可見中文化完成。
+
+## 2026-09-24：首題原版事件收據的 owner 投影
+
+規格 008 的唯讀 `verify` 已按當前 24 份正式 TSV、三個固定 SHA-256
+倚天來源及既有本機字型／manifest 重算並逐 byte 通過；這仍是 caller
+在研究流程中的檢查，**尚非正式 Linux session 的啟動前檢**。
+
+ignored 測試 `workplace/dosgolem/apps/buckrogers/manual_snapshot_owner_original_oracle_test.go`
+（SHA-256 `b59ebf7d59df88c3ae3d1d2754f57abd80db7036716708a9e9c9a280a004820b`）
+從正式原版 runner 的固定 state／control／2×／3× 收據讀取 begin、clear、request
+事件與終態 indexed／palette，交給正式 `ManualSnapshotOwner`。原版
+memory、indexed、palette 與完整 DOS state 比對相同；owner 2×／3×
+RGBA 各與正式 `RuntimeManualOverlay.Draw` 逐 byte 相同。差異只落在
+`[7,312)×[72,184)`：2× 3,776、3× 6,591 像素，外側皆零；
+owner 呼叫前後 machine／DOS state 逐 byte 相同。原版檔案、存態、
+RGBA 與完整收據仍只在 ignored `workplace/manual-owner-oracle-20260924/`。
+主代理用唯讀 Docker 獨立重跑兩個倍率測試通過；第一次漏掛原版
+`/orig` 導致還原失敗，補齊唯讀來源後同命令乾淨通過，屬驗證環境問題。
+
+此證據把本元件的**首題原版事件輸入後投影**驗至同狀態，但事件仍由
+正式 runner 收據重建，未由 Linux session 直播傳入 owner；答錯換題、
+正常玩家進入／返回、存讀檔及多作用層並存未驗。整體手冊路徑不升
+CONFORMED，Issue #14 繼續開放。

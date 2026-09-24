@@ -9,7 +9,7 @@ from catalog_font import CatalogError, Entry, character_list_bytes
 from eten_font import (
     SOURCE_ASCII, SOURCE_SPC, SOURCE_STD_COMMON, SOURCE_STD_SECONDARY,
     Glyph, _read_source, _top_pad_ascii, _top_pad_wide, big5_raw, build, decode_golemfnt,
-    encode_golemfnt, glyph_for, SOURCE_SPECS,
+    encode_golemfnt, glyph_for, verify, SOURCE_SPECS,
 )
 
 
@@ -163,6 +163,54 @@ class EtenFontTest(unittest.TestCase):
         self.assertEqual(manifest["format"]["glyphs"], 2)
         self.assertEqual([glyph.codepoint for glyph in decode_golemfnt(out.read_bytes())], sorted(map(ord, "甲乙")))
         self.assertEqual([entry["filename"] for entry in manifest["catalogs"]], ["first.tsv", "second.tsv"])
+
+    def test_verify_recomputes_complete_formal_bundle_without_writing(self):
+        text_dir = self.repo / "text"
+        text_dir.mkdir()
+        first = text_dir / "first.zh-TW.tsv"
+        second = text_dir / "second.zh-TW.tsv"
+        first.write_text("key\ttranslation\tsource\na\t甲\truntime\n", encoding="utf-8")
+        second.write_text("key\ttranslation\tsource\nb\t乙\truntime-interface\n", encoding="utf-8")
+        out = self.repo / "workplace/font.golemfnt"
+        sidecar = self.repo / "workplace/font.json"
+        with patch("eten_font.SOURCE_SPECS", self.specs()):
+            expected = build([first, second], self.asc, self.spc, self.std, out, sidecar, self.repo)
+            before = (out.read_bytes(), sidecar.read_bytes())
+            self.assertEqual(verify(self.asc, self.spc, self.std, out, sidecar, self.repo), expected)
+            self.assertEqual((out.read_bytes(), sidecar.read_bytes()), before)
+
+            second.write_text("key\ttranslation\tsource\nb\t丙\truntime-interface\n", encoding="utf-8")
+            with self.assertRaises(CatalogError):
+                verify(self.asc, self.spc, self.std, out, sidecar, self.repo)
+            second.write_text("key\ttranslation\tsource\nb\t乙\truntime-interface\n", encoding="utf-8")
+
+            out.write_bytes(before[0][:-1] + bytes([before[0][-1] ^ 1]))
+            with self.assertRaises(CatalogError):
+                verify(self.asc, self.spc, self.std, out, sidecar, self.repo)
+            self.assertNotEqual(out.read_bytes(), before[0])
+            out.write_bytes(before[0])
+
+            sidecar.write_bytes(before[1] + b" ")
+            with self.assertRaises(CatalogError):
+                verify(self.asc, self.spc, self.std, out, sidecar, self.repo)
+            self.assertEqual(sidecar.read_bytes(), before[1] + b" ")
+            sidecar.write_bytes(before[1])
+
+            third = text_dir / "new.zh-TW.tsv"
+            third.write_text("key\ttranslation\tsource\nc\t丁\truntime\n", encoding="utf-8")
+            with self.assertRaises(CatalogError):
+                verify(self.asc, self.spc, self.std, out, sidecar, self.repo)
+            third.unlink()
+
+            self.asc.write_bytes(b"\0" * self.asc.stat().st_size)
+            with self.assertRaises(CatalogError):
+                verify(self.asc, self.spc, self.std, out, sidecar, self.repo)
+
+    def test_verify_rejects_missing_bundle_before_reading_sources(self):
+        (self.repo / "text").mkdir()
+        (self.repo / "text/one.zh-TW.tsv").write_text("key\ttranslation\tsource\na\t甲\truntime\n", encoding="utf-8")
+        with self.assertRaises(CatalogError):
+            verify(self.asc, self.spc, self.std, self.repo / "workplace/missing.golemfnt", self.repo / "workplace/missing.json", self.repo)
 
     def test_rejects_symlink_and_hardlink_alias_outputs(self):
         out = self.repo / "workplace/font.golemfnt"

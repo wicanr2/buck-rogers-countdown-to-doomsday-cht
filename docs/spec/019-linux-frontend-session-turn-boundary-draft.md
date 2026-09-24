@@ -426,3 +426,24 @@ session owner 收到 `Deliver`、`Advance`、observer／Frame、`Snapshot`
 `Closed` 及 `Failed` 均拒絕新輸入與新步進；關閉不抹除先前故障
 收據。正式接線必須實測 `Draw` 同步通知、下一次 `Update` 零步、
 資源只關一次，以及關閉錯誤的保存；既有 fake 只證明控制流程模型。
+
+## 2026-09-24：DOS 提交目標不一致的正式 bridge 反證
+
+ignored `workplace/dosgolem/frontend/ebiten/route_commit_target_alias_draft_test.go`
+（SHA-256 `c73093b27b5d5b362fd7833ed9c674503965bf9c28287519e457ae5a986cd8bc`）
+只用合成 machine／DOS，經正式 `Game.New`→`Game.Update` 重現兩例：
+一是 `MouseBridge` 接 DOS A、`KeyboardBridge` 接 DOS B，兩個 bridge
+各自合法，結果同批 canvas Down＋Enter 把滑鼠寫到 A、鍵盤寫到 B；
+二是起點共用 DOS，但在回合 BIOS 前檢後、輸入擷取時改指公開的
+`DOS.M`，Down 已改滑鼠位置並按左鍵，後段 `DeliverBIOSKey` 拒絕，
+兩台 machine 均未收鍵。兩例 machine steps 均為零。主代理在唯讀、
+無網路、有界 Docker／Xvfb 獨立重跑定向兩例及 `go vet` 通過。
+此處沒有原版素材，也不證明玩家實際操作會觸發該改指。
+
+這推翻「只核對 panel／mouse／layout 與鍵盤自身 BIOS 目標即可
+保證同批 DOS 原子交付」的假設。READY 前，`RouteBase`／來源版本
+還須涵蓋滑鼠輸出、鍵盤 transport 所指的**同一 DOS 與同一 machine**，
+以及會改變該身分的所有 rebind；唯一提交 owner 必須在整批動作期間
+排除 rebind／重入，否則須把完整輸出收進同一個可驗的提交邊界。
+僅加一次前檢仍不足以阻止後段普通錯誤。規格仍為限縮 READY 候選；
+此為補充的技術阻塞，不改使用者既定的面板／滑鼠操作決定。

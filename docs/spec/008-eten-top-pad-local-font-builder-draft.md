@@ -104,3 +104,29 @@ READY 審查已逐項確認上述 typed input、分區、codec、對齊、輸出
 校正後手冊單檔 707 glyph、character-list SHA-256
 `71a67c4e475b0150ff65ea99c0d7666322485ae5884a414e6ce649a0d558bb45`。
 以上為新增收據，未抹除首版歷史輸入與輸出。
+
+## 2026-09-24：正式接線前的唯讀核驗
+
+`tools/eten_font.py verify` 已新增唯讀核驗入口。它自行列舉 `text/*.zh-TW.tsv`
+的完整正式集合，重算嚴格 TSV 字元聯集、固定身分的三個倚天來源、
+`GOLEMFNT` 全部 bytes 與 canonical manifest bytes，並與 `workplace/` 中
+既有兩檔逐 byte 比對；不修補或重建輸出。缺檔、catalog 增減／內容變更、
+原始字型變更、字模或 sidecar 改動均拒絕。呼叫者在建立規格 024 的
+手冊 owner 前，應於唯讀掛載的 Docker 容器執行：
+
+```text
+python3 tools/eten_font.py verify \
+  --asc /etan/ET353S/FILES/ASCFONT.15 \
+  --spc /etan/ET353S/FILES/SPCFONT.15 \
+  --std /etan/ET353S/FILES/STDFONT.15 \
+  --font workplace/current-font/buckrogers-eten-top-pad.golemfnt \
+  --manifest workplace/current-font/buckrogers-eten-top-pad.json
+```
+
+此命令假設已將本機 `/home/anr2/cht/etan_font` 唯讀掛到容器 `/etan`，
+專案唯讀掛到 `/project` 並以其為工作目錄；掛載前仍須核對來源存在。
+`tools/test_eten_font.py` 的 15 項合成測試通過。實際唯讀核驗涵蓋
+24 份正式 TSV、1,028 個字模，輸出 SHA-256 為
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`。
+這只證明當次本機來源、譯文與字型產物一致；正式 Linux session 尚未
+呼叫此核驗入口，不能據此宣稱啟動時已失敗即關閉或全遊戲中文化。

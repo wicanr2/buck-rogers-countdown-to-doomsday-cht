@@ -502,3 +502,21 @@ Go 測試。dosgolem fork `docs/spec/233-ebiten-bios-transport-preflight-draft.m
 此為已證實錯誤配置的窄修補；相同批次中的其他後段錯誤、並發改指、
 滑鼠橋與鍵盤橋同機、完整 session owner、原版同狀態及正常玩家
 路徑仍未驗，規格 019 不升 READY，Issue #18 保持 OPEN。
+
+## 滑鼠／鍵盤目標分裂及前檢後改指（2026-09-24）
+
+正式 `Game.New`→`Game.Update` 的兩個合成負例已量到前節未覆蓋的
+提交目標身分：滑鼠橋可接 DOS A，鍵盤橋可接 DOS B，同批 Down＋Enter
+分別改動 A 的滑鼠及 B 的 BIOS queue；若先共用同一 DOS，回合前檢
+後再改公開的 `DOS.M`，鍵盤交付前會正確拒絕，但已送出的 Down
+仍留下位置 `(100,32)` 與左鍵按下，兩台 machine 均無新鍵／步數。
+前態均為空滑鼠／鍵盤佇列。ignored 測試檔
+`workplace/dosgolem/frontend/ebiten/route_commit_target_alias_draft_test.go`
+SHA-256 `c73093b27b5d5b362fd7833ed9c674503965bf9c28287519e457ae5a986cd8bc`；
+主代理在無網路、唯讀 Docker／Xvfb 獨立重跑 2/2 與 `go vet` 通過。
+只用合成機器，沒有原版遊戲素材或玩家路徑。
+
+因此共同來源版本不只管理 host panel／mouse 值與 layout，也須釘住
+兩個 DOS 輸出 bridge 的共同 DOS／machine 身分、變更來源與整批排他性。
+規格 019 已增補此停止線；規格 233 的限縮 BIOS 前檢仍有效，但不能
+被誤寫成完整回合原子性。Issue #18 保持 OPEN。
