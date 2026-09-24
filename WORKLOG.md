@@ -2805,3 +2805,39 @@
   遭 RAM 攻擊的敘述與英文原版相反；現有譯文由本機英文原版手冊
   支持，保留原文語意，不以疑似中譯誤句覆蓋。這是來源差異，
   不是玩家路徑驗收。
+
+## 2026-09-25 — 3× 面板 A 版確認、手冊末批校譯與 observer 閘門複審
+
+- 使用者再確認 3× host 設定面板採倚天原生 24 點 A 版；現行
+  `Game.New`／`drawText3` 已採 24×24 中文與 16×24 ASCII，排除
+  22 點衍生面板字型。主代理在 Docker／Xvfb 重跑正式前端定向測試
+  通過；首次 `xvfb-run` 因 image 缺 `xauth` 失敗，改用有 trap 的
+  Xvfb 後乾淨通過。這是 host 字型元件收據，不是 Linux 可玩版。
+- 低階代理核對手冊 crosswalk records 25–39；25–30 未改，31–39
+  原提出七筆修正。主代理對照本機英文 Log Book／Rule Book 後保留
+  Log 44、49、56、57、63、68 六筆語意訂正，撤回技術技能表一筆：
+  英文表格把 `Jury Rig` 與 `Repair Weapon` 均列為 `A,SC`，不能譯成
+  僅限冒險。繁中掃描與英文原段有出入處依英文原意處理；Deimos、
+  Stockade、RAM 專名政策未改。
+- 正式 24 份 TSV 重生 `font/characters.txt` 為 1,030 字，SHA-256
+  `4f556806112e4231909f03b723b6677d14404df73a5fe6ebd632127f327dadce`。
+  本機倚天 top-pad 2× 字模 SHA-256
+  `c76e29f449d3ae78c1467c6ddf583ac9e3e219a4f3707c65bcf22a0cd6c806b9`，
+  manifest SHA-256
+  `987a106639f19cba1c0317dde9987783a3b2efce761bc7c1f44d244cd3a19b99`；
+  手冊 catalog／39 段版面、逐份 catalog lint、builder verify 與正式
+  2×／3× manifest 前檢均在無網路 Docker 通過。跨 catalog 合併 lint
+  曾因既有共用 key 失敗，改用正確的逐份 lint 後重跑通過；未將其
+  當成產品缺陷。字型二進位、原版與掃描手冊都留在 ignored 本機。
+- observer runner 的合法 checkpoint tagged DRAFT 組合收據經主代理
+  獨立重跑，量到 9 observation／3 presentation 並與獨立
+  `Watcher.Install` 基線同狀態。獨立審查要求明確事件錨點、共用
+  安裝路徑與 installer 故障負例；代理在容量中斷前留下試驗性補件，
+  主代理修掉因最新譯文而過期的硬碼字數斷言，Docker 定向測試與
+  tagged vet 通過。複審仍發現 registrar 可在 `Run` 後延遲註冊，
+  規格 019 維持 DRAFT，不接正式 Owner；詳見該規格勘誤。
+- 本批所有一次性 Docker 工作使用 `--rm`、無網路與相稱資源限制。
+  收尾 `docker ps -a` 無本專案容器；Docker 內掃描本工作樹無
+  root-owned 檔案或誤建 `.md` 目錄，修改的 TSV／字元清單及本機
+  字型均屬 UID/GID 1000:1000。Linux 玩家入口、原版完整玩家
+  路徑與存讀檔同狀態仍未完成；#14／#16／#18 保持開啟。

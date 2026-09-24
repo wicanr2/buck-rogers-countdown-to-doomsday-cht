@@ -1,16 +1,18 @@
 # 目前狀態
 
-更新：2026-09-24
+更新：2026-09-25
 
-本輪 ignored 冷開機原型已將正式雙倍率字型來源清單先驗接到
-建立 DOS machine 之前：現行 2× 子集 SHA-256 為 `78c43d…`，
-3× 面板仍為已決定的倚天原生 24 點；Docker／Xvfb 實體
-2×→3× Apply 重跑通過，原版至 100,000,976 步，面板回合零 DOS
-步。這不是正式 Linux 可玩版。觀測器 runner 的獨立審查另抓到
-`Watcher.Install(*Oracle)` 資源邊界與 `BudgetError`／`ExitError`
-正常停止分類兩處衝突，規格 019 已訂正且維持 DRAFT。第 15 列
-兩個合法進度證實 `N/E` 是會變的方向狀態，不屬白色快捷鍵；
-正式 TSV 不新增猜譯。
+3× host 設定面板沿用使用者選定的 A 版：倚天原生 24×24 中文／
+16×24 ASCII，排除 22 點衍生版；正式前端字型定向測試通過。
+手冊末批來源核對修正六個正式譯文 key，`font/characters.txt` 現為
+1,030 字，SHA-256 `4f556806112e4231909f03b723b6677d14404df73a5fe6ebd632127f327dadce`；
+本機 2× 倚天子集已重建且與 3× A 版共同通過正式來源前檢，詳見
+[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
+技術技能表代理修訂與本機英文 Rule Book 相反，已撤回並保留勘誤。
+observer runner 的合法 checkpoint 組合收據仍為 DRAFT：獨立審查要求
+補事件錨點、同一安裝路徑及 installer 故障零步測試。正式 Linux
+可玩入口、Owner 觀測器接線與完整玩家路徑仍未完成，Issue #16／#18 開放。
+第 15 列 `N/E` 是動態方向狀態，不新增猜譯。
 
 本輪已核對使用者對 3× 設定面板的 A 版定案：沿用已完成的倚天原生
 24×24 中文／16×24 ASCII 正式畫筆及本機雙子集先驗，排除 22 點
@@ -1437,8 +1439,10 @@ runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
 - 手冊火箭段落 `manual.world.rocketships` 與接收敵艦段落
   `manual.rules.salvage` 已按本機中文掃描手冊修正；後者的 `Salvation`
   專名另由英文原版 Log Book 第 18 頁補證。正式 24 份 TSV 的字元清單
-  目前為 1,016 字，SHA-256
-  `f44ae7c8bcbcbb82a762933a21fb0e6d7e1289ce833626c9621bf2560cfe361d`；
+  本段原為 1,016 字、SHA-256
+  `f44ae7c8bcbcbb82a762933a21fb0e6d7e1289ce833626c9621bf2560cfe361d` 的
+  歷史收據；目前為 1,030 字，SHA-256
+  `4f556806112e4231909f03b723b6677d14404df73a5fe6ebd632127f327dadce`；
   本機倚天 2× 字型與 manifest 已重建及核驗，詳見規格 024。其來源身分仍須在
   正式啟動器前置檢查；不可把本機字型或原版素材推到 GitHub。
 - 手冊中英專名與 3× 英文字距仍待使用者就 A／C／D 並列原型作選擇；在決定前

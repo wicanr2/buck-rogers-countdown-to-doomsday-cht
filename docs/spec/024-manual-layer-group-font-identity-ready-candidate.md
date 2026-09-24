@@ -362,3 +362,28 @@ Linux session 也尚未接入預檢**。以後每次譯文異動仍須重建並�
 Docker／Xvfb 的正式 `TestLoadHostFontsFromReviewedManifestsLocal` 以新
 manifest 再次通過。原版實體視窗 Apply 與正式 Linux session 接線仍未重跑／完成。
 所有字型二進位與 manifest 僅留 ignored 本機工作區，不進 Git。
+
+## 2026-09-25 第三次勘誤：手冊末批校譯後的本機字型身分
+
+手冊 crosswalk 第 31–39 筆已完成來源核對；正式 `manual.zh-TW.tsv`
+有六個 key 依英文原段訂正（Log 44、49、56、57、63、68）。
+第 38 筆技術技能表的代理修訂經主代理核對本機英文 Rule Book 表格後
+撤回：`Jury Rig` 與 `Repair Weapon` 均列 `A,SC`，不能寫成只限冒險。
+上一節 1,016 字及其字模／manifest 是修訂前的歷史收據，已不適用於
+目前啟動先驗。本次在無網路 Docker 由全部 24 份正式 TSV 重生並驗證：
+
+- `text/manual.zh-TW.tsv` SHA-256：`c14ffccdf2f10e097835a0f029c27c06b667d235c77dc3de0ee0ac52a5172089`。
+- `font/characters.txt`：1,030 行，SHA-256
+  `4f556806112e4231909f03b723b6677d14404df73a5fe6ebd632127f327dadce`。
+- 本機倚天 top-pad 2× `GOLEMFNT`：SHA-256
+  `c76e29f449d3ae78c1467c6ddf583ac9e3e219a4f3707c65bcf22a0cd6c806b9`。
+- 本機 manifest：SHA-256
+  `987a106639f19cba1c0317dde9987783a3b2efce761bc7c1f44d244cd3a19b99`，
+  格式欄 `glyphs=1030`。
+
+手冊 catalog、39 段版面、單份 catalog lint、`eten_font.py build`／
+`verify` 均通過。Docker／Xvfb 的正式
+`TestLoadHostFontsFromReviewedManifestsLocal` 以這份 2× 字型和既有
+3× 倚天原生 24 點 A 版再驗通過；這仍不等於正式 Linux 啟動器或
+原版實體視窗的完整玩家路徑。原版、掃描手冊與本機字型維持 ignored，
+不得隨 Git 或公開封包散布。

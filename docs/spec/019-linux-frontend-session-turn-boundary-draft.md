@@ -852,6 +852,22 @@ dispatcher entry 動態安裝 guarded post-call hook。因此不得以裸
 別名，未經 `Owner.Advance`，亦未驗證上述正式所有權、停止收據與失敗收束。
 它可保留為私有原版輸入的回歸探針，不能提升為 production 接線證據。
 
+**2026-09-25 閘門勘誤（獨立審查）**：本節上面的「升格限縮 READY 前」
+六項混入了實作後才可能取得的證據，不能照字面要求正式 Owner 先存在才
+准許寫正式 Owner。第 1 項的正式 API／私有所有權、第四項的正式 Owner
+checkpoint 配對、第五項的 Owner Close-once 與第六項的正式原版 A/B，
+均移作下文「實作後才屬 CONFORMED 的驗收」；第 2、3 項只保留其
+**行為契約與可丟棄原型證據**作為 READY 前置，正式接線測試同樣留到
+CONFORMED。前列六項保留為形成史，不再是現行 READY 清單。
+
+當時的最小缺項，是一份**同時**量到受限 CallView／Registrar、
+真實 Buck Watcher 動態 return hook、以及 callback error／panic 當次停止的
+tagged 組合收據。下文已補上合法 checkpoint 的 runner＋Watcher 組合對拍；
+callback error／panic 則沿用同一 runner 的合成 MZ 負例，並非在該原版
+checkpoint 人為觸發。這足以重新審查限縮 READY，**不會自動升格**：
+兩個 DRAFT prototype 仍有測試用的外部 `*Oracle` 建構器或不完整生命週期，
+不得搬成正式 API；正式 Owner、Close 與完整玩家路徑仍留待實作後驗收。
+
 ### 2026-09-24 獨立可審查的 observer runner 最小方案（DRAFT）
 
 本節只定義下一個 `session.Owner.Advance` 切片的**候選設計與審查分界**。
@@ -898,6 +914,43 @@ SHA-256 `bd0f511b26cb63a2de45bd2781d35ddd115ef8696ea31c24e78bd71fc3fa58a6`
 `BudgetBoundary` + `AfterLastAttempt` + `ProgramStopped`）、下一 slice 的起點 exit，
 以及 dispatcher@0 動態註冊 return@1。這是**真實 Oracle 的可丟棄 prototype**，不是
 `Owner.Advance`、正式 Watcher 接線或 CONFORMED 收據；本節和規格 019 仍為 DRAFT。
+
+同日 tagged 組合收據 `TestDraftRealObserverRunnerFacadePairsInstallFromLegalManualCheckpoint`
+以合法 checkpoint 的 `LoadDraftRealObserverRunner` 建立上述 runner，Buck 分支只取得
+restricted registrar、`Run` 與 copied terminal view，沒有 `*Oracle` 或 `Close`；它以相同
+budget 對照另一台 `LoadDraftCheckpoint` + `Watcher.Install(*Oracle)` 基線。兩側均量得
+9 筆 observation、3 筆 presentation、相同 begin／clear／request 順序、guard/style、
+steps、CPU／memory／indexed／palette 與 DOS exit 摘要。這只證明**此有限 checkpoint**
+的組合等價；`NewDraftRealObserverRunner(*Oracle)` 仍是合成 MZ probe 的 DRAFT API，
+正式 Owner factory、資源 Close、完整原版路徑與 CONFORMED 驗收均未由此授權。
+
+**2026-09-25 獨立審查：仍為 DRAFT。**上述 9／3 與事件順序是本次執行的
+日誌觀測，組合測試目前只斷言兩側相等，未把預期數量與
+begin→clear→request 錨點寫成斷言；兩側若同時漏事件也可能通過。
+`installDraftWatcherFacade` 另是同套件的平行安裝邏輯，並未讓正式
+`Watcher.Install` 經同一受限 registrar 路徑安裝，故尚不能排除日後漂移。
+合成 MZ 負例驗證的是 callback error／panic 的零步停止，不是
+**installer 本身**的 error／panic、首錯鎖存與零步收束。這三項是
+當時限縮 READY 前的具體缺口；補證以前不得依本段修改正式 Owner。
+
+**同日複審後仍為 DRAFT。** tagged 原型已補 9 筆 observation 的完整
+kind 順序、3 筆 presentation 的 begin→clear→request、固定事件 key 與
+譯文長度關聯；同一個受限 installer 同時接 runner 與 legacy Oracle，
+另以 `Watcher.Install` 作獨立基線；合成 MZ 的 installer error／panic
+皆回 `ObserverFault` 且零新步。主代理在唯讀掛載原版 checkpoint 的
+Docker 重跑上述組合與 oracle 測試及 vet 通過。譯文更新曾使舊的
+硬碼字數斷言失效，已改成對照實際 request 的字元數；這是測試
+錨點更新，不是原版事件變更。
+
+尚餘一項明確的**READY 前**封閉性缺口：DRAFT runner 介面目前仍
+公開嵌入 `DraftRestrictedRegistrar`，`Install` 沒限制只能在首次
+instruction 前執行一次，`OnCall` 也沒限制僅 installer 或正在執行的
+callback 可註冊。外部或被 closure 捕獲的 registrar 因而可能在
+`Run` 後新增靜態 hook。下一份可丟棄負例須拒絕重複 Install、延遲
+使用 installer registrar、`Run` 後使用被捕獲的 callback registrar；
+拒絕後不可增加 hook、觀測或步數，同時保留 dispatcher callback
+當下的動態 return hook 可於下一 instruction 生效。補足並再經獨立
+審查以前，本子契約仍 DRAFT，不授權正式 Owner 接線。
 
 #### 候選 READY 契約（待上述最小缺項關閉後再審查）
 
