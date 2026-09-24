@@ -1,5 +1,30 @@
 # 工作歷程
 
+## 2026-09-25 — 3× A 版再確認與 Delta 觀測器限縮複審
+
+- 使用者再次選 A：3× host 設定面板採倚天原生 24 點，排除
+  衍生 22 點。核對正式畫筆、規格與先前 Docker 定向測試，
+  既有實作已符合；遊戲畫布字型不因本決定更動。
+- 本機 ignored dosgolem fork 新增 tagged Delta 觀測器原型：
+  callback 只見凍結 `CallView`、回傳 hook 增量；runner 在成功
+  返回後同步安裝。合成 MZ 測試涵蓋動態 return hook、callback
+  error／panic、視圖複本、受監看 stack 零額外讀取；內部負例證實
+  「非空增量＋error」不裝 hook 且 machine 零步。合法原版首題
+  checkpoint 與獨立 `Watcher.Install` 基線仍有 9 筆 observation、
+  3 筆 presentation 及有限終態相同。Docker 定向測試、單 goroutine
+  競態測試與 vet 通過；獨立複審仍判為 DRAFT，跨 goroutine 排他、
+  正式 Owner 私有 boot／Close 及可玩入口尚未完成。
+- 低階翻譯代理核對前 18 筆手冊來源，主代理以雜湊一致的本機英文
+  HTML 快照抽查，訂正 9 筆確證誤譯；原文判定與 key 不變。手冊
+  crosswalk、catalog、39 段 504 字版面檢查通過。24 份 TSV 重生的
+  `font/characters.txt` 為 1,046 字，SHA-256
+  `7aa7ed9f4fbff670cdba023b8c5f3a20486423c42393b94495c3c7da6eace55b`；
+  本機 2× 倚天字型與 manifest 已 build／verify，正式前端的
+  `TestLoadHostFontsFromReviewedManifestsLocal` 在 Docker／Xvfb 以
+  新 2× 與既有 3× A 版通過。初次使用登入 shell 執行測試映像時
+  `go` 不在 PATH，確認映像原有 Go／Xvfb 後改用非登入 shell 重跑
+  通過，屬驗證環境而非產品缺陷。私有字型及原版手冊不入 Git。
+
 ## 2026-09-24 — 3× 面板字型定案核對與 Oracle 預算回繞修正
 
 - 使用者再次選定 A：3× 設定面板採倚天原生 24 點。核對現行

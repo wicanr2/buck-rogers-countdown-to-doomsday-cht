@@ -2,11 +2,24 @@
 
 更新：2026-09-25
 
+使用者再確認 3× host 設定面板選 A：倚天原生 24 點，排除衍生
+22 點；正式畫筆與定向測試已符合此決定，遊戲畫布的 3× 字型
+另循既有契約。本機 dosgolem fork 的 Delta 觀測器只在 tagged
+DRAFT 測試中通過動態 hook、凍結視圖、錯誤零步與合法首題
+checkpoint 配對；獨立複審仍留有跨 goroutine 排他及正式 Owner
+私有 boot／Close 缺口，不能升 READY，也不是 Linux 可玩入口。
+詳見[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)。
+手冊前 18 筆來源核對另訂正 9 筆確證誤譯；39 段 catalog／版面
+檢查通過，24 份 TSV 的字元聯集重生為 1,046 字（SHA-256
+`7aa7ed9f4fbff670cdba023b8c5f3a20486423c42393b94495c3c7da6eace55b`）。
+本機 2× 倚天子集已重建驗證，與 3× A 版共同通過正式雙倍率
+manifest 前檢；這不是所有手冊輸出事件的正常玩家路徑驗收。
+
 3× host 設定面板沿用使用者選定的 A 版：倚天原生 24×24 中文／
 16×24 ASCII，排除 22 點衍生版；正式前端字型定向測試通過。
-手冊末批來源核對修正六個正式譯文 key，`font/characters.txt` 現為
-1,030 字，SHA-256 `4f556806112e4231909f03b723b6677d14404df73a5fe6ebd632127f327dadce`；
-本機 2× 倚天子集已重建且與 3× A 版共同通過正式來源前檢，詳見
+手冊末批來源核對先修正六個正式譯文 key，當時的 `font/characters.txt`
+為 1,030 字，SHA-256 `4f556806112e4231909f03b723b6677d14404df73a5fe6ebd632127f327dadce`；
+當時本機 2× 倚天子集與 3× A 版共同通過正式來源前檢，詳見
 [規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
 技術技能表代理修訂與本機英文 Rule Book 相反，已撤回並保留勘誤。
 observer runner 的合法 checkpoint 組合收據仍為 DRAFT：事件錨點、

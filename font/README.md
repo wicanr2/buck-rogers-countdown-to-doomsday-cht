@@ -148,3 +148,11 @@ Docker 內以全部 `text/*.zh-TW.tsv` 重生的字元聯集仍與版控
 dosgolem 正式 loader 逐字回讀為 1,025／1,025。
 所有本機字型與 manifest 仍不得加入版控或公開散布。這僅為字型覆蓋，
 不表示 Linux 玩家視窗已接通原版輸出攔截。
+
+2026-09-25 手冊前 18 筆校譯後，上述 1,025 字模為歷史收據，
+其後的 1,030 字模收據亦見[規格 024](../docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
+目前全部 24 份正式 TSV 重生的 `font/characters.txt` 為 1,046 字，
+SHA-256 `7aa7ed9f4fbff670cdba023b8c5f3a20486423c42393b94495c3c7da6eace55b`；
+本機 2× `GOLEMFNT` 已重建並通過 `eten_font.py verify`，與既有
+3× 面板原生 24 點 A 版共同通過正式雙倍率 manifest 前檢。
+兩份字型仍只可在本機使用，不進入 Git 或公開封包。

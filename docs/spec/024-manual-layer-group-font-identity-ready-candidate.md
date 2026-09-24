@@ -387,3 +387,29 @@ manifest 再次通過。原版實體視窗 Apply 與正式 Linux session 接線�
 3× 倚天原生 24 點 A 版再驗通過；這仍不等於正式 Linux 啟動器或
 原版實體視窗的完整玩家路徑。原版、掃描手冊與本機字型維持 ignored，
 不得隨 Git 或公開封包散布。
+
+## 2026-09-25 第四次勘誤：手冊前段校譯後的本機字型身分
+
+手冊第 1–18 筆英文來源核對訂正 9 筆正式譯文；第 19–39 筆與
+其他 TSV 未因這次核對而修改。上一節 1,030 字的來源、字模與
+manifest 只保留為當時收據，不代表目前啟動先驗。主代理以本機
+英文 HTML 快照（SHA-256
+`e8528a31b66d76e7162abe358bff1f27d7d5a5d4070914beee470867e59e728a`）
+抽查修譯依據，並在無網路 Docker 由全部 24 份正式 TSV 重生：
+
+- `text/manual.zh-TW.tsv` SHA-256：
+  `527b2fc8758cfd30abb3ec8a4988c44b18d880895153454498235b9e7e1ba282`。
+- `font/characters.txt`：1,046 行，SHA-256
+  `7aa7ed9f4fbff670cdba023b8c5f3a20486423c42393b94495c3c7da6eace55b`。
+- 本機倚天 top-pad 2× `GOLEMFNT`：SHA-256
+  `17ac4124def8c7560060bd5c4f43393b0e236567323ddc7088b0cc7833aa2920`。
+- 本機 manifest：SHA-256
+  `873fdbc91a3ace836dd8bc14436cb65780f6dc22d817f424c743820462be73bc`，
+  格式欄 `glyphs=1046`。
+
+手冊 crosswalk、39 段 504 字版面、catalog lint 及
+`eten_font.py build`／`verify` 均通過。Docker／Xvfb 的正式
+`TestLoadHostFontsFromReviewedManifestsLocal` 亦以新 2× 字型和
+既有 3× 倚天原生 24 點 A 版通過。字型二進位與 manifest 只留
+ignored 本機；這是來源與字模前檢，不代表手冊完整玩家路徑或
+Linux 可玩版已完成。

@@ -963,16 +963,48 @@ callback 成功返回後、stub／Step 前同步驗證與安裝；靜態 hook �
 捕獲、錯誤／panic 丟棄增量、動態 return 可見性及原版 checkpoint
 重播再審，不能將現有 scoped registrar 直接搬入 production。
 
+**2026-09-25 Delta 觀測器原型複審，仍為 DRAFT。** 本機 ignored fork 的
+`oracle/draft_real_observer_runner.go` 新增第二個、僅 tagged 測試可見的
+`DraftDeltaObserverRunner`：首次 `Run` 前一次性提交靜態 hook 清冊，
+callback 只取得已凍結的 `CallView` 並回傳至多一筆 `DraftHookDelta`，
+不取得 registrar；runner 僅在 callback 成功返回後、stub／Step 前
+驗證及同步安裝動態 return hook。凍結視圖複製原版實測所需的傳統
+記憶體（`<A0000`）、暫存器、caller 與步數；`Bytes` 再傳回複本，
+超出此範圍的讀取轉 `ObserverFault`。caller 從同一份記憶體複本解碼，
+不額外觸發 `WatchReadsAt`；此證據只涵蓋 Buck 首題路徑，不等於
+通用 Oracle 視圖語意已完成。
+
+可回查的本機測試入口是 `oracle/real_observer_runner_draft_test.go`、
+`oracle/draft_delta_internal_test.go` 與
+`apps/buckrogers/manual_watcher_facade_oracle_draft_test.go`。合成 MZ
+驗證已捕獲視圖仍為舊值、靜態清冊複製、動態 hook 次步可見；callback
+error／panic、非法空增量、nil hook、越界讀取均在當次零新步收束，
+panic 收據包含 hook 位址與步數。package 內部負例更直接核對：
+callback **同時**回傳非空增量與 error 時，動態 hook 清冊未增加、
+machine 零步。合法原版首題 checkpoint 與獨立 `Watcher.Install` 基線
+仍配對得到 9 筆 observation、3 筆 presentation 及相同有限終態。
+定向測試、競態測試與 `go vet` 已在 Docker 通過；競態測試只覆蓋
+單 goroutine 正常路徑，**不**證明跨 goroutine 捕獲安全。
+
+獨立複審確認此切片封閉前述「scoped registrar 逸出」與可變視圖問題，
+但 hook closure 仍可能捕獲 runner 並由其他 goroutine 呼叫 `Run`／
+`Install`；目前 `running`、`fault` 與 machine steps 沒有跨 goroutine
+排他保護。正式 Owner 的私有 boot、Close 與 observer-aware `Advance`
+也未接線。故不得因 Delta 原型與首題配對通過就把觀測器升 READY，
+更不得搬入 production 或宣稱 Linux 可玩版完成。
+
 #### 候選 READY 契約（待上述最小缺項關閉後再審查）
 
 正式實作時，Owner 的私有 boot 在第一個 instruction 前建立 runner；Owner 唯一持有
 runner、machine、DOS、watcher、hook 清冊與 closer。factory 不接受也不回傳既有的
 `*machine.Machine`、`*dos.DOS`、`*oracle.Oracle` 或可注入 `Run` callback。
 
-Watcher installer 僅取得值型 `CallView`（regs、caller、arg、byte、複本 bytes、steps）
-及可在同 goroutine 註冊 hook 的 `HookRegistrar`；兩者均不提供資源 getter、寫 DOS、
-替換 runner 或 Close。靜態 hook 僅能在第一步前裝入；dispatcher callback 可在目前
-call 中新增 return hook，並保證於下一候選 instruction 前可見。
+現行候選改為：Watcher installer 在第一步前一次性提交靜態 hook 清冊，
+callback 只取得凍結的值型 `CallView`（regs、caller、arg、byte、複本 bytes、steps）
+並回傳受限 hook 增量，不取得 registrar、資源 getter、DOS 寫入、runner 替換或
+Close 能力。runner 成功接收增量後、下一候選 instruction 前同步安裝 return hook；
+callback error／panic 必須丟棄同次增量並停止當次 Step。Owner／runner 必須封閉
+跨 goroutine 逸出與並行呼叫，再能進入 READY 審查。
 
 每次 runner slice 必須回傳值型 receipt：budget、machine 前後 steps、差分、
 `LoopStop`、`ExitTiming` 及 cause。正常 exit 不能用 error 表示。優先序固定為：
