@@ -2674,3 +2674,20 @@
 - [規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
   只更新實作狀態，不升整體 CONFORMED。原版冷開機、Watcher、
   畫面 Snapshot、正式 Linux 玩家入口與正常玩家路徑仍待完成。
+
+## 2026-09-24 — 觀測器與 Snapshot 下一片 DRAFT 審查
+
+- Terra 子代理針對逐步觀測提出 tagged 合成測試；獨立 reviewer 找出
+  收據的 defer／回傳順序錯誤，修正後主代理在 Docker 重跑定向測試
+  通過。整包 `apps/buckrogers` 測試另受既有未提交探針硬讀 `/project`
+  私有 fixture 影響，不當作產品缺陷或通過收據。
+- 該測試依賴另一份未提交的 `internal/machine` DRAFT 接縫；為避免
+  乾淨工作樹出現不可重生的 tagged 測試，本機 fork 已以 `0fff233`
+  撤銷剛才的 `0c55ece` 測試提交，內容仍可由 Git 歷史恢復，
+  不計入正式驗證。Oracle 的守衛／hook／stub 順序與 Watcher 安裝
+  入口仍待獨立規格與實作。
+- 另一位 reviewer 唯讀盤點正式畫面元件，確認單幀來源、封閉
+  有序作用層與手冊雙層票券可重用；但 owner 尚無影格身分、完整
+  作用層清冊與同步故障矩陣。兩條後續工作均維持 DRAFT，未接
+  Linux 玩家入口。[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+  已列最小缺口。

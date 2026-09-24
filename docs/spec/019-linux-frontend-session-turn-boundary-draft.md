@@ -678,3 +678,22 @@ Running 缺版面、面板讀取故障、版本溢位、首錯與單次 Close。
 本段只記**限縮實作已接線**，不把整份規格升為 CONFORMED。畫面
 `Snapshot(scale)`、真實原版冷開機、Watcher 等價、封閉玩家視窗與
 正常玩家路徑仍各需自己的證據與驗收。
+
+### 2026-09-24 後續 DRAFT 缺口：觀測器與畫面快照
+
+通用 `Machine.RunUntilObserved` 候選接縫只能指出每次嘗試 Step 前的
+位置；原版手冊 checkpoint 的 paired-oracle 原型及合成反例已顯示，
+Oracle 另有初始條件／中斷點、未遮蔽 A0000 守衛、`OnCall` 動態 hook、
+stub 與退出／HALT 次序。現有正式 `Watcher.Install` 僅接受
+`*oracle.Oracle`，封閉 `session.Owner` 尚無對應的安全安裝入口。
+因此不得把通用接縫或裸 `Machine.RunUntil` 接成正式 Buck Rogers
+observer-aware `Advance`，也不得以合成測試替代原版同狀態收據。
+
+畫面 `Snapshot(scale)` 亦保持 DRAFT。雖可重用正式的單幀 indexed
+來源、封閉有序作用層及手冊雙層票券元件，`session.Owner` 尚未私有
+持有來源 frame 身分、active group 清冊與字型登錄，亦未固定
+`Advance → observer／Layer.Frame → 封存 → Snapshot` 的順序。
+下一輪最小負例須同時驗證 2×／3× 切換舊票失效、背景→正文缺層／
+錯序、Clear／Restore／新 Frame 後失效、同名異字模與缺字、來源
+影格錯誤、回傳緩衝區獨立，以及首次錯誤回零值並同步 Failed／
+Close 一次；輸入 `SourceGeneration` 不得充當影格身分。

@@ -12,6 +12,12 @@ session／host／frontend、tagged DRAFT、競態測試及 vet 全通過。
 畫面 Snapshot、觀測器或 Linux 玩家入口**；現有可注入 `Game.Config`
 不得冒充封閉前端。Issue #18 與整體中文化仍開放。
 
+下一片 #18 維持 DRAFT：通用逐步觀測接縫尚無 Oracle 的初始條件、
+中斷點、A0000 守衛、動態 hook 與 stub 順序，也沒有封閉 owner 可用的
+`Watcher.Install` 安裝介面；不能直接替換原版觀測器。畫面
+`Snapshot(scale)` 另缺 owner 私有影格身分、完整作用層清冊、雙倍率
+票券失效與首次故障收束。兩者均未升 READY，亦未接玩家視窗。
+
 目前正式 24 份 TSV 的字元聯集為 1,025 字，本機 2× 倚天子集、
 3× 面板 A 版原生 24 點與雙倍率 manifest 前檢已通過。手冊
 第 11–30 筆已訂正六處確定誤譯；第 31–39 筆抽查沒有可確定新誤譯。
