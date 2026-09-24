@@ -709,3 +709,26 @@ bridge mutator 可繞過私有 owner、`Draw` 故障仍未同步通知正式
 session／Close。故 019 與 004 均維持 DRAFT；下一個 READY 前
 切片是封閉目標的單一 session owner、純 Prepare 與排他 Commit，
 再用真實 bridge 的混合批次／失敗矩陣複審。
+
+## 2026-09-24 封閉 owner／Draw 故障的可丟棄原型
+
+Terra 子代理只在 ignored dosgolem 工作樹新增
+`frontend/ebiten/session_owned_commit_draw_draft_test.go`，SHA-256
+`0915b5224029d78df2ba9c9edce5fcdc060028c49f8857978ddfbfe45c3222a9`。
+主代理核對檔案雜湊與測試內容，並在既有 Go 1.26.7／Ebitengine 2.9.9
+Docker image、Xvfb、無網路、目前 UID/GID、2 GiB／2 CPU／256 PID 下
+獨立重跑 `go test -count=1 -v -run
+'^TestDraftOwnedCommitDrawSessionBoundary$' ./frontend/ebiten`。
+
+原型的私有 owner 拒絕改綁另一台 machine；host 轉移與真實滑鼠／
+BIOS 橋接仍指向同一個合成 DOS target。整批含畫布 Down、Enter、
+末端無效 Apply 時，純預檢先失敗，mouse／BIOS／callback／Step 皆零；
+未映射 F1 保持無動作，而合法 Down＋Enter 可交付。最後使用真實
+`Game.Draw` 注入 snapshot 錯誤，原型 wrapper 於 Draw 返回後同步
+讀取 `g.err`，只閂鎖一次；後續 submit／advance 均拒絕且 Step 零。
+
+上述僅證明**同 package、可丟棄 wrapper** 的候選可行性，並未
+封閉正式 `Game.Config`、公開 `DOS.M` 或其他可繞過 owner 的 mutator；
+Close 計數也不是正式資源關閉。正式 API 尚需單一 lifecycle owner、
+純 Prepare＋排他 Commit、Draw 同步向 owner 回報故障，以及冪等
+資源 Close。規格 019、004 與 Issue #18 均維持 DRAFT／OPEN。

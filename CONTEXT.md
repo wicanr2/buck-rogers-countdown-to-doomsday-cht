@@ -2,6 +2,18 @@
 
 更新：2026-09-24
 
+最新 #16：本機 dosgolem fork `b908226` 新增 `LoadHostFont2`，以呼叫端預期
+SHA-256 綁定同一次讀入的 16×16 本機字型 bytes，並在建構視窗前
+檢查標籤與矩形。2×／3× 載入器的定向測試與本機倚天子集、
+前端／host／presentation 套件及 vet 通過；2× 既有字距與畫筆
+未變。正式啟動器尚未溯源雜湊或接入兩種字型載入器，#16 未完成。
+
+最新 #18：Terra 補上 ignored `session_owned_commit_draw_draft_test.go`
+的封閉 owner 原型，覆蓋拒絕重綁、整批預檢末端失敗零 DOS 副作用、
+混合輸入及真實 `Game.Draw` 故障後只關一次且不再推進。這是
+可丟棄 DRAFT 測試，沒有正式 session、同步 Draw 故障 API 或
+真實資源 Close；規格 019 仍不得升 READY。
+
 最新 #16：本機 dosgolem fork `e471bcb` 讓正式 `Game.New` 深複製
 已驗證的 2×／3× host 字模，呼叫端後續改動來源 map／bytes 不再
 改變面板字形。定向、前端／host／presentation 完整套件與競態測試

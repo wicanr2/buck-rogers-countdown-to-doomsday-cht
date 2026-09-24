@@ -2484,3 +2484,24 @@
 - 本輪 Docker 一次性容器均已停止並由 `--rm` 清理；唯讀檢查
   專案沒有 root 擁有檔或誤建的 `.md` 目錄。ignored 探針仍留
   `workplace/`，未加入版控。
+
+## 2026-09-24 — 2× host 本機字型載入與 session owner 原型
+
+- 3× 設定面板依使用者已選的 A 版維持倚天原生 24×24 Wide／
+  16×24 ASCII；未把遊戲畫布的 3× 字型視為同一契約。本機
+  dosgolem fork `b908226` 新增預設 2× 16×16 字型的本機載入器：
+  同一份 bytes 做 SHA-256 核對與解析，建構前驗標籤／安全矩形；
+  同時共用 3× 載入器的底層讀取程序，不改兩倍率的畫筆。
+- Docker／Xvfb 的 2×／3× 載入器定向測試含合成負例與本機倚天
+  字型均通過；`./frontend/ebiten ./host ./presentation` 完整測試
+  與 `go vet` 通過。正式 Linux 啟動器未接線，呼叫端預期雜湊的
+  獨立來源核驗亦未完成；這不是可玩版或正常存讀檔收據。
+- Terra 子代理新增 ignored `session_owned_commit_draw_draft_test.go`；
+  主代理核對雜湊並獨立重跑四個定向 Docker／Xvfb 子測試通過。
+  可丟棄原型覆蓋私有 owner、整批預檢晚到失敗零 DOS 副作用、
+  未命中事件無動作與真實 `Game.Draw` 錯誤後一次 Close 計數。
+  正式 `Game.Config`、`DOS.M`、排他提交、同步故障 API 與實際
+  資源 Close 仍未封閉；規格 019、004 維持 DRAFT。
+- 所有本輪一次性測試容器已由 `--rm` 清理；`docker ps -a` 未見
+  本專案殘留容器，唯讀檢查沒有 root 擁有檔或誤建 `.md` 目錄。
+  ignored 探針保留在 `workplace/`，沒有加入 Git。
