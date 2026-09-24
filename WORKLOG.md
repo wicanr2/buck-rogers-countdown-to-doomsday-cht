@@ -2540,3 +2540,26 @@
   獨立重跑 session／frontend／host／presentation、session `-race`、
   `go vet` 與格式檢查通過；私有 Boot、整批 Commit、step 收據及
   Draw→owner 接線仍待實作。
+
+## 2026-09-24 — 手冊譯文校對與 host 前檢收斂
+
+- 低階翻譯子代理對前十筆已確認手冊映射逐筆核對中文掃描頁與
+  英文原文，只修正 `manual.career.rogues` 的「反應極快／可選種族／
+  職業技能」，以及 `manual.rules.medic_skills` 的設備故障診斷與
+  治療疾病；沒有增刪 key、數值或遊戲輸出攔截。主代理在 Docker
+  獨立重跑 catalog lint、字型覆蓋與 `git diff --check` 通過。
+- dosgolem 本機專用分支 `00b5663` 新增純值 `PlanPanelRoute`，
+  正式 `PanelController.Route` 以同一計畫提交面板狀態。完整 host
+  單元／競態測試、vet 與格式檢查在 Docker 通過；它只是輸入
+  批次預檢的必要元件，不是封閉 session 的整批排他提交。
+- Terra 子代理在同分支 `79047a8` 完成本機 2×／3× host 字型
+  manifest 前檢。來源 SHA-256 必須由呼叫端另行審核，manifest
+  不能自行證明來源；此介面設計為在建立 DOS machine／視窗前
+  檢查輸出 hash、字模與標籤。主代理以既有 Docker image、
+  有界 Xvfb 獨立重跑前端／host／presentation 套件、vet 與格式
+  檢查通過；子代理另以 ignored 本機倚天重建產物通過實際
+  2×／3× 清單收據。此介面尚未接正式 Linux 啟動器，沒有玩家
+  冷開機與存讀檔收據，#16／#18 保持開啟。
+- 原版遊戲、手冊掃描、本機字型及 ignored 實驗檔均未加入上述
+  fork commits。一次性 Docker／Xvfb 容器於工作後清理；未發現
+  本專案 root-owned 檔案或誤建的 `.md` 目錄。
