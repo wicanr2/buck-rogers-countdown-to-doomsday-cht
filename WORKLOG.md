@@ -1,5 +1,22 @@
 # 工作歷程
 
+## 2026-09-24 — 3× 面板字型定案核對與 Oracle 預算回繞修正
+
+- 使用者再次選定 A：3× 設定面板採倚天原生 24 點。核對現行
+  `frontend/ebiten` 畫筆、雙子集 loader、規格 004 與本機原型，
+  既有實作已符合此限縮選項；未改遊戲畫布 3× 字型或 2× 排版。
+  既有映像缺 `xauth`，故 `xvfb-run` 首次失敗僅屬測試環境；改用
+  有 trap 的直接 Xvfb 後，相同 3× 字型前端定向測試與 vet 通過。
+- 本機 dosgolem fork `7444caf` 修正 `Oracle.RunUntil` 的步數加預算溢位：
+  修正前零步誤回預算耗盡，修正後執行前明確拒絕。通用回歸測試
+  與先前 tagged DRAFT 矩陣同步更新；舊收據保留，研究紀錄追加
+  勘誤。此切片不使正式 session／Linux 玩家入口完成。
+- 子代理的原版首題 paired-checkpoint 測試經主代理改成單一標籤、
+  不依賴其他未提交 DRAFT helper 的自包含收據，提交本機 fork
+  `2c96d19`。主代理以既有 Docker 映像、唯讀原版與 checkpoint
+  獨立重跑測試及 vet；手冊 begin／clear／request 與終點有限欄位
+  兩側相同。未接正式 `Owner.Advance`，#18 維持開啟。
+
 ## 2026-09-24 — 正式手冊雙層封存元件
 
 - 本機 dosgolem fork `cbd5683` 新增雙層 callback 封存投影與

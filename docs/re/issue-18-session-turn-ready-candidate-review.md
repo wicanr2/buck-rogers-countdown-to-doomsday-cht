@@ -808,6 +808,46 @@ raw Step 錯誤不被末步預算覆蓋，但 Oracle 沒有 raw Stop 回傳；
 `fireStub` 雖略過 `Machine.Step`，仍自行遞增步數；有界同址三次
 重入實測三步，不是無界迴圈的證據。
 
+## 2026-09-24：Oracle 預算回繞的正式修正與歷史勘誤
+
+上節的零步 `BudgetError` 是修正前 `b2580a7` 的真實收據，不予刪除。
+本機 dosgolem fork `7444caf` 在既有 READY 的 `docs/spec/005-oracle-api.md`
+「預算是指令上限」契約下，於 `Oracle.RunUntil` 加法前先檢查
+`budget > MaxUint64 - Machine.Steps`；溢位時回明確錯誤且不執行
+條件、hook 或指令。通用 `oracle/run_budget_test.go` 固定
+`Steps=1`、`Budget=MaxUint64`，驗證它不是 `BudgetError`、
+維持零新增步數與零條件呼叫；先前 tagged Owner／Oracle DRAFT 矩陣
+同步改成此現行行為。這是通用 Oracle 邊界修正，未載原版資料。
+其餘末步 exit／HLT／A0000 的預算優先、raw Stop 缺席與
+`Owner.Advance` 裸 `Machine.RunUntil` 均不變，不能據此升格
+observer-aware session 的 READY 或 CONFORMED。
+
+## 2026-09-24：原版首題窗口的封閉 Owner 配對收據（DRAFT）
+
+本機 dosgolem fork `2c96d19` 新增自包含測試
+`session/manual_checkpoint_owner_pair_draft_test.go`（SHA-256
+`37f09d8a81c931753d16411f3e6911c31e4e2a0a534088c0a3363edbb7624227`）。
+輸入是使用者本機合法 checkpoint `phase12-before-question.state`
+（SHA-256 `8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269`）
+與 `GAME.OVR`（SHA-256
+`3a4ad4856c08fe5973179f1d907feed1d870af99d08abd1cb884b316324f3cc0`）；
+兩者在無網路 Docker 唯讀掛載，沒有複製到 Git。Go 1.26.7、既有
+`eob-remake-go:1.26.7-ebiten2.9.9` 映像，以目前 UID/GID、
+`--rm --memory 2g --cpus 2 --pids-limit 192` 重跑
+`go test -count=1 -tags=draft_session_manual_checkpoint_owner_pair
+-run '^TestDraftManualCheckpointOwnerPair$' ./session` 與同標籤
+`go vet ./session`，均通過；測試無本機輸入時明確跳過。
+
+起點為原版 checkpoint step `266399999`，兩側皆在第一步前安裝正式
+手冊 watcher，停於 `266557247`。私有 Owner 組與獨立還原組各有
+3 個事件，begin／clear／request 各 1，事件摘要相同；終點的
+步數、CPU／記憶體／indexed／palette 雜湊與 DOS
+`Exited`／`ExitCode` 相同。這裡的「DOS 相同」**只指兩個退出欄位**，
+未比較檔案操作、BIOS、IRQ 或完整 DOS 狀態。測試以反射／`unsafe`
+在測試內建立 Oracle 別名，**沒有呼叫正式 `Owner.Advance`**；也
+沒有冷開機、面板操作、畫面作用層、存讀檔或正常玩家路徑。
+此收據只能縮小觀測器 DRAFT 的同狀態疑點，不能升 READY／CONFORMED。
+
 另一位獨立代理唯讀核對現行 watcher 的精確唯讀依賴，提出具
 作用期限的 `CallView`＋動態 hook 登錄作為**候選**；
 `cmd/buckrogers-text-receipt` 仍有多個手寫觀測路由，現無完整

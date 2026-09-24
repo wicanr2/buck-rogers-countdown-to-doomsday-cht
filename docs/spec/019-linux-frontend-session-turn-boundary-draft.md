@@ -758,6 +758,14 @@ Oracle 只回 error，沒有 `machine.Stop`，不可據此填造 `TickReceipt.Ra
 仍可動態取得 return hook。先前懷疑 stub 跳過 `Step` 可能不計步；
 新測試證實 `fireStub` 本身計步，同位址重入三次為三步，故撤回該疑慮。
 
+**2026-09-24 勘誤（限 Oracle 預算加法）**：上一段的 deadline 回繞是
+`b2580a7` 當時的真實觀測，保留作成因證據；本機 fork `7444caf` 已在
+`Oracle.RunUntil` 執行任何條件／指令前拒絕 `Steps+Budget` 溢位，
+回傳明確的非 `BudgetError`，並新增通用單元測試及更新同一 tagged
+DRAFT 矩陣。這修正只避免把零步誤報成「預算耗盡」，**不**改
+`Steps(n)` 的末步判讀、`Owner.Advance`、typed `TickReceipt` 或
+原版觀測器接線；後者仍須獨立 READY 審查。
+
 獨立唯讀 API 審查提出**強推論候選**：通用層提供只讀呼叫視圖
 `Regs`／`Caller`／`Arg`／`Byte`／複本 `Bytes`／`Steps`，以及限定作用期
 的動態 `OnCall` 註冊；遊戲專屬 watcher 提供位址與 hook 清冊，
@@ -767,3 +775,21 @@ session 在第一步前私有安裝，不向 frontend 或回呼外洩
 `TickReceipt` 映射證據；**仍為 DRAFT，不授權實作**。下一次審查
 應先以同一合法原版 checkpoint 比對首個與末個手冊事件、停點與
 machine／DOS 狀態，再固定 typed 停止原因及第一步前安裝的負例。
+
+### 2026-09-24 DRAFT：私有 Owner 與獨立原版 checkpoint 的手冊事件配對
+
+本機 fork `2c96d19` 的自包含、單一 build tag 測試
+`session/manual_checkpoint_owner_pair_draft_test.go` 從同一合法私有
+checkpoint 分別還原 `Owner` 私有 machine／DOS 及另一組 machine／DOS，
+在兩邊的第一步前安裝正式手冊 `Watcher`，並以相同步數上限續行。
+獨立 Docker 重跑量到 begin／clear／request 各 1 筆，事件摘要、
+終點步數、CPU／記憶體／indexed 畫格／palette 摘要與 DOS
+`Exited`／`ExitCode` 相同。原版 `GAME.OVR` 與 checkpoint 的固定
+SHA-256 都先核對；缺本機輸入時測試跳過，不把私有檔納入版控。
+
+這只證明**此 checkpoint 的有限窗口**可在測試專用 Oracle 別名下
+重現相同可見手冊事件；測試沒有經過正式 `Owner.Advance`，也沒
+比較完整 DOS 檔案操作／BIOS／IRQ 狀態、冷開機或 Linux 玩家輸入。
+先前待補的「合法原版手冊事件局部配對」因此有了 DRAFT 收據，
+但 observer-aware runner 的來源封閉、停止收據、完整 hook 清冊與
+作用層快照仍未 READY，規格 019 及 Issue #18 不因此完成。

@@ -2,6 +2,21 @@
 
 更新：2026-09-24
 
+本輪已核對使用者對 3× 設定面板的 A 版定案：沿用已完成的倚天原生
+24×24 中文／16×24 ASCII 正式畫筆及本機雙子集先驗，排除 22 點
+衍生版；遊戲畫布原有 3× 22×22 墨跡契約不變。此為既有進度確認，
+不是 Linux 可玩版已交付。另本機 dosgolem fork 對 Oracle deadline
+整數回繞加入明確拒絕與回歸測試；下方 `b2580a7` 的「零步即回
+BudgetError」是修正前的歷史觀測，不再代表現行行為。正式
+`Owner.Advance` 的 observer-aware 接線及原版同狀態仍未完成。
+
+本機 fork `2c96d19` 另以自包含 tagged 測試將合法原版首題
+checkpoint 分別接到私有 Owner 與獨立還原 machine／DOS：正式
+手冊 watcher 的 begin／clear／request 各 1，事件摘要、終點步數、
+CPU／記憶體／畫格／調色盤雜湊及 DOS 退出欄位一致。這只是
+`266399999→266557247` 的 DRAFT 局部配對；正式 `Owner.Advance`、
+完整 DOS 狀態、冷開機及玩家視窗仍未驗。
+
 本輪 #18 新增本機 dosgolem fork `b2580a7` 的自包含 Oracle／Owner
 停止收據 DRAFT 矩陣，主代理獨立 Docker 測試／vet 通過：末步
 exit／HLT／A0000 會先呈現預算錯誤，超大 budget 可回繞成零步預算
