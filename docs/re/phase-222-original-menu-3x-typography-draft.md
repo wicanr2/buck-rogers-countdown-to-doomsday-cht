@@ -129,3 +129,55 @@ active keys 均與預期 normal／selected 轉移相符，無上一個選項的
 
 以上是規格與合成測試的缺口，不是再去猜原版行為；正式長存 layer、
 同狀態及視窗反覆切換則屬 READY 後的 CONFORMED 驗收。
+
+## 十鍵範圍與字型身分合成補證（2026-09-24）
+
+子代理新增 ignored
+`workplace/cold-boot-live-turn-proto/menu3x_scoped_routing_draft_test.go`
+（SHA-256 `a3f44a444309994d0d09dd970b102bdf2eadf3007e91843f4b3ddee9a66a27e5`）。
+測試讀取正式 `menu-events.tsv`（SHA-256
+`fddbd09ae363e986a2879013e384cdfef717f46fa47786bbad0cb96ae67bfcfc`）、
+`menu.zh-TW.tsv`（`16db36301675ef3c528ce6b37525463ab9e222305356fca9404d8242b91fa366`）
+及 `menu-text-safe-rects.tsv`（`a6cc54e8583fc288924edfc4f8923328ffe2b0d62441ff8b7a13c68c2777ff99`）。
+主代理逐行檢視後，以 Go 1.26.7／Ebitengine 2.9.9 的唯讀、無網路
+Docker／Xvfb 獨立重跑兩項定向測試通過。
+
+原型只對十個**完整相等**鍵把 3× 的正式 16 點 stamp 換成測試用
+22 點字型；正式 21 個事件的 2× 畫面逐 byte 相同、11 個 race
+事件的 3× 亦相同。合成 `menu.transition` 的 3× 差異限安全矩形；
+`post_join.menu.synthetic` 與兩個偽前綴鍵維持原畫面。這證明白名單
+候選可限縮，**沒有**讓 production `RuntimeMenuOverlay.Apply` 實際
+採用該分流。
+
+第二項測試為測試用字型賦予 `draft.menu.derived-22` 名稱，得到
+`FontFingerprint=b2413c6f69eec76e5206729445e2d485dbe2b67424b6c1aef63a2050cc7b18d5`；
+同名同指標 registry 的封存與 snapshot／restore RGBA 同值，而空名、
+缺 registry、key/name 不符及同名不同指標在相應測試路徑被拒絕；
+其中**同名不同指標只由 `WithSealedOrderedLayers` 封存閘門拒絕**，
+普通 `xlate.Layer.Restore` 僅按 `Font.Name` 查 registry，不驗指標
+或 fingerprint。此名稱與字模
+**只是原型身分**，正式 `manualThreeXFont` 仍可能產出空名；
+`BuildMenuOverlay` 仍只接受 16×16，故共用 builder、正式字型身分與
+接線尚待 READY 審查。不得把本合成 PASS 稱為正式 3× 字距已修復。
+
+## 共用 builder 的失敗矩陣與新發現（2026-09-24）
+
+子代理另以 ignored
+`workplace/cold-boot-live-turn-proto/menu3x_builder_failure_matrix_draft_test.go`
+（SHA-256 `5cdf949c1d9233f8f8591bbf638589ca7f7c678a30fec7a8190e22b6bef1db4d`）
+建立測試用 22 點 builder。主代理逐行審閱，並在同版唯讀 Docker／Xvfb
+把本檔三測試與上一節兩測試獨立重跑，全部通過。現有正式 16 點
+builder 的 2×／3× 配色、偏移及混合 race 批次不變；nil、零倍率、
+22 點直接輸入、後筆樣式／容量／幾何／缺字／重疊均整批回 nil 與錯誤。
+測試用 22 點分支的兩種選取／指示列在 3× 均留在核准矩形，保留
+原 BG／FG；來源、輸出、倍率、樣式、矩形與混合 race／post-join
+共 19 種壞案均拒絕。
+
+新發現的真實程式邊界是：現有 `BuildMenuOverlay` 只驗本次譯文
+引用的字模，也接受一般正整數的 4×；但整套 16→22 字型衍生器
+會讀**所有**來源字模。以一個未引用、長度不符的字模餵入時，
+正式 16 點 builder 可成功，未預檢衍生器卻會 panic。此反例要求
+22 點分支在衍生之前先核對來源全部字模，並明定只允許 3×、
+精確十鍵、完整批次原子拒絕；不能為了新字距全域放寬共用 builder。
+目前所有 22 點 builder 與字型名稱仍只在 ignored 測試，正式規格
+保持 DRAFT，尚未取得 production 接線授權。

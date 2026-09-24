@@ -2,7 +2,20 @@
 
 更新：2026-09-24
 
-最新：手冊首題的已驗原版終態已經由正式 `ManualSnapshotOwner` 接到
+最新：翻譯稽核子代理唯讀檢查全部 24 份正式繁中 catalog（196 筆）後，
+四處手冊義務語氣「必需」已校成「必須」，另刪一個多餘的「處」；
+「必需的氣體」保留。39 題容量／catalog 測試與本機倚天子集
+`verify` 重跑通過；字模 1,028 個、GOLEMFNT SHA-256 不變，
+ignored manifest 因譯文 SHA 更新。選單 3× 的十鍵白名單、字型
+身分及 builder 失敗矩陣合成收據已獨立重跑，並發現正式 builder
+可放過未引用的壞字模，未預檢的整套 22 點衍生器會 panic；
+因此先完成全字模、倍率與精確事件的失敗閘門；
+[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md) 的**十鍵
+3× 畫布字模子契約**經獨立複審限縮升 READY，正式接線與驗收尚未
+完成，不能宣稱字距已修好。[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)
+記錄精確邊界。
+
+前一進度：手冊首題的已驗原版終態已經由正式 `ManualSnapshotOwner` 接到
 實體 Ebitengine 視窗，在 host 面板實際 2×→3× Apply 後仍逐張
 等於既有同狀態 RGBA 收據；這是終態顯示原型，非 Linux 直播
 session。[第二百二十三階段](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)

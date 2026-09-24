@@ -9,7 +9,8 @@ host 輸出端介面文字，不是原版 DOS 字串。字型子集必須一併�
 
 目前 `menu.zh-TW.tsv` 僅是第八階段已由正常玩家路徑及中文說明書共同證實的 DRAFT。
 `menu-events.tsv` 以事件鍵、正式文字鍵、原文長度／SHA-256、caller、色號與文字格座標保存
-同一路徑的九筆 typed identity；不保存原文全文。`tools/menu_events.py` 驗證 schema、順序、
+目前已收錄的 21 筆 typed identity（主選單 10 筆、種族相關 11 筆）；13 筆是譯文鍵數，
+不是事件數。不保存原文全文。`tools/menu_events.py` 驗證 schema、順序、
 唯一性、bounds 與 `menu.zh-TW.tsv` 雙向覆蓋。
 `post-join-menu-events.tsv` 與 `post-join-menu.zh-TW.tsv` 另存加入一名角色後，正常從名冊的
 EXIT 返回功能選單所見七項固定文字。事件身分由雙重原版重播與私有畫面逐列核對，原文
@@ -99,9 +100,11 @@ Escape→N／Y 在 2×／3× 通過本體像素及無殘層 A/B，僅此無頭�
 限縮 CONFORMED；六格多色原版尾碼不覆繪。存讀檔、Restore bridge、
 冷開機及視窗未驗，見[第二百零二階段](../docs/re/phase-202-skill-exit-runtime-ab.md)。
 原句勘誤見[第一百九十一階段](../docs/re/phase-191-skill-exit-confirmation-translation-draft.md)。
-`post-join-exit-prompt.zh-TW.tsv` 保存加入角色後真正 Exit 確認畫面的兩句限縮 READY 繁中譯文；
+`post-join-exit-prompt.zh-TW.tsv` 保存加入角色後真正 Exit 確認畫面的兩句繁中譯文；
 `post-join-exit-prompt-events.tsv` 保存其原版 step、caller、色彩、座標與長度／SHA-256 身分，不含原文全文。
-正式 watcher、presenter 與原版 A/B 尚未完成；範圍依[規格 021](../docs/spec/021-post-join-exit-prompt-body-only-draft.md)。
+正式 watcher／presenter 已在固定合法加入角色存態的 N／Y→Y 路徑完成本體
+2×／3× 同狀態 A/B，僅此範圍依[規格 021](../docs/spec/021-post-join-exit-prompt-body-only-draft.md)
+限縮 CONFORMED；原版六格多色尾碼不覆繪，其他玩家路徑與 Linux 視窗未驗。
 `body-icon-events.tsv` 與 `body-icon.zh-TW.tsv` 沿用第四十八階段移動／拒絕／確認的正常
 玩家 trace，整理身體圖示畫面的七筆固定介面文字；`tools/body_icon_catalog.py` 會回查三份
 既有事件清冊、驗證容量與雙向 coverage。`body-icon-text-safe-rects.tsv` 依同一 exact
@@ -213,17 +216,21 @@ row 24 動態狀態列排除；後續正式 runtime 已完成雙倍率同狀態 
 全部 19 份 catalog 的本機倚天子集為 1025 字模，dosgolem loader 對 6175 個譯文字元
 檢查零缺字；這組字型清冊是早期靜態證據，正式中文覆繪 A/B 另見規格 017。
 `story-page9-events.tsv` 與 `story-page9.zh-TW.tsv` 是第八頁合法終態後 Enter 的第九頁唯一
-固定敘事行；只保存 content-safe identity 與繁中 DRAFT，排除右側姓名、row 24 動態列。
+固定敘事行；只保存限縮 READY 的 content-safe identity 與繁中譯文，排除右側姓名、row 24 動態列。
 全部 20 份 catalog 的本機倚天子集為 1026 字模，正式 loader 對 6182 個譯文字元
-零缺字；尚未接 runtime 或完成 A/B。證據見
+零缺字；這是第 134 階段的歷史靜態收據，當時尚未接 runtime 或完成 A/B。證據見
 [`docs/re/phase-134-story-page9-enter-trace.md`](../docs/re/phase-134-story-page9-enter-trace.md)。
-後續依私有原版畫面校訂第 5、7、8 頁三處譯文，未改 event identity 或 DRAFT 狀態；
+後續依私有原版畫面校訂第 5、7、8 頁三處譯文，在當時未改 event identity 或 DRAFT 狀態；
 當時 20 份 catalog 重建後的本機倚天子集為 1024 字模，正式 loader 對 6179 個
 譯文字元零缺字。上述 1026／6182 是校訂前的第 134 階段收據，不是目前字型產物。
 再加入 post-join 選單七項 DRAFT 譯文後，當時 21 份 catalog 的本機倚天子集
 重建為 1026 字模；這是新的字型需求，不是前述第 134 階段的同一份 1026 字收據。
 後續七列已完成正式 runtime 局部 A/B，但完整生命週期尚待驗；見
 [第一百八十二階段](../docs/re/phase-182-post-join-menu-runtime-ab-partial.md)。
+第九頁單行後續已接正式 watcher／presenter，合法第八頁→第九頁的
+control／2×／3× 入頁同狀態 A/B 已驗；自然離頁及清層後畫面仍未驗，
+故[規格 022](../docs/spec/022-story-page9-overlay-draft.md)維持限縮 READY，
+不能把單行入頁稱為整頁 CONFORMED。
 
 ## 驗證與 prototype 字型
 

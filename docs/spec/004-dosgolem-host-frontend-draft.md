@@ -468,3 +468,77 @@ function.menu.instruction.choose_function
 function.menu.selected.add_character_to_team
 function.menu.normal.add_character_to_team
 ```
+
+### 功能主選單 3× 字型限縮契約（限縮 READY）
+
+此契約只處理上述十鍵的**畫布顯示像素**，不動原版 indexed／palette、
+輸入、選取狀態、清除事件或字串 identity。原版證據是第二百二十二階段
+的冷開機選單及 Down→Up guarded post-call；來源是本機倚天子集
+`GOLEMFNT` SHA-256
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+由全部正式 TSV 和三個固定倚天檔重建，僅留 ignored `workplace/`。
+輸出演算法版本暫定 `buckrogers.menu.eten22.v1`：每個漢字／非 ASCII
+字模由 16×16 以整數最近鄰取樣為 22×22；U+0000–U+00FF 字模
+保持 16×16，置中於 22×22 的 (3,3)。3× 的 24×24 cell 內
+使用 (1,1) 墨跡偏移、`GlyphScale=1`，不改 8×8 邏輯格與文字
+安全矩形。2× 完全沿用現行 16×16 產物。
+
+正式實作須保留現有 `BuildMenuOverlay` 的 16 點 API 與既有 caller：
+另設明示啟用的 3× 主選單 builder，**對傳入該 builder 的一整批**
+必須全部是上列完整鍵值；混入 `race.*`、post-join 或偽前綴時
+整批拒絕。新增的 scoped runtime 入口須持有由固定
+`menu-events.tsv` 與 `menu.zh-TW.tsv` 載入的 canonical
+`MenuCatalog`、原 16 點字型與一次衍生的 22 點字型。
+`RuntimeMenuOverlay.Apply` 是逐**單事件**呼叫：先對原
+`TextEvent` 重做 `MenuCatalog.Resolve`，要求所得 `EventKey`／
+`TextKey`／`Translation` 與傳入 `DisplayRequest` 完全相同；
+未經 canonical Resolve 的任意 request 不得藉偽造十鍵取得
+22 點。`scale=3` 且精確命中十鍵才選新 builder；已知的 11 個
+`race.*` 在同一 runtime 前後出現時仍走舊 16 點 builder，
+不可因先前主選單事件而拒絕整段 runtime。post-join 使用自己的
+presenter；不在本分支的事件若缺正式 catalog／矩形，仍依原失敗
+規則拒絕，不得由模糊前綴路由。
+建立衍生字型前，先對來源**全部** glyph 驗 `16×16` 與 32 bytes，
+不可只驗本次譯文引用者；衍生後全表驗 `22×22` 與 66 bytes、
+完全同一 rune 集及版本化演算法逐 byte 相等。新分支只接受
+`scale=3`，來源或輸出不符、缺字、樣式／容量／幾何錯誤、重疊或
+任一筆墨跡越界，一律回 `nil,error`，不得留下半批作用層。
+現有 16 點 builder 接受未引用壞字模與 4× 是已觀測 API 邊界，
+不能把它們誤當新分支的核准值，也不在本項順手改舊 caller。
+builder 的整批拒絕只約束**單次 builder 呼叫**；逐次 `Apply`
+各自原子。後筆錯誤不回滾已成功前筆，但不可交付「看似成功」
+的半更新影格：錯誤須傳回上層 session owner，由它停止新影格
+交付並使該回合失效。若日後提供多事件合併更新，須先全批
+stage／驗證才發布，不能沿用單筆原子性作跨筆保證。
+
+衍生字型的正式 `Name` 固定為上述演算法版本字串；同一
+`RuntimeMenuOverlay` 生命週期只建立一次字型物件，將其完整 bytes
+計算 `FontFingerprint`，以該**相同指標**註冊至封存 registry。
+`WithSealedOrderedLayers` 在封存時驗精確指標、名稱與 fingerprint；
+但原始 `xlate.Layer.Snapshot` 只記 `Font.Name`，普通 `Restore`
+只按名稱查 registry，**不會**驗指標或 fingerprint。正式還原
+不能單靠 `Restore` 的成功值：同一 session 的 owner 必須先核對
+來源 GOLEMFNT 固定 SHA-256、已複製並固定的來源物件、來源及
+衍生 `FontFingerprint` 與同一 registry，然後才還原及封存供畫面
+讀取。空名、同名不同指標、鍵名不一致、缺 registry 或指紋漂移
+在**封存 owner 流程**均須失敗即關閉；snapshot／restore 後 stamp
+身分與 RGBA 須逐 byte 同值。跨 session 持久化還原不在本子契約；
+若將來支援，須把指紋寫入 snapshot metadata 並獨立驗收。
+實際 fingerprint 值隨正式 catalog 字元聯集記入同次收據；不能
+拿本次 test-only `draft.menu.derived-22` 指紋當永久正式值。
+
+READY 後的實作驗收：正式 runtime 十鍵、11 個 race 鍵及至少一個
+post-join／偽前綴負例；2× 全 RGBA 與舊版逐 byte 同值，3× 只十鍵
+在各自核准文字矩形內有差，選取／指示列 BG／FG 和原版文字生命週期
+不變。再以相同原版 state、同輸入的 control／2×／3× 重播與真正
+Ebitengine 視窗反覆 2×→3×→2× 驗收；正常玩家入口、存讀檔與
+整體 Linux session 的 #18 原子輸入另行驗收，不因本子契約過關
+而宣稱完整前端可玩。
+
+獨立審查已核對原版正常／反白 Down→Up、十鍵 exact 合成範圍、
+19 種失敗矩陣與正式 `RuntimeMenuOverlay`／`xlate` API，並在補明
+canonical Resolve、逐事件／批次分界及同 session 字型 owner 後，
+將**本子契約限縮升為 READY**。它授權依上述條款修改正式
+`apps/buckrogers` 3× 主選單字型路徑；正式分支、`Name`、registry、
+同狀態與真正視窗驗收尚未完成，所以不是 CONFORMED。規格 004
+其他 Linux 前端／session 範圍仍為 DRAFT，不能外推。

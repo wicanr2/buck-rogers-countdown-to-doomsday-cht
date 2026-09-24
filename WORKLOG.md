@@ -2315,3 +2315,23 @@
 - #18 獨立反例確認：合成 owner 禁止自身 rebind 仍擋不住
   公開 `DOS.M` 在提交區間改指，滑鼠與 BIOS 鍵可分流；規格 019
   不升 READY，不以一次預檢冒稱原子性。
+
+## 2026-09-24 — 十鍵字距原型與手冊譯文校訂
+
+- 子代理新增 #16 ignored 十鍵路由／字型身分與 builder 失敗矩陣，
+  主代理逐行審閱並在唯讀 Docker／Xvfb 獨立重跑通過。原型證實
+  21 事件中僅十鍵的 3× 可限縮，2× 與 race 不變；現行 builder
+  接受未引用的壞字模及 4×，未預檢整套衍生會 panic。保持 DRAFT，
+  未改正式 dosgolem 分支。
+- 翻譯稽核子代理檢查 24 份繁中 TSV／196 筆，確認結構與事件覆蓋，
+  主代理只修四處義務語氣「必需」及一個多餘「處」。手冊 39 題
+  catalog／504 字容量及 11 個單元測試通過；依全部正式譯文重建
+  本機 ignored 倚天字型與 manifest，唯讀 `verify` 通過，
+  1,028 字模／GOLEMFNT SHA-256 保持不變。
+- 訂正 `text/README.md` 的選單事件數、Exit 問句與第九頁舊狀態
+  描述；正式譯文專名與尚無充分來源的風格建議均未擅改。
+- 獨立 READY 複審發現原 DRAFT 混淆單次 builder 與逐事件 runtime，
+  且普通 `xlate.Layer.Restore` 不驗字型指標／指紋。規格 004 已補
+  canonical `MenuCatalog.Resolve`、逐事件失敗上送及同 session
+  封存 owner 邊界；僅十鍵 3× 畫布字模子契約限縮升 READY，
+  正式程式與原版同狀態驗收仍未完成。
