@@ -33,6 +33,18 @@ session owner 轉 `Failed` 或執行 Close。正式 `Draw` 不能回傳 error，
 READY 前須明定可實作的同步故障通知／收束邊界，且把 Ebitengine 本身
 無 error 回傳的繪圖呼叫與可檢查的 snapshot／validation 故障分開。
 
+同日補充一個 ignored、僅測試用的同步通知原型：
+`workplace/dosgolem/frontend/ebiten/draw_fault_owner_draft_test.go`（SHA-256
+`e451ae11ee950d7b3dab76f4df484455e823c5dd97bb9b245d96ff55f73f553a`）。
+它用 wrapper 在正式 `Game.Draw` 返回後、下一次 `Update` 前立即讀取
+`Game.err`，把 snapshot 故障及 3× host 字型缺字各送達合成 owner，
+兩組測試皆只關閉一次、下一次 Update 零步。追加 typed fake 也驗了
+故障後拒絕 batch／Advance、保留首次錯誤、Close 只一次，並另存
+Close error。主代理在 Go 1.26.7／Ebitengine 2.9.9 的 Docker／Xvfb
+重跑定向測試、`go vet` 與競態測試通過。wrapper 沒有真正 session／
+資源 Close、Close error 對外政策，亦未解決整批輸入原子性；
+正式 `Game` 未修改。本規格仍是 READY 候選，不能因此升 READY。
+
 同日六階段 fake：[第二百零七階段](../re/phase-207-linux-session-six-stage-fault-fake.md)
 補上 Observer、Frame、Snapshot、Draw 的可丟棄故障注入，並驗面板暫停仍可畫
 host 面板、Snapshot 純讀。這只驗 fake；正式 `Ebitengine.Game.Draw` 無 error

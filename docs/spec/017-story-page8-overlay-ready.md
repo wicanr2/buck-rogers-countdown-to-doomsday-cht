@@ -43,7 +43,7 @@ Go 1.26.7，診斷 runner SHA-256
 
 2×矩形為 `[16,624)×[272,336)`，字模 16×16；3×為
 `[24,936)×[408,504)`，24×24 cell、22×22 ink、offset 1。
-現行 GOLEMFNT SHA-256
+第一百五十七階段收據使用的 GOLEMFNT SHA-256
 `b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`；
 四行譯文零缺字、墨跡零越界。字型勘誤收據 SHA-256
 `03b13f401ef7f8be989108f778abcf1e2a9a78dd38427cc7ab79512b7ba21cc8`。
@@ -81,3 +81,19 @@ RGBA==baseline 且無殘字。獨立審查確認正式 2×／3×失敗即關閉�
 
 本結論不涵蓋完整開機、其他入口／出口、右側動態資訊、存讀檔、第九頁或其餘
 遊戲文字；這些不得由本頁收據外推。
+
+## 2026-09-24 標點勘誤與同狀態重驗
+
+第八頁第四行譯文由「裝備。解散。」補上承接第六頁開引號的閉引號；
+英文事件 key、原版輸入與覆繪幾何均未改。新版 TSV SHA-256
+`4660ef796bd7f2f72d18b6986da04003a02e0aec1f7d1ca7e420fedfe7fc8253`，
+目前本機倚天子集 GOLEMFNT SHA-256
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`。
+本機 dosgolem `e05bfd304436001c04cee50b41ea289ac27f22bb` 對同一合法
+第七頁 state 重跑 stable／離頁 control、2×、3× 六條：四 key、零缺字，
+穩定畫面僅核准矩形內差異（2× 7,340；3× 15,827 pixels），矩形外零差；
+原版 memory、indexed、palette 及正規化 machine／DOS 均與 control 相同。
+合法 Enter 離頁仍於 step `351154334` 清除四 key，兩倍率終態
+overlay RGBA 等於 baseline。完整新舊收據及限制見
+[第一百五十七階段追加紀錄](../re/phase-157-story-page8-runtime-conformance.md#2026-09-24-標點勘誤重驗)。
+本規格只維持原有限縮 CONFORMED，不擴張路徑。

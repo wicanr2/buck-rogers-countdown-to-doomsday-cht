@@ -84,3 +84,23 @@ ignored `apps/buckrogers/manual_group_ready_candidate_test.go` 只使用合成 c
 Clear／Restore 後失效及零部分 RGBA 的契約證據補齊；獨立審查核准
 READY **之後**才能修改正式程式。正式元件測試、原版同狀態及玩家路徑
 收據屬實作後的 CONFORMED 閘門，不倒置 READY→實作的順序。
+
+## 2026-09-24：封存群組原型補證，仍為 DRAFT
+
+本機 ignored dosgolem fork 中、僅測試用的
+`workplace/dosgolem/apps/buckrogers/manual_sealed_owner_projection_draft_test.go`
+（SHA-256 `1dbbd0d4d41ee80f22d7bb5de9714b20153020c5901dd445c1a93e4bf75ec4ba`）
+以 callback 作用域與退出時撤銷的 lease 限制群組生命週期，封存兩個 layer 的
+Snapshot bytes 與深複製字型，並對 slot、字型 registry 及逐字模計算 SHA-256。
+同一 owner 的合成 2×／3× 測試證實：背景→正文結果與現有 presenter 逐 byte
+一致且只讀一筆影格；nil slot、反序、錯字型、尺寸仍合法的字模竄改、
+Clear、模擬 Restore discontinuity 和逸出 callback 的舊群組，都在讀影格前
+拒絕，無部分 RGBA。主代理在既有 Go 1.26.7 映像，以唯讀 fork 掛載、
+無網路 Docker 重跑 `go test -count=1 -run '^TestDraftSealedManual' -v
+./apps/buckrogers` 與 `go vet ./apps/buckrogers`，均通過。
+
+這只證明一種可行的**原型契約**。目前正式 `RuntimeManualOverlay` 沒有
+callback-scoped owner 或 Restore/discontinuity 來源；3× 正式字型載入器與
+跨 watcher 的群組登錄也不存在。原型內的 3× 命名和 Restore token 是
+測試模型，不是已實作功能；還須獨立審查其 race／重入與正式 API 邊界。
+所以本規格保持 DRAFT，不准據此接 production 或聲稱手冊已完整中文化。

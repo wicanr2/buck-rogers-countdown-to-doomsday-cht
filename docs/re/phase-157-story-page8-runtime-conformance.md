@@ -56,3 +56,31 @@ baseline，屬失敗即關閉，不會產生假陽性覆繪。
 
 規格 017 只在第八頁固定四行及這條已量合法 Enter 進出路徑升 CONFORMED。
 完整開機、其他入口／出口、右側動態資訊、存讀檔與第九頁中文化仍未驗，不在本結論內。
+
+## 2026-09-24 標點勘誤重驗
+
+本節追加新收據，不覆寫上文的舊譯文／舊字型結果。第八頁第四行補上跨頁
+對話的全形右引號（U+300D）；英文事件 TSV 與原版遊戲維持不變。新版譯文 TSV SHA-256
+`4660ef796bd7f2f72d18b6986da04003a02e0aec1f7d1ca7e420fedfe7fc8253`；
+本機字型 SHA-256
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`。
+原版 `GAME.OVR` SHA-256 仍為
+`3a4ad4856c08fe5973179f1d907feed1d870af99d08abd1cb884b316324f3cc0`，
+合法入口 state SHA-256 仍為
+`e869b67264539aff95ca5929a9858c74475feea47e0c7b3a505ea9cd0aa9a460`。
+
+在 Go 1.26.7／既有 Docker image 中，以本機 dosgolem fork
+`e05bfd304436001c04cee50b41ea289ac27f22bb` 及唯讀原版根，
+由同一 state 各重跑 stable 和合法離頁的 control、2×、3×。
+stable 四 key 全啟用、零缺字，核准矩形外均零差；矩形內差異為
+2× 7,340、3× 15,827 pixels。四組 control／倍率的完整原版 memory、
+indexed、palette 與正規化 machine／DOS 比較相等。離頁兩倍率仍在
+step `351154334`、`0CF4:1B3A` 的 A000 相交 pre-write 清除四 key，
+終態 RGBA 與各自 baseline 完全相同，無殘層。
+
+完整命令、工具與輸入 SHA、六份收據 SHA、同狀態比較及限制記在
+ignored `workplace/page8-runtime-revalidation-20260924/revalidation-manifest.json`
+（SHA-256 `505e5fd59c676519851972080dfc185f7b8f81e2bc81f8dcca39875ee2b3b742`）。
+原版、存態、字型、PNG 與 RGBA 只留本機；所有容器使用 `--rm`，
+專案相關容器與 root-owned 產物／誤建 Markdown 目錄查核均無殘留。
+此結果只更新第八頁固定四行的既有限縮 CONFORMED，不宣稱其他輸出路徑。

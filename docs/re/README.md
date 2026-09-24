@@ -1,7 +1,7 @@
 # 原版觀測證據索引
 
 - [第二百二十一階段：row 15／row 24 命令狀態欄位 DRAFT](phase-221-command-status-columns-draft.md)：既有合法存態的整串 identity、跨進度欄位相等／變動遮罩、原版 clear 與 A000 首寫；row 15 未證固定詞，row 24 未取得不同值，無 READY 譯文。
-- [規格 024：手冊背景／正文群組與字型身分 DRAFT](../spec/024-manual-layer-group-font-identity-ready-candidate.md)：Clear 後 stale layer 別名與未命名 3× 字型已證實；現行 provider 的 preflight-before-frame、nil／幾何／字模 fail-closed 均未成立，待無別名 sealed owner 重提。
+- [規格 024：手冊背景／正文群組與字型身分 DRAFT](../spec/024-manual-layer-group-font-identity-ready-candidate.md)：Clear 後 stale layer 別名與未命名 3× 字型已證實；ignored 封存群組原型通過雙倍率前檢、字模竄改、Clear／模擬 Restore 與 callback 逸出負例，但正式 owner／provider 仍未接通。
 - [第二百二十階段：Linux 多作用層單影格合成候選](phase-220-linux-active-composite-draft.md)：ignored 合成 evaluator 驗一次 frame、固定 z-order、完整群組與零部分 RGBA；真實 presenter generation／失效、同狀態及玩家路徑未驗，規格 004 仍 DRAFT。
 - [第二百一十九階段：第九頁固定單行正式入頁 A/B](phase-219-story-page9-runtime-entry-ab.md)：合法第八頁存態的 control／2×／3× 正式接線、完整 machine／DOS 同狀態與矩形內 RGBA 差異；自然離頁未量，規格 022 保持限縮 READY。
 - [Issue #18：Linux session-turn 限縮 READY 候選審查紀錄](issue-18-session-turn-ready-candidate-review.md)：ignored typed owner 已接合成真實 machine 收據；正式橋接後段失敗可留下 DOS 左鍵，整批純預檢契約仍待正式驗證，不升 READY。

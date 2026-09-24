@@ -39,6 +39,9 @@ Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這�
 Open→Cancel、Down→Up 的 ABA；若來源版本僅由外層 wrapper 管理，
 直接呼叫正式 bridge 仍可繞過。規格 019 因此新增共同來源版本與
 單次提交候選，但尚未獨立核准或改 production。
+最新 ignored `Game.Draw` wrapper 原型已證明 snapshot 故障與 3× host 缺字
+可在下一次 Update 前同步送達合成 owner，且不再推進；它沒有正式
+`ReportDrawFault`、資源 Close 或整批原子提交，故規格 019 仍未升 READY。
 
 [第二百二十階段](docs/re/phase-220-linux-active-composite-draft.md)另以無原版素材的
 合成測試驗過多作用層單影格投影候選：2×／3×各讀一次合成輸入影格、固定
@@ -51,6 +54,10 @@ z-order、原 layer 不變，缺群組／過期 generation 在讀影格前拒絕
 命名並登錄後，可重現現行 presenter 的 2×／3× RGBA。獨立審查指出
 測試用合成器的 nil stamp 會 panic，manifest／generation 未綁正式
 owner；此與 3× host 面板的原生 24 點字型是不同路徑，仍只屬 DRAFT。
+[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)
+新增 ignored 封存群組原型：雙倍率前檢、字型竄改、Clear／模擬 Restore
+與 callback 逸出負例通過；正式 owner、3×手冊字型載入及 watcher 群組
+尚未接線，因此這項進展沒有改變 DRAFT 狀態。
 
 [GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
 追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)
@@ -365,6 +372,12 @@ Enter 離頁驗得四 key、零缺字、矩形外零差、machine／DOS 全等�
 通過，因此第八頁**只在固定四行及已量 Enter 進出限縮 CONFORMED**；見
 [第一百五十七階段](docs/re/phase-157-story-page8-runtime-conformance.md)。完整開機、
 其他出口、存讀檔、第九頁及其餘文字仍未驗。
+2026-09-24 第八頁第四行為閉合第六頁開引號，新增全形右引號；上文的
+「無需修改」是當時審查結論，已由新版譯文勘誤。新版 TSV 與目前本機
+倚天子集已在 dosgolem `e05bfd3` 重新完成同一合法 state 的 stable／
+離頁 control、2×、3×；四 key、零缺字、安全矩形外零差、原版 machine／
+DOS 全等，step `351154334` 仍清層，終態無殘字。新 manifest 與限制
+已追加至第一百五十七階段；限縮 CONFORMED 範圍不變。
 
 互動式玩家前端的第一個可玩版本已由使用者決定先支援 Linux，架構保留日後
 Windows／macOS 擴充；第一版三平台同步交付已排除。視窗後端也已選定

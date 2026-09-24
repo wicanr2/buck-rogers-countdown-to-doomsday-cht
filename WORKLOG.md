@@ -1,5 +1,30 @@
 # 工作歷程
 
+## 2026-09-24 — 手冊群組與前端故障的可丟棄原型
+
+- 手冊背景／正文的封存群組模型已在 Docker 以合成 2×／3× 影格通過只讀一幀、
+  字型深複製、群組竄改、Clear／模擬 Restore 與 callback 逸出負例，定向測試、
+  `vet`、競態測試均通過；正式 owner 與跨 watcher 接線尚未實作，
+  [規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)保持 DRAFT。
+- 正式 `Game.Draw` 的可檢查 snapshot／3× 字型缺字故障，已由 ignored wrapper
+  在下一次 Update 前同步通知合成 owner；目前只驗控制流程，沒有正式 session
+  或資源 Close，[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+  仍是 READY 候選。獨立審查確認整批路由的完整快照、共同版本及不可失敗提交
+  仍是 READY 前缺口。
+- 第九頁既有合法 state 的 `8`／`2` 固定窗口未出現離頁相交寫入；依停止線不
+  再延長同一探針。入頁已驗，自然離頁未知，Issue #20 保持開啟。
+
+## 2026-09-24 — 第八頁閉引號勘誤與正式重驗
+
+- 低階翻譯代理將第八頁第四行補上全形右引號，完成跨頁引號；catalog
+  檢查與倚天字型覆蓋通過。原文鍵不變。
+- 以同一合法第七頁 state 和唯讀原版，重跑穩定畫面及合法離頁各
+  control／2×／3× 六條。兩倍率四 key、零缺字、矩形外零差，
+  machine／DOS 同狀態；離頁 active 4→0、RGBA 等於 baseline。
+  [第一百五十七階段](docs/re/phase-157-story-page8-runtime-conformance.md#2026-09-24-標點勘誤重驗)
+  追加新收據與來源雜湊，保留舊收據作歷史；第八頁只維持原有限縮
+  CONFORMED，沒有擴張完整遊戲中文化聲明。
+
 ## 2026-09-24 — 技能頁離開問句本體正式 A/B
 
 - 本機 dosgolem fork 將兩句 exact 問句接到正式 watcher／presenter／收據
