@@ -224,3 +224,60 @@ machine 狀態未被該投影改動。
 這是共用 CLI 終態投影缺口，不可寫成新字型同狀態已由 CLI 驗收。
 真正 Ebitengine 視窗 2×→3×→2×、正常玩家入口、整體 session
 原子輸入及存讀檔仍未驗；十鍵子契約維持 READY，不升 CONFORMED。
+
+## CLI 終態錨定與部分檔案反例（2026-09-24）
+
+ignored 原型
+`workplace/cold-boot-live-turn-proto/menu3x_terminal_anchor_draft_test.go`
+SHA-256 `b95271c0c903a19fa2b8374e169a11059ec51f3ebfb4b5ea4a8245d7564d3cab`。
+主代理逐行審閱，於同一原版 EXE／checkpoint、唯讀 Docker／Xvfb
+獨立重跑 `TestDraftMenuThreeXTerminalAnchorOriginal` 的舊／新 3×
+兩組通過。Down 停點 step `100060000` 只有一個原版 frame；兩組
+active 皆為三筆 `Pending`，所以現行 CLI 不先呼叫 `Frame` 就
+`Draw`，兩組同樣 `drew=false active=3`。原型在 stop 當刻使用同一
+indexed／palette，至多補一次正式 runtime `Frame` 後繪製；
+重複取樣不再錨定、清層無 active 只回 raw control、正常 frame
+已處理者不再補錨、偽造 request 失敗後不交付。前後原版 step、
+frame、記憶體、indexed 與 palette 均相同。這是**可丟棄的終態
+呈現投影**，不是新增的原版畫格或正式 CLI 已通過。
+
+另核對正式 CLI `cmd/buckrogers-text-receipt/main.go`：目前先寫
+`baseline-rgba-out`，其後才 `Draw` 並執行
+`validateOverlayDraw`。前述失敗實際留下部分 RGBA 檔，已對精確
+確認的測試輸出個別清除；未觸碰原版或其他收據。正式修正至少須
+先在記憶體完成錨定、繪製與驗證，再提交輸出，並處理後續 I/O
+失敗避免留下看似完整的單邊收據。
+
+收據語意仍待選：在指定停止步數明示標註「同狀態呈現投影」；或
+只接受下一個真正 `OnFrame`，但此時原版狀態及停止步數已改；
+亦可暫維持 CLI 在 `Pending` 停點失敗。上述三者不得混稱同一種
+原版收據。此處只記錄證據與候選，未改正式 CLI 或規格狀態。
+
+## 正式 scoped runtime 的實體視窗回切（2026-09-24）
+
+ignored 測試
+`workplace/cold-boot-live-turn-proto/menu3x_scoped_physical_acceptance_test.go`
+SHA-256 `2edac5caadb4e7388cd3cb790b0d74e22a8bbc0168e717002dd04d4b681813af`。
+它從同一原版 checkpoint 經 Down→Up 到 step `100120000`，
+直接建立正式 `NewScopedMenuRuntimeOverlay` 的 2×／3× 作用層，
+把兩者的正式 `Draw` 接到 `frontend/ebiten.Game.Config.Snapshot`；
+使用真正 Xvfb／xdotool 視窗點開設定、Apply 3×、再 Apply 2×。
+這是**既定原版選單狀態的限縮視窗驗收**：測試預先將已觀測的
+三個 exact 事件送入 3× 作用層，並非 #18 的完整直播 session。
+
+子代理初跑與主代理在唯讀、無網路、有界 Docker／Xvfb 獨立重跑
+均通過。主代理收據：首次／第二次 Apply 於 step `100120400`／
+`100120688`；面板開啟或收合的 85 個回合均零 DOS 步，閉合的
+62 回合各推進固定 16 步。2×／3× snapshot 分別 69／23 張，
+零缺字；前後原版 indexed／palette 不變，回到 2× 的 RGBA
+逐 byte 等於切換前，SHA-256
+`cd73ad5ee152765893dcd952d4c4b879841004f10392f64d3b9e17649d1f2436`。
+3× 相對同狀態 raw control 改動 4,980 像素，作用中核准文字
+安全矩形外為零。子代理另留兩張實體視窗 PNG 於 ignored `out/`，
+不入 Git。不同重播的停留回合與 Apply 步數會隨實際點擊時序變動；
+固定驗收是面板回合零步、兩次 Apply 生效、前後畫面約束，而非
+這組偶然的步數常數。
+
+此收據補齊十鍵主選單字距的限縮實體回切，但 CLI 正式收據仍
+無終態錨定、#18 正式輸入原子性、正常玩家入口與存讀檔仍未知；
+規格 004 十鍵子契約維持 READY，不升整體 CONFORMED。

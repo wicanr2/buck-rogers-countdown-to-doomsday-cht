@@ -2370,3 +2370,13 @@
   `459adb3d4cf49bbc36aca06902a2729d5b9cc61c19979343a9652bbd04eeb7eb`；
   新 `text/manual.zh-TW.tsv` SHA-256 為
   `9958e4d6255276d8646849ae2e4d46c650f5c75d06e2775e18b5a32eab65fbef`。
+- #16 的 CLI 終態錨定 ignored 原型由主代理獨立重跑舊／新 3×
+  通過：`Pending` 的三筆文字在相同 stop step／indexed／palette
+  補一次正式 `Frame` 後可繪，原版記憶體與步數未變；不把它冒稱
+  真實新畫格。正式 CLI 目前先寫 baseline 再驗 `Draw`，失敗會留下
+  部分輸出；完整收據語意與提交順序仍待確認，未改 production。
+- #16 另一子代理以正式 scoped 2×／3× runtime 接真正 Ebitengine
+  視窗，從原版 checkpoint 的選單狀態操作 Apply 2×→3×→2×；
+  主代理獨立重跑通過：面板回合零 DOS 步，2× 往返 RGBA 同值，
+  3× 核准矩形外零差且無缺字。這是限縮視窗收據，非完整 #18
+  玩家 session；CLI 終態缺口仍待決定及正式修正。

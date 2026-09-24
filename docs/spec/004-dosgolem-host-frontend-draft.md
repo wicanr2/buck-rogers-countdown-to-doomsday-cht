@@ -549,3 +549,11 @@ canonical Resolve、逐事件／批次分界及同 session 字型 owner 後，
 2× 與舊版逐 byte 相同，3× 差異限核准矩形；但 CLI 終態錨定影格
 及實體 Ebitengine 2×→3×→2× 回切未過驗收。因此本子契約仍是
 **READY，非 CONFORMED**，其餘規格仍 DRAFT。
+
+限縮實體視窗補驗（2026-09-24）：上述正式 scoped runtime 已在
+原版 checkpoint 選單狀態經真正 Ebitengine 視窗完成 2×→3×→2×；
+面板回合零 DOS 步、2× 往返 RGBA 同值、3× 差異限核准矩形，
+見[第二百二十二階段](../re/phase-222-original-menu-3x-typography-draft.md)。
+測試以既有原版事件預先建置 3× 作用層，再由視窗切換 snapshot，
+不是完整 #18 session；CLI 終態覆繪收據仍失敗。因此此子契約
+依舊 **READY，非 CONFORMED**。

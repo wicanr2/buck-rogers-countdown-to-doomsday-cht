@@ -6,12 +6,18 @@
 dosgolem 分支 `3b02f88`，獨立重跑套件測試與原版 Down→Up 四模式
 同狀態收據：2× 與舊版逐 byte 相同，3× 差異只在核准矩形。
 但文字收據 CLI 的舊／新 3× 都遇到終態 pending 未錨定影格，
-真正 Ebitengine 2×→3×→2× 回切亦未驗；
+真正 Ebitengine 2×→3×→2× 限縮視窗回切已獨立重跑通過，
+但只在既有原版選單狀態切換兩份正式作用層，不是完整 session；
 [規格 004](docs/spec/004-dosgolem-host-frontend-draft.md) 十鍵子契約
 維持 READY，不升 CONFORMED。第二輪校對修正一處手冊病句；
 「直昇機」和技術技能「船體維修」均有中文手冊詞源約束，
 未只按現代寫法或詞面一致性擅改。39 題容量及相關測試通過，
 重建本機倚天仍為 1,028 字模、相同 GOLEMFNT SHA。
+
+CLI 的舊／新 3× `Pending` 失敗已縮至停止格未經原版 `OnFrame`：
+同狀態補錨可丟棄原型由主代理重跑通過，但須明示其不是原版
+真實畫格；現行 CLI 又在繪製驗證前寫 baseline，錯誤會留半份
+收據。正式收據語意尚待決定，CLI 未修，詳見[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)。
 
 前一補證：#18 的私有目標 session 合成原型證明自建且不外洩
 DOS／machine／兩橋可避開公開別名反例；僅驗一種 Down＋Enter
