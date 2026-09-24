@@ -2645,3 +2645,17 @@
 - private `main` `f6e21ca` 訂正目前正式手冊字元清單的釘版 SHA；
   翻譯／字型工具完整 Python 單元測試 249／249 通過並推送。
   Issue #18 已登記限縮進度與仍缺的 owner runner、冷開機與玩家路徑。
+
+## 2026-09-24 — 值型 View 的同值 ABA 與失敗邊界
+
+- 依規格 019 的封閉 owner 路線，Terra 在本機 dosgolem fork 建立
+  tagged 合成 View 原型；獨立 reviewer 逐次指出故障後半份 View、
+  Running 缺版面、版本遞增、純 Prepare 與 owner 收束，以及真正
+  同值 ABA 的缺口。主代理補上 Running／非正規版面、面板故障不
+  重讀、fresh／stale token、值漂移、暫停與執行中 Advance、
+  Stopped、溢位前置的負例，並只提交本機 fork `337ac83`，未推送。
+- Docker／Xvfb 唯讀重跑 tagged `go test ./session`、tagged `go vet`
+  與正式 `go test ./session` 通過；主專案翻譯／字型工具 249／249
+  通過。規格 019 僅將輸入擷取值型 View／來源版本子契約升 READY，
+  不宣稱 formal Owner、Snapshot、冷開機或玩家路徑已接通。
+  主專案原版與本機倚天素材未加入 Git；一次性容器已清理。

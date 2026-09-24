@@ -1,11 +1,11 @@
 # 019 — Linux 前端失敗即關閉 session 回合邊界
 
-狀態：**READY（限新建、封閉 session owner 的 session-turn typed contract）；正式 production 尚未實作，規格 004 仍 DRAFT，且本規格尚未 CONFORMED。**
+狀態：**READY（限新建封閉 owner 的 session-turn 與值型 View 子契約）；View、正式前端及原版 cold boot 尚未實作，規格 004 仍 DRAFT，且本規格尚未 CONFORMED。**
 日期：2026-09-24
 
 本檔較早的 DRAFT／「READY 候選」段落保存阻塞如何被發現；現行裁決以末節
-〈2026-09-24 獨立審查定案：封閉 session owner 限縮 READY〉為準。READY 只授權
-依該封閉所有權契約新建 production owner；不得把既有可注入任意 bridge 的
+〈2026-09-24 獨立審查定案：封閉 session owner 限縮 READY〉及本文末節的
+值型 View 限縮 READY 為準。不得把既有可注入任意 bridge 的
 `Game.New(Config)`、現有 frontend，或任一 ignored 原型誤稱已符合此契約。
 
 implementation 起點：本機 dosgolem fork `b062c5b` 已加入不呼叫 DOS 的
@@ -603,3 +603,62 @@ owner 重跑本矩陣、驗真正 Close error 保存與同 goroutine Draw relay�
 若實作發現現有 bridge 無法封存目標或在 Commit 後仍會回普通錯誤，該發現是新的
 規格反例：停止實作、把本限縮契約退回 DRAFT，先補可強制的封閉 primitive；不得
 在 production 中猜補。
+
+## 2026-09-24 後續獨立審查：封閉前端的值型 View 限縮 READY
+
+本節**只授權輸入擷取用的值型 View 與來源版本核對**，不授權畫面
+`Snapshot(scale)`、原版冷開機或可玩的 Linux 啟動器。現行正式
+`session.Owner` 只有 `Status`，`CapturedUpdate` 尚無來源版本；現行
+`frontend/ebiten.Game.Config` 仍可注入彼此獨立的 panel／bridge／snapshot／
+advance，不能冒充封閉前端。本機 dosgolem fork `337ac83` 的 tagged
+`session/owner_view_draft_test.go` 用合成 owner 試驗 2×→3×→2×、
+Apply／Cancel、初始零 layout、故障單次 Close、版本溢位與不可變欄位。
+主代理在 Go 1.26.7／Ebitengine 2.9.9 的無網路 Docker／Xvfb 以唯讀
+fork 獨立重跑該 tag 的 `go test ./session`、`go vet ./session` 與
+不帶 tag 的正式 `go test ./session` 均通過。收據另涵蓋 Running-only、
+非正規 layout、故障後不重讀、Panel／Layout／session Epoch 全同而
+來源版本不同的 ABA 舊 token、純 Prepare／owner 失敗收束、
+執行中／Stopped 的版本變化，以及測試模型中首筆 DOS 動作前的
+版本溢位拒絕。獨立複核在補齊真正同值 ABA 與 owner 編排器負例後，
+未再指出會改變此**子契約**的 READY 前缺口。這些仍是**合成證據**；
+正式 owner／真實 DOS、原版冷開機、畫面與玩家路徑尚未驗收。
+
+typed API 的必要資訊如下；名稱可依 Go 慣例微調，不得刪去欄位、
+放入可變底層目標，或把作用層像素快照混入：
+
+```go
+type View struct {
+    Phase Phase
+    Panel host.PanelState
+    Layout host.MouseLayout
+    Epoch uint64
+    SourceGeneration uint64
+}
+func (o *Owner) View() (View, error)
+// CapturedUpdate 另加 SourceGeneration uint64；StartedPanel 與 Layout
+// 必須由同一份 View 擷取，不可各讀一次再拼接。
+```
+
+- `View` 只在 `Running` 且私有 layout 已按目前 panel 正規化後交付。
+  `Booting`、`Stopped`、`Failed`、`Closed` 回零值 View 與錯誤；終態
+  只由既有 `Status` 讀首錯與 Close error，最後畫面的玩家政策留在
+  規格 004。`Running` 缺 layout、非正規 layout、`Panel.Snapshot`
+  失敗時也回**零值 View 與錯誤**，由 owner 同步鎖存第一個 fault、
+  轉 `Failed` 並 Close 一次；不得回傳半份或 stale View，故障後
+  再次呼叫 View 不得重讀 panel。
+- `SourceGeneration` 是**路由來源版本**，不是畫面影格或手冊作用層
+  generation。成功進入 `Running`、接納 `Deliver`、消費暫停或執行中
+  `Advance`（包括轉 `Stopped`）時各遞增一次；版本必須覆蓋 panel、
+  mouse、layout、phase、pending 的所有成功變更。可能變更 DOS 輸入或
+  machine 前先預檢溢位，不得回繞；終態由 phase 使舊 token 失效。
+  正式 owner 目前只在 `Deliver` 增版本，尚未符合本節。
+- `CapturedUpdate.SourceGeneration`、`StartedPanel`、`Layout` 均須來自
+  同一份 View。Prepare 純讀核對版本與完整值，無副作用；若版本
+  過期、同值 ABA 或任一值漂移，封閉 owner 在首筆 DOS action 前
+  轉 `Failed`、Close 一次，DOS 動作與 session Epoch 均不增加。
+
+production 驗收須由正式封閉 owner 重跑合法批次跨 Open／Apply／Cancel
+的 View↔Prepare 一致性、同值 ABA、面板快照／版面故障、版本溢位、
+啟動與各種 `Advance` 的版本遷移，以及失敗後零新步和 Close error
+保存。畫面 `Snapshot(scale)` 另需獨立緩衝、frame 身分及多作用層
+來源的 READY 證據；不得用本節 View 測試代替。
