@@ -6,6 +6,9 @@
 2026-09-23 限縮驗收：正式 runtime control／2×／3×及同執行 active→clear 收據見
 [phase 147](../re/phase-147-story-page4-runtime-ab-pending-audit.md)；後續失敗即關閉稽核
 見該文件的追加結論。本狀態不包含完整開機、其他離頁或遊戲內存讀檔。
+2026-09-24 跨頁引號標點勘誤後，以新 TSV 與目前本機字型重跑同範圍
+control／2×／3×及 active→clear，結果仍通過；新雜湊與像素數見
+[phase 147 的追加收據](../re/phase-147-story-page4-runtime-ab-pending-audit.md#2026-09-24跨頁引號標點勘誤後重驗)。
 
 ## 範圍、停止線與權利
 
@@ -23,7 +26,7 @@
 | 192 個 glyph 的真實 return 與 ABI | 已證實 | [phase 143](../re/phase-143-story-page4-ready-evidence-draft.md)：每筆 `0763:03D6` opcode `0xCA` 後到 `0763:04FF`，同 SS、相對 `SP+0x12`、ABI 高位遮罩 0。 |
 | 六行 safe rectangle 與已量 Enter pre-write | 已證實 | phase 143 的 rows=6 雙重收據：`[8,320)×[136,184)`、`0CF4:1B3A` pre-execution `ES:DI=A000:AA08`、`CX=304`、step `310023777`；48 個 bounded span 全相交，row 22-only 命中、row 23-only 排除。 |
 | 繁中來源 | 編輯性 DRAFT | `text/story-page4.zh-TW.tsv`，`runtime-editorial`；不冒稱手冊逐字譯文。 |
-| 字型涵蓋 | 已證實（本機字型） | [phase 118](../re/phase-118-story-draft-font-rebuild.md) 的正式 loader 對 page4 報告缺字 0；現行 TSV 為 57 個文字字元、53 個唯一 Unicode code point。 |
+| 字型涵蓋 | 已證實（當時本機字型） | [phase 118](../re/phase-118-story-draft-font-rebuild.md) 的正式 loader 對當時 page4 譯文報告缺字 0；當時 TSV 為 57 個文字字元、53 個唯一 Unicode code point。2026-09-24 譯文與字型重驗見 phase 147 追加收據。 |
 | 未量離頁／完整玩家路徑／存讀檔 | 未知 | 不得從這一條固定 Enter 收據外推。 |
 
 phase 143 的 rows=6 receipt 為 `workplace/page4-ready-evidence/page4-six-row-ac1f7fb-{a,b}.json`，逐 byte 相同 SHA-256 `4f1bd9940877601138f77e16dfa290d1243566506670db52344f707a94f20f3d`。所用 dosgolem commit 為 `ac1f7fb4f52680f3a96c42c475667ec7a9dd6b2d`；Go `1.26.7`／`golang:1.26.7-bookworm`。絕對 step、SS／SP 只屬收據錨點，不是 runtime identity。

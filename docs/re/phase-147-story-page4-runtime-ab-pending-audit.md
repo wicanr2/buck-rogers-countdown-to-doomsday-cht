@@ -94,3 +94,26 @@ control／2×／3×穩定與離頁私有收據，雜湊皆與本文相符。程�
 因此規格 013 只在上述雙倍率六行與已量 Enter 離頁升 CONFORMED。這不證明
 從完整開機逐步遊玩、其他離頁方式或遊戲內存讀檔；該等項目維持未知，
 不能用本頁通過宣稱全遊戲完成。
+
+## 2026-09-24：跨頁引號標點勘誤後重驗
+
+原文 key、事件表、原版遊戲與執行期程式均未修改；僅將正式譯文第六行末尾
+`垃圾傾倒場。」` 校為 `垃圾傾倒場。`，使引語留待第五頁結束。
+新 TSV SHA-256 為
+`c5d8e26d15ea24dc6e464bbf680b89a8deb2d3dd06943bf242a73f51adb46c70`。
+使用上文同一合法前態與雙 Enter 排程、原版 `GAME.OVR`、固定 runner，
+在無網路 Docker 重生 stable／active→clear 各 control、2×、3×；
+本次字型 SHA-256 為
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+與本文件早期收據不同，不能宣稱舊畫面逐 byte 不變。
+
+穩定頁雙倍率均啟用六 key、零缺字；文字安全矩形內變動像素為
+2× 12,164、3× 25,572，矩形外均為零。控制組與雙倍率的原版 JSON
+扣除 output-only 欄位後相同，`state-compare` 均 `equal=true`。
+離頁仍在 step `310023777` 由同一 `0CF4:1B3A`／`A000:AA08`／304-byte
+原版 pre-write 將 active 6→0；兩倍率 `drew=false`、終態 RGBA
+逐 byte 等於 baseline，原版 JSON 與存態比對仍相同。
+12 組雙頁完整收據、輸入與 runner 雜湊、逐組結果在 ignored
+`workplace/page4-5-punctuation-recheck-20260924/manifest.json`
+（SHA-256 `b669b0e887a9ab7ac0e466c70bfc0ccea2679f4dc5c41d5f00426df4316aac23`）。
+這只維持原有固定路徑的限縮 CONFORMED，未擴張其他玩家路徑。

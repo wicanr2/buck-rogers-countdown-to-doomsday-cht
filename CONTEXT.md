@@ -2,6 +2,13 @@
 
 更新：2026-09-24
 
+第四／五頁跨頁引號已校正：第四頁末不提早閉引號，第五頁末補閉引號。
+沿用已量合法進頁及 Enter 離頁路徑，以新 TSV、目前本機字型重跑雙頁
+各六組 control／2×／3×；全部原版 JSON 與存態相同，繁中差異只在
+核准矩形，離頁均無殘字。收據見[第一百四十七階段](docs/re/phase-147-story-page4-runtime-ab-pending-audit.md#2026-09-24跨頁引號標點勘誤後重驗)
+與[第一百四十八階段](docs/re/phase-148-story-page5-runtime-ab-pending-audit.md#2026-09-24跨頁引號標點勘誤後重驗)；
+兩頁只維持原有限縮 CONFORMED，不擴張完整開機／存讀檔聲明。
+
 使用者已選定 3× 設定面板的 **A 倚天原生 24 點**，排除 B 衍生 22 點。
 [第二百一十二階段 A／B 證據](docs/re/phase-212-host-only-3x-eten-font-ab-draft.md)
 已接續成 host-only 實際畫面收據：[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md)
@@ -55,9 +62,15 @@ z-order、原 layer 不變，缺群組／過期 generation 在讀影格前拒絕
 測試用合成器的 nil stamp 會 panic，manifest／generation 未綁正式
 owner；此與 3× host 面板的原生 24 點字型是不同路徑，仍只屬 DRAFT。
 [規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)
-新增 ignored 封存群組原型：雙倍率前檢、字型竄改、Clear／模擬 Restore
-與 callback 逸出負例通過；正式 owner、3×手冊字型載入及 watcher 群組
-尚未接線，因此這項進展沒有改變 DRAFT 狀態。
+新增 ignored 封存群組原型：雙倍率前檢、原始空 stamp、封存前同名異字模、
+讀影格時失效、Clear／模擬 Restore 與 callback 逸出負例通過。
+獨立複審已把雙層封存投影及 session 字型身分**限縮升為 READY**，
+本機字型 sidecar 已用全部 24 份正式 catalog 與唯讀倚天來源重建，
+字元聯集仍為 1,028 glyph，`GOLEMFNT` SHA-256 仍為
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+新 sidecar SHA-256 為
+`d359ee25ae89b301daded39a1ba253b2324850f2b935ae57276e3a1377a1212c`。
+正式 owner、3×手冊字型載入及 watcher 群組尚未完成驗收；不得稱 CONFORMED。
 
 [GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
 追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)

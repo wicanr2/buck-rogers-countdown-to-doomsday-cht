@@ -81,3 +81,26 @@ control／2×／3×穩定與離頁私有收據，雜湊皆與本文相符。新�
 因此規格 014 只在同一合法第四頁終態、既有 BIOS Enter 進入第五頁、
 再由 Enter 離開的雙倍率五行正常執行鏈升 CONFORMED。完整開機、其他離頁
 與遊戲內存讀檔仍未知，不從本收據外推。
+
+## 2026-09-24：跨頁引號標點勘誤後重驗
+
+原文 key、事件表、原版遊戲與執行期程式均未修改；僅將正式譯文第五行末尾
+`璀璨寶石。` 校為 `璀璨寶石。」`，結束第四頁開啟的引語。
+新 TSV SHA-256 為
+`32ab39ff390b4851258c475541cb64988aeb8815a056c3df41bc2c75bb5f6061`。
+使用上文同一合法前態與雙 Enter 排程、原版 `GAME.OVR`、固定 runner，
+在無網路 Docker 重生 stable／active→clear 各 control、2×、3×；
+本次字型 SHA-256 為
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+與早期收據不同。
+
+穩定頁雙倍率均啟用五 key、零缺字；文字安全矩形內變動像素為
+2× 10,679、3× 23,124，矩形外均為零。控制組與雙倍率的原版 JSON
+扣除 output-only 欄位後相同，`state-compare` 均 `equal=true`。
+離頁仍在 step `321118382` 由同一 `0CF4:1B3A`／`A000:AA08`／304-byte
+原版 pre-write 將 active 5→0；兩倍率 `drew=false`、終態 RGBA
+逐 byte 等於 baseline，原版 JSON 與存態比對仍相同。
+雙頁 12 組完整收據、輸入與 runner 雜湊、逐組結果在 ignored
+`workplace/page4-5-punctuation-recheck-20260924/manifest.json`
+（SHA-256 `b669b0e887a9ab7ac0e466c70bfc0ccea2679f4dc5c41d5f00426df4316aac23`）。
+這只維持原有固定路徑的限縮 CONFORMED，未擴張其他玩家路徑。

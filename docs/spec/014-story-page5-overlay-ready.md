@@ -6,6 +6,9 @@
 2026-09-23 限縮驗收：正式 runtime control／2×／3×及同執行 active→clear 收據見
 [phase 148](../re/phase-148-story-page5-runtime-ab-pending-audit.md)；後續失敗即關閉稽核
 見該文件的追加結論。本狀態不包含完整開機、其他離頁或遊戲內存讀檔。
+2026-09-24 跨頁引號標點勘誤後，以新 TSV 與目前本機字型重跑同範圍
+control／2×／3×及 active→clear，結果仍通過；新雜湊與像素數見
+[phase 148 的追加收據](../re/phase-148-story-page5-runtime-ab-pending-audit.md#2026-09-24跨頁引號標點勘誤後重驗)。
 
 ## 範圍、權利與停止線
 
@@ -28,7 +31,7 @@
 | 168 glyph 真實 far-return 與 ABI | 已證實 | [phase 145](../re/phase-145-story-page5-ready-evidence-draft.md)：每筆 `0763:03D6` opcode `0xCA` 後回到 `0763:04FF`，entry／return 同 SS、相對 `SP+0x12`、七個 ABI word 高位全 0。 |
 | 已量 Enter 離頁的 pre-write | 已證實 | phase 145 雙重 receipt：pre-execution `0CF4:1B3A`、`ES:DI=A000:AA08`、`CX=304`，與 `[8,320)×[136,176)` 相交；首個可見差異晚 24 step。 |
 | 繁中來源 | 編輯性 DRAFT | `text/story-page5.zh-TW.tsv` 的 `runtime-editorial`；不冒稱中文手冊逐字譯文。 |
-| 現行本機字型 | 已證實（本機） | `workplace/phase138-font/eten-subset.golemfont` SHA-256 `b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`；`fontcheck` 對現行 51 個譯文字元回讀零缺字，2×／3× bitmap 墨跡均在安全矩形內。 |
+| 當時本機字型 | 已證實（當時本機） | `workplace/phase138-font/eten-subset.golemfont` SHA-256 `b2b63c89f73abc9fbd13054d2efef355455b33e9ebdd56604e7c76f1e5aad7eb`；`fontcheck` 對當時 51 個譯文字元回讀零缺字，2×／3× bitmap 墨跡均在安全矩形內。2026-09-24 譯文與字型重驗見 phase 148 追加收據。 |
 | 其他離頁、完整玩家路徑、存讀檔 | 未知 | 不得由固定 Enter 收據外推。 |
 
 第五頁 entry receipt 由私有第四頁合法終態重播；離頁 receipt 由私有第五頁合法終態重播。

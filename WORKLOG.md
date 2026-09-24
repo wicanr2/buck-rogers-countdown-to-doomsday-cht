@@ -1,5 +1,30 @@
 # 工作歷程
 
+## 2026-09-24 — 第四、五頁跨頁引號校正與雙倍率重播
+
+- 低階翻譯代理只修改第四頁末與第五頁末各一處引號，原文 key 不變。
+  依既有合法原版存態，各重播 stable 與同執行 Enter 離頁的
+  control／2×／3×，合計 12 組；雙頁皆零缺字、文字矩形外零差、
+  原版 JSON 與存態同值，離頁 active 6／5→0 且 RGBA 回到 baseline。
+- 私有收據在 ignored
+  `workplace/page4-5-punctuation-recheck-20260924/manifest.json`
+  （SHA-256 `b669b0e887a9ab7ac0e466c70bfc0ccea2679f4dc5c41d5f00426df4316aac23`）。
+  只更新[第四頁](docs/re/phase-147-story-page4-runtime-ab-pending-audit.md#2026-09-24跨頁引號標點勘誤後重驗)
+  與[第五頁](docs/re/phase-148-story-page5-runtime-ab-pending-audit.md#2026-09-24跨頁引號標點勘誤後重驗)
+  原有固定路徑的限縮 CONFORMED 收據；其他路徑未知。
+
+## 2026-09-24 — 手冊封存投影限縮 READY 複審
+
+- 補上原始 layer 空 stamp、封存前同名異字模及讀影格時 owner 失效三項
+  可丟棄負例；合成雙倍率、`vet`、競態測試通過。獨立複審將
+  [規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)
+  限縮升為 READY，僅授權手冊雙層封存投影與 session 字型身分正式實作。
+  原版同狀態、玩家路徑與 Linux session 未因此完成。
+- 本機倚天來源在 Docker 內按全部 24 份正式 catalog 重建字型 sidecar；
+  字元聯集仍為 1,028 glyph，字模二進位 SHA-256 不變，sidecar SHA-256
+  更新為 `d359ee25ae89b301daded39a1ba253b2324850f2b935ae57276e3a1377a1212c`。
+  來源、字模、sidecar 只留 ignored `workplace/`，不加入 Git。
+
 ## 2026-09-24 — 手冊群組與前端故障的可丟棄原型
 
 - 手冊背景／正文的封存群組模型已在 Docker 以合成 2×／3× 影格通過只讀一幀、
