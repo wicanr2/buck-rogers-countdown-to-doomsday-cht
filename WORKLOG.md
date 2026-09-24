@@ -2285,3 +2285,17 @@
   [Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)
   已補共同 DOS／machine 身分及提交排他性停止線，未改正式回合，
   Issue #18 繼續開放。
+
+## 2026-09-24 — 原版選單 3× 實體切換與字距原型
+
+- 原版冷開機功能選單在實體 Ebitengine 視窗完成 2×→3× Apply；
+  A24 host 設定面板的本機像素測試通過，舊 22 點面板輸入會被正式
+  驗證閘門拒絕。面板開啟期間 DOS 零步，收合後恢復。
+- 遊戲畫布另以目前 16 點與可丟棄衍生 22 點 A/B：六筆 active
+  主選單在核准矩形外零差異；九個 `function.menu.*` 變體通過
+  合成字寬、字色、缺字與 ASCII 像素不變檢查。這不是正式
+  3× 畫布字型變更，也不是其他選單的動態重繪驗收；
+  [第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)維持 DRAFT。
+- Issue #18 的共同 DOS／machine、generation、一次提交合成 owner
+  測試與 `go vet` 通過；正式 bridge 仍可遭外部 `DOS.M` 改指，
+  規格 019 保持候選，不能宣稱 Linux session 已完成。

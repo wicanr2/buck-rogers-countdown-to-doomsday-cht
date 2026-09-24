@@ -447,3 +447,22 @@ ignored `workplace/dosgolem/frontend/ebiten/route_commit_target_alias_draft_test
 排除 rebind／重入，否則須把完整輸出收進同一個可驗的提交邊界。
 僅加一次前檢仍不足以阻止後段普通錯誤。規格仍為限縮 READY 候選；
 此為補充的技術阻塞，不改使用者既定的面板／滑鼠操作決定。
+
+## 2026-09-24：共同提交 owner 的可丟棄原型
+
+ignored `workplace/dosgolem/frontend/ebiten/route_commit_owner_draft_test.go`
+（SHA-256 `a750e68ea6a299d6ba04f48afd7b025876214df59f4fa6277cba3b3c78c12069`）
+用合成 DOS／machine 把既有純路由計畫、共同目標、單調 generation
+與一次提交放在同一個測試 owner。後段預檢錯誤、不同 DOS 目標、
+改走別台再回到原指標的 ABA、提交前公開 `DOS.M` 改指，皆於首個
+DOS 動作前拒絕，epoch／步數不增加；成功批次只交付一次，重入
+owner rebind 與舊計畫 replay 被拒。主代理在唯讀 Docker／Xvfb
+獨立重跑定向測試與 `go vet` 通過，既有正式 `Game.Update` 分裂目標
+反證亦仍通過。
+
+它提供的是**可行性原型**，不是正式 bridge 的證據：測試 owner
+直接交付合成 DOS，未取得 `MouseBridge`／`KeyboardBridge` 的共同
+目標唯讀身分，也不能阻止其他程式繞過 owner 改公開 `DOS.M`；
+`readFrameInput` 的完整提交矩陣及故障 Close 亦未通過。獨立
+READY 審查前，不得將此原型搬入 production 或宣稱已修復同批
+部分副作用。

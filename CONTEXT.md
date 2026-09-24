@@ -2,7 +2,16 @@
 
 更新：2026-09-24
 
-最新：本機倚天子集已由 `tools/eten_font.py verify` 以全部 24 份正式 TSV、
+最新：原版冷開機功能選單已在實體 Ebitengine 視窗完成 2×→3×
+Apply；3× host 面板使用使用者選定的倚天原生 24 點 A 版，
+正式本機像素測試再次通過。遊戲畫布主選單的 16／22 點 A/B
+只屬可丟棄原型：九個 `function.menu.*` 變體通過合成幾何、
+字模、色盤及 ASCII 不變檢查，尚缺正式 READY 與動態重繪驗證。
+[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)
+記錄範圍與限制。Issue #18 的共同 owner 合成原型也重跑通過，
+但正式 bridge 尚無整批排他提交；#16／#18 維持開放。
+
+前一進度：本機倚天子集已由 `tools/eten_font.py verify` 以全部 24 份正式 TSV、
 三個固定來源及現有 GOLEMFNT／manifest 唯讀逐 byte 核驗，15 項合成測試
 通過；正式 Linux session 尚未在啟動時呼叫。手冊 `ManualSnapshotOwner`
 用正式原版 runner 的首題 begin／clear／request 收據和同一終態影格，

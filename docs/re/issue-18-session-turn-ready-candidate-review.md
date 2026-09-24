@@ -520,3 +520,15 @@ SHA-256 `c73093b27b5d5b362fd7833ed9c674503965bf9c28287519e457ae5a986cd8bc`；
 兩個 DOS 輸出 bridge 的共同 DOS／machine 身分、變更來源與整批排他性。
 規格 019 已增補此停止線；規格 233 的限縮 BIOS 前檢仍有效，但不能
 被誤寫成完整回合原子性。Issue #18 保持 OPEN。
+
+## 共同目標／版本／單次提交的合成原型（2026-09-24）
+
+ignored `frontend/ebiten/route_commit_owner_draft_test.go` SHA-256
+`a750e68ea6a299d6ba04f48afd7b025876214df59f4fa6277cba3b3c78c12069`
+以合成 DOS 建立「純預檢→釘住同一 DOS／machine 與 generation→
+一次提交」的最小模型。不同目標、後段預檢錯誤、rebind ABA 與
+提交前公開 `DOS.M` 改指皆零新增滑鼠／BIOS／step，成功只交付一次；
+重入 owner rebind 與重播計畫被拒。主代理在 Go 1.26.7／Ebitengine
+2.9.9 的唯讀、無網路 Docker／Xvfb 重跑定向測試及 `go vet` 通過。
+本模型直接寫合成 DOS，未接正式 bridge；外部仍能改 `DOS.M`，
+故未消除正式回合阻塞，也不升 READY。
