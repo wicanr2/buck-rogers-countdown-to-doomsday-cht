@@ -1,5 +1,16 @@
 # 工作歷程
 
+## 2026-09-24 — 正式手冊雙層封存元件
+
+- 本機 dosgolem fork `cbd5683` 新增雙層 callback 封存投影與
+  `ManualSnapshotOwner`，只提交四個正式程式／測試檔；其餘既有 ignored
+  診斷檔保留。雙倍率合成正反例涵蓋字型內容、14 行身分、舊票失效、
+  讀幀時失效及失敗後零部分 RGBA。主代理在唯讀、無網路 Docker
+  獨立重跑定向競態測試與 `go vet`，均通過。
+- [規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)
+  仍為限縮 READY：caller 字型來源驗證、Linux session 接線、原版
+  同狀態與正常玩家手冊路徑尚未完成，不稱 CONFORMED。
+
 ## 2026-09-24 — 第四、五頁跨頁引號校正與雙倍率重播
 
 - 低階翻譯代理只修改第四頁末與第五頁末各一處引號，原文 key 不變。

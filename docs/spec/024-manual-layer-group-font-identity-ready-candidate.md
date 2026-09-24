@@ -269,3 +269,30 @@ Clear／Begin／Restore 後舊 group 與 `FrameSource` 讀中失效；確認零 
 答錯換題／返回／存讀檔的原版同狀態與正常玩家路徑，需另有 dosgolem 收據
 才可擴張 CONFORMED。其餘 38 題不能以此元件測試推定已驗收；所有原版與
 倚天輸入及其衍生字模仍只留本機，不得上傳 GitHub 或公開發行。
+
+## 2026-09-24：正式元件已實作，規格仍限縮 READY
+
+本機 dosgolem fork `buck-rogers-cht-output-overlay` 的 `cbd5683` 新增
+`presentation/sealed_layers.go`、`apps/buckrogers/manual_snapshot_owner.go`
+及各自的正式合成測試。通用投影由 callback 作用域封存背景與正文；
+群組離開 callback 立即撤銷，不能保存後重畫。遊戲端 owner 在建立
+text stamp 前賦予 2×／3× session 字型身分，逐行核對 14 筆
+event／catalog／key／譯文／幾何，並將同一 indexed／palette 影格、
+層快照雜湊及 epoch 綁為私有 ticket。任何新 PrepareFrame 嘗試、
+Clear、失敗的 Consume 或 Invalidate 均使舊 ticket 失效。
+
+正式合成 2×／3× 正例與來源空 stamp、同名字模竄改、錯行 key／譯文、
+Frame 後色彩漂移、Consume 部分成功後錯誤、讀幀時失效及 callback
+逸出負例通過。主代理在 Go 1.26.7、無網路、唯讀 fork 的有界 Docker
+獨立重跑 `go test -race -count=1 ./presentation ./apps/buckrogers`
+與 `go vet ./presentation ./apps/buckrogers`，均通過。這只證明
+**正式元件的合成契約**，未經原版同狀態與正常玩家路徑驗證，
+故不升 CONFORMED。
+
+caller 仍須依本規格來源契約核驗本機 `GOLEMFNT`／manifest；目前 ignored
+字型 sidecar 已按 24 份正式 TSV 重建，1,028 glyph，字模二進位
+SHA-256 為 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+sidecar SHA-256 為 `d359ee25ae89b301daded39a1ba253b2324850f2b935ae57276e3a1377a1212c`。
+正式 Linux session 尚未調用此 owner，真實手冊首題／答錯換題、
+清除／返回、存讀檔及其他 overlay 並存仍待原版收據；不能把元件存在
+當成玩家可見中文化完成。

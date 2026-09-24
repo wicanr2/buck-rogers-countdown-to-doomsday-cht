@@ -70,7 +70,12 @@ owner；此與 3× host 面板的原生 24 點字型是不同路徑，仍只屬 
 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
 新 sidecar SHA-256 為
 `d359ee25ae89b301daded39a1ba253b2324850f2b935ae57276e3a1377a1212c`。
-正式 owner、3×手冊字型載入及 watcher 群組尚未完成驗收；不得稱 CONFORMED。
+本機 dosgolem fork `cbd5683` 已實作手冊雙層封存元件及私有
+`ManualSnapshotOwner`，合成 2×／3×競態測試與 `go vet` 由主代理獨立
+重跑通過；3×手冊字型在建立 stamp 前命名、14 行正文與色彩影格
+綁定的失敗情境亦已測。Linux session 尚未呼叫此 owner，原版同狀態、
+正常玩家路徑與存讀檔仍未驗收；規格 024 保持限縮 READY，
+不得稱 CONFORMED。
 
 [GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
 追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)
