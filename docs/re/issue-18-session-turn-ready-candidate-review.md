@@ -786,3 +786,31 @@ exit／HLT 只量起始已終止且條件為 false，未量中途終止、
 條件與終止同時成立、具體 HLT／守衛錯誤型別或原版手冊全路徑。
 測試專用 `unsafe` 不能進 production；規格 019 的 observer-aware
 Advance 部分仍 DRAFT，Issue #18 保持開啟。
+
+## 2026-09-24：Oracle／Owner 停止收據負例的獨立複核
+
+延續上節測試，本機 dosgolem fork `b2580a7` 新增帶
+`draft_session_oracle_receipt_matrix` 標籤的自包含合成測試，檔案
+SHA-256 為 `cc70d02a86cd39bd0634c2576436590d705c7917c5215031afdc7218df8d9d31`。
+主代理逐行核對後，以唯讀 fork、`--rm --network none`、限資源及
+目前 UID/GID 的既有 Go 1.26.7 image，獨立重跑定向
+`go test -tags=draft_session_oracle_receipt_matrix -count=1 -v ./session
+-run '^TestDraftOwnerOracleReceiptMatrix$'` 與同標籤 `go vet ./session`，
+均通過。這是合成 COM 與測試專用別名，沒有原版 EXE／存態／手冊
+或倚天字型，也沒有正式 `Owner.Advance` 收據。
+
+新量到的邊界比上節更完整：末步 DOS exit、HLT、A0000 守衛均被
+Oracle 的預算截止遮蔽；額外一個槽才在下一輪起點辨識終止。
+`Budget(^uint64(0))` 加上非零既有步數會回繞，零嘗試也回預算錯誤。
+raw Step 錯誤不被末步預算覆蓋，但 Oracle 沒有 raw Stop 回傳；
+正式收據不可把 error 類別推作 `machine.Stop`。合成 Buck watcher
+的動態返回 hook 再次可觸發。另更正先前對 stub 的疑慮：
+`fireStub` 雖略過 `Machine.Step`，仍自行遞增步數；有界同址三次
+重入實測三步，不是無界迴圈的證據。
+
+另一位獨立代理唯讀核對現行 watcher 的精確唯讀依賴，提出具
+作用期限的 `CallView`＋動態 hook 登錄作為**候選**；
+`cmd/buckrogers-text-receipt` 仍有多個手寫觀測路由，現無完整
+第一步前安裝清冊，且 frame／A000 pre-write 是各一個 callback 槽。
+因此本輪只固定 DRAFT 反例，不把單一 `Watcher.Install` 或
+`oracle.RunUntil` 包裝成封閉 Linux session。#18 維持 OPEN。

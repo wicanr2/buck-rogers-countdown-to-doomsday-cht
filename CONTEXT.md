@@ -2,6 +2,17 @@
 
 更新：2026-09-24
 
+本輪 #18 新增本機 dosgolem fork `b2580a7` 的自包含 Oracle／Owner
+停止收據 DRAFT 矩陣，主代理獨立 Docker 測試／vet 通過：末步
+exit／HLT／A0000 會先呈現預算錯誤，超大 budget 可回繞成零步預算
+錯誤；Oracle 不回 raw Stop，不能直接填現有 `TickReceipt`。
+合成 Buck 動態 return hook 再次成立；stub 同址重入會計步，撤回
+先前無界迴圈疑慮。封閉唯讀 `CallView` 是待審候選，尚無完整 hook
+清冊、原版同狀態或正式 `Owner.Advance`。翻譯代理複核仍找不到
+可安全新增的固定 row 15 譯文；#8／#18 保持開啟。詳見
+[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)與
+[#18 研究紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)。
+
 本輪 #18 新增本機 fork 的自包含 tagged Oracle 回圈 DRAFT 收據，
 獨立複審與 Docker 定向測試通過：同一組 Owner 私有合成 machine／DOS
 可觸發正式 Buck Watcher 的動態 return hook；`Oracle.RunUntil` 的

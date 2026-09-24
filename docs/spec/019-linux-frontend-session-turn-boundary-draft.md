@@ -736,3 +736,34 @@ session、競態與 vet，以及 reviewer 的獨立 tagged session 測試通過�
 每回合 budget 與 Oracle 停止值／錯誤的 typed 映射、動態 hook 安裝
 在第一步前、退出／HLT／守衛與 stub 的負例，以及原版手冊 checkpoint
 的同狀態收據；規格確定後才可修改正式 `Advance`。
+
+### 2026-09-24 追加 DRAFT：Oracle 停止收據矩陣與封閉接線候選
+
+本機 fork `b2580a7` 的自包含 tagged 合成測試
+`session/owner_oracle_receipt_matrix_draft_test.go`，SHA-256
+`cc70d02a86cd39bd0634c2576436590d705c7917c5215031afdc7218df8d9d31`，
+由主代理在唯讀、無網路、有界 Docker 獨立重跑測試與 `go vet` 通過。
+它只用測試專用反射／`unsafe` 把 Oracle 暫時連到同一組 Owner 私有
+machine／DOS；沒有修改正式 `Owner.Advance`，沒有載入原版或字型。
+測試裡的合成位址不構成新的原版定位證據。
+
+已證實的現行 Oracle 行為：`Steps(2)` 配 `Budget(2)` 走兩步仍回
+`BudgetError`，配 `Budget(3)` 才在下一輪起點回 nil；DOS exit、HLT
+及跳入 `A0000` 若恰在最後允許的一步發生，會先呈現預算錯誤，
+多一個預算槽才分別呈現終止或守衛錯誤。原始 Step 錯誤仍優先返回；
+Oracle 只回 error，沒有 `machine.Stop`，不可據此填造 `TickReceipt.RawStop`。
+從 `Machine.Steps=1` 給 `Budget(^uint64(0))` 時，現行 deadline 加法
+回繞，零步即回 `BudgetError`；正式封閉 runner 須在提交前拒絕溢位
+或訂出可驗證的安全上限。正式 Buck `Watcher` 在合成 `RETF 0Ch`
+仍可動態取得 return hook。先前懷疑 stub 跳過 `Step` 可能不計步；
+新測試證實 `fireStub` 本身計步，同位址重入三次為三步，故撤回該疑慮。
+
+獨立唯讀 API 審查提出**強推論候選**：通用層提供只讀呼叫視圖
+`Regs`／`Caller`／`Arg`／`Byte`／複本 `Bytes`／`Steps`，以及限定作用期
+的動態 `OnCall` 註冊；遊戲專屬 watcher 提供位址與 hook 清冊，
+session 在第一步前私有安裝，不向 frontend 或回呼外洩
+`*Oracle`／`*Machine`／`*DOS`。此候選尚未有完整正式 hook 清冊、
+觀測錯誤傳播、frame／A000 pre-write 多路分派、原版冷開機或
+`TickReceipt` 映射證據；**仍為 DRAFT，不授權實作**。下一次審查
+應先以同一合法原版 checkpoint 比對首個與末個手冊事件、停點與
+machine／DOS 狀態，再固定 typed 停止原因及第一步前安裝的負例。
