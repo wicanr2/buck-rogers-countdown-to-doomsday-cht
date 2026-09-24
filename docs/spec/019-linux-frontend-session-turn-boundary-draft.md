@@ -1,6 +1,6 @@
 # 019 — Linux 前端失敗即關閉 session 回合邊界
 
-狀態：**READY（限新建封閉 owner 的 session-turn 與值型 View 子契約）；View、正式前端及原版 cold boot 尚未實作，規格 004 仍 DRAFT，且本規格尚未 CONFORMED。**
+狀態：**READY（限新建封閉 owner 的 session-turn 與值型 View 子契約）；View 已限縮接入正式 owner，畫面 Snapshot、正式前端及原版 cold boot 尚未實作，規格 004 仍 DRAFT，且本規格尚未 CONFORMED。**
 日期：2026-09-24
 
 本檔較早的 DRAFT／「READY 候選」段落保存阻塞如何被發現；現行裁決以末節
@@ -19,10 +19,11 @@ implementation 起點：本機 dosgolem fork `b062c5b` 已加入不呼叫 DOS �
 `Machine.RunUntil` 成立，沒有遊戲文字 Watcher。後續 `329d816`／
 `0546e2a` 已加入合成回合的純 Prepare／封閉 Commit、2×／3× 面板
 版面私有投影與矛盾輸入的首動作前拒絕；`3b8688e`／`2901c98`
-使現有 Ebitengine 前端共用純命中／版面投影。這些是**限縮的
+使現有 Ebitengine 前端共用純命中／版面投影；`a7cb0eb` 將同源
+值型 View 與整批版本核對接入正式 owner。這些是**限縮的
 無觀測者元件收據**，不涵蓋實體前端回合全矩陣。Booting 仍未載入
-原版 EXE，故不得提前呼叫 `DOS.Install()` 或推進。完整整批輸入、
-原版冷開機、observer-aware runner、
+原版 EXE，故不得提前呼叫 `DOS.Install()` 或推進。原版冷開機、
+observer-aware runner、畫面 Snapshot、正式前端交界、
 `Game.OnDrawFault` 的真正 owner 接線及正常玩家路徑仍未完成；
 本規格仍未 CONFORMED。
 
