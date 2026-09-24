@@ -108,3 +108,58 @@ go test ./apps/buckrogers -run '^TestCommandStatusColumnsProbe$' -count=1 -v
 `row15`、`row24_enter`、`row24_turn` 的硬停止分別固定為
 `370000000`、`310000000`、`310000000`；不得為找第九頁出口而延長。
 完整原版、存態與 probe 保持 ignored／私有；本文件只記 content-safe 摘要。
+
+## 2026-09-24 跨進度合法初態比對勘誤
+
+本節追加獨立於上段三條短窗的**第二初態**，不覆寫原先「當時沒有跨狀態
+證據」的歷史結論。從手冊正確作答前的合法
+`workplace/probe/phase12-before-question.state`（SHA-256
+`8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269`）
+載入本機私有成功返回收據
+`workplace/phase104-manual-correct-return/control.json`（SHA-256
+`777f73b28c41ce7e62775eaaa81c92af4e474720e3f264b4ab723e83c8549ac1`）
+內的三筆**既有** BIOS 排程，止於 `280000000`；答案不輸出、不加入 Git。
+另一側仍使用上述第九頁合法 state，既有 `361000000` Enter，硬停止
+`370000000`。兩個初態與輸入都來自已驗玩家路徑；它們證實故事進度與
+row 15 輸出內容不同，但尚未證實「命令選項」或具名狀態變數改變。
+
+dosgolem fork commit 仍是 `cc0b17ac92b1e3aea8ff676936684ddcf8064594`，
+原版 `GAME.OVR` SHA-256 仍是本頁頂端所列值。ignored 一次性
+`command_status_cross_state_probe_test.go` SHA-256 為
+`e532cd6c1f5a82790e81652c6832fd2312bfdd82f4e14d7e70ac49ba513294b7`。
+在既有 `eob-remake-go:1.26.7-ebiten2.9.9`、Go `1.26.7 linux/amd64` 的
+唯讀無網路有界 Docker 內，執行
+`go test ./apps/buckrogers -run '^TestCommandStatusCrossStateProbe$' -count=2 -v`
+兩次均通過，entry／整串 SHA、欄位遮罩及 A000 首寫一致。最初一次性 probe
+錯把 `row`／`col` 的 byte 參數當完整 word，比對不到 entry；修正探針的
+型別截取後，以**相同** state／輸入／停止點重跑通過，非遊戲或 dosgolem 缺陷。
+
+| 已證實 row 15 col 17、caller `1FEB:2AF5` | 原文整串身分與邊界 |
+| --- | --- |
+| 早期第一筆 | `267092572`，11 bytes，SHA-256 `341424568dde6246402816f2c2007d9a24f4fc1a7b22ab48f7a13177003932cd`；`026F:029C` 清 row 15 col 17..38 於 `267092142`，首筆相交 A000 pre-write `267092298`，writer `0CF4:1B3A`，offset `38536`，entry 前本體清寫 768 筆。 |
+| 早期第二筆 | `268564251`，12 bytes，SHA-256 `2a44b824ee9c300be7e30d80e5af1178fd654de6509bd82db39acb955185db51`；清除 `268563821`，首寫 `268563977`，同 writer／offset、768 筆。 |
+| 第九頁後六筆 | 12 bytes；六個完整 SHA 與 entry 均與本頁上段及第一百三十六階段一致。每筆 `026F:029C` 清 row 15 col 17..38 後，恰有 768 筆本體清寫，再進 dispatcher；首筆清除／A000／entry 為 `361111247`／`361111403`／`361111677`。 |
+
+此處 768 筆只統計固定的 row 15 col 17..28 **12 格觀測矩形**在
+dispatcher 前的 A000 寫入；早期第一筆原文實長 11 格，不可把第 12 格
+說成該筆原文 glyph，也不能把 768 當成完整 22 格 clear 的逐 pixel 計數。
+
+早期 12 格對後期六筆 12 格，zero-based 位置 **1–4、6–11
+逐 byte 相同**；位置 **5** 必不同，位置 **0** 對後期第 2–6 筆也不同
+（對第 1 筆恰相同）。早期 11 格若右對齊到 12 格，早期位置
+2、3、5–10 相同，0、1、4 不同。這只是字節相等遮罩；右對齊是比較方式，
+不是原版欄位格式或語意證明。12 格的 ASCII 類別形狀為
+`DPDDSLSDDPDD`，11 格為 `DPDSLSDDPDD`，其中 D 是 ASCII 數字、
+S 是空白、P 是非 ASCII 英文字母／數字／空白的其他 byte；**沒有
+ASCII 英文字母**。P 不推定為特定符號或詞。即使有逐 byte 不變位置，
+本輪仍找不到可審核的固定英文詞與動態欄來源，故不能產生譯文 key。
+
+另以已存的 96 份 phase104–139／page6–10 相關 JSON 候選篩查，93 份
+可解析為物件、1 份解析錯誤；此統計包含不同格式的收據，不代表
+93 條獨立玩家路徑。目標 row 24 的 `0763:1307 → 0763:0424` 21 格
+只見 `e920b38b…` 同一整串身分；`37F1:0337 → 0763:026B` 33 格
+只見 `00df727d…` 同一整串身分。page6→9 換頁、phase110 只改 Enter
+時間，以及 phase112 的 4／6 都**不是**不同的 row 24 命令／狀態值。
+因此 row 24 仍缺「同 caller／row／col，且來源可證的不同值」；
+row 15 則雖有跨進度不同內容，仍缺可核准翻譯的固定詞與失效驗收。
+不延長第九頁盲目按鍵，不新增 TSV 或正式覆繪。

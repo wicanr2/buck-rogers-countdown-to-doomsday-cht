@@ -84,11 +84,11 @@ advance 16 與既有驗證／畫筆；切到 3× 再返回 2×，2× 標籤與
 控制項像素、hit rectangle、畫布 origin 應與切換前一致。不得
 為了共用 3× 混合字寬而改動 2× 的字距或字型來源。
 
-現行正式 `frontend/ebiten/game.go` 的 `Config.HostFont3`、
-`validateHostFont`、`fontForScale` 與 `drawText` 都使用單一
-`*xlate.Font`，3× 驗證固定 22×22、`drawText` 每字增加 `font.W`。
-因此最小正式改動是新增上述 3× 專用 typed view 與 3× 專用
-驗證／量測／繪製選字；`HostFont2` 及 2× 分支維持原契約。
+接線前的 `frontend/ebiten/game.go` 使用單一 `*xlate.Font` 作為
+`Config.HostFont3`，3× 驗證固定 22×22、`drawText` 每字增加
+`font.W`；此為當時的差距，不是現況。上文所記本機 fork
+`cc0b17a` 已新增 3× 專用 typed view 與逐字驗證／量測／繪製選字；
+`HostFont2` 及 2× 分支維持原契約。
 本機載入端須以三份原生來源建立兩份僅含 host 標籤的子集，
 將 Wide／ASCII 注入 `Config`；不在正式程式內硬編私有字型路徑、
 攜帶字模或把字型嵌進二進位。3× 啟用前若任一來源缺席、雜湊不符、

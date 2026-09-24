@@ -388,3 +388,53 @@ bridge 的內部末態；`draftCommitDOS` 直接按清單寫 DOS，只驗目前
 自行定案。正式可行的下一個最小切片仍是通用 host 的完整快照與
 純 evaluator／已驗計畫提交 API，然後用真實 bridge 量完規格 019
 矩陣；本輪不改 production、不請求自行核准 READY。
+
+## 完整來源快照與版本 token 負例（2026-09-24）
+
+本輪唯讀核對正式 `host.PanelController`／`MouseBridge`：前者的
+`Snapshot` 可取得 open、active／selected 值，後者內部還有
+`current`、`hasCurrent`、`pressed`、`pressedEpoch`、`hostCaptured`，
+但公開 getter 不含 `pressedEpoch`。`PanelController.Route` 與
+`MouseBridge.Handle` 都是可直接呼叫的 mutator，後者可即時寫
+`MouseOutput`；目前不存在能把兩者及 frontend layout／phase 一次
+擷取的正式來源 token。`ApplyLayout` 另有普通錯誤，不能留到已送出
+DOS 動作後才呼叫。
+
+ignored fork 新增**僅測試用**
+`host/route_source_token_draft_test.go`，SHA-256
+`7cac0cf53f00b394943fc0db819f377255f9933c6d72758c095a647829ed8e16`。
+它以同 package 的測試權限擷取私有 mouse 欄位，並以可丟棄 wrapper
+模擬單調版本，不改正式 host API。三項測試證實：跨 layout epoch
+按住時，完整快照必須同時保留舊 `pressedEpoch` 與新 current epoch；
+Open→Cancel 及真實 MouseBridge 的 Down→Up 後，**逐欄完整值快照
+可與預檢前完全相同**，但 DOS sink 已有 move／press／move／release，
+只比值會遭遇 ABA；wrapper 版本改變時，過期計畫在任何新輸出前拒絕。
+反向負例再直接繞過 wrapper 呼叫 `MouseBridge.Handle` 完成 Down→Up：
+版本未變、值也復原，測試用提交會錯誤接受舊計畫。這是候選 wrapper
+安全性不足的**正向重現**，不是正式產品預期成功行為。
+
+以現有 `eob-remake-go:1.26.7-ebiten2.9.9` 執行
+`timeout 90s docker run --rm --network none --read-only --memory 2g
+--cpus 2 --pids-limit 256 -u "$(id -u):$(id -g)"`，唯讀掛載
+`workplace/dosgolem:/dosgolem:ro`、可執行 `/tmp` tmpfs，設定
+`GOCACHE=/tmp/go-cache GOWORK=off GOPROXY=off`，在 `/dosgolem`
+執行 `go test -count=1 ./host && go vet ./host`，全套通過。
+第一次 `/tmp` 未顯式指定 `exec`，測試二進位出現 permission denied；
+同一測試改用 `--tmpfs /tmp:rw,exec,nosuid,size=1g` 後乾淨重跑通過，
+屬容器設定問題，非產品失敗。既有 frontend 純 evaluator 的後段
+非法 Apply／缺 BIOS transport／stale Up 零新增 DOS 負例仍是前節
+證據；本輪另以同一唯讀 Docker／可執行 tmpfs，容器內直接啟動
+`Xvfb :99` 並設 trap，重跑 `go test -count=1 -run
+TestDraftPureRoutePlan -v ./frontend/ebiten && go vet ./frontend/ebiten`
+通過。`xvfb-run` 首試因映像缺 `xauth` 失敗，改用直接 Xvfb 後通過，
+是容器啟動方式問題。本輪沒有把 test-only wrapper 當正式整批提交。
+
+審查候選的最小通用變更是：由**同一 host route owner** 管理
+panel／mouse 的完整快照與所有 mutator 的單調 generation；前端
+layout／phase／pending 也納入同一來源核對；對值拷貝純預檢整批；
+`Commit` 核對 generation 與完整起點後安裝已驗 host 末態、交出定序
+DOS 動作，不能再呼叫可失敗的 `Route`／`Handle`／`ApplyLayout`。
+提交與動作交付區間必須排除重入；否則需把交付收進同一 owner。
+規格 019 已補此限縮契約，但**尚未達 READY**：共同 owner／不可繞過
+mutator、正式 `readFrameInput` adapter、鍵盤未映射政策與完整矩陣
+尚無正式 bridge 收據，須交獨立審查，不得由本測試自行升級。

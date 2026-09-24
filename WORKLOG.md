@@ -2163,3 +2163,24 @@
   跨狀態固定詞、詞界、完整失效與雙倍率安全矩形未證，故未新增 TSV、
   watcher 或第十頁故事候選。第一次 probe 少掛原版檔是環境設定失敗，
   已核對唯讀來源後以相同停止線重跑通過。
+
+## 2026-09-24 — 3× 原生字型回歸與前端 READY 缺口
+
+- 依使用者選定的 A 方案，在既有有界、無網路 Docker／直接 Xvfb 重跑
+  `TestNativeHostFont3` 四組測試；正式畫筆的五標籤像素數為
+  334／135／132／356／366，原生 24 點有 102 個墨點位於 22×22
+  裁切邊界外，2× 往返 1,116,160 bytes 完全相同。第一次使用
+  `xvfb-run` 因 image 缺 `xauth` 而未啟動測試，改由容器內有界
+  Xvfb 與 trap 清理後通過；這是驗證環境問題，不是產品缺陷。
+- 正式手冊 presenter 的合成雙層測試揭露 3× 衍生字型未命名，
+  目前單層 snapshot provider 會拒絕；測試內命名及登錄後可重現
+  presenter 的 RGBA。獨立審查又指出測試用合成器的 nil stamp
+  可 panic，manifest／generation 無正式 owner 保證；[第二百二十階段](docs/re/phase-220-linux-active-composite-draft.md)
+  已標明限制，不升 READY。
+- Issue #18 的 ignored session／route 原型新增完整值 ABA 與外層
+  source token 可繞過負例；規格 019 與審查紀錄保留共同 owner
+  候選，未動 production、未升 READY。
+- Issue #8 以手冊成功返回與第九頁後兩個合法進度雙重播 row 15，
+  確認同 caller／位置有不同身分，但沒有可核准固定英文詞界；
+  row 24 仍只有各自單一身分。phase221／規格 023 保持 DRAFT，
+  不新增 TSV 或正式 watcher。

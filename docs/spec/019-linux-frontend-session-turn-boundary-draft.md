@@ -261,6 +261,7 @@ type RouteBase struct {
     FrontendLayout host.MouseLayout
     OwnerPhase SessionPhase
     PendingUpdate bool
+    SourceGeneration uint64 // 唯一 owner 的單調版本；不可由值狀態雜湊替代
 }
 type PreparedUpdate struct {
     Base RouteBase
@@ -278,6 +279,15 @@ type PreparedUpdate struct {
 若正式政策仍允許略過，plan 要明列為「不交付」並加測；要改為整批
 拒絕則先審其玩家可見影響。`PreparedDOSAction` 只記已驗的參數與順序，
 不持有可於提交時重新分類的原始 pointer 或視窗座標。
+
+`SourceGeneration` 必須覆蓋 panel、mouse、frontend layout／phase／pending
+的所有成功變更，並由同一 owner 擷取與核對。單憑完整值快照仍不夠：
+Open→Cancel 及 canvas Down→Up 可回到逐欄相同的值，卻已發生來源變動
+及 DOS 動作（ABA）。若外部仍可繞過 owner 直接呼叫 `PanelController.Route`、
+`MouseBridge.Handle` 或 `ApplyLayout`，僅由 owner 包裝方法增加版本也無效；
+正式 API 須把這些 mutator 納入共同版本管理，或限制來源生命週期內
+只能透過 owner 寫入。`MouseRouteState` 的私有欄位必須由 host 層一次
+取得，不得由 frontend 用公開 getter 拼湊。
 
 預檢在唯一 session owner 的同一 goroutine 讀取 `RouteBase`，對獨立
 值狀態依 `Game.Update` 的 Down → Up → focus loss → 鍵盤候選順序
@@ -311,6 +321,14 @@ pressed、pressedEpoch、hostCaptured 與 current layout 必須由其內部
 證明這一點。較小的通用 API 方案是由 host 層提供 panel 與 mouse
 的純預檢／不可變計畫，並提供在核對來源狀態後**不再做可失敗路由**
 的提交操作；session adapter 只負責編排既有 DOS 輸出與鍵盤 transport。
+具體候選介面可為單一 `HostRouteOwner.Snapshot() (RouteBase, error)`、
+`Prepare(base, []HostRouteCandidate) (HostRoutePlan, error)` 與
+`Commit(plan) ([]PreparedDOSAction, error)`；`Commit` 在任何 DOS 輸出前
+核對同一版本及完整起點，然後安裝已驗 host 末態並交出定序動作，
+不可重播 `Route`／`Handle`／`ApplyLayout`。同 goroutine 內交出動作至
+DOS 的區間禁止重入或外部 host mutator；若不能建立此排他性，就須
+將動作輸出也收進同一 owner 的提交操作。這是待獨立審查的最小通用
+API 形狀，不是已核准的正式實作。
 若無法實作此保證，規格仍停在 DRAFT／READY 候選，不以 fake 計數
 或一次成功批次宣稱原子拒絕。
 

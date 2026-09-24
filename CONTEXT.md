@@ -12,6 +12,10 @@
 重建相同子集，字模仍只留 ignored `workplace/`。這些沒有
 原版 DOS／存檔同狀態或完整玩家入口；規格 004 整體 DRAFT，
 3× 字型也不升 CONFORMED。
+本輪在既有 Docker／Xvfb 重新執行本機原生字型畫格測試：3× 五標籤
+逐像素通過、24 點字模有 102 個墨點落在 22×22 裁切範圍外，
+2×→3×→2× 的 1,116,160 bytes 畫面完全相同。這仍是合成畫布
+host-only 收據，不能外推為原版 DOS 玩家路徑。
 
 使用者再次確認 Linux 設定面板開啟時暫停 DOS，排除背景持續推進；
 Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這項排程已有
@@ -27,6 +31,10 @@ Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這�
 另以真正 `Game.Update` 重播同批畫布 Down→鍵盤 transport 錯誤，
 也證實錯誤返回後 DOS 左鍵仍按下；詳見上述 Issue #18 審查紀錄。
 此為 READY 阻塞證據，不是已修正的正式前端。
+最新可丟棄負例進一步證明：只比較面板／滑鼠完整值會遇到
+Open→Cancel、Down→Up 的 ABA；若來源版本僅由外層 wrapper 管理，
+直接呼叫正式 bridge 仍可繞過。規格 019 因此新增共同來源版本與
+單次提交候選，但尚未獨立核准或改 production。
 
 [第二百二十階段](docs/re/phase-220-linux-active-composite-draft.md)另以無原版素材的
 合成測試驗過多作用層單影格投影候選：2×／3×各讀一次合成輸入影格、固定
@@ -34,6 +42,11 @@ z-order、原 layer 不變，缺群組／過期 generation 在讀影格前拒絕
 缺字不交付半張 RGBA。正式 provider 目前仍只接受一層；手冊背景與正文
 至少已有兩層，真實同一 session 的並存與失效尚未接通。本證據保持 DRAFT，
 不使 Linux 可玩前端 READY。
+正式手冊 presenter 的背景／正文雙層合成測試亦證實 3× 現行
+`manualThreeXFont` 因未命名而被單層 provider 拒絕；僅在測試內
+命名並登錄後，可重現現行 presenter 的 2×／3× RGBA。獨立審查指出
+測試用合成器的 nil stamp 會 panic，manifest／generation 未綁正式
+owner；此與 3× host 面板的原生 24 點字型是不同路徑，仍只屬 DRAFT。
 
 [GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
 追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)
@@ -59,6 +72,11 @@ DOS state、indexed 與正規化 JSON 同值；RGBA 差異僅在核准單行矩�
 第 0 格變動、其餘相同；row 24 的 21 格 dispatcher 與 33 格直接
 glyph 路徑不能合併。A000 首寫與部分清除邊界已量，但跨狀態固定詞、
 原文詞界和完整失效未知；保持 DRAFT，沒有新增 TSV 或正式 watcher。
+追加跨進度合法初態雙重播後，row 15 同 caller／位置確實得到
+不同的 11／12 格身分，部分 byte 固定、部分變動；但字節類別只有
+數字、空白與其他非英文字母，不能辨識可核准的固定英文詞界。
+row 24 的既有收據仍沒有同路徑的第二個不同值。故規格 023
+維持 DRAFT，沒有 READY 譯文或正式接線。
 
 [第二百一十八階段](docs/re/phase-218-exit-prompt-runtime-ab.md)現已把真正
 Exit 後兩句 row 24 問句本體接上正式 dosgolem watcher／presenter；
@@ -90,7 +108,8 @@ GitHub [Issue #19](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-
 證實原生倚天 24 點明體與符號可覆蓋 3× host 面板九個字元，
 但直接裁成正式前端要求的 22×22 會損筆畫。已做不載原版遊戲的
 A 原生 24 點／B 原型衍生 22 點並列圖片，五項文字安全矩形均通過；
-使用者尚未選外觀，正式 3× Apply 暫停於此分支。
+當時使用者尚未選外觀；現已選 A 並完成上文所述限縮字型接線與
+host-only 驗證，正式玩家路徑仍未完成。
 
 [第二百一十一階段](docs/re/phase-211-synthetic-session-receipt-candidate-draft.md)
 已在 ignored 合成 typed 原型驗過「DOS 退出前置檢查→Step 嘗試數

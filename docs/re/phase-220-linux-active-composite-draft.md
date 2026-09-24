@@ -30,10 +30,40 @@ Issue #16 的正式 Linux 玩家視窗必須在同一原版影格顯示已接通
 | 壞字模長度、負座標或超出畫布的 stamp 不應進入 `Draw` | 已證實，僅合成原型 | 獨立審查指出現行 `xlate.Draw` 沒有完整 preflight，隨後加入 `draftValidateStampGeometryAndGlyphs`；`TestDraftCompositeMalformedGlyphOrGeometryNeverDraws` 三例均回錯且不交付 RGBA。正式 `xlate` 與 provider 尚未具備此契約。 |
 | 真實各 presenter 可以共用同一 manifest／generation 且不互相殘留 | 未知 | 手冊兩層與其他 watcher 並存、Clear／Restore／discontinuity 的實際順序尚未量；本輪原型沒有這些 owner。 |
 
+## 追加：正式手冊 presenter 雙層的合成入口缺口
+
+同日增加 ignored `apps/buckrogers/manual_composite_draft_test.go`（SHA-256
+`287f8d38eeab460eefd8a208548a7b82a06eb3d45d4e613fef2347b7d6521883`）。
+它使用現行 `RuntimeManualOverlay` 的正式 begin→request→Frame→Draw
+路徑，但 catalog、倚天字模與 320×200 indexed／palette 均為合成資料，
+不是原版題目或正常玩家路徑。
+
+- **已證實，限合成正式 presenter：**2× 的原始 16×16 字型若有名稱，
+  `LayerSnapshotProvider` 可投影 active text layer；3× 的
+  `manualThreeXFont` 目前回傳未命名的 22×22 衍生字型，即使
+  `RuntimeManualOverlay.Draw` 正常出圖，單層 provider 仍按既有
+  `227-host-active-layer-snapshot-core` 契約拒絕其 text layer。
+- **已證實，限測試用變更：**僅在測試中把該衍生字型命名、以同一
+  指標登錄，provider 即接受。將同一正式 presenter 的背景與文字
+  layer 各自 Snapshot→Restore 成私有 clone，依原順序畫在同一
+  合成 baseline；2×、3× 的結果皆與 presenter `Draw` 逐 byte 相同。
+  這不代表正式多層 owner 已能存取私有 `background`／`text` 欄位，
+  亦不代表真實原版影格上所有文字路徑可以並存。
+
+測試與 `go vet ./apps/buckrogers` 在既有無網路有界 Docker 中通過。
+正式接線前，須由遊戲專屬 presenter 明示提供完整背景／文字群組和
+衍生字型的穩定名稱／精確 registry，再讓通用合成層讀取；不得在
+frontend 以反射、單獨挑 text layer 或用 2× 字型代替 3× 字型。
+此為下一個限縮 READY 審查輸入，規格 004 整體仍 DRAFT。
+
 獨立唯讀審查另確認兩項不能由上述合成綠燈外推：`required` manifest
 由測試呼叫者自報，尚未綁實際 watcher 註冊表；generation 也沒有連到
 正式 session owner 的 Restore／discontinuity。單次讀取只表示 indexed／
 palette 同一 baseline，**不**表示 layer 與 machine 的生命週期已同步。
+審查也指出測試用 `draftValidateStampGeometryAndGlyphs` 遇到 nil stamp
+會在讀取 `stamp.X` 時 panic，且 `GlyphScale` 與索引溢位尚未完整前檢；
+因此上表的「不交付局部 RGBA」及幾何負例只涵蓋列出的固定測例，
+**不構成一般輸入的失敗即關閉保證**，更不能直接搬入正式合成器。
 
 ## 正式 READY 前必須閉合
 
