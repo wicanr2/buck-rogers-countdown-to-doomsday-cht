@@ -607,7 +607,7 @@ owner 重跑本矩陣、驗真正 Close error 保存與同 goroutine Draw relay�
 ## 2026-09-24 後續獨立審查：封閉前端的值型 View 限縮 READY
 
 本節**只授權輸入擷取用的值型 View 與來源版本核對**，不授權畫面
-`Snapshot(scale)`、原版冷開機或可玩的 Linux 啟動器。現行正式
+`Snapshot(scale)`、原版冷開機或可玩的 Linux 啟動器。審查當時正式
 `session.Owner` 只有 `Status`，`CapturedUpdate` 尚無來源版本；現行
 `frontend/ebiten.Game.Config` 仍可注入彼此獨立的 panel／bridge／snapshot／
 advance，不能冒充封閉前端。本機 dosgolem fork `337ac83` 的 tagged
@@ -651,7 +651,7 @@ func (o *Owner) View() (View, error)
   `Advance`（包括轉 `Stopped`）時各遞增一次；版本必須覆蓋 panel、
   mouse、layout、phase、pending 的所有成功變更。可能變更 DOS 輸入或
   machine 前先預檢溢位，不得回繞；終態由 phase 使舊 token 失效。
-  正式 owner 目前只在 `Deliver` 增版本，尚未符合本節。
+  審查當時正式 owner 只在 `Deliver` 增版本，當時尚未符合本節。
 - `CapturedUpdate.SourceGeneration`、`StartedPanel`、`Layout` 均須來自
   同一份 View。Prepare 純讀核對版本與完整值，無副作用；若版本
   過期、同值 ABA 或任一值漂移，封閉 owner 在首筆 DOS action 前
@@ -662,3 +662,18 @@ production 驗收須由正式封閉 owner 重跑合法批次跨 Open／Apply／C
 啟動與各種 `Advance` 的版本遷移，以及失敗後零新步和 Close error
 保存。畫面 `Snapshot(scale)` 另需獨立緩衝、frame 身分及多作用層
 來源的 READY 證據；不得用本節 View 測試代替。
+
+### 2026-09-24 限縮正式接線紀錄
+
+本機 dosgolem fork `a7cb0eb` 已把本節 `View`、
+`CapturedUpdate.SourceGeneration` 與全批次版本／版面核對接進正式
+`session.Owner`。正式回歸涵蓋鍵盤、面板與失焦批次的 stale／zero
+layout 拒絕、先由真實 View 擷取再經 `Advance` 形成的同值 ABA、
+Running 缺版面、面板讀取故障、版本溢位、首錯與單次 Close。
+獨立 reviewer 複審未再發現此限縮切片的確定失敗即關閉漏洞；主代理
+在無網路 Docker／Xvfb 獨立重跑 `session`、`host`、`frontend/ebiten`
+測試、tagged DRAFT 測試、session 競態測試與 vet，均通過。
+
+本段只記**限縮實作已接線**，不把整份規格升為 CONFORMED。畫面
+`Snapshot(scale)`、真實原版冷開機、Watcher 等價、封閉玩家視窗與
+正常玩家路徑仍各需自己的證據與驗收。

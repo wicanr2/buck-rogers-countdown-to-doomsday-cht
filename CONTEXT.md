@@ -2,12 +2,13 @@
 
 更新：2026-09-24
 
-本輪 #18：規格 019 已在既有封閉 session-turn 之外，另將**輸入擷取
-值型 View／來源版本核對**限縮升 READY。依獨立審查補齊同值 ABA、
-純 Prepare 與 owner 失敗收束、Running 版面故障、執行中／停止
-版本變化及溢位前置反例；可重生合成測試在本機 dosgolem fork
-`337ac83`，Docker／Xvfb tagged test、vet 與正式 session 基線通過。
-這只核准下一個正式 owner 實作切片，**尚未接入 View、原版冷開機、
+本輪 #18：規格 019 的**輸入擷取值型 View／來源版本核對**限縮 READY
+契約已由本機 dosgolem fork `a7cb0eb` 接進正式 `session.Owner`。
+`CapturedUpdate` 必須攜帶同份 View 的版本與版面；鍵盤、面板、失焦
+等所有批次均在首筆 DOS 動作前拒絕過期版本、拼貼版面與零版面。
+獨立審查補出真正同值 ABA 及混拼反例，修正後 Docker／Xvfb 的
+session／host／frontend、tagged DRAFT、競態測試及 vet 全通過。
+這只完成封閉 owner 的**值型輸入切片**，**尚未接入原版冷開機、
 畫面 Snapshot、觀測器或 Linux 玩家入口**；現有可注入 `Game.Config`
 不得冒充封閉前端。Issue #18 與整體中文化仍開放。
 

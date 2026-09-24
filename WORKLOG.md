@@ -2659,3 +2659,18 @@
   通過。規格 019 僅將輸入擷取值型 View／來源版本子契約升 READY，
   不宣稱 formal Owner、Snapshot、冷開機或玩家路徑已接通。
   主專案原版與本機倚天素材未加入 Git；一次性容器已清理。
+
+## 2026-09-24 — 值型 View 限縮正式接線
+
+- Terra 子代理把已審的 `View`、`CapturedUpdate.SourceGeneration` 與
+  全批次同源核對接入本機 dosgolem fork 正式 `session.Owner`，提交
+  `a7cb0eb`，未推遠端；先前未相關的 dirty 診斷檔均保留。
+- 獨立審查找出鍵盤／面板批次可混拼 stale layout 的漏洞；修正後
+  所有批次在首筆 DOS 動作前核對版本、版面存在、正規幾何與滑鼠
+  目前版面。真同值 ABA、失焦放開、零版面鍵盤批次及故障單次
+  Close 都有定向測試。主代理在無網路 Docker／Xvfb 獨立重跑
+  session／host／frontend 測試、tagged DRAFT、session 競態測試與
+  vet，均通過；reviewer 最終核准此限縮切片。
+- [規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+  只更新實作狀態，不升整體 CONFORMED。原版冷開機、Watcher、
+  畫面 Snapshot、正式 Linux 玩家入口與正常玩家路徑仍待完成。
