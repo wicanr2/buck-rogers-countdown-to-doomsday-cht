@@ -16,9 +16,13 @@ implementation 起點：本機 dosgolem fork `b062c5b` 已加入不呼叫 DOS �
 先完成 Booting、首次 fault→Failed、單次 Close 與 Close error 保存。
 後續本機 fork `b8c6bca` 的實作切片已加入合成 COM 的 typed `Advance` 收據與
 私有 `startLoadedMachine`／`acceptTurn`；這些測試只在無觀測者的
-`Machine.RunUntil` 成立，沒有遊戲文字 Watcher。Booting 仍未載入
-原版 EXE，故不得提前呼叫 `DOS.Install()` 或推進。整批 Prepare／
-排他 Commit、原版冷開機、observer-aware runner、
+`Machine.RunUntil` 成立，沒有遊戲文字 Watcher。後續 `329d816`／
+`0546e2a` 已加入合成回合的純 Prepare／封閉 Commit、2×／3× 面板
+版面私有投影與矛盾輸入的首動作前拒絕；`3b8688e`／`2901c98`
+使現有 Ebitengine 前端共用純命中／版面投影。這些是**限縮的
+無觀測者元件收據**，不涵蓋實體前端回合全矩陣。Booting 仍未載入
+原版 EXE，故不得提前呼叫 `DOS.Install()` 或推進。完整整批輸入、
+原版冷開機、observer-aware runner、
 `Game.OnDrawFault` 的真正 owner 接線及正常玩家路徑仍未完成；
 本規格仍未 CONFORMED。
 

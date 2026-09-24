@@ -2,30 +2,21 @@
 
 更新：2026-09-24
 
-本輪交接：第 11–30 筆手冊映射核對後修正六筆有雙來源證據的
-誤譯（維生系統、Terrine、Scot.dos 警報、昇降機攻擊時序、
-機械人台詞、沙漠猴駕艦）。第 31–39 筆抽查未見可確定的新誤譯。
-正式 24 份 TSV 重生的 `font/characters.txt` 為 1,025 字，本機
-2× 倚天字型已重建，`eten_font.py verify` 與 dosgolem 正式
-loader 的 1,025／1,025 字模回讀通過。dosgolem 本機 fork `b8c6bca` 的
-2×／3× 字型前檢新增「目前 catalog 與建置 manifest 完全一致」
-閘門，實際本機 A 版 3× 原生 24 點與 2× 均通過。`session.Owner`
-已有合成、無觀測者的 typed `Advance` 收據；另有未提交、未接入
-正式路徑的通用 DRAFT 觀測接縫。但原版文字 Watcher
-只在 `oracle.RunUntil` 觸發；目前 owner 的裸 `Machine.RunUntil`
-不會觸發它。故冷開機、正式中文覆繪與 Linux 玩家版均仍未完成，
-不得把合成測試當成正常玩家路徑收據。
+目前正式 24 份 TSV 的字元聯集為 1,025 字，本機 2× 倚天子集、
+3× 面板 A 版原生 24 點與雙倍率 manifest 前檢已通過。手冊
+第 11–30 筆已訂正六處確定誤譯；第 31–39 筆抽查沒有可確定新誤譯。
+private `main` 的 `f6e21ca` 已使翻譯／字型工具 249 項測試全過。
 
-本輪補充：private `main` 的 `a38cd8f` 讓手冊字型候選測試從目前
-TSV 推導字數與字元清單雜湊，容器內 14 項測試通過。dosgolem
-workplace 分支 `329d816` 保存封閉 session 的輸入批次安全骨架：
-面板暫停時零 DOS 步、鍵盤隔離、滑鼠放開及失焦清理已有合成測試；
-獨立審查找出的舊版面誤送與 host／DOS 點擊分類矛盾已補負例。
-面板 Open／Apply／Cancel 所需的 owner 私有版面投影尚未接通，
-因此在已設定滑鼠版面的 session 中，相關轉換會於首筆 DOS 動作前
-失敗即關閉，並非可玩的設定面板。原版手冊 checkpoint 的 DRAFT
-觀察接點可重現 begin→clear→request，且記憶體／CPU 與控制組相同；
-但它尚非 Oracle 停止／錯誤語意等價，也未接入正式 session。
+dosgolem workplace 分支 `0546e2a` 的封閉 `session.Owner` 已在
+合成、無觀測者回合中私有投影 Open／Apply／Cancel 後的滑鼠版面，
+保持面板回合零 DOS 步、鍵盤隔離與跨版面 release-only；非正式
+幾何與矛盾的 host／canvas 點擊在首筆 DOS 動作前拒絕。現有前端
+`3b8688e`／`2901c98` 共用純面板命中及版面投影。這些只證明
+限縮元件，不是正式 Linux 玩家入口。原版手冊 checkpoint 的 DRAFT
+paired-oracle 測試重現 begin→clear→request 且同存態終點相同，
+但初始停止、斷點、退出與 HALT 的觀測順序不同；目前 owner 的
+裸 `Machine.RunUntil` 不觸發正式 Watcher。observer-aware runner、
+冷開機、完整作用層與正常玩家路徑仍未接通，不得稱遊戲已全程中文化。
 
 最新 #6／#16／#18：手冊前十筆已確認映射的翻譯稽核，只修正
 `manual.career.rogues` 與 `manual.rules.medic_skills` 兩處明確誤譯；

@@ -2621,3 +2621,27 @@
   並與無觀察控制組核對記憶體／CPU；獨立審查指出 generic observer
   與 Oracle 的停止／退出／錯誤排序不同，尚不可接正式 session 或
   宣稱原版正常玩家路徑已中文化。
+
+## 2026-09-24 — 封閉面板版面投影與手冊觀測順序對照
+
+- Terra 依規格 019 的限縮 READY 契約交付 `host.ProjectPresentationLayout`
+  與封閉 `session.Owner` 的 Open／Apply／Cancel 私有版面投影。獨立複審
+  找出非正式幾何初值、無變化／轉換時掩蓋損壞來源，以及畫布 Down
+  同批 Open 先送 DOS 等反例；主代理補負例與拒絕條件後，獨立
+  spot-check 未再發現確定的 DOS 誤送。工作只提交本機 dosgolem
+  分支 `0546e2a`，未推遠端；host／session／frontend 套件測試、
+  host／session 競態測試與 vet 在 Docker／Xvfb 全通過。
+- 現有 Ebitengine 視窗的面板命中幾何抽成純函式（`3b8688e`），
+  後續改與封閉 owner 共用同一純版面投影（`2901c98`）；2×／3×
+  五個控制項的內外邊界、frontend／host／session 測試與 vet 通過。
+  這是正式前端元件去重，不是新的可玩入口。
+- 子代理以同一原版手冊 checkpoint 補 DRAFT paired-oracle 測試：
+  `Watcher.Install(oracle)` 與 raw pre-step adapter 的 begin／clear／
+  request、style、return guard、memory、邏輯 CPU、indexed 與 palette
+  終點一致；initial predicate、hook breakpoint、DOS exit、HALT 的
+  觀測排序則不同。主代理在唯讀原版 Docker 獨立重跑 tagged 測試
+  與 vet 通過；測試橋僅在 `draft_manual_checkpoint` tag 編入，
+  未提交正式 machine／session／Oracle 程式或宣稱等價。
+- private `main` `f6e21ca` 訂正目前正式手冊字元清單的釘版 SHA；
+  翻譯／字型工具完整 Python 單元測試 249／249 通過並推送。
+  Issue #18 已登記限縮進度與仍缺的 owner runner、冷開機與玩家路徑。
