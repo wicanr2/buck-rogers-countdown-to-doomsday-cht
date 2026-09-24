@@ -2,6 +2,15 @@
 
 更新：2026-09-24
 
+最新 #18 複審：被忽略的 typed 推進原型已修正首次原版故障後重試
+遺失停止原因與根因的問題；主代理在 Docker 獨立重跑 package 測試
+與 `go vet` 通過。另以完整路由矩陣證實私有 session 原型目前只支援
+Down＋單鍵，合法的 Down＋Up、跨 layout Up、失焦、Open＋Enter、
+多鍵批次仍未接通；正式 `Game.Update` 仍逐事件有副作用。
+[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+維持 DRAFT／限縮 READY 候選，#18 不宣稱可玩或原子提交。
+
+
 最新補證：#16 十鍵 3× 正式 scoped runtime 已提交至本機 ignored
 dosgolem 分支 `3b02f88`，獨立重跑套件測試與原版 Down→Up 四模式
 同狀態收據：2× 與舊版逐 byte 相同，3× 差異只在核准矩形。

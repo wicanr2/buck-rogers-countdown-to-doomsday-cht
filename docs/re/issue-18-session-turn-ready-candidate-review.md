@@ -607,3 +607,27 @@ Go 檔未找到 `.M =` 寫入，但 `DOS.M` 仍是公開可寫欄位；搜尋
 尚無完整滑鼠 pressed epoch 快照、全部輸入矩陣、故障／資源關閉、
 原版同狀態與視窗玩家路徑收據。故規格 019 整體維持 DRAFT，
 不得把此可丟棄原型當成完成的原子提交。
+
+## 完整路由矩陣與推進故障鎖存複審（2026-09-24）
+
+獨立子代理新增 ignored
+`workplace/dosgolem/frontend/ebiten/route_sealed_matrix_gap_draft_test.go`
+（SHA-256 `26a1353598b9655f42c533929cfc85ad9006fca39f732ddbfcf8446fb5af4e56`）。
+純路由計畫可接受同批 Down＋Up、Open＋Enter、失焦、多鍵，與已按下後跨
+layout epoch 的 Up；但目前 `draftSealedSession.prepare` 對這五類合法批次
+全部拒絕，因其硬編三筆 move／press／BIOS 動作。提交前的目標或 layout
+漂移可在首筆 DOS 動作前拒絕，尚未證明提交期間排他、完整滑鼠狀態與
+實體 `Game.Update` 的整批原子性。此處仍只有合成 DOS，無原版玩家收據。
+
+另一獨立審查發現 ignored typed `TurnOwner` 首次 machine 故障後的重試
+雖零新步，卻把 `OriginalFault` 與原始 error 遺失成 `Failed`／nil。
+代理只在 ignored 原型修補 terminal 鎖存：
+`workplace/dosgolem/workplace/phase211-session-receipt-candidate/turn_owner.go`
+SHA-256 `11ed3fd23a81bb5ca951d2135f137a1b6ea701be71c00da51c5147775edd9899`，
+測試檔 SHA-256 `63827dc0e4dc8570288f3782c2c2f8ade8193c487b5383b0666b9988728127ae`。
+首次非法 opcode 收據為 `OriginalFault`、`Steps=2`、raw `StopBudget`；
+再次 `Advance` 保留同一根因與停止碼，`Before=After=2`、`Steps=0`，
+不呼叫 `RunUntil`、不增加 epoch。主代理逐行審閱，於 Go 1.26.7
+專用無網路、唯讀、有界 Docker 獨立重跑該 package 全測試與 `go vet`
+通過，並核對三檔雜湊。修正只使推進收據原型可再審；正式 session
+尚無共同私有 owner、整批提交或 Draw 故障收束，規格 019 不升 READY。

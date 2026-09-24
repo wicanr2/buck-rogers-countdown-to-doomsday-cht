@@ -2380,3 +2380,14 @@
   主代理獨立重跑通過：面板回合零 DOS 步，2× 往返 RGBA 同值，
   3× 核准矩形外零差且無缺字。這是限縮視窗收據，非完整 #18
   玩家 session；CLI 終態缺口仍待決定及正式修正。
+
+## 2026-09-24 — 第 18 項路由矩陣與推進故障鎖存
+
+- 子代理在 ignored 測試證實純計畫能處理五類合法路由，但目前私有
+  session 原型只接受 Down＋單鍵；提交前目標／layout 漂移可零副作用
+  拒絕，提交期間排他仍未證實。
+- 另一子代理修補 ignored typed 推進原型的 terminal 根因鎖存；首次
+  machine fault 後重試保持 `OriginalFault` 與原始 error，零新步、
+  不再呼叫 machine。主代理逐行審查、核對 SHA，於 Docker 獨立重跑
+  該 package 測試與 `go vet` 通過。正式程式未改，規格 019 與
+  Issue #18 仍是 DRAFT／開放；不得把原型當作 Linux 可玩 session。

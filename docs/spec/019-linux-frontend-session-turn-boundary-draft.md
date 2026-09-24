@@ -496,3 +496,10 @@ DOS／machine、panel 與兩橋；公開輸入入口不得接受或洩漏原始
 原型只驗合成 canvas Down＋Enter，正式入口還需覆蓋完整路由、
 純預檢後不會普通拒絕的排他提交、滑鼠狀態版本及故障關閉。
 這是 **DRAFT 的限縮 READY 候選**，不是正式 API 授權或驗收。
+
+後續[完整路由與收據複審](../re/issue-18-session-turn-ready-candidate-review.md#完整路由矩陣與推進故障鎖存複審2026-09-24)
+補上五類合法輸入批次的反例：純計畫接受，但目前私有 session
+原型全部拒絕。推進原型另已修正故障後重試遺失 `OriginalFault`／
+原始 error 的缺口，Docker 複審通過；這不會自動封閉正式橋接器的
+提交期間排他、完整 `pressedEpoch`、`Draw` 通報與 Close。
+因此本規格仍是 DRAFT／限縮 READY 候選，不授權將原型接入 production。
