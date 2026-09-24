@@ -56,6 +56,17 @@
   canonical font SHA-256、source／Restore 身分及 shared／adapter
   驗收範圍後，**僅共用 xlate API 契約**升 READY。
   已交派 production 共用層實作；Buck adapter 仍 DRAFT。
+- 共用 `xlate` 第一段 production 在 ignored fork 本機提交
+  `8f56d0e`：可選 `PixelGlyph`、全層 checked preflight、
+  physical crop／透明格、legacy `Draw` 零寫入拒絕、
+  optional 快照與字型 SHA-256 原子 Restore。獨立審查
+  發現 parent 出界及字型尺寸溢位兩項 P1，已先回填規格
+  再修程式並補負例；另補多筆壞 Restore、同名不同字模、
+  舊 2× JSON／RGBA bytes 與雜湊順序測試。主代理以
+  無網路 Docker 獨立雙重重跑 `go test ./xlate -count=2`
+  及 vet 通過，root 殘留與本專案容器皆無。封存群組、
+  adapter owner／layout 和玩家路徑仍待完成；不稱 234
+  CONFORMED。
 
 ## 2026-09-25 — A 版沿用、手冊現行字型同狀態複驗與第九頁停止線
 

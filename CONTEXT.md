@@ -32,6 +32,12 @@ production；共用 API 的 `docs/spec/234-xlate-physical-pixel-glyph-plan.md`
 已在 ignored dosgolem fork 獨立審查至 READY，現可實作。
 封存身分、既有覆繪與 2× 逐位元相容性仍待 production
 驗證，不得將規格 READY 說成功能 CONFORMED。
+共用 `xlate` 的第一段 production 已在該 fork 本機提交
+`8f56d0e`：checked 實體像素繪字、全層預檢、快照／原子
+還原及 canonical 字型 SHA-256。`go test ./xlate -count=2`
+與 vet 通過，正式測試涵蓋舊 2× JSON／RGBA bytes、
+跨倍率拒絕與壞計畫零寫；封存群組、手冊 owner 和實際
+3× E1 presenter 尚未接線，整份 234 與 Issue #21 保持未完成。
 
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定

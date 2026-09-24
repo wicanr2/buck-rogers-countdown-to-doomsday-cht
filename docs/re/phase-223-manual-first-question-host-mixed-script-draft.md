@@ -236,3 +236,19 @@ canonical hash 必須固定欄位；規格已依回饋固定八欄
 編碼與 source／Restore 各自的字型身分判準，升為
 **READY（僅共用 API 契約）**。`xlate` production 尚待實作；
 Buck 手冊 layout、owner 與同狀態收據仍是獨立 DRAFT 閘門。
+
+共用層的第一段 production 隨後在 ignored fork 本機提交
+`8f56d0e`（`xlate/font.go`、`xlate/layer.go`、
+`xlate/pixel_glyph_test.go`）：可選 `PixelGlyph`、
+`ValidatePixelGlyphPlan`／`DrawChecked` 全層預檢、1:1 crop、
+逐像素透明格、legacy `Draw` 遇 physical stamp 零寫入、
+optional Snapshot JSON、canonical 字型 SHA-256 與原子 Restore。
+獨立審查曾指出字型 `(W+7)`／`H*rowBytes` 溢位及 parent
+矩形未限制在畫布內兩項 P1；規格 234 已追加勘誤，程式
+與零寫負例亦已修正。正式測試另驗多筆 Restore 第二筆
+壞 crop／同名異 bytes、舊 2× Snapshot JSON／RGBA bytes、
+字型 map 插入順序與跨倍率拒絕。主代理在無網路 Docker
+獨立執行 `go test ./xlate -count=2 && go vet ./xlate` 通過。
+這只證共用核心第一段；尚無封存群組、手冊 owner 的
+immutable 3× E1 plan、正式首題／換題／返回同狀態收據，
+不宣稱規格 234 或 Issue #21 完成。

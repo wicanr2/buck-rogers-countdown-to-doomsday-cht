@@ -159,6 +159,10 @@ zero-width soft separator 保留 source-span／rune round-trip，
 dosgolem fork 的 `docs/spec/234-xlate-physical-pixel-glyph-plan.md`
 已獨立審查至 READY（僅 API 契約），可先實作共用層；
 本手冊 adapter 的 owner／雙字型封存／正式 A/B 仍需另審。
+共用核心第一段已在 ignored fork 本機提交 `8f56d0e`，
+checked 字首繪製與 optional Snapshot／Restore 的定向
+測試通過；仍未把本規格的 3× 手冊版面計畫送進正式
+`ManualSnapshotOwner`，也未做正式原版同狀態 A/B。
 
 ## 與 host 倍率控制的關係
 
