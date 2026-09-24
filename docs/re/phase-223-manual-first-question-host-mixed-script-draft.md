@@ -145,3 +145,94 @@ Stockade 都各自完整落在單一行。DRAFT 測試另檢查全部 39 段
 清除、正式 Linux 視窗或 39 題逐題正常玩家驗收。
 [Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
 保持 OPEN，待字距選擇、獨立 READY 審查與正式實作。
+
+使用者隨後在兩張原生圖之間選定 **E1／英文字母 14px advance**，
+排除 E2／16px；英文專名、括號詞界、2× 不變及 DRAFT 停止線
+如上。這項視覺定案只解除字距分支，不將可丟棄原型自動升 READY
+或納入正式輸出。
+
+## 2026-09-25 獨立 READY 審查的未通過項
+
+獨立代理核對正式 `manual_overlay_runtime.go`、`ManualSnapshotOwner`
+與共用 `xlate.Layer` 後，判定 E1 **尚未 READY**：測試直接合成
+終態 RGBA，未經正式雙層快照、封存、generation、原版重繪失效、
+Restore／owner epoch 及換題清層。`xlate.Stamp` 的字首位置由
+logical 座標乘 3，不能精確表示 14px；正式 owner 也仍硬驗
+每列等於 `manualRows` 的固定 36-rune 切行，與 E1 變動寬度衝突。
+因此必須先定義可封存的 3× 實體像素 run／不可變 layout plan，
+或明確擴充共用層；兩種架構範圍已請使用者選擇，未替其定案。
+
+另一確定缺口是 39 段含數字、`.`、`/`、`+/-`、百分比與中英文
+標點；E1 初版 tokenizer 只合併英文字母與精確全形括號英文詞。
+39 段測試目前只證「可容納」，未逐段證實 token round-trip、
+非首題詞不拆、標點行首／尾禁則；14px 拉丁字模的實際 ink bbox
+也未逐字檢查。2× 相等測試目前是**舊正式 renderer**對既有
+`ab-1045`，不是 production 修改後的回歸。這些均須在正式
+實作前補證；通過後還須首題、換題清除、返回與 2× 的新版
+同狀態 A/B，不能拿此原型圖當完整玩家路徑。
+
+使用者其後選擇將像素精度能力**擴充到 dosgolem 共用繪字引擎**，
+排除只為本遊戲手冊建立專用像素層。上述驗收缺口未因架構選擇
+自動消失；共用契約、封存與舊畫面相容性須另經 READY 審查。
+
+獨立共用層設計審查提出可選的 `PixelGlyph`／`Stamp.PixelScale`／
+`Stamp.PixelGlyphs`，讓原有 `Cells`／`CellW` 仍負責清除、指紋
+與透明格，像素 glyph 只負責物理位置。兩份 named font
+（base16 ASCII 與 derived22 CJK）都須進入封存 registry，
+Snapshot／Restore 以名稱與 bytes 身分回復指標，所有 pixel crop、
+座標、字模與父矩形先預檢，不能在 `Draw` 才發現局部壞輸出。
+這是**候選 API**，非 READY。ignored fork 的
+`xlate/pixel_glyph_draft_test.go` 只用 test-local helper 驗 14px
+字首、CJK 22px、括號裁切、越界／缺字／跨倍率拒絕及 partial
+`Transparent` 不漏墨；主代理在無網路 Docker 獨立雙重重跑
+`TestDraftPixelGlyph*` 與 `go vet ./xlate` 通過。它沒有修改
+正式 `xlate`，也未證 Snapshot／Restore、sealed group、owner
+生命週期或正式 2× 遊戲畫面相容。
+
+## 2026-09-25 全 39 段詞界補證與行界勘誤
+
+ignored fork 的 `manual_ascii3_wordwrap_draft_test.go` 已將英數與內部
+`.`、`/`、`+`、`-`、尾隨 `%` 視為不可拆識別字；短括號英文詞
+不可拆，長中文引號內容允許跨行但不讓引號孤立。test-local
+14px 計畫以正式 1045 字字型檢查 39／39 段的 rune round-trip、
+識別字不拆及墨跡碰撞，最大 ASCII 墨跡寬 8px。收據在私有
+`workplace/manual-recheck-20260925-XXfChfDp/ascii3-wordwrap-draft/manual-3x-tokenizer-line-plan-1045.json`，
+SHA-256 `12a2869b24af810e27f4b9c6504e01724aff49897313e892ae604d868f27c3d7`；
+該 JSON 含譯文及逐行 token，**不得加入 Git**。最初把整段
+`「…」` 當成不可拆 token，於 `manual.log.11.the_elevator` 超出
+864px；修正為只保護引號邊界後，39 段才通過。E1 舊定向
+A/B 再以私有原版輸入重跑，2× 舊正式輸出逐位元同值，3×
+原型安全矩形外零差；此處並非新版 production 驗收。
+
+主代理獨立讀取 39 段收據，發現 **3 行以 `space` token 開頭、
+11 行以 `space` token 結尾**；例如
+`manual.log.57.acidic_victory` 的第 1 行。獨立審查另指出
+正式 catalog 含 `……`，初版 terminal 禁行首集合未含 `…`。
+因此「39／39 round-trip」只能證明字元未遺失，**不能**
+證明版面行界可讀，也不能作為共用 PixelGlyph 的 READY
+輸入。下一版 DRAFT 必須將 ASCII 空白定義為 soft separator，
+換行時不形成可見行首／行尾空白，同時在來源 span／round-trip
+收據明示還原該空白；原始首尾／連續空白、孤立 terminal 與
+跨 run 墨跡碰撞需 fail-closed。這是本輪新增的技術勘誤，
+不推翻先前 E1 相對 E2 的 14px 視覺選擇。
+
+後續 test-local 版把折行處的 ASCII 空白保留為 **zero-width soft
+separator**：來源 token 與 rune round-trip 不丟字，但不產生可見的
+行首／行尾空格；原始首尾／連續空白仍 fail-closed。另補
+`…` 禁行首及跨 ASCII run 墨跡碰撞斷言。新的私有收據
+`workplace/manual-recheck-20260925-XXfChfDp/ascii3-wordwrap-draft/manual-3x-tokenizer-line-plan-soft-separator-1045.json`
+SHA-256 為 `e809f87dfd539378af998ab9f70c9a456ee0c7bfc61ddf941267c8a563773916`；
+主代理獨立解析，39／39 段、原 3 個行首及 11 個行尾 space token
+均仍在來源序列，但這 14 個邊界 token 的寬度全為 0，最大
+ASCII 墨跡 8px。先前的 3／11 可見空白結論至此**已訂正**，
+保留上段作問題發現歷程。此收據及測試依然只是 DRAFT，
+未證正式 owner 的快照／還原或正常玩家路徑。
+
+共用像素精度分支另在 ignored dosgolem fork 新增並索引
+`docs/spec/234-xlate-physical-pixel-glyph-plan.md`。獨立審查
+先指出舊 `Draw(... ) bool` 無錯誤通道、JSON 不能回查原始指標、
+canonical hash 必須固定欄位；規格已依回饋固定八欄
+`PixelGlyph`、全層 checked preflight、1:1 crop、SHA-256
+編碼與 source／Restore 各自的字型身分判準，升為
+**READY（僅共用 API 契約）**。`xlate` production 尚待實作；
+Buck 手冊 layout、owner 與同狀態收據仍是獨立 DRAFT 閘門。

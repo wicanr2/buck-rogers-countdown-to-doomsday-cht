@@ -12,6 +12,27 @@
 [Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
 追蹤。
 
+使用者已在 E1／E2 的原生 3× 並列圖中定案 **E1：英文字母
+14px advance**，排除 E2 的 16px。此為 3× 手冊段落視覺
+規格決定，不使 test-local 原型自動成為 production；獨立 READY
+審查已指出共用 `xlate.Stamp` 無法表達精確 14px、owner 仍硬驗
+固定 36-rune 行、39 段混合標點／字模負例不足；新混排契約
+保持 DRAFT，正式 presenter 接線與新版同狀態驗收仍待完成。
+像素精度層的架構分支已由使用者於下段定案。後續
+39 段 test-local 版已把原 3 個行首、11 個行尾 ASCII 空白
+保留為零寬 soft separator，補 `…` 禁行首與跨 run 墨跡
+負例；字元 round-trip 與 14px 字模測量通過，但仍未接入
+正式不可變版面計畫／owner，故手冊 adapter 保持 DRAFT。
+詳見[第二百二十三階段勘誤](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md#2026-09-25-全-39-段詞界補證與行界勘誤)。
+
+使用者已選擇**擴充 dosgolem 共用繪字引擎**以支援精確 14px
+advance，排除只為 Buck 手冊另建專用像素層。此決定不放寬
+原版狀態隔離，也不授權直接把 DRAFT RGBA compositor 搬進
+production；共用 API 的 `docs/spec/234-xlate-physical-pixel-glyph-plan.md`
+已在 ignored dosgolem fork 獨立審查至 READY，現可實作。
+封存身分、既有覆繪與 2× 逐位元相容性仍待 production
+驗證，不得將規格 READY 說成功能 CONFORMED。
+
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定
 僅及 host 面板，遊戲畫布 3× 中文仍採既定 22×22 墨跡。現行

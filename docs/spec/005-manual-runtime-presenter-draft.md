@@ -115,7 +115,50 @@ machine／DOS 同值。request 前收據使用 ignored DRAFT CLI clone
 轉移到新演算法。[第二百二十三階段追加的 E1／E2 原型](../re/phase-223-manual-first-question-host-mixed-script-draft.md#2026-09-25-保留英文專名的變動字距-e1e2-原型)
 已用整行共同游標對照 14px／16px 英文 advance，兩案均保留專名、
 39 段靜態可容納、安全矩形外零差、2× 正式 RGBA 不變；實際
-advance 尚待使用者選擇，這仍不是 production 同狀態驗收。
+advance 已由使用者選定 **E1／14px**，排除 E2／16px；這仍不是
+production 同狀態驗收。READY 審查須先確認 E1 的 token 化與
+全 39 段、標點／括號、超長詞拒絕、字模安全矩形、清層／還原及
+雙層 owner 身分，再授權正式 3× presenter 實作；2× 不得變動。
+
+獨立審查已確認目前**尚不足以升 READY**：E1 只在 test-local
+RGBA compositor 繪製；共用 `xlate.Stamp` 的字首座標乘以 3×，
+不能表示精確 14px advance。正式 owner 又以 36-rune
+`manualRows` 核對每列身分，不能只替換畫筆而保留舊快照契約。
+現行原型也尚未對 39 段的數字、`./+-%`、中英標點、括號配對、
+每字 ink bbox、行首行尾禁則及逐段 round-trip 建立完整負例。
+因此下一個 READY 前提是補 tokenizer／immutable layout plan、
+字型幾何、共用像素精度 API 與 owner
+生命週期契約；不得讓 test-local 最終 RGBA 直接旁路正式清層。
+使用者隨後已選**擴充 dosgolem 共用繪字引擎**，排除 Buck 手冊
+專用像素層。這只確定架構邊界：共用 API 必須能封存實體像素
+字首位置／advance，驗來源與 layout plan，並讓既有固定字格
+覆繪及 2× 輸出逐位元保持原樣；擴充方式與負例矩陣尚待獨立
+審查，不得直接把 DRAFT compositor 作正式捷徑。
+共用 API 的限縮候選是在既有 `xlate.Stamp` 上增加**可選**的
+物理像素 glyph plan 與綁定倍率；舊 stamp 無新欄位時保持原
+Draw／Snapshot bytes。新 glyph 只承擔位置與 source crop，
+原 `Cells`／`CellW` 仍承擔清除、指紋、錨定與透明格；封存需
+同時驗 base16、derived22 字型身分。test-local 最小幾何原型
+已驗 14px 字首與 partial transparent，但 Snapshot／Restore／
+封存／owner 尚未驗，不能因原型通過而升 READY。
+
+全 39 段的 test-local 詞界計畫已補英數與 `./+-%`、短括號
+英文詞、長中文引號，以及正式字型最大 ASCII 墨跡 8px
+的測量；但獨立檢查收據仍有 3 個行首、11 個行尾空白 token，
+且 `…` 尚未納入不可行首標點集合。因此此輪只能將「字詞不拆
+與 rune round-trip」列為已驗 DRAFT，不能把 39 段版面列為
+READY。下一版須用 soft separator 保存原文空白但不將其繪成
+行界空白，並補標點／跨 run 負例；只有通過獨立審查後，
+才能固定不可變 3× layout plan，接進共用 API。
+
+後續 test-local 修訂已讓原 3 行首／11 行尾 ASCII 分隔符以
+zero-width soft separator 保留 source-span／rune round-trip，
+不再形成可見行界空白；補了 `…` 禁行首與跨 ASCII run
+碰撞測試，39／39 段私有收據重驗通過。這訂正上述排版
+缺口，**不**將 DRAFT tokenizer 自動升為正式 immutable plan。
+dosgolem fork 的 `docs/spec/234-xlate-physical-pixel-glyph-plan.md`
+已獨立審查至 READY（僅 API 契約），可先實作共用層；
+本手冊 adapter 的 owner／雙字型封存／正式 A/B 仍需另審。
 
 ## 與 host 倍率控制的關係
 

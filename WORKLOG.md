@@ -27,7 +27,35 @@
   14px／16px advance，英文詞與括號專名不拆，39 段均可容納、
   首題矩形外零差、2× 正式 RGBA 不變；主代理看過兩張原生
   960×600 圖並重跑四項定向測試與 vet。正式 presenter 未改，
-  字距選擇及 READY 審查仍待決，見[第二百二十三階段追加](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)。
+  見[第二百二十三階段追加](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)。
+- 使用者隨後選定 E1 的 14px 英文字母 advance，排除 E2／16px；
+  此選擇不取代獨立 READY 審查與正式接線後的原版同狀態驗收。
+- 獨立審查指出 E1 原型繞過正式雙層 owner，且共用 `xlate.Stamp`
+  的 3× 座標無法精確表達 14px；39 段 tokenizer／標點與字模
+  幾何也未完整驗。規格 005 的新增混排契約保持 DRAFT；已向使用者提出像素
+  精度層要限於本遊戲手冊或擴充共用引擎的單一架構問題，並在
+  ignored fork 安排不依賴此決定的 token／字模補證。
+- 使用者選擇擴充 dosgolem 共用繪字引擎來承載 E1 的 14px
+  實體像素 advance，排除 Buck 手冊專用旁路；正式共用 API、
+  seal／snapshot 身分與舊覆繪逐位元相容仍需先審查至 READY。
+- 另一位 Terra 在 ignored fork 交付 test-local 共用 PixelGlyph
+  幾何原型；主代理獨立雙重重跑 14px 字首、括號 crop、透明格、
+  失敗即關閉與合成舊 2× 測試及 vet 通過。正式 xlate、封存、
+  Snapshot／Restore 與遊戲前端均未修改；見[第二百二十三階段追加](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)。
+- 39 段 test-local tokenizer 已補英數識別字、括號與長引號
+  處理，正式字型最大 ASCII 墨跡 8px；主代理解析私有收據
+  後發現 3 行首、11 行尾空白，獨立審查又指出 `…` 禁行首
+  漏洞。已明記 DRAFT 勘誤並安排 soft separator 與標點負例，
+  不能以 39／39 round-trip 宣稱版面 READY。
+- 後續 test-local 修正讓該 3／11 個邊界空白零寬保留而不漏原文，
+  補 `…` 禁行首與跨 run 墨跡檢查；主代理獨立讀取 39 段
+  私有收據，確認 14 個邊界空白皆寬 0。這只訂正 DRAFT
+  版面缺口，未成正式手冊 presenter。
+- dosgolem fork 新增並索引規格 234；獨立審查三輪修正
+  `DrawChecked` 全層失敗即關閉、固定 `PixelGlyph` ABI、
+  canonical font SHA-256、source／Restore 身分及 shared／adapter
+  驗收範圍後，**僅共用 xlate API 契約**升 READY。
+  已交派 production 共用層實作；Buck adapter 仍 DRAFT。
 
 ## 2026-09-25 — A 版沿用、手冊現行字型同狀態複驗與第九頁停止線
 
