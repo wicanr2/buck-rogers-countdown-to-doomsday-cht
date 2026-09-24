@@ -2,6 +2,22 @@
 
 更新：2026-09-24
 
+最新 #20：中文 Data Card 的「Ctrl+C 跳回 DOS」提供第九頁出口候選。
+正式 control／2×／3× 從同一合法第八頁狀態重播 Enter→Ctrl+C，
+原版同於 step `361000689` 結束；繁中 owner 在**同次執行**由 active
+1 層經 Stop 清為 0，終態雙倍率 RGBA 與 baseline 相同，原版
+indexed 及正規化 JSON 相同。本機 dosgolem fork `99584d8` 已接
+content-safe Stop 計數；[規格 022](docs/spec/022-story-page9-overlay-draft.md)
+只將固定入頁及此退出路徑限縮升 CONFORMED。遊戲內自然離頁、
+其他出口、Restore、Linux 玩家視窗及存讀檔仍未完成，Issue #20 開啟。
+
+最新 #16：使用者選定 3× host 面板 A 版倚天原生 24 點，排除
+22 點衍生 B 版；遊戲畫布 3× 字型另有獨立契約。dosgolem fork
+`f51c455` 已增加本機雙子集載入與 SHA／字模檢查，且以同一份
+已雜湊 bytes 解析，關閉讀取與重開間的替換競態；合成負例、
+本機字型及套件測試通過。正式可玩 session 尚未接這個 loader，
+不能宣稱第 3× host 啟動流程或 Linux 可玩版已完成。
+
 最新 #16 CLI 收據提交：本機 dosgolem fork `c08263b` 已把
 baseline／overlay／PNG／screen／state／lifecycle／JSON 全部先驗證
 並暫存；程序內發布或 stdout 失敗可回復既有檔、移除新檔，

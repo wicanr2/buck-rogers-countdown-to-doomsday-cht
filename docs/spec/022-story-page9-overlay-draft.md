@@ -1,12 +1,16 @@
 # 022 — 第九頁固定單行劇情輸出端覆繪
 
-狀態：**限縮 READY（僅合法 page8→page9 的固定單行入頁本體）；正式入頁 A/B 已驗，自然離頁與清層後畫面未驗。**
+狀態：**限縮 CONFORMED（合法 page8→page9 固定單行入頁，及 Ctrl+C 退出 DOS 時的 Stop 清層）；遊戲內自然離頁仍未知。**
 日期：2026-09-24
 
 [第二百一十九階段正式入頁 A/B](../re/phase-219-story-page9-runtime-entry-ab.md)
 已把 watcher／presenter 接到 dosgolem，固定合法 state 的 control／2×／3×
 machine、DOS、indexed 同狀態，RGBA 差異只在核准單行矩形；
-但實際自然離頁及清層後畫面尚未量到，故本規格不升 CONFORMED。
+續以同一合法起點重播 Ctrl+C 退出 DOS，正式 owner 在同次執行中由
+active 1 層清至 0 層，終態雙倍率 RGBA 與各自 baseline 一致；詳見
+[第二百一十九階段的追加收據](../re/phase-219-story-page9-runtime-entry-ab.md#2026-09-24-ctrlc-退出-dos-的正式-stop-收據)。
+因此僅此已量入頁及 Stop 路徑升為限縮 CONFORMED；遊戲內自然離頁、
+Restore 後重入與完整玩家視窗並未因此通過。
 
 [第一百三十四階段獨立審查](../re/phase-134-story-page9-enter-trace.md#2026-09-24-獨立證據審查固定單行入頁本體)
 已核准本單行入頁本體進入正式實作；下文較早的「候選」「待審查」
@@ -39,7 +43,8 @@ machine、DOS、indexed 同狀態，RGBA 差異只在核准單行矩形；
 | 原版入頁單行的安全矩形是 `[8,168)×[136,144)` | 由已證實的 col 1、row 17、20×8×8 text cells 推得；正式 renderer／現用字型的合成 2×／3× 實字墨跡 containment 已驗，原版同狀態 A/B 待驗 |
 | Enter、數字鍵盤 4／6，以及 8 的已量短窗未改寫故事矩形 | 已證實，**僅限各收據停止點**；row 15／24 重畫不是離頁事件 |
 | 入頁 20 個 glyph frame 內共有 1,280 筆相交 A000 pre-write，各 frame 64 筆；writer 為 `0763:184D`／`0763:1854` | 已證實；合法 page8 state 的有界逐 byte probe，細節見下節；這些是**建構原文**，不能清 pending |
-| 之後必定由某一 A000 相交寫入、Stop 或 Restore 離開第九頁 | 未知；不以本候選聲稱自然離頁已量或全部出口安全 |
+| Ctrl+C 退出 DOS 時，本行原版畫面不先相交改寫，正式 owner 由 active 1 經 Stop 清為 0 | 已證實；第二百一十九階段追加的同次執行、雙倍率 A/B；不推及遊戲內自然離頁 |
+| 其他離頁必定由某一 A000 相交寫入、Stop 或 Restore 清層 | 未知；不以本收據聲稱全部出口安全 |
 
 文字事件唯一身分為 `story.page9.line.001`、原文長度 `20`、SHA-256
 `39a751ca9f384a77491b1e4399c0a72afb8b1ef146a77db2623394590ff1ca78`、
@@ -131,12 +136,13 @@ active 後邊界相交與同值 pre-write、row 15／24 非相交、
 Stop／Restore 後不可重現舊層。
 fake 只能證明候選內部契約，不能當原版對拍或正式程式完成收據。
 
-未來若獨立審查通過並接線，CONFORMED 仍需從同一合法 page8 state 與
+限縮入頁本體的獨立審查與接線已完成：從同一合法 page8 state 與
 同一 Enter 排程重生 control／2×／3×；正規化 machine、DOS、indexed、
 palette、鍵盤及 FileOps 相同，RGBA 差異只在核准矩形，兩倍率零缺字。
 另須以原版實際後續相交寫入或 Stop／Restore 收據，證明清層後下一 frame
-無殘字；目前**沒有**第九頁自然離頁的此種收據，故不得聲稱完整生命週期、
-正常玩家路徑或第九頁已中文化。若一條實際離頁只改變非相交區域、
+無殘字；目前**已有 Ctrl+C 退出 DOS 的 Stop 收據**，但沒有遊戲內自然離頁的
+此種收據，故不得聲稱全部出口、正常玩家路徑或整個第九頁已中文化。
+若一條實際離頁只改變非相交區域、
 沒有 Stop／Restore，仍須回到 RE／DRAFT 補該出口的可觀測失效條件，
 不能擴大按鍵掃描或以 row 24 重畫補洞。
 

@@ -1,7 +1,7 @@
 # 第二百一十九階段：第九頁固定單行正式入頁 A/B
 
 日期：2026-09-24
-狀態：**限縮入頁本體已取得正式同狀態收據；自然離頁未量，規格 022 暫不升 CONFORMED。**
+狀態：**固定入頁及後續 Ctrl+C 退出 DOS 的 Stop 清層均取得正式同狀態收據；僅此範圍限縮 CONFORMED，遊戲內自然離頁未量。**
 
 ## 固定輸入與範圍
 
@@ -111,3 +111,51 @@ DOS 同狀態；沒有觀測自然離開第九頁時的第一筆相交寫入、
 的明確出口候選，再另立窄實驗。沒有實際出口，不執行出口後
 control／2×／3× 無殘字驗收，也不把規格 022 的限縮 READY 升為
 完整生命週期 CONFORMED。
+
+## 2026-09-24 Ctrl+C 退出 DOS 的正式 Stop 收據
+
+上述方向鍵負收據保留為當時的結論，不代表所有出口均不存在。
+後續查得中文 Data Card `2F3_SCAN1240_008.jpg` 印刷第 12 頁記載
+「Ctrl+C：跳回 DOS」；來源 SHA-256 為
+`28d1c1c21b3de5b2af7cb63e79ecbe9075e08a3bca1525cd5e4398947b959ea7`，
+頁碼與掃描來源詳見[第一百一十二階段](phase-112-command-turn-manual-evidence.md)。
+「Ctrl+C」對應 BIOS scan／ASCII `2e:03` 是本次**受控輸入假說**，
+不是手冊寫出的鍵盤 word；以下原版執行結果才證實該候選在此 state 的行為。
+
+先從合法第九頁 `page9-a.state`（SHA 見上一節）於 step `361000000`
+送單鍵 `2e:03`，原版在 `361000150` 由 INT 16h AH=00 讀取，
+`361000689` 退出 DOS；期間故事矩形沒有 A000 相交 pre-write。
+接著正式收據從本節開頭的合法第八頁 state 出發，
+於 `351000000` 送 Enter 進第九頁，於 `361000000` 送相同 `2e:03`；
+control、繁中 2×、繁中 3× 使用相同原版 `GAME.OVR`、倚天 16×16
+GOLEMFNT、輸入及 `370000000` 硬上限。正式 CLI 的第九頁 owner
+在 `d.Exited` 時呼叫 `Stop()`，收據另以不含字模的計數記錄清層前後：
+
+| 同次執行核對 | control | 繁中 2× | 繁中 3× |
+| --- | --- | --- | --- |
+| 原版停止 step | `361000689` | 相同 | 相同 |
+| 第九頁 Stop 前／後 active 層 | 無 owner | `1 → 0` | `1 → 0` |
+| 終態 indexed SHA-256 | `fb65f3b36e019caa8d0e74d72aa71ab9908b76ec03fc1f5c301ca563473647b0` | 相同 | 相同 |
+| 終態覆繪／baseline RGBA | 不適用 | 完全相同，無殘層 | 完全相同，無殘層 |
+| 排除覆繪／Stop metadata 後 JSON | 基線 | 完全相同 | 完全相同 |
+
+三份私有正式 JSON 的 SHA-256 依 control、2×、3× 次序為
+`ba3ef95ca46fa0a62e883d8f753941c610ec3facc632be1eda1ef7160a4623b5`、
+`ae4659da0a931cb2c31d527e8c8c42338f327597a40c81daad958e2488deb621`、
+`de8558c6a58b99971a0f0aa87ebaf7cb4f88cb0c087c71486411bcd5ef0e16b4`。
+輸入 state、原版與字型 SHA 與本節開頭相同；`2e:03` 的原版
+`key_reads` caller 亦與 control 相同。收據工具採本機 dosgolem 分支
+commit `99584d897cebab28929c360962413f4ea68c795a`、
+Go 1.26.7，以既有 `golang:1.26.7-bookworm` 在無網路、限資源 Docker
+執行；原版、state、字型唯讀掛載，畫面與完整收據只在 ignored
+`workplace/page9-runtime/`。JSON 比較以 Python 3.12 容器讀取，
+只排除控制組不存在的 `story_page9_overlay`、`story_page9_stop`。
+重播初次比較混用了舊 control 的 `-story-pixel-trace` 與輸入旗標，
+造成兩個診斷欄位不同；改以相同旗標重生 control 後完全一致，
+這不是原版或覆繪差異。
+
+這份證據支持[規格 022](../spec/022-story-page9-overlay-draft.md)只將
+「固定入頁＋Ctrl+C 退出 DOS 時 Stop 清層」限縮升為 CONFORMED。
+原版退出時仍保留 indexed 故事畫面，但前端作用層已撤銷；
+遊戲內自然離頁、其他出口、Restore 後重入、完整 Linux 視窗與
+玩家存讀檔仍未知，Issue #20 保持 OPEN。

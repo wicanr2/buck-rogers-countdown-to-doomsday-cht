@@ -2440,3 +2440,25 @@
   GOLEMFNT SHA-256 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`
   一致；正式雙層手冊元件的競態測試及 vet 通過。這仍不是
   Linux session 啟動時的來源前檢或手冊正常玩家存讀檔收據。
+
+## 2026-09-24 — 3× host 原生字型載入與第九頁 Ctrl+C 清層
+
+- 使用者選定設定面板 A 版倚天原生 24 點，排除 22 點 B 版。
+  子代理在 ignored dosgolem 分支提交 `0d9a22d`、`f51c455`：
+  增加 24×24 Wide／16×24 ASCII 本機雙子集載入、雜湊及
+  coverage／幾何檢查；主代理複審發現首次實作有讀取後重開檔案的
+  替換競態，後續改為雜湊與解析同一份 bytes。合成負例及本機
+  倚天測試通過。正式 Linux session 尚未接此 loader。
+- 低階翻譯子代理稽核第九頁 catalog，只找到唯一已驗固定單行，
+  現有 `story.page9.line.001` 譯文完整且 lint 通過；不猜補未量原文。
+  中文 Data Card 的 Ctrl+C 記載引出實際出口實驗。
+- 主代理先以合法第九頁 state 的原版有界 probe 證實 `2e:03`
+  在 `361000689` 退出，再從合法第八頁 state 正式跑
+  control／2×／3× Enter→Ctrl+C。dosgolem fork `99584d8`
+  增加 Stop 與 active 前後數量收據；同次 active `1→0`、
+  正規化 JSON／indexed 相同、RGBA 終態零殘層。
+  [第二百一十九階段](docs/re/phase-219-story-page9-runtime-entry-ab.md)
+  已追加證據，規格 022 僅此退出路徑限縮 CONFORMED。
+- 第一次套件重跑漏掛私有測試所需 `/project`，第二次漏掛
+  `/orig`；確認是容器設定失誤，補上兩個唯讀掛載後以同一組
+  `go test`／`go vet` 乾淨通過，非產品故障。
