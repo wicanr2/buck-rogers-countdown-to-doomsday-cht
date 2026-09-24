@@ -18,10 +18,20 @@ session／host／frontend、tagged DRAFT、競態測試及 vet 全通過。
 `Snapshot(scale)` 另缺 owner 私有影格身分、完整作用層清冊、雙倍率
 票券失效與首次故障收束。兩者均未升 READY，亦未接玩家視窗。
 
+本輪本機 dosgolem fork `670b126` 新增 tagged、合成 2×1 雙層
+快照 owner DRAFT 矩陣：同票封存畫格／作用層／字型、2×→3×→2×
+新票往返、舊票同值 ABA、換 owner、私有內容竄改與故障零快照／
+Close 一次。獨立複審及 Docker session／競態測試通過；仍沒有正式
+`Owner.Snapshot`、Clear／Restore 事件接線、原版 320×200 畫格
+或玩家視窗，規格 019 的快照部分保持 DRAFT。
+
 目前正式 24 份 TSV 的字元聯集為 1,025 字，本機 2× 倚天子集、
 3× 面板 A 版原生 24 點與雙倍率 manifest 前檢已通過。手冊
 第 11–30 筆已訂正六處確定誤譯；第 31–39 筆抽查沒有可確定新誤譯。
 private `main` 的 `f6e21ca` 已使翻譯／字型工具 249 項測試全過。
+低階翻譯代理再核對 24 份正式 TSV 共 196 筆、39 個手冊事件鍵，
+無空譯或重複鍵；row 15 仍僅有孤立 ASCII 字母，沒有足夠證據
+新增固定詞譯文，故本輪正式譯文零變更。
 
 dosgolem workplace 分支 `0546e2a` 的封閉 `session.Owner` 已在
 合成、無觀測者回合中私有投影 Open／Apply／Cancel 後的滑鼠版面，

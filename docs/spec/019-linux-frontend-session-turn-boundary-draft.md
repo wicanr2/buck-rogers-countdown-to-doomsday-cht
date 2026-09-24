@@ -697,3 +697,17 @@ observer-aware `Advance`，也不得以合成測試替代原版同狀態收據�
 錯序、Clear／Restore／新 Frame 後失效、同名異字模與缺字、來源
 影格錯誤、回傳緩衝區獨立，以及首次錯誤回零值並同步 Failed／
 Close 一次；輸入 `SourceGeneration` 不得充當影格身分。
+
+後續本機 fork `670b126` 的 `draft_session_snapshot` 合成測試，
+以已提交的 session 與 presentation 元件建立**可丟棄候選模型**。
+獨立審查先抓到「Snapshot 時才封 layer／font」及「票券未綁
+實際 Owner」兩個假通過；修正後 `prepare` 凍結 indexed／palette、
+背景與正文、字型，票券另綁實際 owner、獨立 frameID 與輸入世代。
+同票 caller 來源漂移仍投影原封存內容；私有畫格／字型竄改、
+另一個同值 owner、2×→3×→2× 舊票、新 Frame、來源與群組故障
+均回零快照並使候選 owner Failed／Close 一次。主代理的 Docker
+session、競態與 vet，以及 reviewer 的獨立 tagged session 測試通過。
+此測試依賴同套件私有欄位與測試 helper，畫布只有合成 2×1；
+倍率往返各有新票，不是同一票跨倍率。它**未**觸發正式
+`Layer.Frame`、Clear／Restore 或原版觀測器，故僅縮小 DRAFT
+契約缺口，不授權正式 `Owner.Snapshot` 或升 READY。

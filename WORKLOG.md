@@ -2691,3 +2691,20 @@
   作用層清冊與同步故障矩陣。兩條後續工作均維持 DRAFT，未接
   Linux 玩家入口。[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
   已列最小缺口。
+
+## 2026-09-24 — 快照 owner 合成 DRAFT 與翻譯缺口複核
+
+- 主代理在本機 dosgolem fork 新增 `draft_session_snapshot` 合成矩陣；
+  reviewer 先找出作用層／字型延後封存、票券不綁實際 owner 的
+  假通過。補凍結內容、獨立 frameID、同值換 owner 與倍率往返
+  ABA 等負例後，reviewer 核准僅作 DRAFT 證據，提交 `670b126`，
+  未推送 dosgolem fork。主代理在無網路 Docker 重跑完整 tagged
+  session 測試、競態與 vet 通過；測試只用合成 2×1 畫格，不含原版。
+- `Owner.Snapshot`、正式 `Layer.Frame`、Clear／Restore、原版觀測器
+  與 Linux 玩家入口仍未接。另稽核 Issue #17：職業／技術兩句固定
+  Escape→N／Y 已有限縮同狀態 CONFORMED，但正式 session／正常玩家
+  存讀檔未涵蓋，Issue 保持開啟。
+- 低階翻譯代理只讀稽核 24 份正式繁中 TSV 196 筆與 39 個手冊
+  事件鍵，無空譯、重複鍵或確定新漏譯；row 15 與動態 status
+  欄不猜補，正式譯文零變更。Docker 批次均 `--rm`；本輪不
+  建立發行包或搬運原版／已購字型。
