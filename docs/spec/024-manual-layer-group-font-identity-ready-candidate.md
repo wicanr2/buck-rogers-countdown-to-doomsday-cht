@@ -413,3 +413,36 @@ manifest 只保留為當時收據，不代表目前啟動先驗。主代理以�
 既有 3× 倚天原生 24 點 A 版通過。字型二進位與 manifest 只留
 ignored 本機；這是來源與字模前檢，不代表手冊完整玩家路徑或
 Linux 可玩版已完成。
+
+## 2026-09-25 現行 1,046 字字型的首題同狀態複驗
+
+第四次勘誤後，舊的首題私有 A/B 收據所用字型及譯文已非現行輸入。
+主代理以同一合法首題前狀態
+`phase12-before-question.state`（SHA-256
+`8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269`）
+及現行 1,046 字本機倚天字型（SHA-256
+`17ac4124def8c7560060bd5c4f43393b0e236567323ddc7088b0cc7833aa2920`），
+在無網路、有界 Docker 重生 control、2× 與 3× 的正式手冊輸出收據。
+起點 `266399999`、終點 `266557247`；三組原版完整狀態相等，
+終態 indexed SHA-256 均為
+`d53948dc2a75e255691e5c44287fe2e76cf7a630196f6d1546ac18c4730bd495`。
+2×／3× 矩形外像素差均為 0，矩形內變動分別為 5,148／9,108 點；
+終態覆繪 RGBA SHA-256 分別為
+`1b075d714040d04736cb4c36693ededdb336a0a421bf154c86b722defe97e07e`／
+`04e306f719af92c1bf4775d02f3c24505404b8ddab6ae8fba84a4db2a9c0cc50`。
+
+本機 DRAFT 原版 oracle 測試以可指定收據目錄讀取這批新輸入，先逐份
+核對全部 24 份正式 TSV 與 manifest 雜湊，再依
+`font/characters.txt` 的 `U+HEX\t字元` 列格式核對 1,046 筆與已
+載入字模。`ManualSnapshotOwner.Snapshot` 在 2×／3× 均逐位元符合
+正式 `RuntimeManualOverlay.Draw` 及 CLI 的上述 RGBA，事件仍是
+`manual.page34.deimos_prison.word10` → `manual.log.49.deimos_prison`；
+begin／clear／request 步數為 `266486493`／`266524821`／`266557246`。
+原版、state、畫面、字型與完整 JSON 只留在 ignored
+`workplace/manual-recheck-20260925-XXfChfDp/`。首次測試失敗是舊
+fixture 寫死 1,025 字，以及測試把字元清單誤讀成單字元逐行；修正
+測試後，同一 Docker 命令重跑定向測試與 vet 均通過，非產品缺陷。
+
+這只驗證**固定首題 checkpoint 的輸出後封存投影**，不是正式 Linux
+session 直播事件、答錯換題、39 題逐題玩家路徑、存讀檔或多層完整
+生命週期驗收。規格 024 整體仍限縮 READY，Issue #14 維持開放。

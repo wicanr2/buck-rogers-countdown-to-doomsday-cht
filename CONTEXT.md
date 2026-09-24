@@ -2,6 +2,17 @@
 
 更新：2026-09-25
 
+本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
+中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定
+僅及 host 面板，遊戲畫布 3× 中文仍採既定 22×22 墨跡。現行
+1,046 字字型與校譯後手冊 TSV 已重跑合法首題 control／2×／3×
+同狀態 A/B，並以正式雙層 Snapshot owner 核對相同 RGBA；這是
+固定 checkpoint 的局部收據，Linux 玩家 session 仍未接通。
+第九頁四方向單鍵在指定合法 state 及 `361000000→370000000`
+時間窗內均未出現故事區相交 pre-write、像素變動或 DOS 退出，
+自然離頁仍未知。詳見[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)
+與[第二百一十九階段](docs/re/phase-219-story-page9-runtime-entry-ab.md)。
+
 使用者再確認 3× host 設定面板選 A：倚天原生 24 點，排除衍生
 22 點；正式畫筆與定向測試已符合此決定，遊戲畫布的 3× 字型
 另循既有契約。本機 dosgolem fork 的 Delta 觀測器只在 tagged
