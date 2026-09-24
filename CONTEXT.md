@@ -16,6 +16,17 @@ loader 的 1,025／1,025 字模回讀通過。dosgolem 本機 fork `b8c6bca` 的
 不會觸發它。故冷開機、正式中文覆繪與 Linux 玩家版均仍未完成，
 不得把合成測試當成正常玩家路徑收據。
 
+本輪補充：private `main` 的 `a38cd8f` 讓手冊字型候選測試從目前
+TSV 推導字數與字元清單雜湊，容器內 14 項測試通過。dosgolem
+workplace 分支 `329d816` 保存封閉 session 的輸入批次安全骨架：
+面板暫停時零 DOS 步、鍵盤隔離、滑鼠放開及失焦清理已有合成測試；
+獨立審查找出的舊版面誤送與 host／DOS 點擊分類矛盾已補負例。
+面板 Open／Apply／Cancel 所需的 owner 私有版面投影尚未接通，
+因此在已設定滑鼠版面的 session 中，相關轉換會於首筆 DOS 動作前
+失敗即關閉，並非可玩的設定面板。原版手冊 checkpoint 的 DRAFT
+觀察接點可重現 begin→clear→request，且記憶體／CPU 與控制組相同；
+但它尚非 Oracle 停止／錯誤語意等價，也未接入正式 session。
+
 最新 #6／#16／#18：手冊前十筆已確認映射的翻譯稽核，只修正
 `manual.career.rogues` 與 `manual.rules.medic_skills` 兩處明確誤譯；
 TSV 格式與字型覆蓋檢查通過。dosgolem 本機 fork `00b5663`

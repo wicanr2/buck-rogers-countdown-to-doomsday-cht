@@ -2601,3 +2601,23 @@
   它尚未接 Buck Rogers Watcher，且現行 Oracle 還有條件、退出、
   guard 及 stub 語意；此接縫不得直接冒稱正式輸出攔截已接通，
   留待規格審查後才可併入 production。
+
+## 2026-09-24 — 3× 面板 A 版確認與封閉輸入回合限縮接線
+
+- 再核對使用者選定的 3× host 面板倚天原生 24 點 A 版；B 衍生
+  22 點不進正式前端。這項決定已在 `CONTEXT.md` 與 Issue #16，
+  不與遊戲畫布的獨立 3× 字型契約混淆。
+- 手冊譯文變動使候選字型測試的舊 934 字模與雜湊斷言過時；
+  `a38cd8f` 改以目前正式 TSV 推導，Docker 內 14 項測試通過並
+  推送 private `main`，Issue #14 已註記。
+- Terra 在 workplace dosgolem 分支提交 `329d816` 的限縮封閉
+  session 輸入批次。獨立審查先找出面板狀態／滑鼠版面漂移、同批
+  host-hit／canvas Down 矛盾與過期版面下失焦放開三項反例；修正後
+  對無法私有投影的面板轉換於 DOS 動作前拒絕，收據改明示為已提交
+  呼叫數。主代理在 Docker／Xvfb 獨立重跑 session、host、frontend、
+  session 競態測試及 vet 通過。這只保存安全骨架，不是 Linux
+  玩家版；缺口記於 Issue #18。
+- DRAFT 原版手冊 checkpoint 觀察測試重現 begin→clear→request，
+  並與無觀察控制組核對記憶體／CPU；獨立審查指出 generic observer
+  與 Oracle 的停止／退出／錯誤排序不同，尚不可接正式 session 或
+  宣稱原版正常玩家路徑已中文化。
