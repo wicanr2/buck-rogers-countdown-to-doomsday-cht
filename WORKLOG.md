@@ -2526,3 +2526,7 @@
   封閉 owner；規格 004 仍 DRAFT、Issue #18 保持開啟。
 - 低階翻譯子代理稽核 24 份正式繁中 TSV 共 196 筆；無可依現有
   原文證據安全新增的固定譯文，未猜補未確認的第九頁後續輸出。
+  後續以同一合法第九頁 state 比較 Enter 與手冊明示
+  NumLock-8→Enter；row 15 各六筆整串身分逐筆相同，僅有一個
+  孤立 ASCII 字母、無可辨固定英文詞，正式 TSV 未改。
+  收據與限制已追加[第二百二十一階段](docs/re/phase-221-command-status-columns-draft.md)。

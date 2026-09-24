@@ -2,6 +2,12 @@
 
 更新：2026-09-24
 
+最新 #8：低階翻譯子代理以合法第九頁 state 比較 Enter 與
+手冊明示 NumLock-8→Enter；兩邊 row 15 各六筆 12-byte 原始
+輸出逐筆相同，僅含一個孤立 ASCII 字母，無可核准的固定英文詞。
+正式 TSV 未改、row 15 維持 DRAFT；證據見
+[第二百二十一階段追加段落](docs/re/phase-221-command-status-columns-draft.md)。
+
 最新 #18：規格 019 經獨立審查，只將「新建封閉 session owner」
 的回合契約升為限縮 READY，現有 `Game.New(Config)` 與規格 004
 仍未達 READY。dosgolem fork `b062c5b` 已加入單事件純值滑鼠路由計畫與

@@ -198,6 +198,39 @@ SHA-256 `e49d46d0bf513935ce715ecc080aaff12d389e93718a6742a5ee18bf1d72e271`。
 兩倍率 `active=null`、`drew=false`，矩形內外差異皆零。
 四組 control／覆繪的事件、BIOS 鍵、記憶體、indexed、palette
 SHA 均一致，state-compare 的 machine／DOS digest 亦一致。
+
+## 2026-09-24 手冊明示前進鍵與 row 15 命令列的有界比較
+
+低階翻譯子代理沿用本頁已核實的合法第九頁 state（SHA-256
+`563ed40ba276c6857c57b05344949dec5891e4596ad783a9fc89b805eae8c2a4`）
+與原版 `GAME.OVR`（本頁頂端雜湊），只比較單獨 Enter 對照及
+中文手冊明示的 NumLock-8→Enter；兩組均硬停 `370000000`，
+沒有猜新鍵或延長盲目探索。ignored 探針為
+`workplace/phase224-row15-command-change/row15_probe_test.go`，
+SHA-256 `2a22405f42ea06b3c3b0f3909d69b6445aa4c21b300e8930b5133a2e80b2684a`；
+收據 `control_enter.json`、`forward8_before_enter.json` 的 SHA-256
+分別為 `0a27dd954d75d91027e7380fb404f2d786cfa3025c97af6c5fbb670eaa986ead`、
+`83be49cadcb8893547341cf3edd42c1799ea8015eb26f3f7a765913c6bc59e38`。
+主代理在唯讀 Docker 內核對上述三份雜湊與兩組各六筆長度 12 的收據；
+探針及含原始 bytes 的 JSON 均只留 ignored 工作區，沒有加入 Git。
+本次子代理工具為 dosgolem fork `b908226`、Go 1.24.13、
+無網路有界 Docker；位址均採本頁定義的 dosgolem 執行期實模式基準。
+
+NumLock-8 於 step `360000165` 被 BIOS 消耗；後續 Enter 於
+`361000119` 被消耗，對照 Enter 於 `361000150` 被消耗。兩側
+`1FEB:2AF5 → 0763:0424`、row 15 col 17、背景／前景 0／10
+各有六筆 12-byte 原文；六筆**整串** SHA、原始 bytes、長度與
+字元類別逐筆相同。類別為 `DPDDSLSDDPDD`：其中只有一個孤立
+ASCII 字母，沒有可辨識的固定英文詞。兩側首筆都依序經
+`026F:029C` 清 row 15 col 17..38、12 格 body 首個 A000 pre-write、
+dispatcher entry、受保護返回；對照步數依序為
+`361111247/361111403/361111677/361121090`，前進鍵組為
+`361111216/361111372/361111646/361121059`。兩側 indexed／palette
+雜湊相同；memory digest 不同，但不足以證明 row 15 的玩家語意改變。
+
+**判定：已證實／限上述兩條有界原版路徑。** 這個鍵序沒有提供可安全
+新增的固定譯文，正式 TSV 保持不變，row 15 的 DRAFT 狀態與上文
+「需真正改變命令／狀態的合法 state」停止線仍有效。
 原始 gob/gzip state 位元組不作相等判據。此處 3× 正式 runtime
 仍使用 16×16 字型縮放，不能把另外的 22 點離線候選算入驗收。
 
