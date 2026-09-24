@@ -2,6 +2,24 @@
 
 更新：2026-09-24
 
+最新 #16 CLI 收據提交：本機 dosgolem fork `c08263b` 已把
+baseline／overlay／PNG／screen／state／lifecycle／JSON 全部先驗證
+並暫存；程序內發布或 stdout 失敗可回復既有檔、移除新檔，
+重複實體路徑與目標 symlink 會拒絕。主代理在既有 image
+重跑單元／競態／vet，並以原版 `roster.loading` control／2×／3×
+四組入頁／清層重播通過，收據雜湊與先前相同。程序當機／斷電
+仍非真正跨檔交易；`Pending` 終態 A／B／C 尚待使用者選擇，
+不可稱 3× 終態 CLI 已完成。
+
+本輪 #18 補證：ignored 私有批次 v2 已改用正式
+`MouseBridge.Snapshot()` 五值（含 `PressedEpoch`）預檢與核對終態；
+跨 epoch 的原反例現在於 `prepare` 前拒絕，另一個合法
+Down→Open→Up 收據與純計畫等價。主代理重跑完整前端套件測試及
+`go vet` 通過。這只縮小滑鼠**值狀態**缺口；ABA、可繞過 owner 的
+mutator、提交排他、Draw／Close 仍未解，規格 019 不升 READY。
+另已訂正規格索引：規格 024 的雙層手冊封存元件是限縮 READY，
+不是索引舊寫的 DRAFT；正式 Linux session 仍未接線。
+
 最新 #8 限縮補證：合法第三頁轉場的 row 24 21-byte 原文事件
 命中既有 `roster.loading`，沒有新增譯文或正式接線。主代理重跑
 2×／3× control A/B、自然清層及 11 筆身分負例：原版 machine／DOS
@@ -21,8 +39,8 @@ CONFORMED；row 15、row 24 其他動態身分、冷開機與存讀檔仍 DRAFT�
 CLI 路徑先 `Draw`／驗證，再寫 baseline 與 overlay。原版選單
 `100060000` 的舊／新 3× 終態仍如實以 `drew=false active=3` 失敗，
 但重跑確認不再留下半份 RGBA；同 state 的 2× 有效停點仍成功
-產生雙檔與 JSON。第二個輸出檔的 I/O 失敗尚無多檔交易保證，
-終態呈現方式仍待使用者選擇，#16 未完成。
+產生雙檔與 JSON。後續 `c08263b` 已補程序內多檔回復；
+當機／斷電與終態呈現方式仍待處理，#16 未完成。
 
 最新 #18 複審：被忽略的 typed 推進原型已修正首次原版故障後重試
 遺失停止原因與根因的問題；主代理在 Docker 獨立重跑 package 測試

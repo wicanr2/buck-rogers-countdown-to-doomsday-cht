@@ -2412,3 +2412,31 @@
   `pressedEpoch` 鏡像可漏掉橋內轉態。dosgolem fork `7ff0581`
   新增唯讀值快照，主代理重跑 host 測試、競態測試與 vet 通過。
   尚無正式 owner／提交排他／Draw 收束，#18 仍未完成。
+
+## 2026-09-24 — 前端批次原型使用正式滑鼠快照
+
+- Terra 子代理把 ignored 私有批次 v2 的預檢與終態比對改為
+  `MouseBridge.Snapshot()` 五值，修補 `PressedEpoch` 鏡像盲點；
+  跨 epoch 漂移在提交前拒絕，合法跨 layout 放開與純計畫等價。
+  主代理在唯讀有界 Docker／Xvfb 重跑完整前端套件測試與 vet 通過。
+  ABA／排他提交及正式 session 仍未完成。
+- 現況稽核發現規格 024 正文已限縮 READY，規格索引卻仍寫 DRAFT；
+  已按現行規格與合成／首題收據修正索引，不擴張成手冊玩家路徑
+  或正式 Linux session 的 CONFORMED。
+
+## 2026-09-24 — 收據工具多檔回復、手冊字型重驗與翻譯稽核
+
+- 子代理提交本機 dosgolem fork `a18e86a`、`c08263b`：
+  正式文字收據 CLI 在程序內發布失敗時回復舊檔、撤銷新檔，
+  另拒絕同實體路徑及 symlink 目標。主代理用既有專案 image
+  重跑單元、競態測試、vet 與原版 `roster.loading` 四組
+  control／2×／3× 入頁／清層，全部通過；當機／斷電不保證原子。
+- Terra 子代理唯讀稽核 24 份正式 TSV：無空譯，逐檔 lint、
+  249 項工具測試及字元清單重建通過；無可自主修正的確定漏譯。
+  `CARLETON JURADIAN` 是待定專名，不擅自音譯；技能操作列
+  `(A)/(S)/(P)/(N)/(D)` 保留原字母與原白色規則。
+- 主代理額外以本機 `/home/anr2/cht/etan_font` 唯讀來源跑
+  `tools/eten_font.py verify`：24 份 catalog、1,028 字模與
+  GOLEMFNT SHA-256 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`
+  一致；正式雙層手冊元件的競態測試及 vet 通過。這仍不是
+  Linux session 啟動時的來源前檢或手冊正常玩家存讀檔收據。

@@ -662,3 +662,23 @@ dosgolem fork `7ff0581` 增加 `MouseBridge.Snapshot()`：只回傳
 在 Go 1.26.7 無網路有界 Docker 重跑 `go test -count=1 ./host`、
 `go test -race -count=1 ./host`、`go vet ./host` 通過。此 API
 只補預檢觀測材料，不等於擁有排他提交或正式 session。
+
+## 2026-09-24 完整滑鼠快照原型複驗
+
+ignored `route_private_batch_v2_draft_test.go` SHA-256 更新為
+`e66022277abacd9f4fbf6ceb86598a7576e185c22f8f604b40007036cf878f01`；
+`route_sealed_matrix_gap_draft_test.go` 更新為
+`ca73ab4a0eeb13c4a63c060f9b45c70b4c88c3dc707853f343a41c9b6b5d52d3`。
+兩者只改可丟棄原型：`inspect` 與提交終態以正式
+`MouseBridge.Snapshot()` 的 Current／HasCurrent／Pressed／
+PressedEpoch／HostCaptured 核對純計畫。先前失焦→新 epoch 按下
+的反例現在在 `prepare` 前拒絕且零新增 DOS／owner 副作用；
+新增跨 layout epoch 的 Down→host Open→Up 正例，逐階段完整快照
+與純計畫相等。主代理在無網路、唯讀、有界 Docker／Xvfb
+獨立重跑 `go test -count=1 ./frontend/ebiten` 與
+`go vet ./frontend/ebiten` 通過，並核對兩檔 SHA。
+
+此結果只解決「鏡像漏掉滑鼠橋既有值」的原型反例。相同最終值
+仍不能察覺 ABA；若 mutator 可繞過 owner，來源世代與提交期間
+排他仍無保證。正式 owner、無失敗提交、Draw 故障通報及 Close
+均未接通，規格 019／Issue #18 維持開放。

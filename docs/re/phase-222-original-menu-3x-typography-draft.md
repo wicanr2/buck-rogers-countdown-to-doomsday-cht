@@ -300,3 +300,33 @@ SHA-256 `2edac5caadb4e7388cd3cb790b0d74e22a8bbc0168e717002dd04d4b681813af`。
 這只證明繪製／驗證錯誤不再先留下 baseline；若第一個輸出檔已寫入、
 第二個輸出檔的 I/O 才失敗，仍可能有單邊檔。完整多檔提交策略及
 終態 A／B／C 收據語意尚未決定，不能宣稱 CLI 已取得 3× 覆繪收據。
+
+## 2026-09-24 多檔收據的程序內回復與原版重跑
+
+上述 `18575d2` 只修「繪製驗證前先寫 baseline」；後續本機
+dosgolem fork `a18e86a`、`c08263b` 把 CLI 各輸出先驗證並暫存，
+以同目錄 rename 發布。若後續檔案發布或 stdout 寫入於程序內
+回錯，回復既有目標 bytes 並撤銷新增檔；重複實體目標路徑
+（包含父目錄 symlink 別名）、目標 symlink 與目錄混型均拒絕。
+主代理在 `eob-remake-go:1.26.7-ebiten2.9.9`、無網路、唯讀 fork
+的有界 Docker 獨立重跑 CLI package 單元、競態測試及 `go vet`
+通過；失敗注入涵蓋第二／第三檔 rename、跨輸出目錄及 stdout。
+
+再以既有 ignored `workplace/command_status_roster_ab_probe.sh`，
+唯讀掛載原版與字型，重跑合法 `roster.loading` 入頁
+`308000000`／自然清層 `309000000` 的 control／2×／3×。
+兩倍率四組原版事件、BIOS 鍵、memory／indexed／palette 與
+machine／DOS digest 同於 control；安全矩形外差異皆零，
+入頁內 2×／3× 分別 1,272／2,669 像素，清層後皆零。
+四份 JSON 收據 SHA-256 依序仍為
+`8f23387a9788aa9eef824888ca94b6db56ea865ce155b696af568e46d731efcb`、
+`7d4f55c4b8379961c9fb2e958111e94c22005a8e82bff07e57333f9662753eb8`、
+`1945d41e5f0d905009683fc01674cf739191b92bcc07e54d2dc0819d95b6e357`、
+`f9e860381675ad09773015fb73bcddb103b6494b0822e890132ff252f2bd7ba3`。
+Go 在唯讀模組快取嘗試寫 stat cache 曾發出非致命警告；全部
+比較通過，非產品失敗。
+
+這是**程序內錯誤回復**，非跨檔案系統交易；程序被殺或斷電
+仍可能留下部分新檔，rollback 自身遇 I/O 錯誤時會回報並保留
+可復原備份。停止格尚未經原版 `OnFrame` 的 `Pending` 仍依舊
+失敗；是否允許明示的同狀態投影，仍待使用者決定。

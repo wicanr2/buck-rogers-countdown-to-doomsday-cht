@@ -3,6 +3,14 @@
 狀態：**限縮 session-turn 子契約 READY 候選，待獨立審查；尚不授權 production 實作，規格 004 仍 DRAFT。**
 日期：2026-09-24
 
+現況追加：dosgolem fork `7ff0581` 的 `MouseBridge.Snapshot()` 已
+提供含 `PressedEpoch` 的唯讀純值狀態；ignored 私有批次 v2 以此
+在 `prepare` 前擋下跨 epoch 狀態漂移，並有完整快照／純計畫
+終態等價測試。這只勘誤下文較早「公開 getter 缺 pressedEpoch」
+的**觀測 API 缺口**，不是正式 session 已有 revision token 或
+排他提交。ABA／直接 mutator 仍可繞過舊 plan；READY 判定不變。
+收據見[Issue #18 審查末節](../re/issue-18-session-turn-ready-candidate-review.md#2026-09-24-完整滑鼠快照原型複驗)。
+
 目前供審查的收斂契約見本文末〈限縮 READY 候選〉；上方 DRAFT 型別與
 未決敘述保留當時的研究歷程，不作為現行實作依據。候選證據與未驗範圍見
 [Issue #18 session-turn 審查紀錄](../re/issue-18-session-turn-ready-candidate-review.md)。
