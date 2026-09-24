@@ -2779,3 +2779,18 @@
   規格 019 維持 DRAFT，無 production runner 或 Owner 接線。
 - 所有原版 checkpoint、掃描手冊與已購倚天來源／衍生字型仍僅在 ignored
   `workplace/` 或使用者本機目錄；未打包或公開散布。
+
+## 2026-09-25 — 接收敵艦譯文與 runner 同步停止原型
+
+- 低階翻譯代理核對手冊 crosswalk records 15–18；水星、地球、火星三列無
+  可確定譯誤。record 18 按本機中文掃描印刷頁 40 刪除無該頁支持的
+  回收信標／帳戶／燃料轉移等細節；`Salvation` 另由英文原版 Log Book
+  第 18 頁補證。中文頁末尾艦種 OCR 不確定，譯文只用「修船」。
+- 正式字元清單由 1,023 減至 1,016；本機倚天 2× 字型與 manifest
+  重生／verify，Docker／Xvfb 正式雙倍率來源預檢通過。雜湊見規格 024；
+  未重跑原版實體視窗 Apply，亦未完成 Linux session。
+- Terra 在 ignored dosgolem fork 新增 tagged 真實 Oracle runner 原型，
+  合成 MZ 矩陣量到 callback error／panic 當次指令前同步中止、
+  動態 return hook、末步 exit 與 budget 分型。主代理獨立 Docker
+  重跑測試及 vet，僅記為 DRAFT；正式 Owner／Watcher 資源封閉、
+  cold boot 與正常玩家路徑未證。

@@ -873,7 +873,10 @@ API 能在真實 Oracle 上同時保留 hook 次序、動態 return hook 與錯�
 | 實際 Watcher 的 checkpoint facade | DRAFT：tagged `oracle/draft_restricted_observer_facade.go` 與 `apps/buckrogers/manual_watcher_facade_oracle_draft_test.go`；透過 `LoadDraftCheckpoint`，checkpoint SHA-256 `8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269` | concrete facade 與其 `*Oracle` 私有於 `oracle` package；Buck 只持有無法命名／型別斷言回 concrete 的 restricted interface。真實 Watcher 的 `ObserveDispatchEntryWithStyle`／`ObserveInstruction` 經值型 CallView／registrar 續行，與 `Watcher.Install(*Oracle)` 同得 9 筆 observation、3 筆 presentation、相同 guarded-return／style 與終態 copied state。缺輸入時 skip。 |
 
 前項關閉了本節原定的最小 DRAFT 缺項：現有 Watcher 已能由受限 facade 以真實 Oracle
-hook dispatch 安裝 guarded return hook，且未洩漏資源。callback error／panic 的同步中止
+hook dispatch 安裝 guarded return hook，且這次 callback 參數沒有洩漏 `*Oracle`。
+但 tagged 原型的外層 observer 仍有測試用 `Close`／checkpoint view；Go closure 也可能
+捕獲外層資源。這份 paired test **不**證明正式 Owner 的資源封閉，正式 installer 須
+限制捕獲範圍並另做黑箱負例。callback error／panic 的同步中止
 與末步 exit/budget 仍分別由真實 Oracle 合成 MZ 收據固定；兩組證據必須一起審查，不能
 把 checkpoint 成功誤讀成 callback fault 已被現有 `OnCall` 處理。至此本節是
 **DRAFT candidate，等待獨立審查**；規格 019 整體仍為 **DRAFT**，尚不授權 production。
@@ -884,6 +887,17 @@ hard counterexample 是 READY 契約的一部分：現有 `Oracle.OnCall` callba
 fault 並中止 loop；若暫以 unexported sentinel panic unwind 實作，僅 runner 邊界可辨識
 並 recover 該 sentinel，其他 panic 一律轉 `ObserverFault`，不得把現有 `OnCall` 包裝
 誤稱為已 fail-closed。
+
+同日的 tagged DRAFT `oracle/draft_real_observer_runner.go` 與
+`oracle/real_observer_runner_draft_test.go` 以公開 `Load` 載入 1056-byte、
+SHA-256 `bd0f511b26cb63a2de45bd2781d35ddd115ef8696ea31c24e78bd71fc3fa58a6`
+的合成 MZ，將受限 CallView／registrar hook 包在 Oracle package 私有 concrete runner。
+它直接重現 Oracle 的 exit／HLT／A0000／hook／stub／Step 順序，且以私有 sentinel
+把 callback error 或 panic 同步帶回 runner loop；測試量到當次零新 Step、後續 Run
+同為零步 `ObserverFault`。同一 receipt 另固定：純 budget、末步 DOS exit（raw
+`BudgetBoundary` + `AfterLastAttempt` + `ProgramStopped`）、下一 slice 的起點 exit，
+以及 dispatcher@0 動態註冊 return@1。這是**真實 Oracle 的可丟棄 prototype**，不是
+`Owner.Advance`、正式 Watcher 接線或 CONFORMED 收據；本節和規格 019 仍為 DRAFT。
 
 #### 候選 READY 契約（待上述最小缺項關閉後再審查）
 

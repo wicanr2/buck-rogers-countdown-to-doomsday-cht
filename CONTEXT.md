@@ -1434,9 +1434,11 @@ runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
   不證明正式 Owner、callback 故障收束或正常玩家路徑。
 - 使用者已選 3× host 面板採倚天原生 24 點，排除衍生 22 點；2× 仍使用既定 16 點。
   本機正式 loader 與原版實體視窗原型已有有限收據，正式 Linux session 尚未整合。
-- 手冊火箭段落 `manual.world.rocketships` 的末句已按本機中文掃描手冊印刷頁 33
-  修正。譯文異動後，正式 24 份 TSV 的字元清單為 1,023 字，SHA-256
-  `cacc1d6f787f93bea18c4189705ba3c39f7d73f829d408a7f49eb885e208e826`；
+- 手冊火箭段落 `manual.world.rocketships` 與接收敵艦段落
+  `manual.rules.salvage` 已按本機中文掃描手冊修正；後者的 `Salvation`
+  專名另由英文原版 Log Book 第 18 頁補證。正式 24 份 TSV 的字元清單
+  目前為 1,016 字，SHA-256
+  `f44ae7c8bcbcbb82a762933a21fb0e6d7e1289ce833626c9621bf2560cfe361d`；
   本機倚天 2× 字型與 manifest 已重建及核驗，詳見規格 024。其來源身分仍須在
   正式啟動器前置檢查；不可把本機字型或原版素材推到 GitHub。
 - 手冊中英專名與 3× 英文字距仍待使用者就 A／C／D 並列原型作選擇；在決定前

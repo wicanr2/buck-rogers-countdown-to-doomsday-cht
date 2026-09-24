@@ -340,3 +340,25 @@ Xvfb 以新 manifest 重跑正式 `TestLoadHostFontsFromReviewedManifestsLocal`
 雙倍率預檢，通過。**新字型尚未重跑原版實體視窗 Apply 收據，正式
 Linux session 也尚未接入預檢**。以後每次譯文異動仍須重建並再驗，不能將本段雜湊
 固定為永久值。
+
+## 2026-09-25 第二次勘誤：接收敵艦譯文後的字型身分
+
+`manual.rules.salvage` 按中文掃描手冊印刷頁 40 收斂正文，專名
+`Salvation` 另依原版英文 Log Book 第 18 頁補證；正式 24 份 TSV
+因此再減少七個不再使用的字。上一節 1,023 字、`9c21db…` 字模及
+`ea47b1…` manifest 是火箭段落修正**當時**的收據，不可作目前啟動先驗。
+主代理在有界、無網路 Docker 重生並驗證：
+
+- `font/characters.txt`：1,016 行，SHA-256
+  `f44ae7c8bcbcbb82a762933a21fb0e6d7e1289ce833626c9621bf2560cfe361d`。
+- 本機倚天 top-pad 2× `GOLEMFNT`：SHA-256
+  `770c320b93d524e69d86b1a0e5f0faf2a2bd4f17c91bf7067544bd89cde15a92`。
+- 本機 manifest：SHA-256
+  `6830a755d264ef4990f19deb2802c52b39673b47193269348978a4be5f6380e9`，
+  格式欄 `glyphs=1016`。目前 `text/manual.zh-TW.tsv` SHA-256
+  `dc37ca03e4bba976b7b967d310a92b90888f3c358dd50d39edc0fbf7916e0c32`。
+
+`eten_font.py build`／`verify`、手冊 catalog 與單份字型 lint 均通過；
+Docker／Xvfb 的正式 `TestLoadHostFontsFromReviewedManifestsLocal` 以新
+manifest 再次通過。原版實體視窗 Apply 與正式 Linux session 接線仍未重跑／完成。
+所有字型二進位與 manifest 僅留 ignored 本機工作區，不進 Git。

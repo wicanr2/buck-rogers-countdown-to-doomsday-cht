@@ -148,7 +148,7 @@ catalog 或把可丟棄像素後處理搬進 production。
 
 本規格前文的 961 glyph 是第 100／102／104 階段當時的本機
 收據，不是現行譯文全集的字型數量。現行 24 份繁中 TSV 的
-`font/characters.txt` 為 1,023 字；最新字型與 manifest 身分
+`font/characters.txt` 為 1,016 字；最新字型與 manifest 身分
 見[規格 024 的勘誤](024-manual-layer-group-font-identity-ready-candidate.md)。
 正式 Linux session 仍須在啟動前按當次 catalog 驗證本機字型，
-不能沿用 961／1,028／1,025 的歷史數量。
+不能沿用 961／1,028／1,025／1,023 的歷史數量。
