@@ -2,6 +2,20 @@
 
 更新：2026-09-24
 
+最新 #16：本機 dosgolem fork `e471bcb` 讓正式 `Game.New` 深複製
+已驗證的 2×／3× host 字模，呼叫端後續改動來源 map／bytes 不再
+改變面板字形。定向、前端／host／presentation 完整套件與競態測試
+通過；仍無正式 Linux 啟動器接入本機來源核驗，不能稱可玩版完成。
+
+最新 #18：Terra 以正式 `Game.Update` 與合成 DOS／真實橋接器補上
+非命中 F1、畫布外 Down、普通 unmatched Up、重複 Down 的單事件
+及混合批次無動作矩陣；主代理獨立重跑。這固定「保留現行無動作」
+的候選政策，不需改玩家體驗；封閉 owner、整批排他提交及同步
+Draw／Close 仍缺，[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+保持 DRAFT，Issue #18 開啟。低階翻譯子代理另稽核 24 份正式
+catalog 共 196 筆及 39 筆已確認手冊映射，未見可確定漏譯；
+功能選單其他未驗身分不能猜補。
+
 最新 #20：中文 Data Card 的「Ctrl+C 跳回 DOS」提供第九頁出口候選。
 正式 control／2×／3× 從同一合法第八頁狀態重播 Enter→Ctrl+C，
 原版同於 step `361000689` 結束；繁中 owner 在**同次執行**由 active

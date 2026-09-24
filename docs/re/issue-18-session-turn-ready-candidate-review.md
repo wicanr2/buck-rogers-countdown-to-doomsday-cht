@@ -682,3 +682,30 @@ PressedEpoch／HostCaptured 核對純計畫。先前失焦→新 epoch 按下
 仍不能察覺 ABA；若 mutator 可繞過 owner，來源世代與提交期間
 排他仍無保證。正式 owner、無失敗提交、Draw 故障通報及 Close
 均未接通，規格 019／Issue #18 維持開放。
+
+## 2026-09-24 現行非命中輸入的無動作矩陣
+
+獨立子代理以目前 dosgolem fork `e471bcbb87491708f9e300e30a5a51cc5b3fd442`
+的正式 `Game.Update`、`PanelController`、`MouseBridge` 與
+`KeyboardBridge` 建立可丟棄測試
+`workplace/dosgolem/frontend/ebiten/route_noop_matrix_draft_test.go`
+（SHA-256 `42d5b1b24da5ce1525052565a05d28ad98ba885b87afe2eb4b4042b76d37f933`）。
+合成 DOS machine／BIOS 只用來量測橋接副作用；沒有載入原版遊戲。
+主代理在既有 `eob-remake-go:1.26.7-ebiten2.9.9`、無網路、
+2 GiB／2 CPU／256 PID、目前 UID/GID 的 Docker／Xvfb，唯讀掛載
+fork，重跑 `go test -count=1 -v -run TestDraftCurrentNoopRoute
+./frontend/ebiten`；單事件與混合批次五個子案例全通過。
+
+| 現行輸入 | 觀測到的 host／DOS 輸入效果 | `Advance` |
+| --- | --- | ---: |
+| 單一未映射 F1、畫布外 Down、普通 unmatched Up | 無 panel／mouse／BIOS 改動 | 各 1 次 |
+| 畫布外 Down＋unmatched Up＋F1＋Enter 同批 | mouse 無改動；僅 Enter 入 BIOS 一筆 | 1 次 |
+| 前批已按住後，同批重複 Down＋Up＋F1＋Enter | 重複 Down 無額外 Press；Up 正常 Move＋Release；僅 Enter 入 BIOS 一筆 | 1 次 |
+
+這是**已證實的合成正式路由行為**，足以讓 019 的候選契約保留既有
+非命中事件無動作政策，不必另請使用者選擇「整批拒絕」的新操作方式。
+它沒有證成整批原子提交：`DOS.M` 仍可在提交期間被公開改指、
+bridge mutator 可繞過私有 owner、`Draw` 故障仍未同步通知正式
+session／Close。故 019 與 004 均維持 DRAFT；下一個 READY 前
+切片是封閉目標的單一 session owner、純 Prepare 與排他 Commit，
+再用真實 bridge 的混合批次／失敗矩陣複審。

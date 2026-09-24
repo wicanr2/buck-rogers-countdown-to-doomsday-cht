@@ -2462,3 +2462,25 @@
 - 第一次套件重跑漏掛私有測試所需 `/project`，第二次漏掛
   `/orig`；確認是容器設定失誤，補上兩個唯讀掛載後以同一組
   `go test`／`go vet` 乾淨通過，非產品故障。
+
+## 2026-09-24 — 3× host 字型封存與 session 輸入政策補證
+
+- 主代理修正正式 `Game.New` 驗字後仍保留外部可變字型 map 的別名：
+  2×、3× 的 glyph bytes 在建構時深複製，外部後續刪字、改字模
+  或改尺寸不再改變畫面字形。dosgolem 本機 fork `e471bcb`；
+  Docker／Xvfb 的定向測試、`./frontend/ebiten ./host ./presentation`
+  完整相關套件、`go vet` 及定向 `-race` 通過。定向測試首輪
+  誤用已配置 epoch 的滑鼠橋而被正式檢查拒絕，換新橋後同命令
+  乾淨重跑；屬測試夾具問題，非產品故障。
+- Terra 子代理獨立複審 Issue #18：正式 `Game.Update` 仍逐事件
+  交付、`DOS.M` 可改指，ignored owner 不具排他提交或正式
+  Draw／Close，故規格 019 不升 READY。後續以 ignored 矩陣
+  證實四類現行非命中輸入保持無動作，主代理於同映像重跑
+  `TestDraftCurrentNoopRoute` 全通過；證據追加於
+  [Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)。
+- 低階翻譯子代理只讀稽核 24 份正式繁中 TSV（196 筆）與 39 筆
+  已確認手冊 crosswalk，沒有可依現有證據確定的空譯或漏鍵；
+  功能選單未達 READY 的原文身分不猜補，正式譯文未改。
+- 本輪 Docker 一次性容器均已停止並由 `--rm` 清理；唯讀檢查
+  專案沒有 root 擁有檔或誤建的 `.md` 目錄。ignored 探針仍留
+  `workplace/`，未加入版控。

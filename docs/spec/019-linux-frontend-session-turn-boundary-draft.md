@@ -3,6 +3,14 @@
 狀態：**限縮 session-turn 子契約 READY 候選，待獨立審查；尚不授權 production 實作，規格 004 仍 DRAFT。**
 日期：2026-09-24
 
+同日獨立路由複核：現行正式 `Game.Update` 在合成 DOS／真實 bridge
+矩陣中，對未映射 F1、畫布外 Down、普通 unmatched Up、重複 Down
+均維持既有無動作政策；混合批次仍只送出合法 Enter／Up。
+因此候選 session 不需擅自改成「遇任何非命中輸入整批拒絕」。
+證據見[Issue #18 審查末節](../re/issue-18-session-turn-ready-candidate-review.md#2026-09-24-現行非命中輸入的無動作矩陣)。
+這只消除輸入政策的候選歧義；封閉 owner、排他提交與同步故障收束
+仍未證實，本規格不升 READY。
+
 現況追加：dosgolem fork `7ff0581` 的 `MouseBridge.Snapshot()` 已
 提供含 `PressedEpoch` 的唯讀純值狀態；ignored 私有批次 v2 以此
 在 `prepare` 前擋下跨 epoch 狀態漂移，並有完整快照／純計畫
