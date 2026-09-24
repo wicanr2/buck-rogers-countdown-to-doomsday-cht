@@ -2761,3 +2761,21 @@
   未升 READY、未接正式 Owner。翻譯代理核對 24 份 TSV 無安全
   固定詞缺口；另一代理以兩個合法進度量到第 15 列 `N/E`
   方向值及原版 0/10 色參數，保留原文與原色、不新增 TSV。
+
+## 2026-09-25 — 手冊火箭譯文勘誤與受限觀測器原型
+
+- 低階翻譯代理核對手冊 crosswalk records 11–14；11–13 未見可確定譯誤。
+  record 14 對照本機 `SCAN0352_019.jpg`（印刷頁 33，SHA-256
+  `88ec475c179e5aeeed1a90ada1a410de8d417f670dc0ed886e4a36deefb36ba5`）
+  改正 `manual.world.rocketships` 被替換的末句。未變更專名與中英混排政策。
+- 由正式 24 份 TSV 重生 `font/characters.txt` 1,023 字及本機倚天 top-pad 子集；
+  Docker `eten_font.py build`／`verify` 通過，字型／manifest 雜湊見規格 024。
+  先前 1,025 字與字型雜湊已過期；新 manifest 在 Docker／Xvfb 通過正式
+  雙倍率來源預檢測試，但未重跑原版實體視窗 Apply。
+- Terra 在 ignored dosgolem fork 製作 restricted Oracle facade 測試；主代理指出
+  同 package concrete `.o` 資源洩漏後，代理改置 oracle package 私有型別。
+  主代理獨立重跑合法 checkpoint paired test 與 vet，通過 9 筆 observation、
+  3 筆 presentation 的局部對照。callback fault 的同步中止仍是反例，
+  規格 019 維持 DRAFT，無 production runner 或 Owner 接線。
+- 所有原版 checkpoint、掃描手冊與已購倚天來源／衍生字型仍僅在 ignored
+  `workplace/` 或使用者本機目錄；未打包或公開散布。

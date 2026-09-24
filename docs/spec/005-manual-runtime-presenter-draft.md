@@ -143,3 +143,12 @@ RGBA 交給真正 Ebitengine 視窗；面板實際 Apply 可切換，兩倍率�
 範圍的 CONFORMED 判定不外推到「手冊中英混排已定版」；正式譯文
 與混排策略等待使用者就專名保留或繁中化作取捨，不可偷偷改正式
 catalog 或把可丟棄像素後處理搬進 production。
+
+## 2026-09-24 字型數量勘誤
+
+本規格前文的 961 glyph 是第 100／102／104 階段當時的本機
+收據，不是現行譯文全集的字型數量。現行 24 份繁中 TSV 的
+`font/characters.txt` 為 1,023 字；最新字型與 manifest 身分
+見[規格 024 的勘誤](024-manual-layer-group-font-identity-ready-candidate.md)。
+正式 Linux session 仍須在啟動前按當次 catalog 驗證本機字型，
+不能沿用 961／1,028／1,025 的歷史數量。

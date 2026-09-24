@@ -851,3 +851,82 @@ dispatcher entry 動態安裝 guarded post-call hook。因此不得以裸
 只完成第 4 項的 DRAFT 對照前半：它以測試專用反射／`unsafe` 建立 Oracle
 別名，未經 `Owner.Advance`，亦未驗證上述正式所有權、停止收據與失敗收束。
 它可保留為私有原版輸入的回歸探針，不能提升為 production 接線證據。
+
+### 2026-09-24 獨立可審查的 observer runner 最小方案（DRAFT）
+
+本節只定義下一個 `session.Owner.Advance` 切片的**候選設計與審查分界**。
+它不是 READY：目前證據足以限制不得使用的捷徑，卻不足以證明新的受限 callback
+API 能在真實 Oracle 上同時保留 hook 次序、動態 return hook 與錯誤收束。不得以本節
+修改 production。
+
+#### READY 前已知事實、可丟棄證據與最小缺項
+
+| 項目 | 目前分級與可回查證據 | 可作何種結論 |
+| --- | --- | --- |
+| Oracle 執行次序 | 已證實：`oracle/run.go:RunUntil` 逐次為 predicate → DOS exit → HLT → A0000 guard → `OnCall` → stub → `Machine.Step` | 新 runner 必須逐項保留此順序；不可用裸 `Machine.RunUntil` 或一般每步 callback 代替。 |
+| Watcher 的 hook 生命週期 | 已證實：`apps/buckrogers/watcher.go` 的 `Install`／`dispatchEntry`；dispatcher／clear 是靜態 hook，dispatcher 依 caller 動態 `OnCall(returnTo, ...)` | 動態 return hook 是必要能力，且須在 callback 返回後、return instruction 被考慮前生效。 |
+| 最後一步的 exit | 已證實：前節 `owner_oracle_receipt_matrix_draft_test.go`；Oracle 預算邊界可先出現，下一輪才會觀察到 exit | session receipt 必須同時保存 loop 邊界與後置 exit，不能由 `BudgetError` 字串猜類別。 |
+| 現有 Owner 的終態收束 | 已證實：`session/owner.go:Advance`、`fail`、`Close`；已有限 fake 收據 | 現有 Owner 有 first-fault／Close-once 骨架，但尚未持有 observer runner。 |
+| 原版 checkpoint 小窗 | DRAFT：`2c96d19` paired receipt；透過 reflection／`unsafe` 別名同一私有資源 | 可作為原版事件期望值，不能證明正式所有權或正式 `Advance`。 |
+| 自包含 map runner 測試 | DRAFT toy model：`session/owner_observer_runner_ready_draft_test.go` | 僅說明擬議欄位可表達 return hook、末步 exit 與 Close-once；**不**證明 Oracle、Watcher 或 Owner 接線，不能作 READY 依據。 |
+| 真實 Oracle 合成 MZ facade | DRAFT：`oracle/observer_facade_mz_draft_test.go`；1056 bytes，SHA-256 `bd0f511b26cb63a2de45bd2781d35ddd115ef8696ea31c24e78bd71fc3fa58a6` | 證明公開 `Load`／`OnCall` 可同步安裝下一 instruction 的 hook，也證明現有 callback 包裝若只 recover／鎖存，仍會多執行一個 Step；不能把它稱作既有 fail-closed。 |
+| 實際 Watcher 的 checkpoint facade | DRAFT：tagged `oracle/draft_restricted_observer_facade.go` 與 `apps/buckrogers/manual_watcher_facade_oracle_draft_test.go`；透過 `LoadDraftCheckpoint`，checkpoint SHA-256 `8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269` | concrete facade 與其 `*Oracle` 私有於 `oracle` package；Buck 只持有無法命名／型別斷言回 concrete 的 restricted interface。真實 Watcher 的 `ObserveDispatchEntryWithStyle`／`ObserveInstruction` 經值型 CallView／registrar 續行，與 `Watcher.Install(*Oracle)` 同得 9 筆 observation、3 筆 presentation、相同 guarded-return／style 與終態 copied state。缺輸入時 skip。 |
+
+前項關閉了本節原定的最小 DRAFT 缺項：現有 Watcher 已能由受限 facade 以真實 Oracle
+hook dispatch 安裝 guarded return hook，且未洩漏資源。callback error／panic 的同步中止
+與末步 exit/budget 仍分別由真實 Oracle 合成 MZ 收據固定；兩組證據必須一起審查，不能
+把 checkpoint 成功誤讀成 callback fault 已被現有 `OnCall` 處理。至此本節是
+**DRAFT candidate，等待獨立審查**；規格 019 整體仍為 **DRAFT**，尚不授權 production。
+
+hard counterexample 是 READY 契約的一部分：現有 `Oracle.OnCall` callback 簽名為
+`func(*Oracle)`，`RunUntil` 在 `fireCallHooksAt` 後無條件走向 stub／Step。故 callback
+邊界只做 `recover` 加鎖存，**必然不**能阻止當次 Step。未來 typed runner 必須同步傳遞
+fault 並中止 loop；若暫以 unexported sentinel panic unwind 實作，僅 runner 邊界可辨識
+並 recover 該 sentinel，其他 panic 一律轉 `ObserverFault`，不得把現有 `OnCall` 包裝
+誤稱為已 fail-closed。
+
+#### 候選 READY 契約（待上述最小缺項關閉後再審查）
+
+正式實作時，Owner 的私有 boot 在第一個 instruction 前建立 runner；Owner 唯一持有
+runner、machine、DOS、watcher、hook 清冊與 closer。factory 不接受也不回傳既有的
+`*machine.Machine`、`*dos.DOS`、`*oracle.Oracle` 或可注入 `Run` callback。
+
+Watcher installer 僅取得值型 `CallView`（regs、caller、arg、byte、複本 bytes、steps）
+及可在同 goroutine 註冊 hook 的 `HookRegistrar`；兩者均不提供資源 getter、寫 DOS、
+替換 runner 或 Close。靜態 hook 僅能在第一步前裝入；dispatcher callback 可在目前
+call 中新增 return hook，並保證於下一候選 instruction 前可見。
+
+每次 runner slice 必須回傳值型 receipt：budget、machine 前後 steps、差分、
+`LoopStop`、`ExitTiming` 及 cause。正常 exit 不能用 error 表示。優先序固定為：
+
+1. installer／hook fault 優先為 `ObserverFault`；HLT、guard、stub、Step fault 為
+   `OriginalFault`；首次 fault 鎖存後不再 Step。
+2. 無 cause 的起點 exit 或末步後 exit 都是 `ProgramStopped`；末步 exit 保留
+   `LoopStop=BudgetBoundary` 與 `ExitTiming=AfterLastAttempt`。
+3. 僅未 exit、無 cause、差分等於 budget 的 budget boundary 是
+   `BudgetExhausted`；零 budget、加法 overflow 與未知組合在首步前
+   `FrontendFault`。
+
+callback panic 的技術政策在此明定為**失敗即關閉（fail-closed）**：runner 在 installer
+與每一個 hook callback 的直接邊界 `recover`，把 panic value 與受限的呼叫位址／steps
+包成 `ObserverFault`，鎖存 first fault 並 Close 一次；不得讓 panic 穿出 Ebitengine
+goroutine，也不得繼續 Step。`recover` 範圍不得包住 Owner 或 DOS 的其餘程式，以免把
+非 observer bug 誤報為 callback fault。此政策仍需由上述真實 Oracle facade 原型驗證。
+
+#### 實作後才屬 CONFORMED 的驗收
+
+以下均是 READY 之後的 implementation／CONFORMED 驗收，**不**是 READY 前置：
+
+1. 正式 runner 以受限 facade 接通 `Watcher.Install`，正式 Owner 私有 boot 安裝它，
+   `Owner.Advance` 不再使用裸 `Machine.RunUntil`。
+2. 正式黑箱測試證明 frontend／adapter 取不到可變 Oracle／machine／DOS，並重跑真實
+   dispatcher→guarded return、nested／guard-drop、callback error 與 panic 收束。
+3. 正式 Owner receipt 矩陣覆蓋起點 exit、末步 exit、純 budget、predicate、breakpoint、
+   HLT、A0000、Step fault、hook fault、zero／overflow；每一 fault 都驗 Close 一次、
+   first fault 和 close error 保存、後續 `Deliver`／`Advance` 零新步。
+4. 最後以正式 Owner runner 重跑合法 Buck checkpoint paired oracle：相同 hash、第一步前
+   安裝與 budget 下，比對 begin／clear／request 順序、steps、CPU／memory／indexed／palette
+   摘要及 DOS exit；無 watcher A/B 不得改 DOS 狀態。原版輸入缺席時必須明確 skip。
+
+任何 production 驗收反例都使該實作回到 DRAFT；不得以 toy model、裸 Oracle、
+reflection／`unsafe`、外洩 getter 或 error 字串解析補過。

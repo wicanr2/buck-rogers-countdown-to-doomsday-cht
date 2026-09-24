@@ -319,3 +319,24 @@ RGBA 與完整收據仍只在 ignored `workplace/manual-owner-oracle-20260924/`�
 正式 runner 收據重建，未由 Linux session 直播傳入 owner；答錯換題、
 正常玩家進入／返回、存讀檔及多作用層並存未驗。整體手冊路徑不升
 CONFORMED，Issue #14 繼續開放。
+
+## 2026-09-24 勘誤：字型「目前」身分應依最新清單
+
+上節的 1,028 glyph、`150c93af…` 字模及 `d359ee25…` sidecar
+是當時收據，不再是目前的啟動輸入；不得用那兩個雜湊當成正式
+Linux session 的來源先驗。主代理於手冊火箭段落勘誤後，在有界、
+無網路 Docker 依正式 24 份 `.zh-TW.tsv` 重建並唯讀驗證本機倚天
+2× 子集與 manifest：`font/characters.txt` 為 1,023 行，SHA-256
+`cacc1d6f787f93bea18c4189705ba3c39f7d73f829d408a7f49eb885e208e826`；
+本機 2× `GOLEMFNT` SHA-256
+`9c21dbafc33e6aef42f6b2e6a4600b606232d6d66b521ba5237ab40784887999`，
+manifest SHA-256
+`ea47b1e3f81f603beddbefebbabd94937fa887047d551022cddcb648c035c25e`，
+其格式欄亦記錄 `glyphs=1023`。這筆譯文改動使清單移除「吸／槽／耕」、
+新增「溶」，淨減兩字；因此 1,025 glyph 與前次 `78c43d…` 字模也是歷史收據。
+本機原型先前已透過正式雙倍率 `LoadHostFontsFromReviewedManifests`
+驗證前次來源身分；本次重建後完成 `eten_font.py verify`，並在 Docker／
+Xvfb 以新 manifest 重跑正式 `TestLoadHostFontsFromReviewedManifestsLocal`
+雙倍率預檢，通過。**新字型尚未重跑原版實體視窗 Apply 收據，正式
+Linux session 也尚未接入預檢**。以後每次譯文異動仍須重建並再驗，不能將本段雜湊
+固定為永久值。

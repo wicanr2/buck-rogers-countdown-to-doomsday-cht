@@ -1425,6 +1425,23 @@ runtime。既有 Unifont validator 正確拒絕此格式，未被修改。
 走 DRAFT→READY 審查。dosgolem branch 仍為本機未推送的
 `a4a87aad48607ea6ff6e4646de1292f5caaeade9`，沒有 production code 變更。
 
+## 2026-09-25 — 目前接線與手冊譯文真相
+
+- 本專案仍是 dosgolem 執行期輸出端繁中覆繪，不是 remake。Linux 玩家入口與正式
+  `session.Owner.Advance` 觀測器 runner 尚未接通；不得把 host-only／原版 checkpoint
+  原型宣稱為完整可玩或全畫面中文化。`docs/spec/019` 仍 DRAFT，受限 Oracle facade
+  的 paired checkpoint 測試只證明 9 筆 observation、3 筆 presentation 的局部對照，
+  不證明正式 Owner、callback 故障收束或正常玩家路徑。
+- 使用者已選 3× host 面板採倚天原生 24 點，排除衍生 22 點；2× 仍使用既定 16 點。
+  本機正式 loader 與原版實體視窗原型已有有限收據，正式 Linux session 尚未整合。
+- 手冊火箭段落 `manual.world.rocketships` 的末句已按本機中文掃描手冊印刷頁 33
+  修正。譯文異動後，正式 24 份 TSV 的字元清單為 1,023 字，SHA-256
+  `cacc1d6f787f93bea18c4189705ba3c39f7d73f829d408a7f49eb885e208e826`；
+  本機倚天 2× 字型與 manifest 已重建及核驗，詳見規格 024。其來源身分仍須在
+  正式啟動器前置檢查；不可把本機字型或原版素材推到 GitHub。
+- 手冊中英專名與 3× 英文字距仍待使用者就 A／C／D 並列原型作選擇；在決定前
+  不改正式專名譯文。GitHub Issue 是工作清單，既有 #14／#18 等未因原型收據關閉。
+
 ## 2026-09-22 — pointer route 決定與 MouseBridge DRAFT 邊界
 
 - 使用者定案：面板關閉時，host chrome 外的 canvas pointer click 轉送原版 DOS mouse；面板開啟時所有 pointer 由 host 消費。永不轉送方案已排除。
