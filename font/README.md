@@ -156,3 +156,14 @@ SHA-256 `7aa7ed9f4fbff670cdba023b8c5f3a20486423c42393b94495c3c7da6eace55b`；
 本機 2× `GOLEMFNT` 已重建並通過 `eten_font.py verify`，與既有
 3× 面板原生 24 點 A 版共同通過正式雙倍率 manifest 前檢。
 兩份字型仍只可在本機使用，不進入 Git 或公開封包。
+
+2026-09-25 第三頁確證詞義校譯後，上一段 1,046 字與雜湊只保留
+為校譯前收據。現行 24 份 TSV 重新產生的 `font/characters.txt`
+為 1,045 字，SHA-256
+`17a8be6af375860b45f55d11642f0d223b42b02ba0dc6aecb1ae5eba024664ec`；
+本機 2× `GOLEMFNT` SHA-256
+`cd96fbd1c00e82e3deaa5e357c6140c0f88ad2cefc4cae72eae6bea2ff6949d3`，
+manifest SHA-256
+`6512eafb389b78e6cbfe09e693e39ce27ddab5fc6df1e61538440be73f12a822`。
+`eten_font.py build`／`verify` 通過；本機字型與 manifest 仍僅在
+ignored `workplace/current-font/`，不得散布。

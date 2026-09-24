@@ -1,5 +1,34 @@
 # 工作歷程
 
+## 2026-09-25 — 第三頁詞義校譯與手冊混排方向
+
+- 子代理依第三頁原版 `THE NERVOUS CHATTER DIES DOWN` 的固定事件
+  與畫面，把 `.003` 的「先前的喧鬧聲」限縮訂正為「緊張的交談聲」；
+  第二、四頁無確證可改。三份專屬 catalog lint 通過。
+- 24 份 TSV 的字元清單及本機倚天 2× 子集重建為 1,045 字，
+  `build`／`verify` 通過。全體 catalog 一起交給單份 lint 時因
+  既有跨檔共用 `character.skill.notice` 而正確報重複 key；改依
+  契約逐份 lint，24 份均通過；第三頁 READY 版面與五項單元測試
+  通過。這是驗證命令用法問題，非譯文重複或產品缺陷。
+- 校譯後同一合法首題以新字型重生 control／2×／3×，原版狀態
+  相等、矩形外零差；正式 Snapshot owner 定向測試通過，雙倍率
+  RGBA 與前次逐位元相同。雜湊與私有路徑見[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
+- 第三頁校譯本身亦從合法第二頁終態重跑穩定入頁 A/B：雙倍率
+  五行可見、零缺字、矩形外零差，control／2×／3× 的 indexed 與
+  完整 machine／DOS state 相等；詳見[第一百四十四階段追加收據](docs/re/phase-144-story-page3-runtime-conformance.md)。
+  初次 CLI 因缺必填 PNG 輸出被拒，補齊後同條件通過；另一次
+  Docker 工具目錄誤掛 `/bin`，改掛 `/toolsbin` 後重跑通過，均屬驗證命令問題。
+- 使用者選擇保留手冊中的 RAM、Deimos、Stockade，改善 3× 混排
+  與英文詞界；排除示意圖中的未核准全中文新譯名。這是版面
+  DRAFT 工作，不改手冊 catalog、原版判定或 2× 既有顯示；
+  已另建[Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
+  保存範圍、依賴、完成條件與素材邊界。
+- ignored fork 的可丟棄 E1／E2 原型把 3× 英文改為整行共同游標
+  14px／16px advance，英文詞與括號專名不拆，39 段均可容納、
+  首題矩形外零差、2× 正式 RGBA 不變；主代理看過兩張原生
+  960×600 圖並重跑四項定向測試與 vet。正式 presenter 未改，
+  字距選擇及 READY 審查仍待決，見[第二百二十三階段追加](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)。
+
 ## 2026-09-25 — A 版沿用、手冊現行字型同狀態複驗與第九頁停止線
 
 - 使用者再次選 A；正式 3× host 面板已是倚天原生 24×24 中文／

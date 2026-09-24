@@ -105,3 +105,43 @@ machine／DOS 雜湊均相同。
 **證據等級：已證實／僅上述合法 checkpoint 與 DRAFT 收據工具。**
 這補的是首題顯示開關的雙側同狀態驗證；正式 pending-terminal
 收據契約、直播 Linux session、39 題逐題與存讀檔仍未完成。
+
+## 2026-09-25 保留英文專名的變動字距 E1／E2 原型
+
+使用者已選擇保留中文印刷手冊中的 RAM、Deimos、Stockade，
+改善 3× 混排及英文詞界；上節 C 的新造全中文名稱不獲採用。
+舊 A／B／C／D 收據對應當時的譯文與字型，不能冒作現行原型。
+從現行 1,045 字本機倚天子集及首題新收據
+`workplace/manual-recheck-20260925-XXfChfDp/ab-1045/`，在 ignored
+dosgolem fork 建立 `manual_ascii3_wordwrap_draft_test.go` 可丟棄原型。
+初版 D 只把英文墨跡縮在原來每字 24px 的位置內，主代理於原生
+960×600 圖檢視後確認單詞後仍有固定格洞，故沒有把它當正式方案。
+
+第二版改成整行共同游標：CJK 每字前進 24px、空格 8px，
+`（`／`）` 依現行字模墨跡分別前進 10／11px；連續英文及
+`（Deimos）` 類括號專名是不可拆 token，後續中文字由 token
+實際終點續排。英文單字 advance 各產生兩個候選：E1 14px，
+E2 16px。兩者皆不改正式 TSV、原版 state、字型來源或 2×
+renderer，且均沿用既有手冊安全矩形。這些數值是**原型參數**，
+尚待使用者根據並列圖選定，不是 READY 規格。
+
+| 候選 | 私有原生 3× 圖 | 對現行正式 RGBA 的差異 |
+| --- | --- | ---: |
+| E1／14px | `workplace/manual-recheck-20260925-XXfChfDp/ascii3-wordwrap-draft/manual-3x-e1-14px-variable-1045.png` | 13,250 pixels |
+| E2／16px | `workplace/manual-recheck-20260925-XXfChfDp/ascii3-wordwrap-draft/manual-3x-e2-16px-variable-1045.png` | 13,094 pixels |
+
+兩者對首題的核准 clear rectangle 外差異均為 0；RAM、Deimos、
+Stockade 都各自完整落在單一行。DRAFT 測試另檢查全部 39 段
+在兩候選的 36 欄×14 行等價安全幅內可容納、2× 正式 RGBA
+與 `ab-1045` 逐位元相同，並以 37 格英文詞、505 字正文及
+35 個中文字後接 `RAM` 驗證超長拒絕或整詞換行。主代理在
+無網路有界 Docker 獨立重跑四個定向測試及
+`go vet ./apps/buckrogers`，均通過；完整 token／行像素收據與圖
+只在 ignored 私有目錄，不進 Git。
+
+**停止線：**E1／E2 只有 test-local compositor 的首題圖與靜態
+39 段容量，尚未改 `manualRows`、正式 `RuntimeManualOverlay` 或
+`ManualSnapshotOwner`，沒有新的 production 同狀態 A/B、換題
+清除、正式 Linux 視窗或 39 題逐題正常玩家驗收。
+[Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
+保持 OPEN，待字距選擇、獨立 READY 審查與正式實作。

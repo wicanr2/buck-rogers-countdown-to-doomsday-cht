@@ -2,6 +2,16 @@
 
 更新：2026-09-25
 
+使用者已選手冊混排方向：保留有來源依據的 RAM、Deimos、Stockade
+英文專名，改善 3× 英文字距與詞界；排除把全中文示意圖的新譯名
+直接寫入正式 catalog。現行 2× 字型因第三頁一筆確證詞義校譯
+重建為 1,045 字，手冊首題 control／2×／3× 與正式雙層 owner
+已用此字型重跑同狀態，細節見[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
+混排演算法仍在 DRAFT，先前固定字格的同狀態收據不得冒充新排版
+已完成；2× 原有顯示與原版遊戲語意維持不變。此切片由
+[Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
+追蹤。
+
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定
 僅及 host 面板，遊戲畫布 3× 中文仍採既定 22×22 墨跡。現行

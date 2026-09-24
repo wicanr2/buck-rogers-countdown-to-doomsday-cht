@@ -446,3 +446,24 @@ fixture 寫死 1,025 字，以及測試把字元清單誤讀成單字元逐行�
 這只驗證**固定首題 checkpoint 的輸出後封存投影**，不是正式 Linux
 session 直播事件、答錯換題、39 題逐題玩家路徑、存讀檔或多層完整
 生命週期驗收。規格 024 整體仍限縮 READY，Issue #14 維持開放。
+
+## 2026-09-25 第三頁校譯後的現行字型勘誤
+
+上一節 1,046 字及其首題同狀態收據是**當時**輸入。故事第三頁
+`story.page3.line.003` 依原版 `THE NERVOUS CHATTER DIES DOWN`
+訂正「先前的喧鬧聲」為「緊張的交談聲」後，正式字元聯集減為
+1,045 字；現行 `font/characters.txt` SHA-256
+`17a8be6af375860b45f55d11642f0d223b42b02ba0dc6aecb1ae5eba024664ec`，
+本機倚天 2× GOLEMFNT SHA-256
+`cd96fbd1c00e82e3deaa5e357c6140c0f88ad2cefc4cae72eae6bea2ff6949d3`，
+manifest SHA-256
+`6512eafb389b78e6cbfe09e693e39ce27ddab5fc6df1e61538440be73f12a822`。
+這項改動不修改手冊 39 段內容或原文鍵。為免把上節舊字型收據
+冒作現行驗收，已在同一合法首題 state 以新字型重生 control／2×／
+3×，原版同狀態及安全矩形外零差異仍通過；雙倍率覆繪 RGBA 雜湊
+分別仍為 `1b075d714040d04736cb4c36693ededdb336a0a421bf154c86b722defe97e07e`
+與 `04e306f719af92c1bf4775d02f3c24505404b8ddab6ae8fba84a4db2a9c0cc50`。
+正式 `ManualSnapshotOwner.Snapshot` 的首題定向測試也以新字型、
+新收據目錄重跑通過。私有完整收據只在 ignored
+`workplace/manual-recheck-20260925-XXfChfDp/ab-1045/` 與
+`owner-1045/`；限縮驗收邊界與上一節相同。

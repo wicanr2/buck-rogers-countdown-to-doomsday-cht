@@ -67,3 +67,33 @@ non-READY TSV、unknown write、restore／discontinuity 與已量 pre-write 清�
 
 此結論只覆蓋上述合法 state、第三頁五行、雙倍率與已量 Enter 離頁；其他離頁、
 完整開機玩家路徑、遊戲內存讀檔、第四頁以後及整款遊戲仍未驗。
+
+## 2026-09-25 第三頁詞義校譯後的入頁複驗
+
+低階翻譯稽核在同一原版 control 畫面確認 `story.page3.line.003`
+的跨行原句含 `THE NERVOUS CHATTER DIES DOWN`；原譯「先前的
+喧鬧聲」把情緒誤成時間，故僅將正式 `.003` 改為「離開。緊張的
+交談聲逐漸」。`.004` 的「平息」與其餘四行不動；第二、四頁
+沒有確證校改。現行第三頁 TSV SHA-256
+`26522c0255c78994c9859b13f1027d27fe2f55e6e92f622a9f8b2bee2aeef027`。
+三份故事 catalog 的專屬 lint、第三頁 READY 容量與五項單元測試
+通過。這是譯文字義勘誤，不改原版事件 identity 或 READY 幾何。
+
+依上節同一私有第二頁合法終態、同一 `291000000:1c:0d` Enter
+與 step `300000000` 終點，以現行 1,045 字本機倚天 GOLEMFNT
+（SHA-256 `cd96fbd1c00e82e3deaa5e357c6140c0f88ad2cefc4cae72eae6bea2ff6949d3`）
+重生 control／2×／3×；三組原版 indexed SHA-256 均為
+`9bb708331258b5239c1bfd7b299c0594c4be4475b0523b07c40387790db3958c`。
+正式 `story_page3_ab_verify.py` 通過：2×／3× 矩形內分別有
+9,607／20,838 點差異，矩形外均為 0，五個 READY key 可見且
+零缺字；覆繪 RGBA SHA-256 分別為
+`796b5036972be4de17503e4480979b8e8fb8dcf9fb6499f49a70e18947854892`／
+`38b290e1ac6d6dfa82292a95289097f1b7c9060e98f6d017d9adeeafb3aac697`。
+`state-compare` 對 control→2×、control→3× 均 `equal=true`，
+machine digest `35a43a9b094283fb40267de4562762ae0732baf6f98b446c6a06291afcf79eaa`、
+DOS digest `8dd5789e07b42a195c0bb392cd75e489af09521151ca25b4b3fea33a6e818a59`。
+私有畫面、state 與完整收據只在 ignored
+`workplace/phase144-page3-final/recheck-1045/`。首次命令漏給正式
+CLI 必填 PNG 輸出而被拒；補足四個輸出旗標後同條件重跑通過，
+不屬產品缺陷。這次只複驗**校譯後的入頁穩定畫面**；上節既有
+Enter 離頁生命週期結論未以新字型重跑，不擴大聲明。

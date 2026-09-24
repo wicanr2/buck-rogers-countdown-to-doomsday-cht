@@ -96,6 +96,27 @@ machine／DOS 同值。request 前收據使用 ignored DRAFT CLI clone
 處理通用 recorder 的 pending 終態，正式 CLI 仍拒絕該停點；
 此補證不擴張本規格的 CONFORMED 範圍至完整 Linux 玩家路徑。
 
+## 2026-09-25 手冊 3× 混排決定與 DRAFT 邊界
+
+使用者看過首題的現行 3× 固定字格、全中文示意與緊縮英文原型後，
+選擇**保留中文印刷手冊中的 RAM、Deimos、Stockade 等英文專名，
+改善中英混排與英文詞界**；未核准的全中文新譯名不得進入正式
+`manual.zh-TW.tsv`。目前 `manualRows` 以 36 欄×14 行逐 rune
+切行，3× 每字固定 24px advance；因此既有 16px ASCII 墨跡
+呈現疏距，英文詞也可能被行尾拆開。緊縮字母的 D 原型只改墨跡
+位置，尚未處理跨行詞界；這些原型都不是新版正式收據。
+
+[Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
+負責以**可丟棄原型**量測 3× 英文 advance、英文詞／括號換行、
+39 段容量及安全矩形，再經證據審查決定限縮 READY 契約。
+2× 原有排版與 RGBA 必須逐位元不變；原版題目、判定、存檔與
+手冊 catalog 文字鍵也不得改。正式 3× 混排尚未完成 READY
+審查與 production 同狀態驗證，本節僅 DRAFT；前文固定字格的 CONFORMED 範圍不自動
+轉移到新演算法。[第二百二十三階段追加的 E1／E2 原型](../re/phase-223-manual-first-question-host-mixed-script-draft.md#2026-09-25-保留英文專名的變動字距-e1e2-原型)
+已用整行共同游標對照 14px／16px 英文 advance，兩案均保留專名、
+39 段靜態可容納、安全矩形外零差、2× 正式 RGBA 不變；實際
+advance 尚待使用者選擇，這仍不是 production 同狀態驗收。
+
 ## 與 host 倍率控制的關係
 
 使用者已選擇「先選取，再按套用」（選項 C）。手冊 presenter 只接收明示的 2 或 3，因此可在
