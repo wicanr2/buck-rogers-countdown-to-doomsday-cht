@@ -325,7 +325,8 @@ payload 送 DOS。若沿用現行 `Route`／`Handle` 逐筆重播，還需以
 presentation bridge，也不升 READY**。
 
 ignored dosgolem fork 的
-`frontend/ebiten/route_plan_draft_test.go` 新增
+`frontend/ebiten/route_plan_pre_fix.go.txt`（當時檔名為
+`route_plan_draft_test.go`）新增
 `TestDraftUpdateLateKeyboardTransportErrorLeavesDOSMouseDown`，SHA-256
 `967ccb3d621ccda339d5a6d90ea67bb519217ab969d7e763c90782ebeae33c5d`。
 它用無原版素材的合成 `frameInput`，但走真正的
@@ -438,3 +439,66 @@ DOS 動作，不能再呼叫可失敗的 `Route`／`Handle`／`ApplyLayout`。
 規格 019 已補此限縮契約，但**尚未達 READY**：共同 owner／不可繞過
 mutator、正式 `readFrameInput` adapter、鍵盤未映射政策與完整矩陣
 尚無正式 bridge 收據，須交獨立審查，不得由本測試自行升級。
+
+## 連續 host／滑鼠輸入鏈的差分補證（2026-09-24）
+
+ignored `frontend/ebiten/route_plan_player_chain_draft_test.go` SHA-256
+`86f0a5f09d590382de1a23b83d6d0afb5177534ed6fd49ca9ec5dadc42cba283`
+在無原版素材的合成 `Game.New` 上，將測試用純資料 route plan 與**現行正式**
+`Game.Update` 逐回合比對。固定鏈涵蓋 2× 畫布按下、畫布外放開、同一
+`Update` 內 Down＋Up、Open、暫選 3×、Apply、3× 畫布按下後失焦釋放，
+再 Open、暫選 2×、Cancel。每回合對 panel、layout epoch、mouse
+current／pressed／host capture 與 DOS mouse 動作種類逐項比對，
+17 回合均同值。這補強候選 evaluator 對**已接受**連續事件的狀態模擬，
+不檢查 mouse 座標值，也沒有原版 DOS／遊戲輸入。
+
+既有 `eob-remake-go:1.26.7-ebiten2.9.9` 的唯讀、無網路、有界
+Docker／直接 Xvfb 中，`go test -count=1 ./frontend/ebiten` 與
+`go vet ./frontend/ebiten` 通過。此差分不能證明拒絕批次的原子性：
+現行正式 `Game.Update` 仍會在後段錯誤前先送 DOS mouse，測試用
+plan 也無正式共同來源 generation 或不可失敗的 commit；規格 019
+維持限縮 READY 候選，不改 production。
+
+## BIOS transport 建構前檢的可變別名反證（2026-09-24）
+
+為縮小上述已量到的「Down 已送、Enter 才因缺 BIOS 回錯」來源，
+本機 fork 新增 `docs/spec/233-ebiten-bios-transport-preflight-draft.md`
+作限縮 DRAFT 候選；正式程式未更動。獨立審查首先指出
+`Config.Panel` 與 `KeyboardBridge.panel` 可為不同指標，故單純
+`ValidateBIOS()` 不能保證面板隔離一致；候選已改要求同一 panel。
+
+第二次審查指出 `internal/dos.DOS.M` 為公開可寫指標，建構時即使
+與橋接器 machine 同一，之後仍可改指他台。ignored
+`presentation/keyboard_machine_alias_pre_fix.go.txt`（當時檔名為
+`keyboard_machine_alias_draft_test.go`）SHA-256
+`a92d3e28bcfeb2cb00be348ef0205441fecd91f639effdd36697e693639e80fa`
+在無原版合成環境把它改指第二台，實測現行 `DeliverBIOSKey`
+無錯且將鍵排入**第二台** BIOS queue，第一台仍為零。無網路有界
+Docker 的該測試與 `go vet ./presentation` 通過；這是正式 API
+可變別名的反證，不是原版遊戲輸入收據。
+
+規格 233 因此新增 `Game.New`、每個 `Game.Update` 路由前的
+panel／BIOS machine 前檢，以及 `DeliverBIOSKey` 自身交付前
+重驗的窄契約，仍待獨立複審。若在已前檢的同批中透過回呼或
+競態再改 `DOS.M`，交付前檢可阻止錯送鍵，不能回滾已送的滑鼠；
+完整來源獨占與整批零部分副作用仍是規格 019 的 READY 阻塞，
+不得因限縮修補而宣稱 session 原子性或 Linux 可玩。
+
+## BIOS transport 前檢限縮 CONFORMED（2026-09-24）
+
+前述兩份修正前反證保留原始 SHA-256，已移作 `.go.txt`，不再編入現行
+Go 測試。dosgolem fork `docs/spec/233-ebiten-bios-transport-preflight-draft.md`
+經獨立 READY 審查後，正式 `KeyboardBridge.ValidateBIOSForPanel`、
+`Game.New`、`Game.Update` 與 `DeliverBIOSKey` 完成建構前、回合前、
+交付前三層檢查；有效輸入順序未改。獨立實作審查確認檢查位置
+與 `DOS.M` 可變別名防線，並要求補測在 `Game.New` 前改機的零副作用
+負例；已連同無 BIOS、不同 panel、同包無效私有欄位、建構後改機
+及有效路由正例驗收。
+
+既有 Go 1.26.7／Ebitengine 2.9.9 Docker／Xvfb，無網路、資源上限、
+唯讀原始輸入下，`go test -count=1 ./presentation ./frontend/ebiten`、
+`go vet ./presentation ./frontend/ebiten`、
+`go test -race -count=1 ./presentation ./frontend/ebiten` 均通過。
+此為已證實錯誤配置的窄修補；相同批次中的其他後段錯誤、並發改指、
+滑鼠橋與鍵盤橋同機、完整 session owner、原版同狀態及正常玩家
+路徑仍未驗，規格 019 不升 READY，Issue #18 保持 OPEN。

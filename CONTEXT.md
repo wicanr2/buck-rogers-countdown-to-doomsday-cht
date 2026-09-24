@@ -30,7 +30,11 @@ Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這�
 整批純預檢與單次提交契約已寫為待審候選，尚未改正式橋接。
 另以真正 `Game.Update` 重播同批畫布 Down→鍵盤 transport 錯誤，
 也證實錯誤返回後 DOS 左鍵仍按下；詳見上述 Issue #18 審查紀錄。
-此為 READY 阻塞證據，不是已修正的正式前端。
+這份反證已促成 dosgolem fork `docs/spec/233-ebiten-bios-transport-preflight-draft.md`
+的限縮 READY 前檢：正式 `Game.New`、每回合 `Game.Update`、每次
+`DeliverBIOSKey` 已接入同 panel／machine／BIOS 檢查；單元、`vet`、
+競態測試及獨立實作審查通過，規格 233 已限縮 CONFORMED。這只移除已證實的缺 BIOS
+配置與回合前可變別名錯誤，不消除規格 019 的整批原子性阻塞。
 最新可丟棄負例進一步證明：只比較面板／滑鼠完整值會遇到
 Open→Cancel、Down→Up 的 ABA；若來源版本僅由外層 wrapper 管理，
 直接呼叫正式 bridge 仍可繞過。規格 019 因此新增共同來源版本與
