@@ -9,9 +9,11 @@
 本機 2× 倚天子集已重建且與 3× A 版共同通過正式來源前檢，詳見
 [規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
 技術技能表代理修訂與本機英文 Rule Book 相反，已撤回並保留勘誤。
-observer runner 的合法 checkpoint 組合收據仍為 DRAFT：獨立審查要求
-補事件錨點、同一安裝路徑及 installer 故障零步測試。正式 Linux
-可玩入口、Owner 觀測器接線與完整玩家路徑仍未完成，Issue #16／#18 開放。
+observer runner 的合法 checkpoint 組合收據仍為 DRAFT：事件錨點、
+共用安裝路徑、installer／callback 故障零步及 scoped registrar
+生命週期負例已補；獨立複審仍指出跨 goroutine 捕獲 registrar
+與 callback 期外可讀的 CallView 未封閉。正式 Linux 可玩入口、
+Owner 觀測器接線與完整玩家路徑仍未完成，Issue #16／#18 開放。
 第 15 列 `N/E` 是動態方向狀態，不新增猜譯。
 
 本輪已核對使用者對 3× 設定面板的 A 版定案：沿用已完成的倚天原生

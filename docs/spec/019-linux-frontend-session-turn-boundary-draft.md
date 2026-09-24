@@ -942,15 +942,26 @@ Docker 重跑上述組合與 oracle 測試及 vet 通過。譯文更新曾使舊
 硬碼字數斷言失效，已改成對照實際 request 的字元數；這是測試
 錨點更新，不是原版事件變更。
 
-尚餘一項明確的**READY 前**封閉性缺口：DRAFT runner 介面目前仍
-公開嵌入 `DraftRestrictedRegistrar`，`Install` 沒限制只能在首次
-instruction 前執行一次，`OnCall` 也沒限制僅 installer 或正在執行的
-callback 可註冊。外部或被 closure 捕獲的 registrar 因而可能在
-`Run` 後新增靜態 hook。下一份可丟棄負例須拒絕重複 Install、延遲
-使用 installer registrar、`Run` 後使用被捕獲的 callback registrar；
-拒絕後不可增加 hook、觀測或步數，同時保留 dispatcher callback
-當下的動態 return hook 可於下一 instruction 生效。補足並再經獨立
-審查以前，本子契約仍 DRAFT，不授權正式 Owner 接線。
+**2026-09-25 註冊生命週期補證，仍為 DRAFT。** tagged runner 已移除
+對外嵌入的 registrar，`Install` 限首次、首次 `Run` 前；installer 與
+callback 取得的 scoped registrar 在同步呼叫返回時失效。合成 MZ
+負例已拒絕重複／延後安裝、被捕獲的 installer／callback registrar、
+callback 內忽略 nil hook 錯誤及 `Run` 重入；首錯優先於後續 panic／
+invalid budget，拒絕時零新步且無新增 hook 回呼。當次 callback 的動態
+return hook 仍在下一候選 instruction 前生效，合法首題 checkpoint
+的 9 筆 observation／3 筆 presentation 對照仍通過。這些只是本機
+ignored fork 的 tagged 試驗，非正式 `Owner.Advance`。
+
+獨立複審另指出**尚未封閉的 READY 前缺口**：scoped registrar 只有
+`active` 布林，callback 若將它傳給其他 goroutine，該 goroutine 可在
+callback 尚未返回時競爭註冊，違反下文「同 goroutine 註冊」契約；
+`DraftRestrictedCallView` 亦持有可於 callback 期外查詢的 Oracle 視圖，
+尚非真正凍結的值快照。因此上述負例通過仍不得升 READY。下一個
+可丟棄候選應讓 callback 只回傳受限的 hook 增量值，由 runner 在
+callback 成功返回後、stub／Step 前同步驗證與安裝；靜態 hook 在
+首次 Run 前一次性提交，呼叫視圖按次凍結為值。需以跨 goroutine
+捕獲、錯誤／panic 丟棄增量、動態 return 可見性及原版 checkpoint
+重播再審，不能將現有 scoped registrar 直接搬入 production。
 
 #### 候選 READY 契約（待上述最小缺項關閉後再審查）
 

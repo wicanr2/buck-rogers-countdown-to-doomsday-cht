@@ -2841,3 +2841,24 @@
   root-owned 檔案或誤建 `.md` 目錄，修改的 TSV／字元清單及本機
   字型均屬 UID/GID 1000:1000。Linux 玩家入口、原版完整玩家
   路徑與存讀檔同狀態仍未完成；#14／#16／#18 保持開啟。
+
+## 2026-09-25 — 3× 原生面板字型重驗與觀測器註冊閘門
+
+- 使用者再次選定 3× 設定面板 A 版倚天原生 24 點，排除 22 點衍生版；
+  現行本機 dosgolem fork 已接 24×24 中文、16×24 ASCII。主代理
+  以唯讀本機子集、無網路 Docker／Xvfb 重跑 `TestNativeHostFont3LocalPixels`
+  與 3× 載入／幾何負例，全數通過。這是 host-only 合成畫格，非完整
+  Linux 玩家入口或原版 DOS 同狀態。
+- tagged DRAFT observer runner 移除對外 registrar，加入首次 Install、
+  限時 scoped registrar、錯誤優先與重入 Run 保護；合成 MZ 負例覆蓋
+  重複安裝、捕獲後延遲註冊、nil hook、忽略錯誤、callback 內重入及
+  首錯／零步收束。主代理在唯讀原版掛載的 Docker 重跑 oracle 與
+  Buck 合法 checkpoint 定向測試及 vet，全部通過。獨立複審仍指出
+  跨 goroutine 註冊與 CallView 未凍結兩個缺口，故規格 019 仍 DRAFT；
+  不接正式 Owner，下一候選改以 callback 回傳值型 hook 增量。
+- 低階翻譯代理核對角色頁 35 個 key、原版事件、版面與字型，現行
+  lint／2×／3× 收據通過且未留下譯文變更。`Use Jetpack` 目前兩頁均
+  譯「使用飛行器」；手冊索引可定位技能章，但本輪未證實專名詞，
+  故不在缺少來源核對時改動共用 key 或字型子集。
+- 本輪未改原版遊戲、手冊與私有字型；未發布產物。Docker 工作均為
+  `--rm`／無網路／有資源限制；收尾仍需核對容器及 root-owned 殘留。
