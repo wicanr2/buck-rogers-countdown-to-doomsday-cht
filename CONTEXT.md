@@ -28,6 +28,13 @@ Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這�
 也證實錯誤返回後 DOS 左鍵仍按下；詳見上述 Issue #18 審查紀錄。
 此為 READY 阻塞證據，不是已修正的正式前端。
 
+[第二百二十階段](docs/re/phase-220-linux-active-composite-draft.md)另以無原版素材的
+合成測試驗過多作用層單影格投影候選：2×／3×各讀一次合成輸入影格、固定
+z-order、原 layer 不變，缺群組／過期 generation 在讀影格前拒絕，
+缺字不交付半張 RGBA。正式 provider 目前仍只接受一層；手冊背景與正文
+至少已有兩層，真實同一 session 的並存與失效尚未接通。本證據保持 DRAFT，
+不使 Linux 可玩前端 READY。
+
 [GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
 追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)
 經獨立審查限縮升 READY，單筆 identity TSV 亦標為 READY；正式
@@ -41,9 +48,17 @@ DOS state、indexed 與正規化 JSON 同值；RGBA 差異僅在核准單行矩�
 已量寫入，active 後任何相交 pre-write 才清層。自然離頁、實際
 清層後畫面、Restore 重入及正常玩家路徑仍未知；規格 022 保持
 限縮 READY，Issue #20 仍 OPEN，不能宣稱第九頁完整中文化。
+
 同一合法第九頁存態的前進 8／後退 2 單鍵各雙重重播至固定
 `370000000` 步，均已被讀取但沒有故事矩形 pre-write 或 DOS 結束；
 此負結果只限該狀態與時窗，已停止擴鍵與延長探針。
+
+[第二百二十一階段](docs/re/phase-221-command-status-columns-draft.md)與
+[規格 023](docs/spec/023-command-status-overlay-draft.md)把 row 15／row 24
+命令狀態列分成三條原版路徑：row 15 六次 12 格重畫只在同一狀態證實
+第 0 格變動、其餘相同；row 24 的 21 格 dispatcher 與 33 格直接
+glyph 路徑不能合併。A000 首寫與部分清除邊界已量，但跨狀態固定詞、
+原文詞界和完整失效未知；保持 DRAFT，沒有新增 TSV 或正式 watcher。
 
 [第二百一十八階段](docs/re/phase-218-exit-prompt-runtime-ab.md)現已把真正
 Exit 後兩句 row 24 問句本體接上正式 dosgolem watcher／presenter；

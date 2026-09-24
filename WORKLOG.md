@@ -2124,3 +2124,42 @@
   保存測試名稱、檔案雜湊、限制與下一步。唯讀 Docker／Xvfb 中
   `go test -count=1 ./frontend/ebiten`、`go vet ./frontend/ebiten` 通過。
   規格 019 仍為 READY 候選，不據此修改 production 或宣稱可玩。
+
+## 2026-09-24 — Issue #16 多作用層合成 DRAFT 補證
+
+- 本機 dosgolem fork 的 ignored `presentation/composite_draft_test.go`
+  建立僅測試用、單次 indexed／palette 讀取的兩層合成候選；2×／3×
+  固定 z-order、原 layer bytes 不變，以及缺群組、重複 slot／z、過期
+  generation、缺字、壞字模長度與 stamp 越界的拒絕矩陣通過。
+- 獨立審查指出 manifest 仍由呼叫者自報、generation 未綁正式 owner；
+  `xlate.Draw` 原本也不檢查字模長度與 stamp 幾何。已在測試用 evaluator
+  補上繪圖前檢查，但正式 provider／session 未改。證據與下一個
+  READY 切片記於[第二百二十階段](docs/re/phase-220-linux-active-composite-draft.md)。
+- 既有鎖版 Docker image 中 `go test -count=1 ./presentation` 與
+  `go vet ./presentation` 通過。這不含原版遊戲、手冊、字型、
+  真實 presenter 並存或玩家路徑；規格 004 仍 DRAFT。
+
+## 2026-09-24 — Issue #18 純資料路由原型
+
+- ignored `frontend/ebiten/route_plan_candidate_test.go` 以值狀態先規劃
+  同批 host／滑鼠／鍵盤動作，測得 Down 後非法 Apply、缺 BIOS
+  transport、過期 Up 的整批拒絕，以及合法轉送與真實 bridge 同值。
+- 正式 bridge 缺完整 `pressedEpoch` 快照、真實一致來源 token 與不可再失敗
+  的提交 API；已補入[Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)。
+  Docker／Xvfb 的 frontend 全套測試與 `vet` 通過；規格 019 仍為 READY
+  候選，不把測試用原型接進 production。
+
+## 2026-09-24 — Issue #8 命令／狀態列欄位有界原版探針
+
+- [第二百二十一階段](docs/re/phase-221-command-status-columns-draft.md)以
+  原版 `GAME.OVR`、兩份既有合法私有 state 及 ignored probe，重生
+  row 15 六筆、row 24 Enter 一筆與數字鍵盤 4／6 兩筆；只輸出整串
+  SHA、欄位相等遮罩、caller／step、原版 clear 與 A000 writer，不輸出
+  原文或可還原畫面。
+- row 15 的 12 格在六次同態重畫中第 0 格變動、1–11 格相同；row 24
+  的 21 格 dispatcher 與 33 格直接 glyph 是不同路徑，右側 col33..39
+  clear 不可冒充 0..32 本體清除。三條 probe 在有界 Docker 通過。
+- [規格 023](docs/spec/023-command-status-overlay-draft.md)保持 DRAFT：
+  跨狀態固定詞、詞界、完整失效與雙倍率安全矩形未證，故未新增 TSV、
+  watcher 或第十頁故事候選。第一次 probe 少掛原版檔是環境設定失敗，
+  已核對唯讀來源後以相同停止線重跑通過。

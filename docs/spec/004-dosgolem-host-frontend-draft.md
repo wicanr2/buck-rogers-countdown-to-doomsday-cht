@@ -2,6 +2,13 @@
 
 狀態：DRAFT（正式面板暫停 `Advance` 呼叫排程另有局部 CONFORMED）
 
+2026-09-24 多作用層前置：[第二百二十階段](../re/phase-220-linux-active-composite-draft.md)
+用不載原版的可丟棄 evaluator 驗得「一次 indexed／palette 讀取、固定
+z-order、完整群組、同 generation、缺字不交付局部 RGBA」的最小候選。
+正式 `LayerSnapshotProvider` 仍只接受單一 layer；手冊正文實際已有背景與
+文字雙層。真實 presenter 並存、失效／還原與玩家路徑未驗，故本規格仍
+DRAFT，不授權把該 evaluator 接入正式前端。
+
 2026-09-24 3× host 字型前置：[第二百一十二階段](../re/phase-212-host-only-3x-eten-font-ab-draft.md)
 已用不載原版的並列原型核對原生倚天 24 點與既有原型 22 點，
 均不缺字且在 host 控制項矩形內；24→22 直接裁切會損筆畫。

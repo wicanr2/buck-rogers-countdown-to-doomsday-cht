@@ -344,3 +344,47 @@ Down 送到 DOS mouse，後段 `DeliverBIOSKey` 因缺 BIOS transport
 layout／panel route、mouse stale epoch、已按鍵與 host capture 等
 仍須依規格 019 的純資料 plan、提交前核對及完整矩陣審查。
 本輪維持 DRAFT／READY 候選，不以一個補丁替代正式整批契約。
+
+## 純資料 route evaluator 的可丟棄差分原型（2026-09-24）
+
+延續上節 `Game.Update` 的同批部分提交反證，在 ignored dosgolem
+fork 的 `frontend/ebiten/route_plan_candidate_test.go` 建立**僅測試用**
+的值狀態 evaluator，SHA-256
+`d00b74781c5a065cbdd1fb620e32f5d194030e7ca0ca45de645b35ee6c5f413e`。
+它的來源狀態明列 panel `Open`／active／selected scale、完整
+`MouseLayout`（含 epoch）、mouse current／hasCurrent／pressed／
+`pressedEpoch`／hostCaptured；事件按目前 `frameInput` 的 Down、Up、
+focus loss、有序鍵盤候選展開。純預檢只改這份值拷貝，產出定序
+`move`／`press`／`release`／`bios` 動作清單，不碰正式
+`PanelController`、`MouseBridge`、DOS 或視窗。若模擬 panel
+Open／Select／Apply／Cancel，僅在正式 `refreshLayout` 會改佈局的
+Open／Apply／Cancel 時增加 layout epoch；已按住時保留原
+`pressedEpoch` 以處理跨 epoch Up。這是從現行正式程式抽出的
+**DRAFT 差分模型**，不是已授權的通用 host API。
+
+受限、無網路、唯讀 Docker/Xvfb 中，`TestDraftPureRoutePlan*` 四組測試
+通過：canvas Down 後的非法 Apply、缺 BIOS transport、stale Up
+三種**後段普通錯誤**，都在第一個 DOS 動作前拒絕整批，DOS button、
+BIOS pending、`Machine.Steps` 仍為零；合法 canvas Down＋Enter
+先完整計畫後交付，DOS mouse 座標／按鍵、BIOS pending 與真實 bridge
+逐項同值。來源 token 被測試改動時，原型在提交前拒絕且 DOS 不變。
+2× Open→Select 3×→Apply 的各回合 panel／layout／mouse 末態與
+現行 `Game.Update` 相同；已按住跨 epoch Up 的單次 Release、按住
+失焦的 Release，以及 hostCaptured 失焦不產生多餘 Release，均與
+真實 `MouseBridge` 回傳／sink 觀測相符。`go test -count=1 -v
+./frontend/ebiten` 與 `go vet ./frontend/ebiten` 全套通過；專用
+實驗沒有載原版遊戲、存態或私有素材。
+
+**尚未閉合 READY，規格 019 狀態不變。** 原型的來源狀態由測試
+顯式建造；正式 `MouseBridge` 尚無包含私有 `pressedEpoch` 的完整
+唯讀快照。原型 `draftCommitIfCurrent` 只比對呼叫端傳入的值，沒有
+從正式 panel／mouse／frontend 一次取一致 token，亦不能更新真實
+bridge 的內部末態；`draftCommitDOS` 直接按清單寫 DOS，只驗目前
+無普通 error 回傳的動作，不能證明正式 bridge 的提交不會重做可失敗
+路由。非法 Apply 是明示注入的 host 候選，不冒稱目前
+`readFrameInput` 同批可自然擷取兩次 Down。未映射鍵、重複 Down、
+畫布外 Down、普通 unmatched Up 仍依現行 `Game` 的無動作行為
+建模，但玩家可見拒絕／略過政策待獨立 READY 審查，不能由此原型
+自行定案。正式可行的下一個最小切片仍是通用 host 的完整快照與
+純 evaluator／已驗計畫提交 API，然後用真實 bridge 量完規格 019
+矩陣；本輪不改 production、不請求自行核准 READY。
