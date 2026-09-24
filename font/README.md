@@ -141,9 +141,10 @@ Docker 內以全部 `text/*.zh-TW.tsv` 重生的字元聯集仍與版控
 
 2026-09-24 的 24 份正式 TSV 校訂後，重新執行上述 `chars` 與
 `eten_font.py build`／`verify`；目前 `font/characters.txt` 與本機
-`workplace/current-font/` 子集均為 1,035 字模，字元清單 SHA-256
-`5a69ce34bed700df33473f2f9b368d43ead2d3c6b8a00137196113f026e26b3b`，
+`workplace/current-font/` 子集均為 1,025 字模，字元清單 SHA-256
+`eee90d5182a49f21260911b2a56913a809ec4ed2157767188135ac5a3e1fa23e`，
 本機 GOLEMFNT SHA-256
-`6d1dc660a17a332851ada46aef01fb700b9e558f30ad33c21df6c31311e4a195`。
+`78c43d0758db5aaa97b60574c06ba1fdccc27b187cd465c3deb8b37c4b0e226f`。
+dosgolem 正式 loader 逐字回讀為 1,025／1,025。
 所有本機字型與 manifest 仍不得加入版控或公開散布。這僅為字型覆蓋，
 不表示 Linux 玩家視窗已接通原版輸出攔截。
