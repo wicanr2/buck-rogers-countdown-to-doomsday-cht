@@ -487,3 +487,12 @@ READY 候選必須指定可強制的 session 專有 DOS／machine 目標，
 消除提交期間外部改指／直接 bridge mutator 的路徑，再做整批
 純預檢與不可失敗的提交；不能只以同指標或逐 action 檢查替代。
 這仍是可丟棄合成反例，未修改正式前端，規格維持 **DRAFT**。
+
+後續[私有目標 session 原型](../re/issue-18-session-turn-ready-candidate-review.md)
+顯示一條較窄的可行路線：新 session 工廠自行建立並私有持有
+DOS／machine、panel 與兩橋；公開輸入入口不得接受或洩漏原始
+指標、bridge mutator。如此不必為本遊戲全域修改公開的 `DOS.M`，
+但既有容許任意兩橋的 `Game.New(Config)` 不能因而宣稱原子性。
+原型只驗合成 canvas Down＋Enter，正式入口還需覆蓋完整路由、
+純預檢後不會普通拒絕的排他提交、滑鼠狀態版本及故障關閉。
+這是 **DRAFT 的限縮 READY 候選**，不是正式 API 授權或驗收。

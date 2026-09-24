@@ -2,6 +2,14 @@
 
 更新：2026-09-24
 
+最新補證：#16 十鍵 3× 正式 scoped runtime 已在 ignored dosgolem
+完成程式與獨立單元／全套件測試；來源字型 SHA、21 個正式事件分流、
+同 session 指紋／registry 與失敗矩陣通過，但原版同狀態及真視窗
+回切仍在驗，不能升 CONFORMED。#18 的私有目標 session 合成原型
+證明自建且不外洩 DOS／machine／兩橋可避開公開別名反例；僅驗一種
+Down＋Enter 批次，[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+維持 DRAFT，現有 `Game.New(Config)` 不能宣稱整批原子性。
+
 最新：翻譯稽核子代理唯讀檢查全部 24 份正式繁中 catalog（196 筆）後，
 四處手冊義務語氣「必需」已校成「必須」，另刪一個多餘的「處」；
 「必需的氣體」保留。39 題容量／catalog 測試與本機倚天子集

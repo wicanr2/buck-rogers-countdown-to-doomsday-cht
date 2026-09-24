@@ -2345,3 +2345,11 @@
   `DOS.M` 改指，把 move／press callback 及 BIOS key 分流；
   逐 action 補檢只會在已有 DOS 副作用後晚拒。規格 019 仍 DRAFT，
   不把合成反例當成原版發生過的事件。
+- #16 的正式 scoped runtime 四檔已由主代理逐行審查，在唯讀 Docker
+  重跑定向測試、`apps/buckrogers` 與文字收據工具全測試、`go vet`
+  通過；本機正式 21 事件 2×／3× 分流及 22 點字型指紋驗證通過。
+  原版同狀態與實體視窗回切另驗，尚不升 CONFORMED。
+- #18 子代理的私有目標 session 可丟棄原型及公開別名反例，由主代理
+  逐行審閱並在唯讀 Docker／Xvfb 重跑六項定向測試、`go vet` 通過。
+  它只支援 Down＋Enter 合成批次，正式 `Game.New(Config)` 尚不具備
+  同等排他性；規格 019 維持 DRAFT。

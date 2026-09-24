@@ -584,3 +584,26 @@ session owner：固定 DOS／machine 的私有擁有權、兩橋同源建立、
 generation 無法保證整批排他。拒絕收據須核對滑鼠、callback、
 BIOS／IRQ 佇列、machine steps 及 epoch 全無新增副作用；正式 API
 未具備此契約前，規格 019 維持 DRAFT。
+
+## 私有目標 session 的限縮可行性原型（2026-09-24）
+
+子代理在同一 ignored 測試檔新增 `draftSealedSession`；全檔 SHA-256
+`b6f65715f70f32e0486e1fa15adae80f707cf0c4a7691b2378ada30df64a186b`。
+主代理逐行審閱，並於唯讀、無網路、有界 Docker／Xvfb 獨立重跑
+六項定向測試與 `go vet ./frontend/ebiten`，均通過。全模組非測試
+Go 檔未找到 `.M =` 寫入，但 `DOS.M` 仍是公開可寫欄位；搜尋
+陰性不是外部呼叫者無法改指的證據。
+
+原型由單一工廠自建 DOS、machine、panel、滑鼠橋及鍵盤橋，不接受
+或回傳這些可變指標；只允許合成 canvas Down＋Enter。完整純路由
+預檢後，正式兩橋把滑鼠 `(100,32)`、左鍵、兩個滑鼠 callback 與
+一個 BIOS 鍵交給同一 machine，步數零、epoch 增一；後段預檢錯誤
+及舊計畫在首個 DOS 動作前拒絕，滑鼠、事件、callback、BIOS／IRQ、
+步數與 epoch 均無新增。owner 改指請求與重入亦被拒絕。
+
+這只證實「不外洩原始目標」可成為限縮契約的設計方向，不是現有
+`Game.New(Config)` 的保證。測試程式本身仍持有私有欄位、提交路徑
+只支援一種批次，且以 panic 表示純計畫與橋接器分歧；正式程式
+尚無完整滑鼠 pressed epoch 快照、全部輸入矩陣、故障／資源關閉、
+原版同狀態與視窗玩家路徑收據。故規格 019 整體維持 DRAFT，
+不得把此可丟棄原型當成完成的原子提交。
