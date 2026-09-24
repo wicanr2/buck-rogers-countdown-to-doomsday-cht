@@ -2086,3 +2086,41 @@
   GOLEMFNT 子集及完整收據均在 ignored `workplace/`。
 - 結束檢查 `docker ps -a` 僅見其他專案容器，本專案無殘留；
   Docker 內掃描本工作樹無 root-owned 產物或誤建 `.md` 目錄。
+
+## 2026-09-24 — 正式譯文與下一個未譯輸出盤點
+
+- 唯讀盤點 `text/`：目前有 24 份 `*.zh-TW.tsv`；固定劇情首屏至第九頁
+  共 42 筆 READY identity。`CONTEXT.md` 的現況計數由 23 訂正為 24；
+  `font/README.md` 的第一百九十一階段 23 份收據保留其歷史語境。
+- [規格索引](docs/spec/README.md)顯示首屏至第八頁僅各自已量路徑
+  限縮 CONFORMED；第九頁只有合法入頁固定單行限縮 READY，未量
+  自然離頁。手冊、建角、技能及加入角色後介面各有譯文與不同的
+  限縮驗收範圍，不能將 TSV 存在等同整段玩家流程已中文化。
+- [第一百三十六階段](docs/re/phase-136-story-page10-enter-stop-line.md)
+  的合法第九頁後 Enter 雙重重播只量到 row 15、column 17 的
+  12-cell 命令／狀態列六次重畫，六筆原文雜湊不同，沒有新的固定
+  故事 glyph；[第一百一十](docs/re/phase-110-command-status-inventory.md)
+  與[第一百一十二階段](docs/re/phase-112-command-turn-manual-evidence.md)
+  的更早 row 24 命令／狀態列也未拆出固定詞與動態欄位。兩者均無
+  READY 翻譯契約，本輪未新增 TSV、譯文或第十頁故事候選。下一步
+  只需以既有合法玩家狀態取得可比的不同命令／狀態輸出，私下逐格
+  分離固定與動態部分，再補原文 identity、覆繪／清除邊界及規格審查；
+  不延長第九頁按鍵探針或猜測原文。
+- 在有界、無網路、唯讀 Docker 中執行
+  `python -m unittest discover -s tools -p 'test_story_page*_catalog.py' -q`：
+  50 項通過；逐檔讀取 24 份 TSV 的 196 筆譯文，抽出 1028 字模，
+  與 `font/characters.txt` 逐 byte 相同。這些只驗 catalog／字型清單
+  自洽，非 row 15／24 的原版對拍。
+  本輪不修改 dosgolem fork、原版素材或私有字型，不提交或推送；
+  `docker ps -a` 無本批一次性容器，工作根未見 root-owned 產物或
+  誤建 `.md` 目錄。
+
+## 2026-09-24 — Issue #18 同批輸入後段錯誤反證
+
+- 於 ignored dosgolem fork 新增專用合成負例：真正 `Game.Update` 同批先送
+  canvas Down，後段鍵盤因未設定 BIOS transport 回一般錯誤，DOS 左鍵仍
+  留在按下狀態；BIOS pending、`Machine.Steps` 與 `Advance` 均為零。
+- 已在 [Issue #18 審查紀錄](docs/re/issue-18-session-turn-ready-candidate-review.md)
+  保存測試名稱、檔案雜湊、限制與下一步。唯讀 Docker／Xvfb 中
+  `go test -count=1 ./frontend/ebiten`、`go vet ./frontend/ebiten` 通過。
+  規格 019 仍為 READY 候選，不據此修改 production 或宣稱可玩。

@@ -314,3 +314,33 @@ payload 送 DOS。若沿用現行 `Route`／`Handle` 逐筆重播，還需以
 錯誤與來源 token 改變的正式 bridge 收據。上節合成新建狀態原型
 不能替代這些收據；規格 019 不升 READY。拒絕時的零新增 DOS
 副作用只針對可回報的普通路由錯誤，不推及記憶體耗盡或程序中止。
+
+## 真實 `Game.Update` 同批後段鍵盤錯誤負例（2026-09-24）
+
+再依規格 019 的限縮 READY 候選與現行 frontend 實作獨立審查：
+規格首行仍明示「候選、尚不授權 production」，整批純路由預檢
+尚無正式 host mouse 完整快照（尤其 `pressedEpoch`）、panel／mouse
+純 evaluator、提交前來源狀態核對與不再可失敗的提交證明。因此本輪
+**只新增專用負例測試，不修改正式 `Game.Update`、host 或
+presentation bridge，也不升 READY**。
+
+ignored dosgolem fork 的
+`frontend/ebiten/route_plan_draft_test.go` 新增
+`TestDraftUpdateLateKeyboardTransportErrorLeavesDOSMouseDown`，SHA-256
+`967ccb3d621ccda339d5a6d90ea67bb519217ab969d7e763c90782ebeae33c5d`。
+它用無原版素材的合成 `frameInput`，但走真正的
+`Game.New`／`Game.Update`、`MouseBridge`、`DOS` mouse 與
+`KeyboardBridge`：`NewKeyboardBridge` 是合法建構，卻未配置 BIOS
+transport；同一 `Update` 擷取 canvas Down＋Enter。固定順序先將
+Down 送到 DOS mouse，後段 `DeliverBIOSKey` 因缺 BIOS transport
+回普通 error。實測 `Game.Update` 回錯並鎖存；DOS 左鍵位已設、
+`MouseBridge.Pressed()` 仍為 true，BIOS pending、`Machine.Steps`
+與 `Advance` 次數均為 0。再呼叫 `Update` 回相同錯誤且無新增步數，
+但先前左鍵副作用仍在。這比僅直接呼叫 bridge 的前述負例更接近
+現行實際 batch adapter，仍不是正常玩家輸入或原版同狀態驗證。
+
+這個負例可由 `Game.New` 對鍵盤 transport 做早期驗證消去其**特定**
+觸發條件，但不能單靠該檢查推出整批零 DOS 部分副作用：後段
+layout／panel route、mouse stale epoch、已按鍵與 host capture 等
+仍須依規格 019 的純資料 plan、提交前核對及完整矩陣審查。
+本輪維持 DRAFT／READY 候選，不以一個補丁替代正式整批契約。

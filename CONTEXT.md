@@ -24,6 +24,9 @@ Cancel／Apply 收合的當回合仍零步，下一關閉回合才恢復。這�
 橋接提交原子性、`Draw` 同步故障通知與真實資源關閉，不能升 READY。
 真實橋接的 Down→非法 Apply 負例已證明逐事件提交會留下 DOS 左鍵；
 整批純預檢與單次提交契約已寫為待審候選，尚未改正式橋接。
+另以真正 `Game.Update` 重播同批畫布 Down→鍵盤 transport 錯誤，
+也證實錯誤返回後 DOS 左鍵仍按下；詳見上述 Issue #18 審查紀錄。
+此為 READY 阻塞證據，不是已修正的正式前端。
 
 [GitHub Issue #20](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/20)
 追蹤第九頁固定單行。[規格 022](docs/spec/022-story-page9-overlay-draft.md)
@@ -223,7 +226,7 @@ A/B 尚未完成。
 純 Go fake 重跑 Open／Select／Cancel／Apply 零 Step、下回合恢復與故障後
 拒絕再推進；仍未驗真實事件分類、冷開機或 DOS 同狀態，規格 004 維持 DRAFT。
 
-目前 23 份繁中 TSV（含一份技能 Exit DRAFT、已限縮 READY 與尚未接通的 host UI）的倚天字型聯集仍為 1028 字模：版控內
+目前 24 份繁中 TSV（含一份技能 Exit DRAFT、已限縮 READY 與尚未接通的 host UI）的倚天字型聯集仍為 1028 字模：版控內
 [`font/characters.txt`](font/characters.txt) 與本機
 `workplace/current-font/buckrogers-eten-top-pad.golemfnt` 的字元涵蓋完全一致，缺字為零。
 舊的 961／997／1024／1026 字模收據只代表當時譯文，不可作目前前端的字型輸入；來源與雜湊見
