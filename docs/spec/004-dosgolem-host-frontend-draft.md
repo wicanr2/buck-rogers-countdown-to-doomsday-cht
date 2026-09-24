@@ -542,3 +542,10 @@ canonical Resolve、逐事件／批次分界及同 session 字型 owner 後，
 `apps/buckrogers` 3× 主選單字型路徑；正式分支、`Name`、registry、
 同狀態與真正視窗驗收尚未完成，所以不是 CONFORMED。規格 004
 其他 Linux 前端／session 範圍仍為 DRAFT，不能外推。
+
+實作進度（2026-09-24）：本機 dosgolem 分支 `3b02f88` 已接上述
+十鍵限縮 runtime，正式套件測試與同原版 checkpoint 的 Down→Up
+四模式收據見[第二百二十二階段](../re/phase-222-original-menu-3x-typography-draft.md)。
+2× 與舊版逐 byte 相同，3× 差異限核准矩形；但 CLI 終態錨定影格
+及實體 Ebitengine 2×→3×→2× 回切未過驗收。因此本子契約仍是
+**READY，非 CONFORMED**，其餘規格仍 DRAFT。

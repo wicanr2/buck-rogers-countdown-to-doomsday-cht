@@ -181,3 +181,46 @@ builder 的 2×／3× 配色、偏移及混合 race 批次不變；nil、零倍�
 精確十鍵、完整批次原子拒絕；不能為了新字距全域放寬共用 builder。
 目前所有 22 點 builder 與字型名稱仍只在 ignored 測試，正式規格
 保持 DRAFT，尚未取得 production 接線授權。
+
+## 限縮 READY 正式接線與原版同狀態收據（2026-09-24）
+
+本機 ignored dosgolem 分支 `buck-rogers-cht-output-overlay` 的
+`3b02f88` 已新增明示的十鍵 `BuildScopedThreeXMenuOverlay`、
+`NewScopedMenuRuntimeOverlay` 及預設關閉的文字收據 CLI 旗標；
+既有 16 點 API 不變。正式來源 `GOLEMFNT` SHA-256
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+衍生 22 點 `FontFingerprint`
+`757d5128ca2b86419e6d69b149b259f9c17b1caccc01fdefa8a7ca414f8fba20`。
+主代理逐行審閱四個正式檔，於唯讀、無網路 Docker 重跑
+`apps/buckrogers` 與文字收據 CLI 套件的完整測試及 `go vet` 通過。
+正式 21 個事件的 2×／3× 分流、十鍵白名單、11 個 race 不變、
+偽造 request、壞字模、錯倍率、混合批次及同 session 封存還原均有
+定向測試；這些是程式契約，非原版同狀態的替代品。
+
+ignored 驗收測試
+`workplace/cold-boot-live-turn-proto/menu3x_production_same_state_test.go`
+SHA-256 `eabaab5367bfbd30c182c957e609d5c1e2aeb3f4372bbadf3194219e5e5e1790`，
+直接使用正式舊／新 runtime，從同一原版 checkpoint
+`cfe15d3c66c9fe3c2e684815740a0cc0165e59d08ab5866370608d49f8a8e164`
+重播 Down→Up。原版 `START.EXE` SHA-256
+`58a34a38b1db455202d2d30daa82915982d7d905932b46bdc7371cb466226cf1`。
+主代理在 Go 1.26.7／Ebitengine 2.9.9 的唯讀 Docker／Xvfb 獨立重跑
+`TestProductionMenuThreeXOriginalSameState` 通過：四模式 old2／scoped2／
+old3／scoped3 在 Down step `100060000`、Up step `100120000` 的原版
+step、frame、indexed、palette 一致；scoped2 與 old2 RGBA 逐 byte
+相同。old3→scoped3 的差異分別為 1,259／1,488 像素，作用中
+核准安全矩形外為零；scoped3 相對原版 raw control，矩形外亦為零。
+停點前正式作用層仍為 pending，測試先斷言 `Draw` 不交付，再以
+正式 `RuntimeMenuOverlay.Frame` 錨定後確認 `Draw` 成功；原版
+machine 狀態未被該投影改動。
+
+文字收據 CLI 的 control JSON 另存 ignored `out/menu3x-down-control.json`
+（SHA-256 `cac87a5f71db29ac63258e8a7734e5a89f95edebdfbfd3250d0b2e14d275f530`）
+及 `out/menu3x-up-control.json`
+（`46ac2ad99c1f5932bef9633dbf73810b2debfab214b41a2a0fc80c86c339cebb`），
+其 indexed／palette hash 與測試相同。但舊 3× 與新
+`-scoped-menu-3x` CLI 在 Down 停點都因終態未錨定影格而回
+`drew=false active=3`，**沒有成功的 CLI 覆繪 JSON／RGBA 收據**。
+這是共用 CLI 終態投影缺口，不可寫成新字型同狀態已由 CLI 驗收。
+真正 Ebitengine 視窗 2×→3×→2×、正常玩家入口、整體 session
+原子輸入及存讀檔仍未驗；十鍵子契約維持 READY，不升 CONFORMED。

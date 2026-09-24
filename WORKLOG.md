@@ -2353,3 +2353,20 @@
   逐行審閱並在唯讀 Docker／Xvfb 重跑六項定向測試、`go vet` 通過。
   它只支援 Down＋Enter 合成批次，正式 `Game.New(Config)` 尚不具備
   同等排他性；規格 019 維持 DRAFT。
+- #16 dosgolem 本機分支 `3b02f88` 提交正式十鍵 scoped 3× 程式。
+  ignored 原版同狀態測試 SHA-256 `eabaab5367bfbd30c182c957e609d5c1e2aeb3f4372bbadf3194219e5e5e1790`
+  由主代理獨立重跑通過：Down／Up 四模式原版 indexed／palette／
+  step 同值、2× 舊新 RGBA 相同、3× 差異限作用中安全矩形。
+  舊／新 CLI 3× 同因停點 layer pending 而 `drew=false active=3`；
+  無 CLI 覆繪收據，真正視窗回切未驗，保持限縮 READY。
+- 較輕量子代理第二輪唯讀校對 24 份正式 TSV；主代理修正手冊
+  第 18 段病句。「直昇機」及「船體維修」的正式畫面名稱有中文
+  手冊來源約束，未僅按現代寫法或手冊規則段落的詞面一致性改動。
+  逐檔 TSV
+  lint、手冊 39 段／504 字容量、相關單元及職業技能矩形測試通過。
+  本機私有倚天字型由全部 24 catalog 重建再 verify：1,028 glyph，
+  GOLEMFNT SHA-256 保持 `150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`，
+  新 ignored manifest SHA-256 為
+  `459adb3d4cf49bbc36aca06902a2729d5b9cc61c19979343a9652bbd04eeb7eb`；
+  新 `text/manual.zh-TW.tsv` SHA-256 為
+  `9958e4d6255276d8646849ae2e4d46c650f5c75d06e2775e18b5a32eab65fbef`。

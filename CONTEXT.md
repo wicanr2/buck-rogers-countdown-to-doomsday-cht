@@ -2,12 +2,20 @@
 
 更新：2026-09-24
 
-最新補證：#16 十鍵 3× 正式 scoped runtime 已在 ignored dosgolem
-完成程式與獨立單元／全套件測試；來源字型 SHA、21 個正式事件分流、
-同 session 指紋／registry 與失敗矩陣通過，但原版同狀態及真視窗
-回切仍在驗，不能升 CONFORMED。#18 的私有目標 session 合成原型
-證明自建且不外洩 DOS／machine／兩橋可避開公開別名反例；僅驗一種
-Down＋Enter 批次，[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+最新補證：#16 十鍵 3× 正式 scoped runtime 已提交至本機 ignored
+dosgolem 分支 `3b02f88`，獨立重跑套件測試與原版 Down→Up 四模式
+同狀態收據：2× 與舊版逐 byte 相同，3× 差異只在核准矩形。
+但文字收據 CLI 的舊／新 3× 都遇到終態 pending 未錨定影格，
+真正 Ebitengine 2×→3×→2× 回切亦未驗；
+[規格 004](docs/spec/004-dosgolem-host-frontend-draft.md) 十鍵子契約
+維持 READY，不升 CONFORMED。第二輪校對修正一處手冊病句；
+「直昇機」和技術技能「船體維修」均有中文手冊詞源約束，
+未只按現代寫法或詞面一致性擅改。39 題容量及相關測試通過，
+重建本機倚天仍為 1,028 字模、相同 GOLEMFNT SHA。
+
+前一補證：#18 的私有目標 session 合成原型證明自建且不外洩
+DOS／machine／兩橋可避開公開別名反例；僅驗一種 Down＋Enter
+批次，[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
 維持 DRAFT，現有 `Game.New(Config)` 不能宣稱整批原子性。
 
 最新：翻譯稽核子代理唯讀檢查全部 24 份正式繁中 catalog（196 筆）後，
