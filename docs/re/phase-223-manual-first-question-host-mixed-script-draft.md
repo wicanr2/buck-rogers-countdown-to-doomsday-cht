@@ -252,3 +252,39 @@ optional Snapshot JSON、canonical 字型 SHA-256 與原子 Restore。
 這只證共用核心第一段；尚無封存群組、手冊 owner 的
 immutable 3× E1 plan、正式首題／換題／返回同狀態收據，
 不宣稱規格 234 或 Issue #21 完成。
+
+## 2026-09-25：新版 owner 的首題 E1 局部同狀態收據
+
+上述停止線已有**首題範圍**的新證據，並非整條玩家路徑完成。本機
+未推送的 dosgolem fork `c39f72a` 建立正式 E1 plan，`5fcc1d6`
+將它接入 3× `ManualSnapshotOwner`；2× 維持原路徑。以既有私有
+`workplace/manual-recheck-20260925-XXfChfDp/ab-1045/` 的首題
+原版 checkpoint、現行私有翻譯及倚天字型，在無網路 Docker 以
+`go test -race ./apps/buckrogers -run '^TestManualSnapshotOwnerOriginalFirstQuestionOracle$' -count=1 -v`
+重生原文／中文 owner 投影。測試入口與 A/B 原始檔留在被忽略的
+本機工作區；**不得**把原版、譯文、字型或完整收據加入 Git。
+
+- 2× RGBA SHA-256 為
+  `1b075d714040d04736cb4c36693ededdb336a0a421bf154c86b722defe97e07e`，
+  與既有首題 2× 收據逐位元相同；3× E1 RGBA SHA-256 為
+  `6201a394f78608f919dcc74c41ba3a0c0d5a0eaa914a7edc43d20d17f143d49f`。
+  3× 歷史固定字格圖不是 E1 的相等目標。
+- 原版 indexed framebuffer、palette、記憶體的 control／2×／3×
+  收據相同；中文 RGBA 差異只在已核准的邏輯矩形
+  `[7,312)×[72,184)`，2× 改變 5,148 像素、3× 改變
+  9,108 像素，矩形外皆為零。這些數字不表示每一個墨跡像素
+  都已經過人工閱讀驗收。
+- 投影前後及 control 相比，專案 `cmd/state-compare` 的正規化
+  machine SHA-256 均為
+  `0753f1477689b2a78c3df3d19491308186a511d1cc3b0ffaaa939b13cd3694dd`，
+  DOS SHA-256 均為
+  `8dd5789e07b42a195c0bb392cd75e489af09521151ca25b4b3fea33a6e818a59`。
+  原始 `.state` 位元組曾有差異；該格式以 gzip／gob 保存含 map
+  的資料，位元組順序不是語意相等的判準。保留這次勘誤，後續
+  使用正規化比較，不把原始 `cmp` 差異誤報成遊戲狀態改變。
+
+此收據只支持**首題終態**的新版 owner 投影及 2× 不變性；答錯換題、
+成功返回、正式 Linux session 與其餘手冊題目仍待新版 E1 同狀態
+驗證。規格 005 的 E1 分支仍是 READY，不升 CONFORMED；
+[Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
+維持 OPEN。

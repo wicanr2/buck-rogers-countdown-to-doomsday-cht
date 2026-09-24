@@ -3026,4 +3026,20 @@
   checkpoint／TSV 而失敗；以同一已版控 HEAD 加本次三個正式
   owner 檔在一次性乾淨容器重跑 `apps/buckrogers`、`presentation`、
   `xlate` 全套通過，將環境缺件與產品回歸分開。新版原版同狀態
-  A/B 尚未取得，E1 分支不得稱 CONFORMED。
+  A/B 當時尚未取得，E1 分支不得稱 CONFORMED。
+
+## 2026-09-25 — E1 首題新版 owner 同狀態驗證
+
+- 使用既有私有 `ab-1045` 原版 checkpoint 與現行本機 catalog／
+  倚天字型，在無網路 Docker 重跑正式 3× E1 owner 的首題
+  A/B。2× RGBA SHA-256 與舊收據逐位元同值；3× E1 的中文
+  差異僅在核准手冊矩形，外部零差。control／2×／3× 的原版
+  indexed、palette、記憶體，以及正規化 machine／DOS
+  狀態摘要一致。細節見 phase 223，私有收據不入版控。
+- 原始 `.state` 的一次位元組比較出現差異；查明 gzip／gob
+  map／handle 順序後，改用專案既有 `cmd/state-compare` 重跑
+  control／2×／3×，正規化摘要全相同。保留這筆方法勘誤，
+  不將非決定性序列化誤報成遊戲狀態變化。
+- 此時僅首題終態有新版 E1 原版收據；答錯換題、成功返回、
+  正式 Linux session 與其餘 38 題未因此驗收。規格 005
+  E1 分支維持 READY，Issue #21 不關閉。

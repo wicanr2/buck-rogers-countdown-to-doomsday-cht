@@ -7,8 +7,9 @@
 直接寫入正式 catalog。現行 2× 字型因第三頁一筆確證詞義校譯
 重建為 1,045 字，手冊首題 control／2×／3× 與正式雙層 owner
 已用此字型重跑同狀態，細節見[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
-混排演算法仍在 DRAFT，先前固定字格的同狀態收據不得冒充新排版
-已完成；2× 原有顯示與原版遊戲語意維持不變。此切片由
+混排演算法當時仍在 DRAFT；後續 READY 與首題局部驗收見下文，
+先前固定字格的收據不得冒充新排版完成。2× 原有顯示與原版
+遊戲語意維持不變。此切片由
 [Issue #21](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/issues/21)
 追蹤。
 
@@ -62,8 +63,13 @@ generation／epoch 變造的正式合成回歸，主代理重跑全套
 sealed group，並使 E1 Snapshot 出錯後舊 ticket 單調失效。
 2× 舊快照／RGBA 合成 golden bytes、3× 雙字型與生命週期負例、
 以及排除缺私有資料的未版控探針後的正式受影響套件測試均通過。
-這些仍是無原版素材或靜態 39 段驗收；新版 E1 首題／換題／
-返回的原版同狀態 A/B 尚在進行，#21／#14 保持開放。
+其後以既有私有首題 checkpoint 取得新版 owner 的局部同狀態
+A/B：2× RGBA 與歷史收據逐位元同值；3× E1 僅改核准手冊矩形，
+原版 indexed、palette、記憶體及正規化 machine／DOS 狀態皆
+同值。原始 gzip／gob `.state` bytes 並非語意相等判準；證據與
+勘誤見[第二百二十三階段](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md#2026-09-25新版-owner-的首題-e1-局部同狀態收據)。
+答錯換題、成功返回的新版 E1 原版同狀態 A/B 尚在進行；
+E1 分支仍 READY，#21／#14 保持開放。
 
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定
