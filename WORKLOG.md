@@ -3006,3 +3006,24 @@
   `Run`／`Install`／callback 重入零步負例經主代理 Docker
   `-race` 重跑通過。兩者都只是 DRAFT，正式 Owner／Linux
   session 尚未接線，規格 019 已追加停止線與測試入口。
+
+## 2026-09-25 — E1 正式計畫與手冊 owner 第一片
+
+- 本機 dosgolem fork `c39f72a` 建立正式 `ManualE1Plan`：14px 英文
+  字首、保留英文專名詞界、純值來源 span、雙字型封印、實際括號
+  crop、過寬與游離連接符拒絕、14 列 physical／legacy 空尾列。
+  正式 39／39 本機 catalog 測試逐段跑 checked draw、Snapshot／
+  Restore 後逐像素相等與 3／11 零寬 separator；主代理以唯讀
+  私有輸入在 Docker 重跑 `-race`／vet 通過。原版或完整譯文
+  未進 Git。
+- 本機 fork `5fcc1d6` 使 3× 正式 `ManualSnapshotOwner` 經
+  `BuildManualE1Plan`、雙字型 sealed group 與 checked projection；
+  plan／字型變造、跨倍率、Clear／SetStyle／換題後的舊 ticket，
+  以及投影錯誤後修回資料仍不可復活的負例通過。2× 舊路徑
+  保留，合成快照與 RGBA golden bytes 不變。
+- 主代理 Docker 定向 `-race`／vet 均通過。直接跑整個工作樹的
+  `apps/buckrogers` 曾因既有未版控 command-status 探針缺少私有
+  checkpoint／TSV 而失敗；以同一已版控 HEAD 加本次三個正式
+  owner 檔在一次性乾淨容器重跑 `apps/buckrogers`、`presentation`、
+  `xlate` 全套通過，將環境缺件與產品回歸分開。新版原版同狀態
+  A/B 尚未取得，E1 分支不得稱 CONFORMED。

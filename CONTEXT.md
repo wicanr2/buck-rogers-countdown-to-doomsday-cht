@@ -54,8 +54,16 @@ generation／epoch 變造的正式合成回歸，主代理重跑全套
 手冊 adapter 的純值 plan／source span／固定編碼 hash 已有
 39／39 真字型、checked draw／Snapshot／Restore 的私有候選收據；
 窄括號過寬拒絕與 plan 變造負例補齊後，規格 005 的 E1 分支
-已通過獨立 READY 複審，可開始 production 第一片。這不是
-正式 `ManualSnapshotOwner` 已接線或新版同狀態 CONFORMED。
+已通過獨立 READY 複審，可開始 production 第一片；此決定當時
+不表示正式 `ManualSnapshotOwner` 已接線或新版同狀態 CONFORMED。
+後續本機 dosgolem fork `c39f72a` 已實作正式 E1 純值 plan、
+39／39 字型與 source-span 前檢、checked layer 與 Snapshot／Restore；
+`5fcc1d6` 把 3× 正式 `ManualSnapshotOwner` 接到該 plan／雙字型
+sealed group，並使 E1 Snapshot 出錯後舊 ticket 單調失效。
+2× 舊快照／RGBA 合成 golden bytes、3× 雙字型與生命週期負例、
+以及排除缺私有資料的未版控探針後的正式受影響套件測試均通過。
+這些仍是無原版素材或靜態 39 段驗收；新版 E1 首題／換題／
+返回的原版同狀態 A/B 尚在進行，#21／#14 保持開放。
 
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定
