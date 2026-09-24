@@ -67,3 +67,41 @@ C／D 分別為
 
 PC-98／金盒繁中版面參考只支持將字模尺寸、字格 advance、行高分開
 測量；原版行為及畫面仍以《拯救地球》DOS/dosgolem 為準。
+
+## 2026-09-24 首題 request 前後的同狀態邊界
+
+Terra 子代理從合法本機 checkpoint
+`phase12-before-question.state`（SHA-256
+`8cbc27f568057fbf3ce2f91d407953ec94836f2b723f50b7b73e56100e859269`）
+分別在首題 request 前 `266557245` 與 request 後 `266557247`
+停止；沒有注入答案或繞過原版驗證。後一停點的 ignored 收據
+`workplace/manual-runtime-slice-20260924-rerun/verification.json`
+SHA-256
+`dfde90860736fe46ee309f6e9098ca06a1ec49f78c79cd9b27bba0ece8bc0d36`。
+原版事件依序為 begin `266486493`、clear `266524821`、request
+`266557246`，request 身分為
+`manual.page34.deimos_prison.word10`／`manual.log.49.deimos_prison`。
+在 request 後同一原版 state 的 2×／3× control A/B 中，正文
+安全矩形內各有 3,776／6,591 個像素差，矩形外均零；兩側
+machine／DOS 雜湊同值，檔案操作及寫入計數均零。此為從合法
+checkpoint 至首題的正常原版續行，**不是從冷開機到首題的完整
+玩家路徑**。
+
+為檢查「尚未要求手冊時不顯示正文」，子代理使用**獨立 ignored
+DRAFT clone** 的 `-draft-allow-manual-pending-terminal`，僅容許
+同一 generation 已有 begin、clear 而 request／action／active key
+皆零的停點輸出空覆繪收據。正式 CLI 未變，且不用該旗標時仍以
+`pending=true` 拒絕。它拒絕的原因是通用文字 recorder 在最後
+glyph dispatcher 的 guarded post-call 前仍 pending，並非手冊
+presenter 已建立中文 action。clone `main.go` SHA-256
+`4805d4c26c12724ba315608f51b59524cdc33a405312eab14ca00e35fb6710ca`。
+前停點 2×／3× JSON 收據 SHA-256 分別為
+`dbabea46f5eeafbeeaab85fa32eabc43013d33775e7d8528684063fefd6da90b`／
+`bd617258295e52416c47e029e73e6b43dc82b2c76de088c5dea3b55261baf5f5`；
+兩倍率均 `actions=[]`、`active_keys=[]`、`drew=false`，baseline
+與覆繪 RGBA 同雜湊，正文內外差異皆零；control 與覆繪
+machine／DOS 雜湊均相同。
+
+**證據等級：已證實／僅上述合法 checkpoint 與 DRAFT 收據工具。**
+這補的是首題顯示開關的雙側同狀態驗證；正式 pending-terminal
+收據契約、直播 Linux session、39 題逐題與存讀檔仍未完成。

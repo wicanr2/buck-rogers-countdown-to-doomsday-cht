@@ -89,13 +89,21 @@ generation 清除與第二題 exact hit、第三題 exact hit，以及答對成�
 不能替代其餘 38 題逐題正常玩家 runtime；存檔／讀檔與正式互動視窗也未納入本次驗收。倚天字型
 及衍生 GOLEMFNT 只獲准本機使用，不得公開散布。
 
+2026-09-24 的[首題前後雙側收據](../re/phase-223-manual-first-question-host-mixed-script-draft.md#2026-09-24-首題-request-前後的同狀態邊界)
+從合法原版 checkpoint 量到 begin→clear 後、request 前 2×／3×
+皆無正文作用層與像素差；request 後中文只改正文安全矩形，
+machine／DOS 同值。request 前收據使用 ignored DRAFT CLI clone
+處理通用 recorder 的 pending 終態，正式 CLI 仍拒絕該停點；
+此補證不擴張本規格的 CONFORMED 範圍至完整 Linux 玩家路徑。
+
 ## 與 host 倍率控制的關係
 
 使用者已選擇「先選取，再按套用」（選項 C）。手冊 presenter 只接收明示的 2 或 3，因此可在
 兩種倍率各自驗證，不依賴 host 點選事件；host 的 selected scale 只有在 Apply 成功後才可成為
-新的 presenter scale。dosgolem spec 219 已 CONFORM 這個 selected／active 的純 state core，尚未
-接到任何 presenter。host 面板的 backend、套用後是否自動收合與跨重啟持久化仍屬
-[規格 004](004-dosgolem-host-frontend-draft.md)，不得混入 Buck Rogers adapter。
+新的 presenter scale。dosgolem spec 219 已 CONFORM 這個 selected／active 的純 state core；
+正式 Linux session 尚未把 host 倍率事件接成手冊 presenter 的完整玩家路徑。Go／Ebitengine、
+Apply 後自動收合、只保留本次遊戲期間與每次啟動預設 2× 均已在
+[規格 004](004-dosgolem-host-frontend-draft.md)定案，不得混入 Buck Rogers adapter。
 
 ## READY 前置與 CONFORMED 驗收
 

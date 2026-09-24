@@ -2505,3 +2505,24 @@
 - 所有本輪一次性測試容器已由 `--rm` 清理；`docker ps -a` 未見
   本專案殘留容器，唯讀檢查沒有 root 擁有檔或誤建 `.md` 目錄。
   ignored 探針保留在 `workplace/`，沒有加入 Git。
+
+## 2026-09-24 — 原版冷開機字型前檢、首題雙側收據與封閉 session 起步
+
+- ignored Linux 原版視窗原型改成在建立 DOS machine 前，以正式
+  `LoadHostFont2`／`LoadHostFont3` 對同次讀取的本機倚天子集做雜湊、
+  coverage 與幾何前檢；原版冷開機後實體 Apply 3× 仍可見主選單，
+  面板回合零 DOS 步。這是[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)
+  的 DRAFT 原型，未接正式啟動器。
+- Terra 子代理從合法首題 checkpoint 量 request 前後：前側 2×／3×
+  均零手冊作用層與零像素差；後側繁中差異只在正文安全矩形，
+  machine／DOS 狀態相同且無檔案寫入。前側使用 ignored DRAFT
+  收據工具放行精確 pending 停點；正式 CLI 仍拒絕該停點。
+  見[第二百二十三階段](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)。
+- 規格 019 經獨立審查，僅新建封閉 session owner 契約升限縮 READY。
+  Terra 子代理加入單事件純值 `host.PlanMouseRoute`；主代理加入
+  `Game.Draw` 首次可檢查故障的同步回呼，提交於本機 fork `b062c5b`。
+  Docker／Xvfb 相關套件、
+  定向 `-race`、`go vet` 與格式檢查通過。兩個元件尚未接成
+  封閉 owner；規格 004 仍 DRAFT、Issue #18 保持開啟。
+- 低階翻譯子代理稽核 24 份正式繁中 TSV 共 196 筆；無可依現有
+  原文證據安全新增的固定譯文，未猜補未確認的第九頁後續輸出。

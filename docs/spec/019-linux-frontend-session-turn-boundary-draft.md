@@ -1,7 +1,18 @@
 # 019 — Linux 前端失敗即關閉 session 回合邊界
 
-狀態：**限縮 session-turn 子契約 READY 候選，待獨立審查；尚不授權 production 實作，規格 004 仍 DRAFT。**
+狀態：**READY（限新建、封閉 session owner 的 session-turn typed contract）；正式 production 尚未實作，規格 004 仍 DRAFT，且本規格尚未 CONFORMED。**
 日期：2026-09-24
+
+本檔較早的 DRAFT／「READY 候選」段落保存阻塞如何被發現；現行裁決以末節
+〈2026-09-24 獨立審查定案：封閉 session owner 限縮 READY〉為準。READY 只授權
+依該封閉所有權契約新建 production owner；不得把既有可注入任意 bridge 的
+`Game.New(Config)`、現有 frontend，或任一 ignored 原型誤稱已符合此契約。
+
+implementation 起點：本機 dosgolem fork `b062c5b` 已加入不呼叫 DOS 的
+`host.PlanMouseRoute` 單事件純值計畫，以及 `Game.Draw` 首次可檢查
+故障的同步 `OnDrawFault` 通知。二者各有正式程式定向測試，
+但尚未組成封閉 session owner，也未完成整批 Prepare／排他 Commit、
+step receipt、phase、實際 Close 與正常玩家路徑；本規格仍未 CONFORMED。
 
 同日獨立路由複核：現行正式 `Game.Update` 在合成 DOS／真實 bridge
 矩陣中，對未映射 F1、畫布外 Down、普通 unmatched Up、重複 Down
@@ -519,3 +530,64 @@ DOS／machine、panel 與兩橋；公開輸入入口不得接受或洩漏原始
 原始 error 的缺口，Docker 複審通過；這不會自動封閉正式橋接器的
 提交期間排他、完整 `pressedEpoch`、`Draw` 通報與 Close。
 因此本規格仍是 DRAFT／限縮 READY 候選，不授權將原型接入 production。
+
+## 2026-09-24 獨立審查定案：封閉 session owner 限縮 READY
+
+本次審查的問題不是「既有 `Game.Update` 是否已原子」，答案仍是否；而是下列
+**新建、封閉 owner** 是否已有足夠、無歧義的實作契約。結論是**有**。此前列出的
+目標別名、ABA、pressed epoch、同批順序、Draw error 與 Close 問題均已有明確的
+失敗即關閉處置，不再是會改變此新 API 語意的未知。尚未把 API 寫進 production
+是 implementation gate，不是將規格留在 DRAFT 的理由。
+
+### READY 授權的唯一所有權邊界
+
+production 必須新建一個 session factory／owner；它在同一 goroutine 內自行建立並
+私有持有 machine、DOS、panel、mouse bridge、keyboard bridge、layout、route state、
+source generation、epoch、phase、第一個 fault 與可關閉資源。它不得接受、回傳或
+暴露可改指的 machine／DOS／panel／bridge mutator，也不得把既有 `Game.Config` 的
+可注入 bridge 當成此 owner 的內部實作。所有 Input／Advance／observer-frame／
+Snapshot／`ReportDrawFault`／Close 必須走這一個 owner。
+
+每一回合依本檔既有 CapturedUpdate → 純 Prepare → 排他 Commit → Advance →
+Snapshot 順序處理。Prepare 只能讀完整 `MouseBridge.Snapshot()`、panel、layout、
+phase 與 owner generation 的值，並預先確定所有 host 轉移、DOS action、鍵盤
+transport、無動作及 pause；不得呼叫會寫 DOS 或 host 的 Route／Handle／ApplyLayout／
+DeliverBIOSKey。Commit 在第一筆 DOS action 前核對同一封閉來源 generation 與完整
+RouteBase，期間禁止重入與 rebind；它只可執行已預檢且不再有 ordinary route error
+的動作。若底層無法提供這個「提交後不再普通失敗」保證，必須在第一個輸出前轉
+`Failed`，不得以逐 action 晚拒或回滾幻想替代。
+
+`Epoch`、budget、實際 step 差分、raw stop、錯誤優先序與 Draw/Close 的行為均以
+〈epoch、預算與停止收據〉及〈Draw 故障通知與關閉 owner〉為 READY 的一部分。
+具體而言，可檢查 Draw fault 必須在同 goroutine 直接呼叫
+`ReportDrawFault(error)`；不是等下一個 `Update` 才讓 owner 知道。首次 fault 鎖存
+根因、轉 `Failed` 並 Close 一次；後續輸入、Advance、Draw report 或 Close 都不得
+復活 session、增加 step 或再關閉資源。
+
+### 獨立證據與失敗矩陣
+
+審查在本機 dosgolem fork `b9082262542fc538f34a7932acd3a2d4b4ce3b6c`、
+Go 1.26.7／Ebitengine 2.9.9、有界無網路 Docker／Xvfb 中，以唯讀 fork 重跑：
+`TestDraftPrivateBatchAcceptedRouteMatrix`、
+`TestDraftPrivateBatchV2SnapshotRejectsPressedEpochDriftBeforeCommit`、
+`TestDraftPrivateBatchV2SnapshotEqualsPlanAcrossCrossEpochRelease`、
+`TestDraftSealedSessionRouteMatrixCoverageGap`、
+`TestDraftSealedSessionRejectsTargetOrLayoutDriftBeforeCommit`、
+`TestDraftOwnedCommitDrawSessionBoundary` 及現行無動作矩陣；相關
+`-race` 與 `go vet ./frontend/ebiten ./host ./presentation` 均通過。
+測試全為 ignored 合成 machine／DOS，未載原版、手冊、字型或存態。
+
+| 失敗／邊界類別 | READY 行為 | 證據 |
+| --- | --- | --- |
+| 末端非法 host route、stale layout／target、pressed epoch 漂移、舊 plan | 首筆 DOS action 前拒絕；mouse／callback／BIOS／step／epoch 無新增 | `route_private_batch_v2_draft_test.go`、`route_sealed_matrix_gap_draft_test.go` |
+| Down＋Up、多鍵、跨 epoch Up、focus loss、host capture、Open／Apply／Cancel＋Enter | 純 plan 與完整 bridge snapshot 一致；保留已定案的 host 消費與非命中無動作政策 | `route_private_batch_v2_draft_test.go`、`route_noop_matrix_draft_test.go` |
+| 公開目標改指、bridge target 分裂、提交期重入 | 既有反例證明公開 API 不足；新 owner 必須不外洩目標並排他提交，否則 fail-closed | `route_commit_target_alias_draft_test.go`、`route_commit_owner_draft_test.go` |
+| 可檢查 Draw snapshot fault | 同步鎖存、Close 恰一次；後續 submit／Advance 零步且拒絕 | `session_owned_commit_draw_draft_test.go` |
+
+以上不是 production CONFORMED 收據：原型的 Close 計數不等於真實資源關閉，
+`Game.Draw` 也尚未呼叫正式 `ReportDrawFault`。production 實作後必須以真實封閉
+owner 重跑本矩陣、驗真正 Close error 保存與同 goroutine Draw relay；再另依規格
+004 完成 cold boot、正常玩家路徑、存讀檔與原版同狀態，才可主張任何 CONFORMED。
+若實作發現現有 bridge 無法封存目標或在 Commit 後仍會回普通錯誤，該發現是新的
+規格反例：停止實作、把本限縮契約退回 DRAFT，先補可強制的封閉 primitive；不得
+在 production 中猜補。

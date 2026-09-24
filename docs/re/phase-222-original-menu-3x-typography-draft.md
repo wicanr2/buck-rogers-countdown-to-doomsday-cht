@@ -330,3 +330,39 @@ Go 在唯讀模組快取嘗試寫 stat cache 曾發出非致命警告；全部
 仍可能留下部分新檔，rollback 自身遇 I/O 錯誤時會回報並保留
 可復原備份。停止格尚未經原版 `OnFrame` 的 `Pending` 仍依舊
 失敗；是否允許明示的同狀態投影，仍待使用者決定。
+
+## 2026-09-24 倚天 host 字型先驗後冷開機重跑
+
+本機 ignored `workplace/cold-boot-live-turn-proto/` 的原版 3× 實體
+測試改為先用正式 `LoadHostFont2`／`LoadHostFont3` 對三份本機
+GOLEMFNT 的**同一次讀入 bytes**核對 SHA-256、字模尺寸、必需字元
+與標籤安全矩形，再呼叫 `newRuntimeWithMenuFont` 建立及推進 DOS。
+2× 字模同時作為選單 overlay 的已驗來源，不再於冷開機後重讀。
+原型 `main.go` SHA-256
+`f0487d2f79d75beb00632797076ceecade1e144eb92fde78fb377a9df0cb59ff`，
+`scale3_original_physical_draft_test.go` SHA-256
+`804130d5a3c52d8ea525ee4bdbf1b190c12d4376bb455c77dd8b7223b58d4bc1`。
+三份本機字型 SHA-256 分別為 2×
+`150c93afaa10f1f09f146c9b67ba6fdca35aa5d13d1b6f965cfdedb33a8a5174`、
+3× Wide
+`621ed2c62e387916473cfcaefdd93585f085bfd4c2fc973e80cf691acac0fe49`、
+3× ASCII
+`7c411be15bee6911e1fec199af5643099831bd4f27b8a5676e20f96becbf2193`；
+字型 bytes 仍只留本機，不入版控。
+
+在 Go 1.26.7／Ebitengine 2.9.9、無網路、目前 UID/GID、
+2 GiB／2 CPU／256 PID 的有界 Docker／Xvfb，原版
+`START.EXE` 唯讀，獨立 `scratch/out` 可寫。編譯、`go vet`、
+`gofmt -d` 先通過；再重跑
+`TestOriginalColdBootMenuAppliesPhysicalThreeX` 通過：原版從
+第零步至 `100000000`，共用前檢重構後實體 Apply 於
+`100000480`，終點 `100000848`，3× snapshot 31 次，最終 RGBA SHA-256
+`d2f6a13aae1ba412ba042b5be161a199f5ab80eb524f7ae733c313ca349797b8`。
+因 X11 驅動時序可變，此處不把 Apply 步數或 snapshot 次數
+當成固定契約；可重播的判準是字型先驗成功、面板回合零 DOS
+步、Apply 後原版同一 machine 繼續前進且 3× 畫面可見。
+
+**證據等級：已證實／僅此 DRAFT 原型。** 它不證明字型原始來源
+manifest、正式 Linux composition root、封閉 session、完整
+machine／DOS 同狀態、正常遊戲與存讀檔已完成；規格 004／019
+仍維持 DRAFT。

@@ -732,3 +732,29 @@ BIOS 橋接仍指向同一個合成 DOS target。整批含畫布 Down、Enter、
 Close 計數也不是正式資源關閉。正式 API 尚需單一 lifecycle owner、
 純 Prepare＋排他 Commit、Draw 同步向 owner 回報故障，以及冪等
 資源 Close。規格 019、004 與 Issue #18 均維持 DRAFT／OPEN。
+
+## 2026-09-24 獨立審查結論：封閉 owner 子契約升 READY
+
+本節修正前段歷史結論中「019 維持 DRAFT／READY 候選」的現況描述：那些段落
+正確記錄了公開 `Game.New(Config)`、公開 `DOS.M` 與逐事件 bridge 為何不能直接
+升格，但後續私有 batch v2、完整滑鼠快照、路由矩陣與 Draw-fault owner 已把**新建
+封閉 session owner** 所需的語意定案。結論僅為規格 019 的這個子契約 READY；
+Issue #18 保持 OPEN，規格 004 保持 DRAFT，沒有 production 或 CONFORMED 聲明。
+
+獨立審查以 fork `b9082262542fc538f34a7932acd3a2d4b4ce3b6c` 在 Go 1.26.7／
+Ebitengine 2.9.9、有界無網路 Docker 與受控 Xvfb 中，唯讀重跑封閉 owner 的
+accepted-route matrix、stale target／layout、完整 `PressedEpoch` 漂移、Draw fault
+close-once、現行非命中無動作矩陣；再重跑相關 `-race` 與
+`go vet ./frontend/ebiten ./host ./presentation`，均通過。Xvfb wrapper 缺少 `xauth`
+時改以容器內 trap 管理的 Xvfb；這是環境調整，乾淨重跑後的通過才是本結論依據。
+
+READY 不是「把 prototype 複製出去」：production 必須建立不接受或洩漏
+machine／DOS／panel／bridge mutator 的唯一 owner，依規格 019 實作純 Prepare、
+完整 RouteBase／source generation、提交期排他、無 ordinary late-route-error 的
+Commit、單調 receipt、同步 `ReportDrawFault` 與冪等真實 Close。現有
+`Game.New(Config)` 不符合這些前提，不能包裝成已完成；真實 owner 的實作與同一
+失敗矩陣重跑是下一個 implementation／CONFORMED gate，而非新的規格未知。
+
+唯一會推翻 READY 的最小反例是：在不洩漏目標的 owner 內，仍無法讓預檢後 Commit
+避免 ordinary error 或外部重入，因而可能在第一筆 DOS 副作用後失敗。若出現此反例，
+不得逐 action 補救，應把 019 子契約退回 DRAFT，先設計可強制的封閉提交 primitive。

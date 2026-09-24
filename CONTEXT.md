@@ -2,11 +2,35 @@
 
 更新：2026-09-24
 
+最新 #18：規格 019 經獨立審查，只將「新建封閉 session owner」
+的回合契約升為限縮 READY，現有 `Game.New(Config)` 與規格 004
+仍未達 READY。dosgolem fork `b062c5b` 已加入單事件純值滑鼠路由計畫與
+`Game.Draw` 首次可檢查故障的同步回呼；正式封閉 owner、整批
+排他提交、單調收據與實際資源 Close 尚未實作，#18 保持開啟。
+[規格 019](docs/spec/019-linux-frontend-session-turn-boundary-draft.md)
+與[獨立審查](docs/re/issue-18-session-turn-ready-candidate-review.md)。
+
+最新 #16：ignored 原版實體視窗原型已把正式 2×／3× host
+字型載入器移至 DOS 建立與冷開機前；來源雜湊、字模及五個標籤
+先驗成功後，從第零步跑至原版選單並實體 Apply 3×。面板回合
+零 DOS 步，Apply 後同一 machine 繼續前進，3× 選單仍可見。
+[第二百二十二階段](docs/re/phase-222-original-menu-3x-typography-draft.md)
+僅此 DRAFT 原型已驗；正式啟動器與完整玩家路徑仍待接線。
+
+最新 #14：首題合法 checkpoint 的雙側原版續行量到
+begin→clear 後、request 前 2×／3× 皆零手冊正文及零像素差；
+request 後中文各只改正文矩形內 3,776／6,591 像素，原版
+machine／DOS 同值且零檔案寫入。request 前收據依賴 ignored
+DRAFT CLI clone 放行精確 pending 停點，正式 CLI 仍失敗即關閉；
+[第二百二十三階段](docs/re/phase-223-manual-first-question-host-mixed-script-draft.md)
+未證明冷開機至首題的互動視窗或存讀檔，Issue #14 保持開啟。
+
 最新 #16：本機 dosgolem fork `b908226` 新增 `LoadHostFont2`，以呼叫端預期
 SHA-256 綁定同一次讀入的 16×16 本機字型 bytes，並在建構視窗前
 檢查標籤與矩形。2×／3× 載入器的定向測試與本機倚天子集、
 前端／host／presentation 套件及 vet 通過；2× 既有字距與畫筆
-未變。正式啟動器尚未溯源雜湊或接入兩種字型載入器，#16 未完成。
+未變。字型重建來源已可核對；正式啟動器尚未讀取經審的
+manifest 或接入兩種字型載入器，#16 未完成。
 
 最新 #18：Terra 補上 ignored `session_owned_commit_draw_draft_test.go`
 的封閉 owner 原型，覆蓋拒絕重綁、整批預檢末端失敗零 DOS 副作用、
