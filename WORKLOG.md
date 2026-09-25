@@ -3334,3 +3334,9 @@
 - skill504 上 Down／Up 只單值重畫不動選取；Enter 觸發 44 筆全表：
   80 點、max 30、八技能 Points／Bonus／Total。字串表留 ignored，
   無列欄不作收錄（#71 系另案）。配方可重生，未存中間態。
+
+## 2026-09-25 — 技能屏按鍵語意（phase-238）
+
+- skill504 上 Escape 取走無動作（零配置無問句，符合問句本體）；
+  Enter×2＋Escape 全凍結；唯 Down,Up,Enter 進配置表。
+  結論：Enter 需 Down／Up 先武裝。`alloc508.state` 入庫。
