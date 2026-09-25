@@ -3347,3 +3347,11 @@
   變更 54 字節。point1.state 入庫。
 - point1＋Escape：33 字問句雜湊與既有身分逐位元相等；
   #17 本體出現升級為直播驗證，清除仍為無頭範圍。
+
+## 2026-09-25 — dosgolem fork 分支推送
+
+- 本機 fork 提交 `d766dcf`（RunUntilObserved DRAFT 接縫，machine 測試／vet 通過）。
+- 推送前掃描 `main..HEAD` 226 個 commit：作者皆個人信箱；原版 EXE／DAX 長字串
+  與英文手冊句子僅命中題目前綴比對鍵 2 句；無二進位素材。依使用者決定以獨立分支
+  `buck-rogers-cht-output-overlay` 推至 dosgolem（PUBLIC），不合併 dosgolem main。
+- 8 個未追蹤的 DRAFT 探針測試仍只留本機（需私有資料）。
