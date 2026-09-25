@@ -38,11 +38,11 @@ def _same(left, right):
 def validate(events_path: Path, translations_path: Path, post_path: Path, lifecycle_path: Path) -> None:
     events = _table(events_path, EVENT_HEADER, "class-events.tsv")
     texts = _table(translations_path, TEXT_HEADER, "class.zh-TW.tsv")
-    if len(events) != 10 or [r["sequence"] for r in events] != [str(i) for i in range(1, 11)]:
-        raise ValueError("class-events.tsv: 必須恰有十筆連續事件")
+    if len(events) != 12 or [r["sequence"] for r in events] != [str(i) for i in range(1, 13)]:
+        raise ValueError("class-events.tsv: 必須恰有十二筆連續事件")
     if len(texts) != 6:
         raise ValueError("class.zh-TW.tsv: 必須恰有六筆譯文")
-    if len({r["event_key"] for r in events}) != 10 or len({tuple(r[f] for f in IDENTITY_FIELDS) for r in events}) != 10:
+    if len({r["event_key"] for r in events}) != 12 or len({tuple(r[f] for f in IDENTITY_FIELDS) for r in events}) != 12:
         raise ValueError("class-events.tsv: event key 或 identity 不唯一")
     if len({r["key"] for r in texts}) != 6 or any(not r["translation"] or r["source"] != "manual-and-runtime" for r in texts):
         raise ValueError("class.zh-TW.tsv: key、譯文或來源無效")

@@ -9,3 +9,5 @@ class.selection.selected.rocket_jock	7	class.rocket_jock	11	86e1e1a3338833f3ff16
 class.selection.normal.rocket_jock	8	class.rocket_jock	11	86e1e1a3338833f3ff16dfc15fc561fd99ffd1aefb2756a16afea104d57555f1	37F1:1856	0	10	3	3
 class.selection.selected.medic	9	class.medic	5	25877b98fccba1d5a34b052c47e3265d8723b23fb696fb358fe6fc042dddb6db	37F1:175D	15	0	4	3
 class.selection.normal.medic	10	class.medic	5	25877b98fccba1d5a34b052c47e3265d8723b23fb696fb358fe6fc042dddb6db	37F1:1856	0	10	4	3
+class.selection.selected.warrior	11	class.warrior	7	eaf0fe0a362b58490e9d73c9584a36ef7353872dd1663afef4e2099b88bf56bf	37F1:175D	15	0	5	3
+class.selection.normal.warrior	12	class.warrior	7	eaf0fe0a362b58490e9d73c9584a36ef7353872dd1663afef4e2099b88bf56bf	37F1:1856	0	10	5	3

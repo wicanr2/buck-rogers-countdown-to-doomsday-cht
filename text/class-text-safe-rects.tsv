@@ -9,3 +9,5 @@ class.selection.selected.rocket_jock	24	24	88	8	24	24	11	1	single-line-reject
 class.selection.normal.rocket_jock	24	24	88	8	24	24	11	1	single-line-reject
 class.selection.selected.medic	24	32	40	8	24	32	5	1	single-line-reject
 class.selection.normal.medic	24	32	40	8	24	32	5	1	single-line-reject
+class.selection.selected.warrior	24	40	56	8	24	40	7	1	single-line-reject
+class.selection.normal.warrior	24	40	56	8	24	40	7	1	single-line-reject

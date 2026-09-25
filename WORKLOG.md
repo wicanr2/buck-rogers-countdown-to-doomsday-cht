@@ -3314,3 +3314,10 @@
   Rocket／Medic／Warrior／Engineer／Rogue。
 - 三 TSV＋rects＋兩工具跟隨改名（量測欄不動）；譯文本體與字元
   聯集不變（重生一致），免重建字型。249 項全綠。
+
+## 2026-09-25 — warrior 選取態補錄（phase-235）
+
+- class500 連按 Down×2：四筆完整生命週期，warrior 選中 "Warrior"
+  7 字（`eaf0fe0a…`），終點第 5 列白底。catalog 追加序列 11／12
+  ＋兩矩形，驗證器改十二筆；down-down 路徑未建模另案。
+  249 項全綠，收據留 ignored。
