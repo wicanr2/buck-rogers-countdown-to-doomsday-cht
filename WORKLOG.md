@@ -3361,3 +3361,9 @@
 - 乾淨 clone `d766dcf` 建 runner（vcs.modified=false）；`point1.state` 上
   Escape／N／Y 各跑 control／2×／3×。active 2071／4015 像素全在本體矩形，
   N／Y 終態零殘層，JSON／indexed 三方逐位元相等。收據留 ignored。
+
+## 2026-09-25 — 技術離開問句直播鏈 A/B（phase-241）
+
+- point1＋Escape＋y 到技術表（40 點），Enter 加一點，Escape 出 34 字問句。
+  control／2×／3×：active 2196／4211 像素全在本體矩形，N／Y 零殘層，
+  Y 的 19,366 筆 FileOps 三方相同。`tech511`、`tpoint1` 入 ignored checkpoints。
