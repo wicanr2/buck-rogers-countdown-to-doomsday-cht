@@ -3306,3 +3306,11 @@
   （Pilot Rocket 首輪 24）；末筆 Reroll 提示。無列欄，不作收錄。
 - trans430 重播發散未定（scratch 假說已排除一版），class500 可重播
   已證。class500 存 ignored checkpoints 供後續。
+
+## 2026-09-25 — 職業 warrior／medic 標籤錯位訂正（phase-234）
+
+- Down＋Enter 功能性判定：第 4 列選下後 career 值為 Medic；
+  初畫選項長 13／7／9／10／7＝名＋兩空格，顯示順序實為
+  Rocket／Medic／Warrior／Engineer／Rogue。
+- 三 TSV＋rects＋兩工具跟隨改名（量測欄不動）；譯文本體與字元
+  聯集不變（重生一致），免重建字型。249 項全綠。

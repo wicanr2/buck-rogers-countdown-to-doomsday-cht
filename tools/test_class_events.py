@@ -23,7 +23,7 @@ class ClassEventsTests(unittest.TestCase):
         events = (ROOT / "text/class-events.tsv").read_text()
         texts = (ROOT / "text/class.zh-TW.tsv").read_text()
         variants = [("\ufeff" + events, texts), (events.replace("37F1:1856", "37F1:1857", 1), texts),
-                    (events.replace("class.selection.normal.warrior", "class.selection.selected.warrior", 1), texts),
+                    (events.replace("class.selection.normal.medic", "class.selection.selected.medic", 1), texts),
                     (events, texts.replace("manual-and-runtime", "guess", 1)),
                     (events, "\n".join(texts.splitlines()[:-1]) + "\n")]
         for event_data, text_data in variants:

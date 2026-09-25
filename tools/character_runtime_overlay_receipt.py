@@ -25,9 +25,9 @@ OVERLAY_FIELDS = {
     "overlay_missing_glyphs", "overlay_drew",
 }
 ACTIVE = [
-    "class.screen.prompt", "class.option.rocket_jock", "class.option.warrior",
-    "class.option.medic", "class.option.engineer", "class.option.rogue",
-    "class.selection.normal.rocket_jock", "class.selection.selected.warrior",
+    "class.screen.prompt", "class.option.rocket_jock", "class.option.medic",
+    "class.option.warrior", "class.option.engineer", "class.option.rogue",
+    "class.selection.normal.rocket_jock", "class.selection.selected.medic",
 ]
 
 
