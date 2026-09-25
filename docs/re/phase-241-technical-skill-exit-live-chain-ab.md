@@ -47,3 +47,5 @@ bridge、Linux 視窗（後兩項與 #18、#16 重疊）。
 私有收據、probe、runner 與 `run.sh` 留在 ignored
 `workplace/phase241-technical-live/`；兩個新 checkpoint 在 ignored
 `workplace/checkpoints/`。
+
+這條鏈的角色名是 Down／Up 誤輸入的 `28`（見第二百三十八階段）；問句本體不含名字，正常命名 `BUCK` 的重跑結果相同，見第二百四十三階段。
