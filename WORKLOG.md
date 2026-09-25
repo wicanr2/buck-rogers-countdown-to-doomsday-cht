@@ -3166,3 +3166,15 @@
   phase-223 尾段「38 題」數字不一致，已訂正為 36。
 - 規格 005 E1 分支升為無頭限縮 CONFORMED（範圍如上；Linux、36 題、
   存讀檔排除）。Issue #21／#14 保持 OPEN。fork 测试提交仍只留本機。
+
+## 2026-09-25 — #16 首片：sealed owner 私有開機 READY＋實作
+
+- 沿 phase-186「fail-closed 冷開機入口」缺口，切出最小量產片：
+  fork 規格 235（`BootOriginal`：EXE bytes＋SHA＋save root 驗證，
+  LoadEXE→Install→Running，失败即關閉；original 樹核對留給
+  composition root，observer／多層／存讀檔排除）。
+- DRAFT 首輪審查退回兩項 P0（別名活門、TOCTOU＋symlink），修後
+  針對性複審五項全過判可升 READY；實作＋合成測試經 production
+  審查「可進 production」，3 殘留（nil 測試、Install 註解、
+  hash／映像 hammer）全補，`go test -race ./session/` 全綠。
+  fork 本機提交 `923f8e5`，未推遠端；Issue #16／#18 保持 OPEN。

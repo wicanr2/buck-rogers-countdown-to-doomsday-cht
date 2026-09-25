@@ -194,6 +194,14 @@ session／host／frontend、tagged DRAFT、競態測試及 vet 全通過。
 畫面 Snapshot、觀測器或 Linux 玩家入口**；現有可注入 `Game.Config`
 不得冒充封閉前端。Issue #18 與整體中文化仍開放。
 
+最新 #16 首片：sealed owner 私有開機（fork 規格 235）已走
+DRAFT→審查退回（兩項 P0）→修訂→針對性複審→READY→實作→production
+審查→`go test -race ./session/` 全綠。`BootOriginal` 只收 EXE bytes
+＋SHA＋save root（先複製再驗再載入，Lstat 拒 symlink，
+Access 驗可寫），LoadEXE→Install→Running，失敗即關閉；
+original 樹核對、observer、多層聚合、存讀檔、視窗仍排除。
+fork 本機提交 `923f8e5` 未推遠端；Issue #16／#18 保持 OPEN。
+
 下一片 #18 維持 DRAFT：通用逐步觀測接縫尚無 Oracle 的初始條件、
 中斷點、A0000 守衛、動態 hook 與 stub 順序，也沒有封閉 owner 可用的
 `Watcher.Install` 安裝介面；不能直接替換原版觀測器。畫面
