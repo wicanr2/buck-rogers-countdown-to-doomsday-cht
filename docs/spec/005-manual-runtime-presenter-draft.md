@@ -338,21 +338,27 @@ checked draw、Snapshot／Restore、2× 合成 golden bytes，
 [第二百二十三階段研究紀錄](../re/phase-223-manual-first-question-host-mixed-script-draft.md)。
 
 這些是固定 checkpoint 的無頭局部收據，不包含正式 Linux
-session 的冷開機玩家視窗、其他手冊段落逐題重播或不同英文
-專名的 runtime 樣本。因此 E1 分支不升 CONFORMED，Issue #21
-與 #14 仍開放；上表未驗的範圍不因三條收據而被推定完成。
+session 的冷開機玩家視窗、其餘 36 題逐題重播或其他段落專名的
+runtime 樣本。因此 E1 分支不升 CONFORMED，Issue #21
+與 #14 仍開放；上表未驗的範圍不因收據而被推定完成。
 
 另以既有合法第三題 checkpoint 驗 `manual.log.57.acidic_victory`
 中的 `RAM`：正式 3× plan 保持單一 token／同一行，字首各距
 14px；2×／3× 同狀態及安全矩形外零差通過。舊第三題 2×
 截圖使用 101 字譯文，現行為 104 字，不可作逐位元相等基準。
 這是另一段英文詞界的局部證據，仍未覆蓋其他專名的玩家視窗。
-其後手冊第 9–12 筆**待決**的中文印刷本候選與本機 1,046 字
-倚天子集重建後，正式 39／39 E1 plan 的 checked draw／
+其後手冊第 9–12 筆中文印刷本修訂已由使用者選定**中文印刷本優先**
+正式入版（`manual.zh-TW.tsv` SHA-256
+`186b0844b7040a461c2e06f2a3e670e86dd28f3773cc46c3a6516e340c773f0b`），
+本機 1,046 字倚天子集（`font/characters.txt` SHA-256
+`e6973763953ba738854376bdcc049a87b76540616b6626405ed1fb5489073b0b`，
+GOLEMFNT `14fca041…`）重建後，正式 39／39 E1 plan 的 checked draw／
 Snapshot／Restore 再以 `-race` 通過；上述四條本機 owner
-oracle 亦用候選字型重跑。因四筆譯文與英文原版語意衝突，
-來源優先序未決，不能把這次候選當作正式 catalog 定版。
-字型來源身分見[規格 024](024-manual-layer-group-font-identity-ready-candidate.md)，
+oracle 亦用定版字型重跑，首題 2×／3× RGBA 與定版收據一致。
+字型來源身分見[規格 024](024-manual-layer-group-font-identity-ready-candidate.md)。
+首題三英文專名（3× RAM、括號 Deimos、行尾 Stockade）另有正式量產
+斷言 `TestManualE1PlanDeimosPrisonEnglishTokens`：各落單一 sealed
+token 且 ASCII 相鄰字首皆 14px，Docker 無網路 `-race` 通過。
 E1 不因此升 CONFORMED。
 
 ## 與 host 倍率控制的關係
