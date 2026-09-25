@@ -3367,3 +3367,21 @@
 - point1＋Escape＋y 到技術表（40 點），Enter 加一點，Escape 出 34 字問句。
   control／2×／3×：active 2196／4211 像素全在本體矩形，N／Y 零殘層，
   Y 的 19,366 筆 FileOps 三方相同。`tech511`、`tpoint1` 入 ignored checkpoints。
+
+## 2026-09-26 — 直播鏈命名提示勘誤
+
+- 推翻：phase-236 稱 `skill504` 為技能配置屏、phase-238 稱「Enter 需 Down／Up
+  武裝」。一手證據：sheet502＋n 的末筆 dispatcher 為 `0763:0826`
+  `Character name: `；`BUCK`＋Enter 逐字回顯後進技能表；Down／Up 被讀成
+  數字鍵盤 2／8，名字成為 `28`。當初只看 VRAM 結構相符與 Down／Up 的單值
+  重畫，沒有先列出該屏的 dispatcher。
+- 教訓規則：宣告「到達某屏」前，先列出該區間全部 dispatcher 的 caller 與
+  字串，再和 catalog 家族比對；畫面結構相似不足以辨識畫面。
+- phase-236～238 正文已改寫為現況；phase-239～242 的機制結論不受名字影響，
+  但承接名字 `28`。
+
+## 2026-09-26 — 正常命名直播鏈 A/B（phase-243）
+
+- `BUCK` 重建鏈至存檔問句，8 個 checkpoint 入 ignored。職業／技術問句與
+  身體圖示 move／refuse 八條路徑 control／2×／3× 全通過。
+- 存檔問句為 `Save <名字>? `；使用者選擇保留名字的譯文，模板比對另案。
