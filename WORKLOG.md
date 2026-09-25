@@ -3153,3 +3153,16 @@
 - 相關文件已回填 phase-223；fork 提交留本機未推遠端。
   剩餘缺口：Linux 玩家視窗（#16）、其餘 38 題逐題重播；
   Issue #21 仍 OPEN。
+
+## 2026-09-25 — #21 E1 無頭限縮 CONFORMED
+
+- 主代理以定版 catalog＋定版字型重跑 READY 矩陣：`TestManualE1Plan*`
+ （39／39 含新 token 斷言）、`TestManualSnapshotOwner*`（生命週期
+  負例、2× golden）、首題／target-002／return-clear／target-003
+  oracle，Docker 無網路 `-race` 全綠；原版 indexed／machine／DOS／
+  輸入同值，RGBA 僅核准矩形差異，零檔案寫入。
+- 獨立審查 subagent 同條件重跑 token 斷言＋三案 oracle 通過，
+  核對測試碼身分、文件無待決字樣、無 Linux／36 題冒稱，並指出
+  phase-223 尾段「38 題」數字不一致，已訂正為 36。
+- 規格 005 E1 分支升為無頭限縮 CONFORMED（範圍如上；Linux、36 題、
+  存讀檔排除）。Issue #21／#14 保持 OPEN。fork 测试提交仍只留本機。

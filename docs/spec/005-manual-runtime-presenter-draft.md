@@ -166,7 +166,7 @@ checked 字首繪製與 optional Snapshot／Restore 的定向
 測試通過；仍未把本規格的 3× 手冊版面計畫送進正式
 `ManualSnapshotOwner`，也未做正式原版同狀態 A/B。
 
-## 2026-09-25：3× E1 adapter（**READY 契約，尚未實作**）
+## 2026-09-25：3× E1 adapter（**無頭限縮 CONFORMED**）
 
 本節是 Issue #21／#14 的 adapter 契約。它把已確認的 E1
 14px、39／39 私有 catalog tokenization 收據，以及共用 `xlate`
@@ -339,8 +339,8 @@ checked draw、Snapshot／Restore、2× 合成 golden bytes，
 
 這些是固定 checkpoint 的無頭局部收據，不包含正式 Linux
 session 的冷開機玩家視窗、其餘 36 題逐題重播或其他段落專名的
-runtime 樣本。因此 E1 分支不升 CONFORMED，Issue #21
-與 #14 仍開放；上表未驗的範圍不因收據而被推定完成。
+runtime 樣本；當時因此 E1 分支不升 CONFORMED。後續完整重跑與
+獨立複審見下節判定。
 
 另以既有合法第三題 checkpoint 驗 `manual.log.57.acidic_victory`
 中的 `RAM`：正式 3× plan 保持單一 token／同一行，字首各距
@@ -359,7 +359,29 @@ oracle 亦用定版字型重跑，首題 2×／3× RGBA 與定版收據一致。
 首題三英文專名（3× RAM、括號 Deimos、行尾 Stockade）另有正式量產
 斷言 `TestManualE1PlanDeimosPrisonEnglishTokens`：各落單一 sealed
 token 且 ASCII 相鄰字首皆 14px，Docker 無網路 `-race` 通過。
-E1 不因此升 CONFORMED。
+
+### 2026-09-25 E1 無頭限縮 CONFORMED 判定
+
+主代理以定版 catalog＋定版 1,046 字字型，在無網路 Docker
+（`eob-remake-go:1.26.7-ebiten2.9.9`、`--network none`、
+原版唯讀掛載 `/orig`）重跑 READY 矩陣：`TestManualE1Plan*`
+全數（含 39／39、`-race`）、`TestManualSnapshotOwner*` 全數
+（含雙字型生命週期負例、2× golden bytes、`-race`）、
+首題／換題（target-002）／返回（return-clear）／第三題
+（target-003）oracle 雙倍率 `-race` 全綠；control／2×／3× 的
+indexed、palette、記憶體、輸入排程與正規化 machine／DOS 同值，
+RGBA 差異僅在核准矩形，返回後零差、舊 ticket 不可復活、
+零檔案寫入。獨立審查員以同條件獨立重跑 token 斷言與三案
+lifecycle oracle 通過，並核對無 Linux／36 題冒稱
+（`ses_f29819a80ffeaVLQyp1podIrbq` 收據只留審查結論，
+無原版素材）。
+
+因此 E1 分支升為**無頭限縮 CONFORMED**，範圍僅：首題、
+錯答換題、答對返回、第三題的固定 checkpoint 同狀態收據，
+39／39 plan 靜態斷言，以及 2× 逐位元不變。以下明確排除，
+不得外推：正式 Linux 冷開機玩家視窗（#16）、其餘 36 題逐題
+重播、遊戲內存讀檔、39 段之外的文字路徑。Issue #21 與 #14
+仍保持 OPEN，直到上述排除項完成。
 
 ## 與 host 倍率控制的關係
 
