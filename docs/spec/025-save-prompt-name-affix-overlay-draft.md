@@ -1,6 +1,6 @@
 # 025 — 儲存詢問的名字前後綴覆繪
 
-狀態：DRAFT
+狀態：READY（2026-09-26 獨立審查後修訂）
 範圍：身體圖示確認 Y 之後的 `Save <角色名>? ` 儲存詢問
 更新：2026-09-26
 
@@ -31,8 +31,20 @@ watcher 會失敗即關閉，confirm 路徑無法覆繪。
 | 呼叫與樣式 | caller `37F1:101E`、背景 0、前景 13、row 24、column 0 | 已證實 |
 
 名字本身可含 `?`，所以後綴一律取最後 2 bytes，不搜尋分隔字元。
+四個名字的儲存詢問都是 `37F1:101E` 單次呼叫送出整串，名字格墨跡在同一呼叫內
+完成（第二百四十四階段）。
 
-## DRAFT 契約
+### 同 caller 的其他兩句
+
+規格 009 的 `body.icon.confirmation`（17 bytes）與
+`body.icon.selection.instruction`（20 bytes）與儲存詢問共用 caller、色號、
+row、column，長度也落在 8–22 之間。確認問句的末 2 bytes 與儲存詢問後綴
+**相同**；兩句的前 5 bytes 都不是儲存詢問前綴，前綴 SHA-256 分別以
+`f0a8c363…`、`db45b4ca…` 開頭（一手 dispatcher，整串 SHA 與 catalog 相符，
+收據 `workplace/phase244-save-prompt-template/conf.txt`、
+`workplace/phase242-body-icon-live/b.txt`）。因此排他靠前綴，不能只查後綴。
+
+## 契約
 
 1. **身分**：事件符合 caller、背景、前景、row、column，且
    `8 ≤ 長度 ≤ 22`、前 5 bytes 與後 2 bytes 的 SHA-256 分別等於上表，才算
@@ -48,14 +60,27 @@ watcher 會失敗即關閉，confirm 路徑無法覆繪。
    - 名字格 `[40, (5+n)·8)` 保留原版墨跡，overlay 在此區必須零差。
 4. **生命週期**：兩個 stamp 屬同一群組 `save_prompt`，同一 generation 建立；
    任何 A000 寫入與任一矩形相交時，兩個 stamp 一起失效。其餘沿用規格 009。
-5. **失敗即關閉**：caller 與樣式相符但前後綴 SHA 不符、長度越界，都視為身分
+5. **比對順序**：先做規格 009 其餘六筆的整串 exact 比對；只有都不命中時才做
+   前後綴比對。前後綴必須同時相符。
+6. **失敗即關閉**：caller 與樣式相符但前後綴 SHA 不符、長度越界，都視為身分
    不符並停止 watcher，不退回固定 SHA 比對。
 
-## READY 前待補
+## 實作需要的介面變更
 
-- 獨立審查本規格與第二百四十四階段證據。
-- 確認 dispatcher 在單次呼叫內依序繪出整串，名字格不會被其他寫入者先寫。
-- 確認「？」在倚天 2×／3× 的 2 格內 containment 零越界。
+1. `TextRecorder.ObserveDispatchEntry` 在呼叫當下對已登記的 caller 另算前 5 bytes
+   與末 2 bytes 的 SHA-256，放進 `TextEvent` 的選填欄位（JSON `omitempty`，
+   其他事件的收據位元不變）。名字 bytes 不寫入事件。
+2. `LoadBodyIconCatalog` 新增一條可變長度身分：前後綴 SHA、長度範圍與樣式。
+   不沿用「矩形寬＝長度×8」的靜態檢查。
+3. 後綴矩形 x 由事件的 n 算出，presenter 在 `Apply` 時產生；TSV 只存前綴矩形與
+   後綴格數。
+4. 主 repo 的 TSV 檢查工具（`tools/body_icon_*.py`）同步新欄位。
+
+## 實作驗收時再確認
+
+- 「？」在倚天 2×／3× 的 2 格內 containment 零越界（依規格 009 前例屬實作驗收）。
+
+獨立審查紀錄：WORKLOG 2026-09-26「規格 025 READY 審查」。
 
 ## 驗收（CONFORMED 條件）
 

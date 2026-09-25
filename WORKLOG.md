@@ -3385,3 +3385,9 @@
 - `BUCK` 重建鏈至存檔問句，8 個 checkpoint 入 ignored。職業／技術問句與
   身體圖示 move／refuse 八條路徑 control／2×／3× 全通過。
 - 存檔問句為 `Save <名字>? `；使用者選擇保留名字的譯文，模板比對另案。
+
+## 2026-09-26 — 規格 025 READY 審查
+
+- 獨立審查代理重算前後綴 SHA 與四份 indexed，事實全部相符；判定需修改後 READY。
+- 依審查補上：確認問句末 2 bytes 與後綴相同、排他靠前綴（一手 dispatcher 核對）；
+  比對順序先 exact 後前後綴；介面變更範圍；containment 移到實作驗收。規格 025 升 READY。
