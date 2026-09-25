@@ -3328,3 +3328,9 @@
   標題／技能列／指示列結構符合 career 家族，逐列對帳另案。
 - `sheet502.state`、`skill504.state` 入 ignored checkpoints；
   收據留 ignored。249 項全綠。
+
+## 2026-09-25 — 技能配置表進入（phase-237）
+
+- skill504 上 Down／Up 只單值重畫不動選取；Enter 觸發 44 筆全表：
+  80 點、max 30、八技能 Points／Bonus／Total。字串表留 ignored，
+  無列欄不作收錄（#71 系另案）。配方可重生，未存中間態。
