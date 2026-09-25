@@ -3208,3 +3208,12 @@
 - 獨立審查五項全過（layout canonical、真走鏈、提早退出只會 FAIL
   不會誤判、skip 乾淨、重跑 PASS），僅補 Reason 斷言。
   fork 本機提交 `fcd4bdb` 未推遠端；Issue #16／#18 保持 OPEN。
+
+## 2026-09-25 — #16 第五片：headless launcher 組裝根
+
+- 新增 `cmd/buckrogers-session`（thin 組裝，只串兩個 READY 契約）：
+  Prepare→New→BootOriginal→每回合 View→空 Deliver→Advance，
+  stdout 只印計數 receipt JSON；flag 缺失 exit 2，遊戲雜湊不寫死。
+- 真機 3 回合（1M 步）全綠，receipt reason=2 phase=2；獨立審查
+  五項全過，僅把 `--exe` 預設改必填。fork 本機提交 `532e203`
+  未推遠端；Issue #16／#18 保持 OPEN。
