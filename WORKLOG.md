@@ -3408,3 +3408,10 @@
   `VGA.resetMode`（int 10h AH=00）清畫面不經 A000 觀察、介面欄位未定、511.0M
   未取樣四項。已修訂並升 READY。
 - 待辦（通用，非本規格引入）：dosgolem 模式切換應讓所有覆繪層失效。
+
+## 2026-09-26 — 儲存詢問離頁（phase-247）
+
+- dosgolem fork `c4aa3ee` 實作規格 026 交接。`BUCK` Y／N 各取中間態與 511.0M 終態，
+  control／2×／3× 全通過；規格 026 CONFORMED，025 改為 CONFORMED。
+- 方法：中間態不可取在 dispatcher 呼叫中途，runner 會拒絕出收據；要先從收據列出
+  事件起訖步數再挑空檔。

@@ -1,10 +1,11 @@
 # 026 — 儲存詢問離頁交接
 
-狀態：READY（2026-09-26 獨立審查後修訂）
+狀態：CONFORMED（`BUCK` 的 Y／N 兩條）
 範圍：身體圖示 confirm 路徑完成後，回答儲存詢問 Y／N 並回到主選單
 更新：2026-09-26
 
-證據：[第二百四十六階段：儲存詢問離頁時序](../re/phase-246-save-prompt-leave-timing.md)。
+證據：[第二百四十六階段：儲存詢問離頁時序](../re/phase-246-save-prompt-leave-timing.md)、
+[第二百四十七階段：離頁正式 A/B](../re/phase-247-save-prompt-leave-runtime-ab.md)。
 相關：[規格 009](009-body-icon-overlay-draft.md)、[規格 025](025-save-prompt-name-affix-overlay-draft.md)。
 
 ## 問題
@@ -38,8 +39,11 @@ confirm 路徑在儲存詢問出現時就完成。之後的主選單事件不屬
 
 `BUCK`，Y（全新 scratch）與 N 兩條，各做 control／2×／3×：
 
-- 主選單已出現、第 24 列未改寫的時間點（510.6M）：前後綴 stamp 仍 active，
+- 主選單已出現、第 24 列未改寫、且沒有進行中 dispatcher 呼叫的時間點
+  （Y 510.624M、N 510.61M）：前後綴 stamp 仍 active，
   差異只在兩個矩形內。
 - 第 24 列改寫之後（驗收時在 511.0M 取終態；phase-246 只量到 510.65M，
   511.0M 由驗收重播本身產生）：active 為零，overlay 與 baseline 全畫面零差。
 - control／2×／3× 的 indexed、共同收據欄位、FileOps 相等；Y 的 scratch 內容相等。
+
+判定（2026-09-26）：Y、N 兩條的中間態與終態全部通過，見第二百四十七階段。
