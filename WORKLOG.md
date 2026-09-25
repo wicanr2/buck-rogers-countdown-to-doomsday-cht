@@ -3178,3 +3178,15 @@
   審查「可進 production」，3 殘留（nil 測試、Install 註解、
   hash／映像 hammer）全補，`go test -race ./session/` 全綠。
   fork 本機提交 `923f8e5`，未推遠端；Issue #16／#18 保持 OPEN。
+
+## 2026-09-25 — #16 第二片：bootroot 前檢 READY＋實作
+
+- 接 235（owner 只收 bytes），切出 composition 側：fork 規格 236
+  `bootroot.Prepare`（original 核對、save 分離 SameFile＋反巢狀、
+  全樹複製 0600/0700、save 重算；EXE 交接由 launcher 從 save 重讀）。
+- DRAFT 首輪審查四項必改；實作後 production 審查抓到 `..` 逃逸真 bug
+  與兩處清理洩漏，全修並補測試（反向巢狀、別名、父層缺失、dotfile、
+  無副作用、併發、同根競唯一勝、Prepare→BootOriginal 端到端）；
+  終審通過，`go test -race -count=2` 全綠。
+- fork 本機提交未推遠端；launcher 本體、owner 接線、存讀檔、視窗仍
+  缺，Issue #16／#18 保持 OPEN。

@@ -202,6 +202,12 @@ Access 驗可寫），LoadEXE→Install→Running，失敗即關閉；
 original 樹核對、observer、多層聚合、存讀檔、視窗仍排除。
 fork 本機提交 `923f8e5` 未推遠端；Issue #16／#18 保持 OPEN。
 
+最新 #16 第二片：composition 前檢（fork 規格 236 `bootroot.Prepare`）
+已走 DRAFT→審查→實作→production 審查→全修→`go test -race -count=2`
+全綠，含 Prepare→BootOriginal 端到端。original 核對、save 分離複製、
+EXE 交接（launcher 從 save 重讀）就緒；launcher 本體、owner 接線、
+存讀檔、視窗仍缺。fork 本機提交 `8e5e18d` 未推遠端。
+
 下一片 #18 維持 DRAFT：通用逐步觀測接縫尚無 Oracle 的初始條件、
 中斷點、A0000 守衛、動態 hook 與 stub 順序，也沒有封閉 owner 可用的
 `Watcher.Install` 安裝介面；不能直接替換原版觀測器。畫面
