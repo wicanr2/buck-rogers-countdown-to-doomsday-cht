@@ -2,11 +2,25 @@
 
 更新：2026-09-25
 
+已定版譯文／字型（中文印刷本優先）：使用者已選**中文印刷本優先**，
+翻譯代理依中文印刷手冊 crosswalk 第 9–12 筆提出的四處修訂正式入版：
+`text/manual.zh-TW.tsv`（SHA-256
+`186b0844b7040a461c2e06f2a3e670e86dd28f3773cc46c3a6516e340c773f0b`）。
+全部 24 份 TSV 的 `font/characters.txt` 為 1,046 字
+（SHA-256 `e6973763953ba738854376bdcc049a87b76540616b6626405ed1fb5489073b0b`）；
+本機倚天 2× 字型與 manifest 已重建、唯讀核驗，39／39 E1
+plan 及既有局部 oracle 重跑通過。主代理已註記這四處中文印刷本與
+英文原版語意有實質差異（醫學預設技能、無重力能力、無密碼金融卡、
+火焰槍），正式以中文印刷本為準，英文差異保留於規格 024 勘誤段。
+對照與雜湊見[規格 024 的第五次勘誤](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
+字型二進位、原版與掃描仍只留本機；Linux 玩家路徑尚未完成。
+
 使用者已選手冊混排方向：保留有來源依據的 RAM、Deimos、Stockade
 英文專名，改善 3× 英文字距與詞界；排除把全中文示意圖的新譯名
-直接寫入正式 catalog。現行 2× 字型因第三頁一筆確證詞義校譯
-重建為 1,045 字，手冊首題 control／2×／3× 與正式雙層 owner
-已用此字型重跑同狀態，細節見[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
+直接寫入正式 catalog。第三頁一筆確證詞義校譯**當時**使 2×
+字型成為 1,045 字，手冊首題 control／2×／3× 與正式雙層
+owner 曾以該身分重跑；最新字型身分見上段及
+[規格 024](docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
 混排演算法當時仍在 DRAFT；後續 READY 與首題局部驗收見下文，
 先前固定字格的收據不得冒充新排版完成。2× 原有顯示與原版
 遊戲語意維持不變。此切片由
@@ -74,11 +88,16 @@ A/B：2× RGBA 與歷史收據逐位元同值；3× E1 僅改核准手冊矩形�
 與倍率／owner 前後共 12 組正規化狀態比較均相等。這仍是
 無頭固定 checkpoint，不等於 Linux 正常玩家路徑；E1 分支
 仍 READY，#21／#14 保持開放。
+同一合法原版序列的第三題亦已以現行 `manual.log.57` 取得
+`RAM` 單 token、14px 字首的 3× E1 局部收據；2×／3×
+矩形外零差，六組正規化狀態相等。舊第三題譯文字數 101、
+現行 104，舊 2× 圖不能作逐位元基準；本次 owner 與現行
+正式 2× 繪製相等。其他英文專名與 Linux 玩家視窗仍未驗。
 
 本次再核對 3× 設定面板 A 版已在正式前端採倚天原生 24×24
 中文／16×24 ASCII，舊 22 點衍生版會在來源檢查遭拒；此決定
-僅及 host 面板，遊戲畫布 3× 中文仍採既定 22×22 墨跡。現行
-1,046 字字型與校譯後手冊 TSV 已重跑合法首題 control／2×／3×
+僅及 host 面板，遊戲畫布 3× 中文仍採既定 22×22 墨跡。當時的
+1,046 字字型與校譯後手冊 TSV 曾重跑合法首題 control／2×／3×
 同狀態 A/B，並以正式雙層 Snapshot owner 核對相同 RGBA；這是
 固定 checkpoint 的局部收據，Linux 玩家 session 仍未接通。
 第九頁四方向單鍵在指定合法 state 及 `361000000→370000000`
@@ -97,8 +116,12 @@ checkpoint 配對；獨立複審仍留有跨 goroutine 排他及正式 Owner
 machine steps 的讀寫競爭；test-local atomic CAS gate 的
 零步鎖存負例經 Docker `-race` 重跑通過，但尚非正式 Owner
 或 Linux session 的安全證明。規格 019 仍 DRAFT、#18 開放。
+其後 tagged Delta gate 補上完整 stub／Step 提交、同步 stub
+重入、view 故障後丟棄及單一 atomic 首錯排序；定向對抗
+測試與合法首題 9／3 配對通過獨立複審。這只更新隔離草案
+的證據，不含正式 Owner boot／Close／Advance，故仍 DRAFT。
 手冊前 18 筆來源核對另訂正 9 筆確證誤譯；39 段 catalog／版面
-檢查通過，24 份 TSV 的字元聯集重生為 1,046 字（SHA-256
+檢查通過，當時 24 份 TSV 的字元聯集重生為 1,046 字（SHA-256
 `7aa7ed9f4fbff670cdba023b8c5f3a20486423c42393b94495c3c7da6eace55b`）。
 本機 2× 倚天子集已重建驗證，與 3× A 版共同通過正式雙倍率
 manifest 前檢；這不是所有手冊輸出事件的正常玩家路徑驗收。

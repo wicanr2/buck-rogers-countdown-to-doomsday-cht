@@ -467,3 +467,44 @@ manifest SHA-256
 新收據目錄重跑通過。私有完整收據只在 ignored
 `workplace/manual-recheck-20260925-XXfChfDp/ab-1045/` 與
 `owner-1045/`；限縮驗收邊界與上一節相同。
+
+## 2026-09-25 第五次勘誤：手冊第 9–12 筆與本機字型（中文印刷本優先定版）
+
+前節 1,045 字為本次校譯前身分。以中文印刷手冊掃描
+`SCAN0352_012.jpg`／`014.jpg`／`015.jpg`／`016.jpg`
+（印刷頁 20／24／25／28；索引見 `text/manual-source-crosswalk.tsv`）
+及既有 OCR 行，翻譯代理提出修改 `manual.rules.medic_skills`、
+`manual.rules.skills_mix`、`manual.rules.money`、
+`manual.rules.damage` 四筆：醫學技能預設狀態與用途、每位隊員
+的無重力能力、無密碼金融卡、金星蛙只免疫火焰槍。主代理
+再核對英文原版，發現它對醫學技能寫「本作未使用／治療已診斷
+疾病」、金融卡寫「遺失不可補發」、金星蛙寫「免疫火」，
+組隊段落的無重力措辭也較弱。**使用者已選中文印刷本優先；
+以下四筆 TSV 與字型為現行定版，英文差異僅註記不採。**未修改原版題目、答案或事件 key。
+
+主代理在無網路 Docker 對全部 24 份正式繁中 TSV 逐檔 lint、
+手冊 crosswalk／catalog 交叉驗證，重新執行
+`catalog_font.py chars`、`eten_font.py build`／`verify`；
+中文印刷本定版身分為：
+
+- `text/manual.zh-TW.tsv` SHA-256
+  `186b0844b7040a461c2e06f2a3e670e86dd28f3773cc46c3a6516e340c773f0b`。
+- `font/characters.txt` 1,046 行，SHA-256
+  `e6973763953ba738854376bdcc049a87b76540616b6626405ed1fb5489073b0b`。
+- 本機倚天 top-pad 2× GOLEMFNT SHA-256
+  `14fca041c98198f778b06552a2a2fc34773b1fbdcf9e6683e72ea244228d4dca`；
+  manifest SHA-256
+  `703cb633fad24001c6041cb3cf9eed9397c49bc1d9a519bdcfac35082297e4b3`，
+  格式欄 `glyphs=1046`。
+
+候選字型由本機已購倚天來源重建，二進位與 manifest 僅留 ignored
+`workplace/current-font/`，不可入 Git／GitHub／公開包。
+定版譯文以正式 E1 plan 重新跑 39／39 段 checked draw、
+Snapshot／Restore 與 `-race`；既有合法首題、錯答換題、
+第三題與答對返回的本機 owner oracle 亦以新字型重跑。
+首題 2×／3× RGBA SHA-256 仍分別為
+`1b075d714040d04736cb4c36693ededdb336a0a421bf154c86b722defe97e07e`／
+`6201a394f78608f919dcc74c41ba3a0c0d5a0eaa914a7edc43d20d17f143d49f`；
+其他三情境量測見[第二百二十三階段](../re/phase-223-manual-first-question-host-mixed-script-draft.md)。
+這些仍是固定 checkpoint 的無頭定版驗證，不是正式 Linux
+玩家路徑或 39 段逐題執行完成。

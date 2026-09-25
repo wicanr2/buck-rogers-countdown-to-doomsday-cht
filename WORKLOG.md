@@ -3057,5 +3057,85 @@
   全為 `equal:true`。精確 RGBA／狀態摘要見 phase 223，
   原版存態及原始收據留在被忽略的本機工作區。
 - 此為固定 checkpoint 的局部驗收，不是冷開機 Linux 玩家
-  視窗，也未覆蓋其餘 38 題或不同英文詞界的 runtime 樣本。
+  視窗，也未覆蓋其他手冊段落或不同英文詞界的 runtime 樣本。
   規格 005 E1 分支仍 READY，Issue #21／#14 不關閉。
+
+## 2026-09-25 — 第三題 RAM 詞界補證
+
+- 主代理沿用 phase156 `target-003` 的九筆原版 presentation
+  事件與四筆 BIOS 鍵，擴充被忽略的本機 owner oracle；
+  3× 正式 E1 plan 對現行 `manual.log.57` 的 `RAM` 驗
+  單 token、同列與 14px 字首。Docker `-race`、2×／3×
+  原版 indexed／palette／記憶體、矩形外零差及六組正規化
+  machine／DOS 狀態比較均通過；私有收據不入 Git。
+- 舊第三題 2× 截圖與現行不同，查明舊譯文 101 字、現行
+  104 字；未把跨譯文版本差異當作排版回歸。詳細摘要見
+  phase 223。其他專名與正式 Linux 玩家路徑仍未驗。
+
+## 2026-09-25 — 手冊第 9–12 筆來源衝突與私有字型候選
+
+- 低階翻譯代理對中文印刷手冊印刷頁 20／24／25／28 的既有
+  crosswalk 與 OCR 校對，暫改醫學技能、無重力能力、金融卡、
+  金星蛙四個 `manual.rules.*` key。主代理再核對英文原版手冊，
+  發現四處語意不一致；來源優先序已請使用者決定，暫存 TSV
+  及字元清單**不提交**，不冒稱確證定版。
+- 主代理在無網路 Docker 對 24 份正式 TSV 逐檔 lint，重跑
+  手冊 crosswalk／catalog 驗證，從候選譯文重生暫存字元清單
+  1,046 字，以及本機倚天 top-pad 2× 候選 GOLEMFNT／manifest。
+  `eten_font.py verify` 通過；完整 SHA-256 見規格 024。
+- 以新字型重跑 39／39 E1 plan 的 `-race` 與 vet，並重播
+  首題、錯答換題、第三題 RAM、答對返回的 2×／3× 本機
+  owner oracle。首題最初因一次性容器的 `/tmp` 輸出目錄
+  未建立而失敗；建立明確暫存目錄後同命令重跑通過，屬
+  測試環境問題，非字型或產品缺陷。其餘情境亦通過。
+  私有原版、字型與完整收據均不入 Git／GitHub；測試通過
+  不解決來源忠實度取捨。
+
+## 2026-09-25 — Delta 觀測器草案的步進與首錯閘門
+
+- 獨立複審先找出提交前最後檢查、`fireStub` 與 `Step` 間
+  的額外步進窗口，以及雙層 fault、view 複製後故障與未知
+  step 收據；後續又以同步 stub 回呼及兩步預算找出等候
+  死結與多步搶先提交。舊缺口與修正順序保留於規格 019，
+  不把首版測試通過誤記為完成。
+- 被忽略的 dosgolem fork 目前以單一提交 attempt 涵蓋
+  `fireStub`／非 stub 的 `Step`；已提交的當步可完成，
+  fault 鎖存後第二步前收束。首錯由 atomic fault pointer
+  CAS 排序，gate CAS 只關步進許可。同步 stub 回呼重入
+  `Run`／`Install`／view、提交前後競爭及兩種首錯交錯均有
+  可重播測試。主代理與獨立複審以 Docker `-race` 通過；
+  合法 Buck 首題 9 筆 observation／3 筆 presentation 配對
+  也通過。仍只屬 tagged DRAFT，正式 Owner、Linux 視窗
+  與完整 session 未接，Issue #18 保持開放。
+
+## 2026-09-25 — 手冊第 13–20 筆唯讀來源稽核
+
+- 較輕量的翻譯代理對現行 TSV、crosswalk 及本機英文手冊
+  快照（SHA-256 `e8528a31b66d76e7162abe358bff1f27d7d5a5d4070914beee470867e59e728a`）
+  逐筆核對，**未修改譯文**。第 14–15 筆暫未見明確
+  英文語意衝突；第 13 筆有範圍量詞候選，第 16 筆
+  「純種人類」與英文「未經改造」不盡相同。
+- 第 17 筆火星條目相對英文段落可能少了沙漠跑者續段；
+  第 18 筆多出未在該英文回收段落內的帳戶用途；第 19 筆
+  兩個武器名稱及段落範圍待校；第 20 筆將武器命中加值
+  寫成「攻擊力」有誤導傷害值的風險。上述都是**候選**：
+  本輪掃描文字辨識未取得可靠結果，中文印刷頁尚未目視
+  核對，crosswalk 頁碼／錨點不能冒充已核對的原文。待
+  來源優先序與掃描證據確定後再決定是否修 TSV／重建字型。
+
+## 2026-09-25 — 收尾盤點：中文印刷本優先定版
+
+- 使用者決定收尾先做「可提交盤點」，手冊來源採**中文印刷本優先**；
+  第 9–12 筆四處修訂（`medic_skills`／`skills_mix`／`money`／`damage`）
+  由候選轉為現行定版，英文差異僅註記於規格 024。
+- `text/manual.zh-TW.tsv` SHA-256
+  `186b0844b7040a461c2e06f2a3e670e86dd28f3773cc46c3a6516e340c773f0b`；
+  24 份 TSV 重生 `font/characters.txt` 1,046 字，SHA-256
+  `e6973763953ba738854376bdcc049a87b76540616b6626405ed1fb5489073b0b`，
+  與工作樹一致。逐檔 lint、手冊 crosswalk／catalog 交叉驗證通過。
+- `tools/test_eten_font.py` 的手冊字元清單釘選由舊
+  `455d8f1a…` 更新為 `f48517bc…`（961 行 manual-only），全套
+  `python3 -m unittest discover -s tools -p "test_*.py"` 249 項通過。
+- CONTEXT、規格 024、font/README 的「待決／候選／不提交」字樣已改為
+  中文印刷本優先定版；字型二進位與 manifest 仍只留本機，不入版控。
+  Linux 玩家路徑、E1 CONFORMED 與其餘 Issue 範圍不變。

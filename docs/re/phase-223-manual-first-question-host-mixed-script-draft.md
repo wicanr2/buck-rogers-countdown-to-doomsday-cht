@@ -329,6 +329,36 @@ SHA-256 為
 `8dd5789e07b42a195c0bb392cd75e489af09521151ca25b4b3fea33a6e818a59`。
 
 這些是既有合法 checkpoint 的**無頭局部同狀態**證據，仍不是
-冷開機至返回的正式 Linux 玩家視窗，也不證明其餘 38 題逐題
+冷開機至返回的正式 Linux 玩家視窗，也不證明其他手冊段落逐題
 執行或不同英文專名的實際玩家路徑。規格 005 的 E1 分支仍
 READY；Issue #21 與 #14 保持 OPEN。
+
+## 2026-09-25：第三題 RAM 詞界的額外合法存態
+
+同一 phase156 原版序列另有 `target-003`：錯答兩次後，第三次
+`request` 指向 `manual.log.57.acidic_victory`，現行正式譯文
+含一個 `RAM`。在被忽略的本機 oracle 加入固定的九筆
+begin／clear／request 事件、四筆 BIOS 鍵與三個 generation
+錨點；3× 正式 E1 plan 必須把該 `RAM` 留在同一個 token／同一行，
+`R→A→M` 的實體 x 前進各為 14px，不能靠畫面容納就算通過。
+主代理於無網路 Docker 以唯讀原版輸入重跑 `-race` 通過。
+
+第三題終態的 2×／3× owner RGBA SHA-256 分別為
+`16e3deccbc282efef74772bc477831e4423b2f82906fbf27d732a4b5d7b3425c`／
+`68d18805ac1d3587db63494cd89cfdb8dff6cece0f8dfbb3dbf1118473ef9201`；
+核准矩形內分別變 6,612／12,534 像素，外部均零。原版 control、
+2×、3× 的輸入排程、indexed、palette、記憶體收據一致；
+`cmd/state-compare` 比較 control 與 owner 前後共六組，皆
+`equal:true`，machine SHA-256
+`bd80fe624434488ff993d9d76cfeb8dfd7c10cafcc9113b99f5d073dd8717c4f`，
+DOS SHA-256
+`8dd5789e07b42a195c0bb392cd75e489af09521151ca25b4b3fea33a6e818a59`。
+私有收據存於被忽略的
+`workplace/manual-owner-e1-20260925/target-003/`。
+
+本案的舊第三題譯文 101 字、現行 104 字，所以**舊 2× RGBA
+不等於現行 2× 是譯文版本差異，不能當作 E1 字距回歸**；
+現行 2× owner 與同次正式 2× 繪製逐位元相同，首題與第二題
+仍保有各自的 2× 歷史逐位元收據。此新增情境只覆蓋另一段
+`RAM` 的實際詞界，不代表 Deimos、Stockade 或 39 段都已
+逐題正常玩家重播，Issue #21 仍 OPEN。

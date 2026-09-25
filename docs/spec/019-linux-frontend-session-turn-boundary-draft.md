@@ -1053,3 +1053,46 @@ goroutine，也不得繼續 Step。`recover` 範圍不得包住 Owner 或 DOS �
 
 任何 production 驗收反例都使該實作回到 DRAFT；不得以 toy model、裸 Oracle、
 reflection／`unsafe`、外洩 getter 或 error 字串解析補過。
+
+#### 2026-09-25 Delta gate 首次實作與獨立競態複審（仍 DRAFT）
+
+本機 ignored tagged runner 已把 `Run`／`Install` 的 test-local
+原子排他候選搬到 DRAFT runner，主代理再把
+`DraftCheckpointView` 納入同一排他。合成 callback 內的跨
+goroutine `Run`／`Install`／view 讀取、同 goroutine 重入與
+首次 fault 負例，在無網路 Docker 的 `-race`／vet 通過；
+合法 Buck 首題 checkpoint 與 `Watcher.Install` 基線仍為
+9 筆 observation、3 筆 presentation。這只證特定排程，
+不表示 READY。
+
+獨立唯讀複審另指出兩個未封閉 P0：競爭可落在最後一次
+fault 檢查與 stub／`Machine.Step` 之間，故仍可能多一步或
+在末步回成功收據；inner `real.fault` 與 outer atomic fault
+各自鎖存，較晚競爭可能遮蔽較早 callback／installer fault。
+另有 P1：view 複製中途的新 fault 仍可能交出非空結果，
+並行拒絕收據沒有可信的 StepsBefore／After。正式接線前須
+定義並測到 Step／receipt 線性化點及單一首錯順序，補對抗性
+交錯負例；callback 內先等待 contender 的舊測試不足。
+因此此 tagged Delta runner、規格 019 的觀測器子分支及
+Issue #18 均保持未完成，不能進 production Owner。
+
+#### 2026-09-25 Delta gate 對抗性修正複審（仍 DRAFT）
+
+上段 P0／P1 是**首次候選的歷史發現**，不是目前 tagged
+草案的未修狀態。被忽略的 dosgolem fork 已將 `fireStub` 與
+非 stub 的 `Machine.Step` 納入同一個已授權 attempt；提交前
+競爭會使該步零前進，提交後競爭立即鎖存 fault，至多完成
+這個已授權 attempt，第二步前停止。同步 stub 回呼重入
+`Run`／`Install`／view 不再等候自身返回。view 複製後再次
+檢查 fault；並行拒絕收據不假裝知道仍由另一執行緒掌握的
+step 數。首錯唯一排序點定為 atomic fault pointer 的 CAS；
+gate CAS 只決定步進許可，不決定哪個錯誤先取得 `Cause`。
+
+定向測試固定了提交前／提交後、兩步預算、同步 stub 重入、
+callback 與競爭故障雙向排序，以及「gate 已關但競爭者
+尚未鎖錯」的交錯；無網路 Docker 的 `-race` 與合法 Buck
+首題 checkpoint 的 9 筆 observation／3 筆 presentation
+配對均通過，獨立唯讀複審於**此限定範圍**未見新 P0。
+這些仍是 build-tag 隔離的 DRAFT 實驗，未含正式 Owner 的
+boot／Close／Advance、Linux 冷開機玩家視窗或完整輸入
+生命週期，不得升 READY／CONFORMED，也不得關閉 Issue #18。

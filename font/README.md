@@ -167,3 +167,14 @@ manifest SHA-256
 `6512eafb389b78e6cbfe09e693e39ce27ddab5fc6df1e61538440be73f12a822`。
 `eten_font.py build`／`verify` 通過；本機字型與 manifest 仍僅在
 ignored `workplace/current-font/`，不得散布。
+
+2026-09-25 手冊 crosswalk 第 9–12 筆四處中文印刷本修訂，
+使用者已選**中文印刷本優先**，上一段 1,045 字僅保留為校譯前收據。
+現行 24 份 TSV 產生的 `font/characters.txt` 定版為 1,046 字，SHA-256
+`e6973763953ba738854376bdcc049a87b76540616b6626405ed1fb5489073b0b`；
+本機定版 top-pad GOLEMFNT SHA-256 為
+`14fca041c98198f778b06552a2a2fc34773b1fbdcf9e6683e72ea244228d4dca`，
+manifest SHA-256 為
+`703cb633fad24001c6041cb3cf9eed9397c49bc1d9a519bdcfac35082297e4b3`。
+同一個 `eten_font.py verify` 唯讀核驗通過；兩份私有產物不入版控。
+來源衝突及原版局部驗收限度見[規格 024](../docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
