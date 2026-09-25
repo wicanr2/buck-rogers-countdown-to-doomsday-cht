@@ -3245,3 +3245,11 @@
   排入與取走皆由正式收據表達，零 checkpoint。
 - 詳見 docs/re/phase-225-sealed-input-consumption.md；
   fork 本機提交未推遠端。語意變化（選單推進）待畫面比對。
+
+## 2026-09-25 — TANDY 等待按鍵入口判別（phase-226）
+
+- 無鍵 120M 停 TANDY 橫幅、`0CF4` 迴圈、int16h 63 萬問、IRQ1 零次；
+  預置空白鍵（TypeKeys）120M／300M 皆原地踏步，機器佇列殘留 2 碼。
+- 同序列 sealed 投遞（BDA 環）15×10M 每回合 1→0，覆蓋 TANDY 區。
+  結論：TANDY 等待不讀 `d.Keys`，讀 BDA 環或硬體；真實輸入須走
+  sealed Deliver，診斷 `-keys` 不能用於過此關。消耗≠推進，待畫面比對。
