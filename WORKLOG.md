@@ -3401,3 +3401,10 @@
 - 既有問題（非本次引入）：`catalog_font.py lint text/*.zh-TW.tsv` 回報跨 catalog
   重複 key `character.skill.notice`；乾淨 clone 跑 `go vet ./...`（-mod=mod）會把
   `golang.org/x/sys` 由 indirect 改為 direct，go.mod 未 tidy。
+
+## 2026-09-26 — 規格 026 READY 審查
+
+- 獨立審查逐像素核對 phase-246 收據，時序主張成立；指出主選單事件區間措辭、
+  `VGA.resetMode`（int 10h AH=00）清畫面不經 A000 觀察、介面欄位未定、511.0M
+  未取樣四項。已修訂並升 READY。
+- 待辦（通用，非本規格引入）：dosgolem 模式切換應讓所有覆繪層失效。
