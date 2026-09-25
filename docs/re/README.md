@@ -1,5 +1,7 @@
 # 原版觀測證據索引
 
+- [第二百四十九階段：加入隊伍路徑的決定性 A/B](phase-249-roster-join-deterministic-ab.md)：dosgolem 規格 237 修正後，間隔 3 秒的 control 與 2×／3× 記憶體雜湊相同，無大小寫重複檔；覆繪只在第 24 列。
+- [第二百四十八階段：加入隊伍路徑的暫存層非決定性](phase-248-roster-join-scratch-nondeterminism.md)：暫存層新建檔的主機 mtime 經 DTA 進入記憶體；寫時複製產生大小寫重複檔。
 - [第二百四十七階段：儲存詢問離頁正式 A/B](phase-247-save-prompt-leave-runtime-ab.md)：`BUCK` 回答 Y／N 後回主選單；中間態 stamp 保留、第 24 列首寫時成對失效，終態全畫面零差，scratch 存檔三組相同。
 - [第二百四十六階段：儲存詢問離頁時序](phase-246-save-prompt-leave-timing.md)：Y／N 都先畫主選單，第 24 列約 510.64M 才改寫；覆繪應保留到該寫入時失效。
 - [第二百四十五階段：儲存詢問前後綴覆繪正式 A/B](phase-245-save-prompt-affix-runtime-ab.md)：四個名字雙倍率同狀態，差異只在前綴與後綴、名字格零差；move／refuse 回歸不變；離頁需擴充路徑，未驗。

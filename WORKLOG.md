@@ -3415,3 +3415,14 @@
   control／2×／3× 全通過；規格 026 CONFORMED，025 改為 CONFORMED。
 - 方法：中間態不可取在 dispatcher 呼叫中途，runner 會拒絕出收據；要先從收據列出
   事件起訖步數再挑空檔。
+
+## 2026-09-26 — 暫存層決定性（phase-248、249；dosgolem 規格 237）
+
+- 名冊加入路徑的 control 記憶體雜湊隨主機時鐘變動：`dosDateTime` 讀主機 mtime。
+  另有寫時複製只比精確大小寫，產生 `CHARS.DAX`／`CHARS.dax` 兩份。
+- dosgolem fork `21f750c`：暫存層檔案 mtime 設為虛擬時刻；建檔與寫時複製先做
+  不分大小寫查找。規格 237 經獨立審查 READY，驗收後 CONFORMED。
+- 規則：含存檔的同狀態比較，scratch 初始檔要 `cp -p` 保留 mtime，並至少跑兩次
+  間隔超過 2 秒的 control，確認記憶體雜湊穩定後再比 overlay。
+- 事故：一次 `&&` 鏈中途失敗，後面的 docker 用錯基準路徑掛載；事後檢查無 root 目錄
+  殘留。之後掛載一律用絕對路徑並先 `test -d`。
