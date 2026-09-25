@@ -3236,3 +3236,12 @@
   Deliver 一鍵後 Advance 回 1→0，無鍵回 0→0。
 - 獨立審查抓到 fixture `JZ FB` 位移差一 byte（應 `FA` 才回到
   MOV 重查），已修重跑全綠；其餘四項通過。fork 本機提交未推遠端。
+
+## 2026-09-25 — 真機按鍵消耗首證（phase-225）
+
+- launcher 新增 `-keys`（每回合 Deliver）與 receipt 前後 pending 欄：
+  3×1M 步空白鍵累積 1→1／2→2／3→3（開機段不輪詢）；
+  10×10M 步每回合 1→0（3M–10M 步間開始消耗）。
+  排入與取走皆由正式收據表達，零 checkpoint。
+- 詳見 docs/re/phase-225-sealed-input-consumption.md；
+  fork 本機提交未推遠端。語意變化（選單推進）待畫面比對。
