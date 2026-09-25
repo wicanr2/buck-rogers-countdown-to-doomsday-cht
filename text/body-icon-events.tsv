@@ -1,8 +1,7 @@
 event_key	sequence	text_key	original_length	original_sha256	caller	background	foreground	row	column
 body.icon.confirmation	1	body.icon.confirmation	17	7425046ea84bd8ee003f37778b6295b55ffceba2ea15e5f49ff1bc16ea718790	37F1:101E	0	13	24	0
-body.icon.save_prompt	2	body.icon.save_prompt	8	e1fa2a383f79b2f88b49a1c2e1fc55ac644b215f38321184da2ac5b137d9dae0	37F1:101E	0	13	24	0
-body.icon.old.label	3	body.icon.old.label	3	cba06b5736faf67e54b07b561eae94395e774c517a7d910a54369e1263ccfbd4	1C41:2708	0	15	6	8
-body.icon.old.action	4	body.icon.old.action	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:2729	0	15	10	3
-body.icon.new.label	5	body.icon.new.label	3	11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437	1C41:274A	0	15	12	8
-body.icon.new.action	6	body.icon.new.action	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:276B	0	15	16	3
-body.icon.selection.instruction	7	body.icon.selection.instruction	20	1e748ea4e0f00d9d879d97a49952e7d7864e199af2d132e04180028863681508	37F1:101E	0	13	24	0
+body.icon.old.label	2	body.icon.old.label	3	cba06b5736faf67e54b07b561eae94395e774c517a7d910a54369e1263ccfbd4	1C41:2708	0	15	6	8
+body.icon.old.action	3	body.icon.old.action	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:2729	0	15	10	3
+body.icon.new.label	4	body.icon.new.label	3	11507a0e2f5e69d5dfa40a62a1bd7b6ee57e6bcd85c67c9b8431b36fff21c437	1C41:274A	0	15	12	8
+body.icon.new.action	5	body.icon.new.action	14	7c6cfd76225a24bff6c8a93215e2caf06ccda366ba732f8166e511d3eb6fe381	1C41:276B	0	15	16	3
+body.icon.selection.instruction	6	body.icon.selection.instruction	20	1e748ea4e0f00d9d879d97a49952e7d7864e199af2d132e04180028863681508	37F1:101E	0	13	24	0

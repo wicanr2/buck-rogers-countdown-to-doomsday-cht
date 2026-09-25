@@ -15,7 +15,7 @@ class BodyIconTextSafeRectTests(unittest.TestCase):
             rect_path.write_text(rects or (ROOT / "text/body-icon-text-safe-rects.tsv").read_text(), encoding="utf-8")
             event_path.write_text(events or (ROOT / "text/body-icon-events.tsv").read_text(), encoding="utf-8")
             text_path.write_text(texts or (ROOT / "text/body-icon.zh-TW.tsv").read_text(), encoding="utf-8")
-            subject.validate(rect_path, event_path, text_path, ROOT / "text")
+            subject.validate(rect_path, event_path, ROOT / "text/body-icon-affixes.tsv", text_path, ROOT / "text")
 
     def test_accepts_exact_rectangles(self):
         self.validate()
@@ -27,7 +27,8 @@ class BodyIconTextSafeRectTests(unittest.TestCase):
         variants = [
             ("\ufeff" + rects, events, texts),
             (rects.replace("64\t48\t24", "64\t48\t32", 1), events, texts),
-            (rects.replace("save_prompt\tbody.icon.save_prompt", "confirmation\tbody.icon.save_prompt"), events, texts),
+            (rects.replace("save_prompt\tbody.icon.save_prompt.prefix", "confirmation\tbody.icon.save_prompt.prefix"), events, texts),
+            (rects.replace("0\t192\t40\t8\t0\t192\t5", "0\t192\t64\t8\t0\t192\t8"), events, texts),
             (rects.replace("17\t1\tsingle-line-reject", "1\t1\tsingle-line-reject", 1), events, texts),
             (rects.replace("single-line-reject", "clip", 1), events, texts),
         ]

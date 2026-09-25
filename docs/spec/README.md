@@ -25,7 +25,7 @@
 | [第八頁劇情文字輸出端覆繪](017-story-page8-overlay-ready.md) | CONFORMED（僅四行與已量 Enter 進出） | 130 return edge、正式雙倍率 runtime／A/B、完整英文清除矩形及 page8→9 失效已驗；其他路徑未驗。 |
 | [加入角色後功能選單輸出端覆繪](018-post-join-menu-overlay-draft.md) | 固定七列路徑限縮 CONFORMED；其餘 DRAFT | 合法加入角色存態的七列重畫與 row20 普通回寫前清層已有正式逐寫入收據、雙倍率同狀態 A/B；真正 Exit、提示、重入與存讀檔仍未驗。 |
 | [Linux 前端失敗即關閉 session 回合邊界](019-linux-frontend-session-turn-boundary-draft.md) | 限縮 READY 候選待獨立審查 | 最小 typed session 回合、整批面板鍵盤隔離、零步暫停、step receipt 與失敗後 Close；不含 cold boot、多作用層、存讀檔或可玩前端。 |
-| [儲存詢問的名字前後綴覆繪](025-save-prompt-name-affix-overlay-draft.md) | READY | 取代 009 的 save_prompt 固定身分；前後綴比對、名字格保留原版墨跡。 |
+| [儲存詢問的名字前後綴覆繪](025-save-prompt-name-affix-overlay-draft.md) | 限縮 CONFORMED（問句出現時） | 取代 009 的 save_prompt 固定身分；四個名字雙倍率同狀態、名字格零差已驗；離頁未驗。 |
 | [技能頁離開確認提示繁中覆繪](020-skill-exit-confirmation-overlay-draft.md) | 限縮 CONFORMED（僅兩句本體與固定無頭路徑） | 兩個合法 state 的 Escape→N／Y、2×／3× 正式 A/B 已驗；尾碼零覆繪且終態無殘層。存讀檔、Restore bridge、Linux 視窗與冷開機未驗。 |
 | [加入角色後真正 Exit 問句本體覆繪](021-post-join-exit-prompt-body-only-draft.md) | 限縮 CONFORMED（固定 N／Y→Y 路徑、兩句本體） | 正式 watcher／presenter 已完成 2×／3× 同狀態 A/B 與已量生命週期驗收；原版多色六格尾碼保留，其他路徑與 Linux 玩家視窗未驗。 |
 | [第九頁固定單行劇情輸出端覆繪](022-story-page9-overlay-draft.md) | 限縮 CONFORMED（固定入頁＋Ctrl+C 退出 DOS 的 Stop 清層） | 正式雙倍率入頁 A/B、同次 active 1→0 與終態零殘層已驗；遊戲內自然離頁與其他出口未知。 |

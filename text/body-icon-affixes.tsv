@@ -1,0 +1,2 @@
+event_key	caller	background	foreground	row	column	prefix_length	prefix_sha256	suffix_length	suffix_sha256	slot_min	slot_max
+body.icon.save_prompt	37F1:101E	0	13	24	0	5	f5f25c5769e6107d2cec7dec87265599a9af37156f30add96e2a6daa2d4a4658	2	23eeade931d8902dde575f26bb466a3c786484e46471efa7fa5b054636e7298b	1	15

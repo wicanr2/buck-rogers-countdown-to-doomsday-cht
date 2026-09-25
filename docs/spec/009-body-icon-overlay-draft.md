@@ -4,6 +4,8 @@
 範圍：角色建立流程的身體圖示選擇、圖示確認與 confirm 路徑的儲存詢問文字
 更新：2026-09-23
 
+`body.icon.save_prompt` 的身分已由[規格 025](025-save-prompt-name-affix-overlay-draft.md)取代為名字前後綴比對。
+
 本規格沿用 [001 功能選單文字輸出端覆繪](001-menu-text-output-overdraw-draft.md) 的
 「原版完整繪製、輸出端另建覆繪層、清除／轉場使 stamp 失效」原則；本規格只補上
 身體圖示畫面的事件、矩形與動態圖示邊界，不複製或改寫 001 的通用 dispatcher 契約。

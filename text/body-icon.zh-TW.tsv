@@ -1,6 +1,7 @@
 key	translation	source
 body.icon.confirmation	這個圖示可以嗎？	runtime-interface
-body.icon.save_prompt	儲存角色？	runtime-interface
+body.icon.save_prompt.prefix	儲存	runtime-interface
+body.icon.save_prompt.suffix	？	runtime-interface
 body.icon.old.label	舊	runtime-interface
 body.icon.old.action	準備動作	runtime-interface
 body.icon.new.label	新	runtime-interface

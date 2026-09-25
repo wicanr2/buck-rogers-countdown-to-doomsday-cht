@@ -1,6 +1,6 @@
 # 025 — 儲存詢問的名字前後綴覆繪
 
-狀態：READY（2026-09-26 獨立審查後修訂）
+狀態：限縮 CONFORMED（問句出現時的覆繪；離頁未驗）
 範圍：身體圖示確認 Y 之後的 `Save <角色名>? ` 儲存詢問
 更新：2026-09-26
 
@@ -9,6 +9,7 @@
 
 證據入口：
 
+- [第二百四十五階段：前後綴覆繪正式 A/B](../re/phase-245-save-prompt-affix-runtime-ab.md)
 - [第二百四十四階段：儲存詢問名字模板證據](../re/phase-244-save-prompt-name-template.md)
 - [第二百四十三階段：正常命名直播鏈](../re/phase-243-named-live-chain-ab.md)
 - [第四十九階段：儲存詢問與角色完成生命週期](../re/phase-49-save-prompt-and-character-completion-lifecycle.md)
@@ -87,3 +88,7 @@ row、column，長度也落在 8–22 之間。確認問句的末 2 bytes 與儲
 名字 `Z`、`BUCK`、`A 1.?`、`ABCDEFGHIJKLMNO` 四條 confirm 路徑，各做
 control／2×／3×：原版狀態、indexed、FileOps 相等；差異只在兩個矩形內；
 名字格零差；離頁無殘層。
+
+判定（2026-09-26）：問句出現時的各項已通過，見第二百四十五階段。離頁需要把
+路徑延伸到回答 Y／N 之後的畫面，目前 watcher 對路徑外事件失敗即關閉，
+離頁無殘層尚未驗證，因此只限縮 CONFORMED。

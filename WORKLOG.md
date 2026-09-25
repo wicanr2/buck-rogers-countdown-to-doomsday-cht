@@ -3391,3 +3391,13 @@
 - 獨立審查代理重算前後綴 SHA 與四份 indexed，事實全部相符；判定需修改後 READY。
 - 依審查補上：確認問句末 2 bytes 與後綴相同、排他靠前綴（一手 dispatcher 核對）；
   比對順序先 exact 後前後綴；介面變更範圍；containment 移到實作驗收。規格 025 升 READY。
+
+## 2026-09-26 — 儲存詢問前後綴覆繪（phase-245）
+
+- dosgolem fork `4d2d259` 實作規格 025；主 repo 新增 `body-icon-affixes.tsv`、
+  譯文拆前後綴、Python 工具釘住已證實前後綴雜湊。
+- 四個名字 confirm 的 control／2×／3× 通過，名字格零差；規格 025 限縮 CONFORMED。
+- 離頁：回答後出現路徑外事件，watcher 失敗即關閉，需另擴路徑。
+- 既有問題（非本次引入）：`catalog_font.py lint text/*.zh-TW.tsv` 回報跨 catalog
+  重複 key `character.skill.notice`；乾淨 clone 跑 `go vet ./...`（-mod=mod）會把
+  `golang.org/x/sys` 由 indirect 改為 direct，go.mod 未 tidy。
