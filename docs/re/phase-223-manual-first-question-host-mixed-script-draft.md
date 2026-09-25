@@ -362,3 +362,20 @@ DOS SHA-256
 仍保有各自的 2× 歷史逐位元收據。此新增情境只覆蓋另一段
 `RAM` 的實際詞界，不代表 Deimos、Stockade 或 39 段都已
 逐題正常玩家重播，Issue #21 仍 OPEN。
+
+## 2026-09-25：首題三英文專名的量產 E1 詞界斷言
+
+第三題補證只斷言單個 `RAM` 的 14px 字首；首題 `manual.log.49.deimos_prison`
+含 3× `RAM`、1× `（Deimos）`、1× 行尾 `Stockade`，此前只有顯示像素收據，
+沒有量產 plan 層的三詞不斷行斷言。本機 fork 新增正式測試
+`TestManualE1PlanDeimosPrisonEnglishTokens`
+（`apps/buckrogers/manual_e1_english_token_test.go`，未推送 fork 遠端）：
+以現行正式 catalog＋定版 1,046 字倚天字型建立首題 E1 plan，
+逐一核對三詞每次出現都落在單一 sealed token 內（不斷行），
+且該段全部 ASCII 字母相鄰字首皆精確 14px。
+
+主代理在無網路 Docker（`eob-remake-go:1.26.7-ebiten2.9.9`、
+`--network none`、唯讀掛載）重跑通過；`gofmt`、`go vet`、
+`go test -race ./apps/buckrogers -run '^TestManualE1Plan' -count=1`
+全綠。這是靜態 plan 斷言，不含原版執行期重播；
+Linux 玩家視窗與其餘 38 題逐題重播仍未驗，Issue #21 仍 OPEN。

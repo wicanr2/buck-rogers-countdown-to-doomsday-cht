@@ -3139,3 +3139,17 @@
 - CONTEXT、規格 024、font/README 的「待決／候選／不提交」字樣已改為
   中文印刷本優先定版；字型二進位與 manifest 仍只留本機，不入版控。
   Linux 玩家路徑、E1 CONFORMED 與其餘 Issue 範圍不變。
+
+## 2026-09-25 — #21 首題英文專名 E1 詞界量產斷言
+
+- 建議後開工 #21：首題已有顯示像素收據，但量產 plan 層缺三詞
+  （3× RAM、括號 Deimos、行尾 Stockade）的不斷行＋14px 斷言；
+  第三題只覆蓋單個 RAM。兩者互補後，#21 完成條件中的
+  「首題＋不同英文詞邊界樣本」在無頭範圍內閉合（括號形、行尾形、
+  單 token 形皆有）。
+- 本機 fork 新增正式測試 `TestManualE1PlanDeimosPrisonEnglishTokens`，
+  以現行 catalog＋定版字型建首題 E1 plan，一次通過。
+  Docker 無網路重跑、`gofmt`、`vet`、`-race` 全套 plan 測試全綠。
+- 相關文件已回填 phase-223；fork 提交留本機未推遠端。
+  剩餘缺口：Linux 玩家視窗（#16）、其餘 38 題逐題重播；
+  Issue #21 仍 OPEN。
