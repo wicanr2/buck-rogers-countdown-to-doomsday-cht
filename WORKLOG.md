@@ -3340,3 +3340,10 @@
 - skill504 上 Escape 取走無動作（零配置無問句，符合問句本體）；
   Enter×2＋Escape 全凍結；唯 Down,Up,Enter 進配置表。
   結論：Enter 需 Down／Up 先武裝。`alloc508.state` 入庫。
+
+## 2026-09-25 — 加點算術與離開問句直播（phase-239）
+
+- alloc508＋Enter：Notice 0→1、剩餘 79、總計 15，算術閉合，
+  變更 54 字節。point1.state 入庫。
+- point1＋Escape：33 字問句雜湊與既有身分逐位元相等；
+  #17 本體出現升級為直播驗證，清除仍為無頭範圍。
