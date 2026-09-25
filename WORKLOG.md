@@ -3253,3 +3253,10 @@
 - 同序列 sealed 投遞（BDA 環）15×10M 每回合 1→0，覆蓋 TANDY 區。
   結論：TANDY 等待不讀 `d.Keys`，讀 BDA 環或硬體；真實輸入須走
   sealed Deliver，診斷 `-keys` 不能用於過此關。消耗≠推進，待畫面比對。
+
+## 2026-09-25 — TANDY 橫幅按鍵推進（phase-227 DRAFT）
+
+- probe BDA 排程鍵（120M 起空白鍵）vs 無鍵對照，終點 200M：
+  VRAM 逐 byte 比 16,095／64,000 不同、全屏包絡，新視覺狀態，
+  與離開 TANDY 橫幅一致。各一次重播，未辨識新畫面，不作驗收。
+  收據只留 ignored `workplace/phase227-tandy-advance/`。
