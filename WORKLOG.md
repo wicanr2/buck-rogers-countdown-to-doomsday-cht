@@ -3217,3 +3217,13 @@
 - 真機 3 回合（1M 步）全綠，receipt reason=2 phase=2；獨立審查
   五項全過，僅把 `--exe` 預設改必填。fork 本機提交 `532e203`
   未推遠端；Issue #16／#18 保持 OPEN。
+
+## 2026-09-25 — #10 首片：引擎包 manifest＋缺原版驗收
+
+- 離線建出 `buckrogers-session`（linux/amd64、go1.26.7、4.2MB，
+  fork `532e203`），staging 在 ignored `workplace/pack-v1/`，
+  附 `manifest.json`（檔名、SHA-256、平台、來源 commit、存檔位置、
+  驗收表）；只含引擎二進位，無原版、無掃描、無字型。
+- 乾淨 cwd 驗收：缺 flag exit 2、原版路徑不存在 exit 1、
+  EXE 雜湊錯 exit 1（三者皆無 save 殘留）；真機 2 回合 exit 0，
+  save 樹 91 檔齊全。Issue #10 保持 OPEN（字型匯入、視窗未進包）。
