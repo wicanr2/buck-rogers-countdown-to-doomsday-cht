@@ -3355,3 +3355,9 @@
   與英文手冊句子僅命中題目前綴比對鍵 2 句；無二進位素材。依使用者決定以獨立分支
   `buck-rogers-cht-output-overlay` 推至 dosgolem（PUBLIC），不合併 dosgolem main。
 - 8 個未追蹤的 DRAFT 探針測試仍只留本機（需私有資料）。
+
+## 2026-09-25 — 職業離開問句直播鏈 A/B（phase-240）
+
+- 乾淨 clone `d766dcf` 建 runner（vcs.modified=false）；`point1.state` 上
+  Escape／N／Y 各跑 control／2×／3×。active 2071／4015 像素全在本體矩形，
+  N／Y 終態零殘層，JSON／indexed 三方逐位元相等。收據留 ignored。

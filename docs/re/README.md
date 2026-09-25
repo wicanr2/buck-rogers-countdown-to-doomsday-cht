@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第二百四十階段：職業技能離開問句直播鏈正式 A/B](phase-240-skill-exit-live-chain-ab.md)：冷開機按鍵鏈到達的 `point1.state` 上 Escape→N／Y，control／2×／3× 同狀態；active 僅本體差異，N／Y 終態零殘層；技術頁直播鏈、存讀檔與 Linux 視窗未驗。
 - [第二百二十四階段：未譯安全區候選負面盤點](phase-224-translation-batch-negative-inventory-20260924.md)：24 份正式 catalog／196 筆譯文及十個文字安全矩形家族逐鍵盤點，沒有符合條件的未譯固定字串；row 15 與未觀測第十頁因缺固定詞／安全區證據排除。
 - [第二百二十一階段：row 15／row 24 命令狀態欄位 DRAFT](phase-221-command-status-columns-draft.md)：既有合法存態的整串 identity、跨進度欄位相等／變動遮罩、原版 clear 與 A000 首寫；row 15 未證固定詞，row 24 未取得不同值，無 READY 譯文。
 - [規格 024：手冊背景／正文群組與字型身分限縮 READY](../spec/024-manual-layer-group-font-identity-ready-candidate.md)：獨立複審後，正式雙層封存元件與 session 字型身分已在本機 dosgolem fork 實作並通過合成雙倍率負例；原版同狀態、Linux 接線及玩家路徑仍未驗收。
