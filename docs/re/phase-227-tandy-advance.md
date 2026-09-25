@@ -23,3 +23,11 @@ scratch 覆寫層，無網路 Docker，終點 200M 步並 `-dump-vram`：
 - 只證「畫面變了」：新畫面是 logo／title／選單中的哪個未辨識；
   TANDY 橫幅的確切離開步數未二分。
 - 按鍵經 BDA 環（phase-226 結論）；`d.Keys` 路徑仍過不了此關。
+
+## 2026-09-25 新畫面辨識補記
+
+以本機 ASCII-art 讀取 ignored PNG（方法只留方法，不抄錄遊戲美術）：
+key 圖為金框邊框＋中央 title 圖＋底部點陣提示，逐字辨識為
+`PRESS SPACE BAR TO CONTINUE`——即 SSI 式 title 屏，一空格即過
+TANDY 橫幅。對照 ctl 圖仍是 TANDY 橫幅文字＋黑屏。
+辨識只用點陣形狀，未做 OCR 全文轉錄或美術擷取。

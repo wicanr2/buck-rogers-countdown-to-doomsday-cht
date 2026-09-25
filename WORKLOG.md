@@ -3260,3 +3260,9 @@
   VRAM 逐 byte 比 16,095／64,000 不同、全屏包絡，新視覺狀態，
   與離開 TANDY 橫幅一致。各一次重播，未辨識新畫面，不作驗收。
   收據只留 ignored `workplace/phase227-tandy-advance/`。
+
+## 2026-09-25 — Title 屏辨識（一空格過 TANDY）
+
+- ASCII-art 讀 ignored `key.vram.png`：金框＋中央 title 圖＋底部點陣
+  `PRESS SPACE BAR TO CONTINUE`；對照仍是 TANDY 橫幅。
+  一空格即過橫幅到 title，phase-227 補記；美術未入 Git。
