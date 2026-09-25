@@ -3298,3 +3298,11 @@
 - 雙空格序列 155–220M 七點全為種族屏同雜湊，第 12–16 列全空；
   title→種族 <5M 步，主選單未被快照。新假說：無存檔 fresh boot
   直達種族流程；checkpoint 系主選單證據不受影響。停止二分。
+
+## 2026-09-25 — 角色頁進入與字串表（phase-233）
+
+- class500 Enter 進角色資料頁，96 筆 dispatcher：標籤群接 35 靜態
+  家族；值群證實 Martian／Male／Rocket 選擇生效；技能兩輪
+  （Pilot Rocket 首輪 24）；末筆 Reroll 提示。無列欄，不作收錄。
+- trans430 重播發散未定（scratch 假說已排除一版），class500 可重播
+  已證。class500 存 ignored checkpoints 供後續。
