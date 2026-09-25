@@ -3321,3 +3321,10 @@
   7 字（`eaf0fe0a…`），終點第 5 列白底。catalog 追加序列 11／12
   ＋兩矩形，驗證器改十二筆；down-down 路徑未建模另案。
   249 項全綠，收據留 ignored。
+
+## 2026-09-25 — 技能配置屏到達與檢查點入庫（phase-236）
+
+- class500＋Enter→角色頁（同雜湊零差異）＋N→技能配置屏；
+  標題／技能列／指示列結構符合 career 家族，逐列對帳另案。
+- `sheet502.state`、`skill504.state` 入 ignored checkpoints；
+  收據留 ignored。249 項全綠。
