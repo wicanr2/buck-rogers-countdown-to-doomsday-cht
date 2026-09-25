@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第二百四十六階段：儲存詢問離頁時序](phase-246-save-prompt-leave-timing.md)：Y／N 都先畫主選單，第 24 列約 510.64M 才改寫；覆繪應保留到該寫入時失效。
 - [第二百四十五階段：儲存詢問前後綴覆繪正式 A/B](phase-245-save-prompt-affix-runtime-ab.md)：四個名字雙倍率同狀態，差異只在前綴與後綴、名字格零差；move／refuse 回歸不變；離頁需擴充路徑，未驗。
 - [第二百四十四階段：儲存詢問名字模板證據](phase-244-save-prompt-name-template.md)：名字 1–15 字、前綴 5 bytes／後綴 2 bytes、四個名字的前後綴像素一致。
 - [第二百四十三階段：正常命名直播鏈與 A/B 重跑](phase-243-named-live-chain-ab.md)：`skill504` 訂正為命名提示，以 `BUCK` 重建至存檔問句；兩頁離開問句與身體圖示 move／refuse 雙倍率同狀態通過，存檔問句帶名字需模板比對。
