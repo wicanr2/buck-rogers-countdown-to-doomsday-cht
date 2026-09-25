@@ -251,7 +251,11 @@ READY 審查前至少以 ignored fake（不載原版／字型）固定：
 前置、多作用層、玩家路徑與存讀檔仍由規格 004 維持 DRAFT。
 正式型別至少須能分別表達 pointer 候選、焦點與有序鍵盤候選；
 `TickReceipt` 除 epoch／phase／reason 外須包含 budget、machine 前後
-steps、實際差分、原始 stop 及錯誤來源。停止原因須明示
+steps、實際差分、原始 stop 及錯誤來源。2026-09-25 追加按鍵消耗
+可觀測性：`TickReceipt` 另含 DOS 鍵盤佇列深度的前後值
+（`KeysPendingBefore`／`KeysPendingAfter`）；提早拒絕回不變快照，
+步進路徑回步進後深度，使輸入消耗證據不需第二次機器讀取。
+停止原因須明示
 `PanelPaused`、`BudgetExhausted`、`ProgramStopped`、
 `PredicateStopped`、`BreakpointStopped`、`OriginalFault`、
 `ObserverFault` 與 `FrontendFault`，不能沿用上文四值 DRAFT enum

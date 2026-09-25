@@ -3227,3 +3227,12 @@
 - 乾淨 cwd 驗收：缺 flag exit 2、原版路徑不存在 exit 1、
   EXE 雜湊錯 exit 1（三者皆無 save 殘留）；真機 2 回合 exit 0，
   save 樹 91 檔齊全。Issue #10 保持 OPEN（字型匯入、視窗未進包）。
+
+## 2026-09-25 — 回合按鍵消耗可觀測性
+
+- `session.TickReceipt` 新增 `KeysPendingBefore`／`After`（提早拒絕
+  回不變快照，步進回步進後深度，fault 包裝保留）；規格 019 限縮
+  READY 節同步增補。合成 COM（AH=01 輪詢→讀一鍵→死循環）證明
+  Deliver 一鍵後 Advance 回 1→0，無鍵回 0→0。
+- 獨立審查抓到 fixture `JZ FB` 位移差一 byte（應 `FA` 才回到
+  MOV 重查），已修重跑全綠；其餘四項通過。fork 本機提交未推遠端。
