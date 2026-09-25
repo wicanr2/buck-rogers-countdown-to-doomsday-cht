@@ -206,7 +206,7 @@ fork 本機提交 `923f8e5` 未推遠端；Issue #16／#18 保持 OPEN。
 已走 DRAFT→審查→實作→production 審查→全修→`go test -race -count=2`
 全綠，含 Prepare→BootOriginal 端到端。original 核對、save 分離複製、
 EXE 交接（launcher 從 save 重讀）就緒；launcher 本體、owner 接線、
-存讀檔、視窗仍缺。fork 本機提交 `8e5e18d` 未推遠端；真機 sealed 冷開機驗收（Prepare→Boot→Running，零 checkpoint）已由 fork `a79ad52` 取得，缺 env 時 skip。
+存讀檔、視窗仍缺。fork 本機提交 `8e5e18d` 未推遠端；真機 sealed 冷開機驗收（Prepare→Boot→Running，零 checkpoint）已由 fork `a79ad52` 取得，缺 env 時 skip；直播回合（空 Deliver＋1M 步 BudgetExhausted）已由 fork `fcd4bdb` 取得。
 
 下一片 #18 維持 DRAFT：通用逐步觀測接縫尚無 Oracle 的初始條件、
 中斷點、A0000 守衛、動態 hook 與 stub 順序，也沒有封閉 owner 可用的

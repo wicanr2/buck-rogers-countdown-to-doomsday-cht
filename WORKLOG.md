@@ -3199,3 +3199,12 @@
 - 獨立審查五項全過（hash 釘住、真走鏈、skip、無洩漏、重跑 PASS），
   僅補強 receipt 雙斷言。fork 本機提交 `a79ad52` 未推遠端；
   Issue #16／#18 保持 OPEN。
+
+## 2026-09-25 — #16 第四片：真機 sealed 直播回合
+
+- 接冷開機驗收：canonical closed 2x layout 建 owner→BootOriginal→
+  View→空 Deliver（零 DOS calls、不暫停）→Advance 1M 步，
+  Steps==budget、BudgetExhausted、Running、無 fault。零 checkpoint。
+- 獨立審查五項全過（layout canonical、真走鏈、提早退出只會 FAIL
+  不會誤判、skip 乾淨、重跑 PASS），僅補 Reason 斷言。
+  fork 本機提交 `fcd4bdb` 未推遠端；Issue #16／#18 保持 OPEN。
