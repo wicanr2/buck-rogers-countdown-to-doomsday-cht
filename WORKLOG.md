@@ -3190,3 +3190,12 @@
   終審通過，`go test -race -count=2` 全綠。
 - fork 本機提交未推遠端；launcher 本體、owner 接線、存讀檔、視窗仍
   缺，Issue #16／#18 保持 OPEN。
+
+## 2026-09-25 — #16 第三片：真機 sealed 冷開機驗收
+
+- 235＋236 鏈首次不經 checkpoint 走真實原版：`Prepare`（唯讀原版樹）
+  →save 重讀 START.EXE→`BootOriginal`→Running receipt，零 step。
+  缺 env 乾淨 skip；Advance 需 Deliver 接納回合，留給回合切片。
+- 獨立審查五項全過（hash 釘住、真走鏈、skip、無洩漏、重跑 PASS），
+  僅補強 receipt 雙斷言。fork 本機提交 `a79ad52` 未推遠端；
+  Issue #16／#18 保持 OPEN。
