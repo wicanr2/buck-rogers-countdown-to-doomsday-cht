@@ -1,0 +1,112 @@
+#!/usr/bin/env python3
+"""由原版 ECL*.DAX 靜態抽取敘事字串，產生不含原文的 catalog。
+
+輸出：
+  --events   text/ecl-text-events.tsv（key、長度、SHA-256、來源位置；不含原文）
+  --source   ignored 工作區的 key→原文對照（只供翻譯，不得入版控）
+
+DAX 容器與 6-bit 解碼同 golden-box-remake-engine 的 dax、ecl/text.go。
+候選判準：0x80 長度前綴、解碼後只含允許字元、90% 以上 token 像英文詞、
+首尾 token 都像詞、長度 > 3 且含空白。這是啟發式，會漏字串也會收雜訊；
+執行期以整串雜湊比對，漏掉的字串顯示英文，雜訊永遠不會命中。
+"""
+import argparse, hashlib, re, struct, sys
+from pathlib import Path
+
+CLEAN = re.compile(r"[A-Z0-9 .,'!?\-:;\"()/&%$#*+<>=]+")
+WORD = re.compile(r"^['\"(<\-]*([A-Z]+(['\-][A-Z]+)*|[0-9]+(ST|ND|RD|TH|%|,[0-9]+)?|[0-9]*\.?[0-9]+)[.,!?;:'\")\->]*$")
+
+
+def dax_blocks(data):
+    head = struct.unpack('<H', data[:2])[0] + 2
+    for p in range(2, head, 9):
+        bid = data[p]
+        off, dec, packed = struct.unpack('<IHH', data[p + 1:p + 9])
+        src = data[head + off:head + off + packed]
+        out = bytearray()
+        q = 0
+        while q < len(src) and len(out) < dec:
+            c = src[q]
+            q += 1
+            if c < 128:
+                out += src[q:q + c + 1]
+                q += c + 1
+            else:
+                out += bytes([src[q]]) * (256 - c)
+                q += 1
+        if len(out) != dec:
+            raise ValueError(f'block {bid} decoded {len(out)} != {dec}')
+        yield bid, bytes(out)
+
+
+def decode6(payload):
+    s, state, prev = [], 1, 0
+
+    def put(v):
+        if v:
+            s.append(chr(v + 0x40 if v <= 0x1f else v))
+    for c in payload:
+        if state == 1:
+            put((c >> 2) & 63)
+            state = 2
+        elif state == 2:
+            put(((prev << 4) | (c >> 4)) & 63)
+            state = 3
+        else:
+            put(((prev << 2) | (c >> 6)) & 63)
+            put(c & 63)
+            state = 1
+        prev = c
+    return ''.join(s).strip()
+
+
+def wordy(t):
+    toks = [x for x in t.split(' ') if x]
+    if not toks or not WORD.match(toks[0]) or not WORD.match(toks[-1]):
+        return False
+    return sum(1 for x in toks if WORD.match(x)) / len(toks) >= 0.9
+
+
+def extract(orig):
+    found = {}
+    for n in range(1, 7):
+        for bid, blk in dax_blocks((orig / f'ECL{n}.DAX').read_bytes()):
+            for i in range(len(blk) - 2):
+                if blk[i] != 0x80:
+                    continue
+                ln = blk[i + 1]
+                if i + 2 + ln > len(blk):
+                    continue
+                t = decode6(blk[i + 2:i + 2 + ln])
+                if len(t) > 3 and ' ' in t and any(c.isalpha() for c in t) and CLEAN.fullmatch(t) and wordy(t):
+                    found.setdefault(t, []).append(f'ECL{n}:{bid}:{i}')
+    return found
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--orig', required=True, type=Path)
+    ap.add_argument('--events', required=True, type=Path)
+    ap.add_argument('--source', required=True, type=Path)
+    a = ap.parse_args()
+    found = extract(a.orig)
+    ev = ['event_key\toriginal_length\toriginal_sha256\tsources']
+    src = ['key\toriginal\tsources']
+    for t, locs in found.items():
+        n, b, o = locs[0].split(':')
+        key = f'ecl.{n[3:]}.{int(b):02d}.{int(o):05d}'
+        raw = t.encode('ascii')
+        if len(raw) > 255:
+            continue
+        ev.append(f'{key}\t{len(raw)}\t{hashlib.sha256(raw).hexdigest()}\t{";".join(locs)}')
+        src.append(f'{key}\t{t}\t{";".join(locs)}')
+    keys = [l.split('\t')[0] for l in ev[1:]]
+    if len(keys) != len(set(keys)):
+        sys.exit('duplicate key')
+    a.events.write_text('\n'.join(ev) + '\n', encoding='utf-8')
+    a.source.write_text('\n'.join(src) + '\n', encoding='utf-8')
+    print(f'{len(ev) - 1} strings, {sum(len(t) for t in found)} chars', file=sys.stderr)
+
+
+if __name__ == '__main__':
+    main()
