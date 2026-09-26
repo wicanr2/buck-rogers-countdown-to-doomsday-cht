@@ -14,7 +14,13 @@ import argparse, hashlib, re, struct, sys
 from pathlib import Path
 
 CLEAN = re.compile(r"[A-Z0-9 .,'!?\-:;\"()/&%$#*+<>=]+")
-WORD = re.compile(r"^['\"(<\-]*([A-Z]+(['\-][A-Z]+)*|[0-9]+(ST|ND|RD|TH|%|,[0-9]+)?|[0-9]*\.?[0-9]+)[.,!?;:'\")\->]*$")
+EDGE = re.compile(r"^[\"'(<\-.,!?;:)>=*]+|[\"'(<\-.,!?;:)>=*]+$")
+CORE = re.compile(r"^(?:[A-Z]+(?:[.'\-/][A-Z]+)*(?:\(S\))?|[0-9]+(?:[.,:][0-9]+)*(?:ST|ND|RD|TH|S|%|CR)?)$")
+
+
+def word_ok(tok):
+    core = EDGE.sub('', tok)
+    return core == '' or bool(CORE.match(core))
 
 
 def dax_blocks(data):
@@ -61,10 +67,10 @@ def decode6(payload):
 
 
 def wordy(t):
-    toks = [x for x in t.split(' ') if x]
-    if not toks or not WORD.match(toks[0]) or not WORD.match(toks[-1]):
+    toks = [x for x in re.split(r' |\.\.\.+|--+', t) if x]
+    if not toks or not word_ok(toks[0]) or not word_ok(toks[-1]):
         return False
-    return sum(1 for x in toks if WORD.match(x)) / len(toks) >= 0.9
+    return sum(1 for x in toks if word_ok(x)) / len(toks) >= 0.9
 
 
 def extract(orig):
