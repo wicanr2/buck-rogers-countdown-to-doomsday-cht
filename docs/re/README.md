@@ -238,3 +238,4 @@
 | [第二百六十六階段：Salvation III 站內畫面盤點](phase-266-station-screens-survey.md) | 商店、Hq、角色頁的呼叫端與 unit；舊家族段位址對不到。 |
 | [第二百六十七階段：舊家族位址正規化、共用呼叫端、逐列讓位的驗收](phase-267-legacy-normalisation-and-shared-callers.md) | Hq 選單、角色頁、商店中文化；手冊回歸與修正。 |
 | [第二百六十八階段：探索畫面座標列](phase-268-coordinate-line.md) | 座標列方位字母改中文；「Items:」提示。 |
+| [第二百六十九階段：ECL 挑人提問經 dispatcher 印出](phase-269-ecl-prompts-via-dispatcher.md) | 含尾隨空白的 ECL 字串改用 ECL 譯文。 |
