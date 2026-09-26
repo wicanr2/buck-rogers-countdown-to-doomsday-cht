@@ -1,0 +1,3 @@
+key	translation	source
+logbook.panel.title	手札第 {0} 則：{1}	runtime-interface
+logbook.panel.page	第 {0}／{1} 頁 PgDn／PgUp 翻頁	runtime-interface
