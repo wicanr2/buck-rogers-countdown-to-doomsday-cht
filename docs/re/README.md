@@ -230,3 +230,4 @@
 | [第二百五十八階段：戰鬥與引擎訊息的輸出路徑](phase-258-engine-message-fragments.md) | 第一場戰鬥的 `056C` 非 ECL 呼叫端、dispatcher 遊戲內呼叫端、`GAME.OVR` 組字片段與分解原型。 |
 | [第二百五十九階段：水平選單家族 A/B 與並存修正](phase-259-horizontal-menu-runtime-ab.md) | 主指令列 2×／3× A/B；與動作列、身體圖示、加入後選單並存的三項修正。 |
 | [第二百六十階段：物品名單字表](phase-260-item-word-table.md) | 執行期 `DS:1CE2`，54 筆 string[20]；戰鬥武器行由兩個單字串接。 |
+| [第二百六十一階段：手札訊息的組字程序](phase-261-logbook-message.md) | `GAME.OVR` 手札句的三個常數、串接順序、以旗標 0 交給 `0763:056C`。 |
