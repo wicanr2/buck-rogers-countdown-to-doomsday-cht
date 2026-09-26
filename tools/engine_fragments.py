@@ -127,7 +127,7 @@ def main():
     frags = sorted(pos)
     ev = ['event_key\toriginal_length\toriginal_sha256']
     src = ['key\toriginal\tfirst_seen']
-    seen = set()
+    seen, seen_upper = set(), set()
     for t in frags:
         k = key_of(t, 'frag')
         if k in seen:
@@ -135,6 +135,11 @@ def main():
         seen.add(k)
         ev.append(f'{k}\t{len(t)}\t{hashlib.sha256(t.encode("ascii")).hexdigest()}')
         src.append(f'{k}\t{t}\t{pos[t]}')
+        # 遊戲部分畫面把片段轉成全大寫顯示；全大寫變體共用同一譯文（key 加 .uc）。
+        u = t.upper()
+        if u != t and u not in pos and u not in seen_upper:
+            seen_upper.add(u)
+            ev.append(f'{k}.uc\t{len(u)}\t{hashlib.sha256(u.encode("ascii")).hexdigest()}')
     a.events.write_text('\n'.join(ev) + '\n', encoding='utf-8')
     a.source.write_text('\n'.join(src) + '\n', encoding='utf-8')
     print(f'{len(frags)} fragments', file=sys.stderr)

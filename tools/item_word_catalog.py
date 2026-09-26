@@ -47,6 +47,10 @@ def main():
         h = hashlib.sha256(w.encode('ascii')).hexdigest()
         ev.append(f'item.{h[:12]}\t{len(w)}\t{h}')
         src.append(f'item.{h[:12]}\t{w}')
+        u = w.upper()
+        if u != w and u not in words:
+            hu = hashlib.sha256(u.encode('ascii')).hexdigest()
+            ev.append(f'item.{h[:12]}.uc\t{len(u)}\t{hu}')
     a.events.write_text('\n'.join(ev) + '\n', encoding='utf-8')
     a.source.write_text('\n'.join(src) + '\n', encoding='utf-8')
     print(f'{len(ev) - 1} words', file=sys.stderr)
