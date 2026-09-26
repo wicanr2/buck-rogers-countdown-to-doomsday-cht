@@ -3426,3 +3426,13 @@
   間隔超過 2 秒的 control，確認記憶體雜湊穩定後再比 overlay。
 - 事故：一次 `&&` 鏈中途失敗，後面的 docker 用錯基準路徑掛載；事後檢查無 root 目錄
   殘留。之後掛載一律用絕對路徑並先 `test -d`。
+
+## 2026-09-26 — B 路線：sealed session 即時覆繪首片（phase-250、251）
+
+- 路線決定：不走規格 019 的 Oracle facade；改把 receipt runner 的逐步觀測模型放進
+  sealed Owner（dosgolem 規格 238，獨立審查後 READY）。理由：現有 CONFORMED 收據
+  全出自 runner 模型，可直接逐位元回歸。
+- `LiveMenuRuntime` 與 runner 五個時間點 RGBA 相同；sealed 冷開機到種族選擇屏，
+  有無觀測器狀態雜湊相同，合成畫面為繁中。
+- 修正 `bootroot` 複製不保留 mtime（規格 237 §2.5）。
+- 發現：sealed session 未設 Scratch，存檔不落地。
