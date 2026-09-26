@@ -27,6 +27,8 @@ def check(text, where):
         errs.append('含 tab／換行')
     if unicodedata.normalize('NFC', text) != text:
         errs.append('非 NFC')
+    if '\u3000' in text:
+        errs.append('含全形空白（字型不收，改用半形空白）')
     if any(unicodedata.category(c) == 'Cc' for c in text):
         errs.append('控制字元')
     try:
