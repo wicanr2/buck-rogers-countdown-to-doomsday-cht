@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""驗證水平選單項目批次譯文並合併為 text/hmenu.zh-TW.tsv（規格 028）。"""
+"""驗證批次譯文並合併為正式 zh-TW TSV（規格 028 選單項目、規格 029 引擎片段共用）。"""
 import argparse, sys
 from pathlib import Path
 
@@ -15,11 +15,12 @@ def main():
     ap.add_argument('--batches', required=True, type=Path)
     ap.add_argument('--done', required=True, type=Path)
     ap.add_argument('--out', required=True, type=Path)
+    ap.add_argument('--batch-header', default='key,original,from', help='批次檔表頭，逗號分隔')
     a = ap.parse_args()
     catalog = {r[0] for r in read_tsv(a.events, ['event_key', 'original_length', 'original_sha256'])}
     merged, errors, noise = {}, [], 0
     for done in sorted(a.done.glob('batch-[0-9][0-9].tsv')):
-        want = [r[0] for r in read_tsv(a.batches / done.name, ['key', 'original', 'from'])]
+        want = [r[0] for r in read_tsv(a.batches / done.name, a.batch_header.split(','))]
         got = read_tsv(done, ['key', 'translation'])
         if [r[0] for r in got] != want:
             errors.append(f'{done.name}：key 集合或順序不同')
