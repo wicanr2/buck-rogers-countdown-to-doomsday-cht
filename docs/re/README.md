@@ -227,3 +227,4 @@
 | [第二百五十五階段：ECL 敘事窗印字程序](phase-255-ecl-text-window-printer.md) | `0763:056C` 參數、游標、翻頁結構；旗標 0 接續樣本。 |
 | [第二百五十六階段：ECL 敘事窗通用家族首次 A/B](phase-256-ecl-text-runtime-ab.md) | 官員事件 2×／3× 差異只在敘事窗；修正接續於未譯文字後的起點。 |
 | [第二百五十七階段：水平選單繪製程序](phase-257-horizontal-menu-printer.md) | `37F1:0243` 父框架字串、項目表、熱鍵字元集與配色；四筆執行期樣本。 |
+| [第二百五十八階段：戰鬥與引擎訊息的輸出路徑](phase-258-engine-message-fragments.md) | 第一場戰鬥的 `056C` 非 ECL 呼叫端、dispatcher 遊戲內呼叫端、`GAME.OVR` 組字片段與分解原型。 |
