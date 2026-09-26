@@ -233,3 +233,5 @@
 | [第二百六十一階段：手札訊息的組字程序](phase-261-logbook-message.md) | `GAME.OVR` 手札句的三個常數、串接順序、以旗標 0 交給 `0763:056C`。 |
 | [第二百六十二階段：引擎訊息與手札面板接線、戰鬥 A/B](phase-262-engine-logbook-runtime.md) | 規格 029／030 實作；戰鬥右欄與兩列選單 2× A/B；手札 71 則意譯。 |
 | [第二百六十三階段：手札執行期收據、敘事窗逐列失效](phase-263-logbook-runtime-and-row-invalidation.md) | 第 41 則原版觸發與面板 A/B；規格 027 改逐列失效；間隔號改 U+2022。 |
+| [第二百六十四階段：overlay unit 的載入段、原版文字字形表](phase-264-overlay-units-and-text-glyphs.md) | overlay 段位址會變；stub 表頭 LoadSeg；`8X8D1.DAX` 區塊 201 字形表與索引規則。 |
+| [第二百六十五階段：overlay 相對定址與原版英數字形的驗收](phase-265-overlay-addressing-and-ascii-receipts.md) | 規格 031、032 同狀態收據；Salvation III 選單中文化。 |
