@@ -11,11 +11,11 @@ from pathlib import Path
 from skill_action_bar_events import EXPECTED, validate as validate_events
 
 TEXTS = {
-    "action.add": "(A)加點",
-    "action.subtract": "(S)減點",
-    "action.prev": "(P)上頁",
-    "action.next": "(N)下頁",
-    "action.done": "(D)完成",
+    "action.add": "加點(A)",
+    "action.subtract": "減點(S)",
+    "action.prev": "上頁(P)",
+    "action.next": "下頁(N)",
+    "action.done": "完成(D)",
 }
 
 

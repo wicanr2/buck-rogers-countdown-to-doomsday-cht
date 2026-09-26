@@ -1,6 +1,6 @@
 key	translation	source
-action.add	(A)加點	runtime-interface
-action.subtract	(S)減點	runtime-interface
-action.prev	(P)上頁	runtime-interface
-action.next	(N)下頁	runtime-interface
-action.done	(D)完成	runtime-interface
+action.add	加點(A)	runtime-interface
+action.subtract	減點(S)	runtime-interface
+action.prev	上頁(P)	runtime-interface
+action.next	下頁(N)	runtime-interface
+action.done	完成(D)	runtime-interface
