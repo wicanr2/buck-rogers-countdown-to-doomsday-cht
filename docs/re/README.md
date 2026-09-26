@@ -1,5 +1,6 @@
 # 原版觀測證據索引
 
+- [第二百五十二階段：第一個可玩的 Linux 視窗](phase-252-first-playable-window.md)：sealed 冷開機視窗、選單家族即時繁中、2×／3× 切換；Xvfb 截圖與無頭輸出逐位元相同；其餘家族未搬入。
 - [第二百五十一階段：sealed 冷開機的即時選單覆繪](phase-251-sealed-cold-boot-live-menu.md)：原版冷開機至種族選擇屏，有無觀測器三組狀態雜湊相同，2×／3× 合成畫面為繁中；sealed session 存檔不落地待處理。
 - [第二百五十階段：選單家族即時元件與 runner 對照](phase-250-live-menu-runner-parity.md)：兩條路徑五個時間點，即時元件與 runner 的 2×／3× RGBA 逐位元相同。
 - [第二百四十九階段：加入隊伍路徑的決定性 A/B](phase-249-roster-join-deterministic-ab.md)：dosgolem 規格 237 修正後，間隔 3 秒的 control 與 2×／3× 記憶體雜湊相同，無大小寫重複檔；覆繪只在第 24 列。
