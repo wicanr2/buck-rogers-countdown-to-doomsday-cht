@@ -224,3 +224,5 @@
 | [第二百二十三階段：手冊首題實體視窗與中英混排](phase-223-manual-first-question-host-mixed-script-draft.md) | 正式手冊 owner 終態影格接實體 2×→3× host，釐清拉丁專名不是原版殘字，保留 A／B／C／D 私有視覺原型與待決取捨。 |
 | [第二百五十三階段：即時覆繪接上全部已完成家族](phase-253-live-runtime-all-families.md) | `LiveRuntime` 接上選單、技能、加入後、動作列、劇情、手冊、身體圖示家族；七組 runner 並行比對相同；headless 250M 步 33 秒。 |
 | [第二百五十四階段：遊戲本體文字量盤點](phase-254-in-game-text-inventory.md) | ECL 不重複 2,531 則、12.8 萬字元；敘事窗逐行事件出自 ECL `PRINT`，28/42 行雜湊吻合；斷行規則未知。 |
+| [第二百五十五階段：ECL 敘事窗印字程序](phase-255-ecl-text-window-printer.md) | `0763:056C` 參數、游標、翻頁結構；旗標 0 接續樣本。 |
+| [第二百五十六階段：ECL 敘事窗通用家族首次 A/B](phase-256-ecl-text-runtime-ab.md) | 官員事件 2×／3× 差異只在敘事窗；修正接續於未譯文字後的起點。 |
