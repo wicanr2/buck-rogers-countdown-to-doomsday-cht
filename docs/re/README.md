@@ -229,3 +229,4 @@
 | [第二百五十七階段：水平選單繪製程序](phase-257-horizontal-menu-printer.md) | `37F1:0243` 父框架字串、項目表、熱鍵字元集與配色；四筆執行期樣本。 |
 | [第二百五十八階段：戰鬥與引擎訊息的輸出路徑](phase-258-engine-message-fragments.md) | 第一場戰鬥的 `056C` 非 ECL 呼叫端、dispatcher 遊戲內呼叫端、`GAME.OVR` 組字片段與分解原型。 |
 | [第二百五十九階段：水平選單家族 A/B 與並存修正](phase-259-horizontal-menu-runtime-ab.md) | 主指令列 2×／3× A/B；與動作列、身體圖示、加入後選單並存的三項修正。 |
+| [第二百六十階段：物品名單字表](phase-260-item-word-table.md) | 執行期 `DS:1CE2`，54 筆 string[20]；戰鬥武器行由兩個單字串接。 |
