@@ -240,3 +240,4 @@
 | [第二百六十八階段：探索畫面座標列](phase-268-coordinate-line.md) | 座標列方位字母改中文；「Items:」提示。 |
 | [第二百六十九階段：ECL 挑人提問經 dispatcher 印出](phase-269-ecl-prompts-via-dispatcher.md) | 含尾隨空白的 ECL 字串改用 ECL 譯文。 |
 | [第二百七十階段：存讀檔路徑與疊字層改寫偵測](phase-270-save-load-and-xlate-rewrite.md) | 存檔卡住是缺暫存層；讀檔後殘字由 dosgolem 規格 239 修正。 |
+| [第二百七十一階段：Salvation III 之後的 dispatcher 覆蓋率](phase-271-coverage-after-station.md) | 304 則中剩少數缺口；表格列整串後備、換行拆開的片段。 |
