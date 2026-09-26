@@ -256,3 +256,15 @@ python3 tools/catalog_font.py validate-candidate text/manual.zh-TW.tsv \
 兩者都不代表手冊逐字摘錄。`manual-and-runtime` 僅用於確有手冊段落與 runtime 對應的資料。
 `validate-candidate` 不建置字型；它只驗證被忽略工作區內的 strict manifest、實際來源／授權文字雜湊、
 既有 Unifont parser coverage 與本機驗證／發行未定狀態，stdout 不回顯 license、notice 或 glyph bytes。
+
+## ECL 敘事窗通用 catalog（規格 027）
+
+- `ecl-text-events.tsv`：由 `tools/ecl_text_catalog.py` 從本機 `ECL1.DAX`–`ECL6.DAX`
+  靜態抽取，只存 key、長度、SHA-256、來源位置。字串保留頭尾空白，雜湊與執行期
+  `0763:056C` 收到的整串逐位元相同。
+- `ecl-text.zh-TW.tsv`：批次譯文，`source` 為 `ecl-batch-editorial`，由
+  `tools/ecl_translation_merge.py` 驗證（key 順序、NFC、Big5、非空）後合併。
+  缺譯文的 key 在執行期顯示原版英文。
+- `ecl-text-excluded.tsv`：規格 010–017、022 逐頁劇情家族已涵蓋的字串，
+  逐頁家族拆除前不進正式譯文檔。
+- 翻譯工作區（原文、術語表、批次）在 ignored `workplace/ecl-l10n/`，不入版控。

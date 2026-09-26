@@ -24,6 +24,7 @@ ALLOWED_SOURCES = {
     "runtime-interface",
     "runtime-editorial",
     "manual-term-editorial",
+    "ecl-batch-editorial",
 }
 MAGIC = b"GOLEMFNT"
 WIDTH = 16

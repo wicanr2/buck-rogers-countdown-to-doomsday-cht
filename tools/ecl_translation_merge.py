@@ -42,9 +42,13 @@ def main():
     ap.add_argument('--batches', required=True, type=Path)
     ap.add_argument('--done', required=True, type=Path)
     ap.add_argument('--out', required=True, type=Path)
+    ap.add_argument('--exclude', type=Path, help='不進正式檔的 key（規格 027 §4）')
     ap.add_argument('--check-only', action='store_true')
     a = ap.parse_args()
     catalog = {r[0] for r in read_tsv(a.events, ['event_key', 'original_length', 'original_sha256', 'sources'])}
+    excluded = set()
+    if a.exclude:
+        excluded = {r[0] for r in read_tsv(a.exclude, ['key', 'reason'])}
     merged = {}
     if a.out.exists():
         for k, t, s in read_tsv(a.out, ['key', 'translation', 'source']):
@@ -61,6 +65,9 @@ def main():
         for k, t in ((r[0], r[1] if len(r) > 1 else '') for r in got):
             if t == '-':
                 garbage += 1
+                merged.pop(k, None)
+                continue
+            if k in excluded:
                 merged.pop(k, None)
                 continue
             if k not in catalog:
