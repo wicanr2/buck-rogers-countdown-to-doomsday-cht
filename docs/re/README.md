@@ -235,3 +235,5 @@
 | [第二百六十三階段：手札執行期收據、敘事窗逐列失效](phase-263-logbook-runtime-and-row-invalidation.md) | 第 41 則原版觸發與面板 A/B；規格 027 改逐列失效；間隔號改 U+2022。 |
 | [第二百六十四階段：overlay unit 的載入段、原版文字字形表](phase-264-overlay-units-and-text-glyphs.md) | overlay 段位址會變；stub 表頭 LoadSeg；`8X8D1.DAX` 區塊 201 字形表與索引規則。 |
 | [第二百六十五階段：overlay 相對定址與原版英數字形的驗收](phase-265-overlay-addressing-and-ascii-receipts.md) | 規格 031、032 同狀態收據；Salvation III 選單中文化。 |
+| [第二百六十六階段：Salvation III 站內畫面盤點](phase-266-station-screens-survey.md) | 商店、Hq、角色頁的呼叫端與 unit；舊家族段位址對不到。 |
+| [第二百六十七階段：舊家族位址正規化、共用呼叫端、逐列讓位的驗收](phase-267-legacy-normalisation-and-shared-callers.md) | Hq 選單、角色頁、商店中文化；手冊回歸與修正。 |

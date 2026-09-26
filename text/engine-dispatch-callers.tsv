@@ -12,3 +12,6 @@ OVR:081D9:08DF	發現戰利品（phase-258 補充樣本）
 OVR:2BA60:2163	隊伍表頭名稱（phase-258 補充樣本）
 OVR:2BA60:2184	隊伍表頭 AC HP（phase-258 補充樣本）
 0763:0C42	事件後按鍵提示（dispatcher 版，phase-258 補充樣本）
+OVR:1B6E8:007C	商店個人資金（phase-266）
+OVR:1B6E8:00CD	商店共同資金（phase-266）
+OVR:27BBE:02D5	角色頁武器與護甲列（phase-266）

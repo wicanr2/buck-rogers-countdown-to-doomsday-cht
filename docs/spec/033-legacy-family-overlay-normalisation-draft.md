@@ -1,6 +1,6 @@
 # 033 — 舊家族的 overlay 位址正規化
 
-狀態：**READY**（2026-09-26 兩輪獨立審查後）
+狀態：**CONFORMED**（2026-09-26；驗收見 phase-267，第 3 項的差異說明見該文 §4）
 日期：2026-09-26
 前置：規格 032、[phase-264](../re/phase-264-overlay-units-and-text-glyphs.md)、
 [phase-266](../re/phase-266-station-screens-survey.md)。
@@ -26,6 +26,8 @@ Salvation III 的 1C41 卻放 `27BBE`：照字面比對可能把別的 unit 的�
   4. S 不是任何 unit 的 LoadSeg（主程式段等）→ N(S) = S。
 - 一個位址的正規化是 (N(S), 偏移)。
 - 在角色建立期（unit 都在換算表所列的段），N 是恆等映射，舊家族行為與收據不變。
+- 換算表必須涵蓋舊家族 events 檔**與程式常數**用到的所有 overlay 段；漏一個，該段的位址
+  會落到情形 2 而永遠不匹配（實例：手冊家族 `2A33:01ED`，phase-267）。
 - 實作用新函式計算 N，不能直接借用規格 032 `OverlayUnits.Key()` 的回傳值：`Key()` 對
   「沒有 unit」與「兩個以上 unit」都退回原始段，分不出情形 3 與 4；N 需要命中數。
 
