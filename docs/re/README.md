@@ -245,3 +245,4 @@
 | [第二百七十三階段：物品畫面標題的所有格與 Gear](phase-273-possessive-gear-title.md) | `'s` 短片段、物品畫面呼叫端與 A/B。 |
 | [第二百七十四階段：ECL 敘事窗的組句碎片](phase-274-ecl-short-pieces.md) | 短片段漏抽的執行期與靜態證據。 |
 | [第二百七十五階段：角色建立功能選單的英文殘留](phase-275-function-menu-residue.md) | 前端發現的 SELECT 與選定列殘留，呼叫端追蹤。 |
+| [第二百七十六階段：手冊查詢題的答案比較語意](phase-276-manual-answer-compare.md) | 規格 034 的比較依據（不含答案）。 |
