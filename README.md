@@ -23,6 +23,7 @@
 | ![敘事](docs/screenshots/07-narrative.png) 廢棄飛船敘事（組句碎片接入） | ![手札](docs/screenshots/08-logbook.png) 手札直接在遊戲內顯示 |
 | ![物品畫面](docs/screenshots/09-item-screen.png) 角色物品畫面 | ![發現廢棄飛船](docs/screenshots/10-derelict-found.png) 太空中發現廢棄飛船 |
 
+截圖以開發時的本機倚天字型拍攝；發行包改用 GNU Unifont，字形略有不同。
 截圖是本專案輸出的展示用途，其中的美術與畫面配置屬原版權利人；發行包不附截圖
 （見 [AGENTS.md](AGENTS.md)）。
 

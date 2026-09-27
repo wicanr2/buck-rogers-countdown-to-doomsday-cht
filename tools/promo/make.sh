@@ -59,9 +59,9 @@ card  "$TMP/00.png" "拯救地球" "BUCK ROGERS: COUNTDOWN TO DOOMSDAY" \
   "SSI 1990 ・ DOS 英文版 ・ 繁體中文化" "原版程式一行不改，在 dosgolem 上執行並即時覆繪中文"
 slide "$TMP/01.png" ps1.png "角色建立：選擇種族"
 slide "$TMP/02.png" ps3.png "救世站 Salvation III：地點選單與訊息全中文"
-slide "$TMP/03.png" ps4.png "駕駛火箭船出站，在太空中搜索"
-slide "$TMP/04.png" ps5.png "發現廢棄飛船：全螢幕場景與選單"
-slide "$TMP/05.png" ps6.png "劇情敘事逐句覆繪，原版版面與時機不變"
+slide "$TMP/03.png" ps4.png "出站：駕駛火箭船穿過太空殘骸"
+slide "$TMP/04.png" ps5.png "登上廢棄飛船：迷宮探索與敘事"
+slide "$TMP/05.png" ps6.png "劇情事件逐句中文，原版版面與時機不變"
 slide "$TMP/06.png" ps7.png "F1 說明、2 倍／3 倍、靜音、全螢幕、截圖"
 card  "$TMP/07.png" "AdLib 音樂 ・ 滑鼠 ・ 三平台" "Windows ・ macOS ・ Linux" \
   "模擬 AdLib 與 PC 喇叭；手冊查詢題顯示中文手冊段落" "需自備合法取得的原版遊戲，程式核對雜湊後匯入"
