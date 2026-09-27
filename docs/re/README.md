@@ -246,3 +246,4 @@
 | [第二百七十四階段：ECL 敘事窗的組句碎片](phase-274-ecl-short-pieces.md) | 短片段漏抽的執行期與靜態證據。 |
 | [第二百七十五階段：角色建立功能選單的英文殘留](phase-275-function-menu-residue.md) | 前端發現的 SELECT 與選定列殘留，呼叫端追蹤。 |
 | [第二百七十六階段：手冊查詢題的答案比較語意](phase-276-manual-answer-compare.md) | 規格 034 的比較依據（不含答案）。 |
+| [第二百七十七階段：手冊查詢題英文關鍵字列驗收](phase-277-manual-english-keyword.md) | 規格 034 的摘錄產生、字型與 A/B（不含答案）。 |

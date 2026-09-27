@@ -508,3 +508,13 @@ Snapshot／Restore 與 `-race`；既有合法首題、錯答換題、
 其他三情境量測見[第二百二十三階段](../re/phase-223-manual-first-question-host-mixed-script-draft.md)。
 這些仍是固定 checkpoint 的無頭定版驗證，不是正式 Linux
 玩家路徑或 39 段逐題執行完成。
+
+## 2026-09-27 規格 034：字型固定含可列印 ASCII
+
+規格 034 以同一字型顯示本機英文摘錄，`catalog_font.py` 固定併入 0x21–0x7E，新增 17 個先前沒有的
+ASCII 字形；既有 2,420 個字形逐 byte 不變（新舊 GOLEMFNT 對讀比對）。現行身分：
+
+- `font/characters.txt` 2437 行，SHA-256 `e25dec9ef90ce9ddedc0a6869f7685913a48a71dfe5e8f1a7a2a8ed1a06e1049`。
+- 本機倚天 top-pad 2× GOLEMFNT SHA-256 `0c1bc27b70dbb9ee9cd3855cb9199e397d922e95b239dc62efba6475145e44df`；manifest SHA-256 `7b4f1dabb0a56cbee201ec1800a8b1113929e5b94af2725305efe8b102206ef5`，格式欄 `glyphs=2437`。
+
+本節不改 sealed owner 與 E1 的 slot 契約；兩者的既有測試在同一套件內照常通過。

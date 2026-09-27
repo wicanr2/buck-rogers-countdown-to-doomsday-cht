@@ -152,8 +152,12 @@ def read_catalogs(paths: list[Path]) -> list[Entry]:
     return entries
 
 
+# 規格 034 §3.3：手冊英文列用同一字型顯示本機英文摘錄，字型子集固定含全部可列印 ASCII。
+FIXED_CODEPOINTS = frozenset(range(0x21, 0x7F))
+
+
 def catalog_codepoints(entries: list[Entry]) -> list[int]:
-    return sorted({ord(ch) for entry in entries for ch in entry.translation})
+    return sorted({ord(ch) for entry in entries for ch in entry.translation} | FIXED_CODEPOINTS)
 
 
 def character_list_bytes(entries: list[Entry]) -> bytes:

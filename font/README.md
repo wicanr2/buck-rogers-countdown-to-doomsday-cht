@@ -2,7 +2,8 @@
 
 本目錄只保存可重生的字元需求，不提交第三方字型或生成的 `GOLEMFNT` 二進位。
 `characters.txt` 必須只由正式 TSV 的 `translation` 欄透過
-`tools/catalog_font.py chars` 產生；不得手工加入未使用字元。
+`tools/catalog_font.py chars` 產生；不得手工加入未使用字元。唯一的固定需求是全部可列印
+ASCII（0x21–0x7E）：規格 034 以同一字型顯示本機英文摘錄，工具固定併入，不另手工加字。
 
 歷史 prototype 曾使用本機 GNU Unifont 作測試輸入，不代表正式產品字型決策。第八十八階段
 已證實目前 `workplace/` 沒有可回查的原始輸入或實際授權文字；舊 GOLEMFNT 產物也不能反推
