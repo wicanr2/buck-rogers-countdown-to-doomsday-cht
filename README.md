@@ -21,7 +21,7 @@
 | ![救世站](docs/screenshots/03-station.png) Salvation III 站內 | ![酒吧](docs/screenshots/04-bar.png) 交誼廳與水平選單 |
 | ![補給站](docs/screenshots/05-shop.png) 補給站購買清單 | ![發射訊息](docs/screenshots/06-launch-message.png) 發射前的基地司令訊息 |
 | ![敘事](docs/screenshots/07-narrative.png) 廢棄飛船敘事（組句碎片接入） | ![手札](docs/screenshots/08-logbook.png) 手札直接在遊戲內顯示 |
-| ![物品畫面](docs/screenshots/09-item-screen.png) 角色物品畫面 | |
+| ![物品畫面](docs/screenshots/09-item-screen.png) 角色物品畫面 | ![發現廢棄飛船](docs/screenshots/10-derelict-found.png) 太空中發現廢棄飛船 |
 
 截圖是本專案輸出的展示用途，仍含原版美術，只放在 private repo；公開 repo 或發行包前會移除
 （見 [AGENTS.md](AGENTS.md)）。
