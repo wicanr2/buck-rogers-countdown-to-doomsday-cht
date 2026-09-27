@@ -75,15 +75,19 @@ DOS、Commodore 64 與 Amiga 版皆在 1990 年推出；DOS 版另有臺灣發�
 它們只在被 Git 忽略的本機工作區使用，不會加入 GitHub 或公開發行包。
 
 本專案是獨立的保存與在地化工程，與 Strategic Simulations、TSR、Buck Rogers 的權利人
-及其他原權利人沒有隸屬或背書關係。未來若提供可散布工具包，也只會包含本專案程式、
-翻譯及具相容授權的字型，並要求使用者在本機匯入合法原版資料。
+及其他原權利人沒有隸屬或背書關係。發行包只包含本專案程式、翻譯及具相容授權的字型，
+並要求使用者在本機匯入合法原版資料。推廣影片的配樂是原版遊戲音樂（DOSBox-X 執行原版錄製），
+著作權屬原權利人。
 
-## 執行與目前交付狀態
+## 下載與執行
 
-目前沒有穩定的一般玩家安裝／啟動入口，也沒有 GitHub Release。開發驗證使用本機
-`workplace/dosgolem/` 的 `buck-rogers-cht-output-overlay` 分支；該副本與原版輸入均不在
-本儲存庫的可散布內容中。在 Issue #10 的匯入流程及封包驗收完成以前，請勿把研究命令或
-本機固定狀態當成發行方式。
+到 [Releases](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/releases) 下載對應平台的發行包：
+Linux AppImage、Windows zip、macOS zip（universal）。發行包不附原版遊戲，請自備 DOS 英文版，
+把原版資料夾放成程式旁邊的 `original/`；第一次啟動會核對 `START.EXE`、`GAME.OVR` 雜湊並匯入到使用者資料目錄。
+按鍵、存檔位置與 macOS 未簽章的開啟方式見發行包內的 `讀我.txt`（[原文](docs/release/讀我.txt)）。
+
+已中文化的範圍以 [研究證據索引](docs/re/README.md) 的收據為準；尚未量到的輸出路徑仍會顯示英文。
+發行包由 `tools/package.sh` 建置，驗收見 [phase-280](docs/re/phase-280-release-packaging.md)。
 
 ## 授權、致謝與聲明
 
