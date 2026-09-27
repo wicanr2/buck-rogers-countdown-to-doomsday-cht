@@ -3,3 +3,4 @@ tpl.antidote	對{0}使用解毒劑	ecl-batch-editorial
 tpl.drop	永久丟棄{0}嗎？	ecl-batch-editorial
 tpl.needs	{1}還需要{0}點	ecl-batch-editorial
 tpl.destroyed	{0}在{1}被摧毀	ecl-batch-editorial
+tpl.logbook	，已記入手札，編號 {1}	ecl-batch-editorial
