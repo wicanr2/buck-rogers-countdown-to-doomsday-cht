@@ -7,8 +7,24 @@
 > 本專案仍在開發中，尚無可供一般玩家下載的完成版或 Release。已證實範圍與下一個驗收
 > 閘門以 [CONTEXT.md](CONTEXT.md) 為準。
 
-原版 39 題手冊查閱事件均已有對應的遊戲內繁中說明段落；這不等於整本手冊逐字翻譯，
-逐題執行期試玩也尚未完成。翻譯與來源邊界見[第一百階段證據](docs/re/phase-100-manual-39-translation.md)。
+原版 39 題手冊查閱事件均已有對應的遊戲內繁中說明段落；其中 35 題另在段落下方列出英文原文前 N 字
+並標出第 N 字，讓沒有英文手冊的玩家也能作答（英文取自使用者本機的手冊快照，不在本儲存庫）。
+這不等於整本手冊逐字翻譯，逐題執行期試玩也尚未完成。翻譯與來源邊界見[第一百階段證據](docs/re/phase-100-manual-39-translation.md)。
+
+## 畫面預覽
+
+以下是 dosgolem 執行原版時的覆繪輸出（2×）。玩家名、`NEO`、`ENTER` 等專名與按鍵名刻意保留原文。
+
+| | |
+|---|---|
+| ![種族選擇](docs/screenshots/01-race-select.png) 角色建立：種族選擇 | ![隊伍與功能選單](docs/screenshots/02-party-menu.png) 讀檔後的隊伍與功能選單 |
+| ![救世站](docs/screenshots/03-station.png) Salvation III 站內 | ![酒吧](docs/screenshots/04-bar.png) 交誼廳與水平選單 |
+| ![補給站](docs/screenshots/05-shop.png) 補給站購買清單 | ![發射訊息](docs/screenshots/06-launch-message.png) 發射前的基地司令訊息 |
+| ![敘事](docs/screenshots/07-narrative.png) 廢棄飛船敘事（組句碎片接入） | ![手札](docs/screenshots/08-logbook.png) 手札直接在遊戲內顯示 |
+| ![物品畫面](docs/screenshots/09-item-screen.png) 角色物品畫面 | |
+
+截圖是本專案輸出的展示用途，仍含原版美術，只放在 private repo；公開 repo 或發行包前會移除
+（見 [AGENTS.md](AGENTS.md)）。
 
 ## 遊戲與歷史背景
 
@@ -54,8 +70,8 @@ DOS、Commodore 64 與 Amiga 版皆在 1990 年推出；DOS 版另有臺灣發�
 
 ## 原版資料與權利邊界
 
-本儲存庫不包含原版遊戲、原版 EXE、資料檔、存檔、掃描手冊、OCR 全文、音樂、美術、
-截圖，或其他可還原受保護內容。研究與執行所需的原版遊戲及手冊必須由使用者合法自備；
+本儲存庫不包含原版遊戲、原版 EXE、資料檔、存檔、掃描手冊、OCR 全文、音樂、美術，
+或其他可還原受保護內容；唯一例外是上方少量覆繪後的展示截圖，僅限 private repo。研究與執行所需的原版遊戲及手冊必須由使用者合法自備；
 它們只在被 Git 忽略的本機工作區使用，不會加入 GitHub 或公開發行包。
 
 本專案是獨立的保存與在地化工程，與 Strategic Simulations、TSR、Buck Rogers 的權利人
