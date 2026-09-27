@@ -13,7 +13,8 @@ dosgolem 分支 `buck-rogers-cht-output-overlay`：`743ff85`（machine／session
 | 掛與不掛音訊觀測器（AdLib 開啟） | session 摘要相同（單元測試） | 已證實 |
 | 冷開機 1500 畫格 `-wav` | 第 0 秒無聲；第 1–5 秒峰值 6553（PC 喇叭，0.2 滿刻度）；第 6–24 秒每秒 RMS 1100–1450（OPL 音樂持續） | 已證實 |
 | AdLib 開啟重跑 phase-278 最長路徑（到廢棄飛船事件，11,200 畫格） | 截圖與 AdLib 關閉版逐位元組相同，全中文無殘字 | 已證實 |
-| 節拍與實機聽感 | 待使用者試聽（WAV 在 `workplace/play-e2e/a1.wav`、`ad4.wav`） | 未驗 |
+| DOSBox-X 對照（診斷） | DOSBox-X 跑原版（sb16／opl2、cycles fixed 12000）錄 38.9 秒；以 50 ms 包絡做縮放 0.80–1.20 與平移的互相關，最佳相關僅 0.30、縮放 1.03。相關太弱，不足以判定節拍相同或差 3% | 未知 |
+| 節拍與實機聽感 | 待使用者試聽（WAV 在 `workplace/play-e2e/a1.wav`、`ad4.wav`；DOSBox-X 參照在 `workplace/dosboxx-audio/`） | 未驗 |
 
 原版在 AdLib 開啟時的畫面流程與關閉時同步：同一份按鍵排程走到同一畫面。這是本路徑的觀察，不推廣到全遊戲。
 
