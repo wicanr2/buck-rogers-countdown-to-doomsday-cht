@@ -32,3 +32,13 @@
   整串跨到下一列。checkpoint：`workplace/checkpoints/logbook50-pre.state`。
 - 面板 A/B：「手札第 50 則：維生系統紙條」一頁；2×／3× 記憶體雜湊相同。
 - 至此三種版面都已驗證：另起一列（41）、同列接續（38）、行中接續並跨列（50）。
+
+## 5. 手札第 21 則（同一艘船，第 4 層）
+
+- 探索器探完第 1–3 層後上到第 4 層，進入貨箱搭成的隱蔽居住區（ECL2 區塊 32），
+  `YOU TAKE THEM`（`3332:0B79`，旗標 1），接著 ` and you record THEM as logbook entry 21.`
+  （`3332:2547`），游標 (10,20)。checkpoint：`workplace/checkpoints/logbook21-pre.state`。
+- 面板 A/B：「手札第 21 則：康琪博士的日記」一頁（三天日記）；2×／3× 記憶體雜湊相同。
+- 再按 Enter：回到探索畫面，面板關閉，無殘字；座標列「42,43 北 05:57」由 engine-dispatch
+  覆繪（舊家族同一串記為 catalog miss，屬預期分工）。
+- 廢棄飛船上的三則手札（21、38、50）都已驗證。
