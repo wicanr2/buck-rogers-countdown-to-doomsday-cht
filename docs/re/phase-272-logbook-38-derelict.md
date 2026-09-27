@@ -42,3 +42,16 @@
 - 再按 Enter：回到探索畫面，面板關閉，無殘字；座標列「42,43 北 05:57」由 engine-dispatch
   覆繪（舊家族同一串記為 catalog miss，屬預期分工）。
 - 廢棄飛船上的三則手札（21、38、50）都已驗證。
+
+## 6. 手札第 17 則（ECL2 區塊 33，第 7 層）
+
+- 第 5 層起走通風管（`YOU COULD JUST FIT INTO THE AIRSHAFT. DO YOU ENTER?`，Yes／No 選單，
+  Yes 為預設）上到第 7 層；探索器在該提示選 No 留在本層。在凌亂的艙房
+  `YOU FIND A DIARY`（`1D28:0B79`），接著 ` and you record IT as logbook entry 17.`
+  （`1D28:2547`）。checkpoint：`workplace/checkpoints/logbook17-pre.state`。
+- 面板 A/B：「手札第 17 則：枕下發現的書」一頁；2×／3× 記憶體雜湊相同。兩筆 catalog miss
+  都是座標列（第 15 列、13 字），由 engine-dispatch 覆繪。
+- **關閉：未通過（已證實）。** 原版印完訊息後回到冒險選單，敘事窗文字留著；之後按 Enter、
+  向左轉，3D 視窗與座標列都更新，但不再進 `056C`，也沒有整窗清除，面板一直蓋著畫面。
+- 讀鍵量測（`gt -int-log`，同狀態）：`056C` 返回後只有 `0C10:0303` 的 `int 16h` AH=01 查鍵；
+  Enter 送出後才取鍵。修正提案見規格 030 §3.3 關閉條件 4（DRAFT）。
