@@ -23,7 +23,7 @@
 | ![敘事](docs/screenshots/07-narrative.png) 廢棄飛船敘事（組句碎片接入） | ![手札](docs/screenshots/08-logbook.png) 手札直接在遊戲內顯示 |
 | ![物品畫面](docs/screenshots/09-item-screen.png) 角色物品畫面 | ![發現廢棄飛船](docs/screenshots/10-derelict-found.png) 太空中發現廢棄飛船 |
 
-截圖是本專案輸出的展示用途，仍含原版美術，只放在 private repo；公開 repo 或發行包前會移除
+截圖是本專案輸出的展示用途，其中的美術與畫面配置屬原版權利人；發行包不附截圖
 （見 [AGENTS.md](AGENTS.md)）。
 
 ## 遊戲與歷史背景
@@ -71,7 +71,7 @@ DOS、Commodore 64 與 Amiga 版皆在 1990 年推出；DOS 版另有臺灣發�
 ## 原版資料與權利邊界
 
 本儲存庫不包含原版遊戲、原版 EXE、資料檔、存檔、掃描手冊、OCR 全文、音樂、美術，
-或其他可還原受保護內容；唯一例外是上方少量覆繪後的展示截圖，僅限 private repo。研究與執行所需的原版遊戲及手冊必須由使用者合法自備；
+或其他可還原受保護內容；唯一例外是上方少量覆繪後的展示截圖。研究與執行所需的原版遊戲及手冊必須由使用者合法自備；
 它們只在被 Git 忽略的本機工作區使用，不會加入 GitHub 或公開發行包。
 
 本專案是獨立的保存與在地化工程，與 Strategic Simulations、TSR、Buck Rogers 的權利人
@@ -84,6 +84,16 @@ DOS、Commodore 64 與 Amiga 版皆在 1990 年推出；DOS 版另有臺灣發�
 `workplace/dosgolem/` 的 `buck-rogers-cht-output-overlay` 分支；該副本與原版輸入均不在
 本儲存庫的可散布內容中。在 Issue #10 的匯入流程及封包驗收完成以前，請勿把研究命令或
 本機固定狀態當成發行方式。
+
+## 授權、致謝與聲明
+
+本專案採 [RRSAL-1.0](LICENSE)（復古重製 source-available 授權條款）：非商業用途免費，含修改與再散布；
+實況、影片、評論與報導明示允許；商業用途請洽 wicanr2@gmail.com，歡迎來談。它不是 open source 授權，
+也不涵蓋原版遊戲、手冊、美術與音樂。
+
+發行包另含第三方元件，各依自身授權：dosgolem 執行器（RRSAL-1.0，其中 Nuked OPL3 的 Go 移植依
+LGPL-2.1-or-later）、GNU Unifont 字型（SIL OFL-1.1／GPL-2.0-or-later 含字型嵌入例外）、Ebiten 遊戲程式庫
+及其相依套件。
 
 ## 文件導航
 
