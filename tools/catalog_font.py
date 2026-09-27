@@ -25,6 +25,7 @@ ALLOWED_SOURCES = {
     "runtime-editorial",
     "manual-term-editorial",
     "ecl-batch-editorial",
+    "frontend-help",  # dosgolem 規格 241 前端說明頁
 }
 MAGIC = b"GOLEMFNT"
 WIDTH = 16
@@ -156,12 +157,13 @@ def read_catalogs(paths: list[Path]) -> list[Entry]:
 FIXED_CODEPOINTS = frozenset(range(0x21, 0x7F))
 
 
-def catalog_codepoints(entries: list[Entry]) -> list[int]:
-    return sorted({ord(ch) for entry in entries for ch in entry.translation} | FIXED_CODEPOINTS)
+def catalog_codepoints(entries: list[Entry], fixed: bool = False) -> list[int]:
+    points = {ord(ch) for entry in entries for ch in entry.translation}
+    return sorted(points | FIXED_CODEPOINTS if fixed else points)
 
 
-def character_list_bytes(entries: list[Entry]) -> bytes:
-    return "".join(f"U+{codepoint:04X}\t{chr(codepoint)}\n" for codepoint in catalog_codepoints(entries)).encode("utf-8")
+def character_list_bytes(entries: list[Entry], fixed: bool = False) -> bytes:
+    return "".join(f"U+{codepoint:04X}\t{chr(codepoint)}\n" for codepoint in catalog_codepoints(entries, fixed)).encode("utf-8")
 
 
 def _open_unifont(path: Path):
@@ -211,8 +213,8 @@ def load_unifont_subset(path: Path, wanted: list[int]) -> dict[int, bytes]:
     return found
 
 
-def build_golemfnt(entries: list[Entry], unifont_path: Path) -> bytes:
-    codepoints = catalog_codepoints(entries)
+def build_golemfnt(entries: list[Entry], unifont_path: Path, fixed: bool = False) -> bytes:
+    codepoints = catalog_codepoints(entries, fixed)
     glyphs = load_unifont_subset(unifont_path, codepoints)
     output = bytearray(MAGIC)
     output.extend(struct.pack("<HHI", WIDTH, HEIGHT, len(codepoints)))
@@ -390,15 +392,16 @@ def main(argv: list[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
     try:
-        if args.command == "chars":
+        if args.command in ("chars", "build"):
             # 字型字元聯集不帶跨檔文字鍵語意；已接通的畫面可合法共用 key。
-            # 每份檔案仍分別通過 read_catalog 的完整 schema／唯一鍵檢查。
+            # 每份檔案仍分別通過 read_catalog 的完整 schema／唯一鍵檢查（同 eten_font.py）。
             entries = [entry for path in args.catalog for entry in read_catalog(path)]
-            _write_if_changed(args.out, character_list_bytes(entries))
         else:
             entries = read_catalogs(args.catalog)
-        if args.command == "build":
-            _write_if_changed(args.out, build_golemfnt(entries, args.font))
+        if args.command == "chars":
+            _write_if_changed(args.out, character_list_bytes(entries, fixed=True))
+        elif args.command == "build":
+            _write_if_changed(args.out, build_golemfnt(entries, args.font, fixed=True))
         elif args.command == "validate-candidate":
             print(candidate_validation_json(validate_font_candidate(entries, args.manifest, args.source, args.license)))
     except (CatalogError, OSError, csv.Error) as exc:

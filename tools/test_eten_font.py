@@ -160,8 +160,9 @@ class EtenFontTest(unittest.TestCase):
         manifest_out = self.repo / "workplace/union.json"
         with patch("eten_font.SOURCE_SPECS", self.specs()):
             manifest = build([first, second], self.asc, self.spc, self.std, out, manifest_out, self.repo)
-        self.assertEqual(manifest["format"]["glyphs"], 2)
-        self.assertEqual([glyph.codepoint for glyph in decode_golemfnt(out.read_bytes())], sorted(map(ord, "甲乙")))
+        # 規格 034：正式建置固定併入可列印 ASCII。
+        self.assertEqual(manifest["format"]["glyphs"], 2 + 94)
+        self.assertEqual([glyph.codepoint for glyph in decode_golemfnt(out.read_bytes())], sorted(set(map(ord, "甲乙")) | set(range(0x21, 0x7F))))
         self.assertEqual([entry["filename"] for entry in manifest["catalogs"]], ["first.tsv", "second.tsv"])
 
     def test_verify_recomputes_complete_formal_bundle_without_writing(self):

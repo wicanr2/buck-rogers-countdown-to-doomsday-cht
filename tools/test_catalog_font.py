@@ -101,7 +101,9 @@ class CatalogFontTest(unittest.TestCase):
         first.write_text("key\ttranslation\tsource\nshared\t甲乙\truntime\n", encoding="utf-8")
         second.write_text("key\ttranslation\tsource\nshared\t乙人\truntime-interface\n", encoding="utf-8")
         self.assertEqual(main(["chars", str(first), str(second), "--out", str(output)]), 0)
-        self.assertEqual(output.read_bytes(), "U+4E59\t乙\nU+4EBA\t人\nU+7532\t甲\n".encode())
+        # 規格 034：chars 固定併入可列印 ASCII。
+        ascii_lines = "".join(f"U+{c:04X}\t{chr(c)}\n" for c in range(0x21, 0x7F))
+        self.assertEqual(output.read_bytes(), (ascii_lines + "U+4E59\t乙\nU+4EBA\t人\nU+7532\t甲\n").encode())
         with self.assertRaises(CatalogError):
             read_catalogs([first, second])
 

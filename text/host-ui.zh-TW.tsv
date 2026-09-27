@@ -4,3 +4,16 @@ host.apply	套用	runtime-interface
 host.cancel	取消	runtime-interface
 host.scale2	2×	runtime-interface
 host.scale3	3×	runtime-interface
+help.01	操作說明（按 F1 關閉）	frontend-help
+help.02	前端功能鍵（不會送進遊戲）	frontend-help
+help.03	 F1 說明  F2 切換 2 倍／3 倍  F3 靜音	frontend-help
+help.04	 F11 全螢幕  F12 截圖	frontend-help
+help.05	 截圖存到存檔資料夾旁的 screenshots	frontend-help
+help.06	遊戲操作	frontend-help
+help.07	 方向鍵或數字鍵盤：移動、切換選項	frontend-help
+help.08	 Enter 確認  Esc 取消或返回	frontend-help
+help.09	 字母鍵、Ctrl、Alt 組合鍵照原版送出	frontend-help
+help.10	 F4 到 F10 照原版送出	frontend-help
+help.11	 滑鼠：只用左鍵點選	frontend-help
+help.12	 PgUp／PgDn：手札面板開啟時翻頁	frontend-help
+help.13	原版查閱手冊的題目會顯示中文手冊段落	frontend-help

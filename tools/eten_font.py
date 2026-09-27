@@ -254,8 +254,8 @@ def _catalog_metadata(paths: list[Path]) -> list[dict[str, str]]:
 def _bundle_bytes(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path) -> tuple[bytes, bytes, dict[str, object]]:
     """以同一份嚴格規則產生 build 與唯讀 verify 的預期內容。"""
     entries = _read_catalog_glyph_entries(catalogs)
-    character_sha = _sha256(character_list_bytes(entries))
-    codepoints = catalog_codepoints(entries)
+    character_sha = _sha256(character_list_bytes(entries, fixed=True))
+    codepoints = catalog_codepoints(entries, fixed=True)
     asc = _read_source(asc_path, "asc")
     spc = _read_source(spc_path, "spc")
     std = _read_source(std_path, "std")
