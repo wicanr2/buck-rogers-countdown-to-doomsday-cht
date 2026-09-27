@@ -243,3 +243,4 @@
 | [第二百七十一階段：Salvation III 之後的 dispatcher 覆蓋率](phase-271-coverage-after-station.md) | 304 則中剩少數缺口；表格列整串後備、換行拆開的片段。 |
 | [第二百七十二階段：手札第 38 則（廢棄飛船）](phase-272-logbook-38-derelict.md) | 廢棄飛船三則手札（21、38、50）的原版觸發與面板 A/B。 |
 | [第二百七十三階段：物品畫面標題的所有格與 Gear](phase-273-possessive-gear-title.md) | `'s` 短片段、物品畫面呼叫端與 A/B。 |
+| [第二百七十四階段：ECL 敘事窗的組句碎片](phase-274-ecl-short-pieces.md) | 短片段漏抽的執行期與靜態證據。 |
