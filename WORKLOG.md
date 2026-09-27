@@ -3572,3 +3572,11 @@
 - dosgolem 規格 241（兩輪審查 READY）實作：F 鍵、Ctrl／Alt、數字鍵盤、連發、滑鼠左鍵、F1 說明頁、F3 靜音、F11、F12。
 - 規格 241 草稿的腳本語法 `click@x,y` 與腳本逗號分項衝突，改為 `x;y`。規則：新增腳本語法前先對照既有分隔符。
 - 本 repo 加上 LICENSE（RRSAL-1.0），為轉公開做準備；發行規格 035 起草送審。
+
+## 2026-09-28 — 發行包與推廣片（Issue #31、#32）
+
+- 規格 035 兩輪審查 READY 後實作：dosgolem 啟動器（匯入到 game.importing 後改名、之後只核雜湊）、跨平台可寫檢查、
+  `tools/package.sh` 三平台打包、第三方授權自動收集、外洩掃描；驗收見 phase-280，規格 CONFORMED。
+- Wine 驗收抓到不同磁碟機時 bootroot 巢狀檢查失敗，dosgolem 修正。
+- 推廣片 53.6 秒：Unifont 3 倍實跑截圖，配樂為 DOSBox-X 執行原版錄製（使用者決定公開使用原版音樂）。
+- DOSBox-X 與 dosgolem 音訊互相關僅 0.30，節拍一致性未判定，待使用者試聽。

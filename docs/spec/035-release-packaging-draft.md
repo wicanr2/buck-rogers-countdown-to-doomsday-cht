@@ -1,6 +1,6 @@
 # 035 — 發行包：Linux AppImage、Windows zip、macOS zip
 
-狀態：**READY**（2026-09-28，兩輪獨立審查後）
+狀態：**CONFORMED**（2026-09-28；驗收收據 docs/re/phase-280；macOS 只驗結構、Windows 以 Wine 驗）
 日期：2026-09-27
 前置：dosgolem 規格 240（音訊）、241（輸入）；本 repo 規格 034（手冊英文列，本機限定）；
 參考先例 `/home/anr2/cht/psychic-war/docs/spec/021-packaging.md`（只取架構與驗收方法）。
