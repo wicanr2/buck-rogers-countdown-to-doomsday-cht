@@ -1,6 +1,11 @@
 # 目前狀態
 
-更新：2026-09-25
+更新：2026-09-28
+
+發行：repo 已公開，v1.0.0 Release 提供 Linux AppImage、Windows zip、macOS zip 與推廣影片
+（打包 `tools/package.sh`，規格 035 CONFORMED，收據 docs/re/phase-280）。發行字型為 GNU Unifont 子集，
+共 2438 字模；倚天字型只在本機驗收使用。音訊（dosgolem 規格 240）與輸入（規格 241）已實作，
+待使用者試聽節拍與實機操作確認（Issue #28、#29）。以下為各路徑的歷史定版紀錄。
 
 已定版譯文／字型（中文印刷本優先）：使用者已選**中文印刷本優先**，
 翻譯代理依中文印刷手冊 crosswalk 第 9–12 筆提出的四處修訂正式入版：
