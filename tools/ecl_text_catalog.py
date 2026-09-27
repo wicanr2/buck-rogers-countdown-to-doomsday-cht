@@ -8,7 +8,8 @@
 DAX 容器與 6-bit 解碼同 golden-box-remake-engine 的 dax、ecl/text.go，
 但不去頭尾空白：原版把整串（含尾隨空白）交給印字程序，雜湊要逐位元相同。
 候選判準：0x80 長度前綴、解碼後只含允許字元、90% 以上 token 像英文詞、
-首尾 token 都像詞、長度 > 3 且含空白。這是啟發式，會漏字串也會收雜訊；
+首尾 token 都像詞、長度 > 3 且含空白（第 1 層）；規格 027 §3.1 修訂另收第 2 層：
+第 1 層不成立，但長度 ≥ 2、含字母、不要求空白。這是啟發式，會漏字串也會收雜訊；
 執行期以整串雜湊比對，漏掉的字串顯示英文，雜訊永遠不會命中。
 """
 import argparse, hashlib, re, struct, sys
@@ -74,6 +75,16 @@ def wordy(t):
     return sum(1 for x in toks if word_ok(x)) / len(toks) >= 0.9
 
 
+def tier(t):
+    """規格 027 §3.1：1、2，或 0（不收）。只看字串本身。"""
+    v = t.strip()
+    if not (any(c.isalpha() for c in v) and CLEAN.fullmatch(v) and wordy(v)):
+        return 0
+    if len(v) > 3 and ' ' in v:
+        return 1
+    return 2 if len(v) >= 2 else 0
+
+
 def extract(orig):
     found = {}
     for n in range(1, 7):
@@ -85,8 +96,7 @@ def extract(orig):
                 if i + 2 + ln > len(blk):
                     continue
                 t = decode6(blk[i + 2:i + 2 + ln])
-                v = t.strip()
-                if len(v) > 3 and ' ' in v and any(c.isalpha() for c in v) and CLEAN.fullmatch(v) and wordy(v):
+                if tier(t):
                     found.setdefault(t, []).append(f'ECL{n}:{bid}:{i}')
     return found
 
@@ -99,7 +109,7 @@ def main():
     a = ap.parse_args()
     found = extract(a.orig)
     ev = ['event_key\toriginal_length\toriginal_sha256\tsources']
-    src = ['key\toriginal\tsources']
+    src = ['key\toriginal\tsources\ttier']
     for t, locs in found.items():
         n, b, o = locs[0].split(':')
         key = f'ecl.{n[3:]}.{int(b):02d}.{int(o):05d}'
@@ -107,7 +117,7 @@ def main():
         if len(raw) > 255:
             continue
         ev.append(f'{key}\t{len(raw)}\t{hashlib.sha256(raw).hexdigest()}\t{";".join(locs)}')
-        src.append(f'{key}\t{t}\t{";".join(locs)}')
+        src.append(f'{key}\t{t}\t{";".join(locs)}\t{tier(t)}')
     keys = [l.split('\t')[0] for l in ev[1:]]
     if len(keys) != len(set(keys)):
         sys.exit('duplicate key')
