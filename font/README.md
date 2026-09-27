@@ -5,11 +5,14 @@
 `tools/catalog_font.py chars` 產生；不得手工加入未使用字元。唯一的固定需求是全部可列印
 ASCII（0x21–0x7E）：規格 034 以同一字型顯示本機英文摘錄，工具固定併入，不另手工加字。
 
-歷史 prototype 曾使用本機 GNU Unifont 作測試輸入，不代表正式產品字型決策。第八十八階段
-已證實目前 `workplace/` 沒有可回查的原始輸入或實際授權文字；舊 GOLEMFNT 產物也不能反推
-來源或授權，因此不得當作正式候選。未來候選的授權檔若明載 GNU GPL 2+（含字型嵌入例外）及
-SIL Open Font License 1.1 條款，仍須連同實際採用版本重新核對完整文字與必要告知；這不是
-採用或可散布的聲明。
+## 發行字型：GNU Unifont 17.0.05
+
+使用者定案（2026-09-27）：公開發行包用 GNU Unifont 子集；倚天字型只作本機遊玩與驗收，不散布。
+來源為 `unifont_all-17.0.05.hex.gz`（官方 tarball 內附 `COPYING` 與 `OFL-1.1.txt`），字型檔以
+SIL OFL-1.1 與 GPL-2.0-or-later（含字型嵌入例外）雙授權；未宣告保留字型名稱。發行包附 `OFL-1.1.txt`
+與 Unifont 的 `COPYING`。子集由正式譯文以 `tools/catalog_font.py build` 重建，原始檔與產物都留在被忽略的
+`workplace/`，由打包流程（規格 035）核對 SHA-256 後建置。第八十八階段「Unifont 不是正式候選」的結論，
+是當時缺少可回查的原始輸入與授權文字；上述來源補齊後已由本定案取代。
 
 建置及驗證命令見 [`text/README.md`](../text/README.md)。
 
