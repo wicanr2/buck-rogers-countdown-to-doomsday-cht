@@ -14,8 +14,8 @@
 ## 2. 證據
 
 - 英文原文來源：使用者本機的英文手冊快照 `workplace/buckrogers-original-manual-english.html`
-  （phase-112 記錄其 SHA-256）。它是 OCR 文字，有錯字（例如 `Deimos` 被辨識為 `Delmos`，
-  正好是第 32 筆題目的第 10 個字，已證實）。
+  （phase-112 記錄其 SHA-256）。它是 OCR 文字，有錯字；至少一題的第 N 個字受 OCR 錯誤影響（已證實）。
+- 答案與摘錄單字不得出現在規格、`docs/re`、commit、Issue、收據 JSON、除錯輸出與測試 fixture。
 - 題目 metadata（頁碼、標題、序數）已由 phase-12 證實；答案欄編碼與比較流程已證實，原規定
   「禁止匯出」。
 - 手冊段落版面（`manual-overlay-layout.tsv`）：文字區 x 16、y 72，36 欄 × 14 列，每列 8 邏輯像素。
