@@ -1,6 +1,6 @@
 # 035 — 發行包：Linux AppImage、Windows zip、macOS zip
 
-狀態：**DRAFT**（2026-09-27）
+狀態：**READY**（2026-09-28，兩輪獨立審查後）
 日期：2026-09-27
 前置：dosgolem 規格 240（音訊）、241（輸入）；本 repo 規格 034（手冊英文列，本機限定）；
 參考先例 `/home/anr2/cht/psychic-war/docs/spec/021-packaging.md`（只取架構與驗收方法）。
@@ -57,7 +57,7 @@
   一個一般檔（同名不同大小寫出現兩個以上即報錯）。之後一律使用實際找到的檔名：`bootroot.RequiredFile.Name`、
   讀回執行檔與核對都用它。遊戲內的 DOS 檔案層本來就大小寫不拘，不受影響。
 - 第一次啟動（`game/` 不存在）：
-  1. 刪除上次殘留的 `game.importing-*` 目錄（中斷的匯入）。
+  1. 刪除上次殘留的 `game.importing-*` 目錄（中斷的匯入）。不支援同時開兩個程式做首次匯入。
   2. 以 `bootroot.Prepare` 把原版複製到新的 `game.importing-<pid>`，同時核對兩個必要檔雜湊。
   3. 成功後 `os.Rename` 成 `game/`。行程在 1–3 之間被中止，只會留下 `game.importing-*`，下次啟動清掉重來；
      `game/` 只會以完整狀態出現。
@@ -109,8 +109,8 @@
 ## 4. 驗收
 
 1. AppImage：以 `--appimage-extract-and-run`（不需 FUSE）在另一個 cwd 執行；原版放在 AppImage 旁的 `original/`
-   （檔名改成小寫一次，驗大小寫不拘），`XDG_DATA_HOME` 指到暫存目錄；自動模式跑到功能選單截圖，與 repo 建置的
-   執行檔逐位元組相同；`game/` 建立在資料目錄、原版目錄未被寫入。第二次啟動不再複製（`game/` 內新增的標記檔
+   （檔名改成小寫一次，驗大小寫不拘），`XDG_DATA_HOME` 指到暫存目錄；自動模式跑到功能選單的截圖，與 repo 建置之執行檔的
+   截圖逐位元組相同；`game/` 建立在資料目錄、原版目錄未被寫入。第二次啟動不再複製（`game/` 內新增的標記檔
    仍在）、畫面相同。
 2. 中斷匯入：預先放一個 `game.importing-1` 殘留目錄，啟動後它被清掉且 `game/` 正常建立。竄改 `game/GAME.OVR`
    一個位元組，啟動失敗且訊息指向 `game/`。
