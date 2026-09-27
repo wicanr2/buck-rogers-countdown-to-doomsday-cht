@@ -1,0 +1,52 @@
+拯救地球（繁體中文化）
+SSI《Buck Rogers: Countdown to Doomsday》DOS 英文版的繁體中文輸出覆繪
+https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht
+
+一、本程式不附原版遊戲
+  請自備合法取得的 DOS 英文版原版遊戲。程式會核對 START.EXE 與 GAME.OVR
+  的 SHA-256，只支援下列版本：
+    START.EXE  58a34a38b1db455202d2d30daa82915982d7d905932b46bdc7371cb466226cf1
+    GAME.OVR   3a4ad4856c08fe5973179f1d907feed1d870af99d08abd1cb884b316324f3cc0
+
+二、第一次啟動
+  把原版遊戲資料夾（含 START.EXE、GAME.OVR 等全部檔案）複製成本程式旁邊的
+  original 資料夾：
+    Windows：與 BuckRogersCHT.exe 同一層
+    macOS：與 BuckRogersCHT.app 同一層
+    Linux：與 AppImage 檔同一層
+  也可以用 -original 指定原版資料夾的位置。
+  第一次啟動會把原版複製到使用者資料目錄的 game 資料夾，之後就不再需要
+  original 資料夾；遊戲存檔也寫在 game 資料夾裡：
+    Windows：%APPDATA%\BuckRogersCHT
+    macOS：~/Library/Application Support/BuckRogersCHT
+    Linux：~/.local/share/buckrogers-cht（或 $XDG_DATA_HOME/buckrogers-cht）
+  出錯時同一個目錄會留下 buckrogers-error.log。
+
+三、按鍵
+  F1   說明頁（開啟時遊戲暫停）
+  F2   切換 2 倍／3 倍
+  F3   靜音
+  F11  全螢幕
+  F12  截圖（存到使用者資料目錄的 screenshots）
+  其餘按鍵照原版送進遊戲：方向鍵與數字鍵盤、Enter、Esc、字母、Ctrl／Alt 組合鍵、
+  F4 到 F10。滑鼠只用左鍵。手札面板開啟時 PgUp／PgDn 翻頁。
+  音樂與音效模擬 AdLib 與 PC 喇叭。原版的音效設定存在 BUCK.CFG；若聽不到音樂，
+  可能是你的原版設定選的不是 AdLib。
+
+四、macOS 第一次開啟
+  本程式沒有 Apple 簽章。第一次請在 Finder 對 BuckRogersCHT.app 按右鍵選「打開」，
+  或到「系統設定 → 隱私權與安全性」允許開啟。
+
+五、授權
+  本中文化採 RRSAL-1.0（見 LICENSE）：非商業用途免費，含修改與再散布；實況、影片、
+  評論與報導明示允許；商業用途請洽 wicanr2@gmail.com。它不是 open source 授權。
+  內含第三方元件，各依自身授權：
+    dosgolem 執行器（LICENSE-dosgolem，RRSAL-1.0）
+    Nuked OPL3 的 Go 移植（LGPL-2.1 或更新版，COPYING.LGPL、nukedopl-SOURCE.md；
+      對應原始碼：https://github.com/wicanr2/dosgolem ，commit 見 -version）
+    GNU Unifont 字型（font/OFL-1.1.txt、font/COPYING-unifont）
+    Ebiten 與其他 Go 模組（THIRD-PARTY.md）
+
+六、原作權利
+  《Buck Rogers: Countdown to Doomsday》的程式、美術、音樂、文字與手冊屬 SSI、
+  Buck Rogers 的權利人及其他原權利人。本專案與上述權利人沒有隸屬或背書關係。
