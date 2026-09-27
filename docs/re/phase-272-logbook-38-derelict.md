@@ -53,5 +53,13 @@
   都是座標列（第 15 列、13 字），由 engine-dispatch 覆繪。
 - **關閉：未通過（已證實）。** 原版印完訊息後回到冒險選單，敘事窗文字留著；之後按 Enter、
   向左轉，3D 視窗與座標列都更新，但不再進 `056C`，也沒有整窗清除，面板一直蓋著畫面。
-- 讀鍵量測（`gt -int-log`，同狀態）：`056C` 返回後只有 `0C10:0303` 的 `int 16h` AH=01 查鍵；
-  Enter 送出後才取鍵。修正提案見規格 030 §3.3 關閉條件 4（DRAFT）。
+- 讀鍵量測（`gt -int-log`，同狀態，原始紀錄）：`0C10:0303` 是 `int 16h` AH=01 查鍵（AX 記為
+  `0100`／`0101`／`0148`／`0150`），`0C10:031A` 是 AH=00 取鍵（AX `0000`）。`056C` 返回後到
+  Enter 之間只有 AH=01。限度：同位置同 AX 只記首次；緩衝區空時清鍵迴圈同樣只顯示 AH=01。
+  修正見規格 030 §3.3 關閉條件 4。
+- 手札第 7 則（同層，`THE ROOM IS SPARTAN … YOU TAKE IT`，`1D28:0B79`／`2547`）：面板開啟
+  「手札第 7 則：威廉博士的夾冊」一頁，2×／3× 記憶體雜湊相同；關閉待條件 4。
+  checkpoint：`workplace/checkpoints/logbook7-pre.state`。
+- 手札第 60 則（同層，`THE ROOM IS FILLED WITH BODIES … YOU TAKE THE LOG`）：面板開啟
+  「手札第 60 則：維尼可夫錄音」一頁，2×／3× 記憶體雜湊相同；關閉待條件 4。
+  checkpoint：`workplace/checkpoints/logbook60-pre.state`。
