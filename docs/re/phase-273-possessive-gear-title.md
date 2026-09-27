@@ -31,6 +31,14 @@ trace：`workplace/phase257-text-window-trace/cp/n6.tsv`（角色建立後、檢
   符合 Turbo Pascal 把字串常數放在使用它的函式前面的配置（強推論，未反組譯確認引用）。
 - 片段抽取工具只收「含兩個以上連續英文字母」的字串，所以 `'s` 原本不在 catalog。
 
-## 4. 目前狀態
+## 4. 實作與驗收（規格 029 §2.1 修訂、§4 第 11 條）
 
-三個呼叫端都不在 dispatcher 清單，標題與第 3 列為原版英文。修正見規格 029 §2.1 修訂。
+- 抽取工具加明列常數並核對位移；重建後 catalog 只多出 `'s` 一列，其餘逐位元相同，無 `.uc` 變體。
+- Go 單元測試以 Python 參考分解器的輸出為預期值：`'s`、`CELESTE's`、`CELESTE's Gear`、
+  `'s weapon is reloaded`、`'S` 五組 signature 一致；`'s` 譯「的」、`'S` 不命中。
+- 原版同狀態 A/B：
+  - 角色建立後（`n5` 接 Enter）：標題「FLAVIUS的  裝備」，差異只在原文格內；2×／3× 記憶體雜湊相同。
+  - 廢棄飛船隊伍（`logbook60-pre` 起，View → Gear → 離開 → 下移兩位 → View → Gear）：
+    FLAVIUS（7 字）切到 PIERRE（6 字）後標題「PIERRE的  裝備」，第 8 欄沒有殘留「的」。
+  - 第 3 列 `Ready Item` 在兩個停止點的原版畫面都是空的，覆繪也沒有畫出。
+- 同畫面物品列的片段 ` Yes  ` 表示「已裝備」，舊譯「是」改為「已裝備」。

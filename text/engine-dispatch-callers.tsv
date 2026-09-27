@@ -16,3 +16,6 @@ OVR:1B6E8:007C	商店個人資金（phase-266）
 OVR:1B6E8:00CD	商店共同資金（phase-266）
 OVR:27BBE:02D5	角色頁武器與護甲列（phase-266）
 OVR:27BBE:2AF5	探索畫面座標列（phase-268）
+OVR:2BA60:2391	物品畫面標題所有格（phase-273）
+OVR:21832:1C20	物品畫面標題 Gear（phase-273）
+OVR:21832:1C41	物品畫面 Ready Item（phase-273）

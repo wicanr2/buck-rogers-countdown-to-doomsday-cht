@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
 """規格 029：引擎片段 catalog 與參考分解器。
 
-片段 = GAME.OVR、START.EXE 內可列印、含兩個以上連續英文字母的 Pascal 字串（長度 1–80）。
+片段 = GAME.OVR、START.EXE 內可列印、含兩個以上連續英文字母的 Pascal 字串（長度 1–80），
+另加規格 029 §2.1 明列的短片段（EXPLICIT，逐條附檔案位移，不產生全大寫變體）。
 decompose() 是 Go 實作（apps/buckrogers/engine_text.go）的參考版本，兩者要對同一批
 測試向量給出相同 signature。
 """
 import argparse, hashlib, re, sys
 from pathlib import Path
+
+
+# 規格 029 §2.1（2026-09-27 修訂）：明列短片段 -> (檔名, 長度位元組的檔案位移)。
+EXPLICIT = {"'s": ('GAME.OVR', 187675)}
 
 
 def fragments(orig, with_pos=False):
@@ -19,6 +24,11 @@ def fragments(orig, with_pos=False):
                 s = d[i + 1:i + 1 + n]
                 if all(32 <= c < 127 for c in s) and re.search(rb'[A-Za-z]{2}', s):
                     out.setdefault(s.decode('ascii'), f'{name}:{i}')
+    for t, (name, i) in EXPLICIT.items():
+        d = (orig / name).read_bytes()
+        if d[i] != len(t) or d[i + 1:i + 1 + len(t)] != t.encode('ascii'):
+            sys.exit(f'明列片段 {t!r} 不在 {name}:{i}')
+        out.setdefault(t, f'{name}:{i}')
     return out if with_pos else set(out)
 
 
@@ -137,7 +147,7 @@ def main():
         src.append(f'{k}\t{t}\t{pos[t]}')
         # 遊戲部分畫面把片段轉成全大寫顯示；全大寫變體共用同一譯文（key 加 .uc）。
         u = t.upper()
-        if u != t and u not in pos and u not in seen_upper:
+        if t not in EXPLICIT and u != t and u not in pos and u not in seen_upper:
             seen_upper.add(u)
             ev.append(f'{k}.uc\t{len(u)}\t{hashlib.sha256(u.encode("ascii")).hexdigest()}')
     a.events.write_text('\n'.join(ev) + '\n', encoding='utf-8')
