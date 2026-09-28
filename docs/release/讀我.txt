@@ -30,6 +30,8 @@ https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht
   F12  截圖（存到使用者資料目錄的 screenshots）
   其餘按鍵照原版送進遊戲：方向鍵與數字鍵盤、Enter、Esc、字母、Ctrl／Alt 組合鍵、
   F4 到 F10。滑鼠只用左鍵。手札面板開啟時 PgUp／PgDn 翻頁。
+  遊戲速度：預設以較慢的虛擬 CPU（-clock 50）執行，一般電腦即可維持原速。若畫面或音樂仍斷續，可改用
+  -clock 30；電腦很快而想要較高的 CPU 速度，可用 -clock 100。範圍 10 到 100。
   音樂與音效模擬 AdLib 與 PC 喇叭。原版的音效設定存在 BUCK.CFG；若聽不到音樂，
   可能是你的原版設定選的不是 AdLib。
 
