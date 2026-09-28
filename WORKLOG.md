@@ -3587,3 +3587,10 @@
   `BUCKROGERS_WITH_DATA=1 tools/package.sh all` 產出 `-with-data` 三平台，不外洩掃描、改確認包內有原版。
 - 驗收：Linux AppImage 與 Windows（Wine）在外部不放原版、全新資料目錄下直接進到功能選單，截圖與參照逐位元組相同；
   macOS 包內 `Contents/Resources/original/START.EXE` 存在。產物只在 dist-all（gitignore），不上傳。
+
+## 2026-09-28 — v1.0.1：F2 當掉與開頭爆音（使用者回報）
+
+- F2：切換倍率後同一格 screen 仍是舊尺寸，WritePixels panic。先前只有單元測試涵蓋 F2 對映，自動模式從未實際切倍率。
+  修正後以腳本 `scale` 動作做端到端回歸。規則：前端功能鍵必須在自動模式實際觸發過一次才算驗收。
+- 爆音：無頭 WAV 無削波、無突跳，研判為即時播放斷流（波形硬切成 0）；播放改為預填、斷流淡出並重新預填、恢復淡入，
+  喇叭方波加 6 kHz 低通。結束時印出 fps 與斷流次數，待使用者實機回報。

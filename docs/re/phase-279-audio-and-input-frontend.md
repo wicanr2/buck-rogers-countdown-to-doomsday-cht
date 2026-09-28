@@ -28,6 +28,7 @@ dosgolem 分支 `buck-rogers-cht-output-overlay`：`743ff85`（machine／session
 | 按下後失焦 | 同上 | 已證實 |
 | 說明頁暫停 | 第 1200 格開說明頁、跑到 1230：步數 230,807,500 = 1199 格；1200 開、1260 關、跑到 1300：步數 238,507,500 = 1239 格，session 仍 Running | 已證實 |
 | 系統游標 | 原版呼叫 `int 33h AX=0001／0009`（phase-1），dosgolem 不畫驅動游標，因此保留系統游標 | 強推論 |
+| F2 切換倍率 | v1.0.0 實機按 F2 當掉（Draw 寫入尺寸與 screen 不合）；dosgolem `6ed9f31` 修正後，自動模式切換三次倍率不當掉，最終 2 倍截圖與參照逐位元組相同 | 已證實 |
 | F3、F11、F12、Ctrl／Alt 實鍵、連發手感 | 待使用者實機確認 | 未驗 |
 
 說明頁文字在 `text/host-ui.zh-TW.tsv`（`help.*`，source `frontend-help`）；字元清單新增「版」，本機倚天與
