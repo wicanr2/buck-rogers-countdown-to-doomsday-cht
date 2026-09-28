@@ -82,9 +82,10 @@ dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMA
   for s in 256 512; do python3 tools/appicon.py /stage/common/font/buckrogers-unifont.golemfnt /stage/icon-$s.png $s; done'
 if [[ "$WITH_DATA" == 1 ]]; then
   # 倚天字型依現行譯文重建（與 Unifont 同一份字元聯集），只放進完整版。
-  dr -v "$ROOT:/p:ro" -v "$ETEN_SRC:/eten:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" sh -c '
+  # eten_font.py 只准輸出到 repo 的 workplace/，所以另把 workplace 可寫掛上。
+  dr -v "$ROOT:/p:ro" -v "$W:/p/workplace" -v "$ETEN_SRC:/eten:ro" -w /p "$PY_IMAGE" sh -c '
     python3 tools/eten_font.py build text/*.zh-TW.tsv --asc /eten/ASCFONT.15 --spc /eten/SPCFONT.15 --std /eten/STDFONT.15 \
-      --out /stage/eten.golemfnt --manifest-out /stage/eten.json >/dev/null'
+      --out workplace/pkg-stage/eten.golemfnt --manifest-out workplace/pkg-stage/eten.json >/dev/null'
 fi
 cp "$UNIFONT_DOC/OFL-1.1.txt" "$STAGE/common/font/OFL-1.1.txt"
 cp "$UNIFONT_DOC/COPYING" "$STAGE/common/font/COPYING-unifont"
