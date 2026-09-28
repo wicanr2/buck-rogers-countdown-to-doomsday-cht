@@ -16,8 +16,15 @@
 | `BuckRogersCHT-<版本>-win64.zip` | `BuckRogersCHT.exe` 與同樣的資料 |
 | `BuckRogersCHT-<版本>-macos.zip` | `BuckRogersCHT.app`（universal：x86_64＋arm64） |
 
-- **發行包不含任何原版檔案**（遊戲檔、手冊掃描、倚天字型、本機手冊英文摘錄）。玩家自備原版，由程式核對雜湊
-  （2026-09-27 定案；本規格不做含原版的變體）。
+- **發行包不含任何原版檔案**（遊戲檔、手冊掃描、倚天字型、本機手冊英文摘錄）。玩家自備原版，由程式核對雜湊。
+
+### 1.1 本機自用完整版（使用者 2026-09-28 要求）
+
+- `BUCKROGERS_WITH_DATA=1 tools/package.sh all` 另出 `BuckRogersCHT-<版本>-with-data-<平台>` 三份：原版樹放在
+  發行包內的 `original/`（AppImage 根目錄、Windows exe 旁、macOS `.app/Contents/Resources/original`），附
+  `本機自用-請勿散布.txt`。啟動器依 §3.1 在發行包旁之後找包內 `original/`，解開即可遊玩。
+- 只存在被忽略的 `dist-all/`；**絕不推 git、絕不上傳 Release 或任何外部服務**。此變體不做外洩掃描，改為確認
+  `original/START.EXE` 在包內；兩種變體的舊產物清理互不影響。
 - 字型：GNU Unifont 17.0.05 子集（使用者定案），由正式譯文重建。
 - 規格 034 的英文關鍵字列在發行包預設關閉（不附摘錄檔）。
 
@@ -44,7 +51,7 @@
 |---|---|
 | `-text-dir` | 執行檔目錄的 `text/`；macOS `.app` 的 `Contents/Resources/text`；cwd 的 `text/` |
 | `-font` | 同上的 `font/buckrogers-unifont.golemfnt` |
-| 原版目錄 | 發行包旁的 `original/`（AppImage 取 `$APPIMAGE` 所在目錄；macOS 取 `.app` 所在目錄；Windows 取執行檔目錄）；再找使用者資料目錄下的 `original/`；只在第一次匯入時需要 |
+| 原版目錄 | 發行包旁的 `original/`（AppImage 取 `$APPIMAGE` 所在目錄；macOS 取 `.app` 所在目錄；Windows 取執行檔目錄）；發行包內的 `original/`（§1.1）；再找使用者資料目錄下的 `original/`；只在第一次匯入時需要 |
 | 使用者資料目錄 | Linux `$XDG_DATA_HOME/buckrogers-cht`（未設為 `~/.local/share/buckrogers-cht`）；macOS `~/Library/Application Support/BuckRogersCHT`；Windows `%APPDATA%\BuckRogersCHT` |
 
 - 旗標有給就照給的用；找不到即報錯，不靜默回退。`-exe-sha256` 預設為上列 `START.EXE` 雜湊。
@@ -125,5 +132,5 @@
 
 - 程式碼簽章與公證、安裝程式、自動更新。
 - 建立 GitHub Release、上傳與推廣影片：屬 Issue #32，另行處理。
-- 含原版的發行變體。
+- 公開散布含原版的變體（§1.1 只限本機）。
 - 在發行包內附手冊英文摘錄或倚天字型。
