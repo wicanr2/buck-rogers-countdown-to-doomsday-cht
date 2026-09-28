@@ -37,11 +37,13 @@ LEAK_SOURCES=("$W/original/BRcdoom" "/home/anr2/cht/etan_font/ET353S/FILES" "$W/
 VER="$(git describe --tags --always --dirty 2>/dev/null || echo dev)"
 WITH_DATA="${BUCKROGERS_WITH_DATA:-}"
 ORIG_TREE="$W/original/BRcdoom"
-ETEN_SRC="/home/anr2/cht/etan_font/ET353S/FILES"   # 倚天 15 點來源（本機購買，只進完整版）
+ETEN_SRC="/home/anr2/cht/etan_font/ET353S/FILES"
+MANUAL_EXCERPT="$W/manual-english/excerpt.tsv"   # 本機手冊英文摘錄（規格 034，只進完整版）   # 倚天 15 點來源（本機購買，只進完整版）
 SUF=""
 if [[ "$WITH_DATA" == 1 ]]; then
   SUF="-with-data"
   [[ -f "$ORIG_TREE/START.EXE" ]] || { echo "[package] 缺原版 $ORIG_TREE" >&2; exit 1; }
+  [[ -f "$MANUAL_EXCERPT" ]] || { echo "[package] 缺手冊摘錄 $MANUAL_EXCERPT" >&2; exit 1; }
   for f in ASCFONT.15 SPCFONT.15 STDFONT.15; do [[ -f "$ETEN_SRC/$f" ]] || { echo "[package] 缺倚天 $f" >&2; exit 1; }; done
 fi
 DC="$(git -C "$DG" rev-parse HEAD)"
@@ -117,8 +119,11 @@ payload() {
   mkdir -p "$1/original" "$1/font"
   cp -r "$ORIG_TREE"/. "$1/original/"
   cp "$STAGE/eten.golemfnt" "$1/font/buckrogers-eten-top-pad.golemfnt"
+  mkdir -p "$1/local"
+  cp "$MANUAL_EXCERPT" "$1/local/manual-english.tsv"
   printf '%s\n' "本機自用完整版：內含原版遊戲《Buck Rogers: Countdown to Doomsday》，著作權屬原權利人。" \
     "內附倚天中文字型（購買授權，限本機使用），預設優先使用；刪除 font/buckrogers-eten-top-pad.golemfnt 即改用 GNU Unifont。" \
+    "內附本機手冊英文摘錄 local/manual-english.tsv：手冊查詢題會在中文段落下方顯示英文原文與字序。" \
     "請勿散布、上傳或分享本檔案。" > "$1/本機自用-請勿散布.txt"
 }
 # check <目錄>：一般版做外洩掃描；完整版改為確認原版確實在包內。
