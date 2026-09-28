@@ -3580,3 +3580,10 @@
 - Wine 驗收抓到不同磁碟機時 bootroot 巢狀檢查失敗，dosgolem 修正。
 - 推廣片 53.6 秒：Unifont 3 倍實跑截圖，配樂為 DOSBox-X 執行原版錄製（使用者決定公開使用原版音樂）。
 - DOSBox-X 與 dosgolem 音訊互相關僅 0.30，節拍一致性未判定，待使用者試聽。
+
+## 2026-09-28 — 本機自用完整版（規格 035 §1.1）
+
+- 使用者要求 dist-all 保留含原版、可直接遊玩的完整版。啟動器多找發行包內的 `original/`（dosgolem `290770a`）；
+  `BUCKROGERS_WITH_DATA=1 tools/package.sh all` 產出 `-with-data` 三平台，不外洩掃描、改確認包內有原版。
+- 驗收：Linux AppImage 與 Windows（Wine）在外部不放原版、全新資料目錄下直接進到功能選單，截圖與參照逐位元組相同；
+  macOS 包內 `Contents/Resources/original/START.EXE` 存在。產物只在 dist-all（gitignore），不上傳。
