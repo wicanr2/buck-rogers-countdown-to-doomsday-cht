@@ -37,10 +37,12 @@ LEAK_SOURCES=("$W/original/BRcdoom" "/home/anr2/cht/etan_font/ET353S/FILES" "$W/
 VER="$(git describe --tags --always --dirty 2>/dev/null || echo dev)"
 WITH_DATA="${BUCKROGERS_WITH_DATA:-}"
 ORIG_TREE="$W/original/BRcdoom"
+ETEN_SRC="/home/anr2/cht/etan_font/ET353S/FILES"   # 倚天 15 點來源（本機購買，只進完整版）
 SUF=""
 if [[ "$WITH_DATA" == 1 ]]; then
   SUF="-with-data"
   [[ -f "$ORIG_TREE/START.EXE" ]] || { echo "[package] 缺原版 $ORIG_TREE" >&2; exit 1; }
+  for f in ASCFONT.15 SPCFONT.15 STDFONT.15; do [[ -f "$ETEN_SRC/$f" ]] || { echo "[package] 缺倚天 $f" >&2; exit 1; }; done
 fi
 DC="$(git -C "$DG" rev-parse HEAD)"
 
@@ -78,6 +80,12 @@ cp text/*.tsv "$STAGE/common/text/"
 dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" sh -c '
   python3 tools/catalog_font.py build text/*.zh-TW.tsv --font /u.hex.gz --out /stage/common/font/buckrogers-unifont.golemfnt &&
   for s in 256 512; do python3 tools/appicon.py /stage/common/font/buckrogers-unifont.golemfnt /stage/icon-$s.png $s; done'
+if [[ "$WITH_DATA" == 1 ]]; then
+  # 倚天字型依現行譯文重建（與 Unifont 同一份字元聯集），只放進完整版。
+  dr -v "$ROOT:/p:ro" -v "$ETEN_SRC:/eten:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" sh -c '
+    python3 tools/eten_font.py build text/*.zh-TW.tsv --asc /eten/ASCFONT.15 --spc /eten/SPCFONT.15 --std /eten/STDFONT.15 \
+      --out /stage/eten.golemfnt --manifest-out /stage/eten.json >/dev/null'
+fi
 cp "$UNIFONT_DOC/OFL-1.1.txt" "$STAGE/common/font/OFL-1.1.txt"
 cp "$UNIFONT_DOC/COPYING" "$STAGE/common/font/COPYING-unifont"
 cp LICENSE "$STAGE/common/LICENSE"
@@ -105,15 +113,18 @@ printf '另含 Go 標準程式庫與執行期（%s，BSD-3-Clause，licenses/go-
 # payload <目標目錄>：完整版放入原版與本機自用說明；一般版什麼都不放。
 payload() {
   [[ "$WITH_DATA" == 1 ]] || return 0
-  mkdir -p "$1/original"
+  mkdir -p "$1/original" "$1/font"
   cp -r "$ORIG_TREE"/. "$1/original/"
+  cp "$STAGE/eten.golemfnt" "$1/font/buckrogers-eten-top-pad.golemfnt"
   printf '%s\n' "本機自用完整版：內含原版遊戲《Buck Rogers: Countdown to Doomsday》，著作權屬原權利人。" \
+    "內附倚天中文字型（購買授權，限本機使用），預設優先使用；刪除 font/buckrogers-eten-top-pad.golemfnt 即改用 GNU Unifont。" \
     "請勿散布、上傳或分享本檔案。" > "$1/本機自用-請勿散布.txt"
 }
 # check <目錄>：一般版做外洩掃描；完整版改為確認原版確實在包內。
 check() {
   if [[ "$WITH_DATA" == 1 ]]; then
     [[ -f "$(find "$1" -path '*original/START.EXE' | head -1)" ]] || die "完整版缺 original/START.EXE"
+    [[ -f "$(find "$1" -path '*font/buckrogers-eten-top-pad.golemfnt' | head -1)" ]] || die "完整版缺倚天字型"
   else
     scan "$1"
   fi

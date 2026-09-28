@@ -23,6 +23,8 @@
 - `BUCKROGERS_WITH_DATA=1 tools/package.sh all` 另出 `BuckRogersCHT-<版本>-with-data-<平台>` 三份：原版樹放在
   發行包內的 `original/`（AppImage 根目錄、Windows exe 旁、macOS `.app/Contents/Resources/original`），附
   `本機自用-請勿散布.txt`。啟動器依 §3.1 在發行包旁之後找包內 `original/`，解開即可遊玩。
+- 完整版另附依現行譯文重建的倚天字型 `font/buckrogers-eten-top-pad.golemfnt`（使用者 2026-09-28 要求）；
+  啟動器未給 `-font` 時優先用它，沒有才用 Unifont。
 - 只存在被忽略的 `dist-all/`；**絕不推 git、絕不上傳 Release 或任何外部服務**。此變體不做外洩掃描，改為確認
   `original/START.EXE` 在包內；兩種變體的舊產物清理互不影響。
 - 字型：GNU Unifont 17.0.05 子集（使用者定案），由正式譯文重建。
