@@ -9,9 +9,11 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from halfwidth import half_units  # 規格 039 §3.4：準確半形單位（U+0020–U+007E、U+2022 為 1，其餘 2）
+
 EVENT_HEADER = ["event_key", "sequence", "original_length", "original_sha256", "caller", "glyph_guard", "background", "foreground", "row", "column", "entry_step", "post_call_step", "evidence_level", "catalog_status"]
 TRANSLATION_HEADER = ["key", "translation", "source"]
-STORY_CELL_CAPACITY = 39
+STORY_UNIT_CAPACITY = 78  # 規格 039 §3.4：39 格 × 2 半形單位
 EXPECTED = [
     ("story.opening.line.001", 37, "a989ceac7d0b25ad1a02fca8d158c5c47ab25aa28faa329f99016bcbd22d89d2", 17, 268686427, 270263541),
     ("story.opening.line.002", 38, "177bcfea0dd3bdba2390155791c7c48097736031d03e90eff9c1e594e7d24dc5", 18, 270307529, 271928281),
@@ -22,13 +24,6 @@ EXPECTED = [
 SHA256_RE = re.compile(r"[0-9a-f]{64}\Z")
 
 
-def conservative_cells(text: str) -> int:
-    """估算 16px ETen 字模在原版 8px 格中的佔用格數。
-
-    這是資料層的保守上界：全形／寬字元佔兩格，其餘字元佔一格。
-    實際 2×／3× 字模邊界另依 spec010 的本機原型收據審查；此函式不冒稱 runtime A/B。
-    """
-    return sum(2 if unicodedata.east_asian_width(ch) in {"W", "F"} else 1 for ch in text)
 
 
 def _rows(path: Path, header: list[str]) -> list[dict[str, str]]:
@@ -84,9 +79,9 @@ def validate(events_path: Path, translations_path: Path) -> None:
             raise ValueError(f"譯文非 NFC：{row['key']}")
         if any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in row["translation"]):
             raise ValueError(f"譯文不得含控制或格式字元：{row['key']}")
-        cells = conservative_cells(row["translation"])
-        if cells > STORY_CELL_CAPACITY:
-            raise ValueError(f"譯文超過故事區 39 格安全矩形（資料層保守上界 {cells} 格）：{row['key']}")
+        units = half_units(row["translation"])
+        if units > STORY_UNIT_CAPACITY:
+            raise ValueError(f"譯文超過故事區 78 單位安全矩形（{units} 單位）：{row['key']}")
         if row["translation"].endswith(" "):
             raise ValueError(f"譯文不得含尾端空白：{row['key']}")
 

@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from story_page3_catalog import conservative_cells, validate
+from story_page3_catalog import half_units, validate
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,11 +38,11 @@ class StoryPage3CatalogTest(unittest.TestCase):
             translations = Path(temp) / "translations.tsv"
             events.write_bytes((ROOT / "text/story-page3-events.tsv").read_bytes())
             text = (ROOT / "text/story-page3.zh-TW.tsv").read_text(encoding="utf-8").replace(
-                "你們坐進不舒服的椅子，\t", "你們坐進不舒服的椅子，" + ("超" * 20) + "\t"
+                "你們坐進不舒服的椅子，\t", "你們坐進不舒服的椅子，" + ("超" * 39) + "\t"
             )
             translations.write_text(text, encoding="utf-8")
             with self.assertRaises(ValueError):
                 validate(events, translations)
 
     def test_conservative_mixed_advance(self):
-        self.assertEqual(conservative_cells("甲A（NEO）"), 2 + 1 + 2 + 3 + 2)
+        self.assertEqual(half_units("甲A（NEO）"), 2 + 1 + 2 + 3 + 2)

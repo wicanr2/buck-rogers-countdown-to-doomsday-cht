@@ -7,6 +7,8 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from halfwidth import half_units  # 規格 039 §3.4：準確半形單位（U+0020–U+007E、U+2022 為 1，其餘 2）
+
 EVENT_HEADER = ["event_key", "sequence", "original_length", "original_sha256", "caller", "glyph_guard", "background", "foreground", "row", "column", "entry_step", "post_call_step", "evidence_level", "catalog_status"]
 TRANSLATION_HEADER = ["key", "translation", "source"]
 EXPECTED = [
@@ -18,8 +20,6 @@ EXPECTED = [
     ("story.page7.line.006", 5, "3566467963c88d979218b9230a14086b61d4bc146492ea5ed15a3b5855a7fb03", 22, 339133245, 339308875),
 ]
 
-def conservative_cells(text: str) -> int:
-    return sum(2 if unicodedata.east_asian_width(ch) in {"W", "F"} else 1 for ch in text)
 
 def _rows(path: Path, header: list[str]) -> list[dict[str, str]]:
     raw = path.read_bytes()
@@ -49,7 +49,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
             raise ValueError(f"metadata 不符：{key}")
     for row in translations:
         text = row["translation"]
-        if not text or row["source"] != "runtime-editorial" or text != unicodedata.normalize("NFC", text) or text.endswith(" ") or conservative_cells(text) > 39 or any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in text):
+        if not text or row["source"] != "runtime-editorial" or text != unicodedata.normalize("NFC", text) or text.endswith(" ") or half_units(text) > 78 or any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in text):
             raise ValueError(f"譯文格式或寬度不符：{row['key']}")
 
 if __name__ == "__main__":

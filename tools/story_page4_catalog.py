@@ -4,6 +4,8 @@ from __future__ import annotations
 import csv, hashlib, re, sys, unicodedata
 from pathlib import Path
 
+from halfwidth import half_units  # 規格 039 §3.4：準確半形單位（U+0020–U+007E、U+2022 為 1，其餘 2）
+
 EVENT_HEADER = ["event_key","sequence","original_length","original_sha256","caller","glyph_guard","background","foreground","row","column","entry_step","post_call_step","evidence_level","catalog_status"]
 TRANSLATION_HEADER = ["key","translation","source"]
 EXPECTED = [
@@ -26,8 +28,6 @@ def rows(path, header):
     if any(None in x or any(v is None for v in x.values()) for x in out): raise ValueError(f"{path}: columns")
     return out
 
-def cells(s):
-    return sum(2 if unicodedata.east_asian_width(c) in {"W","F"} else 1 for c in s)
 
 def validate(events_path: Path, translations_path: Path):
     ev=rows(events_path, EVENT_HEADER); tr=rows(translations_path, TRANSLATION_HEADER)
@@ -41,7 +41,7 @@ def validate(events_path: Path, translations_path: Path):
     if [x["key"] for x in tr] != keys: raise ValueError("translation coverage")
     for x in tr:
         if not x["translation"] or x["source"] != "runtime-editorial" or x["translation"] != unicodedata.normalize("NFC",x["translation"]): raise ValueError(f"translation: {x['key']}")
-        if cells(x["translation"]) > 39: raise ValueError(f"capacity: {x['key']}")
+        if half_units(x["translation"]) > 78: raise ValueError(f"capacity: {x['key']}")
 
 if __name__ == "__main__":
     if len(sys.argv)!=3: raise SystemExit("usage: story_page4_catalog.py EVENTS TRANSLATIONS")

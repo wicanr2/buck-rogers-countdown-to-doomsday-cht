@@ -7,13 +7,13 @@ import re
 import unicodedata
 from pathlib import Path
 
+from halfwidth import half_units  # 規格 039 §3.4：準確半形單位（U+0020–U+007E、U+2022 為 1，其餘 2）
+
 EVENT_HEADER = ["event_key", "sequence", "original_length", "original_sha256", "caller", "glyph_guard", "background", "foreground", "row", "column", "entry_step", "post_call_step", "evidence_level", "catalog_status"]
 TRANSLATION_HEADER = ["key", "translation", "source"]
 EXPECTED = ("story.page9.line.001", 20, "39a751ca9f384a77491b1e4399c0a72afb8b1ef146a77db2623394590ff1ca78", 17, 351155910, 351988536)
 
 
-def conservative_cells(text: str) -> int:
-    return sum(2 if unicodedata.east_asian_width(ch) in {"W", "F"} else 1 for ch in text)
 
 
 def _rows(path: Path, header: list[str]) -> list[dict[str, str]]:
@@ -46,7 +46,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
     if translation["key"] != key:
         raise ValueError("事件與譯文 key 非雙向一對一")
     text = translation["translation"]
-    if not text or translation["source"] != "runtime-editorial" or text != unicodedata.normalize("NFC", text) or text.endswith(" ") or conservative_cells(text) > 20 or any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in text):
+    if not text or translation["source"] != "runtime-editorial" or text != unicodedata.normalize("NFC", text) or text.endswith(" ") or half_units(text) > 40 or any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in text):
         raise ValueError("譯文格式或寬度不符")
 
 

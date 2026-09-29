@@ -16,6 +16,8 @@ import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
+from halfwidth import halfwidth_ink_error
+
 
 HEADER = ["key", "translation", "source"]
 ALLOWED_SOURCES = {
@@ -214,9 +216,18 @@ def load_unifont_subset(path: Path, wanted: list[int]) -> dict[int, bytes]:
     return found
 
 
+def check_halfwidth_ink(glyphs: dict[int, bytes]) -> None:
+    """規格 039 §3.2：每個半形字（U+0020–U+007E、U+2022）的墨跡都在第 4–11 欄，否則建置失敗。"""
+    for codepoint in sorted(glyphs):
+        error = halfwidth_ink_error(codepoint, glyphs[codepoint])
+        if error:
+            raise CatalogError(error)
+
+
 def build_golemfnt(entries: list[Entry], unifont_path: Path, fixed: bool = False) -> bytes:
     codepoints = catalog_codepoints(entries, fixed)
     glyphs = load_unifont_subset(unifont_path, codepoints)
+    check_halfwidth_ink(glyphs)
     output = bytearray(MAGIC)
     output.extend(struct.pack("<HHI", WIDTH, HEIGHT, len(codepoints)))
     for codepoint in codepoints:

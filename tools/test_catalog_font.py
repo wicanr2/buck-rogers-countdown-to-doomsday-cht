@@ -152,6 +152,20 @@ class CatalogFontTest(unittest.TestCase):
         self.assertEqual(output[offset + 5 : offset + 37], wide)
         self.assertEqual(output, build_golemfnt(entries, font))
 
+    def test_build_rejects_halfwidth_ink_outside_columns_4_to_11(self):
+        # 規格 039 §3.2 合成負例：16×16 半形字（含 U+2022）墨跡越界即建置失敗；8×16 半寬字模恆在界內。
+        font = self.root / "ink.hex"
+        inside = "0FF0" * 16
+        font.write_text(f"0041:{'FF' * 16}\n2022:{inside}\n7532:{'FF' * 32}\n", encoding="ascii")
+        output = build_golemfnt([Entry("a", "A•甲", "runtime")], font)
+        self.assertEqual(struct.unpack_from("<HHI", output, 8), (16, 16, 3))
+        for codepoint, bitmap in (("0041", "1FF0" * 16), ("0041", "0FF8" + "0000" * 15), ("2022", "8000" + "0000" * 15)):
+            with self.subTest(codepoint=codepoint, bitmap=bitmap[:8]):
+                bad = self.root / "bad.hex"
+                bad.write_text(f"{codepoint}:{bitmap}\n", encoding="ascii")
+                with self.assertRaisesRegex(CatalogError, "第 4–11 欄"):
+                    build_golemfnt([Entry("a", chr(int(codepoint, 16)), "runtime")], bad)
+
     def test_build_rejects_missing_and_unsupported_glyph(self):
         entries = [Entry("a", "甲", "runtime")]
         missing = self.root / "missing.hex"

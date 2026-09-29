@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from story_page5_catalog import conservative_cells, validate
+from story_page5_catalog import half_units, validate
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENTS = ROOT / "text/story-page5-events.tsv"
@@ -57,7 +57,7 @@ class StoryPage5CatalogTest(unittest.TestCase):
             validate(EVENTS, translations)
 
     def test_conservative_mixed_advance(self):
-        self.assertEqual(conservative_cells("甲A（NEO）"), 2 + 1 + 2 + 3 + 2)
+        self.assertEqual(half_units("甲A（NEO）"), 2 + 1 + 2 + 3 + 2)
 
 
 if __name__ == "__main__":

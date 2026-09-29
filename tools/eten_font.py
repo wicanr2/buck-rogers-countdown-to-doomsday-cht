@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from catalog_font import CatalogError, Entry, character_list_bytes, catalog_codepoints, read_catalog
+from halfwidth import halfwidth_ink_error
 
 
 MAGIC = b"GOLEMFNT"
@@ -127,6 +128,10 @@ def encode_golemfnt(glyphs: list[Glyph]) -> bytes:
             raise CatalogError(f"U+{glyph.codepoint:04X}: top-pad row 0 必須為零")
         if glyph.codepoint != 0x20 and not any(glyph.bitmap):
             raise CatalogError(f"U+{glyph.codepoint:04X}: 非空白 glyph 不得全零")
+        # 規格 039 §3.2：半形字墨跡必須在第 4–11 欄，否則建置失敗。
+        ink_error = halfwidth_ink_error(glyph.codepoint, glyph.bitmap)
+        if ink_error:
+            raise CatalogError(ink_error)
         out.extend(struct.pack("<IB", glyph.codepoint, glyph.source))
         out.extend(glyph.bitmap)
     return bytes(out)
@@ -158,6 +163,10 @@ def decode_golemfnt(data: bytes) -> list[Glyph]:
         raise CatalogError("GOLEMFNT codepoint 順序或唯一性不符")
     if any(g.codepoint != 0x20 and not any(g.bitmap) for g in glyphs):
         raise CatalogError("GOLEMFNT 含非空白全零 glyph")
+    for g in glyphs:
+        ink_error = halfwidth_ink_error(g.codepoint, g.bitmap)
+        if ink_error:
+            raise CatalogError(f"GOLEMFNT {ink_error}")
     return glyphs
 
 

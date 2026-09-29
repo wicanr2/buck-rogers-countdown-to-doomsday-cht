@@ -48,7 +48,9 @@ class StoryPage4CatalogTest(unittest.TestCase):
             validate(events, TRANSLATIONS)
 
     def test_rejects_overlong_translation(self):
-        translations = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "字" * 20))
+        # 規格 039 §3.4：78 半形單位（39 個全形字）為上限。
+        validate(EVENTS, self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "字" * 39)))
+        translations = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "字" * 39 + "A"))
         with self.assertRaises(ValueError):
             validate(EVENTS, translations)
 

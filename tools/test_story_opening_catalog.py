@@ -2,7 +2,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from story_opening_catalog import conservative_cells, validate
+from story_opening_catalog import half_units, validate
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -48,11 +48,14 @@ class StoryOpeningCatalogTest(unittest.TestCase):
             translations = Path(temp) / "translations.tsv"
             events.write_bytes((ROOT / "text/story-opening-events.tsv").read_bytes())
             text = (ROOT / "text/story-opening.zh-TW.tsv").read_text(encoding="utf-8").replace(
-                "聽聞巴克羅吉斯(BUCK ROGERS)與\t", "聽聞巴克羅吉斯(BUCK ROGERS)與" + ("超" * 20) + "\t"
+                "聽聞巴克羅吉斯(BUCK ROGERS)與\t", "聽聞巴克羅吉斯(BUCK ROGERS)與" + ("超" * 39) + "\t"
             )
             translations.write_text(text, encoding="utf-8")
             with self.assertRaises(ValueError):
                 validate(events, translations)
 
     def test_conservative_fullwidth_advance_is_two_cells(self):
-        self.assertEqual(conservative_cells("甲A（RAM）"), 2 + 1 + 2 + 3 + 2)
+        # 規格 039 §3.4：U+0020–U+007E 與 U+2022 為 1 單位，其餘（含 … 等東亞寬度 A 字元）為 2 單位。
+        self.assertEqual(half_units("卡頓•特必安(CARLTON TURABIAN)"), 4 + 1 + 6 + 18)
+        self.assertEqual(half_units("……"), 4)
+        self.assertEqual(half_units("甲A（RAM）"), 2 + 1 + 2 + 3 + 2)

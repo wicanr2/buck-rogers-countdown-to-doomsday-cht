@@ -95,12 +95,30 @@ class EtenFontTest(unittest.TestCase):
                 glyph_for(ord("甲"), self.asc.read_bytes(), self.spc.read_bytes(), self.std.read_bytes())
 
     def test_golemfnt_round_trip_and_nonblank_rejection(self):
-        glyphs = [Glyph(0x20, 1, b"\0" * 32), Glyph(ord("A"), 1, b"\0\0\x80" + b"\0" * 29)]
+        glyphs = [Glyph(0x20, 1, b"\0" * 32), Glyph(ord("A"), 1, b"\0\0\x08" + b"\0" * 29)]
         self.assertEqual(decode_golemfnt(encode_golemfnt(glyphs)), glyphs)
         with self.assertRaises(CatalogError):
             encode_golemfnt([Glyph(ord("A"), 1, b"\0" * 32)])
         with self.assertRaises(CatalogError):
             encode_golemfnt([Glyph(ord("A"), 99, b"\0\0\x80" + b"\0" * 29)])
+
+    def test_halfwidth_ink_must_stay_in_columns_4_to_11(self):
+        # 規格 039 §3.2：半形字（含 U+2022）墨跡超出第 4–11 欄時建置與回讀都失敗；全形字不受限。
+        ok = b"\0\0" + b"\x0f\xf0" * 15
+        glyphs = [Glyph(ord("A"), 1, ok), Glyph(0x2022, 2, ok), Glyph(ord("甲"), 3, b"\0\0" + b"\xff" * 30)]
+        data = encode_golemfnt(glyphs)
+        self.assertEqual(decode_golemfnt(data), glyphs)
+        for codepoint, row in ((ord("A"), b"\x10\x00"), (ord("A"), b"\x00\x08"), (0x2022, b"\x80\x00")):
+            bad = b"\0\0" + row + b"\0" * 28
+            with self.subTest(codepoint=codepoint, row=row):
+                with self.assertRaisesRegex(CatalogError, "第 4–11 欄"):
+                    encode_golemfnt([Glyph(codepoint, 1 if codepoint < 0x100 else 2, bad)])
+                forged = bytearray(encode_golemfnt([Glyph(codepoint, 1 if codepoint < 0x100 else 2, ok)]))
+                forged[16 + 5 : 16 + 37] = bad
+                with self.assertRaisesRegex(CatalogError, "第 4–11 欄"):
+                    decode_golemfnt(bytes(forged))
+        # 倚天 ASCII 以 <<4 放入第 4–11 欄：任何 8 位元列都通過。
+        self.assertIsNotNone(encode_golemfnt([Glyph(ord("B"), 1, _top_pad_ascii(bytes([0xFF]) * 15))]))
 
     def test_build_rejects_path_escape_before_source_access(self):
         with self.assertRaises(CatalogError):

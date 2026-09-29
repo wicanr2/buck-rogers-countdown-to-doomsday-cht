@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from story_page9_catalog import conservative_cells, validate
+from story_page9_catalog import half_units, validate
 
 ROOT = Path(__file__).resolve().parents[1]
 EVENTS = ROOT / "text/story-page9-events.tsv"
@@ -41,12 +41,13 @@ class StoryPage9CatalogTest(unittest.TestCase):
         with self.assertRaises(ValueError): validate(EVENTS, translations)
 
     def test_conservative_mixed_advance(self):
-        self.assertEqual(conservative_cells("甲A（NEO）"), 2 + 1 + 2 + 3 + 2)
+        self.assertEqual(half_units("甲A（NEO）"), 2 + 1 + 2 + 3 + 2)
 
-    def test_single_line_20_cell_boundary(self):
-        accepted = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "甲" * 10))
+    def test_single_line_40_unit_boundary(self):
+        # 規格 039 §3.4：第 9 頁 20 格＝40 半形單位。
+        accepted = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "甲" * 19 + "AB"))
         validate(EVENTS, accepted)
-        rejected = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "甲" * 11))
+        rejected = self._copy_with(TRANSLATIONS, lambda rows: rows[0].__setitem__("translation", "甲" * 20 + "A"))
         with self.assertRaises(ValueError): validate(EVENTS, rejected)
 
 

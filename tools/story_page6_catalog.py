@@ -8,9 +8,11 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from halfwidth import half_units  # 規格 039 §3.4：準確半形單位（U+0020–U+007E、U+2022 為 1，其餘 2）
+
 EVENT_HEADER = ["event_key", "sequence", "original_length", "original_sha256", "caller", "glyph_guard", "background", "foreground", "row", "column", "entry_step", "post_call_step", "evidence_level", "catalog_status"]
 TRANSLATION_HEADER = ["key", "translation", "source"]
-STORY_CELL_CAPACITY = 39
+STORY_UNIT_CAPACITY = 78  # 規格 039 §3.4：39 格 × 2 半形單位
 SHA256_RE = re.compile(r"[0-9a-f]{64}\Z")
 EXPECTED = [
     ("story.page6.line.001", 37, "d053056eb6958d1b38d28ff193b8102c7eaa64fb6db0864582d9f060201f463e", 17, 321119958, 322697067),
@@ -22,8 +24,6 @@ EXPECTED = [
 ]
 
 
-def conservative_cells(text: str) -> int:
-    return sum(2 if unicodedata.east_asian_width(ch) in {"W", "F"} else 1 for ch in text)
 
 
 def _rows(path: Path, header: list[str]) -> list[dict[str, str]]:
@@ -68,7 +68,7 @@ def validate(events_path: Path, translations_path: Path) -> None:
             raise ValueError(f"譯文來源或內容不符：{row['key']}")
         if text != unicodedata.normalize("NFC", text) or any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in text):
             raise ValueError(f"譯文 Unicode 不符：{row['key']}")
-        if text.endswith(" ") or conservative_cells(text) > STORY_CELL_CAPACITY:
+        if text.endswith(" ") or half_units(text) > STORY_UNIT_CAPACITY:
             raise ValueError(f"譯文格式或寬度不符：{row['key']}")
 
 

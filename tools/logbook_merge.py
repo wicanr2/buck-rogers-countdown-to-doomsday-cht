@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """合併手札意譯（規格 030）為 text/logbook.zh-TW.tsv，並以與執行期相同的排版檢查頁數。
 
-排版規則同 dosgolem apps/buckrogers/ecl_text.go 的 layoutEclText：每字一格、
-拉丁字母數字（含 . ' -）連續不拆、收尾標點黏在前一個 token；段落以兩個字元 `\\n` 分隔。
+排版規則同 dosgolem apps/buckrogers/ecl_text.go 的 layoutEclText：寬度以規格 039 半形單位計
+（U+0020–U+007E、U+2022 為 1，其餘 2；每列 72 單位）、拉丁字母數字（含 . ' -）連續不拆、
+收尾標點黏在前一個 token；段落以兩個字元 `\\n` 分隔。
 """
 import argparse, csv, sys, unicodedata
 from pathlib import Path
 
-COLS, ROWS, MAX_PAGES = 36, 19, 3
+from halfwidth import half_units
+
+UNITS, ROWS, MAX_PAGES = 72, 19, 3  # 規格 039 §3.4：本文每列 72 單位（36 格）
 CLOSING = set('，。！？：；、」）……》』,.!?:;)')
 
 
@@ -28,12 +31,12 @@ def wrap(text):
         i = j
     lines, cur = [], ''
     for t in toks:
-        if len(cur) + len(t) > COLS and cur:
+        if half_units(cur) + half_units(t) > UNITS and cur:
             lines.append(cur.rstrip(' '))
             cur = t.lstrip(' ') if t.startswith(' ') else t
         else:
             cur += t
-        if len(t) > COLS:
+        if half_units(t) > UNITS:
             raise ValueError('token 超寬')
     if cur:
         lines.append(cur)
