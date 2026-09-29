@@ -1,6 +1,6 @@
 # 031 — 通用家族的英數字改用原版字形
 
-狀態：**CONFORMED**（2026-09-26：三輪獨立審查後 READY；§5 驗收見 phase-265）；§3.4 修訂 **DRAFT**（2026-09-29，第二輪審查後）
+狀態：**CONFORMED**（2026-09-26：三輪獨立審查後 READY；§5 驗收見 phase-265）；§3.4 修訂 **READY**（2026-09-29，三輪獨立審查後）
 日期：2026-09-26
 前置：規格 027–030、Issue #24、[phase-264](../re/phase-264-overlay-units-and-text-glyphs.md)。
 
@@ -50,9 +50,9 @@
 ### 3.3 適用範圍
 
 - 只用於規格 027–030 的四個通用家族。其他專屬家族（選單、手冊、技能離開、加入後選單、
-  動作列、劇情頁、身體圖示）維持原字型。劇情頁由 §3.4 修訂取代（待 READY）。
+  動作列、劇情頁、身體圖示）維持原字型。劇情頁由 §3.4 修訂取代。
 
-### 3.4 修訂：劇情逐頁家族（DRAFT，2026-09-29，第二輪審查後修訂）
+### 3.4 修訂：劇情逐頁家族（READY，2026-09-29）
 
 - 起因：規格 036 在開場第 1、6 頁寫入「中文(英文)」後，拉丁字用 16×16 字型的半寬字模畫在一整格，字距過寬
   （phase-283 截圖）。目前含拉丁字的劇情頁：第 1 頁（`BUCK ROGERS`、`RAM`）、第 2 頁（`NEO`）、第 6 頁
@@ -63,23 +63,26 @@
   手冊、技能離開、加入後選單、動作列、身體圖示）維持原字型。
 - 取得（一次、共用）：§3.1 的搜尋條件擴為「通用家族有內容，或任一劇情家族 `needsApply()` 為真」；後者在劇情
   apply 迴圈之前搜尋。不論哪條路徑觸發，取得成功時通用家族照 §3.1 重建，劇情家族照下一條換字型。節流規則不變。
-- 換字型（不換 presenter）：劇情各頁 presenter 新增 `SetFont`，以衍生字型（各倍率依既有規則產生，3× 為
-  `.orig-ascii.3x22`）更新 presenter 的字型與 layer 內既有 stamp 的 `Font`。presenter、layer 身分、watcher、
+- 換字型（不換 presenter）：劇情各頁 presenter 新增 `SetFont`，接收 16×16 的 `.orig-ascii` 基底，由 presenter
+  依自己建構子的既有倍率規則重新衍生並重驗缺字（第 4 頁 3× 不衍生，直接用基底；各頁 3× 字型名稱沿用既有規則），
+  再更新 presenter 的字型與 layer 內既有 stamp 的 `Font`。§3.2「取得時重建畫面（世代遞增）」不適用於劇情家族。presenter、layer 身分、watcher、
   generation 都不變（維持 `Clear` 與 `PresentationLayer()` 的 layer 身分契約），不需要重新 Apply；下一次 `Draw`
   即以新字型畫出。第 9 頁只對 `StoryPage9Owner.Presenter` 呼叫 `SetFont`。
 - 取得失敗：沿用原字型、不中止（同 §3.1）。若節流期間頁面已用原字型畫出，取得後同一頁改為原版字形；此情況
   可接受，診斷摘要記搜尋次數與取得與否。正常路徑下不會發生（phase-285 §4：字形表最晚 30M 已常駐，開場第 1 頁
   268.68M 才印字）。
 - 行寬：劇情 stamp 每個 rune 一格（`CellW` 8），`tools/story_*_catalog.py` 的保守格數把 ASCII 算 1 格，換字型
-  不改格數，010–015、022 的行寬驗證不受影響。
-- 3×：與通用家族相同，16×16 放入 22×22、在 24×24 格內偏移 (4,4)；字寬窄於 3× 原版英文屬 §3.2 已接受限制。
+  不改格數，010–017、022 的行寬驗證不受影響。
+- 3×：各頁維持既有放置規則（多數頁與通用家族相同：16×16 放入 22×22、在 24×24 格內偏移 (4,4)；第 4 頁不衍生）。
+  字寬窄於 3× 原版英文屬 §3.2 已接受限制。
 - receipt runner：`cmd/buckrogers-text-receipt` 的 legacy 劇情路徑在自己的劇情 apply 判斷之前，以同一搜尋函式讀
   同一台模擬器，自己的回掃計數套 60 格節流；取得後對各頁 presenter（第 9 頁含 `storyPage9Owner.Presenter`，
   與其共用同一物件）呼叫 `SetFont`，衍生字型依各頁自己的底字型產生；取得失敗沿用原字型、不 fail。兩邊結果一致
   的依據是字形表常駐且不變（phase-285 §4），不是觸發點相同。runner 在 receipt 記錄取得與否、搜尋次數、取得的 step。
 - 被取代或擴充的既有條文：本節取代 §3.3 對「劇情頁」的排除、擴充 §3.1「時機」；§5 第 3 條的 opening、story 兩個
   腳本改以 §5 第 4 條為準；010（約 102–103 行）、011（約 137–138 行）、012（約 55 行）的「ASCII 維持／依既有樣式」
-  改為「ASCII 依 031 §3.4」；013、022 的 top-pad 條文同樣適用 §3.4（這兩頁目前沒有 ASCII，輸出不變）。
+  改為「ASCII 依 031 §3.4」；013、022 的 top-pad 條文同樣適用 §3.4（這兩頁目前沒有 ASCII，輸出不變）；015（第 6 頁，
+  CONFORMED）的收據雜湊會因 ASCII 格改變，由本規格 §5 第 4 條的 A/B 取代。
 - 劇情家族目前沒有正式路徑的 layer 快照；日後加快照時，衍生字型名稱（含 3× 名稱）須進 font registry。
 
 ## 4. 不做什麼
@@ -102,11 +105,16 @@
      Presenter 字型；通用路徑先取得時劇情家族也換字型；取得失敗沿用原字型、不中止、不增加重設次數。
    - 同狀態 A/B（舊＝修訂前的 live 與 runner）。重播點沿用 phase-285 §4：
      - `phase96-first-final/control.state`＋phase254 opening.sh 按鍵，停在 281M（第 1 頁全文已顯示）；
-     - `phase104-manual-correct-return/control.state`，281M 起每 10M 按 Enter，各頁顯示後停一點，涵蓋第 2–9 頁；
+     - `phase104-manual-correct-return/control.state`，281M 起每 10M 按 Enter，停止點 290M、300M、310M、320M、330M、
+       340M、350M、360M 分別對應第 2–9 頁（每次 Enter 後最晚約 +7M 印完，見 phase-285 探針紀錄）；receipt 的
+       active 欄須證實停止點正是預期的那一頁；
      - `phase123-story-page6-enter/page5.state`，321M 按 Enter，停在 330M（第 6 頁）。
      第 1、2、6 頁 2×／3× 差異只在 U+0021–U+007E 可見 ASCII 所在格；2× 以同一 baseline 畫面中原版英文的同字元格
-     為 oracle 逐格比對，3× 字形逐點相同、偏移 (4,4)；中文格逐位元組相同。反向對照：第 3、4、5、7、8、9 頁
+     為 oracle 逐格比對，畫面沒有的字元（例如括號）改用備用 oracle：驗收工具以自己的程式從同狀態記憶體的字形表
+     依 §2 索引放大算出（不呼叫 `OriginalASCIIFont`）；收據逐字列出各字元由哪一種 oracle 驗證；3× 字形逐點相同、偏移 (4,4)；中文格逐位元組相同。反向對照：第 3、4、5、7、8、9 頁
      2×／3× 逐位元組相同。
-   - phase254 七個腳本：各點 live 與 runner 的 SAME／DIFF 狀態與 rerun26 相同，opening、story 既有 DIFF 的範圍
-     不擴大；新舊 live RGBA 的新增差異只在可見 ASCII 格；其餘五個腳本與上一輪逐位元組相同。
-   - 收據：live 診斷摘要與 runner receipt 都顯示原版字形已取得（含搜尋次數與 step）。
+   - phase254 七個腳本：重跑前先保存 rerun26 opening 各點的 expect 與 live RGBA。各點 live 與 runner 的 SAME／DIFF
+     狀態與 rerun26 相同；opening 的 DIFF 範圍定義為 expect≠live 的像素遮罩，新遮罩不得超出舊遮罩與可見 ASCII 格
+     的聯集。opening 在 280.9M（第 1 頁顯示中）的新舊 live 差異只在第 17 列可見 ASCII 格，275M、282M 兩點
+     新舊 live 逐位元組相同；story 三點新舊 live 逐位元組相同；其餘五個腳本與上一輪逐位元組相同。
+   - 收據：live 診斷摘要與 runner receipt 都顯示原版字形已取得（含搜尋次數與取得的 step；live 需新增 step 欄）。
