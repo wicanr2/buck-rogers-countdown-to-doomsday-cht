@@ -26,6 +26,7 @@ ALLOWED_SOURCES = {
     "manual-term-editorial",
     "ecl-batch-editorial",
     "frontend-help",  # dosgolem 規格 241 前端說明頁
+    "translit-table",  # 規格 037 音譯器允許字集（tools/translit.py chars）
 }
 MAGIC = b"GOLEMFNT"
 WIDTH = 16
