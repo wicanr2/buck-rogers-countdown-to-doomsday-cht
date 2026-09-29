@@ -252,6 +252,11 @@ def excluded_spans(text: str, key: str, exclusions: list[Exclusion]) -> list[tup
     return spans
 
 
+def _after_escape(text: str, i: int) -> bool:
+    """TSV 以 `\\n` 表示換行；跳脫序列後的字母不算與前字相連。"""
+    return i >= 2 and text[i - 2] == "\\" and text[i - 1] in "nt"
+
+
 def scan(text: str, key: str, glossary: Glossary, *, skip_ascii_old: bool = False) -> tuple[list[Hit], list[tuple[int, str]]]:
     """由左至右最長優先比對正式譯名與舊譯名；回傳命中與因例外跳過的位置。"""
     candidates: dict[str, tuple[Name, bool]] = {zh: (n, False) for zh, n in glossary.current().items()}
@@ -276,7 +281,8 @@ def scan(text: str, key: str, glossary: Glossary, *, skip_ascii_old: bool = Fals
                 continue
             end = i + len(cand)
             if _is_ascii(cand) and (
-                (i > 0 and _ascii_alnum(text[i - 1])) or (end < len(text) and _ascii_alnum(text[end]))
+                (i > 0 and _ascii_alnum(text[i - 1]) and not _after_escape(text, i))
+                or (end < len(text) and _ascii_alnum(text[end]))
             ):
                 continue
             name, is_old = candidates[cand]

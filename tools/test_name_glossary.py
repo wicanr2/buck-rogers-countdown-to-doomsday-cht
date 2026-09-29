@@ -74,6 +74,10 @@ class ConvergeTest(unittest.TestCase):
         text, _, _ = ng.converge("Scott's 與 Scotland", "k", self.g)
         self.assertEqual(text, "Scott's 與 Scotland")
 
+    def test_ascii_old_name_after_escaped_newline(self):
+        text, _, _ = ng.converge("你在哪裡？」\\nScot.dos 失去聯繫，\\nnScot.dos", "k", self.g)
+        self.assertEqual(text, "你在哪裡？」\\n斯科特失去聯繫，\\nnScot.dos")
+
     def test_manual_keeps_ascii(self):
         text, changes, _ = ng.converge("Scot.dos 的聲音，蘭登", "manual.x", self.g, skip_ascii_old=True)
         self.assertEqual(text, "Scot.dos 的聲音，南敦")
