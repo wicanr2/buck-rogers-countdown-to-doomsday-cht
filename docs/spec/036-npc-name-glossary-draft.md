@@ -47,7 +47,7 @@ Issue：#33
   （版面固定且涉及查詢題）。
 - 手札第 48 則「歐凡」改回「孤兒」（含標題）。
 - 開場第 6 頁：這一族每行是獨立的單行 stamp（39 格，沒有自動換行）。`story.page6.line.003` 改成
-  「卡爾頓•圖拉比安(CARLTON TURABIAN)」（依 `tools/story_page6_catalog.py` 保守格數計 33 格），句子其餘部分
+  「卡頓•特必安(CARLTON TURABIAN)」（依 `tools/story_page6_catalog.py` 保守格數量測），句子其餘部分
   依序人工移到 `line.004`–`line.006`，必要時一併調整這幾行；以該工具的行寬驗證全部通過才生效。
   `story.opening.line.001` 同樣直接寫入加註（「巴克羅吉斯(BUCK ROGERS)」），逐頁以既有工具驗證。
   這兩頁的英文用 `english`（全大寫，與 ECL 同一個印字原語）。重做規格 015／010 的同狀態 A/B。

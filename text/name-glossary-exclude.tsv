@@ -1,0 +1,6 @@
+phrase	scope	note
+史考特海鮮坊	ecl.*	店名 SCOTT'S SEAFOOD（ecl.6.99.08320），與 Scot.dos 無關
+史考特海鮮	hmenu.*	店名 SCOTT'S SEAFOOD（hmenu.3ecb9bfec1d5）
+史考特的	hmenu.491bdbd15a5f	選單項 SCOTT'S，指店名
+吉姆博火箭酒吧	*	店名 JIMBO'S ROCKET BAR（hmenu.ea0a64a3e599），與吉姆無關
+金波火箭酒吧	*	店名 JIMBO'S ROCKET BAR（ECL 譯法），預防性列入

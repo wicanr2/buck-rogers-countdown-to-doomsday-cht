@@ -36,7 +36,7 @@ class StoryOpeningCatalogTest(unittest.TestCase):
             translations = Path(temp) / "translations.tsv"
             events.write_bytes((ROOT / "text/story-opening-events.tsv").read_bytes())
             text = (ROOT / "text/story-opening.zh-TW.tsv").read_text(encoding="utf-8").replace(
-                "聽聞巴克羅吉斯與\t", "聽聞巴克羅吉斯\u0001與\t"
+                "聽聞巴克羅吉斯(BUCK ROGERS)與\t", "聽聞巴克羅吉斯(BUCK ROGERS)\u0001與\t"
             )
             translations.write_text(text, encoding="utf-8")
             with self.assertRaises(ValueError):
@@ -48,7 +48,7 @@ class StoryOpeningCatalogTest(unittest.TestCase):
             translations = Path(temp) / "translations.tsv"
             events.write_bytes((ROOT / "text/story-opening-events.tsv").read_bytes())
             text = (ROOT / "text/story-opening.zh-TW.tsv").read_text(encoding="utf-8").replace(
-                "聽聞巴克羅吉斯與\t", "聽聞巴克羅吉斯與" + ("超" * 20) + "\t"
+                "聽聞巴克羅吉斯(BUCK ROGERS)與\t", "聽聞巴克羅吉斯(BUCK ROGERS)與" + ("超" * 20) + "\t"
             )
             translations.write_text(text, encoding="utf-8")
             with self.assertRaises(ValueError):

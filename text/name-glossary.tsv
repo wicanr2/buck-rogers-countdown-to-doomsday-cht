@@ -1,0 +1,43 @@
+english	english_mixed	chinese	kind	person	basis	note
+BUCK ROGERS	Buck Rogers	巴克羅吉斯	full	buck-rogers	printed:SCAN0352_003.jpg#9	印刷作「巴克羅吉斯上校（BUCK ROGERS）」；不加間隔號（使用者定案，開場第 1 頁同）
+BUCK	Buck	巴克	short	buck-rogers	printed:SCAN0352_033.jpg#3	印刷「巴克（Buck）的演講」
+ROGERS	Rogers	羅吉斯	short	buck-rogers	printed:SCAN0352_003.jpg#9	單稱；取自印刷全名，印刷本無單獨出現
+WILMA DEERING	Wilma Deering	威瑪•狄琳	full	wilma-deering	printed:SCAN0352_027.jpg#6	印刷「威瑪狄琳（Wilma Deering）」，影像核對為「狄琳」；old=威瑪•迪林|威瑪迪林|威瑪狄琳
+WILMA	Wilma	威瑪	short	wilma-deering	printed:SCAN0352_027.jpg#14	印刷「威瑪（Wilma）的指示」
+CARLTON TURABIAN	Carlton Turabian	卡頓•特必安	full	carlton-turabian	printed:SCAN0352_037.jpg#2	印刷本作「卡頓特必安」，間隔號依 §3.1 統一
+TURABIAN	Turabian	特必安	short	carlton-turabian	printed:SCAN0352_037.jpg#2	單稱；隨全名
+HOLZERHEIN	Holzerhein	何茲漢	full	holzerhein	printed:SCAN0352_031.jpg#3	印刷「何茲漢（Holzerhein.dos）」；原文另作 HOLZERHEIN.DOS，同一譯名；old=何茲漢（HOLZERHEIN.DOS）|何茲漢(HOLZERHEIN.DOS)|何茲漢．DOS|何茲漢.DOS；alias=Holzerhein.dos
+TALON	Talon	泰隆	full	talon	printed:SCAN0352_037.jpg#20	印刷「泰隆（Talon）的講話」
+GILBERT		吉爾伯特	full	gilbert	xinhua	RAM 指揮官；ECL 原文性別為女
+MILO PHILLIPS		米羅•菲利普斯	full	milo-phillips	xinhua	名依印刷 SCAN0352_036.jpg#5「米羅（Milo）」，姓依新華社式；小米羅（MILO PHILLIPS JR.）同一譯名
+MILO	Milo	米羅	short	milo-phillips	printed:SCAN0352_036.jpg#5	印刷「米羅（Milo）」；old=麥羅
+JIM		吉姆	full	jim	xinhua	新伊利瑟姆的孩子；店名「吉姆博火箭酒吧」見例外清單
+TUSKON		塔斯肯	full	tuskon	xinhua	字尾非重讀 -kon 依 kən 列「肯」
+ATHA		阿莎	full	atha	xinhua	女性名字尾 -tha 依女性用字「莎」（同 Martha 瑪莎）
+LEANDER		利安德	full	leander	xinhua	金星低地人，可入隊
+LANDON	Landon	南敦	full	landon	printed:SCAN0352_027.jpg#35	印刷「南敦（Landon）」，另見 SCAN0352_039.jpg#24；old=蘭登
+ZANE		贊恩	full	zane	xinhua	使用者定案；印刷本無此名；old=冉恩|扎恩
+JUSTIN ROBENO		賈斯廷•羅貝諾	full	justin-robeno	xinhua	old=賈斯汀•羅賓諾
+JUSTIN		賈斯廷	short	justin-robeno	xinhua	old=賈斯汀
+ROBENO		羅貝諾	short	justin-robeno	xinhua	old=羅賓諾
+SPACE RAT		太空鼠	short	justin-robeno	nickname	賈斯廷•羅貝諾的綽號
+JASON DUPARE		傑森•杜帕	full	jason-dupare	xinhua	Dupare 字尾 e 不發音、-are 依非捲舌讀「帕」；原文 ecl.4.67.04014 誤拼 JACKSON DUPARE，同一譯名
+GAVILAN		加維蘭	full	gavilan	xinhua	水星人物
+SCOT.DOS	Scot.dos	斯科特	full	scot	xinhua	艦載人工智慧；原文另作 SCOT、誤拼 SCOTT.DOS，同一譯名；印刷本保留英文 Scot.dos；old=史考特|Scot.dos|Scot
+HUER.DOS		休爾	full	huer	xinhua	資料分析程式；old=HUER.DOS
+WILLIAMS	Williams	威廉	short	alexander-williams	printed:SCAN0352_028.jpg#13	印刷「威廉博士（Dr. Williams）」；old=威廉斯
+ALEXANDER WILLIAMS	Alexander Williams	亞歷山大•威廉	full	alexander-williams	printed:SCAN0352_036.jpg#4	印刷「亞歷山大威廉博士（Dr. Alexander William）」；手札原文第 38 則誤拼 Alexander William；old=亞歷山大威廉；alias=Alexander William
+DONNA CONCHITEZ	Donna Conchitez	多納•康琪	full	donna-conchitez	printed:SCAN0352_032.jpg#3	印刷「多納康琪博士（Dr. Donna Conchitez）」；old=多納康琪
+CONCHITEZ	Conchitez	康琪	short	donna-conchitez	printed:SCAN0352_032.jpg#3	單稱；取自印刷全名；old=康奇特茲
+GARRITY		加里蒂	full	garrity	xinhua	old=蓋瑞提
+BOBBY		博比	full	bobby	xinhua	old=鮑比
+KILROY.DOS		基爾羅伊	full	kilroy	xinhua	塗鴉 KILROY.DOS WAS HERE
+BARNEY	Barney	巴尼	full	barney	printed:SCAN0352_033.jpg#5	印刷「巴尼（Barney）」
+MAX WYMAN	Max Wyman	馬克•懷南	full	max-wyman	printed:SCAN0352_036.jpg#21	印刷「馬克懷南（Max Wyman）」；old=馬克懷南
+WYMAN	Wyman	懷南	short	max-wyman	printed:SCAN0352_036.jpg#21	單稱；取自印刷全名；old=輝曼
+VILNIKOV	Vilnikov	維尼可夫	full	vilnikov	printed:SCAN0352_041.jpg#2	印刷「維尼可夫（Vilnikov）的錄音」
+POWELL	Powell	鮑維爾	full	powell	printed:SCAN0352_028.jpg#38	印刷「安全主任鮑維爾（Powell）」
+SEVERN	Severn	索門	full	severn	printed:SCAN0352_027.jpg#39	印刷「索門（Severn）」；手札原文以口音拼作 Ssevern
+BEOWULF SAND		貝奧武夫•桑德	full	beowulf-sand	xinhua	只見於怪物記錄；old=貝武夫•桑德
+CARLOS RIOJA		卡洛斯•里奧哈	full	carlos-rioja	xinhua	只見於怪物記錄；西班牙語名
+JASON BRAGA		傑森•布拉加	full	jason-braga	xinhua	只見於怪物記錄；與傑森•杜帕為不同人
