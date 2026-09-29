@@ -250,3 +250,4 @@
 | [第二百七十八階段：玩家前端端到端巡查](phase-278-frontend-walkthrough.md) | 冷開機到發現廢棄飛船的前端自動模式巡查。 |
 | [第二百七十九階段：前端音訊與輸入驗收](phase-279-audio-and-input-frontend.md) | dosgolem 規格 240、241 的前端收據：WAV、AdLib 同步、滑鼠、說明頁暫停。 |
 | [第二百八十階段：發行包驗收](phase-280-release-packaging.md) | 規格 035：三平台產物、匯入、竄改、Wine、外洩掃描。 |
+| [第二百八十一階段：隊伍角色記錄與名單指標鏈](phase-281-party-records.md) | 規格 038 的原版證據：名字、性別、隊伍鏈、隊員數、名單變動。 |
