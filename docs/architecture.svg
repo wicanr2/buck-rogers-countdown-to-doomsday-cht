@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 1040" width="1280" height="1040" font-family="'Noto Sans CJK TC','Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif" font-size="14">
+  <title>拯救地球中文化軟體架構</title>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+    <marker id="arrB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1f5fa8"/>
+    </marker>
+    <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b5462b"/>
+    </marker>
+    <style>
+      .box{fill:#ffffff;stroke:#555;stroke-width:1.2}
+      .grp{fill:none;stroke:#999;stroke-width:1;stroke-dasharray:0}
+      .h{font-size:16px;font-weight:700;fill:#222}
+      .t{fill:#333}
+      .s{font-size:12.5px;fill:#555}
+      .c{font-family:'DejaVu Sans Mono','Consolas',monospace;font-size:12px;fill:#444}
+      .in{stroke:#1f5fa8;stroke-width:1.6;fill:none}
+      .out{stroke:#b5462b;stroke-width:1.6;fill:none}
+      .ob{stroke:#333;stroke-width:1.3;fill:none;stroke-dasharray:5 4}
+      .fl{stroke:#333;stroke-width:1.3;fill:none}
+      .hdr{paint-order:stroke;stroke:#fafaf8;stroke-width:8px;stroke-linejoin:round}
+      .lb{font-size:12px;fill:#333}
+      .lbB{font-size:12px;fill:#1f5fa8}
+      .lbR{font-size:12px;fill:#b5462b}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="1280" height="1040" fill="#fafaf8"/>
+
+  <text x="40" y="40" class="h" font-size="20">拯救地球中文化：dosgolem 執行原版，輸出端覆繪中文</text>
+  <text x="40" y="64" class="s">原版 EXE、資料與存檔一律不改；只在已證實的印字路徑辨識英文原文，於覆繪層畫上中文。英文原文是比對鍵，譯文不進任何原版語意路徑。</text>
+
+  <!-- 玩家 -->
+  <rect x="40" y="88" width="1200" height="64" class="grp"/>
+  <rect x="140" y="100" width="170" height="40" class="box"/><text x="225" y="125" text-anchor="middle" class="t">鍵盤</text>
+  <rect x="340" y="100" width="170" height="40" class="box"/><text x="425" y="125" text-anchor="middle" class="t">滑鼠（左鍵）</text>
+  <rect x="760" y="100" width="190" height="40" class="box"/><text x="855" y="125" text-anchor="middle" class="t">螢幕（2× ／ 3×）</text>
+  <rect x="1000" y="100" width="190" height="40" class="box"/><text x="1095" y="125" text-anchor="middle" class="t">喇叭</text>
+
+  <!-- 前端 -->
+  <rect x="40" y="180" width="1200" height="170" class="grp"/>
+  <rect x="60" y="218" width="470" height="118" class="box"/>
+  <text x="76" y="240" class="t" font-weight="700">輸入對映 hostInput → mapKeys（規格 241）</text>
+  <text x="76" y="262" class="s">字元與具名鍵 → BIOS 字組（掃描碼＋ASCII），具名鍵按住連發</text>
+  <text x="76" y="282" class="s">左鍵按下／放開 → 視窗座標 ÷ 倍率 = DOS 座標</text>
+  <text x="76" y="302" class="s">前端保留：F1 說明、F2 倍率、F3 靜音、全螢幕、截圖</text>
+  <text x="76" y="322" class="s">手札面板開啟時 PgUp／PgDn 由前端翻頁（LogbookTurn）</text>
+  <rect x="700" y="218" width="260" height="118" class="box"/>
+  <text x="716" y="240" class="t" font-weight="700">畫面 Draw</text>
+  <text x="716" y="262" class="s">LiveRuntime.Compose(倍率)</text>
+  <text x="716" y="282" class="s">原版畫格放大成 RGBA</text>
+  <text x="716" y="302" class="s">再疊上中文覆繪層</text>
+  <rect x="980" y="218" width="240" height="118" class="box"/>
+  <text x="996" y="240" class="t" font-weight="700">音訊（規格 240）</text>
+  <text x="996" y="262" class="s">OPL（AdLib）與 PC 喇叭</text>
+  <text x="996" y="282" class="s">→ mixer → Ring 緩衝</text>
+  <text x="996" y="302" class="s">→ ebiten audio.Player</text>
+
+  <!-- session -->
+  <rect x="40" y="378" width="1200" height="120" class="grp"/>
+  <rect x="60" y="416" width="330" height="68" class="box"/>
+  <text x="76" y="438" class="t" font-weight="700">Deliver(CapturedUpdate)</text>
+  <text x="76" y="458" class="c">BIOSKeys · PointerDown/Up · FocusLost</text>
+  <text x="76" y="476" class="s">滑鼠經主機滑鼠橋（host.PlanMouseRoute）</text>
+  <rect x="410" y="416" width="290" height="68" class="box"/>
+  <text x="426" y="438" class="t" font-weight="700">Advance(指令預算)</text>
+  <text x="426" y="458" class="s">每畫格執行固定步數</text>
+  <text x="426" y="476" class="s">機器時脈比例（規格 242，預設 50%）</text>
+  <rect x="720" y="416" width="500" height="68" class="box"/>
+  <text x="736" y="438" class="t" font-weight="700">Observer（唯讀觀察）</text>
+  <text x="736" y="458" class="c">BeforeStep(StepView) · VideoWrite · Frame</text>
+  <text x="736" y="476" class="c">OPLWrite · SpeakerSample · PITChannel2</text>
+
+  <!-- 模擬機 -->
+  <rect x="40" y="526" width="520" height="300" class="grp"/>
+  <rect x="60" y="564" width="230" height="120" class="box"/>
+  <text x="76" y="586" class="t" font-weight="700">machine</text>
+  <text x="76" y="606" class="s">CPU（386 真實模式）</text>
+  <text x="76" y="624" class="s">1 MB 記憶體</text>
+  <text x="76" y="642" class="s">PIT／IRQ0、鍵盤控制器</text>
+  <text x="76" y="660" class="s">VGA A000 索引色畫格</text>
+  <text x="76" y="678" class="s">OPL 與 PC 喇叭</text>
+  <rect x="310" y="564" width="230" height="120" class="box"/>
+  <text x="326" y="586" class="t" font-weight="700">dos（DOS／BIOS 服務）</text>
+  <text x="326" y="606" class="s">int 16h：鍵盤緩衝</text>
+  <text x="326" y="624" class="c">  DOS.PushKey</text>
+  <text x="326" y="642" class="s">int 33h：滑鼠狀態</text>
+  <text x="326" y="660" class="c">  MoveMouse · PressMouse</text>
+  <text x="326" y="678" class="s">int 21h：檔案與存檔</text>
+  <rect x="60" y="704" width="480" height="104" class="box" style="fill:#f1f1ee"/>
+  <text x="76" y="728" class="t" font-weight="700">原版遊戲（使用者本機檔案，唯讀掛入）</text>
+  <text x="76" y="750" class="c">BUCK.EXE · GAME.OVR · *.DAX · 存檔</text>
+  <text x="76" y="772" class="s">不進 Git、不進發行包；原版程式照常執行，</text>
+  <text x="76" y="792" class="s">照常印出英文到 A000，遊戲規則與存檔完全不受影響</text>
+
+  <!-- LiveRuntime -->
+  <rect x="580" y="526" width="660" height="300" class="grp"/>
+  <rect x="600" y="564" width="300" height="130" class="box"/>
+  <text x="616" y="586" class="t" font-weight="700">① 辨識印字事件</text>
+  <text x="616" y="606" class="s">overlay 載入段 → 固定鍵</text>
+  <text x="616" y="624" class="c">OVR:unit:offset</text>
+  <text x="616" y="644" class="s">印字入口：ECL 敘事 0763:056C、</text>
+  <text x="616" y="662" class="s">引擎訊息 0763:0424、劇情頁、</text>
+  <text x="616" y="680" class="s">選單、手冊題、手札面板</text>
+  <rect x="920" y="564" width="300" height="130" class="box"/>
+  <text x="936" y="586" class="t" font-weight="700">② 查表</text>
+  <text x="936" y="606" class="s">英文原文（內容雜湊）→ 中文譯文</text>
+  <text x="936" y="626" class="s">名字：譯名表（036）、</text>
+  <text x="936" y="644" class="s">玩家名音譯 xlate/translit（037）、</text>
+  <text x="936" y="662" class="s">隊伍名單快照（038）</text>
+  <text x="936" y="680" class="s">查不到 → 保留原版英文</text>
+  <rect x="600" y="710" width="620" height="100" class="box"/>
+  <text x="616" y="732" class="t" font-weight="700">③ 覆繪層 xlate.Layer</text>
+  <text x="616" y="752" class="s">在原文所在格畫中文 stamp（安全矩形、換行、三段退路）；英數字用原版字形（031）</text>
+  <text x="616" y="772" class="s">失效規則：原版在呼叫之外重寫這些格 → 移除 stamp，原版英文重新露出</text>
+  <text x="616" y="792" class="s">原版記憶體與 A000 一律不寫入；中文只存在輸出畫面</text>
+
+  <!-- 資料 -->
+  <rect x="580" y="854" width="660" height="120" class="grp"/>
+  <rect x="600" y="892" width="300" height="66" class="box"/>
+  <text x="616" y="914" class="c">text/*.zh-TW.tsv</text>
+  <text x="616" y="934" class="s">唯一正式譯文；名字表、音譯表</text>
+  <text x="616" y="952" class="s">（CMUdict、維基譯音表）</text>
+  <rect x="920" y="892" width="300" height="66" class="box"/>
+  <text x="936" y="914" class="t" font-weight="700">點陣字型 GOLEMFNT</text>
+  <text x="936" y="934" class="s">由正式譯文重建子集：發行版 Unifont</text>
+  <text x="936" y="952" class="s">（完整版本機另用倚天字型）</text>
+
+  <!-- 圖例 -->
+  <rect x="40" y="854" width="520" height="120" class="grp"/>
+  <line x1="60" y1="900" x2="120" y2="900" class="in" marker-end="url(#arrB)"/><text x="130" y="904" class="lbB">輸入：鍵盤與滑鼠進入原版</text>
+  <line x1="60" y1="924" x2="120" y2="924" class="out" marker-end="url(#arrR)"/><text x="130" y="928" class="lbR">輸出：畫面與聲音到玩家</text>
+  <line x1="60" y1="948" x2="120" y2="948" class="ob" marker-end="url(#arr)"/><text x="130" y="952" class="lb">唯讀觀察：不改原版狀態</text>
+  <line x1="330" y1="900" x2="390" y2="900" class="fl" marker-end="url(#arr)"/><text x="400" y="904" class="lb">呼叫與資料載入</text>
+
+  <!-- ====== 輸入箭頭（藍） ====== -->
+  <path d="M225,140 L225,218" class="in" marker-end="url(#arrB)"/>
+  <path d="M425,140 L425,218" class="in" marker-end="url(#arrB)"/>
+  <path d="M225,336 L225,416" class="in" marker-end="url(#arrB)"/>
+  <text x="233" y="370" class="lbB">BIOS 字組</text>
+  <path d="M425,336 L425,360 L330,360 L330,416" class="in" marker-end="url(#arrB)"/>
+  <text x="338" y="354" class="lbB">DOS 座標</text>
+  <path d="M170,484 L170,512 L380,512 L380,564" class="in" marker-end="url(#arrB)"/>
+  <text x="178" y="506" class="lbB">鍵 → PushKey</text>
+  <path d="M320,484 L320,500 L460,500 L460,564" class="in" marker-end="url(#arrB)"/>
+  <text x="338" y="495" class="lbB">滑鼠 → int 33h</text>
+
+  <!-- 推進 -->
+  <path d="M520,484 L520,526" class="fl" marker-end="url(#arr)"/>
+  <text x="528" y="512" class="lb">執行指令</text>
+
+  <!-- 原版檔案 → dos -->
+  <path d="M425,704 L425,684" class="fl" marker-end="url(#arr)"/>
+
+  <!-- 觀察（虛線）：machine → Observer → LiveRuntime -->
+  <path d="M970,484 L970,526" class="ob" marker-end="url(#arr)"/>
+  <text x="978" y="512" class="lb">唯讀 StepView、A000 寫入、每畫格畫面</text>
+  <path d="M750,694 L750,710" class="fl" marker-end="url(#arr)"/>
+  <path d="M900,629 L920,629" class="fl" marker-end="url(#arr)"/>
+  <path d="M1070,694 L1070,710" class="fl" marker-end="url(#arr)"/>
+
+  <path d="M700,450 L718,450" class="ob" marker-end="url(#arr)"/>
+
+  <!-- 資料 → LiveRuntime -->
+  <path d="M750,892 L750,810" class="fl" marker-end="url(#arr)"/>
+  <text x="758" y="846" class="lb">載入譯文</text>
+  <path d="M1070,892 L1070,810" class="fl" marker-end="url(#arr)"/>
+  <text x="1078" y="846" class="lb">載入字型</text>
+
+  <!-- ====== 輸出箭頭（紅） ====== -->
+  <path d="M1220,760 L1236,760 L1236,366 L830,366 L830,336" class="out" marker-end="url(#arrR)"/>
+  <text x="840" y="360" class="lbR">Compose：原版畫格＋覆繪</text>
+  <path d="M855,218 L855,140" class="out" marker-end="url(#arrR)"/>
+  <path d="M1100,218 L1100,140" class="out" marker-end="url(#arrR)"/>
+  <path d="M1180,416 L1180,336" class="out" marker-end="url(#arrR)"/>
+  <text x="1112" y="398" class="lbR">OPL／喇叭事件</text>
+  <!-- 區塊標題（最後畫，壓在線上） -->
+  <text x="56" y="112" class="h hdr">玩家</text>
+  <text x="56" y="204" class="h hdr">前端 cmd/buckrogers-play（ebiten，每個主機畫格一次 Update／Draw）</text>
+  <text x="56" y="402" class="h hdr">session.Owner（單一擁有者：送輸入、推進、回報觀察事件）</text>
+  <text x="56" y="550" class="h hdr">模擬機 internal/（通用層，與遊戲無關）</text>
+  <text x="596" y="550" class="h hdr">apps/buckrogers LiveRuntime（遊戲專屬中文化）</text>
+  <text x="596" y="878" class="h hdr">本 repo 的資料（隨發行包）</text>
+  <text x="56" y="878" class="h hdr">圖例</text>
+</svg>
