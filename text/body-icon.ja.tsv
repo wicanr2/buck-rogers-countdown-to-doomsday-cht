@@ -1,0 +1,9 @@
+key	translation	source
+body.icon.confirmation	このアイコンでいいですか？	runtime-interface
+body.icon.save_prompt.prefix	セーブ：	runtime-interface
+body.icon.save_prompt.suffix	？	runtime-interface
+body.icon.old.label	旧	runtime-interface
+body.icon.old.action	準備動作	runtime-interface
+body.icon.new.label	新	runtime-interface
+body.icon.new.action	準備動作	runtime-interface
+body.icon.selection.instruction	身体アイコンを選択してください。	runtime-interface

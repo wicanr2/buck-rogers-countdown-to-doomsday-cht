@@ -1,0 +1,6 @@
+key	translation	source
+action.add	追加(A)	runtime-interface
+action.subtract	削減(S)	runtime-interface
+action.prev	前へ(P)	runtime-interface
+action.next	次へ(N)	runtime-interface
+action.done	完了(D)	runtime-interface

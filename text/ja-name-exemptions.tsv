@@ -1,0 +1,7 @@
+key	person	reason
+ecl.5.83.00207	scot	SCOT.DOS 名字在此列，zh-TW 將名字放在後一片段（ecl.5.83.00246）；日文依英文片段切法
+ecl.5.83.00246	scot	名字在前一片段（ecl.5.83.00207），日文依英文片段切法
+hmenu.1d54d5514269	buck-rogers	水平選單寬度上限 8 單位，バック(B) 為 9 單位，暫縮為バク(B)；cap 放寬（規格 042 §6）後移除
+hmenu.34efb50db494	buck-rogers	水平選單寬度上限 12 單位，ロジャーズ(R) 為 13 單位，暫縮為ロジャズ(R)；cap 放寬後移除
+hmenu.a4da3f4fffd1	zane	水平選單寬度上限 8 單位，ゼイン(Z) 為 9 單位，暫縮為ゼイ(Z)；cap 放寬後移除
+logbook.21	donna-conchitez	日文依英文分段，名字只出現在標題「ドナ・コンチテス博士の日記」；zh-TW 內文多一行導言含名字

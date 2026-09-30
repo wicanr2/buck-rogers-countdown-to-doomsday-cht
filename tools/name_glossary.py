@@ -61,6 +61,17 @@ PERSON_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 ENGLISH_RE = re.compile(r"^[A-Z0-9][A-Z0-9 .'\-]*[A-Z0-9]$")
 SEPARATOR = "•"  # •
 OTHER_SEPARATORS = ("·", "．", "・")  # · ． ・
+# 規格 042 §3.8：日文名字的分隔號是 U+30FB，依據值是 ja-glossary；其他語言沿用 zh-TW 的規則。
+JA_SEPARATOR = "・"  # ・
+JA_OTHER_SEPARATORS = ("•", "·", "．")  # • · ．
+JA_BASIS_RE = re.compile(r"^ja-glossary$")
+EXEMPTIONS_HEADER = ["key", "person", "reason"]
+
+
+def lang_name_rules(lang: str) -> tuple[str, tuple[str, ...], "re.Pattern[str]"]:
+    if lang == "ja":
+        return JA_SEPARATOR, JA_OTHER_SEPARATORS, JA_BASIS_RE
+    return SEPARATOR, OTHER_SEPARATORS, BASIS_RE
 # 手冊段落只做中文收斂；既有英文（例如印刷本保留的 Scot.dos）不動。
 MANUAL_CATALOGS = {catalog_name("manual", lang) for lang in KNOWN_LANGS}
 LOGBOOK_CATALOG = catalog_name("logbook")
@@ -160,8 +171,10 @@ def dot_variants(chinese: str) -> tuple[str, ...]:
     return tuple(chinese.replace(SEPARATOR, sep) for sep in OTHER_SEPARATORS + ("",))
 
 
-def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE, *, use_old: bool = True) -> Glossary:
+def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE, *, use_old: bool = True,
+                  lang: str = DEFAULT_LANG) -> Glossary:
     """use_old=False：note 的 old= 不生效（規格 041 §3.6：zh-CN 名字表由產生器轉換，old= 只對 zh-TW）。"""
+    separator, other_separators, basis_re = lang_name_rules(lang)
     names: list[Name] = []
     for number, row in enumerate(_read_tsv(path, GLOSSARY_HEADER), start=2):
         english, mixed, chinese, kind, person, basis, note = row
@@ -172,14 +185,15 @@ def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE, *,
             raise GlossaryError(f"{where}: english_mixed 與 english 不是同一拼法：{mixed!r}")
         if not chinese or chinese.strip() != chinese or " " in chinese:
             raise GlossaryError(f"{where}: chinese 不得為空或含空白")
-        if any(sep in chinese for sep in OTHER_SEPARATORS):
-            raise GlossaryError(f"{where}: 間隔號必須是 U+2022：{chinese}")
+        if any(sep in chinese for sep in other_separators):
+            raise GlossaryError(f"{where}: 間隔號必須是 U+{ord(separator):04X}：{chinese}")
         if kind not in KINDS:
             raise GlossaryError(f"{where}: kind 必須是 full 或 short")
         if not PERSON_RE.match(person):
             raise GlossaryError(f"{where}: person 格式不符：{person!r}")
-        if not BASIS_RE.match(basis):
-            raise GlossaryError(f"{where}: basis 必須是 printed:<位置>、xinhua 或 nickname")
+        if not basis_re.match(basis):
+            allowed = "ja-glossary" if lang == "ja" else "printed:<位置>、xinhua 或 nickname"
+            raise GlossaryError(f"{where}: basis 必須是 {allowed}")
         try:
             old = _note_field(note, "old") if use_old else ()
             alias = _note_field(note, "alias")
@@ -389,6 +403,56 @@ def lint(glossary: Glossary, paths: list[Path], font_chars: set[str] | None) -> 
     return errors
 
 
+def read_exemptions(path: Path) -> dict[tuple[str, str], str]:
+    """規格 042 §3.3 第 8 項：列級名字豁免 text/ja-name-exemptions.tsv（key、person、reason；person 可為 *）。"""
+    out: dict[tuple[str, str], str] = {}
+    if not path.exists():
+        return out
+    for number, (key, person, reason) in enumerate(_read_tsv(path, EXEMPTIONS_HEADER), start=2):
+        if not key or not person or not reason:
+            raise GlossaryError(f"{path}:{number}: key、person、reason 不得為空")
+        if (key, person) in out:
+            raise GlossaryError(f"{path}:{number}: 重複：{key} {person}")
+        out[(key, person)] = reason
+    return out
+
+
+def person_errors(text_dir: Path, lang: str, glossary: Glossary, paths: list[Path],
+                  exemptions: dict[tuple[str, str], str]) -> list[str]:
+    """規格 042 §3.3 第 8 項：以 zh-TW 同 key 列出現的人物集合為基準雙向比對。
+    zh-TW 有而該語言沒有的人物、該語言有而 zh-TW 沒有的人物都是錯誤（列級豁免除外）。"""
+    gpath, epath, _ = lang_paths(text_dir, DEFAULT_LANG)
+    base = read_glossary(gpath, epath)
+    errors: list[str] = []
+    used: set[tuple[str, str]] = set()
+    for path in paths:
+        zh_path = path.with_name(path.name.replace(f".{lang}.tsv", f".{DEFAULT_LANG}.tsv"))
+        if not zh_path.exists():
+            continue
+        zh_rows = {row[0]: row[1] for row in read_catalog(zh_path)[0][1:]}
+        for row in read_catalog(path)[0][1:]:
+            key, text = row[0], row[1]
+            if key not in zh_rows:
+                continue
+            zh_p = {h.name.person for h in scan(zh_rows[key], key, base)[0]}
+            ja_p = {h.name.person for h in scan(text, key, glossary)[0]}
+            for person in sorted(zh_p - ja_p):
+                ex = (key, person) if (key, person) in exemptions else (key, "*")
+                if ex in exemptions:
+                    used.add(ex)
+                    continue
+                errors.append(f"{path.name}\t{key}\t缺人物 {person}（zh-TW 該列有）\t{context(text, 0, 0, 30)}")
+            for person in sorted(ja_p - zh_p):
+                ex = (key, person) if (key, person) in exemptions else (key, "*")
+                if ex in exemptions:
+                    used.add(ex)
+                    continue
+                errors.append(f"{path.name}\t{key}\t多人物 {person}（zh-TW 該列沒有）\t{context(text, 0, 0, 30)}")
+    for ex in sorted(set(exemptions) - used):
+        errors.append(f"ja-name-exemptions\t{ex[0]}\t豁免 {ex[1]} 未被使用（多餘）")
+    return errors
+
+
 def apply(glossary: Glossary, paths: list[Path], dry_run: bool, out) -> int:
     total = 0
     for path in paths:
@@ -492,14 +556,19 @@ def main(argv: list[str] | None = None) -> int:
     args = p.parse_args(argv)
     gpath, epath, fpath = lang_paths(args.text, args.lang)
     try:
-        glossary = read_glossary(args.glossary or gpath, args.exclude or epath, use_old=args.lang == DEFAULT_LANG)
+        glossary = read_glossary(args.glossary or gpath, args.exclude or epath, use_old=args.lang == DEFAULT_LANG,
+                                 lang=args.lang)
         if args.cmd != "lint" and args.lang != DEFAULT_LANG:
             # 規格 041 §3.1：非 zh-TW 的譯文是產生檔，不得就地改寫。
             print(f"{args.cmd} 只對 zh-TW 執行；{args.lang} 的譯文由產生器產生", file=sys.stderr)
             return 2
         if args.cmd == "lint":
             font = None if args.no_font else load_font_chars(args.font_chars or fpath)
-            errors = lint(glossary, catalog_paths(args.catalog, None, args.text, args.lang), font)
+            cat_paths = catalog_paths(args.catalog, None, args.text, args.lang)
+            errors = lint(glossary, cat_paths, font)
+            if args.lang == "ja":
+                errors += person_errors(args.text, args.lang, glossary, cat_paths,
+                                        read_exemptions(args.text / "ja-name-exemptions.tsv"))
             for e in errors:
                 print(e)
             if errors:

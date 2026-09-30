@@ -1,0 +1,7 @@
+key	translation	source
+class.prompt	職業を選択	manual-and-runtime
+class.rocket_jock	ロケット・ジョッキー	manual-and-runtime
+class.warrior	戦士	manual-and-runtime
+class.medic	医師	manual-and-runtime
+class.engineer	エンジニア	manual-and-runtime
+class.rogue	ローグ	manual-and-runtime

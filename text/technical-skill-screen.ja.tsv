@@ -1,0 +1,16 @@
+key	translation	source
+technical.screen.general_points	一般技能ポイント：	runtime-interface
+technical.screen.skills	技術系技能	manual-and-runtime
+technical.skill.repair_electrical	電気修理	manual-and-runtime
+technical.skill.repair_mechanical	機械修理	manual-and-runtime
+technical.skill.repair_nuclear_engine	核エンジン修理	manual-and-runtime
+technical.skill.repair_life_support	生命維持装置修理	manual-and-runtime
+technical.skill.repair_rocket_hull	船体修理	manual-and-runtime
+technical.skill.jury_rig	応急修理	manual-and-runtime
+technical.skill.bypass_security	セキュリティ解除	manual-and-runtime
+technical.skill.open_lock	開錠	manual-and-runtime
+technical.skill.commo_operation	通信操作	manual-and-runtime
+technical.skill.sensor_operation	センサー操作	manual-and-runtime
+technical.skill.demolitions	爆破	manual-and-runtime
+technical.skill.first_aid	応急手当	manual-and-runtime
+technical.skill.repair_weapon	武器修理	manual-and-runtime

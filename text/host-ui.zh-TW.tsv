@@ -22,7 +22,7 @@ help.15	未啟用：{off}	frontend-help
 lang.zh-TW	繁體中文	frontend-help
 lang.zh-CN	簡體中文	frontend-help
 lang.en	英文（原版）	frontend-help
-lang.ja	日文	frontend-help
+lang.ja	日文（機器輔助）	frontend-help
 lang.ko	韓文	frontend-help
 lang.off.files	缺語言檔	frontend-help
 lang.off.font	缺字型	frontend-help

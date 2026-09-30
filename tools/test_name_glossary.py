@@ -162,5 +162,70 @@ class FormalGlossaryTest(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
+
+class JaNameRulesTest(unittest.TestCase):
+    """規格 042 §3.8：日文名字表的分隔號、依據值與 §3.3 第 8 項的雙向人物比對。"""
+
+    JA_ROWS = [
+        "BUCK ROGERS\tBuck Rogers\tバック・ロジャーズ\tfull\tbuck-rogers\tja-glossary\t",
+        "BUCK\tBuck\tバック\tshort\tbuck-rogers\tja-glossary\t",
+        "LANDON\tLandon\tランドン\tfull\tlandon\tja-glossary\t",
+    ]
+
+    def read_ja(self, rows):
+        with tempfile.TemporaryDirectory() as tmp:
+            g = Path(tmp) / "g.tsv"
+            g.write_text(HEADER + "\n".join(rows) + "\n", encoding="utf-8")
+            return ng.read_glossary(g, None, use_old=False, lang="ja")
+
+    def test_ja_rules_accepted(self):
+        self.assertEqual(len(self.read_ja(self.JA_ROWS).names), 3)
+
+    def test_ja_rejects_zh_separator_and_basis(self):
+        with self.assertRaises(ng.GlossaryError):
+            self.read_ja(["BUCK ROGERS\tBuck Rogers\tバック•ロジャーズ\tfull\tbuck-rogers\tja-glossary\t"])
+        with self.assertRaises(ng.GlossaryError):
+            self.read_ja(["BUCK\tBuck\tバック\tshort\tbuck-rogers\tprinted:SCAN#1\t"])
+
+    def test_zh_still_rejects_ja_separator_and_basis(self):
+        with self.assertRaises(ng.GlossaryError):
+            glossary(["BUCK ROGERS\tBuck Rogers\t巴克・羅吉斯\tfull\tbuck-rogers\tprinted:SCAN#1\t"])
+        with self.assertRaises(ng.GlossaryError):
+            glossary(["BUCK\tBuck\t巴克\tshort\tbuck-rogers\tja-glossary\t"])
+
+    def setup_dir(self, tmp, zh_text, ja_text, exemptions=None):
+        text = Path(tmp)
+        (text / "name-glossary.tsv").write_text(
+            HEADER + "BUCK\tBuck\t巴克\tshort\tbuck-rogers\tprinted:S#1\t\nLANDON\tLandon\t南敦\tfull\tlandon\tprinted:S#2\t\n",
+            encoding="utf-8")
+        (text / "name-glossary.ja.tsv").write_text(HEADER + "\n".join(self.JA_ROWS[1:]) + "\n", encoding="utf-8")
+        (text / "ecl-text.zh-TW.tsv").write_text("key\ttranslation\tsource\necl.1\t" + zh_text + "\truntime\n", encoding="utf-8")
+        ja = text / "ecl-text.ja.tsv"
+        ja.write_text("key\ttranslation\tsource\necl.1\t" + ja_text + "\truntime\n", encoding="utf-8")
+        glossary = ng.read_glossary(text / "name-glossary.ja.tsv", None, use_old=False, lang="ja")
+        return glossary, ja, ng.read_exemptions(text / "ja-name-exemptions.tsv") if exemptions is None else exemptions
+
+    def test_person_check_both_directions(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ja, ex = self.setup_dir(tmp, "巴克說話", "バックは話す")
+            self.assertEqual(ng.person_errors(Path(tmp), "ja", g, [ja], ex), [])
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ja, ex = self.setup_dir(tmp, "巴克說話", "彼は話す")
+            errors = ng.person_errors(Path(tmp), "ja", g, [ja], ex)
+            self.assertTrue(any("缺人物 buck-rogers" in e for e in errors), errors)
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ja, ex = self.setup_dir(tmp, "他說話", "バックは話す")
+            errors = ng.person_errors(Path(tmp), "ja", g, [ja], ex)
+            self.assertTrue(any("多人物 buck-rogers" in e for e in errors), errors)
+
+    def test_person_exemptions(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ja, _ = self.setup_dir(tmp, "巴克說話", "彼は話す")
+            ex = {("ecl.1", "buck-rogers"): "測試"}
+            self.assertEqual(ng.person_errors(Path(tmp), "ja", g, [ja], ex), [])
+            unused = {("ecl.1", "buck-rogers"): "測試", ("ecl.9", "*"): "多餘"}
+            errors = ng.person_errors(Path(tmp), "ja", g, [ja], unused)
+            self.assertTrue(any("未被使用" in e for e in errors), errors)
+
 if __name__ == "__main__":
     unittest.main()

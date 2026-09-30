@@ -1,0 +1,8 @@
+key	translation	source
+post_join_menu.purge_character	キャラクター削除	runtime-editorial
+post_join_menu.modify_character	キャラクター修正	runtime-editorial
+post_join_menu.join_a_game	アイコン選択	runtime-editorial
+post_join_menu.view_character	キャラクター表示	runtime-editorial
+post_join_menu.remove_character_from_team	キャラクターをチームから外す	runtime-editorial
+post_join_menu.show_characters_game	現在のゲームをセーブ	runtime-editorial
+post_join_menu.begin_adventuring	冒険開始	runtime-editorial

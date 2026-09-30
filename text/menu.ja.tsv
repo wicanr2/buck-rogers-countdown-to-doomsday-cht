@@ -1,0 +1,14 @@
+key	translation	source
+menu.create_new_character	新規キャラクター作成	manual-and-runtime
+menu.add_character_to_team	キャラクターをチームに加える	runtime-interface
+menu.load_saved_game	セーブデータをロード	runtime-interface
+menu.joystick_mouse_initialize	ジョイスティック／マウス初期化	runtime-interface
+menu.exit_to_dos	DOSに戻る	runtime-interface
+menu.choose_function	機能を選択	runtime-interface
+menu.pick_race	種族を選択	runtime
+race.terran	地球人	manual-and-runtime
+race.martian	火星人	manual-and-runtime
+race.venusian	金星人	manual-and-runtime
+race.mercurian	水星人	manual-and-runtime
+race.tinker	ティンカー	manual-and-runtime
+race.desert_runner	デザートランナー	manual-and-runtime

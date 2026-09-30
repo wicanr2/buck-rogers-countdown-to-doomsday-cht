@@ -36,9 +36,9 @@ LEAK_SOURCES=("$W/original/BRcdoom" "/home/anr2/cht/etan_font/ET353S/FILES" "$W/
 
 # 規格 040／041：發行包帶的語言（每個語言一個 font/buckrogers-<lang>.golemfnt；zh-TW 維持現行檔名
 # buckrogers-unifont.golemfnt）。en 是原版，不需要檔案。
-LANGS=(zh-TW zh-CN)
-# 只供產生與審閱、不進發行包的 text/ 檔（規格 041 §3.1）。
-TEXT_EXCLUDE=(zh-CN-phrases.tsv zh-CN-overrides.tsv zh-CN-term-review.tsv)
+LANGS=(zh-TW zh-CN ja)
+# 只供產生與審閱、不進發行包的 text/ 檔（規格 041 §3.1、042 §3.10）。
+TEXT_EXCLUDE=(zh-CN-phrases.tsv zh-CN-overrides.tsv zh-CN-term-review.tsv ja-coverage-exemptions.tsv ja-name-exemptions.tsv)
 
 VER="$(git describe --tags --always --dirty 2>/dev/null || echo dev)"
 WITH_DATA="${BUCKROGERS_WITH_DATA:-}"
@@ -73,6 +73,10 @@ for i in "$GO_IMAGE" "$PY_IMAGE" "$APPIMAGE_IMAGE"; do docker image inspect "$i"
 # 規格 041 §3.7／§3.8：簡體產生檔、詞表、帳本與各驗證器必須全數通過（漏提交重新產生的 zh-CN 檔也在這裡擋下）。
 if [[ " ${LANGS[*]} " == *" zh-CN "* ]]; then
   "$ROOT/tools/zh_cn_check.sh" || die "zh_cn_check.sh 失敗"
+fi
+# 規格 042 §3.10：日文檢查（含 charset.ja.txt 重生比對，需要 Unifont hex 所在目錄）。
+if [[ " ${LANGS[*]} " == *" ja "* ]]; then
+  UNIFONT_DIR="$(dirname "$UNIFONT")" "$ROOT/tools/ja_check.sh" || die "ja_check.sh 失敗"
 fi
 if [[ "$TARGET" == all || "$TARGET" == macos ]] && ! docker image inspect "$MAC_IMAGE" >/dev/null 2>&1; then
   docker build --network none -t "$MAC_IMAGE" -f tools/docker/osxcross.Dockerfile tools/docker
