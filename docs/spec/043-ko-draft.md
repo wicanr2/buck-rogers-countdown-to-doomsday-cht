@@ -1,6 +1,7 @@
 # 043 — 韓文（ko）
 
-狀態：**READY**（2026-10-01，兩輪獨立審查；第二輪應改已併入）
+狀態：**READY**（2026-10-01，兩輪獨立審查；第二輪應改已併入）。實作進度：資料與檢查工具（`ed1b969`）、dosgolem 詞級排版與 ko 測試（`5bc0f0b`）、同狀態收據與 Linux 打包模擬（[phase-303](../re/phase-303-ko.md)）已完成；
+串接抽審、trace 重播、雙語抽審、Windows／macOS 打包模擬未做，故不升 CONFORMED。
 日期：2026-10-01
 Issue：#35
 前置：規格 040（多語框架）、041（簡體）、042（日文，做法對齊；本規格只寫與 042 不同之處）、039（半形）、036／038（名字）、030（手札）、027–029、005／034（手冊）。
@@ -156,7 +157,8 @@ ko 不變量：詞級加退回的 fits 必與字級相同。fallback 次數由�
 
 - `tools/package.sh`：`LANGS` 加 `ko`；前置檢查在現有逐語言 `if` 之後加第三個 `if`，傳同樣的 `UNIFONT_DIR`；`TEXT_EXCLUDE` 加 `ko-coverage-exemptions.tsv`、`ko-name-exemptions.tsv`。
 - **`host-ui.zh-TW.tsv` 的 `lang.ko` 改為「韓文（機器輔助）」**（現有列，不是新增，新增會被 `catalog_font.py` 拒絕重複 key）：8 字均在現行 `font/characters.txt` 內，字元清單與字型不變，
-  但該檔整檔 SHA-256 會變：`verifyCurrentCatalogs`（`frontend/ebiten/host_font_manifest.go`:160）綁全部 `*.zh-TW.tsv`（2×）與 `host-ui`（3×），`eten_font.py` 產生 2× manifest、`eten_host_font3.py`（:178）產生 3× manifest，兩者都必須重建，見 042 §3.11。
+  但該檔整檔 SHA-256 會變：`verifyCurrentCatalogs`（`frontend/ebiten/host_font_manifest.go`:160）綁全部 `*.zh-TW.tsv`（2×）與 `host-ui`（3×），`eten_font.py` 產生 2× manifest、`eten_host_font3.py`（:178）產生 3× manifest，見 042 §3.11。
+  實作結果（phase-303 §8）：2× 重建後字型與現行逐位元組相同，只替換 manifest；3× 的建置工具要求 host-ui 恰有五個 `host.*` 標籤，`help.*`、`lang.*` 加入後就已建不出來，`cmd/` 沒有程式使用它，打包也不建，不在本規格處理。
 - 複製 `merged/text/` 進 `text/` 時排除 `_uncovered.txt`。
 - README、`docs/release/讀我.txt`（:28、:38–42）與 `font/README.md` 更新語言章節與機器輔助說明。
 - 新增 `ko_test.go`（仿 `ja_test.go`）：ko 通道載入、靜態預檢、差分測試。
@@ -197,6 +199,7 @@ ko 不變量：詞級加退回的 fits 必與字級相同。fallback 次數由�
 | 跨呼叫黏接：續接呼叫的首詞（如 `은(는)`）放不下時換行，與前一呼叫末尾的名字分家；逐呼叫排版無法回頭 | 詞級不改善也不惡化；以 §5.5 抽審記錄發生率，嚴重者另訂規格 |
 | 詞級排版增加行數（多 0.1% 至 2.3%），同一視窗多次呼叫累積溢出的風險，逐列預檢與 §5.4 重播工具（042 尚未做）都看不到 | 042 §5.4 重播工具完成後納入；在此之前記為已知缺口 |
 | 檢查 12 的空白段數語意與欄名列對齊寬度（14 格等）不比較 | hmenu 欄名列實機截圖確認；必要時登記 `header-columns.tsv` |
+| 窄窗溢出：假想 6 列高、40 與 30 單位寬的 ECL 窗，韓文有 2 與 41 次溢出（字級相同，zh-TW 為 0），溢出時顯示原版英文；真實 ECL 窗寬未量（phase-303 §6） | 042 §5.4 重播工具量出真實窗寬；必要時縮短譯文 |
 | 稱呼玩家：水平選單與引擎片段對應「你」的片段有 13 列使用代名詞；引號內同一角色合쇼체／해요체混用 6 段 | 實機串接抽審時一併看，不設檢查 |
 | 母語者校對 | 有母語者審閱後另訂規格 |
 | 手冊段落、玩家名音譯 | 規格 045 與手冊另訂 |
