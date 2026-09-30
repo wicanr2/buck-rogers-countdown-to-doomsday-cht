@@ -50,6 +50,9 @@ Issue：#35
 - 欄位：`tw`、`cn`、`kind`、`reason`。`kind`：`keep`（保留原詞）、`map`（指定對應）、`guard`（為避免遮蔽官方較長詞或修正
   前綴匹配錯誤而加的較長詞條）。用語偏好中「文档、图像、数据」由官方 `TWPhrasesRev` 產生，不設 `map`（避免遮蔽「資料夾、
   資料庫」）；`map` 只用於官方沒有的偏好：載入→读取、訊息→信息、呎→英尺。
+- `char`（修訂 2026-09-30）：字級對應，在 OpenCC 轉換後逐字套用，用於大陸慣用字（牠→它、砲→炮、暱→昵、瞇→眯、吋→英寸
+  等依實作盤點為準）。自檢：`tw` 與 `cn` 各為單一字元（`吋→英寸` 這類改變字數者改用 `map`）、至少命中一次、`cn` 在字型中；
+  §3.4 字數核算把 `char` 視為長度差 0。套用處列入帳本。
 - 自檢（任一失敗即產生失敗）：
   1. `tw`、`cn` 不含空白或 tab；不得有重複 `tw`。
   2. 每條單獨轉換的結果等於 `cn`（第二段繁→簡對 `cn` 恆等）。
@@ -105,6 +108,8 @@ Issue：#35
     catalog_font（lint）、skill_action_bar_catalog（本規格新增 `--lang`）。
   - 以 `*.zh-CN.tsv` 路徑呼叫：story_opening_catalog、story_page2–9_catalog、manual_catalog、manual_overlay_layout。
 - 跨家族一致性（`--check`）：同一 zh-TW 詞在不同家族（例：技能名在技能頁與手冊）轉換後必須相同，不同即失敗或需覆寫。
+  「詞」定義為整列只含漢字、2–12 字的列；只比對邊界對齊的出現處。
+- 遮蔽偵測的豁免判定：整列輸出與拿掉該專案詞條時相同。
 - 需改的工具：`name_glossary.py`（`--lang` 讀 `name-glossary.<lang>.tsv` 與 `font/characters.<lang>.txt`，catalog glob 排除
   名字表檔，`apply` 不對產生檔執行）；`catalog_font.py` 新增 `--lang`（輸入排除名字表檔、併入音譯對照的簡體字）；
   `technical_skill_screen_catalog.py` 與 `skill_action_bar_catalog.py`：zh-TW 照舊比對字面，zh-CN 改為只查結構與 `(X)` 字母
@@ -112,7 +117,8 @@ Issue：#35
 - 字元清單 `font/characters.zh-CN.txt` 由正式 zh-CN 譯文（含音譯對照簡體字）產生並進版控。
 - 打包：`tools/package.sh` 的語言清單明列 `zh-TW zh-CN`；前置檢查執行 `zh_cn_check.sh`，失敗即中止；對清單內每個語言建
   `font/buckrogers-<lang>.golemfnt`（zh-TW 維持現行產物名 `buckrogers-unifont.golemfnt`）。發行包約增加 3–4%。
-- 本機：`workplace/current-font` 旁另建 `buckrogers-zh-CN.golemfnt` 的命令寫進 `font/README.md`。
+- 本機：非 zh-TW 的本機字型建在 `workplace/lang-fonts/`（不在打包外洩掃描的禁止來源內），`play.sh` 與前端以
+  `-lang-font` 或字型根目錄指到該處；命令寫進 `font/README.md`。`workplace/current-font` 只放倚天 zh-TW。
 
 ### 3.8 同步關卡
 
@@ -136,7 +142,8 @@ Issue：#35
 2. `zh_cn_check.sh` 全部通過；兩支字面驗證器的 zh-TW 行為不變。
 3. 執行期：前端與收據工具載入後 zh-CN 在 F4 循環內；DebugSummary 無 zh-CN 停用與重建計數。
 4. 同狀態收據（2×、3×）：規格 040 §5.3 的四個時點以 `-lang zh-CN` 輸出，記憶體與 CPU 雜湊與 zh-TW 相同；ECL、水平選單、手札
-   截圖目視無缺字與溢出（手冊題時點只記雜湊）。三列變寬（呎→英尺兩列、`frag.5250b5de07b3`）以單元先建或針對性收據驗證整列寬度。
+   截圖目視無缺字與溢出（手冊題時點只記雜湊）。變寬列（呎→英尺兩列、`frag.5250b5de07b3`、`frag.4844cec572c9`）以單元先建
+   證明不超過所取代的英文格數；整列實跑待有可到達的 state。
    玩家名：phase-286 的 `cp/a4`＋a5 按鍵停 2,861.5M，戰鬥右欄預期「弗拉维乌斯」。
 5. 回歸：phase254 七條回歸（zh-TW）逐位元組不變。
 6. 前端：冷開機切到簡體截圖；說明頁「目前語言」為簡體中文；打包產物含 zh-CN 字型並通過外洩掃描。
