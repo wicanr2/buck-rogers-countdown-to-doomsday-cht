@@ -1,0 +1,4 @@
+family	key	cols	evidence
+menu	career.screen.columns.heading	2,8,14	screen=phase292-halfwidth/ab/e001-career-subtract-new-2-base.rgba:2:6-13;screen=phase292-halfwidth/ab/e001-technical-base-new-2-base.rgba:2:6-7,9-18
+dispatcher	frag.442e07fe93c9	0,17,32	trace=phase257-text-window-trace/cp/a6.tsv:2924335190
+dispatcher	frag.0ddcc5022a9c	0,17,32	inferred=frag.442e07fe93c9
