@@ -1,0 +1,5 @@
+key	translation	source
+coord.dir.N	北	runtime-interface
+coord.dir.E	东	runtime-interface
+coord.dir.S	南	runtime-interface
+coord.dir.W	西	runtime-interface

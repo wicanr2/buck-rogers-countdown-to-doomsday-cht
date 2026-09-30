@@ -1,0 +1,6 @@
+key	translation	source
+tpl.antidote	对{0}使用解毒剂	ecl-batch-editorial
+tpl.drop	永久丢弃{0}吗？	ecl-batch-editorial
+tpl.needs	{1}还需要{0}点	ecl-batch-editorial
+tpl.destroyed	{0}在{1}被摧毁	ecl-batch-editorial
+tpl.logbook	，已记入手札，编号 {1}	ecl-batch-editorial

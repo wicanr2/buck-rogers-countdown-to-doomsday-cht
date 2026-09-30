@@ -1,0 +1,3 @@
+key	translation	source
+career.skill.exit.exit_confirmation_prompt.001	尚有职业技能点数未使用。要离开吗？	runtime-interface
+technical.skill.exit.exit_confirmation_prompt.001	尚有一般技能点数未使用。要离开吗？	runtime-interface

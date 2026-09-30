@@ -17,6 +17,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from halfwidth import halfwidth_ink_error
+from catalog_lang import KNOWN_LANGS, catalog_glob
+
+ROOT = Path(__file__).resolve().parent.parent
 
 
 HEADER = ["key", "translation", "source"]
@@ -380,19 +383,46 @@ def _write_if_changed(path: Path, content: bytes) -> None:
     path.write_bytes(content)
 
 
+def lang_catalogs(text_dir: Path, lang: str) -> list[Path]:
+    """規格 041 §3.7：某語言的全部 catalog（排除名字表與例外表，它們不是 key/translation/source）。"""
+    return [p for p in sorted(text_dir.glob(catalog_glob(lang))) if not p.name.startswith("name-glossary")]
+
+
+def translit_map_entries(text_dir: Path, lang: str) -> list[Entry]:
+    """規格 041 §3.6：音譯對照（text/translit-<lang>-map.tsv）的目標字併入字型；zh-TW 已由 translit-chars 涵蓋。"""
+    path = text_dir / f"translit-{lang}-map.tsv"
+    if not path.exists():
+        return []
+    rows = list(csv.reader(io.StringIO(path.read_text(encoding="utf-8")), delimiter="\t", quoting=csv.QUOTE_NONE, strict=True))
+    if not rows or rows[0] != ["tw", "cn"]:
+        raise CatalogError(f"{path}: 標頭必須精確為 tw/cn")
+    out = []
+    for n, row in enumerate(rows[1:], start=2):
+        if len(row) != 2 or len(row[1]) != 1:
+            raise CatalogError(f"{path}:{n}: 必須恰有 2 欄且 cn 為單一字元")
+        out.append(Entry(f"translit.map.{n}", row[1], "translit-table"))
+    return out
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
 
+    def lang_args(sub) -> None:
+        sub.add_argument("catalog", nargs="*", type=Path)
+        sub.add_argument("--lang", choices=KNOWN_LANGS,
+                         help="改用 text/*.<lang>.tsv 全部 catalog（排除名字表；非 zh-TW 另併入音譯對照）")
+        sub.add_argument("--text", type=Path, default=ROOT / "text", help="--lang 使用的 text 目錄")
+
     lint = subparsers.add_parser("lint", help="驗證 TSV catalog")
-    lint.add_argument("catalog", nargs="+", type=Path)
+    lang_args(lint)
 
     chars = subparsers.add_parser("chars", help="產生決定性的字元清單")
-    chars.add_argument("catalog", nargs="+", type=Path)
+    lang_args(chars)
     chars.add_argument("--out", required=True, type=Path)
 
     build = subparsers.add_parser("build", help="由 Unifont 建立 GOLEMFNT 子集")
-    build.add_argument("catalog", nargs="+", type=Path)
+    lang_args(build)
     build.add_argument("--font", required=True, type=Path)
     build.add_argument("--out", required=True, type=Path)
 
@@ -403,11 +433,28 @@ def main(argv: list[str] | None = None) -> int:
     candidate.add_argument("--license", required=True, type=Path)
 
     args = parser.parse_args(argv)
+    lang = getattr(args, "lang", None)
+    if lang is not None:
+        if args.catalog:
+            parser.error("--lang 與明列 catalog 擇一")
+        args.catalog = lang_catalogs(args.text, lang)
+        if not args.catalog:
+            parser.error(f"{args.text} 沒有 *.{lang}.tsv")
+    elif not args.catalog:
+        parser.error("需要 catalog 路徑或 --lang")
     try:
+        if lang is not None and args.command == "lint":
+            # 已接通的畫面可合法共用 key：逐檔驗證（同 chars／build），不做跨檔唯一鍵。
+            for path in args.catalog:
+                read_catalog(path)
+            print(f"catalog_font lint OK（{lang}，{len(args.catalog)} 檔）")
+            return 0
         if args.command in ("chars", "build"):
             # 字型字元聯集不帶跨檔文字鍵語意；已接通的畫面可合法共用 key。
             # 每份檔案仍分別通過 read_catalog 的完整 schema／唯一鍵檢查（同 eten_font.py）。
             entries = [entry for path in args.catalog for entry in read_catalog(path)]
+            if lang is not None and lang != "zh-TW":
+                entries += translit_map_entries(args.text, lang)
         else:
             entries = read_catalogs(args.catalog)
         if args.command == "chars":

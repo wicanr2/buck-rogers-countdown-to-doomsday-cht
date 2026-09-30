@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 import unicodedata
 
@@ -30,6 +31,14 @@ MANUAL_TERMS = {
     "technical.skill.first_aid": "緊急救護",
     "technical.skill.repair_weapon": "武器維修",
 }
+
+
+HOTKEY_RE = re.compile(r"\(([^()])\)")
+
+
+def hotkeys(text: str) -> list[str]:
+    """半形括號熱鍵字母序列；規格 041 §3.7 非 zh-TW 只比結構與這些字母。"""
+    return HOTKEY_RE.findall(text)
 
 
 def read_dicts(path: Path) -> list[dict[str, str]]:
@@ -61,9 +70,23 @@ def validate(events_path: Path, translations_path: Path, entry_path: Path,
         if (unicodedata.normalize("NFC", row["translation"]) != row["translation"] or
                 any(unicodedata.category(ch) in {"Cc", "Cf"} for ch in row["translation"])):
             raise ValueError(f"{key}: 譯文必須是 NFC 且不得含控制／格式字元")
-    for key, translation in MANUAL_TERMS.items():
-        if text_map.get(key, {}).get("translation") != translation or text_map[key]["source"] != "manual-and-runtime":
-            raise ValueError(f"{key}: 譯名不符中文手冊 SCAN0352_012.jpg")
+    if lang == DEFAULT_LANG:
+        for key, translation in MANUAL_TERMS.items():
+            if text_map.get(key, {}).get("translation") != translation or text_map[key]["source"] != "manual-and-runtime":
+                raise ValueError(f"{key}: 譯名不符中文手冊 SCAN0352_012.jpg")
+    else:
+        # 規格 041 §3.7：字面由產生器 --check 保證（等於 zh-TW 經同一轉換）；這裡只查結構與 (X) 字母。
+        reference = {row["key"]: row for row in name_prompt_catalog.table(
+            translations_path.parent / catalog_name("technical-skill-screen", DEFAULT_LANG), TEXT_HEADER,
+            catalog_name("technical-skill-screen", DEFAULT_LANG))}
+        for key in MANUAL_TERMS:
+            if key not in text_map or text_map[key]["source"] != "manual-and-runtime":
+                raise ValueError(f"{key}: 缺手冊譯名或來源不是 manual-and-runtime")
+        for key, row in text_map.items():
+            if key not in reference or row["source"] != reference[key]["source"]:
+                raise ValueError(f"{key}: 與 zh-TW 結構不符")
+            if hotkeys(row["translation"]) != hotkeys(reference[key]["translation"]):
+                raise ValueError(f"{key}: (X) 熱鍵字母與 zh-TW 不同")
     dynamic = {(int(row["row"]), int(row["column"])) for row in entry
                if row["event_role"] == "technical_skill_screen" and int(row["column"]) in {23, 29, 35}}
     if not ({(1, 23), (2, 23)} | {(row, col) for row in range(6, 19) for col in (23, 29, 35)}) <= dynamic:

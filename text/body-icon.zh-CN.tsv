@@ -1,0 +1,9 @@
+key	translation	source
+body.icon.confirmation	这个图标可以吗？	runtime-interface
+body.icon.save_prompt.prefix	保存	runtime-interface
+body.icon.save_prompt.suffix	？	runtime-interface
+body.icon.old.label	旧	runtime-interface
+body.icon.old.action	准备动作	runtime-interface
+body.icon.new.label	新	runtime-interface
+body.icon.new.action	准备动作	runtime-interface
+body.icon.selection.instruction	选择身体图标。	runtime-interface

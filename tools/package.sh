@@ -34,6 +34,12 @@ MAC_MIN="11.0"
 # 外洩掃描的禁止來源：原版樹、倚天字型來源與本機產物、手冊英文摘錄。
 LEAK_SOURCES=("$W/original/BRcdoom" "/home/anr2/cht/etan_font/ET353S/FILES" "$W/current-font" "$W/manual-english")
 
+# 規格 040／041：發行包帶的語言（每個語言一個 font/buckrogers-<lang>.golemfnt；zh-TW 維持現行檔名
+# buckrogers-unifont.golemfnt）。en 是原版，不需要檔案。
+LANGS=(zh-TW zh-CN)
+# 只供產生與審閱、不進發行包的 text/ 檔（規格 041 §3.1）。
+TEXT_EXCLUDE=(zh-CN-phrases.tsv zh-CN-overrides.tsv zh-CN-term-review.tsv)
+
 VER="$(git describe --tags --always --dirty 2>/dev/null || echo dev)"
 WITH_DATA="${BUCKROGERS_WITH_DATA:-}"
 ORIG_TREE="$W/original/BRcdoom"
@@ -64,6 +70,10 @@ for f in COPYING OFL-1.1.txt; do [[ -f "$UNIFONT_DOC/$f" ]] || die "缺 Unifont 
 [[ -d "$MODCACHE" ]] || die "缺模組快取 $MODCACHE"
 for s in "${LEAK_SOURCES[@]}"; do [[ -d "$s" ]] || die "外洩掃描來源不存在：$s"; done
 for i in "$GO_IMAGE" "$PY_IMAGE" "$APPIMAGE_IMAGE"; do docker image inspect "$i" >/dev/null 2>&1 || die "缺映像 $i"; done
+# 規格 041 §3.7／§3.8：簡體產生檔、詞表、帳本與各驗證器必須全數通過（漏提交重新產生的 zh-CN 檔也在這裡擋下）。
+if [[ " ${LANGS[*]} " == *" zh-CN "* ]]; then
+  "$ROOT/tools/zh_cn_check.sh" || die "zh_cn_check.sh 失敗"
+fi
 if [[ "$TARGET" == all || "$TARGET" == macos ]] && ! docker image inspect "$MAC_IMAGE" >/dev/null 2>&1; then
   docker build --network none -t "$MAC_IMAGE" -f tools/docker/osxcross.Dockerfile tools/docker
 fi
@@ -78,10 +88,18 @@ GOENV=(-e GOMODCACHE=/gomodcache -e GOCACHE=/gocache -e GOFLAGS=-mod=mod -e GOPR
 GOMOUNT=(-v "$STAGE/src:/src" -v "$MODCACHE:/gomodcache" -v "$GOCACHE_DIR:/gocache" -v "$STAGE/out:/out")
 
 # --- 共同內容：譯文、字型、授權文件 ------------------------------------------------
-cp text/*.tsv "$STAGE/common/text/"
+for f in text/*.tsv; do
+  [[ " ${TEXT_EXCLUDE[*]} " == *" $(basename "$f") "* ]] && continue
+  cp "$f" "$STAGE/common/text/"
+done
 dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" sh -c '
   python3 tools/catalog_font.py build text/*.zh-TW.tsv --font /u.hex.gz --out /stage/common/font/buckrogers-unifont.golemfnt &&
   for s in 256 512; do python3 tools/appicon.py /stage/common/font/buckrogers-unifont.golemfnt /stage/icon-$s.png $s; done'
+for lang in "${LANGS[@]}"; do
+  [[ "$lang" == zh-TW ]] && continue
+  dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" \
+    python3 tools/catalog_font.py build --lang "$lang" --font /u.hex.gz --out "/stage/common/font/buckrogers-$lang.golemfnt"
+done
 if [[ "$WITH_DATA" == 1 ]]; then
   # 倚天字型依現行譯文重建（與 Unifont 同一份字元聯集），只放進完整版。
   # eten_font.py 只准輸出到 repo 的 workplace/，所以另把 workplace 可寫掛上。

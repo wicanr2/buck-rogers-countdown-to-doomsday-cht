@@ -16,6 +16,30 @@ SIL OFL-1.1 與 GPL-2.0-or-later（含字型嵌入例外）雙授權；未宣告
 
 建置及驗證命令見 [`text/README.md`](../text/README.md)。
 
+## 簡體（zh-CN）字型
+
+規格 041：簡體用同一份 GNU Unifont 17.0.05 子集流程，字元需求 `characters.zh-CN.txt` 只由產生器輸出的
+`text/*.zh-CN.tsv`（排除名字表與例外表）加上音譯對照 `text/translit-zh-CN-map.tsv` 的簡體字產生，並進版控。
+發行包由 `tools/package.sh` 另建 `font/buckrogers-zh-CN.golemfnt`；zh-TW 維持 `buckrogers-unifont.golemfnt`。
+說明頁與視窗標題在簡體模式仍用 zh-TW 字型（規格 040），所以 zh-CN 字元清單不含 `host-ui`、`manual-english-panel`。
+
+以下命令在 `buck-zhcn-opencc:1.4.2`（`tools/docker/opencc/build.sh`）或任一 Python 3.13 image 內執行，
+專案掛在 `/project` 並以之為工作目錄、`--network none`、目前 UID/GID；Unifont 來源唯讀掛在 `/unifont`：
+
+```sh
+# 字元清單（版控）；tools/zh_cn_check.sh 會重生比對
+python3 tools/catalog_font.py chars --lang zh-CN --out font/characters.zh-CN.txt
+
+# 本機遊玩用：放在 workplace/current-font/ 旁，前端以 font/buckrogers-zh-CN.golemfnt 檔名尋找
+python3 tools/catalog_font.py build --lang zh-CN \
+  --font /unifont/unifont_all-17.0.05.hex.gz \
+  --out workplace/current-font/buckrogers-zh-CN.golemfnt
+```
+
+譯文或詞表改動後先跑 `python3 tools/zh_cn_convert.py` 重新產生，再重跑上面兩條；產物不入版控。
+`workplace/current-font/` 是 `tools/package.sh` 外洩掃描的禁止來源；本機這份 zh-CN 字型與發行包字型同名同內容，
+打包前需先移出該目錄，否則會被外洩掃描擋下。
+
 ## 3× host 設定面板原生字型
 
 使用者已為 3× host 面板選擇倚天原生 24 點：漢字與「×」24×24、

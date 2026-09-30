@@ -1,0 +1,1 @@
+opencc==1.4.2 --hash=sha256:25c34e75fe2ab2bf5b43d89e2cf9413fbfd693c9e4851c9b7b641d50e9793f63

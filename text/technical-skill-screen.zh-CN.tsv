@@ -1,0 +1,16 @@
+key	translation	source
+technical.screen.general_points	一般技能点数：	runtime-interface
+technical.screen.skills	技术性技能	manual-and-runtime
+technical.skill.repair_electrical	电器设备维修	manual-and-runtime
+technical.skill.repair_mechanical	维修机械设备	manual-and-runtime
+technical.skill.repair_nuclear_engine	核能引擎维修	manual-and-runtime
+technical.skill.repair_life_support	维生设备维修	manual-and-runtime
+technical.skill.repair_rocket_hull	船体维修	manual-and-runtime
+technical.skill.jury_rig	紧急维修	manual-and-runtime
+technical.skill.bypass_security	破解保安系统	manual-and-runtime
+technical.skill.open_lock	开锁	manual-and-runtime
+technical.skill.commo_operation	通信操作	manual-and-runtime
+technical.skill.sensor_operation	操作扫瞄器	manual-and-runtime
+technical.skill.demolitions	爆破	manual-and-runtime
+technical.skill.first_aid	紧急救护	manual-and-runtime
+technical.skill.repair_weapon	武器维修	manual-and-runtime

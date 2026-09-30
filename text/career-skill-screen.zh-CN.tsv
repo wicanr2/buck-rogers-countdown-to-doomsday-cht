@@ -1,0 +1,13 @@
+key	translation	source
+career.screen.remaining_points	职业技能点数：	runtime-interface
+career.screen.maximum_per_skill	单项技能上限：	runtime-interface
+career.screen.skills	专业技能	manual-and-runtime
+career.screen.columns	点数 加值 总计	runtime-interface
+character.skill.notice	注意力	manual-and-runtime
+character.skill.maneuver_zero_g	无重力状态行动能力	manual-and-runtime
+character.skill.use_jetpack	使用飞行器	manual-and-runtime
+character.skill.pilot_rocket	驾驶火箭	manual-and-runtime
+character.skill.pilot_fixed_wing	驾驶飞机	manual-and-runtime
+character.skill.drive_ground_car	驾驶一般车辆	manual-and-runtime
+character.skill.pilot_rotorwing	驾驶直升机	manual-and-runtime
+character.skill.drive_jetcar	驾驶喷射车辆	manual-and-runtime

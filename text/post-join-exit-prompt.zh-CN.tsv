@@ -1,0 +1,3 @@
+key	translation	source
+post_join_exit.prompt.quit_to_dos.001	离开至 DOS	runtime-interface
+post_join_exit.prompt.unsaved_quit_anyway.001	游戏尚未保存。仍要离开？	runtime-interface

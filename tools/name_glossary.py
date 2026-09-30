@@ -39,6 +39,19 @@ GLOSSARY = TEXT / "name-glossary.tsv"
 EXCLUDE = TEXT / "name-glossary-exclude.tsv"
 FONT_CHARS = ROOT / "font" / "characters.txt"
 
+
+def lang_paths(text_dir: Path, lang: str) -> tuple[Path, Path, Path]:
+    """規格 041 §3.7：每語言的譯名表、例外表與字元清單（zh-TW 維持現行檔名）。"""
+    if lang == DEFAULT_LANG:
+        return text_dir / "name-glossary.tsv", text_dir / "name-glossary-exclude.tsv", FONT_CHARS
+    return (text_dir / f"name-glossary.{lang}.tsv", text_dir / f"name-glossary-exclude.{lang}.tsv",
+            ROOT / "font" / f"characters.{lang}.txt")
+
+
+def is_name_table(path: Path) -> bool:
+    """名字表與例外表不是 key/translation/source catalog，glob 時排除。"""
+    return path.name.startswith("name-glossary")
+
 GLOSSARY_HEADER = ["english", "english_mixed", "chinese", "kind", "person", "basis", "note"]
 EXCLUDE_HEADER = ["phrase", "scope", "note"]
 CATALOG_HEADER = ["key", "translation", "source"]
@@ -147,7 +160,8 @@ def dot_variants(chinese: str) -> tuple[str, ...]:
     return tuple(chinese.replace(SEPARATOR, sep) for sep in OTHER_SEPARATORS + ("",))
 
 
-def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE) -> Glossary:
+def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE, *, use_old: bool = True) -> Glossary:
+    """use_old=False：note 的 old= 不生效（規格 041 §3.6：zh-CN 名字表由產生器轉換，old= 只對 zh-TW）。"""
     names: list[Name] = []
     for number, row in enumerate(_read_tsv(path, GLOSSARY_HEADER), start=2):
         english, mixed, chinese, kind, person, basis, note = row
@@ -167,7 +181,7 @@ def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE) ->
         if not BASIS_RE.match(basis):
             raise GlossaryError(f"{where}: basis 必須是 printed:<位置>、xinhua 或 nickname")
         try:
-            old = _note_field(note, "old")
+            old = _note_field(note, "old") if use_old else ()
             alias = _note_field(note, "alias")
         except GlossaryError as exc:
             raise GlossaryError(f"{where}: {exc}") from exc
@@ -340,7 +354,7 @@ def catalog_paths(args_paths: list[str] | None, default: list[str] | None, text_
     if args_paths:
         return [Path(p) for p in args_paths]
     if default is None:
-        return sorted(text_dir.glob(catalog_glob(lang)))
+        return [p for p in sorted(text_dir.glob(catalog_glob(lang))) if not is_name_table(p)]
     return [text_dir / name for name in default]
 
 
@@ -460,14 +474,14 @@ def strip_logbook(glossary: Glossary, path: Path, dry_run: bool, out) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    p.add_argument("--glossary", type=Path, default=GLOSSARY)
-    p.add_argument("--exclude", type=Path, default=EXCLUDE)
+    p.add_argument("--glossary", type=Path, help="譯名表（預設依 --lang：name-glossary.tsv 或 name-glossary.<lang>.tsv）")
+    p.add_argument("--exclude", type=Path, help="例外表（預設依 --lang）")
     p.add_argument("--text", type=Path, default=TEXT, help="text/ 目錄")
     p.add_argument("--lang", default=DEFAULT_LANG, choices=KNOWN_LANGS, help="譯文語言（規格 040；預設 zh-TW）")
     sub = p.add_subparsers(dest="cmd", required=True)
     lp = sub.add_parser("lint")
     lp.add_argument("catalog", nargs="*")
-    lp.add_argument("--font-chars", type=Path, default=FONT_CHARS)
+    lp.add_argument("--font-chars", type=Path, help="字元清單（預設依 --lang：font/characters.txt 或 characters.<lang>.txt）")
     lp.add_argument("--no-font", action="store_true", help="略過字型缺字檢查")
     ap = sub.add_parser("apply")
     ap.add_argument("catalog", nargs="*")
@@ -476,10 +490,15 @@ def main(argv: list[str] | None = None) -> int:
     sp.add_argument("catalog", nargs="?")
     sp.add_argument("--dry-run", action="store_true")
     args = p.parse_args(argv)
+    gpath, epath, fpath = lang_paths(args.text, args.lang)
     try:
-        glossary = read_glossary(args.glossary, args.exclude)
+        glossary = read_glossary(args.glossary or gpath, args.exclude or epath, use_old=args.lang == DEFAULT_LANG)
+        if args.cmd != "lint" and args.lang != DEFAULT_LANG:
+            # 規格 041 §3.1：非 zh-TW 的譯文是產生檔，不得就地改寫。
+            print(f"{args.cmd} 只對 zh-TW 執行；{args.lang} 的譯文由產生器產生", file=sys.stderr)
+            return 2
         if args.cmd == "lint":
-            font = None if args.no_font else load_font_chars(args.font_chars)
+            font = None if args.no_font else load_font_chars(args.font_chars or fpath)
             errors = lint(glossary, catalog_paths(args.catalog, None, args.text, args.lang), font)
             for e in errors:
                 print(e)

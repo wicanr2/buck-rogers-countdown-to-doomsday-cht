@@ -1,0 +1,14 @@
+key	translation	source
+menu.create_new_character	创建新角色	manual-and-runtime
+menu.add_character_to_team	将角色加入队伍	runtime-interface
+menu.load_saved_game	读取已存游戏	runtime-interface
+menu.joystick_mouse_initialize	初始化摇杆／鼠标	runtime-interface
+menu.exit_to_dos	离开至 DOS	runtime-interface
+menu.choose_function	选择功能	runtime-interface
+menu.pick_race	选择种族	runtime
+race.terran	地球人	manual-and-runtime
+race.martian	火星人	manual-and-runtime
+race.venusian	金星人	manual-and-runtime
+race.mercurian	水星人	manual-and-runtime
+race.tinker	万能工匠	manual-and-runtime
+race.desert_runner	沙漠跑者	manual-and-runtime
