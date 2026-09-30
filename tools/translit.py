@@ -20,6 +20,7 @@ import sys
 import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
+from catalog_lang import DEFAULT_LANG, KNOWN_LANGS, catalog_name
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_TEXT = ROOT / "text"
@@ -380,7 +381,7 @@ def cmd_chars(args: argparse.Namespace) -> int:
     for e in names:
         allowed.update(ch for ch in e.chinese if ch != "•")
     out = chars_catalog(allowed)
-    target = text_dir / "translit-chars.zh-TW.tsv"
+    target = text_dir / catalog_name("translit-chars", getattr(args, "lang", DEFAULT_LANG))
     if args.check:
         if target.read_text("utf-8") != out:
             print(f"{target}: 過期，請重跑 chars", file=sys.stderr)
@@ -395,7 +396,7 @@ def cmd_chars(args: argparse.Namespace) -> int:
 def cmd_lint(args: argparse.Namespace) -> int:
     text_dir = Path(args.text)
     allowed, names = _allowed(text_dir)
-    catalog = text_dir / "translit-chars.zh-TW.tsv"
+    catalog = text_dir / catalog_name("translit-chars", getattr(args, "lang", DEFAULT_LANG))
     if catalog.exists():
         rows = list(csv.reader(io.StringIO(catalog.read_text("utf-8")), delimiter="\t"))
         allowed |= {r[1] for r in rows[1:]}
@@ -412,6 +413,7 @@ def cmd_lint(args: argparse.Namespace) -> int:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--text", default=str(DEFAULT_TEXT), help="text/ 目錄")
+    p.add_argument("--lang", default=DEFAULT_LANG, choices=KNOWN_LANGS, help="譯音字集語言（規格 040；預設 zh-TW）")
     sub = p.add_subparsers(dest="cmd", required=True)
     t = sub.add_parser("table", help="轉錄人名表")
     t.add_argument("--src", default=str(DEFAULT_SRC), help="wikitext 路徑")

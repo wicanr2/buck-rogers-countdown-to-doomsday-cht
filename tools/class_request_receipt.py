@@ -12,6 +12,7 @@ import class_events
 import class_selection_receipt
 import post_gender_receipt
 import post_race_receipt
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 STATE_SHA = post_gender_receipt.STATE_SHA
 START_SHA = post_gender_receipt.START_SHA
@@ -50,17 +51,18 @@ def _validate_requests(receipt, expected, misses):
 def verify(steady_a: Path, steady_b: Path, down_a: Path, down_b: Path, escape_a: Path, escape_b: Path,
            state: Path, start_exe: Path, game_ovr: Path, command: Path, menu_inventory: Path,
            menu_catalog: Path, post_inventory: Path, gender_inventory: Path, class_inventory: Path,
-           class_catalog: Path, post_gender_inventory: Path, lifecycle_inventory: Path) -> None:
+           class_catalog: Path, post_gender_inventory: Path, lifecycle_inventory: Path,
+           lang: str = DEFAULT_LANG) -> None:
     for path, expected, label in ((state, STATE_SHA, "state"), (start_exe, START_SHA, "START.EXE"),
                                   (game_ovr, GAME_SHA, "GAME.OVR"), (command, COMMAND_SHA, "command")):
         if _sha(path) != expected:
             raise ValueError(f"class request receipt: {label} SHA-256 不符")
-    class_events.validate(class_inventory, class_catalog, post_gender_inventory, lifecycle_inventory)
+    class_events.validate(class_inventory, class_catalog, post_gender_inventory, lifecycle_inventory, lang=lang)
     menu_rows, gender_rows, class_rows = _rows(menu_inventory), _rows(gender_inventory), _rows(class_inventory)
     post_rows = post_race_receipt._read_inventory(post_inventory)
     lifecycle = class_selection_receipt._read_lifecycle(lifecycle_inventory)
     menu_texts = {r["key"]: r["translation"] for r in _rows(menu_catalog)}
-    gender_texts = {r["key"]: r["translation"] for r in _rows(Path(str(gender_inventory).replace("gender-events.tsv", "gender.zh-TW.tsv")))}
+    gender_texts = {r["key"]: r["translation"] for r in _rows(Path(str(gender_inventory).replace("gender-events.tsv", catalog_name("gender", lang))))}
     class_texts = {r["key"]: r["translation"] for r in _rows(class_catalog)}
     receipts = []
     for first, second, expected in ((steady_a, steady_b, STEADY_SHA), (down_a, down_b, DOWN_UP_SHA),

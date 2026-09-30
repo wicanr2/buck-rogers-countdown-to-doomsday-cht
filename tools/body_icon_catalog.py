@@ -7,6 +7,7 @@ import csv
 from pathlib import Path
 import re
 import unicodedata
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 EVENT_HEADER = ["event_key", "sequence", "text_key", "original_length", "original_sha256",
                 "caller", "background", "foreground", "row", "column"]
@@ -90,9 +91,10 @@ def validate_affix(affixes_path: Path, text_by_key: dict[str, dict[str, str]], i
     return affix
 
 
-def validate(events_path: Path, affixes_path: Path, translations_path: Path, inventory_dir: Path) -> None:
+def validate(events_path: Path, affixes_path: Path, translations_path: Path, inventory_dir: Path,
+             lang: str = DEFAULT_LANG) -> None:
     events = table(events_path, EVENT_HEADER, "body-icon-events.tsv")
-    texts = table(translations_path, TEXT_HEADER, "body-icon.zh-TW.tsv")
+    texts = table(translations_path, TEXT_HEADER, catalog_name("body-icon", lang))
     if len(events) != len(SOURCES) or len(texts) != len(SOURCES) + len(SAVE_TEXT_KEYS):
         raise ValueError("身體圖示事件須恰有六筆、譯文須恰有八筆")
     event_by_key = {row["event_key"]: row for row in events}
@@ -125,5 +127,6 @@ if __name__ == "__main__":
     parser.add_argument("affixes", type=Path)
     parser.add_argument("translations", type=Path)
     parser.add_argument("inventory_dir", type=Path)
+    add_lang_argument(parser)
     args = parser.parse_args()
-    validate(args.events, args.affixes, args.translations, args.inventory_dir)
+    validate(args.events, args.affixes, args.translations, args.inventory_dir, lang=args.lang)

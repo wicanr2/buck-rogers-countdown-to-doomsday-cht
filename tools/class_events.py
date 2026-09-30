@@ -9,6 +9,7 @@ import re
 
 import class_selection_receipt
 import post_gender_receipt
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 EVENT_HEADER = ["event_key", "sequence", "text_key", "original_length", "original_sha256",
                 "caller", "background", "foreground", "row", "column"]
@@ -35,17 +36,18 @@ def _same(left, right):
     return all(left[field] == right[field] for field in IDENTITY_FIELDS)
 
 
-def validate(events_path: Path, translations_path: Path, post_path: Path, lifecycle_path: Path) -> None:
+def validate(events_path: Path, translations_path: Path, post_path: Path, lifecycle_path: Path,
+             lang: str = DEFAULT_LANG) -> None:
     events = _table(events_path, EVENT_HEADER, "class-events.tsv")
-    texts = _table(translations_path, TEXT_HEADER, "class.zh-TW.tsv")
+    texts = _table(translations_path, TEXT_HEADER, catalog_name("class", lang))
     if len(events) != 12 or [r["sequence"] for r in events] != [str(i) for i in range(1, 13)]:
         raise ValueError("class-events.tsv: 必須恰有十二筆連續事件")
     if len(texts) != 6:
-        raise ValueError("class.zh-TW.tsv: 必須恰有六筆譯文")
+        raise ValueError(f"{catalog_name('class', lang)}: 必須恰有六筆譯文")
     if len({r["event_key"] for r in events}) != 12 or len({tuple(r[f] for f in IDENTITY_FIELDS) for r in events}) != 12:
         raise ValueError("class-events.tsv: event key 或 identity 不唯一")
     if len({r["key"] for r in texts}) != 6 or any(not r["translation"] or r["source"] != "manual-and-runtime" for r in texts):
-        raise ValueError("class.zh-TW.tsv: key、譯文或來源無效")
+        raise ValueError(f"{catalog_name('class', lang)}: key、譯文或來源無效")
     if {r["text_key"] for r in events} != {r["key"] for r in texts}:
         raise ValueError("職業事件與譯文鍵必須雙向完整")
     for row in events:
@@ -69,4 +71,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     for name in ("events", "translations", "post", "lifecycle"):
         parser.add_argument(name, type=Path)
-    validate(**dict(zip(("events_path", "translations_path", "post_path", "lifecycle_path"), vars(parser.parse_args()).values())))
+    add_lang_argument(parser)
+    args = vars(parser.parse_args())
+    lang = args.pop("lang")
+    validate(**dict(zip(("events_path", "translations_path", "post_path", "lifecycle_path"), args.values())), lang=lang)

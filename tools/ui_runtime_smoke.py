@@ -11,6 +11,7 @@ import subprocess
 from pathlib import Path
 
 from manual_rgba_verify import png_bytes
+from catalog_lang import add_lang_argument, catalog_name
 
 
 CATALOGS = (
@@ -66,6 +67,7 @@ def main() -> int:
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--font", type=Path, required=True)
     parser.add_argument("--out-dir", type=Path, required=True)
+    add_lang_argument(parser)
     args = parser.parse_args()
     project = Path(__file__).resolve().parents[1]
     workplace = project / "workplace"
@@ -81,7 +83,7 @@ def main() -> int:
         common += ["-bios-key-at", key]
     for flag, stem, _ in CATALOGS:
         common += [f"-{flag}-events", str(project / "text" / f"{stem}-events.tsv"),
-                   f"-{flag}-translations", str(project / "text" / f"{stem}.zh-TW.tsv")]
+                   f"-{flag}-translations", str(project / "text" / catalog_name(stem, args.lang))]
     safe_rects = rects(project)
 
     def run(name: str, scale: int | None) -> dict:

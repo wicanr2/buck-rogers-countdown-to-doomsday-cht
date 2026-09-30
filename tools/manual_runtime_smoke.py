@@ -10,9 +10,11 @@ import subprocess
 from pathlib import Path
 
 from manual_rgba_verify import compare, png_bytes
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 
-def run_case(command: Path, state_compare: Path, state: Path, font: Path, out: Path, until: int, keys: list[str], visible: bool) -> dict:
+def run_case(command: Path, state_compare: Path, state: Path, font: Path, out: Path, until: int, keys: list[str], visible: bool,
+             lang: str = DEFAULT_LANG) -> dict:
     project = Path(__file__).resolve().parents[1]
     common = [str(command.resolve()), "-state", str(state.resolve()), "-until", str(until),
               "-file-ops", "-unimplemented"]
@@ -41,7 +43,7 @@ def run_case(command: Path, state_compare: Path, state: Path, font: Path, out: P
         name = str(scale) + "x"
         extras = ["-manual-events", str(project / "text/manual-events.tsv"),
                   "-manual-ordinals", str(project / "text/manual-ordinals.tsv"),
-                  "-manual-translations", str(project / "text/manual.zh-TW.tsv"),
+                  "-manual-translations", str(project / "text" / catalog_name("manual", lang)),
                   "-manual-layout", str(project / "text/manual-overlay-layout.tsv"),
                   "-manual-overlay-font", str(font.resolve()), "-manual-overlay-scale", str(scale),
                   "-manual-overlay-rgba-out", str(out / (name + ".rgba")),
@@ -80,6 +82,7 @@ def main() -> int:
     parser.add_argument("--until", type=int, default=266557247)
     parser.add_argument("--bios-key-at", action="append", default=[])
     parser.add_argument("--expect", choices=("visible", "cleared"), default="visible")
+    add_lang_argument(parser)
     args = parser.parse_args()
     try:
         workplace = Path(__file__).resolve().parents[1] / "workplace"
@@ -93,7 +96,7 @@ def main() -> int:
                 raise ValueError(f"缺少本機輸入：{path}")
         output.mkdir(parents=True)
         result = run_case(args.command, args.state_compare, args.state, args.font, output, args.until,
-                          args.bios_key_at, args.expect == "visible")
+                          args.bios_key_at, args.expect == "visible", lang=args.lang)
         print(json.dumps(result, ensure_ascii=False, sort_keys=True))
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         parser.error(str(error))

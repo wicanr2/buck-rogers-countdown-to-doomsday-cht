@@ -9,6 +9,7 @@ import re
 
 import gender_selection_receipt
 import post_race_receipt
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 
 EVENT_HEADER = [
@@ -42,20 +43,21 @@ def _same_identity(left: dict[str, str], right: dict[str, str]) -> bool:
     return all(left[field] == right[field] for field in IDENTITY_FIELDS)
 
 
-def validate(events_path: Path, translations_path: Path, post_path: Path, lifecycle_path: Path) -> None:
+def validate(events_path: Path, translations_path: Path, post_path: Path, lifecycle_path: Path,
+             lang: str = DEFAULT_LANG) -> None:
     events = _table(events_path, EVENT_HEADER, "gender-events.tsv")
-    texts = _table(translations_path, TEXT_HEADER, "gender.zh-TW.tsv")
+    texts = _table(translations_path, TEXT_HEADER, catalog_name("gender", lang))
     if len(events) != 7 or [row["sequence"] for row in events] != [str(value) for value in range(1, 8)]:
         raise ValueError("gender-events.tsv: 必須恰有七筆連續事件")
     if len(texts) != 3:
-        raise ValueError("gender.zh-TW.tsv: 必須恰有三筆譯文")
+        raise ValueError(f"{catalog_name('gender', lang)}: 必須恰有三筆譯文")
     event_keys = [row["event_key"] for row in events]
     text_keys = [row["key"] for row in texts]
     identities = [tuple(row[field] for field in IDENTITY_FIELDS) for row in events]
     if len(set(event_keys)) != 7 or len(set(identities)) != 7:
         raise ValueError("gender-events.tsv: event key 或 identity 不唯一")
     if len(set(text_keys)) != 3 or any(not row["translation"] or row["source"] not in SOURCES for row in texts):
-        raise ValueError("gender.zh-TW.tsv: key、譯文或來源無效")
+        raise ValueError(f"{catalog_name('gender', lang)}: key、譯文或來源無效")
     if {row["text_key"] for row in events} != set(text_keys):
         raise ValueError("性別事件與譯文鍵必須雙向完整")
     for row in events:
@@ -83,5 +85,6 @@ if __name__ == "__main__":
     parser.add_argument("translations", type=Path)
     parser.add_argument("post", type=Path)
     parser.add_argument("lifecycle", type=Path)
+    add_lang_argument(parser)
     args = parser.parse_args()
-    validate(args.events, args.translations, args.post, args.lifecycle)
+    validate(args.events, args.translations, args.post, args.lifecycle, lang=args.lang)

@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""驗證批次譯文並合併為 text/ecl-text.zh-TW.tsv。
+"""驗證批次譯文並合併為 text/ecl-text.<lang>.tsv（規格 040；預設 zh-TW）。
 
 每個 done/batch-NN.tsv 必須與 batches/batch-NN.tsv 的 key 集合、順序完全相同；
-譯文須為單行、NFC、Big5 可編碼、非空。`-` 表示該列是雜訊，不進正式檔。
+譯文須為單行、NFC、非空；zh-TW 另須 Big5 可編碼（倚天字型），其他語言的字集檢查由各語言規格定義。`-` 表示該列是雜訊，不進正式檔。
 正式檔只收 catalog（text/ecl-text-events.tsv）內的 key。已存在正式檔的譯文，
 除非批次檔有新值，否則保留。
 """
 import argparse, csv, sys, unicodedata
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from catalog_lang import DEFAULT_LANG, add_lang_argument  # noqa: E402
 
 SOURCE = 'ecl-batch-editorial'
 
@@ -19,7 +21,7 @@ def read_tsv(path, header):
     return rows[1:]
 
 
-def check(text, where):
+def check(text, where, lang=DEFAULT_LANG):
     errs = []
     if not text:
         errs.append('空白')
@@ -33,10 +35,11 @@ def check(text, where):
         errs.append('含全形空白（字型不收，改用半形空白）')
     if any(unicodedata.category(c) == 'Cc' for c in text):
         errs.append('控制字元')
-    try:
-        text.encode('big5')
-    except UnicodeEncodeError as e:
-        errs.append(f'非 Big5：{text[e.start:e.end]!r}')
+    if lang == DEFAULT_LANG:
+        try:
+            text.encode('big5')
+        except UnicodeEncodeError as e:
+            errs.append(f'非 Big5：{text[e.start:e.end]!r}')
     return [f'{where}：{e}' for e in errs]
 
 
@@ -48,6 +51,7 @@ def main():
     ap.add_argument('--out', required=True, type=Path)
     ap.add_argument('--exclude', type=Path, help='不進正式檔的 key（規格 027 §4）')
     ap.add_argument('--check-only', action='store_true')
+    add_lang_argument(ap)
     a = ap.parse_args()
     catalog = {r[0] for r in read_tsv(a.events, ['event_key', 'original_length', 'original_sha256', 'sources'])}
     excluded = set()
@@ -77,7 +81,7 @@ def main():
             if k not in catalog:
                 errors.append(f'{done.name}：{k} 不在 catalog')
                 continue
-            e = check(t, f'{done.name}:{k}')
+            e = check(t, f'{done.name}:{k}', a.lang)
             if e:
                 errors.extend(e)
                 continue

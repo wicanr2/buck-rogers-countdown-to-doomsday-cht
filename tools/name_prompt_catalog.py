@@ -7,6 +7,7 @@ import csv
 from pathlib import Path
 import re
 import unicodedata
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 EVENT_HEADER = ["event_key", "sequence", "text_key", "original_length", "original_sha256",
                 "caller", "background", "foreground", "row", "column"]
@@ -32,9 +33,9 @@ def table(path: Path, header: list[str], label: str) -> list[dict[str, str]]:
     return [dict(zip(header, row)) for row in rows[1:]]
 
 
-def validate(events_path: Path, translations_path: Path, inventory_path: Path) -> None:
+def validate(events_path: Path, translations_path: Path, inventory_path: Path, lang: str = DEFAULT_LANG) -> None:
     events = table(events_path, EVENT_HEADER, "name-prompt-events.tsv")
-    texts = table(translations_path, TEXT_HEADER, "name-prompt.zh-TW.tsv")
+    texts = table(translations_path, TEXT_HEADER, catalog_name("name-prompt", lang))
     inventory = table(inventory_path, INVENTORY_HEADER, "reroll-no-events.tsv")
     prompts = [row for row in inventory if row["event_role"] == "name_prompt"]
     if len(events) != 1 or len(texts) != 1 or len(prompts) != 1:
@@ -62,5 +63,6 @@ if __name__ == "__main__":
     parser.add_argument("events", type=Path)
     parser.add_argument("translations", type=Path)
     parser.add_argument("inventory", type=Path)
+    add_lang_argument(parser)
     args = parser.parse_args()
-    validate(args.events, args.translations, args.inventory)
+    validate(args.events, args.translations, args.inventory, lang=args.lang)

@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""驗證批次譯文並合併為正式 zh-TW TSV（規格 028 選單項目、規格 029 引擎片段共用）。"""
+"""驗證批次譯文並合併為正式 <family>.<lang>.tsv（規格 028 選單項目、規格 029 引擎片段共用；規格 040 預設 zh-TW）。"""
 import argparse, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from ecl_translation_merge import read_tsv, check  # noqa: E402
+from catalog_lang import add_lang_argument  # noqa: E402
 
 SOURCE = 'ecl-batch-editorial'
 
@@ -16,6 +17,7 @@ def main():
     ap.add_argument('--done', required=True, type=Path)
     ap.add_argument('--out', required=True, type=Path)
     ap.add_argument('--batch-header', default='key,original,from', help='批次檔表頭，逗號分隔')
+    add_lang_argument(ap)
     a = ap.parse_args()
     catalog = {r[0] for r in read_tsv(a.events, ['event_key', 'original_length', 'original_sha256'])}
     merged, errors, noise = {}, [], 0
@@ -33,7 +35,7 @@ def main():
             if k not in catalog:
                 errors.append(f'{done.name}：{k} 不在 catalog')
                 continue
-            e = check(t, f'{done.name}:{k}')
+            e = check(t, f'{done.name}:{k}', a.lang)
             if e:
                 errors.extend(e)
                 continue

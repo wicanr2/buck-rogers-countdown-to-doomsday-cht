@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 import re
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 EVENT_HEADER = ["event_key", "sequence", "text_key", "original_length", "original_sha256",
                 "caller", "background", "foreground", "row", "column"]
@@ -34,9 +35,9 @@ def table(path: Path, header: list[str], label: str) -> list[dict[str, str]]:
     return [dict(zip(header, row)) for row in rows[1:]]
 
 
-def validate(events_path: Path, translations_path: Path, inventory_path: Path) -> None:
+def validate(events_path: Path, translations_path: Path, inventory_path: Path, lang: str = DEFAULT_LANG) -> None:
     events = table(events_path, EVENT_HEADER, "character-sheet-events.tsv")
-    texts = table(translations_path, TEXT_HEADER, "character-sheet.zh-TW.tsv")
+    texts = table(translations_path, TEXT_HEADER, catalog_name("character-sheet", lang))
     inventory = table(inventory_path, INVENTORY_HEADER, "post-class-events.tsv")
     static = [row for row in inventory if row["event_role"] in STATIC_ROLES]
     if len(events) != 35 or len(texts) != 35 or len(static) != 35:
@@ -66,5 +67,6 @@ if __name__ == "__main__":
     parser.add_argument("events", type=Path)
     parser.add_argument("translations", type=Path)
     parser.add_argument("inventory", type=Path)
+    add_lang_argument(parser)
     args = parser.parse_args()
-    validate(args.events, args.translations, args.inventory)
+    validate(args.events, args.translations, args.inventory, lang=args.lang)

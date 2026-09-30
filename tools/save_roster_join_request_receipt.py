@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import json
 from pathlib import Path
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 
 ROOT_KEYS = {"state_start", "stopped_at", "events", "requests", "catalog_misses", "bios_keys",
@@ -81,12 +82,13 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("receipt", type=Path)
     parser.add_argument("baseline", type=Path)
+    add_lang_argument(parser)
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     validate(json.loads(args.receipt.read_bytes()), json.loads(args.baseline.read_bytes()),
              root / "text/save-roster-join-events.tsv", root / "text/menu-events.tsv",
-             root / "text/save-roster-join-runtime-events.tsv", root / "text/menu.zh-TW.tsv",
-             root / "text/save-roster-join.zh-TW.tsv")
+             root / "text/save-roster-join-runtime-events.tsv", root / "text" / catalog_name("menu", args.lang),
+             root / "text" / catalog_name("save-roster-join", args.lang))
     print("保存→名冊→加入顯示請求收據：通過")
 
 

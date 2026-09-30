@@ -15,6 +15,7 @@ from pathlib import Path
 
 from catalog_font import CatalogError, Entry, character_list_bytes, catalog_codepoints, read_catalog
 from halfwidth import halfwidth_ink_error
+from catalog_lang import DEFAULT_LANG, KNOWN_LANGS, catalog_glob
 
 
 MAGIC = b"GOLEMFNT"
@@ -306,13 +307,14 @@ def build(catalogs: list[Path], asc_path: Path, spc_path: Path, std_path: Path, 
     return manifest
 
 
-def verify(asc_path: Path, spc_path: Path, std_path: Path, font_path: Path, manifest_path: Path, repository: Path | None = None) -> dict[str, object]:
+def verify(asc_path: Path, spc_path: Path, std_path: Path, font_path: Path, manifest_path: Path, repository: Path | None = None,
+           lang: str = DEFAULT_LANG) -> dict[str, object]:
     """不寫入任何檔案，核對完整正式譯文、原始字型與本機產物。"""
     repository = (repository or Path(__file__).resolve().parents[1]).resolve()
     catalog_dir = repository / "text"
     if not catalog_dir.is_dir():
         raise CatalogError("缺少正式 text/ 目錄")
-    catalogs = sorted(catalog_dir.glob("*.zh-TW.tsv"))
+    catalogs = sorted(catalog_dir.glob(catalog_glob(lang)))
     if not catalogs or any(not path.is_file() or path.is_symlink() for path in catalogs):
         raise CatalogError("正式 catalog 集合為空或含非一般檔案")
     safe_font = _workplace_path(font_path, repository)
@@ -343,12 +345,13 @@ def main(argv: list[str] | None = None) -> int:
     command.add_argument("--std", required=True, type=Path)
     command.add_argument("--font", required=True, type=Path)
     command.add_argument("--manifest", required=True, type=Path)
+    command.add_argument("--lang", default=DEFAULT_LANG, choices=KNOWN_LANGS, help="核對的譯文語言（規格 040；預設 zh-TW）")
     args = parser.parse_args(argv)
     try:
         if args.command == "build":
             manifest = build(args.catalog, args.asc, args.spc, args.std, args.out, args.manifest_out)
         else:
-            manifest = verify(args.asc, args.spc, args.std, args.font, args.manifest)
+            manifest = verify(args.asc, args.spc, args.std, args.font, args.manifest, lang=args.lang)
     except (CatalogError, OSError) as exc:
         print(f"錯誤：{exc}", file=sys.stderr)
         return 1

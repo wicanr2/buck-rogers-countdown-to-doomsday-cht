@@ -8,6 +8,7 @@ from pathlib import Path
 import unicodedata
 
 import name_prompt_catalog
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 EVENT_HEADER = name_prompt_catalog.EVENT_HEADER
 TEXT_HEADER = name_prompt_catalog.TEXT_HEADER
@@ -37,9 +38,9 @@ def read_dicts(path: Path) -> list[dict[str, str]]:
 
 
 def validate(events_path: Path, translations_path: Path, entry_path: Path,
-             selection_path: Path) -> None:
+             selection_path: Path, lang: str = DEFAULT_LANG) -> None:
     events = name_prompt_catalog.table(events_path, EVENT_HEADER, "technical-skill-screen-events.tsv")
-    texts = name_prompt_catalog.table(translations_path, TEXT_HEADER, "technical-skill-screen.zh-TW.tsv")
+    texts = name_prompt_catalog.table(translations_path, TEXT_HEADER, catalog_name("technical-skill-screen", lang))
     entry, selection = read_dicts(entry_path), read_dicts(selection_path)
     if (len(events) != 17 or len({row["event_key"] for row in events}) != 17 or
             [row["sequence"] for row in events] != [str(i) for i in range(1, 18)]):
@@ -78,4 +79,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     for name in ("events_path", "translations_path", "entry_path", "selection_path"):
         parser.add_argument(name, type=Path)
+    add_lang_argument(parser)
     validate(**vars(parser.parse_args()))

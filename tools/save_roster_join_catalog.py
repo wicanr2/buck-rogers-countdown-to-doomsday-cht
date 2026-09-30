@@ -10,6 +10,7 @@ import re
 from pathlib import Path
 
 from catalog_font import CatalogError, read_catalog
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 
 EVENT_HEADER = ["event_key", "sequence", "event_role", "translation_key", "inference_level",
@@ -140,9 +141,13 @@ def verify_known_dynamic_bytes() -> None:
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    add_lang_argument(parser)
+    lang = parser.parse_args().lang
     root = Path(__file__).resolve().parents[1]
     verify_known_dynamic_bytes()
-    validate(root / "text/save-roster-join-events.tsv", root / "text/save-roster-join.zh-TW.tsv",
-             root / "text/menu.zh-TW.tsv", root / "text/save-roster-join-runtime-events.tsv",
+    validate(root / "text/save-roster-join-events.tsv", root / "text" / catalog_name("save-roster-join", lang),
+             root / "text" / catalog_name("menu", lang), root / "text/save-roster-join-runtime-events.tsv",
              root / "text/save-roster-join-text-safe-rects.tsv")
     print("保存→名冊→加入繁中 catalog：通過")

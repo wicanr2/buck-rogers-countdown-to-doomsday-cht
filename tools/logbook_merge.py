@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""合併手札意譯（規格 030）為 text/logbook.zh-TW.tsv，並以與執行期相同的排版檢查頁數。
+"""合併手札意譯（規格 030）為 text/logbook.<lang>.tsv（規格 040；預設 zh-TW），並以與執行期相同的排版檢查頁數。
 
 排版規則同 dosgolem apps/buckrogers/ecl_text.go 的 layoutEclText：寬度以規格 039 半形單位計
 （U+0020–U+007E、U+2022 為 1，其餘 2；每列 72 單位）、拉丁字母數字（含 . ' -）連續不拆、
@@ -9,6 +9,8 @@ import argparse, csv, sys, unicodedata
 from pathlib import Path
 
 from halfwidth import half_units
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from catalog_lang import DEFAULT_LANG, add_lang_argument  # noqa: E402
 
 UNITS, ROWS, MAX_PAGES = 72, 19, 3  # 規格 039 §3.4：本文每列 72 單位（36 格）
 CLOSING = set('，。！？：；、」）……》』,.!?:;)')
@@ -56,6 +58,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--done', required=True, type=Path)
     ap.add_argument('--out', required=True, type=Path)
+    add_lang_argument(ap)
     a = ap.parse_args()
     got, errors = {}, []
     for f in sorted(a.done.glob('logbook-*.tsv')):
@@ -77,10 +80,11 @@ def main():
             continue
         title, body = got[n]
         for label, t in (('標題', title), ('正文', body)):
-            try:
-                t.encode('big5')
-            except UnicodeEncodeError as e:
-                errors.append(f'第 {n} 則{label}非 Big5：{t[e.start:e.end]!r}')
+            if a.lang == DEFAULT_LANG:
+                try:
+                    t.encode('big5')
+                except UnicodeEncodeError as e:
+                    errors.append(f'第 {n} 則{label}非 Big5：{t[e.start:e.end]!r}')
             if t != t.strip(' ') or '　' in t or unicodedata.normalize('NFC', t) != t or not t:
                 errors.append(f'第 {n} 則{label}有空白、全形空白、非 NFC 或為空')
         try:

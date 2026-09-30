@@ -31,6 +31,7 @@ import sys
 import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
+from catalog_lang import DEFAULT_LANG, KNOWN_LANGS, catalog_glob, catalog_name
 
 ROOT = Path(__file__).resolve().parent.parent
 TEXT = ROOT / "text"
@@ -48,16 +49,15 @@ ENGLISH_RE = re.compile(r"^[A-Z0-9][A-Z0-9 .'\-]*[A-Z0-9]$")
 SEPARATOR = "•"  # •
 OTHER_SEPARATORS = ("·", "．", "・")  # · ． ・
 # 手冊段落只做中文收斂；既有英文（例如印刷本保留的 Scot.dos）不動。
-MANUAL_CATALOGS = {"manual.zh-TW.tsv"}
-LOGBOOK_CATALOG = "logbook.zh-TW.tsv"
-DEFAULT_APPLY = [
-    "ecl-text.zh-TW.tsv",
-    "logbook.zh-TW.tsv",
-    "monster-name.zh-TW.tsv",
-    "hmenu.zh-TW.tsv",
-    "engine-fragment.zh-TW.tsv",
-    "manual.zh-TW.tsv",
-]
+MANUAL_CATALOGS = {catalog_name("manual", lang) for lang in KNOWN_LANGS}
+LOGBOOK_CATALOG = catalog_name("logbook")
+APPLY_FAMILIES = ["ecl-text", "logbook", "monster-name", "hmenu", "engine-fragment", "manual"]
+DEFAULT_APPLY = [catalog_name(f) for f in APPLY_FAMILIES]
+
+
+def default_apply(lang: str = DEFAULT_LANG) -> list[str]:
+    """規格 040：apply 的預設 catalog 依語言命名（預設 zh-TW）。"""
+    return [catalog_name(f, lang) for f in APPLY_FAMILIES]
 # 手札註記前可緊接的稱謂（中文）與註記內可前置的英文稱謂。
 ZH_TITLES = ("博士", "醫生", "船長", "上校", "指揮官", "主任", "行政官")
 EN_TITLE_RE = re.compile(
@@ -335,11 +335,12 @@ def context(text: str, start: int, end: int, width: int = 8) -> str:
 
 # ---------------------------------------------------------------- 子命令
 
-def catalog_paths(args_paths: list[str] | None, default: list[str] | None, text_dir: Path) -> list[Path]:
+def catalog_paths(args_paths: list[str] | None, default: list[str] | None, text_dir: Path,
+                  lang: str = DEFAULT_LANG) -> list[Path]:
     if args_paths:
         return [Path(p) for p in args_paths]
     if default is None:
-        return sorted(text_dir.glob("*.zh-TW.tsv"))
+        return sorted(text_dir.glob(catalog_glob(lang)))
     return [text_dir / name for name in default]
 
 
@@ -462,6 +463,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--glossary", type=Path, default=GLOSSARY)
     p.add_argument("--exclude", type=Path, default=EXCLUDE)
     p.add_argument("--text", type=Path, default=TEXT, help="text/ 目錄")
+    p.add_argument("--lang", default=DEFAULT_LANG, choices=KNOWN_LANGS, help="譯文語言（規格 040；預設 zh-TW）")
     sub = p.add_subparsers(dest="cmd", required=True)
     lp = sub.add_parser("lint")
     lp.add_argument("catalog", nargs="*")
@@ -478,7 +480,7 @@ def main(argv: list[str] | None = None) -> int:
         glossary = read_glossary(args.glossary, args.exclude)
         if args.cmd == "lint":
             font = None if args.no_font else load_font_chars(args.font_chars)
-            errors = lint(glossary, catalog_paths(args.catalog, None, args.text), font)
+            errors = lint(glossary, catalog_paths(args.catalog, None, args.text, args.lang), font)
             for e in errors:
                 print(e)
             if errors:
@@ -487,10 +489,10 @@ def main(argv: list[str] | None = None) -> int:
             print(f"name-glossary lint OK（{len(glossary.names)} 條、例外 {len(glossary.exclusions)} 條）")
             return 0
         if args.cmd == "apply":
-            apply(glossary, catalog_paths(args.catalog, DEFAULT_APPLY, args.text), args.dry_run, sys.stdout)
+            apply(glossary, catalog_paths(args.catalog, default_apply(args.lang), args.text, args.lang), args.dry_run, sys.stdout)
             return 0
         if args.cmd == "strip-logbook-notes":
-            path = Path(args.catalog) if args.catalog else args.text / LOGBOOK_CATALOG
+            path = Path(args.catalog) if args.catalog else args.text / catalog_name("logbook", args.lang)
             strip_logbook(glossary, path, args.dry_run, sys.stdout)
             return 0
     except GlossaryError as exc:

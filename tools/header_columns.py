@@ -27,23 +27,25 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from halfwidth import half_units  # noqa: E402
+from catalog_lang import DEFAULT_LANG, KNOWN_LANGS, catalog_name  # noqa: E402
 
 HEADER = ["family", "key", "cols", "evidence"]
 FAMILIES = ("menu", "dispatcher")
 
 # 與 dosgolem live_menu_load.go 的 liveMenuSources 相同（events → 譯文）。
-MENU_SOURCES = [
-    ("menu-events.tsv", "menu.zh-TW.tsv"),
-    ("gender-events.tsv", "gender.zh-TW.tsv"),
-    ("class-events.tsv", "class.zh-TW.tsv"),
-    ("save-roster-join-runtime-events.tsv", "save-roster-join.zh-TW.tsv"),
-    ("character-sheet-events.tsv", "character-sheet.zh-TW.tsv"),
-    ("name-prompt-events.tsv", "name-prompt.zh-TW.tsv"),
-    ("career-skill-screen-events.tsv", "career-skill-screen.zh-TW.tsv"),
-    ("technical-skill-screen-events.tsv", "technical-skill-screen.zh-TW.tsv"),
+MENU_FAMILIES = [
+    ("menu-events.tsv", "menu"),
+    ("gender-events.tsv", "gender"),
+    ("class-events.tsv", "class"),
+    ("save-roster-join-runtime-events.tsv", "save-roster-join"),
+    ("character-sheet-events.tsv", "character-sheet"),
+    ("name-prompt-events.tsv", "name-prompt"),
+    ("career-skill-screen-events.tsv", "career-skill-screen"),
+    ("technical-skill-screen-events.tsv", "technical-skill-screen"),
 ]
+MENU_SOURCES = [(events, catalog_name(family)) for events, family in MENU_FAMILIES]
 ENGINE_EVENTS = "engine-fragment-events.tsv"
-ENGINE_TEXT = "engine-fragment.zh-TW.tsv"
+ENGINE_TEXT = catalog_name("engine-fragment")
 SKIP = "跳過原版驗證"
 
 
@@ -103,14 +105,32 @@ def anchor_columns(zh: str, cols: list[int], total: int) -> list[int]:
     return starts
 
 
-def menu_identities(text_dir: Path, key: str) -> list[tuple[int, str, int, int]]:
+def menu_identities(text_dir: Path, key: str, lang: str = DEFAULT_LANG) -> list[tuple[int, str, int, int]]:
     """(原文長度, 譯文, 事件列, 事件欄)。"""
     out = []
-    for events_name, text_name in MENU_SOURCES:
+    for events_name, family in MENU_FAMILIES:
         events = [r for r in read_tsv(text_dir / events_name) if r["event_key"] == key]
         if not events:
             continue
-        texts = {r["key"]: r["translation"] for r in read_tsv(text_dir / text_name)}
+        texts = {r["key"]: r["translation"] for r in read_tsv(text_dir / catalog_name(family, lang))}
+        for event in events:
+            zh = texts.get(event["text_key"])
+            if not zh:
+                raise ValueError(f"{key}: 譯文 catalog 缺 {event['text_key']}")
+            out.append((int(event["original_length"]), zh, int(event["row"]), int(event["column"])))
+    return out
+
+
+def _menu_identities_dirs(text_dir: Path, lang_dir: Path, key: str, lang: str) -> list[tuple[int, str, int, int]]:
+    if text_dir == lang_dir:
+        return menu_identities(text_dir, key, lang)
+    out = []
+    for events_name, family in MENU_FAMILIES:
+        events = [r for r in read_tsv(text_dir / events_name) if r["event_key"] == key]
+        if not events:
+            continue
+        path = lang_dir / catalog_name(family, lang)
+        texts = {r["key"]: r["translation"] for r in read_tsv(path)} if path.exists() else {}
         for event in events:
             zh = texts.get(event["text_key"])
             if not zh:
@@ -125,12 +145,34 @@ def engine_identities(text_dir: Path, key: str) -> list[tuple[str, int, str]]:
             for r in read_tsv(text_dir / ENGINE_EVENTS) if r["event_key"] in (key, key + ".uc")]
 
 
-def check_load(text_dir: Path, rows: list[dict]) -> None:
-    engine_text = {r["key"]: r["translation"] for r in read_tsv(text_dir / ENGINE_TEXT)}
+def check_load(text_dir: Path, rows: list[dict], lang: str = DEFAULT_LANG) -> list[str]:
+    """zh-TW：任一列不通過即失敗。其他語言（規格 040 §3.3）：缺譯或放不下的列退回一般排版，
+    回傳這些列的說明而不失敗；只有列本身不在 events 仍是錯誤。語言檔可在 text_dir 以外時用 check_lang_load。"""
+    if lang == DEFAULT_LANG:
+        _check_load(text_dir, text_dir, rows, lang)
+        return []
+    return check_lang_load(text_dir, text_dir, rows, lang)
+
+
+def check_lang_load(text_dir: Path, lang_dir: Path, rows: list[dict], lang: str) -> list[str]:
+    fallback = []
+    for row in rows:
+        try:
+            _check_load(text_dir, lang_dir, [row], lang)
+        except ValueError as error:
+            if "不在選單 events" in str(error) or "不在引擎片段 events" in str(error):
+                raise
+            fallback.append(f"{row['key']}: 退回一般排版（{error}）")
+    return fallback
+
+
+def _check_load(text_dir: Path, lang_dir: Path, rows: list[dict], lang: str) -> None:
+    engine_path = lang_dir / catalog_name("engine-fragment", lang)
+    engine_text = {r["key"]: r["translation"] for r in read_tsv(engine_path)} if engine_path.exists() or lang == DEFAULT_LANG else {}
     for row in rows:
         key, cols = row["key"], row["cols"]
         if row["family"] == "menu":
-            ids = menu_identities(text_dir, key)
+            ids = _menu_identities_dirs(text_dir, lang_dir, key, lang)
             if not ids:
                 raise ValueError(f"{key}: 不在選單 events")
             for length, zh, _, _ in ids:
@@ -253,8 +295,15 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--text", type=Path, default=root / "text")
     parser.add_argument("--workplace", type=Path, default=root / "workplace")
+    parser.add_argument("--lang", default=DEFAULT_LANG, choices=KNOWN_LANGS, help="譯文語言（規格 040；預設 zh-TW）")
+    parser.add_argument("--lang-dir", type=Path, help="非 zh-TW 語言檔目錄（預設同 --text）")
     args = parser.parse_args(argv)
     rows = load_list(args.text / "header-columns.tsv")
+    if args.lang != DEFAULT_LANG:
+        for line in check_lang_load(args.text, args.lang_dir or args.text, rows, args.lang):
+            print(line)
+        print(f"{args.lang} 載入檢查完成（{len(rows)} 列）")
+        return 0
     check_load(args.text, rows)
     print(f"載入檢查：{len(rows)} 列通過")
     for line in verify_original(args.text, args.workplace, rows):

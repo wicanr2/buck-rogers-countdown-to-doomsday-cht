@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 from pathlib import Path
 import re
+from catalog_lang import DEFAULT_LANG, add_lang_argument, catalog_name
 
 
 HEADER = [
@@ -35,7 +36,7 @@ def _rows(path: Path, header: list[str]) -> list[list[str]]:
     return rows[1:]
 
 
-def validate(events_path: Path, catalog_path: Path) -> None:
+def validate(events_path: Path, catalog_path: Path, lang: str = DEFAULT_LANG) -> None:
     events = _rows(events_path, HEADER)
     catalog = _rows(catalog_path, CATALOG_HEADER)
     if not events:
@@ -73,7 +74,7 @@ def validate(events_path: Path, catalog_path: Path) -> None:
 
     catalog_keys = [row[0] for row in catalog]
     if len(set(catalog_keys)) != len(catalog_keys):
-        raise ValueError("menu.zh-TW.tsv: 重複 key")
+        raise ValueError(f"{catalog_name('menu', lang)}: 重複 key")
     missing = used_text_keys - set(catalog_keys)
     orphan = set(catalog_keys) - used_text_keys
     if missing or orphan:
@@ -86,5 +87,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("events", type=Path)
     parser.add_argument("catalog", type=Path)
+    add_lang_argument(parser)
     args = parser.parse_args()
-    validate(args.events, args.catalog)
+    validate(args.events, args.catalog, lang=args.lang)
