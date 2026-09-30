@@ -33,4 +33,4 @@ character.skill.pilot_fixed_wing	固定翼機操縦	manual-and-runtime
 character.skill.drive_ground_car	地上車運転	manual-and-runtime
 character.skill.pilot_rotorwing	回転翼機操縦	manual-and-runtime
 character.skill.drive_jetcar	ジェットカー運転	manual-and-runtime
-character.sheet.reroll	能力値を振り直しますか？	runtime-interface
+character.sheet.reroll	能力値を振り直すか？	runtime-interface

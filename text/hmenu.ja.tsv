@@ -6,7 +6,7 @@ hmenu.0081779c287d	レベル	ecl-batch-editorial
 hmenu.00df727dbe5d	ボタンかEnterキーで続行	ecl-batch-editorial
 hmenu.012f9df23526	ロケット操縦	ecl-batch-editorial
 hmenu.014413c294c5	挿入(I)	ecl-batch-editorial
-hmenu.01cb782e0e47	このレベル！職業ポイントが未	ecl-batch-editorial
+hmenu.01cb782e0e47	このレベル！職業技能ポイントが未	ecl-batch-editorial
 hmenu.02035f070dd0	主研究所(M)	ecl-batch-editorial
 hmenu.02456bf6eab1	ミサイル架台(M)	ecl-batch-editorial
 hmenu.02492c9d09d4	中央(C) 退出(E)	ecl-batch-editorial
@@ -29,7 +29,7 @@ hmenu.03bf10496520	変装(D)	ecl-batch-editorial
 hmenu.03ce67f208f4	発射する	ecl-batch-editorial
 hmenu.03f8c1273e3d	男性(M)	ecl-batch-editorial
 hmenu.04389e7277f7	意識を失った！	ecl-batch-editorial
-hmenu.045fc6c686c2	スキャン	ecl-batch-editorial
+hmenu.045fc6c686c2	スキャン対象：	ecl-batch-editorial
 hmenu.04d7b4833927	メッセージ(M)	ecl-batch-editorial
 hmenu.0548a47dc7ac	ブームスラング(B)	ecl-batch-editorial
 hmenu.057a74a43448	ザクの(Z)	ecl-batch-editorial
@@ -71,7 +71,7 @@ hmenu.0a4a268a9b78	バック・ロジャーズ(B)	ecl-batch-editorial
 hmenu.0a8e74a4c975	戦術(T)	ecl-batch-editorial
 hmenu.0a951f785273	メイルストローム・ライダー(M)	ecl-batch-editorial
 hmenu.0abdcc1d7bd3	ダウンタウン(D)	ecl-batch-editorial
-hmenu.0b681623391a	月人(L)	ecl-batch-editorial
+hmenu.0b681623391a	ルナリアン(L)	ecl-batch-editorial
 hmenu.0b8cdd9ec4e4	ローグ(R)	ecl-batch-editorial
 hmenu.0bb4ee71bc12	首飾り(N)	ecl-batch-editorial
 hmenu.0bc388f6937c	希少なRAM硬貨(R)	ecl-batch-editorial
@@ -152,7 +152,7 @@ hmenu.1709305c9fa9	レベル(L)	ecl-batch-editorial
 hmenu.1710782c5d15	武器(W)	ecl-batch-editorial
 hmenu.172c1c994b66	診療所(C)	ecl-batch-editorial
 hmenu.1732ef2228a0	去る(L)	ecl-batch-editorial
-hmenu.175f6a239138	較正。	ecl-batch-editorial
+hmenu.175f6a239138	キャリブレーション。	ecl-batch-editorial
 hmenu.1774b8eebdec	第五	ecl-batch-editorial
 hmenu.17b09f5db72c	右下の位置に倒し、ボタンを押してください	ecl-batch-editorial
 hmenu.17c60a21a9c2	削除(P)	ecl-batch-editorial
@@ -164,7 +164,7 @@ hmenu.183f00f483d3	保持(K)	ecl-batch-editorial
 hmenu.186a2b23db85	取引しますか？	ecl-batch-editorial
 hmenu.187897ce0afc	さらに	ecl-batch-editorial
 hmenu.18914b261c3e	耐久力(C)	ecl-batch-editorial
-hmenu.18b7d02f93bb	ジョイスティックの読み取り。較正を中止	ecl-batch-editorial
+hmenu.18b7d02f93bb	ジョイスティックの読み取り。キャリブレーションを中止	ecl-batch-editorial
 hmenu.18c9bbae695b	誰かが助けなければならないのは、	ecl-batch-editorial
 hmenu.18fdd549b2ed	新(N)	ecl-batch-editorial
 hmenu.193c45b52819	持つ	ecl-batch-editorial
@@ -198,7 +198,7 @@ hmenu.1d54d5514269	バク(B)	ecl-batch-editorial
 hmenu.1d5735a13d36	階段を下りる。	ecl-batch-editorial
 hmenu.1d62d75616fd	区画(A)	ecl-batch-editorial
 hmenu.1d79bf60835e	三(T)	ecl-batch-editorial
-hmenu.1dd10f244a62	アニメ(A)	ecl-batch-editorial
+hmenu.1dd10f244a62	アニメーション(A)	ecl-batch-editorial
 hmenu.1e22560cee2c	挿入	ecl-batch-editorial
 hmenu.1e2f12a3eb67	看板(S)	ecl-batch-editorial
 hmenu.1e367f240be1	戦う(F)	ecl-batch-editorial
@@ -212,7 +212,7 @@ hmenu.1eb79602411e	この	ecl-batch-editorial
 hmenu.1ec22de1446b	利用可能。	ecl-batch-editorial
 hmenu.1ed8f0748b41	商店(S)	ecl-batch-editorial
 hmenu.1f1c5b2fad77	部屋	ecl-batch-editorial
-hmenu.1f4249d5aff0	このレベルで割り当て可能！職業ポイント	ecl-batch-editorial
+hmenu.1f4249d5aff0	このレベルで割り当て可能！職業技能ポイント	ecl-batch-editorial
 hmenu.1f74f92203e3	USEM(U)	ecl-batch-editorial
 hmenu.1f862e758394	体当たり中(R)	ecl-batch-editorial
 hmenu.1ff57a29d7c9	次へ(N)	ecl-batch-editorial
@@ -262,7 +262,7 @@ hmenu.27368719cec2	斥候(S)	ecl-batch-editorial
 hmenu.2744ccd10c75	私	ecl-batch-editorial
 hmenu.275bdb5e99eb	防御(D)	ecl-batch-editorial
 hmenu.278bf346a6b7	ピエロバーガー(C)	ecl-batch-editorial
-hmenu.27c413f98227	金銭。	ecl-batch-editorial
+hmenu.27c413f98227	お金。	ecl-batch-editorial
 hmenu.27ec551cd32f	チームは休息した。	ecl-batch-editorial
 hmenu.27f28e95038f	音波スタン銃(S)	ecl-batch-editorial
 hmenu.28026ec6e26e	砂漠クロスボウ(D)	ecl-batch-editorial
@@ -325,7 +325,7 @@ hmenu.308f3ec3b44a	鍵を盗む(S)	ecl-batch-editorial
 hmenu.30e7e41efab3	身体(B)	ecl-batch-editorial
 hmenu.30e87e82bbcb	君に渡そう：	ecl-batch-editorial
 hmenu.30e8a5e111cf	誰	ecl-batch-editorial
-hmenu.310ff200149b	近い	ecl-batch-editorial
+hmenu.310ff200149b	接近	ecl-batch-editorial
 hmenu.311ab7b6c410	歌唱(S)	ecl-batch-editorial
 hmenu.311f423fde0b	置く(P) 退出(E)	ecl-batch-editorial
 hmenu.313e91336a7c	隊長(C)	ecl-batch-editorial
@@ -431,7 +431,7 @@ hmenu.416a91cb462e	男子トイレ(M)	ecl-batch-editorial
 hmenu.416d8b8969de	階段(S)	ecl-batch-editorial
 hmenu.41a670643247	ジョイスティック。	ecl-batch-editorial
 hmenu.41b5078e1cae	無重力(Z)	ecl-batch-editorial
-hmenu.41c1797f5878	走行中は不可	ecl-batch-editorial
+hmenu.41c1797f5878	疾走中は不可	ecl-batch-editorial
 hmenu.4270abb41131	カード挿入(I)	ecl-batch-editorial
 hmenu.427dd2969bd1	重体(C)	ecl-batch-editorial
 hmenu.429991c69978	負傷した。	ecl-batch-editorial
@@ -443,7 +443,7 @@ hmenu.43253e299831	武器専門化(W)	ecl-batch-editorial
 hmenu.436e61016e26	再生(P)	ecl-batch-editorial
 hmenu.438b517d08a0	チャフ	ecl-batch-editorial
 hmenu.4391105bd3a7	は慌てて逃げ出した	ecl-batch-editorial
-hmenu.43ae65428a8f	追加(A) 削減(S) 保留(K) 退出(E)	ecl-batch-editorial
+hmenu.43ae65428a8f	追加(A) 削減(S) 保持(K) 退出(E)	ecl-batch-editorial
 hmenu.43aee0d00c15	ケプラー(K)	ecl-batch-editorial
 hmenu.43b07b85db2f	停止(S)	ecl-batch-editorial
 hmenu.43f03467ae89	回転翼機操縦	ecl-batch-editorial
@@ -530,7 +530,7 @@ hmenu.52774637822c	達した	ecl-batch-editorial
 hmenu.52d29277d59f	鍵束(K)	ecl-batch-editorial
 hmenu.52d46ffedcf8	生命(L)	ecl-batch-editorial
 hmenu.52f54b6d2d53	遭遇(E)	ecl-batch-editorial
-hmenu.531cb8d83b21	口八丁(F)	ecl-batch-editorial
+hmenu.531cb8d83b21	話術・説得(F)	ecl-batch-editorial
 hmenu.53257f68c4e1	みすぼらしい者たちを救う(R)	ecl-batch-editorial
 hmenu.53798f5fd9ee	はかなり恐ろしげに見える。	ecl-batch-editorial
 hmenu.538e7569dc75	弾薬(A)	ecl-batch-editorial
@@ -552,7 +552,7 @@ hmenu.55a213edc1a2	少年(B)	ecl-batch-editorial
 hmenu.55a816001106	後退中(R)	ecl-batch-editorial
 hmenu.55f6a88dc025	消失(G)	ecl-batch-editorial
 hmenu.560d30ce9f2b	何を	ecl-batch-editorial
-hmenu.5672c76c7da3	DISKCOPYを使って複製を作ること。	ecl-batch-editorial
+hmenu.5672c76c7da3	DISKCOPYを使って複製を作ってください。	ecl-batch-editorial
 hmenu.56b32e2a15bf	長柄武器(P)	ecl-batch-editorial
 hmenu.56f21695a650	調べる(S)	ecl-batch-editorial
 hmenu.571d5b2882b8	まで	ecl-batch-editorial
@@ -646,7 +646,7 @@ hmenu.65cbe1e19791	赤(R)	ecl-batch-editorial
 hmenu.6608627b2d07	技能。	ecl-batch-editorial
 hmenu.6610cc552469	敵	ecl-batch-editorial
 hmenu.663ea1bfffe5	に	ecl-batch-editorial
-hmenu.665a4f0f5a46	は装填した	ecl-batch-editorial
+hmenu.665a4f0f5a46	は再装填した	ecl-batch-editorial
 hmenu.666cd709f9e9	医師	ecl-batch-editorial
 hmenu.66773645acce	ジェットパック使用(U)	ecl-batch-editorial
 hmenu.6694ea807500	輸送	ecl-batch-editorial
@@ -660,11 +660,11 @@ hmenu.673c5354cba2	ロボ(R)	ecl-batch-editorial
 hmenu.67872ab2f841	プシケ(P)	ecl-batch-editorial
 hmenu.67905ad3cc2d	弾倉	ecl-batch-editorial
 hmenu.679eaac16659	この	ecl-batch-editorial
-hmenu.67d7118802b4	レベル！職業ポイントが未使用	ecl-batch-editorial
+hmenu.67d7118802b4	レベル！職業技能ポイントが未使用	ecl-batch-editorial
 hmenu.67e6c944f5fa	戦術(B)	ecl-batch-editorial
 hmenu.67f1eefc9a6d	開錠(P)	ecl-batch-editorial
 hmenu.68161bb0cf0e	骨(B)	ecl-batch-editorial
-hmenu.6828bcda20e2	最も右下の位置	ecl-batch-editorial
+hmenu.6828bcda20e2	右下端の位置	ecl-batch-editorial
 hmenu.6829562873e4	登る(C)	ecl-batch-editorial
 hmenu.687ea5927c19	軽加速銃(L)	ecl-batch-editorial
 hmenu.688449dc6f1d	逃げ道が塞がれている	ecl-batch-editorial
@@ -674,7 +674,7 @@ hmenu.6908fb71a777	猿の牙(A)	ecl-batch-editorial
 hmenu.6973dddd3ef9	塞がれている	ecl-batch-editorial
 hmenu.699ec3219c9e	ジャイロ砲(G)	ecl-batch-editorial
 hmenu.69a5f2bb972e	医療物資(M)	ecl-batch-editorial
-hmenu.69b98de6b39c	重貨物船(H)	ecl-batch-editorial
+hmenu.69b98de6b39c	重型貨物船(H)	ecl-batch-editorial
 hmenu.69e349285747	月面のティコ宇宙港(T)	ecl-batch-editorial
 hmenu.69e9124b5ff7	しようか	ecl-batch-editorial
 hmenu.69f03584a214	ハイソサエティ(H)	ecl-batch-editorial
@@ -744,7 +744,7 @@ hmenu.7214aeb16e99	専門化(S)	ecl-batch-editorial
 hmenu.724373c6fc3e	応急修理(J)	ecl-batch-editorial
 hmenu.7246a0702997	専門化	ecl-batch-editorial
 hmenu.72489b9c5172	階段を登る(C)	ecl-batch-editorial
-hmenu.729bb48d0f86	機関(E)	ecl-batch-editorial
+hmenu.729bb48d0f86	工学(E)	ecl-batch-editorial
 hmenu.72a4f4b12601	彫り物(C)	ecl-batch-editorial
 hmenu.72d567c59a54	火星人(M)	ecl-batch-editorial
 hmenu.72f5a9907af4	取引相手は？	ecl-batch-editorial
@@ -879,7 +879,7 @@ hmenu.86a9ab944855	待合室(W)	ecl-batch-editorial
 hmenu.86e1e1a33388	ロケットジョッキー(R)	ecl-batch-editorial
 hmenu.86f56fe8221f	警告(W)	ecl-batch-editorial
 hmenu.871c7f990798	怯え(S)	ecl-batch-editorial
-hmenu.87d1c61845d3	道に迷う	ecl-batch-editorial
+hmenu.87d1c61845d3	逸れる	ecl-batch-editorial
 hmenu.87f8690f69f4	預ける(D)	ecl-batch-editorial
 hmenu.87ff200d1bca	は後退している。	ecl-batch-editorial
 hmenu.88322eb3b3d1	は専用ファイルを見た：	ecl-batch-editorial
@@ -892,7 +892,7 @@ hmenu.89b8fed9f55d	WALLDEFから	ecl-batch-editorial
 hmenu.89ef2e220032	専用(R)	ecl-batch-editorial
 hmenu.8a14bf1eaef2	追加(A) 削減(S)	ecl-batch-editorial
 hmenu.8a1db462be75	斥候(S)	ecl-batch-editorial
-hmenu.8a2cc0673b1c	爆破(D)	ecl-batch-editorial
+hmenu.8a2cc0673b1c	デモ(D)	ecl-batch-editorial
 hmenu.8a2da5e08b13	彼らの様子は	ecl-batch-editorial
 hmenu.8a64ff09886c	上限	ecl-batch-editorial
 hmenu.8a6bdb6b18da	読込(L)	ecl-batch-editorial
@@ -933,7 +933,7 @@ hmenu.8fb3cda2303d	は攻撃に使った：	ecl-batch-editorial
 hmenu.8ff026a37d68	何	ecl-batch-editorial
 hmenu.900919572345	硬貨を拾う(G)	ecl-batch-editorial
 hmenu.901b85a88585	は毒に侵されている	ecl-batch-editorial
-hmenu.907778863957	パイロット。	ecl-batch-editorial
+hmenu.907778863957	操縦士。	ecl-batch-editorial
 hmenu.9083251aa54c	警備室(S)	ecl-batch-editorial
 hmenu.908aec4512d8	倒れた	ecl-batch-editorial
 hmenu.90920d93e2c7	プログラム(P)	ecl-batch-editorial
@@ -959,7 +959,7 @@ hmenu.93331741a799	モンスターをロードできない	ecl-batch-editorial
 hmenu.93680b26ad70	UDUカフェ(U)	ecl-batch-editorial
 hmenu.937223b7a35b	チャフ(C)	ecl-batch-editorial
 hmenu.9390298f3fb0	否	ecl-batch-editorial
-hmenu.941be93c92ae	結構です。リサイクルしておきます。	ecl-batch-editorial
+hmenu.941be93c92ae	承知しました。リサイクルしておきます。	ecl-batch-editorial
 hmenu.943989dfaff5	中止中	ecl-batch-editorial
 hmenu.9444f216899d	回避(D)	ecl-batch-editorial
 hmenu.945df98629e6	金属(M)	ecl-batch-editorial
@@ -980,7 +980,7 @@ hmenu.965701cd196f	バイク(M)	ecl-batch-editorial
 hmenu.967ed00666b9	親しむ(B)	ecl-batch-editorial
 hmenu.96916c881d59	ドアの上の看板にはこうある：	ecl-batch-editorial
 hmenu.96afc08178dc	眩惑(D)	ecl-batch-editorial
-hmenu.96d5c140cba4	私に、ですがお金を少し置き忘れていますよ	ecl-batch-editorial
+hmenu.96d5c140cba4	失礼、だがお金を少し置き忘れている	ecl-batch-editorial
 hmenu.9708639fd47c	拾う(P)	ecl-batch-editorial
 hmenu.9709653fc80c	取引(T)	ecl-batch-editorial
 hmenu.978354db0c00	目標(T)	ecl-batch-editorial
@@ -1016,7 +1016,7 @@ hmenu.9c0c2a78300d	巡洋艦	ecl-batch-editorial
 hmenu.9c30cb4bfc00	敵艦を破壊した。	ecl-batch-editorial
 hmenu.9c53c074d7ac	技能	ecl-batch-editorial
 hmenu.9c9c9149fd63	熱(H)	ecl-batch-editorial
-hmenu.9ca0ea108894	個の新しい技能をこのレベルでさらに習得できる	ecl-batch-editorial
+hmenu.9ca0ea108894	個の新しい技能をこのレベルでさらに割り当て可能	ecl-batch-editorial
 hmenu.9cc673ad8beb	配分(D)	ecl-batch-editorial
 hmenu.9cf8321c423e	敵は一部のシステムを応急修理した。	ecl-batch-editorial
 hmenu.9cff331d6699	破壊された	ecl-batch-editorial
@@ -1032,7 +1032,7 @@ hmenu.9e9f23ca031c	ボタン(B)	ecl-batch-editorial
 hmenu.9ed6c2932fd8	修道僧(D)	ecl-batch-editorial
 hmenu.9f092151ee9e	破壊(D)	ecl-batch-editorial
 hmenu.9f2baf225bf2	尋問する(I)	ecl-batch-editorial
-hmenu.9f49fadb6a86	速い(Q)	ecl-batch-editorial
+hmenu.9f49fadb6a86	オート(Q)	ecl-batch-editorial
 hmenu.9f4d6b987fe6	音波(S)	ecl-batch-editorial
 hmenu.9f74a631e52a	焼却	ecl-batch-editorial
 hmenu.9fd728c66c9a	追加(A)	ecl-batch-editorial
@@ -1059,7 +1059,7 @@ hmenu.a23d2d16a08e	カエルと親しむ(B)	ecl-batch-editorial
 hmenu.a23f0db1c70d	よいか？	ecl-batch-editorial
 hmenu.a24e10fde71a	使用	ecl-batch-editorial
 hmenu.a25513c7e0f6	U	ecl-batch-editorial
-hmenu.a26d873b3d51	ディスクAは書き込み禁止にできない。	ecl-batch-editorial
+hmenu.a26d873b3d51	ディスクAは書き込み禁止にしてはいけない。	ecl-batch-editorial
 hmenu.a27902f10b70	重地上車運転(D)	ecl-batch-editorial
 hmenu.a2aef3d69199	ジェット(J)	ecl-batch-editorial
 hmenu.a2d4a82d98d6	応急修理	ecl-batch-editorial
@@ -1114,7 +1114,7 @@ hmenu.aa33996d60e8	本当に	ecl-batch-editorial
 hmenu.aaf4a1aa8624	リックのラウンジ(R)	ecl-batch-editorial
 hmenu.aafdf5b5f2dc	は便乗する：	ecl-batch-editorial
 hmenu.ab2cc833ed40	化学(C)	ecl-batch-editorial
-hmenu.ab2defcabf86	オートバイ運転(D)	ecl-batch-editorial
+hmenu.ab2defcabf86	バイク運転(D)	ecl-batch-editorial
 hmenu.ab52c2138881	仲間(T)	ecl-batch-editorial
 hmenu.ab741ba7a7a6	キャラクター表示(V)	ecl-batch-editorial
 hmenu.ab7a580a315c	あなたの船	ecl-batch-editorial
@@ -1151,7 +1151,7 @@ hmenu.aea1058d135f	生物学(B)	ecl-batch-editorial
 hmenu.aea4c338624a	買う(B) 売る(S) 弾薬(A) 表示(V) 資金(P)	ecl-batch-editorial
 hmenu.aee610558292	上方	ecl-batch-editorial
 hmenu.aef450dc78ea	は導く：	ecl-batch-editorial
-hmenu.af2079281d18	ジョイスティックを読み取れない。較正を中止	ecl-batch-editorial
+hmenu.af2079281d18	ジョイスティックを読み取れない。キャリブレーションを中止	ecl-batch-editorial
 hmenu.af24f787ee25	酒場(S)	ecl-batch-editorial
 hmenu.af4ae1febfb8	広間(H)	ecl-batch-editorial
 hmenu.af93da41d026	ピストル(P)	ecl-batch-editorial
@@ -1334,7 +1334,7 @@ hmenu.c8dde1197eef	ロボットと戦う(F)	ecl-batch-editorial
 hmenu.c8fbce667415	探索(E)	ecl-batch-editorial
 hmenu.c9022680f888	人々	ecl-batch-editorial
 hmenu.c910d474dcd7	一般(G)	ecl-batch-editorial
-hmenu.c939327ca16d	優良(G)	ecl-batch-editorial
+hmenu.c939327ca16d	良好(G)	ecl-batch-editorial
 hmenu.c97c29c7a71b	資料(D)	ecl-batch-editorial
 hmenu.c981a30c0e7b	単位	ecl-batch-editorial
 hmenu.c9b3c38247f7	合計(T)	ecl-batch-editorial
@@ -1359,7 +1359,7 @@ hmenu.cb587e4fb093	男(M)	ecl-batch-editorial
 hmenu.cb9da2bac013	呼吸マスク(B)	ecl-batch-editorial
 hmenu.cba86cca7c1b	催眠術(H)	ecl-batch-editorial
 hmenu.cbf36a964ba8	基地(B)	ecl-batch-editorial
-hmenu.cbf70b2984b3	ポンプ式(P)	ecl-batch-editorial
+hmenu.cbf70b2984b3	励起式(P)	ecl-batch-editorial
 hmenu.cc0e6276ac47	負傷はなかった。	ecl-batch-editorial
 hmenu.cc1d2f838445	空(E)	ecl-batch-editorial
 hmenu.cc5c46d51099	デイジ(D)	ecl-batch-editorial
@@ -1424,7 +1424,7 @@ hmenu.d61aa238c7e0	できない	ecl-batch-editorial
 hmenu.d626ab63c524	は瀕死だ！	ecl-batch-editorial
 hmenu.d6359f6ff9fc	性別を選択	ecl-batch-editorial
 hmenu.d6399d87d53f	返答(R)	ecl-batch-editorial
-hmenu.d661fb331bc0	あなたの会話	ecl-batch-editorial
+hmenu.d661fb331bc0	君たちの会話	ecl-batch-editorial
 hmenu.d66ac9c9894c	アダー(A)	ecl-batch-editorial
 hmenu.d6ce025350ff	マリポサ(M)	ecl-batch-editorial
 hmenu.d6eaec65e742	装備(G)	ecl-batch-editorial
@@ -1493,7 +1493,7 @@ hmenu.df448a7835b8	成功した	ecl-batch-editorial
 hmenu.df6d1d6c5828	軽貨物船(L)	ecl-batch-editorial
 hmenu.df8d29fe6512	君たちの到着	ecl-batch-editorial
 hmenu.dfa5818ca2f4	戻って、あなたの	ecl-batch-editorial
-hmenu.dfc9b5dd491a	西の看板にはこう書かれている	ecl-batch-editorial
+hmenu.dfc9b5dd491a	西の看板にはこうある：	ecl-batch-editorial
 hmenu.e029f71e07ac	是(O)	ecl-batch-editorial
 hmenu.e034aafd4a8f	船／潜水艇操縦(P)	ecl-batch-editorial
 hmenu.e05d8feee2b0	白(W)	ecl-batch-editorial
@@ -1558,7 +1558,7 @@ hmenu.e932f4664fa9	種族を選択	ecl-batch-editorial
 hmenu.e944c19b322c	そして記録する	ecl-batch-editorial
 hmenu.e9463dccf054	置く(P)	ecl-batch-editorial
 hmenu.e948d191e403	そこ	ecl-batch-editorial
-hmenu.e948f1f230fc	は殺害した：無力な	ecl-batch-editorial
+hmenu.e948f1f230fc	は倒した：無力な	ecl-batch-editorial
 hmenu.e957ea95af6c	中毒中	ecl-batch-editorial
 hmenu.e9798569b319	小惑星基地(A)	ecl-batch-editorial
 hmenu.e97af8c4462a	メンバー(M)	ecl-batch-editorial
@@ -1581,7 +1581,7 @@ hmenu.eabc01f12ec3	割り当て可能	ecl-batch-editorial
 hmenu.eace244cc8ce	状態異常なし	ecl-batch-editorial
 hmenu.eadcbb4a5f64	は威嚇された	ecl-batch-editorial
 hmenu.eaf0fe0a362b	戦士(W)	ecl-batch-editorial
-hmenu.eb5ce7d3c9df	誰と取引しますか？	ecl-batch-editorial
+hmenu.eb5ce7d3c9df	誰と取引するか？	ecl-batch-editorial
 hmenu.ebc5306f851a	は失敗した：	ecl-batch-editorial
 hmenu.ebe02a2e1d64	左上の位置に倒し、ボタンを押してください	ecl-batch-editorial
 hmenu.ec2aea87a758	誰が試す	ecl-batch-editorial

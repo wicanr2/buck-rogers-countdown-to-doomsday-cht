@@ -18,7 +18,7 @@ frag.03f8c1273e3d	男性	ecl-batch-editorial
 frag.04e7f4ee6d40	は威嚇に失敗した。	ecl-batch-editorial
 frag.050a9e1f8344	リーダーシップ技能を使用	ecl-batch-editorial
 frag.0548a47dc7ac	ブームスラング	ecl-batch-editorial
-frag.05cf6d7fa79e	プラズマ発射器	ecl-batch-editorial
+frag.05cf6d7fa79e	プラズマ放射器	ecl-batch-editorial
 frag.067ef9857799	。インストールをご確認ください。	ecl-batch-editorial
 frag.06c42ad4ad2a	ゴダード	ecl-batch-editorial
 frag.06f1b3afc470	中型巡洋艦	ecl-batch-editorial
@@ -53,7 +53,7 @@ frag.0ff3d2b8d663	バイト必要だ。	ecl-batch-editorial
 frag.10e55c0aaaf3	職業技能ポイントが残っていない	ecl-batch-editorial
 frag.1116c3efebb0	は包帯を巻かれた	ecl-batch-editorial
 frag.114e33ca7930	は私には価値がありません。	ecl-batch-editorial
-frag.11507a0e2f5e	新しい	ecl-batch-editorial
+frag.11507a0e2f5e	新	ecl-batch-editorial
 frag.11a6767d5674	完了	ecl-batch-editorial
 frag.11d3491d7e05	取る 分配	ecl-batch-editorial
 frag.1209adac04bf	戻って受け取るか？	ecl-batch-editorial
@@ -65,9 +65,9 @@ frag.16375657f31b	は成功した：	ecl-batch-editorial
 frag.16584052fd33	良好	ecl-batch-editorial
 frag.1695095db892	終了 表示@	ecl-batch-editorial
 frag.1710782c5d15	武器	ecl-batch-editorial
-frag.17de45aa4e16	配分	ecl-batch-editorial
+frag.17de45aa4e16	分配	ecl-batch-editorial
 frag.18340737267a	植物学	ecl-batch-editorial
-frag.188cac7e138b	（永遠に）？	ecl-batch-editorial
+frag.188cac7e138b	（永久に）？	ecl-batch-editorial
 frag.191591ed5a50	一般技能ポイント：	ecl-batch-editorial
 frag.194eb9c38cc0	防護	ecl-batch-editorial
 frag.1a0f8b370eae	は	ecl-batch-editorial
@@ -97,7 +97,7 @@ frag.2246705b46f3	セーブデータ：	ecl-batch-editorial
 frag.2260006382e7	フィート	ecl-batch-editorial
 frag.2270f4657420	楽器を演奏	ecl-batch-editorial
 frag.237c59a3b965	地球人	ecl-batch-editorial
-frag.239fcd44c36d	生命停滞技術	ecl-batch-editorial
+frag.239fcd44c36d	人工冬眠技術	ecl-batch-editorial
 frag.23dd97c506f6	は接近している。	ecl-batch-editorial
 frag.241e29427543	船体修理	ecl-batch-editorial
 frag.246a64eabf86	キャラクター名：	ecl-batch-editorial
@@ -109,7 +109,7 @@ frag.27367ccbbbcc	キャラクターデータファイルを開けない！	ecl-
 frag.278253d44e93	キャラクターを破棄するか？	ecl-batch-editorial
 frag.27ec551cd32f	チームは休息した。	ecl-batch-editorial
 frag.27f28e95038f	音波スタン銃	ecl-batch-editorial
-frag.28026ec6e26e	砂漠クロスボウ	ecl-batch-editorial
+frag.28026ec6e26e	ランナークロスボウ	ecl-batch-editorial
 frag.28031a836e2a	動物騎乗	ecl-batch-editorial
 frag.282c1693edd7	は身をかわした！	ecl-batch-editorial
 frag.282cac63534b	オーバーレイディスクを挿入してください。	ecl-batch-editorial
@@ -117,9 +117,9 @@ frag.2a78025de6aa	選択	ecl-batch-editorial
 frag.2af17bba7c71	は破壊された：	ecl-batch-editorial
 frag.2af4669ccbcc	技術系技能	ecl-batch-editorial
 frag.2b7430f1281a	エンカウンター・プログラム：              音楽：	ecl-batch-editorial
-frag.2bd0fbbc2989	遮蔽物へ飛び込んだ！	ecl-batch-editorial
+frag.2bd0fbbc2989	は遮蔽物へ飛び込んだ！	ecl-batch-editorial
 frag.2bd770efc04a	絵画	ecl-batch-editorial
-frag.2c063fc99025	無慈悲な一撃を加えた	ecl-batch-editorial
+frag.2c063fc99025	を無慈悲な一撃で殺害した	ecl-batch-editorial
 frag.2c1f89724a13	爆薬	ecl-batch-editorial
 frag.2c234a550746	空気が少し澄んできた……	ecl-batch-editorial
 frag.2c9e0d734b01	ジョイスティック1を最も右下の位置に倒し、ボタン1を押してください。	ecl-batch-editorial
@@ -183,13 +183,13 @@ frag.3fbe092a9139	再装填する武器を選択：	ecl-batch-editorial
 frag.405a8d5892fb	待機	ecl-batch-editorial
 frag.4073189b398c	移動／攻撃	ecl-batch-editorial
 frag.418b784a860f	統合	ecl-batch-editorial
-frag.41c1797f5878	走行中は不可	ecl-batch-editorial
+frag.41c1797f5878	疾走中は不可	ecl-batch-editorial
 frag.4201f9a6587b	、左へ移動＝	ecl-batch-editorial
 frag.4219be8c1840	は	ecl-batch-editorial
 frag.42ff329e72a0	（失明）	ecl-batch-editorial
 frag.43385991f0be	ミニ	ecl-batch-editorial
 frag.4391105bd3a7	は慌てて逃げ出した	ecl-batch-editorial
-frag.43ae65428a8f	追加 削減 保留 退出	ecl-batch-editorial
+frag.43ae65428a8f	追加 削減 保持 退出	ecl-batch-editorial
 frag.43aee0d00c15	ケプラー	ecl-batch-editorial
 frag.43eeafc4a158	前へ 次へ	ecl-batch-editorial
 frag.43f03467ae89	回転翼機操縦	ecl-batch-editorial
@@ -212,7 +212,7 @@ frag.48fbf162c968	ECMパッケージ	ecl-batch-editorial
 frag.49b2791c7fe7	重装甲	ecl-batch-editorial
 frag.49dd575bfe5f	重傷を治療	ecl-batch-editorial
 frag.49f015e57ed3	戦闘艦	ecl-batch-editorial
-frag.4a22150cdb0d	機関	ecl-batch-editorial
+frag.4a22150cdb0d	エンジン	ecl-batch-editorial
 frag.4abb1289fa79	前へ	ecl-batch-editorial
 frag.4b2bebbf33ae	低速	ecl-batch-editorial
 frag.4b591c8f5959	ジェットカー運転	ecl-batch-editorial
@@ -257,7 +257,7 @@ frag.58a45dfe1239	はどうする？	ecl-batch-editorial
 frag.58f6ffe741db	野営	ecl-batch-editorial
 frag.5926c704d5b3	経済学	ecl-batch-editorial
 frag.59d6cf4f638f	意識のある方しか訓練しません	ecl-batch-editorial
-frag.59f994ffa301	駆け引き	ecl-batch-editorial
+frag.59f994ffa301	ギャンビット	ecl-batch-editorial
 frag.5a6919a210c7	防御 生命	ecl-batch-editorial
 frag.5a9d29518e31	取る	ecl-batch-editorial
 frag.5af65b05298f	移動／攻撃、左へ移動＝	ecl-batch-editorial
@@ -269,7 +269,7 @@ frag.5db98e7af406	セーブ中……しばらくお待ちください	ecl-batch-
 frag.5e9f5e428e01	チップ、ありがとうございます。良い一日を。	ecl-batch-editorial
 frag.5e9fc445ff43	（カーソルキーを使用）	ecl-batch-editorial
 frag.5edc77c121f6	医療物資：	ecl-batch-editorial
-frag.5f2286152c57	重加速器	ecl-batch-editorial
+frag.5f2286152c57	重加速砲	ecl-batch-editorial
 frag.5f91cfa9787d	技能はこのレベルの上限に達している	ecl-batch-editorial
 frag.5fa7aac5375c	装備済み	ecl-batch-editorial
 frag.61083510e564	重型巡洋艦	ecl-batch-editorial
@@ -283,7 +283,7 @@ frag.6358f2cba54b	不在	ecl-batch-editorial
 frag.63706949222c	は飛びのいて爆発をかわした。	ecl-batch-editorial
 frag.63783b1ec102	是 否	ecl-batch-editorial
 frag.637c8ce00e81	逃げる：	ecl-batch-editorial
-frag.63c0931f7d7a	モハヴェ	ecl-batch-editorial
+frag.63c0931f7d7a	モハーヴェ	ecl-batch-editorial
 frag.63e40f41a77d	職業技能	ecl-batch-editorial
 frag.63f3f9f2e37f	物真似	ecl-batch-editorial
 frag.642e663a76fb	単位の燃料を敵艦から略奪した！	ecl-batch-editorial
@@ -295,13 +295,13 @@ frag.65108526a62e	職業技能ポイントが未使用。退出するか？	ecl-
 frag.65659145569b	注意力	ecl-batch-editorial
 frag.656bae520321	キャラクターをチームから外す	ecl-batch-editorial
 frag.65743cb10f96	は	ecl-batch-editorial
-frag.65cb8bc4d032	両方を停止させる	ecl-batch-editorial
+frag.65cb8bc4d032	両方を無効にする	ecl-batch-editorial
 frag.66773645acce	ジェットパック使用	ecl-batch-editorial
 frag.66a2eafa9976	生命：	ecl-batch-editorial
 frag.66e0988d1198	ヘルメス	ecl-batch-editorial
 frag.67e6c944f5fa	戦術	ecl-batch-editorial
 frag.6852e524971b	はすでに使用中：	ecl-batch-editorial
-frag.687ea5927c19	軽加速銃	ecl-batch-editorial
+frag.687ea5927c19	軽加速砲	ecl-batch-editorial
 frag.6880e44b03b7	体当たり	ecl-batch-editorial
 frag.688449dc6f1d	逃げ道が塞がれている	ecl-batch-editorial
 frag.689b17a30cfd	このレベルではこれ以上新しい技能を習得できない	ecl-batch-editorial
@@ -348,7 +348,7 @@ frag.735b64972b07	決定 別のディスクを試す	ecl-batch-editorial
 frag.736c6c9e4924	無力	ecl-batch-editorial
 frag.73aacaa0a21a	マウス無効	ecl-batch-editorial
 frag.73c9c98668a3	自分の	ecl-batch-editorial
-frag.741e8c5450cd	感知	ecl-batch-editorial
+frag.741e8c5450cd	センサー	ecl-batch-editorial
 frag.7425046ea84b	このアイコンでよいか？	ecl-batch-editorial
 frag.7471b4c4dc2d	、失敗した。	ecl-batch-editorial
 frag.74723f182aa9	手榴弾	ecl-batch-editorial
@@ -410,7 +410,7 @@ frag.8b862ba45dce	取る	ecl-batch-editorial
 frag.8bdde26f0d36	状態	ecl-batch-editorial
 frag.8c482cd3cba7	武器	ecl-batch-editorial
 frag.8cbf3da115f1	あなたの仲間	ecl-batch-editorial
-frag.8d1e1bb3d7db	敵艦の回避を試みるか？	ecl-batch-editorial
+frag.8d1e1bb3d7db	敵艦を回避してみるか？	ecl-batch-editorial
 frag.8d87a8fc5a16	判断力技能	ecl-batch-editorial
 frag.8d89e4a829ae	追加	ecl-batch-editorial
 frag.8e3dc3a8d3ef	に続く	ecl-batch-editorial
@@ -418,7 +418,7 @@ frag.8e3e8d7a009c	、そして瀕死だ	ecl-batch-editorial
 frag.8e56e811afd0	年齢：	ecl-batch-editorial
 frag.8f1913f50e8a	ニードル	ecl-batch-editorial
 frag.8f24e7e793e7	代替入力装置：  [1] ジョイスティック  [2] マウス  [3] 使用しない	ecl-batch-editorial
-frag.8f40f0d72538	速い	ecl-batch-editorial
+frag.8f40f0d72538	オート	ecl-batch-editorial
 frag.8f41a8cb9376	戦利品！	ecl-batch-editorial
 frag.9002ad132c5e	は後退している。	ecl-batch-editorial
 frag.901b85a88585	は毒に冒された	ecl-batch-editorial
@@ -439,7 +439,7 @@ frag.94c736fde0c8	商談成立！	ecl-batch-editorial
 frag.94ffe249e94e	移動力：	ecl-batch-editorial
 frag.95722ac83cf7	体当たり成功！	ecl-batch-editorial
 frag.95a0c6cfd7d2	は選択された	ecl-batch-editorial
-frag.961f9f766b54	資金	ecl-batch-editorial
+frag.961f9f766b54	集約	ecl-batch-editorial
 frag.9656bebfdf14	処分しましょうか？	ecl-batch-editorial
 frag.967a6bde0596	ジョイスティックを読み取れなかった。キャリブレーションを中止する。	ecl-batch-editorial
 frag.96afc08178dc	眩惑	ecl-batch-editorial
@@ -460,7 +460,7 @@ frag.9c30cb4bfc00	敵艦を破壊した。	ecl-batch-editorial
 frag.9cdade103bc6	たちは	ecl-batch-editorial
 frag.9cf8321c423e	敵は一部のシステムを応急修理した。	ecl-batch-editorial
 frag.9e2bbca238ae	は修正できない。	ecl-batch-editorial
-frag.9ed6c2932fd8	修道僧	ecl-batch-editorial
+frag.9ed6c2932fd8	ダルヴィーシュ	ecl-batch-editorial
 frag.9f1c9e359bc5	全幅：	ecl-batch-editorial
 frag.9f3940db2308	は成功：	ecl-batch-editorial
 frag.9f45b7b6a9c9	は発射した：	ecl-batch-editorial
@@ -534,7 +534,7 @@ frag.b53b10af0873	解毒剤	ecl-batch-editorial
 frag.b53caf876dfc	ジェットパック	ecl-batch-editorial
 frag.b6337bdcf05e	ロープ	ecl-batch-editorial
 frag.b672cec49995	武器専門化	ecl-batch-editorial
-frag.b6cf348bc9b1	随一	ecl-batch-editorial
+frag.b6cf348bc9b1	の極み	ecl-batch-editorial
 frag.b72f3b9868cf	クレジット：	ecl-batch-editorial
 frag.b76c62fc0261	言語の会話・読解	ecl-batch-editorial
 frag.b772fd46299e	4番目	ecl-batch-editorial
@@ -548,7 +548,7 @@ frag.b991604729c6	重量超過	ecl-batch-editorial
 frag.b9bf0c84842b	エンジン	ecl-batch-editorial
 frag.b9d05f332634	防御	ecl-batch-editorial
 frag.b9ec2686588d	是 否	ecl-batch-editorial
-frag.ba71bc539c29	重体の負傷を治療	ecl-batch-editorial
+frag.ba71bc539c29	致命的な負傷を治療	ecl-batch-editorial
 frag.ba7ebb6c0b12	職業を選択	ecl-batch-editorial
 frag.ba8909252cb2	一般技能の上限に達している	ecl-batch-editorial
 frag.bb8b4c33ff1d	ガン	ecl-batch-editorial
@@ -561,13 +561,13 @@ frag.be547a8c19df	左上に倒し、1番ボタンを押してください。	ecl
 frag.bed9952c236e	無	ecl-batch-editorial
 frag.bf29e15817ae	判断力	ecl-batch-editorial
 frag.bf46b726b66b	センサー操作	ecl-batch-editorial
-frag.bf651ae18dce	奥地	ecl-batch-editorial
+frag.bf651ae18dce	アウトバック	ecl-batch-editorial
 frag.bff4d121f688	サハラ	ecl-batch-editorial
 frag.c031b229eabd	見つからない：	ecl-batch-editorial
 frag.c082456a7766	中距離	ecl-batch-editorial
 frag.c08a9702e23e	気をそらす	ecl-batch-editorial
 frag.c08b2b9e8fbd	点	ecl-batch-editorial
-frag.c1481e2eb555	失敗した	ecl-batch-editorial
+frag.c1481e2eb555	は失敗した	ecl-batch-editorial
 frag.c16338e2b0b4	弾薬	ecl-batch-editorial
 frag.c1fcf83e875d	北西	ecl-batch-editorial
 frag.c210bfdf28ce	セーブ	ecl-batch-editorial
@@ -663,13 +663,13 @@ frag.dbdfc4de61ee	それは逸れた	ecl-batch-editorial
 frag.dbf4bf8e6d73	動物調教	ecl-batch-editorial
 frag.dc0c1dbcae76	は次のようになる：	ecl-batch-editorial
 frag.dc9096b19d85	はかなり恐ろしげに見える。	ecl-batch-editorial
-frag.dc9197c4fd55	重加速銃	ecl-batch-editorial
+frag.dc9197c4fd55	重加速砲	ecl-batch-editorial
 frag.dcd1d5223f73	名前	ecl-batch-editorial
 frag.dd2da64f66dc	酸液を吐いた	ecl-batch-editorial
 frag.dd4b5a6e6d54	（気絶）	ecl-batch-editorial
 frag.de24e677d554	日食	ecl-batch-editorial
 frag.de5a971d55c5	DOSに戻る	ecl-batch-editorial
-frag.df448a7835b8	成功した	ecl-batch-editorial
+frag.df448a7835b8	は成功した	ecl-batch-editorial
 frag.df4f6c72ae34	警告：キャラクターのセーブ中に問題が発生した	ecl-batch-editorial
 frag.df6d1d6c5828	軽貨物船	ecl-batch-editorial
 frag.df780ec34d87	は重火器を装填する。	ecl-batch-editorial
@@ -694,7 +694,7 @@ frag.e913d0b16469	射程＝	ecl-batch-editorial
 frag.e920b38b45dd	ロード中……しばらくお待ちください	ecl-batch-editorial
 frag.e92e1c5195b2	状態：	ecl-batch-editorial
 frag.e932f4664fa9	種族を選択	ecl-batch-editorial
-frag.e948f1f230fc	は殺害した：無力な	ecl-batch-editorial
+frag.e948f1f230fc	は無力な	ecl-batch-editorial
 frag.e9862c1adf95	コペルニクス	ecl-batch-editorial
 frag.e99c90db87c0	訓練	ecl-batch-editorial
 frag.ea0151c4cf78	ボルト	ecl-batch-editorial
@@ -722,7 +722,7 @@ frag.ef27394a92fe	はあなたの操縦士だ。	ecl-batch-editorial
 frag.f031b70a2653	南東	ecl-batch-editorial
 frag.f0412d6deb42	7番目	ecl-batch-editorial
 frag.f05abba3620c	君たちは焼却した：	ecl-batch-editorial
-frag.f05d5fa59014	コマンド	ecl-batch-editorial
+frag.f05d5fa59014	指揮	ecl-batch-editorial
 frag.f0d155c43ee0	セーブディスクを入れてください：	ecl-batch-editorial
 frag.f0e791ada740	戻ってお金を取ってくるか？	ecl-batch-editorial
 frag.f1c727903cc9	機械修理	ecl-batch-editorial

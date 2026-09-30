@@ -96,7 +96,7 @@ ecl.1.17.01370	エアロックから出ると、基地司令官に率いられ�
 ecl.1.17.01467	「よく戻ってくれた。君たちは、ホルツァーハインとRAMの一味がもたらす邪悪な災厄から、地球を救ってくれた……	ecl-batch-editorial
 ecl.1.17.01549	バック・ロジャーズが不意に現れ、トゥレイビアンをさえぎる。	ecl-batch-editorial
 ecl.1.17.01596	「君たちと握手して、地球とすべての人々を救ってくれた礼を言いたかっただけさ。君たちみたいな連中がいれば、RAMに勝ち目はない。」	ecl-batch-editorial
-ecl.1.17.01620	地球とすべての人々を救ってくれた礼を言いたかっただけさ。君たちみたいな連中がいれば、RAMに勝ち目はない。」	ecl-batch-editorial
+ecl.1.17.01620	地球とすべての人々を救ってくれて、ありがとう。君たちみたいな連中がいれば、RAMに勝ち目はない。」	ecl-batch-editorial
 ecl.1.17.01702	群衆が歓声を上げ、君たちは祝賀パーティーへ案内される。	ecl-batch-editorial
 ecl.1.17.01809	NEOの技術者たちが装置を回収しに駆け寄る。続いて、トゥレイビアン指揮官が到着する。	ecl-batch-editorial
 ecl.1.17.01869	「よくやった！これは極めて重要な情報だ。引き続き、終末装置の調査を頼む。」	ecl-batch-editorial
@@ -1490,7 +1490,7 @@ ecl.5.81.03275	のぞくと、中に群がる沼	ecl-batch-editorial
 ecl.5.81.03329	それでも倉庫を調べるか？	ecl-batch-editorial
 ecl.5.81.03385	この倉庫のドアは踏み倒されて	ecl-batch-editorial
 ecl.5.81.03438	沼スズメバチの代わりに、倉庫は今	ecl-batch-editorial
-ecl.5.81.03479	腹をすかせて見える酸液ガエルだらけだ。	ecl-batch-editorial
+ecl.5.81.03479	腹をすかせていそうな酸液ガエルだらけだ。	ecl-batch-editorial
 ecl.5.81.03568	酸液ガエルが、かつて巣くっていた	ecl-batch-editorial
 ecl.5.81.03610	倉庫の沼スズメバチを食い尽くした。室内の補給品はどれも	ecl-batch-editorial
 ecl.5.81.03655	カエルの酸粘液にまみれている。	ecl-batch-editorial
@@ -1826,7 +1826,7 @@ ecl.5.83.02373	すぐ近くでひそひそ声がする。	ecl-batch-editorial
 ecl.5.83.02439	RAM部隊が君たちに襲いかかる！	ecl-batch-editorial
 ecl.5.83.02492	改造人が壊れた	ecl-batch-editorial
 ecl.5.83.02534	ドームから前哨基地へ侵入、攻撃してくる！	ecl-batch-editorial
-ecl.5.83.02635	変異した改造人が、はしごを伝って君たちに群がる。	ecl-batch-editorial
+ecl.5.83.02635	変異した改造人が、梯子を伝って君たちに群がる。	ecl-batch-editorial
 ecl.5.83.02674	シューッという音と歓喜の叫びとともに、襲いかかってくる。	ecl-batch-editorial
 ecl.5.83.02729	はしごは廃墟に隠された	ecl-batch-editorial
 ecl.5.83.02769	小さな巣穴に続いているようだ。調べるか？	ecl-batch-editorial
@@ -2074,7 +2074,7 @@ ecl.6.97.01851	「フランス語は話せるか？」と太陽王が問いた�
 ecl.6.97.01916	太陽王は冷笑した。「衛兵！この異教徒どもをつまみ出せ。」	ecl-batch-editorial
 ecl.6.97.01971	謁見の間から連れ出された。	ecl-batch-editorial
 ecl.6.97.02046	太陽王は破顔した。「よろしい！ここではフランス語が通じる。	ecl-batch-editorial
-ecl.6.97.02091	さて、何をしに来た？そなたらが、あの『踊り手』か？」	ecl-batch-editorial
+ecl.6.97.02091	さて、何をしに来た？そなたらが、あの『ダンサー』か？」	ecl-batch-editorial
 ecl.6.97.02158	「違うのか？ならば、そなたらは余の探す者ではない！だが、あるいは余は	ecl-batch-editorial
 ecl.6.97.02200	それでもそなたらを使えよう。	ecl-batch-editorial
 ecl.6.97.02228	「おお！我が『超人』よ！革命万歳！余はずっと	ecl-batch-editorial
@@ -2210,7 +2210,7 @@ ecl.6.97.07606	電撃を浴びた。	ecl-batch-editorial
 ecl.6.97.07644	コンソールから離れるか？	ecl-batch-editorial
 ecl.6.97.07668	部屋は複雑な機器で埋まっている。コンソールの一台には	ecl-batch-editorial
 ecl.6.97.07708	こう記されている：「武器制御——関係者	ecl-batch-editorial
-ecl.6.97.07750	以外立入禁止。」台上で緑ランプが点滅している。	ecl-batch-editorial
+ecl.6.97.07750	以外立入禁止。」コンソールで緑ランプが点滅している。	ecl-batch-editorial
 ecl.6.97.07787	この部屋には、機械装置と巨大な	ecl-batch-editorial
 ecl.6.97.07826	歯車が並ぶ。壁の情報画面にはこうある：	ecl-batch-editorial
 ecl.6.97.07867	「運転状況、正常。」	ecl-batch-editorial
