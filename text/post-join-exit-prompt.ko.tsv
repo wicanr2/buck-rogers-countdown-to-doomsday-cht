@@ -1,0 +1,3 @@
+key	translation	source
+post_join_exit.prompt.quit_to_dos.001	DOS로 나가기	runtime-interface
+post_join_exit.prompt.unsaved_quit_anyway.001	게임이 저장되지 않았다. 그래도 종료하겠습니까?	runtime-interface

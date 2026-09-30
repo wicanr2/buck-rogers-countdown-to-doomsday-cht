@@ -1,0 +1,1700 @@
+key	translation	source
+hmenu.0021d5fe20a0	적군(E)	ecl-batch-editorial
+hmenu.0072e6b93494	설계(D)	ecl-batch-editorial
+hmenu.0079089ac700	피한다!	ecl-batch-editorial
+hmenu.0081779c287d	레벨	ecl-batch-editorial
+hmenu.00df727dbe5d	버튼이나 Enter를 눌러 계속	ecl-batch-editorial
+hmenu.012f9df23526	로켓 조종	ecl-batch-editorial
+hmenu.014413c294c5	삽입(I)	ecl-batch-editorial
+hmenu.01cb782e0e47	이 레벨! 일부 직업 점수가 미	ecl-batch-editorial
+hmenu.02035f070dd0	주 연구소(M)	ecl-batch-editorial
+hmenu.02456bf6eab1	미사일 거치대(M)	ecl-batch-editorial
+hmenu.02492c9d09d4	중앙(C) 나가기(E)	ecl-batch-editorial
+hmenu.024dc204d7ba	구역(A)	ecl-batch-editorial
+hmenu.02561a65476a	라운지(L)	ecl-batch-editorial
+hmenu.027efdf81bab	현재 층:	ecl-batch-editorial
+hmenu.02c24eeb48ab	우주복(S)	ecl-batch-editorial
+hmenu.02c7998a56f2	전문화 최대치에 도달했다	ecl-batch-editorial
+hmenu.02cd1953be6c	함선이 스캐너에서 멀어진다.U	ecl-batch-editorial
+hmenu.02f676d5bf83	비상(E)	ecl-batch-editorial
+hmenu.031a8f0f659d	실패(F)	ecl-batch-editorial
+hmenu.0323473424f1	방어 중(G)	ecl-batch-editorial
+hmenu.0325aa2351f4	확인됨	ecl-batch-editorial
+hmenu.033955d469b6	장전(F)	ecl-batch-editorial
+hmenu.0368e65a1131	연기(A)	ecl-batch-editorial
+hmenu.037c968467aa	탈출(E)	ecl-batch-editorial
+hmenu.038250245593	동쪽(E)	ecl-batch-editorial
+hmenu.038468518ad8	내	ecl-batch-editorial
+hmenu.03bf10496520	변장(D)	ecl-batch-editorial
+hmenu.03ce67f208f4	발사한다	ecl-batch-editorial
+hmenu.03f8c1273e3d	남성(M)	ecl-batch-editorial
+hmenu.04389e7277f7	기절했다!	ecl-batch-editorial
+hmenu.045fc6c686c2	스캔한다:	ecl-batch-editorial
+hmenu.04d7b4833927	메시지(M)	ecl-batch-editorial
+hmenu.0548a47dc7ac	붐슬랑(B)	ecl-batch-editorial
+hmenu.057a74a43448	잭의(Z)	ecl-batch-editorial
+hmenu.05863ec2c378	휴식(R)	ecl-batch-editorial
+hmenu.05ce4400daf3	위협하기(I)	ecl-batch-editorial
+hmenu.05cf6d7fa79e	플라스마 발사기(P)	ecl-batch-editorial
+hmenu.05d3799e8d57	주문(O)	ecl-batch-editorial
+hmenu.061ee2944241	해독제(A)	ecl-batch-editorial
+hmenu.0645d4f77d14	무엇이	ecl-batch-editorial
+hmenu.065bfee3ef92	치료(H)	ecl-batch-editorial
+hmenu.0695b563acde	함께	ecl-batch-editorial
+hmenu.06a3cead1777	임시 수리	ecl-batch-editorial
+hmenu.06c42ad4ad2a	고더드(G)	ecl-batch-editorial
+hmenu.06f1b3afc470	중형 순양함(M)	ecl-batch-editorial
+hmenu.072f6c258fb4	손상된 함선에 접근해 시도	ecl-batch-editorial
+hmenu.073c1634c496	상태	ecl-batch-editorial
+hmenu.07a5567e9c04	무릎 꿇기(G)	ecl-batch-editorial
+hmenu.07a875073882	하는 동안	ecl-batch-editorial
+hmenu.07c508eca3f0	누구?	ecl-batch-editorial
+hmenu.07d4f0d9ade4	은(는) 영원히 사라진다	ecl-batch-editorial
+hmenu.08083a19a27c	롭의(R)	ecl-batch-editorial
+hmenu.0852bdaf94ee	의료(M)	ecl-batch-editorial
+hmenu.0895a532e404	건네기	ecl-batch-editorial
+hmenu.08b041935798	당신들	ecl-batch-editorial
+hmenu.08dd9890141c	해(S)	ecl-batch-editorial
+hmenu.08ee25a53e0c	저장.	ecl-batch-editorial
+hmenu.08f4c50b7589	사막(D)	ecl-batch-editorial
+hmenu.08fc07e88648	팀이 전멸했다!	ecl-batch-editorial
+hmenu.091e60675261	원한다	ecl-batch-editorial
+hmenu.09466da13f37	놓아주기(L)	ecl-batch-editorial
+hmenu.096543a7a0cc	애꾸눈 개조인(O)	ecl-batch-editorial
+hmenu.098542852a17	돈이 부족하다	ecl-batch-editorial
+hmenu.099d027ca3b5	메모리가 부족하다. 프로그램을 종료한다	ecl-batch-editorial
+hmenu.09b538d1d0fa	시작(B)	ecl-batch-editorial
+hmenu.09d3036c1462	처리	ecl-batch-editorial
+hmenu.0a11dfb8fdf5	혼수상태.	ecl-batch-editorial
+hmenu.0a32fbf67366	엘리시움(E)	ecl-batch-editorial
+hmenu.0a4a268a9b78	벅 로저스(B)	ecl-batch-editorial
+hmenu.0a8e74a4c975	전술(T)	ecl-batch-editorial
+hmenu.0a951f785273	메일스트롬 라이더호(M)	ecl-batch-editorial
+hmenu.0abdcc1d7bd3	시내(D)	ecl-batch-editorial
+hmenu.0b681623391a	루나 주민(L)	ecl-batch-editorial
+hmenu.0b8cdd9ec4e4	도적(R)	ecl-batch-editorial
+hmenu.0bb4ee71bc12	목걸이(N)	ecl-batch-editorial
+hmenu.0bc388f6937c	희귀 RAM 동전(R)	ecl-batch-editorial
+hmenu.0bc90067c644	능력치?	ecl-batch-editorial
+hmenu.0bd5de8ec368	사격(S)	ecl-batch-editorial
+hmenu.0beabf5e3e94	식당(D)	ecl-batch-editorial
+hmenu.0c23e3138346	생명(L)	ecl-batch-editorial
+hmenu.0c49e9ac3883	그림자 은신(H)	ecl-batch-editorial
+hmenu.0c874f581a45	피해(D)	ecl-batch-editorial
+hmenu.0c8ffc174688	사막(D)	ecl-batch-editorial
+hmenu.0c90d9ad7108	소행성(A)	ecl-batch-editorial
+hmenu.0c944fca9b62	은신(H)	ecl-batch-editorial
+hmenu.0cef49cbb78b	탈론의(T)	ecl-batch-editorial
+hmenu.0cf67fc72b3c	불러오기	ecl-batch-editorial
+hmenu.0d0ae56ee488	항복한다	ecl-batch-editorial
+hmenu.0d0b7eee2953	곡예(A)	ecl-batch-editorial
+hmenu.0d791a0a6f01	가속(B)	ecl-batch-editorial
+hmenu.0dc5be426a8c	조이스틱 켬	ecl-batch-editorial
+hmenu.0dc9a6f14fd6	도서관 조사(L)	ecl-batch-editorial
+hmenu.0ddcc5022a9c	엔지니어         시스템         결과	ecl-batch-editorial
+hmenu.0de5c7ce2c5a	은(는) 구입:	ecl-batch-editorial
+hmenu.0e2f3c169602	연료(F)	ecl-batch-editorial
+hmenu.0e45e56e02bc	추정(E)	ecl-batch-editorial
+hmenu.0e72b68820a9	마스터이니 DISKCOPY로 복	ecl-batch-editorial
+hmenu.0e7696009337	역사(H)	ecl-batch-editorial
+hmenu.0ead91dc84af	음식 주문(O)	ecl-batch-editorial
+hmenu.0f044feb6ca7	조작(O)	ecl-batch-editorial
+hmenu.0f1e37629095	위협(I)	ecl-batch-editorial
+hmenu.0f432b9a70bc	누구?	ecl-batch-editorial
+hmenu.0f5d983d2031	시카고(C)	ecl-batch-editorial
+hmenu.0f671a54d723	아나콘다(A)	ecl-batch-editorial
+hmenu.0f780b5c735e	식별	ecl-batch-editorial
+hmenu.0f7b79cee0ba	물품 장비(R)	ecl-batch-editorial
+hmenu.0fc4d0c29c8b	동네 아지트(L)	ecl-batch-editorial
+hmenu.0feae16d5536	일반	ecl-batch-editorial
+hmenu.1044dec7206e	디스크	ecl-batch-editorial
+hmenu.109fa9f54c84	버리기	ecl-batch-editorial
+hmenu.10c22bcf4c76	위해	ecl-batch-editorial
+hmenu.10e55c0aaaf3	남은 직업 기술 점수가 없다	ecl-batch-editorial
+hmenu.110e57efa6fb	저항 없이.	ecl-batch-editorial
+hmenu.1116c3efebb0	은(는) 붕대로 치료됐다	ecl-batch-editorial
+hmenu.1137b15c7797	많은	ecl-batch-editorial
+hmenu.11507a0e2f5e	새	ecl-batch-editorial
+hmenu.116f54c41d04	훈련	ecl-batch-editorial
+hmenu.1196b6c538ec	수리(R)	ecl-batch-editorial
+hmenu.11a6767d5674	완료(D)	ecl-batch-editorial
+hmenu.11eee8478dd8	얻는다	ecl-batch-editorial
+hmenu.1209adac04bf	돌아가서 가져가겠습니까?	ecl-batch-editorial
+hmenu.122d89a0826c	폭파 장치(D)	ecl-batch-editorial
+hmenu.12593033bc5d	전승(L)	ecl-batch-editorial
+hmenu.1303c06b0b01	종류	ecl-batch-editorial
+hmenu.130d26f6c2a9	성공했다!	ecl-batch-editorial
+hmenu.138d585fdb42	장교(O)	ecl-batch-editorial
+hmenu.1405a63e8a78	캐릭터(C)	ecl-batch-editorial
+hmenu.1420d0047696	모험(A)	ecl-batch-editorial
+hmenu.142c264ef84d	현재 층:	ecl-batch-editorial
+hmenu.14b68d2eb68d	분노(A)	ecl-batch-editorial
+hmenu.14c9a4669356	강하(D)	ecl-batch-editorial
+hmenu.14cb86c7a48b	불러올 수 없다	ecl-batch-editorial
+hmenu.1502ed65d609	전진(A)	ecl-batch-editorial
+hmenu.1509f561f241	저장(S)	ecl-batch-editorial
+hmenu.1511e825a991	K형 함포(K)	ecl-batch-editorial
+hmenu.151bf4939471	지상(G)	ecl-batch-editorial
+hmenu.1538015233e3	이 아이콘이 괜찮습니까?	ecl-batch-editorial
+hmenu.157dca92e425	저장	ecl-batch-editorial
+hmenu.1586d06a2125	바닥은	ecl-batch-editorial
+hmenu.15a9b356f256	빈사 상태다!	ecl-batch-editorial
+hmenu.160fad7466f0	거절(D)	ecl-batch-editorial
+hmenu.162cc64ca1e4	센서(S)	ecl-batch-editorial
+hmenu.16367aacb67a	두 번째	ecl-batch-editorial
+hmenu.164546a9c548	철수(W)	ecl-batch-editorial
+hmenu.16584052fd33	확인(O)	ecl-batch-editorial
+hmenu.1670f0147906	앨런(A)	ecl-batch-editorial
+hmenu.167a79b5d437	무기	ecl-batch-editorial
+hmenu.16a33178967d	화성(M)	ecl-batch-editorial
+hmenu.16a558173783	부상(W)	ecl-batch-editorial
+hmenu.1709305c9fa9	레벨(L)	ecl-batch-editorial
+hmenu.1710782c5d15	무기(W)	ecl-batch-editorial
+hmenu.172c1c994b66	진료소(C)	ecl-batch-editorial
+hmenu.1732ef2228a0	떠나기(L)	ecl-batch-editorial
+hmenu.175f6a239138	보정.	ecl-batch-editorial
+hmenu.1774b8eebdec	다섯 번째	ecl-batch-editorial
+hmenu.17b09f5db72c	맨 오른쪽 아래 끝으로 밀고 버튼을 누르십시오	ecl-batch-editorial
+hmenu.17c60a21a9c2	삭제(P)	ecl-batch-editorial
+hmenu.17e764e862c1	은(는) 조종사 역할을 이어받는다.	ecl-batch-editorial
+hmenu.17fb8f734991	판정한다.	ecl-batch-editorial
+hmenu.18340737267a	식물학(B)	ecl-batch-editorial
+hmenu.18363dbee31e	다시 굴림(R)	ecl-batch-editorial
+hmenu.183f00f483d3	유지(K)	ecl-batch-editorial
+hmenu.186a2b23db85	을(를) 거래하겠습니까?	ecl-batch-editorial
+hmenu.187897ce0afc	더	ecl-batch-editorial
+hmenu.18914b261c3e	건강(C)	ecl-batch-editorial
+hmenu.18b7d02f93bb	조이스틱을 읽을 수 없다. 보정을 중단	ecl-batch-editorial
+hmenu.18c9bbae695b	누군가 구해야 한다:	ecl-batch-editorial
+hmenu.18fdd549b2ed	새(N)	ecl-batch-editorial
+hmenu.193c45b52819	가진다	ecl-batch-editorial
+hmenu.194eb9c38cc0	보호(P)	ecl-batch-editorial
+hmenu.19f1fa5ec989	풀기(F)	ecl-batch-editorial
+hmenu.1a216279f69d	어지럼(D)	ecl-batch-editorial
+hmenu.1a259dba2566	NEO	ecl-batch-editorial
+hmenu.1a917d6ac8ac	검사 받기	ecl-batch-editorial
+hmenu.1a9a4a9d0d6c	손상된 함선에 접근해	ecl-batch-editorial
+hmenu.1aa9c0392e89	헥사버거(H)	ecl-batch-editorial
+hmenu.1ac551b9b933	제가 처리해 드릴까요?	ecl-batch-editorial
+hmenu.1ac7d61d1d29	시도한다	ecl-batch-editorial
+hmenu.1b0d6618a0be	그가 하는 말	ecl-batch-editorial
+hmenu.1b1326d6b613	보기(S)	ecl-batch-editorial
+hmenu.1b18ebbc3f49	전투(B)	ecl-batch-editorial
+hmenu.1b298c7cd4ce	미행(S)	ecl-batch-editorial
+hmenu.1b5031cc8d95	위(A)	ecl-batch-editorial
+hmenu.1b8ff10a48c9	활공(G)	ecl-batch-editorial
+hmenu.1bb1d826e1d0	벅 로저스 v1.00	ecl-batch-editorial
+hmenu.1bb7931d7fa0	테크 무기점(T)	ecl-batch-editorial
+hmenu.1be52ebfab97	꿈(D)	ecl-batch-editorial
+hmenu.1c0676bfa52a	후퇴 중.	ecl-batch-editorial
+hmenu.1c237809e9a3	맴도는	ecl-batch-editorial
+hmenu.1c790676fa14	죽이기(K)	ecl-batch-editorial
+hmenu.1c9d863675a3	여자 화장실(W)	ecl-batch-editorial
+hmenu.1ca3b7f96fd6	전투 갑옷(B)	ecl-batch-editorial
+hmenu.1d0fea39ec33	팀	ecl-batch-editorial
+hmenu.1d319b834150	밴(V)	ecl-batch-editorial
+hmenu.1d33d403dad6	다음을 판매하겠습니까:	ecl-batch-editorial
+hmenu.1d54d5514269	벅(B)	ecl-batch-editorial
+hmenu.1d5735a13d36	계단을 내려간다	ecl-batch-editorial
+hmenu.1d62d75616fd	구역(A)	ecl-batch-editorial
+hmenu.1d79bf60835e	삼(T)	ecl-batch-editorial
+hmenu.1dd10f244a62	애니메이션(A)	ecl-batch-editorial
+hmenu.1e22560cee2c	삽입	ecl-batch-editorial
+hmenu.1e2f12a3eb67	표지(S)	ecl-batch-editorial
+hmenu.1e367f240be1	전투(F)	ecl-batch-editorial
+hmenu.1e3a955bd202	공격(A)	ecl-batch-editorial
+hmenu.1e40feedb6d8	알현(A)	ecl-batch-editorial
+hmenu.1e45dd8fcecf	조작!	ecl-batch-editorial
+hmenu.1e570596cee2	장비.	ecl-batch-editorial
+hmenu.1ea442a134b2	노(N)	ecl-batch-editorial
+hmenu.1eb5e1c306f2	계단 내려가기(D)	ecl-batch-editorial
+hmenu.1eb79602411e	이	ecl-batch-editorial
+hmenu.1ec22de1446b	사용 가능하다.	ecl-batch-editorial
+hmenu.1ed8f0748b41	상점(S)	ecl-batch-editorial
+hmenu.1f1c5b2fad77	방	ecl-batch-editorial
+hmenu.1f4249d5aff0	이 레벨에 허용됨! 일부 직업 점수	ecl-batch-editorial
+hmenu.1f74f92203e3	USEM(U)	ecl-batch-editorial
+hmenu.1f862e758394	들이받는 중(R)	ecl-batch-editorial
+hmenu.1ff57a29d7c9	다음(N)	ecl-batch-editorial
+hmenu.200d29352c23	크레딧(C) 장비(G) 나가기(E)	ecl-batch-editorial
+hmenu.201d45139392	선체(H)	ecl-batch-editorial
+hmenu.2040e712d5f4	일반 상식(G)	ecl-batch-editorial
+hmenu.2070f725ff1c	영원히	ecl-batch-editorial
+hmenu.20de5ccb2269	통신 센터(C)	ecl-batch-editorial
+hmenu.20eac5aae274	우주(S)	ecl-batch-editorial
+hmenu.20f26e052358	따라가기(F)	ecl-batch-editorial
+hmenu.210ccefbc5e0	남은 일반 기술 점수가 없다	ecl-batch-editorial
+hmenu.211d70184040	메시지(T)	ecl-batch-editorial
+hmenu.2147c2d921a9	도검(B)	ecl-batch-editorial
+hmenu.2184a4e3f4ce	러너(R)	ecl-batch-editorial
+hmenu.21a508147ecc	무중력 기동(M)	ecl-batch-editorial
+hmenu.21c51ddb755c	성공적으로 치료된 부상이 없다.	ecl-batch-editorial
+hmenu.21e49eb2b299	일지(L)	ecl-batch-editorial
+hmenu.2215b79651c3	중앙(C)	ecl-batch-editorial
+hmenu.22655acc6c55	수락(A)	ecl-batch-editorial
+hmenu.226aad8a0d4a	무중력(Z)	ecl-batch-editorial
+hmenu.226e0758bf81	살핌(L)	ecl-batch-editorial
+hmenu.2270f4657420	악기 연주(P)	ecl-batch-editorial
+hmenu.2295e63fc86a	맨 오른쪽 끝으로 밀고 버튼을 누르십시오	ecl-batch-editorial
+hmenu.22d5925ed646	대형	ecl-batch-editorial
+hmenu.230d8358dc8e	신체	ecl-batch-editorial
+hmenu.23794d91c53a	노(N)	ecl-batch-editorial
+hmenu.237c59a3b965	지구인(T)	ecl-batch-editorial
+hmenu.239fcd44c36d	생명 정지 기술(L)	ecl-batch-editorial
+hmenu.241932906782	수색	ecl-batch-editorial
+hmenu.241e29427543	로켓 선체 수리(R)	ecl-batch-editorial
+hmenu.24a866f4940f	청색(B)	ecl-batch-editorial
+hmenu.251fecd592e5	점	ecl-batch-editorial
+hmenu.254bb97b57f1	안	ecl-batch-editorial
+hmenu.255633313f2c	보고(R)	ecl-batch-editorial
+hmenu.2556d66b879b	대형 미사일 거치대(H)	ecl-batch-editorial
+hmenu.255f66a7b340	그냥 두기(L)	ecl-batch-editorial
+hmenu.25806b3b4fcf	훈련(T)	ecl-batch-editorial
+hmenu.25877b98fccb	의무병(M)	ecl-batch-editorial
+hmenu.260b27ca3018	전체	ecl-batch-editorial
+hmenu.26425dced542	회피 중	ecl-batch-editorial
+hmenu.264d61cf0ce7	캐릭터?	ecl-batch-editorial
+hmenu.26b83994dca8	대기(W)	ecl-batch-editorial
+hmenu.26f3e44daf2f	히거트 금속점(H)	ecl-batch-editorial
+hmenu.27042f4e6eca	오른쪽	ecl-batch-editorial
+hmenu.271237599b16	레벨	ecl-batch-editorial
+hmenu.27368719cec2	정찰병(S)	ecl-batch-editorial
+hmenu.2744ccd10c75	나	ecl-batch-editorial
+hmenu.275bdb5e99eb	방어(D)	ecl-batch-editorial
+hmenu.278bf346a6b7	클라운버거(C)	ecl-batch-editorial
+hmenu.27c413f98227	돈.	ecl-batch-editorial
+hmenu.27ec551cd32f	팀이 휴식한다.	ecl-batch-editorial
+hmenu.27f28e95038f	음파 스턴건(S)	ecl-batch-editorial
+hmenu.28026ec6e26e	사막 러너 석궁(D)	ecl-batch-editorial
+hmenu.28031a836e2a	동물 타기(A)	ecl-batch-editorial
+hmenu.2809f3dd6ada	차량(V)	ecl-batch-editorial
+hmenu.281734cd977d	여성용(W)	ecl-batch-editorial
+hmenu.282cac63534b	오버레이 디스크를 넣어 주십시오.	ecl-batch-editorial
+hmenu.28391d3bc64e	의	ecl-batch-editorial
+hmenu.283bb9deef02	이탈	ecl-batch-editorial
+hmenu.283e91eb85d5	완료(D)	ecl-batch-editorial
+hmenu.2864716a6e43	엄폐(C)	ecl-batch-editorial
+hmenu.288ad67af0d2	조이스틱. 보정을 중단한다.	ecl-batch-editorial
+hmenu.28c4cf991a7f	론다의 초콜릿 가게(R)	ecl-batch-editorial
+hmenu.291af8de7ebb	은(는) 위협에 실패했다.	ecl-batch-editorial
+hmenu.2959bb1215ae	획득	ecl-batch-editorial
+hmenu.295e8d1916a8	DOS로 나가기(Q)	ecl-batch-editorial
+hmenu.2998b3232d29	얻기	ecl-batch-editorial
+hmenu.299900e611b8	위로(G)	ecl-batch-editorial
+hmenu.29996435a090	작업자(W)	ecl-batch-editorial
+hmenu.29b83054448c	서플라이코(S)	ecl-batch-editorial
+hmenu.2a19bdc09aa3	그림자 은신(S)	ecl-batch-editorial
+hmenu.2a54d7c9016a	의 연료를 적에게서 약탈했다	ecl-batch-editorial
+hmenu.2a6b24ad2872	크레딧(C)	ecl-batch-editorial
+hmenu.2a78025de6aa	선택(S)	ecl-batch-editorial
+hmenu.2ad8a7049d7c	그것	ecl-batch-editorial
+hmenu.2af4669ccbcc	기술 계열 기술	ecl-batch-editorial
+hmenu.2b656515c071	독백(T)	ecl-batch-editorial
+hmenu.2b8988f382fd	은(는) 가속을 시도하며	ecl-batch-editorial
+hmenu.2bd0fbbc2989	엄폐물로 뛰어든다!	ecl-batch-editorial
+hmenu.2bf167276ce3	무기 제어(W)	ecl-batch-editorial
+hmenu.2c063fc99025	잔혹한 일격을 가한다	ecl-batch-editorial
+hmenu.2c1f89724a13	폭파 장치(D)	ecl-batch-editorial
+hmenu.2c234a550746	공기가 조금 맑아진다...	ecl-batch-editorial
+hmenu.2c70e12b7a06	열쇠	ecl-batch-editorial
+hmenu.2c96c4dc7575	제트팩	ecl-batch-editorial
+hmenu.2cba9d25c1ea	왼쪽(L)	ecl-batch-editorial
+hmenu.2d1606bed22c	원하는 것	ecl-batch-editorial
+hmenu.2de3543d6fe4	피해.	ecl-batch-editorial
+hmenu.2df2d437fb79	애니메이션 끔	ecl-batch-editorial
+hmenu.2df5712e1cf3	함선	ecl-batch-editorial
+hmenu.2e1cfa82b035	비어 있음	ecl-batch-editorial
+hmenu.2e433cd6427d	오버레이 오류, 프로그램 중단!	ecl-batch-editorial
+hmenu.2e4be8afbeba	눈 깜짝할 속도로 그가 뺨을 때리고,	ecl-batch-editorial
+hmenu.2e57cfa2f1ce	마리포사 삼호(M)	ecl-batch-editorial
+hmenu.2e5b0ef5b121	광선(B)	ecl-batch-editorial
+hmenu.2e6205354e8c	은(는) 죽었다!!	ecl-batch-editorial
+hmenu.2e948717bbfd	수술 장치(S)	ecl-batch-editorial
+hmenu.2e98e6fc27b2	아이콘 선택(I)	ecl-batch-editorial
+hmenu.2ea9f3ad312b	선라이즈(S)	ecl-batch-editorial
+hmenu.2ebda0d34bd5	설계 공학(D)	ecl-batch-editorial
+hmenu.2ec1e2815946	판매(S)	ecl-batch-editorial
+hmenu.2f32e89cd22c	은(는) 경험치를 얻는다!	ecl-batch-editorial
+hmenu.2f9acb02faa1	통과(P)	ecl-batch-editorial
+hmenu.2ff6bf92f513	은(는) 일반 기술이 없다.	ecl-batch-editorial
+hmenu.301de93e8a27	공격(A)	ecl-batch-editorial
+hmenu.3064d79a295c	이름 변경(R)	ecl-batch-editorial
+hmenu.30863d1a8293	함선 설계도(T)	ecl-batch-editorial
+hmenu.308e6000aeee	타이탄(T)	ecl-batch-editorial
+hmenu.308f3ec3b44a	열쇠 훔치기(S)	ecl-batch-editorial
+hmenu.30e7e41efab3	신체(B)	ecl-batch-editorial
+hmenu.30e87e82bbcb	매입 제안:	ecl-batch-editorial
+hmenu.30e8a5e111cf	누구	ecl-batch-editorial
+hmenu.310ff200149b	접근	ecl-batch-editorial
+hmenu.311ab7b6c410	노래(S)	ecl-batch-editorial
+hmenu.311f423fde0b	배치(P) 나가기(E)	ecl-batch-editorial
+hmenu.313e91336a7c	대위(C)	ecl-batch-editorial
+hmenu.318b86019c46	심문하기(I)	ecl-batch-editorial
+hmenu.31a4730ecf0c	고글(G)	ecl-batch-editorial
+hmenu.31c0d1002136	에릭의 화살 가게(E)	ecl-batch-editorial
+hmenu.31e7bb3ab4ed	응급 처치(F)	ecl-batch-editorial
+hmenu.3214256d6e1a	은(는) 이미 존재한다	ecl-batch-editorial
+hmenu.32c1cf49a2fe	기술	ecl-batch-editorial
+hmenu.32d7e8208247	제어(C)	ecl-batch-editorial
+hmenu.32f5b8496cdd	저장 디스크를 넣으십시오:	ecl-batch-editorial
+hmenu.32f6e996f503	기술(T)	ecl-batch-editorial
+hmenu.3316348dbadf	읽기	ecl-batch-editorial
+hmenu.332786f741e3	센서 파괴됨	ecl-batch-editorial
+hmenu.338ad1b295e9	기절/마비 치료(T)	ecl-batch-editorial
+hmenu.3393b41eeeea	극원거리	ecl-batch-editorial
+hmenu.33a625e899e8	이건 제 아들 중 한 명에게 주겠습니다.	ecl-batch-editorial
+hmenu.3454ab0ba852	치료 중(T)	ecl-batch-editorial
+hmenu.34695f140781	물품 파일을 찾을 수 없다	ecl-batch-editorial
+hmenu.349096910d3c	물리학(P)	ecl-batch-editorial
+hmenu.349cffd66232	야영	ecl-batch-editorial
+hmenu.34a489fb589a	북쪽(N)	ecl-batch-editorial
+hmenu.34abf9bac01e	석영(Q)	ecl-batch-editorial
+hmenu.34cf775f17e3	위치	ecl-batch-editorial
+hmenu.34d77eafc860	은(는) 중화기를 장전한다.	ecl-batch-editorial
+hmenu.34efb50db494	로저스(R)	ecl-batch-editorial
+hmenu.350cf2c3eee0	빗나감(M)	ecl-batch-editorial
+hmenu.354cbfc81426	자신의	ecl-batch-editorial
+hmenu.360f84035942	왼쪽	ecl-batch-editorial
+hmenu.3660315a9af3	페이지	ecl-batch-editorial
+hmenu.36a798e3f392	훈련 중(T)	ecl-batch-editorial
+hmenu.36b6ca188619	추적 중(T)	ecl-batch-editorial
+hmenu.36cc5171aa59	스스로 풀기(F)	ecl-batch-editorial
+hmenu.36d2f95ead93	대답(A)	ecl-batch-editorial
+hmenu.36f781461d9d	미사일(M)	ecl-batch-editorial
+hmenu.36fc0c15eb45	자물쇠 따기(O)	ecl-batch-editorial
+hmenu.3711c817270f	데이지(D)	ecl-batch-editorial
+hmenu.37432d9c9439	대담(B)	ecl-batch-editorial
+hmenu.379defcd32f9	피해!	ecl-batch-editorial
+hmenu.37a6760fa43c	도움(H)	ecl-batch-editorial
+hmenu.37a77be39a30	인사(G)	ecl-batch-editorial
+hmenu.37d60b85a939	파보니스(P)	ecl-batch-editorial
+hmenu.37e2795aa48e	기능 선택	ecl-batch-editorial
+hmenu.37f34b33d35c	작별(F)	ecl-batch-editorial
+hmenu.383e2d946278	조종사(P)	ecl-batch-editorial
+hmenu.384253ece3aa	죽이기(K)	ecl-batch-editorial
+hmenu.38b9ab80aeb5	잘못	ecl-batch-editorial
+hmenu.38cca6bea010	끔(O)	ecl-batch-editorial
+hmenu.38df4d6991b6	레이저(L)	ecl-batch-editorial
+hmenu.38e9b86f2bcd	조명탄(F)	ecl-batch-editorial
+hmenu.3979e291594f	조작(O)	ecl-batch-editorial
+hmenu.3981d82adaf2	고비(G)	ecl-batch-editorial
+hmenu.39a39d1bfab5	조이스틱	ecl-batch-editorial
+hmenu.39b086f64d0b	은(는) 이미 사용 중:	ecl-batch-editorial
+hmenu.39bf205ed033	기계(M)	ecl-batch-editorial
+hmenu.39e1775d82d2	함선(S)	ecl-batch-editorial
+hmenu.3a0931580d18	퇴장(E)	ecl-batch-editorial
+hmenu.3a21ba623ba8	환자           결과	ecl-batch-editorial
+hmenu.3a241d59687b	몬스터(M)	ecl-batch-editorial
+hmenu.3a54dd46a19c	반감(H)	ecl-batch-editorial
+hmenu.3aaab8a73c8f	먼저 장비를 해제해야 한다	ecl-batch-editorial
+hmenu.3ad8db855314	가방(B)	ecl-batch-editorial
+hmenu.3b1082e12bce	셰 루나(C)	ecl-batch-editorial
+hmenu.3b42c9f14694	한 레벨	ecl-batch-editorial
+hmenu.3b64a2e3a8b0	경험치!	ecl-batch-editorial
+hmenu.3b7cf1876cf3	캐릭터 훈련(T)	ecl-batch-editorial
+hmenu.3b8dbbf7c401	소녀(G)	ecl-batch-editorial
+hmenu.3b9c358f36f0	파일	ecl-batch-editorial
+hmenu.3bab04109008	은(는) 성공한다!	ecl-batch-editorial
+hmenu.3bac817c673d	도망 중(F)	ecl-batch-editorial
+hmenu.3bbfc723e7bf	에어로졸 분무(A)	ecl-batch-editorial
+hmenu.3c1faf6c2967	당김(P)	ecl-batch-editorial
+hmenu.3c380600b289	하겠다	ecl-batch-editorial
+hmenu.3c482346f375	뒤로	ecl-batch-editorial
+hmenu.3c572f07105d	생도(C)	ecl-batch-editorial
+hmenu.3c5edf17420e	로켓(R)	ecl-batch-editorial
+hmenu.3c7841abf9b1	보이는 것	ecl-batch-editorial
+hmenu.3c96a3232654	이미 가득 찼다	ecl-batch-editorial
+hmenu.3d07afbdb11d	그리고 빗나간다	ecl-batch-editorial
+hmenu.3d4079b7ff9c	데이지호(T)	ecl-batch-editorial
+hmenu.3d9a24b7558b	대화(T)	ecl-batch-editorial
+hmenu.3dab2015f2cb	이것은 작동하지 않는	ecl-batch-editorial
+hmenu.3db65f8c2a7d	항법(N)	ecl-batch-editorial
+hmenu.3ddd8987443a	미사일(M)	ecl-batch-editorial
+hmenu.3e0b1401c44a	은(는) 죽었다!	ecl-batch-editorial
+hmenu.3e1d229402b2	섀도스(S)	ecl-batch-editorial
+hmenu.3e2dda2d0bc9	소사이어티(S)	ecl-batch-editorial
+hmenu.3e484db793bf	은(는) 피한다	ecl-batch-editorial
+hmenu.3e5738f041eb	어느 시스템을 목표로 삼겠습니까?	ecl-batch-editorial
+hmenu.3eb3d9f76f61	하겠다	ecl-batch-editorial
+hmenu.3ecb9bfec1d5	스콧의 시푸드(S)	ecl-batch-editorial
+hmenu.3eed0f332976	총	ecl-batch-editorial
+hmenu.3f257e684a3b	동물(A)	ecl-batch-editorial
+hmenu.3f3579b122d0	병사(T)	ecl-batch-editorial
+hmenu.3f67735e52ff	파괴됨:	ecl-batch-editorial
+hmenu.3fa1d3c4460b	미사일	ecl-batch-editorial
+hmenu.3fc96cc70eab	심하게	ecl-batch-editorial
+hmenu.3fca5061908a	열쇠(K)	ecl-batch-editorial
+hmenu.3ffb939a893e	바닥(F)	ecl-batch-editorial
+hmenu.40970cf7b5e2	함선(S)	ecl-batch-editorial
+hmenu.411b0496da5e	캐릭터	ecl-batch-editorial
+hmenu.416a91cb462e	남자 화장실(M)	ecl-batch-editorial
+hmenu.416d8b8969de	계단(S)	ecl-batch-editorial
+hmenu.41a670643247	조이스틱.	ecl-batch-editorial
+hmenu.41b5078e1cae	무중력(Z)	ecl-batch-editorial
+hmenu.41c1797f5878	달리는 중에는 할 수 없다	ecl-batch-editorial
+hmenu.4270abb41131	카드 삽입(I)	ecl-batch-editorial
+hmenu.427dd2969bd1	위독(C)	ecl-batch-editorial
+hmenu.429991c69978	부상을 입었다.	ecl-batch-editorial
+hmenu.42b4cd60e1d9	탈출(E)	ecl-batch-editorial
+hmenu.42c731d93cda	치료(T)	ecl-batch-editorial
+hmenu.42cb4e6f8497	위(U)	ecl-batch-editorial
+hmenu.42f4e6b3ac82	야외 지형을 식별할 수 없다	ecl-batch-editorial
+hmenu.43253e299831	무기 특화(W)	ecl-batch-editorial
+hmenu.436e61016e26	연주(P)	ecl-batch-editorial
+hmenu.438b517d08a0	채프	ecl-batch-editorial
+hmenu.4391105bd3a7	은(는) 겁에 질려 도망친다	ecl-batch-editorial
+hmenu.43ae65428a8f	추가(A) 감소(S) 유지(K) 나가기(E)	ecl-batch-editorial
+hmenu.43aee0d00c15	케플러(K)	ecl-batch-editorial
+hmenu.43b07b85db2f	가동 중지(S)	ecl-batch-editorial
+hmenu.43f03467ae89	회전익기 조종	ecl-batch-editorial
+hmenu.43f466ea8f14	마이크로파(M)	ecl-batch-editorial
+hmenu.4413cd7439ca	은(는) 미사일을 발사한다...	ecl-batch-editorial
+hmenu.4428ee4929ad	은(는) 마스터 디스크이므로 DISKCOPY를 사용하여	ecl-batch-editorial
+hmenu.442e07fe93c9	의무병           환자           결과	ecl-batch-editorial
+hmenu.44592af7565b	여기서는 안 된다	ecl-batch-editorial
+hmenu.448dd87e3774	살해(K)	ecl-batch-editorial
+hmenu.44a3848963f7	엔진 가속(B)	ecl-batch-editorial
+hmenu.44b21048ee02	은(는) 몸을 피한다!	ecl-batch-editorial
+hmenu.44bc3799892c	치료 중	ecl-batch-editorial
+hmenu.458f2c2c0f01	소매치기(P)	ecl-batch-editorial
+hmenu.45bfe9649213	은(는) 어지럽다	ecl-batch-editorial
+hmenu.45ea7f3cadc6	표시(S)	ecl-batch-editorial
+hmenu.460492ce94fb	붕대 처치됨	ecl-batch-editorial
+hmenu.462e2e17f5e8	그 무시무시한 메시지	ecl-batch-editorial
+hmenu.46599c5bb5c3	이다	ecl-batch-editorial
+hmenu.46ea8ad0a953	없음(N)	ecl-batch-editorial
+hmenu.47343132e8c3	겁먹음	ecl-batch-editorial
+hmenu.47399b7f7437	독순술(R)	ecl-batch-editorial
+hmenu.4759498ac2a7	만들기(C)	ecl-batch-editorial
+hmenu.478e5ec5fe92	소총(R)	ecl-batch-editorial
+hmenu.479b74f1d545	펍(P)	ecl-batch-editorial
+hmenu.479f8503704d	복사본을 만드십시오.	ecl-batch-editorial
+hmenu.47bd8dbe7ce7	훔치기(S)	ecl-batch-editorial
+hmenu.47c5c28cae25	마우스	ecl-batch-editorial
+hmenu.47fca483c89c	작곡(C)	ecl-batch-editorial
+hmenu.4816cbfd74aa	승선(B)	ecl-batch-editorial
+hmenu.48363c2dec05	애니메이션 켬	ecl-batch-editorial
+hmenu.4844cec572c9	명령 파일을 불러올 수 없다	ecl-batch-editorial
+hmenu.48649b6d4fd9	은(는) 독으로 죽어 간다!	ecl-batch-editorial
+hmenu.48fbf162c968	ECM 장비(E)	ecl-batch-editorial
+hmenu.491bdbd15a5f	스콧의(S)	ecl-batch-editorial
+hmenu.49771fa114d4	DOS	ecl-batch-editorial
+hmenu.49b2791c7fe7	중장갑(H)	ecl-batch-editorial
+hmenu.49c266baaaa7	조사(S)	ecl-batch-editorial
+hmenu.49dd575bfe5f	심한 부상 치료(T)	ecl-batch-editorial
+hmenu.4a1204f5e558	능력치 다시 굴리겠습니까?	ecl-batch-editorial
+hmenu.4a22150cdb0d	기관(E)	ecl-batch-editorial
+hmenu.4a2b15ab476a	ECM	ecl-batch-editorial
+hmenu.4a2e7ef421fb	재프로그래밍(R)	ecl-batch-editorial
+hmenu.4a33eacd5fa6	물품	ecl-batch-editorial
+hmenu.4a366d77739e	나가는 중	ecl-batch-editorial
+hmenu.4a6952ce75b9	은(는) 접근 중이다.	ecl-batch-editorial
+hmenu.4ad1957b53d8	자비(M)	ecl-batch-editorial
+hmenu.4aeb91b4800f	은행(B)	ecl-batch-editorial
+hmenu.4b2bebbf33ae	느림(S)	ecl-batch-editorial
+hmenu.4b591c8f5959	제트카 운전	ecl-batch-editorial
+hmenu.4b63b96ae5c5	기절(S)	ecl-batch-editorial
+hmenu.4b7899783330	은(는) 영향을 받지 않는다	ecl-batch-editorial
+hmenu.4b8fddb04ddc	이동(M) 구역(A) 보기(V) 살피기(L) 변경(C) 저장(S)	ecl-batch-editorial
+hmenu.4bcef3de76ea	캐릭터	ecl-batch-editorial
+hmenu.4c07a5e27143	그리고 빈사 상태다	ecl-batch-editorial
+hmenu.4c52d4874a1b	통신(C)	ecl-batch-editorial
+hmenu.4cd0e21a9a07	가다	ecl-batch-editorial
+hmenu.4cd548f3cc29	공격(A)	ecl-batch-editorial
+hmenu.4d040d3f6466	당신의	ecl-batch-editorial
+hmenu.4d5da5299dc0	게임.	ecl-batch-editorial
+hmenu.4d5e86de30d7	은(는) 장비가 없다.	ecl-batch-editorial
+hmenu.4d9e779cd9bd	DNA	ecl-batch-editorial
+hmenu.4e0d555c0b5d	나.	ecl-batch-editorial
+hmenu.4e18312e592d	접근 중.	ecl-batch-editorial
+hmenu.4e2b5722651b	은(는)	ecl-batch-editorial
+hmenu.4e523a5ae5b4	거짓(F)	ecl-batch-editorial
+hmenu.4e743acd2494	당신들은	ecl-batch-editorial
+hmenu.4eaac27facad	은(는) 채프를 맞힌다	ecl-batch-editorial
+hmenu.4eb6f0fd87de	터스콘(T)	ecl-batch-editorial
+hmenu.4ec1c6c205ec	줍니까?	ecl-batch-editorial
+hmenu.4ed0c6667e34	은(는) 수리	ecl-batch-editorial
+hmenu.4eda52febad1	더 느리게(S)	ecl-batch-editorial
+hmenu.4eeb9335576b	천문학(A)	ecl-batch-editorial
+hmenu.4f1c63f9aba8	금성(V)	ecl-batch-editorial
+hmenu.4f38e9161cbb	은(는) 치료받았다	ecl-batch-editorial
+hmenu.4f3a9bd00397	직업(C)	ecl-batch-editorial
+hmenu.4f618185f2ea	대기(W)	ecl-batch-editorial
+hmenu.4f8fa1e87f88	뼈 조각품(C)	ecl-batch-editorial
+hmenu.4ff006ca6b88	폭파(D)	ecl-batch-editorial
+hmenu.50b3b8ca8d99	탄창 장전(F)	ecl-batch-editorial
+hmenu.50bf80da81cf	사악(E)	ecl-batch-editorial
+hmenu.5159122a0ac4	양호하다.	ecl-batch-editorial
+hmenu.51e49f593b9b	문학(L)	ecl-batch-editorial
+hmenu.52774637822c	도달했다	ecl-batch-editorial
+hmenu.52d29277d59f	열쇠고리(K)	ecl-batch-editorial
+hmenu.52d46ffedcf8	생명(L)	ecl-batch-editorial
+hmenu.52f54b6d2d53	조우(E)	ecl-batch-editorial
+hmenu.531cb8d83b21	말재주/설득(F)	ecl-batch-editorial
+hmenu.53257f68c4e1	초라한 사람들 구조(R)	ecl-batch-editorial
+hmenu.53798f5fd9ee	은(는) 꽤 위협적으로 보인다.	ecl-batch-editorial
+hmenu.538e7569dc75	탄약(A)	ecl-batch-editorial
+hmenu.539e23b52e1b	가방 챙기기(T)	ecl-batch-editorial
+hmenu.53a0357017c0	집결지(R)	ecl-batch-editorial
+hmenu.53dd76e8676e	센서가 식별했다:	ecl-batch-editorial
+hmenu.53e5e7c5a884	경험치	ecl-batch-editorial
+hmenu.54230802dfda	수영(S)	ecl-batch-editorial
+hmenu.542599d6762b	조이스틱을 읽을 수 없다	ecl-batch-editorial
+hmenu.543b1c4bd4f6	얼마나	ecl-batch-editorial
+hmenu.5482c1cd4150	기관(E)	ecl-batch-editorial
+hmenu.54998e6df531	모든 수리가 완료되었다.	ecl-batch-editorial
+hmenu.54cda0543a40	지질학(G)	ecl-batch-editorial
+hmenu.54fe25173974	카페(C)	ecl-batch-editorial
+hmenu.556c2616c5f4	개조인(G)	ecl-batch-editorial
+hmenu.5574f7dcd3dc	현장(T)	ecl-batch-editorial
+hmenu.5592b4048986	일부 일반 점수가 남아 있다. 나가겠습니까?	ecl-batch-editorial
+hmenu.55a213edc1a2	소년(B)	ecl-batch-editorial
+hmenu.55a816001106	후퇴 중(R)	ecl-batch-editorial
+hmenu.55f6a88dc025	이탈(G)	ecl-batch-editorial
+hmenu.560d30ce9f2b	무엇이	ecl-batch-editorial
+hmenu.5672c76c7da3	DISKCOPY로 복사본을 만들어 주십시오.	ecl-batch-editorial
+hmenu.56b32e2a15bf	폴암(P)	ecl-batch-editorial
+hmenu.56f21695a650	조사(S)	ecl-batch-editorial
+hmenu.571d5b2882b8	까지	ecl-batch-editorial
+hmenu.577fba0b80d7	방(R)	ecl-batch-editorial
+hmenu.57955e2e5e76	타이탄 도검점(T)	ecl-batch-editorial
+hmenu.57a2be45ad60	연설(S)	ecl-batch-editorial
+hmenu.57befefefd22	클럽(C)	ecl-batch-editorial
+hmenu.57ee6756f4ad	뛰어든다	ecl-batch-editorial
+hmenu.57ee6ffeac05	은(는) 치료됨.	ecl-batch-editorial
+hmenu.582967534d0f	에서	ecl-batch-editorial
+hmenu.585391575cf3	을(를) 일지 항목	ecl-batch-editorial
+hmenu.58898bea9edf	캐릭터 선택(P)	ecl-batch-editorial
+hmenu.58eb9032e3bb	왼쪽(L)	ecl-batch-editorial
+hmenu.5926c704d5b3	경제학(E)	ecl-batch-editorial
+hmenu.5942bd952f12	상승(A)	ecl-batch-editorial
+hmenu.5985039f106d	팀(T)	ecl-batch-editorial
+hmenu.59ad1b2fc742	스캔	ecl-batch-editorial
+hmenu.59b0d70eeded	은(는) 응급 수리:	ecl-batch-editorial
+hmenu.59bb67dc4a0f	은(는) 가치가 없다.	ecl-batch-editorial
+hmenu.59c215d0dc92	보급소(D)	ecl-batch-editorial
+hmenu.59d6cf4f638f	의식이 있는 사람만 훈련합니다	ecl-batch-editorial
+hmenu.59f994ffa301	계략(G)	ecl-batch-editorial
+hmenu.5a16b3fbd4f9	CHARS.DAX 파일을 열 수 없다!	ecl-batch-editorial
+hmenu.5a452459503b	위치	ecl-batch-editorial
+hmenu.5b2296ca7c08	은(는) 장비:	ecl-batch-editorial
+hmenu.5b4b8e1d9edb	적함(E)	ecl-batch-editorial
+hmenu.5b681e6beee2	행성(P)	ecl-batch-editorial
+hmenu.5b901a1d14f5	통행 카드(P)	ecl-batch-editorial
+hmenu.5ba0bc741fd5	조우(T)	ecl-batch-editorial
+hmenu.5c18b45a6a4d	결백(I)	ecl-batch-editorial
+hmenu.5c412a262086	게임(G)	ecl-batch-editorial
+hmenu.5cca303ebfd2	게임 내 최고 레벨에 도달했다	ecl-batch-editorial
+hmenu.5ccc2e8715d7	소지금(M)	ecl-batch-editorial
+hmenu.5cd51939cf68	아폴로(A)	ecl-batch-editorial
+hmenu.5cddf00ae882	전술 판정을 한다.	ecl-batch-editorial
+hmenu.5d28a90f4498	실패했다	ecl-batch-editorial
+hmenu.5d50a12fc6bb	줍기(P)	ecl-batch-editorial
+hmenu.5d5238c9d458	아직 전리품이 남아 있다.	ecl-batch-editorial
+hmenu.5d6e5b679dba	마크의 주스 바(M)	ecl-batch-editorial
+hmenu.5dac5c8e4cf7	영원히?	ecl-batch-editorial
+hmenu.5db98e7af406	저장하는 중... 잠시 기다려 주십시오.	ecl-batch-editorial
+hmenu.5dee38c51e72	은(는) 다음 로켓에 편승한다.	ecl-batch-editorial
+hmenu.5e3eb87a29f2	탈출 포드 격납고가 비어 있다	ecl-batch-editorial
+hmenu.5e60ff5ac0ec	방향	ecl-batch-editorial
+hmenu.5e9f5e428e01	팁 감사합니다. 좋은 하루 되십시오.	ecl-batch-editorial
+hmenu.5f29cd667b32	시스템?	ecl-batch-editorial
+hmenu.5f482c6f9efd	특수 능력	ecl-batch-editorial
+hmenu.5f5580d42ea7	은(는) 가치가 없다.	ecl-batch-editorial
+hmenu.5f91cfa9787d	이 레벨에서 기술이 최대치다	ecl-batch-editorial
+hmenu.5fa7aac5375c	장비(R)	ecl-batch-editorial
+hmenu.5fb6a47e368e	넘어	ecl-batch-editorial
+hmenu.5fbead1628c5	손상된 함선에 승선을 시도	ecl-batch-editorial
+hmenu.606f41260d9e	독백(M)	ecl-batch-editorial
+hmenu.60b6e20a4fcd	부상당했다	ecl-batch-editorial
+hmenu.61083510e564	대형 순양함(H)	ecl-batch-editorial
+hmenu.6129de1e7508	속도(S)	ecl-batch-editorial
+hmenu.6201111b83a0	및	ecl-batch-editorial
+hmenu.622af18ec40b	DOS로 나가기	ecl-batch-editorial
+hmenu.6243c5b47b1b	티코(T)	ecl-batch-editorial
+hmenu.62620037164a	영향을 받지 않는다	ecl-batch-editorial
+hmenu.6299ced9a9da	미켈란젤로의 모조 대리석(M)	ecl-batch-editorial
+hmenu.62f51d296d34	명중:	ecl-batch-editorial
+hmenu.630fef850602	허블(H)	ecl-batch-editorial
+hmenu.6312b4b9baf1	운전(D)	ecl-batch-editorial
+hmenu.6358f2cba54b	부재	ecl-batch-editorial
+hmenu.63783b1ec102	예(Y) 노(N)	ecl-batch-editorial
+hmenu.6389dc45d052	은(는) 치료됨	ecl-batch-editorial
+hmenu.639807a2e018	뒤로(B)	ecl-batch-editorial
+hmenu.63c0931f7d7a	모하비(M)	ecl-batch-editorial
+hmenu.63d04dee7c50	명중	ecl-batch-editorial
+hmenu.63df016f961c	감소(S)	ecl-batch-editorial
+hmenu.63e40f41a77d	직업 기술	ecl-batch-editorial
+hmenu.63ebd1283133	관계자 외 출입 금지	ecl-batch-editorial
+hmenu.63f3f9f2e37f	흉내(M)	ecl-batch-editorial
+hmenu.646c19373ac9	동네(L)	ecl-batch-editorial
+hmenu.647ba2bb719e	USEM 수류탄점(U)	ecl-batch-editorial
+hmenu.64a08a413e32	은(는) 성공한다:	ecl-batch-editorial
+hmenu.64c82aaed1b4	실명(B)	ecl-batch-editorial
+hmenu.64dd65edfeaa	진단(D)	ecl-batch-editorial
+hmenu.64e3cb0e4960	구입(B)	ecl-batch-editorial
+hmenu.64ea62de2928	은(는) 줌:	ecl-batch-editorial
+hmenu.65108526a62e	일부 직업 점수가 남아 있다. 나가겠습니까?	ecl-batch-editorial
+hmenu.652bcc3a4784	물품(I)	ecl-batch-editorial
+hmenu.6563b9a9787c	마법 프라이팬(M)	ecl-batch-editorial
+hmenu.65659145569b	관찰력(N)	ecl-batch-editorial
+hmenu.6568d0800791	넣기(P)	ecl-batch-editorial
+hmenu.656bae520321	캐릭터를 팀에서 제외(R)	ecl-batch-editorial
+hmenu.6585fb8ff829	레스토랑(R)	ecl-batch-editorial
+hmenu.65cb8bc4d032	둘 다 무력화	ecl-batch-editorial
+hmenu.65cbe1e19791	적색(R)	ecl-batch-editorial
+hmenu.6608627b2d07	기술.	ecl-batch-editorial
+hmenu.6610cc552469	적	ecl-batch-editorial
+hmenu.663ea1bfffe5	에	ecl-batch-editorial
+hmenu.665a4f0f5a46	은(는) 재장전	ecl-batch-editorial
+hmenu.666cd709f9e9	의무병	ecl-batch-editorial
+hmenu.66773645acce	제트팩 사용(U)	ecl-batch-editorial
+hmenu.6694ea807500	수송선	ecl-batch-editorial
+hmenu.669c19eef9c0	끄기(T)	ecl-batch-editorial
+hmenu.66b3c1c537d4	찾을 수 없다:	ecl-batch-editorial
+hmenu.66d0f523a379	기술(S)	ecl-batch-editorial
+hmenu.66e0988d1198	헤르메스(H)	ecl-batch-editorial
+hmenu.66f7c3f38607	루나(L)	ecl-batch-editorial
+hmenu.6725e7bbcd28	시스템(S)	ecl-batch-editorial
+hmenu.673c5354cba2	로봇(R)	ecl-batch-editorial
+hmenu.67872ab2f841	프시케(P)	ecl-batch-editorial
+hmenu.67905ad3cc2d	탄창	ecl-batch-editorial
+hmenu.679eaac16659	이	ecl-batch-editorial
+hmenu.67d7118802b4	레벨! 일부 직업 점수가 남아 있다	ecl-batch-editorial
+hmenu.67e6c944f5fa	전투 전술(B)	ecl-batch-editorial
+hmenu.67f1eefc9a6d	자물쇠 따기(P)	ecl-batch-editorial
+hmenu.68161bb0cf0e	뼈(B)	ecl-batch-editorial
+hmenu.6828bcda20e2	맨 오른쪽 아래 끝으로	ecl-batch-editorial
+hmenu.6829562873e4	오르기(C)	ecl-batch-editorial
+hmenu.687ea5927c19	경량 가속총(L)	ecl-batch-editorial
+hmenu.688449dc6f1d	탈출로가 막혀 있다	ecl-batch-editorial
+hmenu.689b17a30cfd	이 레벨에서는 새 기술을 더 배울 수 없다	ecl-batch-editorial
+hmenu.68ce45d1ce63	리버레이터(L)	ecl-batch-editorial
+hmenu.6908fb71a777	유인원 이빨(A)	ecl-batch-editorial
+hmenu.6973dddd3ef9	막혀 있다	ecl-batch-editorial
+hmenu.699ec3219c9e	자이로포(G)	ecl-batch-editorial
+hmenu.69a5f2bb972e	의료 보급품(M)	ecl-batch-editorial
+hmenu.69b98de6b39c	대형 화물선(H)	ecl-batch-editorial
+hmenu.69e349285747	루나의 티코 우주 공항(T)	ecl-batch-editorial
+hmenu.69e9124b5ff7	할까요	ecl-batch-editorial
+hmenu.69f03584a214	상류 사회(H)	ecl-batch-editorial
+hmenu.6a26f90ee358	구입한다	ecl-batch-editorial
+hmenu.6a2bff80475c	묶기(T)	ecl-batch-editorial
+hmenu.6a5a5acd0695	은(는) 폭발을 피해 몸을 날린다.	ecl-batch-editorial
+hmenu.6a7367ef7970	수성(M)	ecl-batch-editorial
+hmenu.6a926170b35a	무중력 기동 실패(F)	ecl-batch-editorial
+hmenu.6aa584558eee	포드(P)	ecl-batch-editorial
+hmenu.6ac5490b81cb	화합물(C)	ecl-batch-editorial
+hmenu.6acc99af99f6	항구(P)	ecl-batch-editorial
+hmenu.6ade2a79da24	돌아가서 가져가겠습니까?	ecl-batch-editorial
+hmenu.6b0e38e88d73	아무 키나 누르십시오	ecl-batch-editorial
+hmenu.6b563bc04b05	목 축이는 방(W)	ecl-batch-editorial
+hmenu.6b847a0ed0b2	안으로	ecl-batch-editorial
+hmenu.6be090825c99	순서(O)	ecl-batch-editorial
+hmenu.6be87d6a0025	점의	ecl-batch-editorial
+hmenu.6c057dff25d5	의무관(M)	ecl-batch-editorial
+hmenu.6c43028c7203	신발(F)	ecl-batch-editorial
+hmenu.6c582b62e0e5	빠름(F)	ecl-batch-editorial
+hmenu.6ca5cab77e70	게임	ecl-batch-editorial
+hmenu.6cb1c45a1a62	이겼다.	ecl-batch-editorial
+hmenu.6ccaa6415b5e	신체(B)	ecl-batch-editorial
+hmenu.6cef4ccc1019	하겠다	ecl-batch-editorial
+hmenu.6d01e6a02b33	어느 팀원	ecl-batch-editorial
+hmenu.6d271f2f0275	도움 요청(A)	ecl-batch-editorial
+hmenu.6d4a677e6760	석영 덩어리(C)	ecl-batch-editorial
+hmenu.6d6125cc4538	묻기(A)	ecl-batch-editorial
+hmenu.6dab0ac571c7	우주 공항 위치:	ecl-batch-editorial
+hmenu.6dc21afe4ede	중독(P)	ecl-batch-editorial
+hmenu.6df1bb18a59a	기술(S)	ecl-batch-editorial
+hmenu.6e10953f3e4c	열기(O)	ecl-batch-editorial
+hmenu.6e31a0bd32b4	설정됨!	ecl-batch-editorial
+hmenu.6e3566599b3b	경험치가 부족하다	ecl-batch-editorial
+hmenu.6e7d50e84f47	결과(R)	ecl-batch-editorial
+hmenu.6e9bbe8d40ed	하지만 이곳에 돈을 조금 두고 왔다	ecl-batch-editorial
+hmenu.6ea21679a602	칼리하리(K)	ecl-batch-editorial
+hmenu.6ecc3df6bffd	이동(M)	ecl-batch-editorial
+hmenu.6efcbfb1f9f1	만났다	ecl-batch-editorial
+hmenu.6f13af18f24c	벅을 만나기 전까지 내 삶은 공허했어!	ecl-batch-editorial
+hmenu.6f38c22d242e	은(는) 중상을 입었다.	ecl-batch-editorial
+hmenu.6f5a5c61ccdb	피해	ecl-batch-editorial
+hmenu.6f6465f9dd06	충분히	ecl-batch-editorial
+hmenu.6f9e89b67d77	기절한(S)	ecl-batch-editorial
+hmenu.6fc540dd651a	개구리(F)	ecl-batch-editorial
+hmenu.6fe7d7112caa	악(B)	ecl-batch-editorial
+hmenu.6fecf9081bd5	제어(C)	ecl-batch-editorial
+hmenu.700ceab2be74	마우스 켬	ecl-batch-editorial
+hmenu.701f73320451	팀이 발견했다:	ecl-batch-editorial
+hmenu.703ac39b5b60	나무 조각품(W)	ecl-batch-editorial
+hmenu.7058347859ce	강당(L)	ecl-batch-editorial
+hmenu.7062520c5a0e	운전	ecl-batch-editorial
+hmenu.7067d9392f2c	수색 완료	ecl-batch-editorial
+hmenu.709c88e3d9ac	축하합니다. 팀이 경험치를 얻었습니다!	ecl-batch-editorial
+hmenu.70ce871f8a3d	기록	ecl-batch-editorial
+hmenu.70f6dd1dbfe4	은(는) 들이받기를 시도한다!	ecl-batch-editorial
+hmenu.70f6df1a9164	DOS로 나가기(Q)	ecl-batch-editorial
+hmenu.710f3c40640c	문 위에 홀로그램이 떠오른다	ecl-batch-editorial
+hmenu.713166971d73	지휘(C)	ecl-batch-editorial
+hmenu.71437a4a6487	행성학(P)	ecl-batch-editorial
+hmenu.7175517a370b	또는	ecl-batch-editorial
+hmenu.718c2cabfad7	승선 부대 공격(A)	ecl-batch-editorial
+hmenu.71b4f3a3748c	통신	ecl-batch-editorial
+hmenu.71fb84c3ed68	탈영병(D)	ecl-batch-editorial
+hmenu.7211e88dfa0c	은(는) 꿈에서 깨어나 보니	ecl-batch-editorial
+hmenu.7214aeb16e99	전문화(S)	ecl-batch-editorial
+hmenu.724373c6fc3e	임시 수리(J)	ecl-batch-editorial
+hmenu.7246a0702997	전문화	ecl-batch-editorial
+hmenu.72489b9c5172	계단 오르기(C)	ecl-batch-editorial
+hmenu.729bb48d0f86	기관부(E)	ecl-batch-editorial
+hmenu.72a4f4b12601	조각품(C)	ecl-batch-editorial
+hmenu.72d567c59a54	화성인(M)	ecl-batch-editorial
+hmenu.72f5a9907af4	누구와 거래?	ecl-batch-editorial
+hmenu.73134ce12829	종족(R)	ecl-batch-editorial
+hmenu.7313f57bf6d1	점의 경험치를 얻는다.	ecl-batch-editorial
+hmenu.732863fa5c61	직업(C)	ecl-batch-editorial
+hmenu.733a7885c841	캐릭터 수정	ecl-batch-editorial
+hmenu.735b64972b07	확인  다른 디스크로 시도	ecl-batch-editorial
+hmenu.736c6c9e4924	무력(H)	ecl-batch-editorial
+hmenu.73912999faf4	이전(P)	ecl-batch-editorial
+hmenu.73aacaa0a21a	마우스 끔	ecl-batch-editorial
+hmenu.741e8c5450cd	센서(S)	ecl-batch-editorial
+hmenu.7428b2c52841	한숨	ecl-batch-editorial
+hmenu.74723f182aa9	수류탄(G)	ecl-batch-editorial
+hmenu.749ab2c0d06c	무엇	ecl-batch-editorial
+hmenu.7522d0cfe10e	해독제	ecl-batch-editorial
+hmenu.752da0462acf	팀이 도망쳤다.	ecl-batch-editorial
+hmenu.753cdb88284c	코로나(C)	ecl-batch-editorial
+hmenu.754a7b453d97	중독됐다	ecl-batch-editorial
+hmenu.75857a458999	에서	ecl-batch-editorial
+hmenu.75a4c2fe3b9e	비행 중(F)	ecl-batch-editorial
+hmenu.75d81bf92b81	통신 조작(C)	ecl-batch-editorial
+hmenu.75df831258f0	함선 캐릭터(S)	ecl-batch-editorial
+hmenu.75f7796df131	나무(W)	ecl-batch-editorial
+hmenu.76140e34f635	센서(S)	ecl-batch-editorial
+hmenu.762069bc07a6	밖	ecl-batch-editorial
+hmenu.762c550a6e42	호흡(B)	ecl-batch-editorial
+hmenu.764ef1bd886c	보안 우회(B)	ecl-batch-editorial
+hmenu.7692c3ad3540	하나	ecl-batch-editorial
+hmenu.76d92e470a5a	부상이 성공적으로 치료됐다	ecl-batch-editorial
+hmenu.76e11af94d35	충돌(R)	ecl-batch-editorial
+hmenu.76ed42d22129	컴퓨터(C)	ecl-batch-editorial
+hmenu.76f75e6129fe	잃었다	ecl-batch-editorial
+hmenu.76fcc8ae33d9	그리고 성공한다!	ecl-batch-editorial
+hmenu.7721a1e68b99	보안 출입구(S)	ecl-batch-editorial
+hmenu.7731f2944115	뉴 엘리시움(N)	ecl-batch-editorial
+hmenu.7755fd116d03	핵 엔진 수리(R)	ecl-batch-editorial
+hmenu.7786e60e45d6	찾기(F)	ecl-batch-editorial
+hmenu.77aaf105c28c	대기실(W)	ecl-batch-editorial
+hmenu.77bc06c55d29	어느	ecl-batch-editorial
+hmenu.77cba79f493d	일반 기술(G)	ecl-batch-editorial
+hmenu.77deabe238de	점수(P)	ecl-batch-editorial
+hmenu.77e86824b1bc	일지(L)	ecl-batch-editorial
+hmenu.784109ed21a6	피한다	ecl-batch-editorial
+hmenu.7879eb29f5ce	위협(I)	ecl-batch-editorial
+hmenu.789cfd0bd0f4	금성(V)	ecl-batch-editorial
+hmenu.78ab57d6ca68	사망(K)	ecl-batch-editorial
+hmenu.78d7dee640e3	하트(H)	ecl-batch-editorial
+hmenu.78e75a25d809	걸음(S)	ecl-batch-editorial
+hmenu.78ea5ef30f1e	지능(I)	ecl-batch-editorial
+hmenu.790cef75fd00	센서가	ecl-batch-editorial
+hmenu.793f1598e130	몫 받기(T)	ecl-batch-editorial
+hmenu.79631cb1b7b6	공황	ecl-batch-editorial
+hmenu.79c721a6b39f	목 축이는 방(W)	ecl-batch-editorial
+hmenu.79d405dcc3cc	수성(M)	ecl-batch-editorial
+hmenu.79e64dbd95d1	해독제 사용 대상	ecl-batch-editorial
+hmenu.7a3a94a8ca22	취소(A)	ecl-batch-editorial
+hmenu.7a62e3ac3d7c	연구소(L)	ecl-batch-editorial
+hmenu.7abc6c23cb25	릭의(R)	ecl-batch-editorial
+hmenu.7abee2d3cae7	스턴건(S)	ecl-batch-editorial
+hmenu.7ae22a60d86a	기절한	ecl-batch-editorial
+hmenu.7b18fb03292e	감시(W)	ecl-batch-editorial
+hmenu.7b355cdf217c	일지 페이지:	ecl-batch-editorial
+hmenu.7b539a10ff11	엔지니어(T)	ecl-batch-editorial
+hmenu.7b6cdda4f2c9	침묵(R)	ecl-batch-editorial
+hmenu.7ba6b35fe117	은(는) 가치가 없다. 어떻게 하겠습니까?	ecl-batch-editorial
+hmenu.7bce5b949512	질병(D)	ecl-batch-editorial
+hmenu.7becc6bbbf91	캐릭터 삭제	ecl-batch-editorial
+hmenu.7bfe2866a26e	맨 왼쪽 위 끝으로	ecl-batch-editorial
+hmenu.7c3ecffbd956	제트팩 사용함(U)	ecl-batch-editorial
+hmenu.7c6b1126bb56	파괴됨!	ecl-batch-editorial
+hmenu.7c6cfd76225a	준비 행동	ecl-batch-editorial
+hmenu.7cf6b0597fe4	일격	ecl-batch-editorial
+hmenu.7d0399be0954	일지를 획득했다	ecl-batch-editorial
+hmenu.7d3031eaed76	함선 수리 중(R)	ecl-batch-editorial
+hmenu.7d482f6c96d1	오시리스(O)	ecl-batch-editorial
+hmenu.7d8a1a58ce31	에어록(A)	ecl-batch-editorial
+hmenu.7d9eb7acb13e	닫기(C)	ecl-batch-editorial
+hmenu.7dd9b52819c4	우주 항법(A)	ecl-batch-editorial
+hmenu.7de46c972f04	건강 기술(C)	ecl-batch-editorial
+hmenu.7df0f3202d92	초보(N)	ecl-batch-editorial
+hmenu.7e56db773495	획득(T)	ecl-batch-editorial
+hmenu.7f4a1e5bff2d	요리(C)	ecl-batch-editorial
+hmenu.7f84c8c9be1e	우회(B)	ecl-batch-editorial
+hmenu.7fbb406c089a	종족 보정(R)	ecl-batch-editorial
+hmenu.7ffbeb7f1164	저장한 게임 불러오기	ecl-batch-editorial
+hmenu.7ffdf7044b5f	디스크 6을 넣어 주십시오: 드라이브	ecl-batch-editorial
+hmenu.8018d9d982ae	자신(S)	ecl-batch-editorial
+hmenu.8044aae1f868	얼마나	ecl-batch-editorial
+hmenu.80e3cec3a43e	디스크 4를 넣어 주십시오: 드라이브	ecl-batch-editorial
+hmenu.80f3dbad9ba9	무기.	ecl-batch-editorial
+hmenu.80f914c02446	기관부(E)	ecl-batch-editorial
+hmenu.811e30515d02	부수기(S)	ecl-batch-editorial
+hmenu.81283bd63766	무기 선택	ecl-batch-editorial
+hmenu.81551f85ef24	디스크 2를 넣어 주십시오: 드라이브	ecl-batch-editorial
+hmenu.817708232072	우주 정거장(S)	ecl-batch-editorial
+hmenu.81a20cbfaa2c	은(는) 기절했다!	ecl-batch-editorial
+hmenu.81ba27a08ecf	가방 두고 가기(L)	ecl-batch-editorial
+hmenu.81d28f28ad04	맛보기(T)	ecl-batch-editorial
+hmenu.81f5f5515e67	바(B)	ecl-batch-editorial
+hmenu.8215b59ccb28	엔진(E)	ecl-batch-editorial
+hmenu.82337888d764	탄창(C)	ecl-batch-editorial
+hmenu.824c127d7d92	카드(C)	ecl-batch-editorial
+hmenu.8270c57d74c0	센서(S)	ecl-batch-editorial
+hmenu.82745f8e4a6a	유인원 이빨 목걸이(A)	ecl-batch-editorial
+hmenu.8302496de0ac	생존술(S)	ecl-batch-editorial
+hmenu.831a9d52a9c3	선택(P)	ecl-batch-editorial
+hmenu.834459084c92	지혜(W)	ecl-batch-editorial
+hmenu.835043ec8e6b	환자(P)	ecl-batch-editorial
+hmenu.8354aace85df	그것?	ecl-batch-editorial
+hmenu.83e3b78f14e0	기술	ecl-batch-editorial
+hmenu.83fd89ac0e8d	홀로그램(H)	ecl-batch-editorial
+hmenu.84088805e145	지형	ecl-batch-editorial
+hmenu.842ca2e61c0e	빅의 레스토랑(V)	ecl-batch-editorial
+hmenu.842fcb5e6098	누르십시오	ecl-batch-editorial
+hmenu.843ac01149cc	확인(O)	ecl-batch-editorial
+hmenu.846e26d154ce	나이프(K)	ecl-batch-editorial
+hmenu.8488bd3d9943	엄폐(T)	ecl-batch-editorial
+hmenu.84a339c7021e	이전(P) 다음(N)	ecl-batch-editorial
+hmenu.84f429ee18f9	남았다.	ecl-batch-editorial
+hmenu.853916b1dbc2	이미	ecl-batch-editorial
+hmenu.85446beb32e1	돌아가서 돈을 되찾겠습니까?	ecl-batch-editorial
+hmenu.856b3c961811	팀이 전멸했다.	ecl-batch-editorial
+hmenu.859beb42adfe	건저러스(G)	ecl-batch-editorial
+hmenu.85a39ab345d6	예(Y)	ecl-batch-editorial
+hmenu.85d6c0718cfe	시도(T)	ecl-batch-editorial
+hmenu.85fbcc839446	훈련을 받겠습니까?	ecl-batch-editorial
+hmenu.865514682d01	선행 조건(P)	ecl-batch-editorial
+hmenu.8656aa55d393	원한다	ecl-batch-editorial
+hmenu.866cd8f3bf14	계획(P)	ecl-batch-editorial
+hmenu.86a9ab944855	대기실(W)	ecl-batch-editorial
+hmenu.86e1e1a33388	로켓 조종사(R)	ecl-batch-editorial
+hmenu.86f56fe8221f	경고(W)	ecl-batch-editorial
+hmenu.871c7f990798	겁먹음(S)	ecl-batch-editorial
+hmenu.87d1c61845d3	빗나간다	ecl-batch-editorial
+hmenu.87f8690f69f4	입금(D)	ecl-batch-editorial
+hmenu.87ff200d1bca	은(는) 후퇴 중이다.	ecl-batch-editorial
+hmenu.88322eb3b3d1	은(는) 열람 제한 파일을 본다:	ecl-batch-editorial
+hmenu.884b4662e54d	말 걸기(A)	ecl-batch-editorial
+hmenu.8910d4ec62d7	남아 있다.	ecl-batch-editorial
+hmenu.893621119204	충돌!	ecl-batch-editorial
+hmenu.89379ad509c4	목표 보기(T)	ecl-batch-editorial
+hmenu.89b7505ad79a	직업	ecl-batch-editorial
+hmenu.89b8fed9f55d	WALLDEF에서	ecl-batch-editorial
+hmenu.89ef2e220032	예약됨(R)	ecl-batch-editorial
+hmenu.8a14bf1eaef2	추가(A) 감소(S)	ecl-batch-editorial
+hmenu.8a1db462be75	정찰(S)	ecl-batch-editorial
+hmenu.8a2cc0673b1c	폭파(D)	ecl-batch-editorial
+hmenu.8a2da5e08b13	이들의 모습이	ecl-batch-editorial
+hmenu.8a64ff09886c	최대치	ecl-batch-editorial
+hmenu.8a6bdb6b18da	로드(L)	ecl-batch-editorial
+hmenu.8a7cd9760cdc	지상 차량 운전	ecl-batch-editorial
+hmenu.8aa318eb7eaa	삽입(I)	ecl-batch-editorial
+hmenu.8aa9d2bbcf96	주노(J)	ecl-batch-editorial
+hmenu.8b0e986a9019	프랑스어 가능(I)	ecl-batch-editorial
+hmenu.8b4fbece28c8	식별(I)	ecl-batch-editorial
+hmenu.8b7853ad6235	컴퓨터 수리(R)	ecl-batch-editorial
+hmenu.8b862ba45dce	획득(T)	ecl-batch-editorial
+hmenu.8ba5e843ce8a	조이스틱. 보정을 중단한다	ecl-batch-editorial
+hmenu.8bca739fc1ac	안도한다.	ecl-batch-editorial
+hmenu.8bd26a907ea5	가치가 없다. 버리겠습니까?	ecl-batch-editorial
+hmenu.8c167fcb444f	여객선	ecl-batch-editorial
+hmenu.8c2669007275	하겠습니까	ecl-batch-editorial
+hmenu.8c482cd3cba7	무기(W)	ecl-batch-editorial
+hmenu.8c6fb1e9e37a	아래	ecl-batch-editorial
+hmenu.8cbd7680774e	통신(C)	ecl-batch-editorial
+hmenu.8cbf3da115f1	팀원	ecl-batch-editorial
+hmenu.8d0288f434f2	다음에 오는	ecl-batch-editorial
+hmenu.8d35c5546d3d	그들	ecl-batch-editorial
+hmenu.8d5ebd1c930f	빠름(F)	ecl-batch-editorial
+hmenu.8d87a8fc5a16	지혜 기술(W)	ecl-batch-editorial
+hmenu.8da078cc2a03	가속도	ecl-batch-editorial
+hmenu.8de8684287c8	매우	ecl-batch-editorial
+hmenu.8e75ebbdb215	엔진(E)	ecl-batch-editorial
+hmenu.8e7fc0236af4	그것	ecl-batch-editorial
+hmenu.8e8b57f40112	열기(O)	ecl-batch-editorial
+hmenu.8ea3f075500c	팔라스(P)	ecl-batch-editorial
+hmenu.8eb9369aed3f	기수(R)	ecl-batch-editorial
+hmenu.8ed9a61e8db6	사용자는 NUMLOCK이 켜져 있는지 확인하십시오.	ecl-batch-editorial
+hmenu.8f1913f50e8a	바늘(N)	ecl-batch-editorial
+hmenu.8f20a99eae52	대위의 모습이	ecl-batch-editorial
+hmenu.8f30c6936aa0	핫스폿 무기점(H)	ecl-batch-editorial
+hmenu.8f358f38bcdb	잔류(S)	ecl-batch-editorial
+hmenu.8f6fb4eb7f42	보안(S)	ecl-batch-editorial
+hmenu.8fb3cda2303d	은(는) 무기로 공격한다:	ecl-batch-editorial
+hmenu.8ff026a37d68	무엇	ecl-batch-editorial
+hmenu.900919572345	동전 잡기(G)	ecl-batch-editorial
+hmenu.901b85a88585	은(는) 중독되었다	ecl-batch-editorial
+hmenu.907778863957	조종사.	ecl-batch-editorial
+hmenu.9083251aa54c	경비실(S)	ecl-batch-editorial
+hmenu.908aec4512d8	쓰러짐	ecl-batch-editorial
+hmenu.90920d93e2c7	프로그램(P)	ecl-batch-editorial
+hmenu.9092bec2ae88	거절(R)	ecl-batch-editorial
+hmenu.909acc322d01	불태운다:	ecl-batch-editorial
+hmenu.909cb81127c5	책(B)	ecl-batch-editorial
+hmenu.90bbc8c93017	질주 중(S)	ecl-batch-editorial
+hmenu.90ed8d6dfde6	갑판(D)	ecl-batch-editorial
+hmenu.910adfb42464	이었다	ecl-batch-editorial
+hmenu.911cb64a57ed	탈출 포드 관제 센터(P)	ecl-batch-editorial
+hmenu.913a4cb91be2	지우기	ecl-batch-editorial
+hmenu.913f2664aecf	할 수 없다	ecl-batch-editorial
+hmenu.9150c74c5f92	보유	ecl-batch-editorial
+hmenu.9187cc2ac5a3	엔진	ecl-batch-editorial
+hmenu.918c1fefcaa1	크레딧을 얼마나 주겠습니까?	ecl-batch-editorial
+hmenu.920e413c7d41	상태(S)	ecl-batch-editorial
+hmenu.923fe53966c6	항목	ecl-batch-editorial
+hmenu.927d9417bc11	부상	ecl-batch-editorial
+hmenu.92df7fecbb34	커틀러스(C)	ecl-batch-editorial
+hmenu.92fd746751de	혼수상태(C)	ecl-batch-editorial
+hmenu.931c04975068	문(D)	ecl-batch-editorial
+hmenu.93331741a799	몬스터를 불러올 수 없다	ecl-batch-editorial
+hmenu.93680b26ad70	UDU의 카페(U)	ecl-batch-editorial
+hmenu.937223b7a35b	채프(C)	ecl-batch-editorial
+hmenu.9390298f3fb0	없는	ecl-batch-editorial
+hmenu.941be93c92ae	알겠습니다. 제가 재활용하겠습니다.	ecl-batch-editorial
+hmenu.943989dfaff5	중단 중	ecl-batch-editorial
+hmenu.9444f216899d	회피(D)	ecl-batch-editorial
+hmenu.945df98629e6	금속(M)	ecl-batch-editorial
+hmenu.94913824c293	바이퍼(V)	ecl-batch-editorial
+hmenu.94be0417569f	그 무기로는 할 수 없다	ecl-batch-editorial
+hmenu.94d8fe2cffbe	레이저	ecl-batch-editorial
+hmenu.94e8566ddfc1	여전히	ecl-batch-editorial
+hmenu.9525174e9097	현재 위치:	ecl-batch-editorial
+hmenu.95361812b54e	은(는) 회피	ecl-batch-editorial
+hmenu.95722ac83cf7	들이받기 성공!	ecl-batch-editorial
+hmenu.95832d038fbf	주요(M)	ecl-batch-editorial
+hmenu.95a0c6cfd7d2	이(가) 선택되었다	ecl-batch-editorial
+hmenu.95d09b6231e6	보인다	ecl-batch-editorial
+hmenu.9612769f08f0	이륙(L)	ecl-batch-editorial
+hmenu.961eb4369973	한다	ecl-batch-editorial
+hmenu.964c6bc07bca	치료됨	ecl-batch-editorial
+hmenu.965701cd196f	오토바이(M)	ecl-batch-editorial
+hmenu.967ed00666b9	친해지기(B)	ecl-batch-editorial
+hmenu.96916c881d59	문 위의 표지판에 적혀 있다:	ecl-batch-editorial
+hmenu.96afc08178dc	현혹(D)	ecl-batch-editorial
+hmenu.96d5c140cba4	실례지만 돈을 좀 두고 가셨습니다	ecl-batch-editorial
+hmenu.9708639fd47c	줍기(P)	ecl-batch-editorial
+hmenu.9709653fc80c	거래(T)	ecl-batch-editorial
+hmenu.978354db0c00	목표(T)	ecl-batch-editorial
+hmenu.98289e6f44fe	비상시에만 사용	ecl-batch-editorial
+hmenu.986cb43a3c92	디스크 3을 넣어 주십시오: 드라이브	ecl-batch-editorial
+hmenu.987239cc51ab	은(는) 재장전한다:	ecl-batch-editorial
+hmenu.987c54bd7d63	예절(E)	ecl-batch-editorial
+hmenu.989465879e4d	쪽, 소제목	ecl-batch-editorial
+hmenu.98ca5f27d964	오르기(C)	ecl-batch-editorial
+hmenu.9902b04e8de0	순찰대(P)	ecl-batch-editorial
+hmenu.9910e21a71db	은(는) 미사일 무기가 없다	ecl-batch-editorial
+hmenu.992a93455c71	수리됨	ecl-batch-editorial
+hmenu.993fb1fb1f8a	점수(P) 보너스(B) 합계(T)	ecl-batch-editorial
+hmenu.9987f2e1cff2	수류탄(G)	ecl-batch-editorial
+hmenu.9a1d64ecd80a	홀로그램 초상관(H)	ecl-batch-editorial
+hmenu.9a37ae78d4e4	백작(C)	ecl-batch-editorial
+hmenu.9a7a3cbacdea	점의 피해	ecl-batch-editorial
+hmenu.9aa92483b198	프랑스어(F)	ecl-batch-editorial
+hmenu.9aad740b15f2	애시디슘(A)	ecl-batch-editorial
+hmenu.9ac247ac404e	점의 피해.	ecl-batch-editorial
+hmenu.9acf15a8c65a	조용히(S)	ecl-batch-editorial
+hmenu.9ad34a423584	탈론의 기지(T)	ecl-batch-editorial
+hmenu.9ae5a4479a81	저장할 수 없다. 이 디스크에 공간이 없다.	ecl-batch-editorial
+hmenu.9af0ff0f58a4	사무실(O)	ecl-batch-editorial
+hmenu.9af45e4d0f77	톤	ecl-batch-editorial
+hmenu.9affff0f9bb3	가치	ecl-batch-editorial
+hmenu.9b0e2ae93d55	차(T)	ecl-batch-editorial
+hmenu.9b1f3333d574	휴식한다.	ecl-batch-editorial
+hmenu.9b202ecbc6d4	우리	ecl-batch-editorial
+hmenu.9b86720175e0	스마트 슈트(S)	ecl-batch-editorial
+hmenu.9b9a8d05a7ec	읽기(R)	ecl-batch-editorial
+hmenu.9c0c2a78300d	순양함	ecl-batch-editorial
+hmenu.9c30cb4bfc00	적함이 파괴되었다.	ecl-batch-editorial
+hmenu.9c53c074d7ac	기술	ecl-batch-editorial
+hmenu.9c9c9149fd63	핫(H)	ecl-batch-editorial
+hmenu.9ca0ea108894	개의 새 기술을 더 익힐 수 있는 이번	ecl-batch-editorial
+hmenu.9cc673ad8beb	분배(D)	ecl-batch-editorial
+hmenu.9cf8321c423e	적이 일부 시스템을 임시 수리한다.	ecl-batch-editorial
+hmenu.9cff331d6699	파괴됨	ecl-batch-editorial
+hmenu.9d1aae1b4ddc	기능(F)	ecl-batch-editorial
+hmenu.9d328997de3d	도움(A)	ecl-batch-editorial
+hmenu.9dc298149180	방(C)	ecl-batch-editorial
+hmenu.9e237ad14698	시스템.	ecl-batch-editorial
+hmenu.9e6ac09e7190	초콜릿(C)	ecl-batch-editorial
+hmenu.9e6b3924f7e7	당신의	ecl-batch-editorial
+hmenu.9e732f1759fc	내려가기(D)	ecl-batch-editorial
+hmenu.9e95e3fba198	점.	ecl-batch-editorial
+hmenu.9e9f23ca031c	버튼(B)	ecl-batch-editorial
+hmenu.9ed6c2932fd8	데르비시(D)	ecl-batch-editorial
+hmenu.9f092151ee9e	파괴(D)	ecl-batch-editorial
+hmenu.9f2baf225bf2	심문하기(I)	ecl-batch-editorial
+hmenu.9f49fadb6a86	빠름(Q)	ecl-batch-editorial
+hmenu.9f4d6b987fe6	음파(S)	ecl-batch-editorial
+hmenu.9f74a631e52a	불태운다	ecl-batch-editorial
+hmenu.9fd728c66c9a	추가(A)	ecl-batch-editorial
+hmenu.9fdd87c0823f	경형 수송선(L)	ecl-batch-editorial
+hmenu.9ff1248f6b72	은(는) 혼수상태에 빠졌다!	ecl-batch-editorial
+hmenu.a04619c0c964	애니(A)	ecl-batch-editorial
+hmenu.a04630ef8bc3	성별(G)	ecl-batch-editorial
+hmenu.a04f274bcce6	정직(H)	ecl-batch-editorial
+hmenu.a09e21047e0c	기동 중(M)	ecl-batch-editorial
+hmenu.a0a6ca091c70	화성(M)	ecl-batch-editorial
+hmenu.a0ac42731f52	선행 조건이 충족되지 않았다	ecl-batch-editorial
+hmenu.a0ad5125a441	말재주(F)	ecl-batch-editorial
+hmenu.a0cf4836fe5b	청구(C)	ecl-batch-editorial
+hmenu.a0d4a6737a54	당신	ecl-batch-editorial
+hmenu.a0dcd86ca390	회전(T)	ecl-batch-editorial
+hmenu.a0de5719f595	관찰(L)	ecl-batch-editorial
+hmenu.a0f949497a74	가기(G)	ecl-batch-editorial
+hmenu.a143956a4ab4	훈련합니까?	ecl-batch-editorial
+hmenu.a18603086e5b	지원	ecl-batch-editorial
+hmenu.a18b869b2e81	가득 참	ecl-batch-editorial
+hmenu.a1a8a8cbbed4	둘(T)	ecl-batch-editorial
+hmenu.a204943256ea	당신의	ecl-batch-editorial
+hmenu.a23d2d16a08e	산성 개구리와 친해지기(B)	ecl-batch-editorial
+hmenu.a23f0db1c70d	맞습니까?	ecl-batch-editorial
+hmenu.a24e10fde71a	사용 중:	ecl-batch-editorial
+hmenu.a25513c7e0f6	U	ecl-batch-editorial
+hmenu.a26d873b3d51	디스크 A는 쓰기 방지 상태이면 안 됩니다.	ecl-batch-editorial
+hmenu.a27902f10b70	대형 지상 차량 운전(D)	ecl-batch-editorial
+hmenu.a2aef3d69199	제트팩(J)	ecl-batch-editorial
+hmenu.a2d4a82d98d6	임시 수리	ecl-batch-editorial
+hmenu.a2eefbcb6bbe	전기(E)	ecl-batch-editorial
+hmenu.a32876c61f8f	빈사 상태	ecl-batch-editorial
+hmenu.a34e7f7f299d	도망(F)	ecl-batch-editorial
+hmenu.a35abcd6dac9	그림(I)	ecl-batch-editorial
+hmenu.a390d0c9d0db	무기(W)	ecl-batch-editorial
+hmenu.a3b142af6e97	사용	ecl-batch-editorial
+hmenu.a3c6a0e36a49	도주 성공(G)	ecl-batch-editorial
+hmenu.a3d3db2aa2f6	만족(P)	ecl-batch-editorial
+hmenu.a3e5514bcfd7	그	ecl-batch-editorial
+hmenu.a3f461e6fad2	주스(J)	ecl-batch-editorial
+hmenu.a4076e68ddda	할 수 없다	ecl-batch-editorial
+hmenu.a42b8352b4c7	지원(S)	ecl-batch-editorial
+hmenu.a467da82da54	고수(A)	ecl-batch-editorial
+hmenu.a4aa6a3d22b4	어느	ecl-batch-editorial
+hmenu.a4d9c62a66cc	출구 선택(S)	ecl-batch-editorial
+hmenu.a4da3f4fffd1	제인(Z)	ecl-batch-editorial
+hmenu.a5065984fd53	맨 오른쪽 아래 끝으로 밀고	ecl-batch-editorial
+hmenu.a5075550e1f2	치료	ecl-batch-editorial
+hmenu.a510222fe5f1	합니까?	ecl-batch-editorial
+hmenu.a52ace420f21	전체(A)	ecl-batch-editorial
+hmenu.a592855d0508	방어구(A)	ecl-batch-editorial
+hmenu.a5add1365529	피트	ecl-batch-editorial
+hmenu.a5b892799b0e	일지	ecl-batch-editorial
+hmenu.a5ba62902e7f	처리 중	ecl-batch-editorial
+hmenu.a5cdf07dbbc1	차량(C)	ecl-batch-editorial
+hmenu.a5d1898b1d7c	통신(C)	ecl-batch-editorial
+hmenu.a5d8a91e751c	응시(G)	ecl-batch-editorial
+hmenu.a628d0e473bf	조사 결과(F)	ecl-batch-editorial
+hmenu.a646250fde5e	빔 레이저(B)	ecl-batch-editorial
+hmenu.a688d83ae858	본부(H)	ecl-batch-editorial
+hmenu.a69403506845	이탈하는 동안	ecl-batch-editorial
+hmenu.a6b46dd0d1ae	일부	ecl-batch-editorial
+hmenu.a73614e57f23	희귀(R)	ecl-batch-editorial
+hmenu.a73ad97290b7	RAM 정찰함(R)	ecl-batch-editorial
+hmenu.a768e1003362	은(는) 받았다:	ecl-batch-editorial
+hmenu.a7937b64b8ca	첫 번째	ecl-batch-editorial
+hmenu.a79d75e5e0b6	생명 유지 장치 수리(R)	ecl-batch-editorial
+hmenu.a7de9bc2c24b	점의 피해!	ecl-batch-editorial
+hmenu.a7fc7b600201	저장 디스크가 들어 있는 드라이브	ecl-batch-editorial
+hmenu.a80f942f4112	연료(F)	ecl-batch-editorial
+hmenu.a8fc5b04bd6d	질병 치료(T)	ecl-batch-editorial
+hmenu.a8fcb37f4ae5	입었다.	ecl-batch-editorial
+hmenu.a94d5f0cee11	저장한 게임에서	ecl-batch-editorial
+hmenu.a95140d02db9	은(는) 죽는다	ecl-batch-editorial
+hmenu.a9563697877e	은(는) 구입한다:	ecl-batch-editorial
+hmenu.a978e21c3754	의료(M)	ecl-batch-editorial
+hmenu.aa16f41a608e	그래도 합니까?	ecl-batch-editorial
+hmenu.aa33996d60e8	진짜	ecl-batch-editorial
+hmenu.aaf4a1aa8624	릭의 라운지(R)	ecl-batch-editorial
+hmenu.aafdf5b5f2dc	은(는) 탄다:	ecl-batch-editorial
+hmenu.ab2cc833ed40	화학(C)	ecl-batch-editorial
+hmenu.ab2defcabf86	오토바이 운전(D)	ecl-batch-editorial
+hmenu.ab52c2138881	팀원(T)	ecl-batch-editorial
+hmenu.ab741ba7a7a6	캐릭터 보기(V)	ecl-batch-editorial
+hmenu.ab7a580a315c	함선	ecl-batch-editorial
+hmenu.ab9e574dc207	어떻게 하겠습니까?	ecl-batch-editorial
+hmenu.abcf0f136c1e	베테랑(V)	ecl-batch-editorial
+hmenu.abea56ac6750	센서(S)	ecl-batch-editorial
+hmenu.abf53d10ebc7	포로(C)	ecl-batch-editorial
+hmenu.ac0b52a2ae6e	하다	ecl-batch-editorial
+hmenu.ac20a57bfde0	은신(H)	ecl-batch-editorial
+hmenu.ac41a0e914dc	열쇠고리를 획득했다	ecl-batch-editorial
+hmenu.ac461667a825	새 캐릭터 만들기	ecl-batch-editorial
+hmenu.ac9086b1c4be	핵(N)	ecl-batch-editorial
+hmenu.aca43afefcfb	파보니스 펍(P)	ecl-batch-editorial
+hmenu.acba25512100	실행	ecl-batch-editorial
+hmenu.acbe4bfc77e5	연료	ecl-batch-editorial
+hmenu.acf82993e1bc	서스펜션(S)	ecl-batch-editorial
+hmenu.acfc6fd1a811	받습니까?	ecl-batch-editorial
+hmenu.acfe1fecda8b	판정	ecl-batch-editorial
+hmenu.ad1096e9f7c3	암기(M)	ecl-batch-editorial
+hmenu.ad194452723f	맨 오른쪽 아래 끝으로	ecl-batch-editorial
+hmenu.ad5aabc97d88	존재한다	ecl-batch-editorial
+hmenu.ad8085924cb7	여덟 번째	ecl-batch-editorial
+hmenu.ad9fa94f2a8d	수정할 수 없다.	ecl-batch-editorial
+hmenu.adb296fac2e0	파괴되었다.	ecl-batch-editorial
+hmenu.adba2f021140	노(N)	ecl-batch-editorial
+hmenu.ae115b3b9a02	맛보기(T)	ecl-batch-editorial
+hmenu.ae448ac86c4e	다른	ecl-batch-editorial
+hmenu.ae599b011b94	전술	ecl-batch-editorial
+hmenu.ae5eebff12dd	산성	ecl-batch-editorial
+hmenu.ae7d8dfac9ff	사용됨(U)	ecl-batch-editorial
+hmenu.ae92b5f2244e	폭발.	ecl-batch-editorial
+hmenu.ae9adfcb6d57	상점(S)	ecl-batch-editorial
+hmenu.aea1058d135f	생물학(B)	ecl-batch-editorial
+hmenu.aea4c338624a	구입(B) 판매(S) 탄약(A) 보기(V) 자금 합산(P)	ecl-batch-editorial
+hmenu.aee610558292	위쪽	ecl-batch-editorial
+hmenu.aef450dc78ea	이끈다	ecl-batch-editorial
+hmenu.af2079281d18	조이스틱을 읽을 수 없다. 보정을 중단한다	ecl-batch-editorial
+hmenu.af24f787ee25	술집(S)	ecl-batch-editorial
+hmenu.af4ae1febfb8	홀(H)	ecl-batch-editorial
+hmenu.af93da41d026	권총(P)	ecl-batch-editorial
+hmenu.afe773e42fa0	사용 중(U)	ecl-batch-editorial
+hmenu.b00aaad1f822	팀이 승리했다.	ecl-batch-editorial
+hmenu.b0467a3612ef	금성의 뉴 엘리시움 우주 공항	ecl-batch-editorial
+hmenu.b0537b978fef	스캔한다:	ecl-batch-editorial
+hmenu.b0685c917b72	민첩 기술(D)	ecl-batch-editorial
+hmenu.b0b21f129832	현재 게임 저장(S)	ecl-batch-editorial
+hmenu.b0b3678b4c63	의 피해	ecl-batch-editorial
+hmenu.b0b9fe24ffa9	설명서(M)	ecl-batch-editorial
+hmenu.b0f82822456b	조이스틱/마우스 초기화	ecl-batch-editorial
+hmenu.b127181e3d1d	UDU의(U)	ecl-batch-editorial
+hmenu.b194d92018d6	메시지(M)	ecl-batch-editorial
+hmenu.b1b8a4720ac3	철수(W)	ecl-batch-editorial
+hmenu.b1ba3a0bb969	잠행(M)	ecl-batch-editorial
+hmenu.b1d6b91b67c2	에서	ecl-batch-editorial
+hmenu.b1e99324505b	세 번째	ecl-batch-editorial
+hmenu.b2091d273986	우주 여객선(S)	ecl-batch-editorial
+hmenu.b20bdd3fa3ef	마스터이니 DISKCOPY로 만	ecl-batch-editorial
+hmenu.b21f699ae595	발사(F) 목표(T)	ecl-batch-editorial
+hmenu.b238f962a37f	후퇴(R)	ecl-batch-editorial
+hmenu.b24963ea2cbc	덮어쓰기(O)	ecl-batch-editorial
+hmenu.b24d6d33736e	준비	ecl-batch-editorial
+hmenu.b271f1ca96c2	버리겠습니까?	ecl-batch-editorial
+hmenu.b28f26dbb733	야금학(M)	ecl-batch-editorial
+hmenu.b2bc18c3ebd1	쓰기 방지되어 있다.	ecl-batch-editorial
+hmenu.b30bb41fa441	현재 위치:	ecl-batch-editorial
+hmenu.b31dbe9abcd2	장소(S)	ecl-batch-editorial
+hmenu.b344d80e24a3	그	ecl-batch-editorial
+hmenu.b36d80541998	잭의 술집(Z)	ecl-batch-editorial
+hmenu.b38ae2c5b845	평균(A)	ecl-batch-editorial
+hmenu.b39eb7f4aabc	토드의(T)	ecl-batch-editorial
+hmenu.b3a1984ba0b1	동전	ecl-batch-editorial
+hmenu.b3c2ed23b44e	사용(U)	ecl-batch-editorial
+hmenu.b3eb37acb66b	종료(Q)	ecl-batch-editorial
+hmenu.b3edc84c4199	저지대(L)	ecl-batch-editorial
+hmenu.b402d57b1fb1	수술 장치 파괴(D)	ecl-batch-editorial
+hmenu.b4128c8ceeb5	펌핑 레이저(P)	ecl-batch-editorial
+hmenu.b43e72eed048	높음(H)	ecl-batch-editorial
+hmenu.b46e2e86f895	감옥(P)	ecl-batch-editorial
+hmenu.b4790d350c6e	팁.	ecl-batch-editorial
+hmenu.b479932c66f3	휴식(R) 저장(S) 교체(C) 나가기(E)	ecl-batch-editorial
+hmenu.b4b33d244164	오버레이	ecl-batch-editorial
+hmenu.b4b944841827	엄폐물로!	ecl-batch-editorial
+hmenu.b4ca32d7b0db	잔혹한	ecl-batch-editorial
+hmenu.b4dc66dde806	끔	ecl-batch-editorial
+hmenu.b53b10af0873	해독제(P)	ecl-batch-editorial
+hmenu.b56d25bdbb5f	화물선	ecl-batch-editorial
+hmenu.b5c120b316c2	저장됨(S)	ecl-batch-editorial
+hmenu.b5c8f9ba1498	치료가 완료되었다.	ecl-batch-editorial
+hmenu.b5dda3024f8a	위협적으로 보인다.	ecl-batch-editorial
+hmenu.b629146c38eb	은(는) 저에게 가치가 없습니다.	ecl-batch-editorial
+hmenu.b6337bdcf05e	밧줄(R)	ecl-batch-editorial
+hmenu.b63b99f6383b	이었다	ecl-batch-editorial
+hmenu.b6706521e9ef	순서(O) 삭제(P)	ecl-batch-editorial
+hmenu.b672cec49995	무기 전문화(W)	ecl-batch-editorial
+hmenu.b6baff9358dd	착륙(L)	ecl-batch-editorial
+hmenu.b6c61263ba60	빠진다	ecl-batch-editorial
+hmenu.b728667e3b2a	성공적으로	ecl-batch-editorial
+hmenu.b75bf0b97aaf	중심부 떠나기(L)	ecl-batch-editorial
+hmenu.b76c62fc0261	언어 회화/독해(S)	ecl-batch-editorial
+hmenu.b78c1618fd97	법(L)	ecl-batch-editorial
+hmenu.b7c9b5ccd3e3	지구(E)	ecl-batch-editorial
+hmenu.b7f1cd7b3ece	내뿜는다	ecl-batch-editorial
+hmenu.b86d11af7918	아래(D)	ecl-batch-editorial
+hmenu.b8d31e852725	켬	ecl-batch-editorial
+hmenu.b8ecddb812fd	리더십 기술 사용(U)	ecl-batch-editorial
+hmenu.b9776d7ddf45	그	ecl-batch-editorial
+hmenu.b991604729c6	중량 초과(O)	ecl-batch-editorial
+hmenu.b9a8e0f70180	장교 죽이기(K)	ecl-batch-editorial
+hmenu.b9bf0c84842b	엔진(E)	ecl-batch-editorial
+hmenu.ba71bc539c29	중상 치료(T)	ecl-batch-editorial
+hmenu.ba78973ddcf9	이다	ecl-batch-editorial
+hmenu.ba7ebb6c0b12	직업 선택	ecl-batch-editorial
+hmenu.ba8909252cb2	일반 기술 최대치에 도달했다	ecl-batch-editorial
+hmenu.babfe184162e	기지 복귀(R)	ecl-batch-editorial
+hmenu.bad4da26bd82	사격하기(S)	ecl-batch-editorial
+hmenu.bb0347a468d9	당신들	ecl-batch-editorial
+hmenu.bb47b8ff5f62	감사(T)	ecl-batch-editorial
+hmenu.bb68380e8c1f	레이저(L)	ecl-batch-editorial
+hmenu.bb8b4c33ff1d	총(G)	ecl-batch-editorial
+hmenu.bbccb9c002d5	속도	ecl-batch-editorial
+hmenu.bbdf31c74bb2	탄창(C) 장전(F)	ecl-batch-editorial
+hmenu.bc16f5825a9d	겠다	ecl-batch-editorial
+hmenu.bcc649cfdb8c	발견했다:	ecl-batch-editorial
+hmenu.bce10c5f121b	도적(R)	ecl-batch-editorial
+hmenu.bcf47e35fc5f	쓰러진다	ecl-batch-editorial
+hmenu.bcfee25a8baf	지구(E)	ecl-batch-editorial
+hmenu.bd45a9a0adb5	데이브의 식당(D)	ecl-batch-editorial
+hmenu.bd938c688f49	행동	ecl-batch-editorial
+hmenu.bda2aeaa2200	발을 들인 곳은,	ecl-batch-editorial
+hmenu.be379a30f1aa	크레딧	ecl-batch-editorial
+hmenu.be495ffabf1e	디스크 7을 넣어 주십시오: 드라이브	ecl-batch-editorial
+hmenu.be91940b79f4	지원(S)	ecl-batch-editorial
+hmenu.bed37ce0c7aa	항복(S)	ecl-batch-editorial
+hmenu.bf26c2ac087d	우회(B)	ecl-batch-editorial
+hmenu.bf322dcc79eb	당신들?	ecl-batch-editorial
+hmenu.bf46b726b66b	센서 조작(S)	ecl-batch-editorial
+hmenu.bf4a9734694f	볼드 로켓(B)	ecl-batch-editorial
+hmenu.bf4b0c03c646	RAM	ecl-batch-editorial
+hmenu.bf651ae18dce	오지(O)	ecl-batch-editorial
+hmenu.bf7519b8e122	리앤더(L)	ecl-batch-editorial
+hmenu.bf8253cd4db7	닫힘(S)	ecl-batch-editorial
+hmenu.bf96202a283a	실패한다.	ecl-batch-editorial
+hmenu.bfa2700b7775	적	ecl-batch-editorial
+hmenu.bfb1d61e8789	크레딧에 당신의	ecl-batch-editorial
+hmenu.bfcce8dd3cdb	총격전(F)	ecl-batch-editorial
+hmenu.bfe7eb5a83c4	날개(W)	ecl-batch-editorial
+hmenu.bff4d121f688	사하라(S)	ecl-batch-editorial
+hmenu.c064fbca9d9d	메모리	ecl-batch-editorial
+hmenu.c071cf5f5ed6	실행 중	ecl-batch-editorial
+hmenu.c072f44b1cf3	민첩(D)	ecl-batch-editorial
+hmenu.c08a9702e23e	주의 돌리기(D)	ecl-batch-editorial
+hmenu.c0bf75bd78bf	변경(C)	ecl-batch-editorial
+hmenu.c0f21d451463	판매	ecl-batch-editorial
+hmenu.c141faa80e43	발사(F)	ecl-batch-editorial
+hmenu.c1481e2eb555	실패한다	ecl-batch-editorial
+hmenu.c16338e2b0b4	탄약(A)	ecl-batch-editorial
+hmenu.c173da2c2a4d	심각(S)	ecl-batch-editorial
+hmenu.c17b0190766a	은(는) 팀의 조종사이다.	ecl-batch-editorial
+hmenu.c1b56f8ad4b1	됩니까?	ecl-batch-editorial
+hmenu.c1ba6e9ac452	장전한다	ecl-batch-editorial
+hmenu.c1de0709edf7	빈사 상태다!	ecl-batch-editorial
+hmenu.c210bfdf28ce	구출(S)	ecl-batch-editorial
+hmenu.c296849c776b	음식(F)	ecl-batch-editorial
+hmenu.c298d548642a	원한다	ecl-batch-editorial
+hmenu.c2a18af9c74f	센서(S)	ecl-batch-editorial
+hmenu.c2d4b446a44c	아이콘	ecl-batch-editorial
+hmenu.c3172d0be78c	복귀(R)	ecl-batch-editorial
+hmenu.c3211a36b1f9	나갑니까?	ecl-batch-editorial
+hmenu.c357b4d49539	생명 유지 장치(L)	ecl-batch-editorial
+hmenu.c35ed1964164	체력(H)	ecl-batch-editorial
+hmenu.c36d819e7bc6	사용(U)	ecl-batch-editorial
+hmenu.c3812fc4acb8	제거(R)	ecl-batch-editorial
+hmenu.c398336f140f	동물과 친해지기(B)	ecl-batch-editorial
+hmenu.c3a409ae6f7e	보안(S)	ecl-batch-editorial
+hmenu.c3a61f03d53c	수성인(M)	ecl-batch-editorial
+hmenu.c3bd7d9e8b2c	에게	ecl-batch-editorial
+hmenu.c3df04d861ae	현재 갑판:	ecl-batch-editorial
+hmenu.c3e2d78f3ff3	버튼	ecl-batch-editorial
+hmenu.c3e682ea21c5	하트의 여왕(Q)	ecl-batch-editorial
+hmenu.c3f8edd2a350	전기 수리(R)	ecl-batch-editorial
+hmenu.c404dc69b55c	설계도	ecl-batch-editorial
+hmenu.c424b561f309	폭파(D)	ecl-batch-editorial
+hmenu.c44e5309cea2	순양함(C)	ecl-batch-editorial
+hmenu.c46f278027d6	조이스틱 끔	ecl-batch-editorial
+hmenu.c4ce3c7ad82c	오른쪽(R)	ecl-batch-editorial
+hmenu.c4e0e1d86094	모험 시작	ecl-batch-editorial
+hmenu.c4ff4a77d890	그곳으로 갈 수 없다	ecl-batch-editorial
+hmenu.c53b5446a3cb	보정	ecl-batch-editorial
+hmenu.c54a061dfcc1	점수	ecl-batch-editorial
+hmenu.c54aacaac233	밴앨런(V)	ecl-batch-editorial
+hmenu.c56de57b4be4	애시디슘 화합물(A)	ecl-batch-editorial
+hmenu.c57dd70c4c25	중독 치료 중(T)	ecl-batch-editorial
+hmenu.c57f77ad9c11	르 올드 보디 숍(L)	ecl-batch-editorial
+hmenu.c5aa1db676ac	바이트.	ecl-batch-editorial
+hmenu.c627c09c14e5	없음(N)	ecl-batch-editorial
+hmenu.c65e7c8cdec0	메시지(M) 애니(A) 레벨(L) 나가기(E)	ecl-batch-editorial
+hmenu.c676d78f6303	머물기(R)	ecl-batch-editorial
+hmenu.c68fef1abac6	무기	ecl-batch-editorial
+hmenu.c6b2e09da697	함선 수색(S)	ecl-batch-editorial
+hmenu.c6c1c9a9c854	다음	ecl-batch-editorial
+hmenu.c6c486312287	전리품	ecl-batch-editorial
+hmenu.c71993ff510e	본다	ecl-batch-editorial
+hmenu.c73e3aee5163	은(는) 중화기를 장비한다	ecl-batch-editorial
+hmenu.c7511b096455	일.	ecl-batch-editorial
+hmenu.c77b6d1ace6f	함선 지식(S)	ecl-batch-editorial
+hmenu.c782a998b909	포르투나(F)	ecl-batch-editorial
+hmenu.c7ce66d0fb14	시도	ecl-batch-editorial
+hmenu.c7f937836f5d	선택(C)	ecl-batch-editorial
+hmenu.c82bcf72f066	매력 기술(C)	ecl-batch-editorial
+hmenu.c846885c500a	이동(M) 로켓(R) 변경(C) 저장(S)	ecl-batch-editorial
+hmenu.c87f290656e4	종이(P)	ecl-batch-editorial
+hmenu.c881ddacb9b0	팅커(T)	ecl-batch-editorial
+hmenu.c8af9ae37a48	버림(D)	ecl-batch-editorial
+hmenu.c8d3fc567bbc	방어(G)	ecl-batch-editorial
+hmenu.c8d43213f3a1	새 기술이 이번 레벨에 허용된다! 일	ecl-batch-editorial
+hmenu.c8dde1197eef	로봇과 전투(F)	ecl-batch-editorial
+hmenu.c8fbce667415	탐험(E)	ecl-batch-editorial
+hmenu.c9022680f888	사람들	ecl-batch-editorial
+hmenu.c910d474dcd7	일반(G)	ecl-batch-editorial
+hmenu.c939327ca16d	좋음(G)	ecl-batch-editorial
+hmenu.c97c29c7a71b	자료(D)	ecl-batch-editorial
+hmenu.c981a30c0e7b	단위	ecl-batch-editorial
+hmenu.c9b3c38247f7	합계(T)	ecl-batch-editorial
+hmenu.ca06710240b9	격납고(H)	ecl-batch-editorial
+hmenu.ca4264faf597	가속	ecl-batch-editorial
+hmenu.ca59baae84d6	센서 조작!	ecl-batch-editorial
+hmenu.ca73f61034af	센서	ecl-batch-editorial
+hmenu.ca8b22d0db83	팀	ecl-batch-editorial
+hmenu.ca8d79b7751b	호출(H)	ecl-batch-editorial
+hmenu.ca978112ca1b	한	ecl-batch-editorial
+hmenu.caaba8467055	대형(H)	ecl-batch-editorial
+hmenu.cab2644828bc	좋아한다	ecl-batch-editorial
+hmenu.cab360771df6	화성 고지대 사막(M)	ecl-batch-editorial
+hmenu.cab601c5234c	말한다	ecl-batch-editorial
+hmenu.cabcf0c1639f	적함을 피해 보겠습니까?	ecl-batch-editorial
+hmenu.cafa51a40e34	엔지니어(E)	ecl-batch-editorial
+hmenu.cb3df92a7b68	로켓.	ecl-batch-editorial
+hmenu.cb43f4699271	획득한 것:	ecl-batch-editorial
+hmenu.cb4a39d0d0d4	해산물(S)	ecl-batch-editorial
+hmenu.cb5757d7b8d6	도킹(D)	ecl-batch-editorial
+hmenu.cb587e4fb093	남자(M)	ecl-batch-editorial
+hmenu.cb9da2bac013	호흡 마스크(B)	ecl-batch-editorial
+hmenu.cba86cca7c1b	최면술(H)	ecl-batch-editorial
+hmenu.cbf36a964ba8	기지(B)	ecl-batch-editorial
+hmenu.cbf70b2984b3	펌핑(P)	ecl-batch-editorial
+hmenu.cc0e6276ac47	부상은 없었다.	ecl-batch-editorial
+hmenu.cc1d2f838445	비었음(E)	ecl-batch-editorial
+hmenu.cc5c46d51099	데이지(D)	ecl-batch-editorial
+hmenu.ccdcda42124d	현장(S)	ecl-batch-editorial
+hmenu.ccf2060d44d7	빅의(V)	ecl-batch-editorial
+hmenu.cd48557114d9	은(는) 제트팩 사용에 실패한다	ecl-batch-editorial
+hmenu.cd56daf85db9	게임이 저장되지 않았다. 그래도 종료하겠습니까?	ecl-batch-editorial
+hmenu.cd6163f5d664	맨손(B)	ecl-batch-editorial
+hmenu.cd6811fe6223	은(는) 무력하다	ecl-batch-editorial
+hmenu.cd696ff78fca	제트카(J)	ecl-batch-editorial
+hmenu.cd926eafa7bf	함선?	ecl-batch-editorial
+hmenu.cd9fcbf0c0b4	녹색(G)	ecl-batch-editorial
+hmenu.cdb3508a5d12	뷔페(B)	ecl-batch-editorial
+hmenu.cdba6dc33e22	수학(M)	ecl-batch-editorial
+hmenu.cdbf2aad986c	돈이 부족하다.	ecl-batch-editorial
+hmenu.cdc299378871	하지만	ecl-batch-editorial
+hmenu.ce183432632e	크레딧을 얼마나 가져가겠습니까?	ecl-batch-editorial
+hmenu.ce41b9344da9	강당(L)	ecl-batch-editorial
+hmenu.ce561623aa64	서쪽(W)	ecl-batch-editorial
+hmenu.ce59a9cee559	은(는) 공격을 받아	ecl-batch-editorial
+hmenu.ce8ffc01be65	지능 기술(I)	ecl-batch-editorial
+hmenu.ceb4d1dcf897	처치한다	ecl-batch-editorial
+hmenu.ced7c0957fab	공격한다	ecl-batch-editorial
+hmenu.cf25bf8ab7de	무중력 기술 판정(Z)	ecl-batch-editorial
+hmenu.d0469022d381	매력(C)	ecl-batch-editorial
+hmenu.d05163c849ad	허세(B)	ecl-batch-editorial
+hmenu.d05aa2a15fb3	만든다	ecl-batch-editorial
+hmenu.d0b9cd97fa22	검(S)	ecl-batch-editorial
+hmenu.d0c14991b117	초보(N) 생도(C) 병사(T) 베테랑(V) 에이스(A) 나가기(E)	ecl-batch-editorial
+hmenu.d0d8255be98d	제트팩 사용 중(U)	ecl-batch-editorial
+hmenu.d0da7ab8bc92	기술(T)	ecl-batch-editorial
+hmenu.d0f8aacc687e	함께	ecl-batch-editorial
+hmenu.d123013a3cf1	캐릭터를 잃겠습니까?	ecl-batch-editorial
+hmenu.d12faf293a42	디스크.	ecl-batch-editorial
+hmenu.d15a5cf15d29	독!	ecl-batch-editorial
+hmenu.d17d84a60499	퇴장(E)	ecl-batch-editorial
+hmenu.d1905cf90af2	획득	ecl-batch-editorial
+hmenu.d1bdcbadd245	도망친다	ecl-batch-editorial
+hmenu.d1f97b88573f	샐베이션(S)	ecl-batch-editorial
+hmenu.d21e5e50b651	말하기(S)	ecl-batch-editorial
+hmenu.d27e866e6cdc	롭의 뷔페(R)	ecl-batch-editorial
+hmenu.d2c838f79473	죄송합니다. 디스크 A는 쓰기 방지 상태이면 안 됩니다.	ecl-batch-editorial
+hmenu.d31754823288	캐릭터를 팀에 추가	ecl-batch-editorial
+hmenu.d35edfbed216	제트팩(J)	ecl-batch-editorial
+hmenu.d36b7b67307c	음료 구입(B)	ecl-batch-editorial
+hmenu.d36fc710710d	글라이더(G)	ecl-batch-editorial
+hmenu.d39146635c92	다음에 오는	ecl-batch-editorial
+hmenu.d39bf20d6bd1	친해지기(B)	ecl-batch-editorial
+hmenu.d40a5aca994e	로켓(R)	ecl-batch-editorial
+hmenu.d4536f255583	탈것	ecl-batch-editorial
+hmenu.d45b3383faf6	아래(D)	ecl-batch-editorial
+hmenu.d4f02eaafd1a	전문화	ecl-batch-editorial
+hmenu.d50187dd170f	진입(E)	ecl-batch-editorial
+hmenu.d504e6878a5f	이동(M) 저장(S)	ecl-batch-editorial
+hmenu.d53772f1a4b7	중심(C)	ecl-batch-editorial
+hmenu.d5405925e308	죽었다	ecl-batch-editorial
+hmenu.d587622d277c	보너스(B)	ecl-batch-editorial
+hmenu.d59302cae791	글라이더(G)	ecl-batch-editorial
+hmenu.d5a78b996fe6	독(P)	ecl-batch-editorial
+hmenu.d604f126e1eb	단위의 연료를 적에게서 약탈했다	ecl-batch-editorial
+hmenu.d61aa238c7e0	불가능	ecl-batch-editorial
+hmenu.d626ab63c524	은(는) 빈사 상태!	ecl-batch-editorial
+hmenu.d6359f6ff9fc	성별 선택	ecl-batch-editorial
+hmenu.d6399d87d53f	대답(R)	ecl-batch-editorial
+hmenu.d661fb331bc0	대화	ecl-batch-editorial
+hmenu.d66ac9c9894c	애더(A)	ecl-batch-editorial
+hmenu.d6ce025350ff	마리포사(M)	ecl-batch-editorial
+hmenu.d6eaec65e742	장비(G)	ecl-batch-editorial
+hmenu.d74f8d5440b9	은(는) 임시 수리를 시도한다	ecl-batch-editorial
+hmenu.d77982267d96	도서관(L)	ecl-batch-editorial
+hmenu.d79fefdeefca	선체(H)	ecl-batch-editorial
+hmenu.d7cbbb688b2e	선택됨	ecl-batch-editorial
+hmenu.d810e2523920	어지러움	ecl-batch-editorial
+hmenu.d81674b2bdd5	층(L)	ecl-batch-editorial
+hmenu.d818fc89e110	고정익기 조종	ecl-batch-editorial
+hmenu.d81c55f49c5b	저장됨	ecl-batch-editorial
+hmenu.d81ea1595a04	방어구	ecl-batch-editorial
+hmenu.d83696c88df7	계속된다	ecl-batch-editorial
+hmenu.d8ad2ec6370e	은(는) 탄창을 구입한다	ecl-batch-editorial
+hmenu.d8ceb18ec41c	축하합니다.	ecl-batch-editorial
+hmenu.d904973dd208	위치	ecl-batch-editorial
+hmenu.d90b7f3c1834	수리(R)	ecl-batch-editorial
+hmenu.d91e43895d60	전투가 시작된다...	ecl-batch-editorial
+hmenu.d93352a70395	엔지니어(E)	ecl-batch-editorial
+hmenu.d935c5d26fa6	약탈됨	ecl-batch-editorial
+hmenu.d946067427e9	중앙(C)	ecl-batch-editorial
+hmenu.d94eaf694388	수정(M)	ecl-batch-editorial
+hmenu.d983a8e42480	투 이프 바이 시(T)	ecl-batch-editorial
+hmenu.d9af1a8284a0	구입(B)	ecl-batch-editorial
+hmenu.da08fe75062d	신체 아이콘을 선택하십시오.	ecl-batch-editorial
+hmenu.dadbbb9327c7	일부	ecl-batch-editorial
+hmenu.daf49f5a3452	주화(C)	ecl-batch-editorial
+hmenu.daf5b1bcb917	굶주린 표범(H)	ecl-batch-editorial
+hmenu.db2a4a90b9a0	포드(P)	ecl-batch-editorial
+hmenu.db3fef5c15fb	은(는) 치료됐다	ecl-batch-editorial
+hmenu.db44b8db4f05	잠금(L)	ecl-batch-editorial
+hmenu.db6e2c6375d0	의식이 있는	ecl-batch-editorial
+hmenu.dbc310d8e441	바이트가 더 필요하다.	ecl-batch-editorial
+hmenu.dbcd5e7bb7a0	경량(L)	ecl-batch-editorial
+hmenu.dbdfc4de61ee	이는 빗나간다	ecl-batch-editorial
+hmenu.dbf4bf8e6d73	동물 조련(A)	ecl-batch-editorial
+hmenu.dc179ccf4cad	매달린 남자(T)	ecl-batch-editorial
+hmenu.dc20b3d5d2cd	도서관(L)	ecl-batch-editorial
+hmenu.dc37c52e390c	승선(B)	ecl-batch-editorial
+hmenu.dc7c811b9561	우리	ecl-batch-editorial
+hmenu.dc81b1d371a4	네 번째	ecl-batch-editorial
+hmenu.dc9197c4fd55	대형 가속총(H)	ecl-batch-editorial
+hmenu.dcb3e1c00e79	지식(K)	ecl-batch-editorial
+hmenu.dcc71b7d0dc4	서기(S)	ecl-batch-editorial
+hmenu.dcc839a4015c	보기(V)	ecl-batch-editorial
+hmenu.dcd1d5223f73	이름(N)	ecl-batch-editorial
+hmenu.dd1b3c312cf7	가져가기	ecl-batch-editorial
+hmenu.dd2da64f66dc	산성액을 뱉는다	ecl-batch-editorial
+hmenu.dd3bfe5f7da1	관문(G)	ecl-batch-editorial
+hmenu.dd4d1b42990c	거래?	ecl-batch-editorial
+hmenu.dd6cd6449869	굶주림(H)	ecl-batch-editorial
+hmenu.dd93531216ec	모조(F)	ecl-batch-editorial
+hmenu.ddda5e25a150	가치가 없다	ecl-batch-editorial
+hmenu.dde7b24de0f2	도망쳤다.	ecl-batch-editorial
+hmenu.dde9f956ac6f	그림자 은신(H)	ecl-batch-editorial
+hmenu.ddeaded8ad8e	도주(R)	ecl-batch-editorial
+hmenu.ddeb034b93f8	죽는다.	ecl-batch-editorial
+hmenu.de24e677d554	일식(E)	ecl-batch-editorial
+hmenu.de621b54e5df	누군가	ecl-batch-editorial
+hmenu.de6ae028074f	조지의 자석 신발(J)	ecl-batch-editorial
+hmenu.deb9935a1709	먹이(F)	ecl-batch-editorial
+hmenu.ded9c2181fd7	함선	ecl-batch-editorial
+hmenu.df26763294b9	클럽 세레스(C)	ecl-batch-editorial
+hmenu.df343bd4f0bc	비활성(I)	ecl-batch-editorial
+hmenu.df448a7835b8	은(는) 성공한다	ecl-batch-editorial
+hmenu.df6d1d6c5828	경형 화물선(L)	ecl-batch-editorial
+hmenu.df8d29fe6512	도착	ecl-batch-editorial
+hmenu.dfa5818ca2f4	돌아가서 되찾겠습니까:	ecl-batch-editorial
+hmenu.dfc9b5dd491a	서쪽 표지판에 적힌 글:	ecl-batch-editorial
+hmenu.e029f71e07ac	예(O)	ecl-batch-editorial
+hmenu.e034aafd4a8f	선박/잠수함 조종(P)	ecl-batch-editorial
+hmenu.e05d8feee2b0	흰색(W)	ecl-batch-editorial
+hmenu.e07f87e5bf6f	빈사(D)	ecl-batch-editorial
+hmenu.e08d706b3e4c	입력	ecl-batch-editorial
+hmenu.e0d1b68224bf	현재(C)	ecl-batch-editorial
+hmenu.e0d7dfb67ae8	잡기(G)	ecl-batch-editorial
+hmenu.e13abb615cf7	혼수상태!	ecl-batch-editorial
+hmenu.e1431e12a802	음료(D)	ecl-batch-editorial
+hmenu.e14a7e697577	팀(P)	ecl-batch-editorial
+hmenu.e1804846899c	활공 중(G)	ecl-batch-editorial
+hmenu.e186022d0931	멋진	ecl-batch-editorial
+hmenu.e23a445d0fa7	가스(G)	ecl-batch-editorial
+hmenu.e241f290d414	가져가기(T)	ecl-batch-editorial
+hmenu.e244f187f696	그곳	ecl-batch-editorial
+hmenu.e256ee8e7aff	계속	ecl-batch-editorial
+hmenu.e2c5201c1822	수리 중(R)	ecl-batch-editorial
+hmenu.e2ee2909fe27	Ctrl	ecl-batch-editorial
+hmenu.e332e9199f71	이것들이 마스터 디스크이니 DISK	ecl-batch-editorial
+hmenu.e368929abd36	가면(M)	ecl-batch-editorial
+hmenu.e39c71ed01d6	제어 구역(C)	ecl-batch-editorial
+hmenu.e3cd80292737	북쪽과 동쪽(N)	ecl-batch-editorial
+hmenu.e3e91811790e	위치	ecl-batch-editorial
+hmenu.e44a929c7f73	도착(A)	ecl-batch-editorial
+hmenu.e453ba72cd39	무기 수리(R)	ecl-batch-editorial
+hmenu.e454a6d3ad77	대화(C)	ecl-batch-editorial
+hmenu.e4723b340ea8	단어는?	ecl-batch-editorial
+hmenu.e47c1f6b17cf	회피(E)	ecl-batch-editorial
+hmenu.e47dff317b55	응사(R)	ecl-batch-editorial
+hmenu.e4c588f8813b	게임을 실행할 메모리가 부족하다.	ecl-batch-editorial
+hmenu.e4ff44b46cd6	부상 치료 중(T)	ecl-batch-editorial
+hmenu.e53de187243d	행성 생존(P)	ecl-batch-editorial
+hmenu.e5491432e147	다음(N) 이전(P) 설명서(M)	ecl-batch-editorial
+hmenu.e5b6f5db184c	시도(T)	ecl-batch-editorial
+hmenu.e5d5b971139e	함선	ecl-batch-editorial
+hmenu.e6205bc8ab80	팬(P)	ecl-batch-editorial
+hmenu.e64a1aa95b66	에어로졸(A)	ecl-batch-editorial
+hmenu.e64ee3af7f94	수정됐다.	ecl-batch-editorial
+hmenu.e6640de835ad	찾기	ecl-batch-editorial
+hmenu.e66470cefb93	자비 베풀기(S)	ecl-batch-editorial
+hmenu.e66c38ae999e	이용 가능한 의무병이 없다.	ecl-batch-editorial
+hmenu.e678314b76c9	아지트(H)	ecl-batch-editorial
+hmenu.e6aba2bd5a6b	프로그래밍(P)	ecl-batch-editorial
+hmenu.e6ae3d509364	세레스(C)	ecl-batch-editorial
+hmenu.e73ecd0843c7	맨 왼쪽 위 끝으로	ecl-batch-editorial
+hmenu.e768457adba3	각 캐릭터가 받는 것:	ecl-batch-editorial
+hmenu.e76fd0c97e92	임시(R)	ecl-batch-editorial
+hmenu.e7b0c0160426	마법(M)	ecl-batch-editorial
+hmenu.e7d090343763	디스크 5를 넣어 주십시오: 드라이브	ecl-batch-editorial
+hmenu.e7e9a0deb596	아이콘.	ecl-batch-editorial
+hmenu.e811f04504f1	완료됐다.	ecl-batch-editorial
+hmenu.e8144b1fafee	무기(W)	ecl-batch-editorial
+hmenu.e84acd673099	툴레(T)	ecl-batch-editorial
+hmenu.e89dddf49aba	베스타(V)	ecl-batch-editorial
+hmenu.e8a01133b135	켬(O)	ecl-batch-editorial
+hmenu.e8cca808ae5a	여성(F)	ecl-batch-editorial
+hmenu.e8dd4c7827d6	중독 치료(T)	ecl-batch-editorial
+hmenu.e910f44e38d3	제어 장치(C)	ecl-batch-editorial
+hmenu.e91777aa2fce	적함이 스캐너에서 멀어진다	ecl-batch-editorial
+hmenu.e920b38b45dd	불러오는 중... 잠시 기다려 주십시오.	ecl-batch-editorial
+hmenu.e932f4664fa9	종족 선택	ecl-batch-editorial
+hmenu.e944c19b322c	그리고 기록한다:	ecl-batch-editorial
+hmenu.e9463dccf054	놓기(P)	ecl-batch-editorial
+hmenu.e948d191e403	그곳	ecl-batch-editorial
+hmenu.e948f1f230fc	은(는) 처치한다: 무력한	ecl-batch-editorial
+hmenu.e957ea95af6c	중독 중	ecl-batch-editorial
+hmenu.e9798569b319	소행성 기지(A)	ecl-batch-editorial
+hmenu.e97af8c4462a	팀원(M)	ecl-batch-editorial
+hmenu.e9862c1adf95	코페르니쿠스(C)	ecl-batch-editorial
+hmenu.e99c90db87c0	훈련(T)	ecl-batch-editorial
+hmenu.e9d7b76127dc	탈것 타기(R)	ecl-batch-editorial
+hmenu.e9d8992f3481	비활성화	ecl-batch-editorial
+hmenu.e9f3f2192e33	옮기기(T)	ecl-batch-editorial
+hmenu.ea0151c4cf78	볼트(B)	ecl-batch-editorial
+hmenu.ea0890697a77	성공:	ecl-batch-editorial
+hmenu.ea0a64a3e599	짐보의 로켓 바(J)	ecl-batch-editorial
+hmenu.ea0b7c7a5dd2	제어 시스템(C)	ecl-batch-editorial
+hmenu.ea103d6cb5c3	자신의	ecl-batch-editorial
+hmenu.ea325d761f98	한	ecl-batch-editorial
+hmenu.ea42b3d67cea	은(는) 기절한다	ecl-batch-editorial
+hmenu.ea53396caebc	이미	ecl-batch-editorial
+hmenu.ea62ae08c144	뺨을 때려	ecl-batch-editorial
+hmenu.eaae3408200c	분무(M)	ecl-batch-editorial
+hmenu.eabc01f12ec3	허용된	ecl-batch-editorial
+hmenu.eace244cc8ce	상태 없음	ecl-batch-editorial
+hmenu.eadcbb4a5f64	은(는) 겁먹었다	ecl-batch-editorial
+hmenu.eaf0fe0a362b	전사(W)	ecl-batch-editorial
+hmenu.eb5ce7d3c9df	누구와 거래하겠습니까?	ecl-batch-editorial
+hmenu.ebc5306f851a	은(는) 실패했다:	ecl-batch-editorial
+hmenu.ebe02a2e1d64	왼쪽 위 끝으로 밀고 버	ecl-batch-editorial
+hmenu.ec2aea87a758	누가 시도하겠습니까	ecl-batch-editorial
+hmenu.ec75f79040af	리더십(L)	ecl-batch-editorial
+hmenu.ec9b10a4a79c	사망(D)	ecl-batch-editorial
+hmenu.ecaa977765c9	토드의 찻집(T)	ecl-batch-editorial
+hmenu.eccfc43a09c5	금성인(V)	ecl-batch-editorial
+hmenu.ece633576dbf	대형 수송선(H)	ecl-batch-editorial
+hmenu.ed077f3d8125	열기(O)	ecl-batch-editorial
+hmenu.ed0c553ec7ab	저장되었다.	ecl-batch-editorial
+hmenu.ed417e148749	실명 유발(B)	ecl-batch-editorial
+hmenu.ed97a109977e	데브의 펍(D)	ecl-batch-editorial
+hmenu.edbe47c94751	은(는) 명중하여	ecl-batch-editorial
+hmenu.ee2556352ebb	히트(H)	ecl-batch-editorial
+hmenu.ee8d38cebc22	문 위의 표지판에 이렇게 적혀 있다	ecl-batch-editorial
+hmenu.eeaada0bfdd8	멀어진다	ecl-batch-editorial
+hmenu.eee6a471a81b	어떤 거짓 보고를	ecl-batch-editorial
+hmenu.eeed20bf4840	은(는) 혼수상태에 빠졌다.	ecl-batch-editorial
+hmenu.eef98a799e12	무력	ecl-batch-editorial
+hmenu.ef304fbeab13	함교(B)	ecl-batch-editorial
+hmenu.ef5988103d7b	재활용	ecl-batch-editorial
+hmenu.ef8bccaee981	은(는) 안도의 한숨을 내쉰다.	ecl-batch-editorial
+hmenu.efbde73cf7b4	은(는)	ecl-batch-editorial
+hmenu.efc4d8f2dbf8	침입자(I)	ecl-batch-editorial
+hmenu.efd03c4c0506	알현실에 들어선다	ecl-batch-editorial
+hmenu.eff4f8c33660	무시(I)	ecl-batch-editorial
+hmenu.effaa68d28df	여섯 번째	ecl-batch-editorial
+hmenu.f012dc1a2205	묶어 두기(T)	ecl-batch-editorial
+hmenu.f0762c4f3bfc	확실합니까?	ecl-batch-editorial
+hmenu.f0bf53be823d	어수선함(C)	ecl-batch-editorial
+hmenu.f110459a5ada	연료 보급(R)	ecl-batch-editorial
+hmenu.f13024272c38	자금(P)	ecl-batch-editorial
+hmenu.f1537d8de0bb	간다	ecl-batch-editorial
+hmenu.f17399cf2073	대리석(M)	ecl-batch-editorial
+hmenu.f1c727903cc9	기계 수리(R)	ecl-batch-editorial
+hmenu.f1e7ec533a35	은(는) 수류탄을 던진다...	ecl-batch-editorial
+hmenu.f214fc83fc74	회전익(R)	ecl-batch-editorial
+hmenu.f222ef3d6a3a	정찰 순양함(S)	ecl-batch-editorial
+hmenu.f27831e092ef	메일스트롬(M)	ecl-batch-editorial
+hmenu.f27f17e3f063	발사(F)	ecl-batch-editorial
+hmenu.f28c5d59eb13	보정	ecl-batch-editorial
+hmenu.f3098fb377e3	경상 치료(T)	ecl-batch-editorial
+hmenu.f32a5b3bbae9	도주(R)	ecl-batch-editorial
+hmenu.f338f4c08c4e	시스템	ecl-batch-editorial
+hmenu.f38a782fc7b4	그것들을 버리겠습니까?	ecl-batch-editorial
+hmenu.f3b89f8db994	수류탄(G)	ecl-batch-editorial
+hmenu.f404d4ef5343	팀(T)	ecl-batch-editorial
+hmenu.f43aeffb6c2c	넘어간 것:	ecl-batch-editorial
+hmenu.f4726202f85a	침묵(S)	ecl-batch-editorial
+hmenu.f4bc10706755	북쪽과 서쪽(N)	ecl-batch-editorial
+hmenu.f4bf9f7fcbed	로서	ecl-batch-editorial
+hmenu.f4db1e48476f	종료(E)	ecl-batch-editorial
+hmenu.f4f0ba5fa7b3	은(는) 무엇을 합니까?	ecl-batch-editorial
+hmenu.f53a7ab988e2	연주(P)	ecl-batch-editorial
+hmenu.f53d15b5032d	소행성군(A)	ecl-batch-editorial
+hmenu.f54c8fe4d376	발견한 것:	ecl-batch-editorial
+hmenu.f59d08f6fa62	물러서기(B)	ecl-batch-editorial
+hmenu.f5a329b998d9	절반으로 나눌 수 없다	ecl-batch-editorial
+hmenu.f5d24e444d2a	화성 상공의 파보니스 우주 공항	ecl-batch-editorial
+hmenu.f5d887a08758	총기(G)	ecl-batch-editorial
+hmenu.f61b206ce78a	경비병(G)	ecl-batch-editorial
+hmenu.f63431fc68e2	절반	ecl-batch-editorial
+hmenu.f6d83774f2ff	죄수(P)	ecl-batch-editorial
+hmenu.f6e1f7a40acb	주화 종류 선택	ecl-batch-editorial
+hmenu.f74899f15696	그들을?	ecl-batch-editorial
+hmenu.f75d4de6c5a9	그들을.	ecl-batch-editorial
+hmenu.f79ebae4aae3	접근 중	ecl-batch-editorial
+hmenu.f80f64f06f45	무기(W)	ecl-batch-editorial
+hmenu.f8d9414c0e39	그들	ecl-batch-editorial
+hmenu.f905b19542ed	오직	ecl-batch-editorial
+hmenu.f91711645937	예(Y)	ecl-batch-editorial
+hmenu.f9662f7f6955	덮어쓰기(O) 이름 변경(R) 저장 취소(A)	ecl-batch-editorial
+hmenu.f9a69f7ccd9d	우주 공항(S)	ecl-batch-editorial
+hmenu.f9b67545230b	여왕(Q)	ecl-batch-editorial
+hmenu.f9c93a830dc8	하지만 실패했다.	ecl-batch-editorial
+hmenu.fa2265bb6a5c	기절(U)	ecl-batch-editorial
+hmenu.fa4925ece175	데모 재생(P)	ecl-batch-editorial
+hmenu.fa51fd49abf6	이다	ecl-batch-editorial
+hmenu.fa865b0f430f	이동(M)	ecl-batch-editorial
+hmenu.faafcccc61ff	금성 저지대(V)	ecl-batch-editorial
+hmenu.fad9c96b8764	플라스마(P)	ecl-batch-editorial
+hmenu.faef14fe63cf	시도	ecl-batch-editorial
+hmenu.faff10f777c0	파일(F)	ecl-batch-editorial
+hmenu.fb1b047b46ba	아래(B)	ecl-batch-editorial
+hmenu.fb2f58286aff	손상된 함선에 접근해 시도	ecl-batch-editorial
+hmenu.fb6ee56073b3	자력(M)	ecl-batch-editorial
+hmenu.fb79f423148b	RAM은 저항 없이 계획을 계속 진행한다.	ecl-batch-editorial
+hmenu.fba363461643	맨 왼쪽 위 끝으로 밀고	ecl-batch-editorial
+hmenu.fbed9f024d79	전력실: 위험	ecl-batch-editorial
+hmenu.fc005b1340c9	악기(I)	ecl-batch-editorial
+hmenu.fc314ff41d50	도킹 위치(D)	ecl-batch-editorial
+hmenu.fc7e7e6bc84b	사막 러너	ecl-batch-editorial
+hmenu.fca1719eea8e	누가 싸우겠습니까	ecl-batch-editorial
+hmenu.fcd6fea72de7	죽음(D)	ecl-batch-editorial
+hmenu.fce00e4fb586	사이드와인더(S)	ecl-batch-editorial
+hmenu.fcec91509759	여기	ecl-batch-editorial
+hmenu.fd04788626e5	질주(S)	ecl-batch-editorial
+hmenu.fd30fe681b4b	병합(J)	ecl-batch-editorial
+hmenu.fd5da56f78ed	쓰러짐(G)	ecl-batch-editorial
+hmenu.fd8d9ac1036f	순찰(P)	ecl-batch-editorial
+hmenu.fdbd7d627a51	종이(T)	ecl-batch-editorial
+hmenu.fdd3e8169b06	이번 레벨에 허용된 기술! 일부 직	ecl-batch-editorial
+hmenu.fde281f3efb8	만족했다	ecl-batch-editorial
+hmenu.fe31fddcfa85	폭약(E)	ecl-batch-editorial
+hmenu.fe5b48644212	전투기(F)	ecl-batch-editorial
+hmenu.fe67cc988744	공격적(A)	ecl-batch-editorial
+hmenu.fedbd499df7c	U-R-U 홀로그램 초상관(U)	ecl-batch-editorial
+hmenu.fef06ecd81e4	은(는) 1점의 피해를 입는다	ecl-batch-editorial
+hmenu.ff049406e68a	위협한다.	ecl-batch-editorial
+hmenu.ff1c0b64b079	암호학(C)	ecl-batch-editorial
+hmenu.ff49630c242b	파괴됨	ecl-batch-editorial
+hmenu.ff4eac2e2d1e	장비 해제	ecl-batch-editorial
+hmenu.ff6bc316041a	재장전(R)	ecl-batch-editorial
+hmenu.ff7772053abf	둘 다	ecl-batch-editorial
+hmenu.ff9f88ce353a	폭약(C)	ecl-batch-editorial
+hmenu.ffb4d1959c03	병원(H)	ecl-batch-editorial

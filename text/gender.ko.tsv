@@ -1,0 +1,4 @@
+key	translation	source
+gender.prompt	성별 선택	manual-and-runtime
+gender.male	남성	runtime-interface
+gender.female	여성	runtime-interface

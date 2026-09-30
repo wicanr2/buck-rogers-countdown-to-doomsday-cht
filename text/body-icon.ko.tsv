@@ -1,0 +1,9 @@
+key	translation	source
+body.icon.confirmation	이 아이콘으로 괜찮습니까?	runtime-interface
+body.icon.save_prompt.prefix	저장:	runtime-interface
+body.icon.save_prompt.suffix	?	runtime-interface
+body.icon.old.label	기존	runtime-interface
+body.icon.old.action	준비 행동	runtime-interface
+body.icon.new.label	신규	runtime-interface
+body.icon.new.action	준비 행동	runtime-interface
+body.icon.selection.instruction	신체 아이콘을 선택하십시오.	runtime-interface

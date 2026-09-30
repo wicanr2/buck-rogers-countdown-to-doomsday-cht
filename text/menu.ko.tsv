@@ -1,0 +1,14 @@
+key	translation	source
+menu.create_new_character	새 캐릭터 만들기	manual-and-runtime
+menu.add_character_to_team	캐릭터를 팀에 추가	runtime-interface
+menu.load_saved_game	저장한 게임 불러오기	runtime-interface
+menu.joystick_mouse_initialize	조이스틱/마우스 초기화	runtime-interface
+menu.exit_to_dos	DOS로 나가기	runtime-interface
+menu.choose_function	기능 선택	runtime-interface
+menu.pick_race	종족 선택	runtime
+race.terran	지구인	manual-and-runtime
+race.martian	화성인	manual-and-runtime
+race.venusian	금성인	manual-and-runtime
+race.mercurian	수성인	manual-and-runtime
+race.tinker	팅커	manual-and-runtime
+race.desert_runner	사막 러너	manual-and-runtime

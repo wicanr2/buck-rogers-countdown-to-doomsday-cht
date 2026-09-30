@@ -36,9 +36,9 @@ LEAK_SOURCES=("$W/original/BRcdoom" "/home/anr2/cht/etan_font/ET353S/FILES" "$W/
 
 # 規格 040／041：發行包帶的語言（每個語言一個 font/buckrogers-<lang>.golemfnt；zh-TW 維持現行檔名
 # buckrogers-unifont.golemfnt）。en 是原版，不需要檔案。
-LANGS=(zh-TW zh-CN ja)
+LANGS=(zh-TW zh-CN ja ko)
 # 只供產生與審閱、不進發行包的 text/ 檔（規格 041 §3.1、042 §3.10）。
-TEXT_EXCLUDE=(zh-CN-phrases.tsv zh-CN-overrides.tsv zh-CN-term-review.tsv ja-coverage-exemptions.tsv ja-name-exemptions.tsv)
+TEXT_EXCLUDE=(zh-CN-phrases.tsv zh-CN-overrides.tsv zh-CN-term-review.tsv ja-coverage-exemptions.tsv ja-name-exemptions.tsv ko-coverage-exemptions.tsv ko-name-exemptions.tsv)
 
 VER="$(git describe --tags --always --dirty 2>/dev/null || echo dev)"
 WITH_DATA="${BUCKROGERS_WITH_DATA:-}"
@@ -77,6 +77,10 @@ fi
 # 規格 042 §3.10：日文檢查（含 charset.ja.txt 重生比對，需要 Unifont hex 所在目錄）。
 if [[ " ${LANGS[*]} " == *" ja "* ]]; then
   UNIFONT_DIR="$(dirname "$UNIFONT")" "$ROOT/tools/ja_check.sh" || die "ja_check.sh 失敗"
+fi
+# 規格 043 §3.10：韓文檢查（含 charset.ko.txt 重生比對）。
+if [[ " ${LANGS[*]} " == *" ko "* ]]; then
+  UNIFONT_DIR="$(dirname "$UNIFONT")" "$ROOT/tools/ko_check.sh" || die "ko_check.sh 失敗"
 fi
 if [[ "$TARGET" == all || "$TARGET" == macos ]] && ! docker image inspect "$MAC_IMAGE" >/dev/null 2>&1; then
   docker build --network none -t "$MAC_IMAGE" -f tools/docker/osxcross.Dockerfile tools/docker

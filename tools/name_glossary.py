@@ -65,12 +65,22 @@ OTHER_SEPARATORS = ("·", "．", "・")  # · ． ・
 JA_SEPARATOR = "・"  # ・
 JA_OTHER_SEPARATORS = ("•", "·", "．")  # • · ．
 JA_BASIS_RE = re.compile(r"^ja-glossary$")
+# 規格 043 §3.8：韓文名字以單一半形空白分隔名與姓，依據值是 ko-glossary。
+KO_SEPARATOR = " "
+KO_BASIS_RE = re.compile(r"^ko-glossary$")
+# 規格 043 §3.3 第 15 項：名字後可緊接的韓文助詞與詞尾開頭（前綴比對）。
+KO_NAME_SUFFIXES = (
+    "의", "이", "가", "은", "는", "을", "를", "과", "와", "로", "으로", "에", "에서", "에게", "에게서", "까지", "부터", "도", "만", "만큼",
+    "뿐", "조차", "마저", "처럼", "보다", "다", "이다", "입니다", "이라고", "이라는", "이며", "이에요", "이라면", "들", "들이", "들은", "들을", "들에게", "께", "께서",
+)
 EXEMPTIONS_HEADER = ["key", "person", "reason"]
 
 
 def lang_name_rules(lang: str) -> tuple[str, tuple[str, ...], "re.Pattern[str]"]:
     if lang == "ja":
         return JA_SEPARATOR, JA_OTHER_SEPARATORS, JA_BASIS_RE
+    if lang == "ko":
+        return KO_SEPARATOR, (), KO_BASIS_RE
     return SEPARATOR, OTHER_SEPARATORS, BASIS_RE
 # 手冊段落只做中文收斂；既有英文（例如印刷本保留的 Scot.dos）不動。
 MANUAL_CATALOGS = {catalog_name("manual", lang) for lang in KNOWN_LANGS}
@@ -183,7 +193,12 @@ def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE, *,
             raise GlossaryError(f"{where}: english 必須是原版全大寫：{english!r}")
         if mixed and mixed.upper() != english:
             raise GlossaryError(f"{where}: english_mixed 與 english 不是同一拼法：{mixed!r}")
-        if not chinese or chinese.strip() != chinese or " " in chinese:
+        if not chinese or chinese.strip() != chinese:
+            raise GlossaryError(f"{where}: chinese 不得為空或含首尾空白")
+        if lang == "ko":
+            if "  " in chinese or "\u3000" in chinese:
+                raise GlossaryError(f"{where}: 韓文名字只允許單一半形空白：{chinese!r}")
+        elif " " in chinese:
             raise GlossaryError(f"{where}: chinese 不得為空或含空白")
         if any(sep in chinese for sep in other_separators):
             raise GlossaryError(f"{where}: 間隔號必須是 U+{ord(separator):04X}：{chinese}")
@@ -192,7 +207,7 @@ def read_glossary(path: Path = GLOSSARY, exclude_path: Path | None = EXCLUDE, *,
         if not PERSON_RE.match(person):
             raise GlossaryError(f"{where}: person 格式不符：{person!r}")
         if not basis_re.match(basis):
-            allowed = "ja-glossary" if lang == "ja" else "printed:<位置>、xinhua 或 nickname"
+            allowed = {"ja": "ja-glossary", "ko": "ko-glossary"}.get(lang, "printed:<位置>、xinhua 或 nickname")
             raise GlossaryError(f"{where}: basis 必須是 {allowed}")
         try:
             old = _note_field(note, "old") if use_old else ()
@@ -449,7 +464,35 @@ def person_errors(text_dir: Path, lang: str, glossary: Glossary, paths: list[Pat
                     continue
                 errors.append(f"{path.name}\t{key}\t多人物 {person}（zh-TW 該列沒有）\t{context(text, 0, 0, 30)}")
     for ex in sorted(set(exemptions) - used):
-        errors.append(f"ja-name-exemptions\t{ex[0]}\t豁免 {ex[1]} 未被使用（多餘）")
+        errors.append(f"{lang}-name-exemptions\t{ex[0]}\t豁免 {ex[1]} 未被使用（多餘）")
+    return errors
+
+
+def _is_hangul(ch: str) -> bool:
+    return "\uAC00" <= ch <= "\uD7A3"
+
+
+def boundary_errors(lang: str, glossary: Glossary, paths: list[Path]) -> list[str]:
+    """規格 043 §3.3 第 15 項（韓文）：名字前不得緊接韓文音節；名字後緊接的連續韓文須以 KO_NAME_SUFFIXES 之一開頭。
+    已被例外表遮蔽的位置不檢（scan 已跳過）。補足集合層級比對看不見「同列已有真人又混入同形詞」的盲點。"""
+    errors: list[str] = []
+    if lang != "ko":
+        return errors
+    for path in paths:
+        rows, _ = read_catalog(path)
+        for row in rows[1:]:
+            key, text = row[0], row[1]
+            for hit in scan(text, key, glossary)[0]:
+                if hit.is_old:
+                    continue
+                if hit.start > 0 and _is_hangul(text[hit.start - 1]):
+                    errors.append(f"{path.name}\t{key}\t名字「{hit.matched}」前緊接韓文音節\t{context(text, hit.start, hit.end)}")
+                j = hit.end
+                while j < len(text) and _is_hangul(text[j]):
+                    j += 1
+                run = text[hit.end:j]
+                if run and not any(run.startswith(sfx) for sfx in KO_NAME_SUFFIXES):
+                    errors.append(f"{path.name}\t{key}\t名字「{hit.matched}」後緊接「{run}」不是助詞\t{context(text, hit.start, hit.end)}")
     return errors
 
 
@@ -566,9 +609,10 @@ def main(argv: list[str] | None = None) -> int:
             font = None if args.no_font else load_font_chars(args.font_chars or fpath)
             cat_paths = catalog_paths(args.catalog, None, args.text, args.lang)
             errors = lint(glossary, cat_paths, font)
-            if args.lang == "ja":
+            if args.lang in ("ja", "ko"):
                 errors += person_errors(args.text, args.lang, glossary, cat_paths,
-                                        read_exemptions(args.text / "ja-name-exemptions.tsv"))
+                                        read_exemptions(args.text / f"{args.lang}-name-exemptions.tsv"))
+            errors += boundary_errors(args.lang, glossary, cat_paths)
             for e in errors:
                 print(e)
             if errors:

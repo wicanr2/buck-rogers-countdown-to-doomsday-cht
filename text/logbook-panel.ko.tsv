@@ -1,0 +1,3 @@
+key	translation	source
+logbook.panel.title	일지 {0}번: {1}	runtime-interface
+logbook.panel.page	{0}/{1}쪽 PgDn/PgUp 넘김	runtime-interface

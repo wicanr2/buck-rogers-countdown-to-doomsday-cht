@@ -1,0 +1,8 @@
+key	translation	source
+post_join_menu.purge_character	캐릭터 삭제	runtime-editorial
+post_join_menu.modify_character	캐릭터 수정	runtime-editorial
+post_join_menu.join_a_game	아이콘 선택	runtime-editorial
+post_join_menu.view_character	캐릭터 보기	runtime-editorial
+post_join_menu.remove_character_from_team	캐릭터를 팀에서 제외	runtime-editorial
+post_join_menu.show_characters_game	현재 게임 저장	runtime-editorial
+post_join_menu.begin_adventuring	모험 시작	runtime-editorial

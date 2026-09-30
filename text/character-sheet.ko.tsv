@@ -1,0 +1,36 @@
+key	translation	source
+character.sheet.name	이름	manual-and-runtime
+character.sheet.hp	체력	runtime-interface
+character.sheet.race	종족	manual-and-runtime
+character.sheet.ac	방어 등급	manual-and-runtime
+character.sheet.gender	성별	runtime-interface
+character.sheet.thac0	명중치	manual-and-runtime
+character.sheet.career	직업	manual-and-runtime
+character.sheet.level	레벨	manual-and-runtime
+character.sheet.status	상태	runtime-interface
+character.sheet.experience	경험치	manual-and-runtime
+character.sheet.credit	크레딧	runtime-interface
+character.sheet.age	나이	runtime-interface
+character.sheet.mount	이동력	runtime-interface
+character.sheet.encumbrance	휴대 중량	runtime-interface
+character.sheet.damage	피해	runtime-interface
+character.sheet.weapon	무기	manual-and-runtime
+character.sheet.armor	방어구	manual-and-runtime
+character.sheet.abilities	능력치	manual-and-runtime
+character.sheet.career_skills	직업 기술	manual-and-runtime
+character.ability.str	근력	manual-and-runtime
+character.ability.dex	민첩	manual-and-runtime
+character.ability.con	건강	manual-and-runtime
+character.ability.int	지능	manual-and-runtime
+character.ability.wis	지혜	manual-and-runtime
+character.ability.cha	매력	manual-and-runtime
+character.ability.tech	기술	manual-and-runtime
+character.skill.notice	관찰력	manual-and-runtime
+character.skill.maneuver_zero_g	무중력 기동	manual-and-runtime
+character.skill.use_jetpack	제트팩 사용	manual-and-runtime
+character.skill.pilot_rocket	로켓 조종	manual-and-runtime
+character.skill.pilot_fixed_wing	고정익기 조종	manual-and-runtime
+character.skill.drive_ground_car	지상 차량 운전	manual-and-runtime
+character.skill.pilot_rotorwing	회전익기 조종	manual-and-runtime
+character.skill.drive_jetcar	제트카 운전	manual-and-runtime
+character.sheet.reroll	능력치를 다시 굴리겠습니까?	runtime-interface

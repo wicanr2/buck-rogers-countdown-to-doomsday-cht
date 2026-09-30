@@ -1,0 +1,7 @@
+key	translation	source
+class.prompt	직업 선택	manual-and-runtime
+class.rocket_jock	로켓 조종사	manual-and-runtime
+class.warrior	전사	manual-and-runtime
+class.medic	의무병	manual-and-runtime
+class.engineer	엔지니어	manual-and-runtime
+class.rogue	도적	manual-and-runtime

@@ -1,0 +1,5 @@
+key	translation	source
+coord.dir.N	북	runtime-interface
+coord.dir.E	동	runtime-interface
+coord.dir.S	남	runtime-interface
+coord.dir.W	서	runtime-interface

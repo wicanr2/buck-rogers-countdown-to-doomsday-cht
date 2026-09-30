@@ -1,0 +1,16 @@
+key	translation	source
+technical.screen.general_points	일반 기술 점수:	runtime-interface
+technical.screen.skills	기술 계열 기술	manual-and-runtime
+technical.skill.repair_electrical	전기 수리	manual-and-runtime
+technical.skill.repair_mechanical	기계 수리	manual-and-runtime
+technical.skill.repair_nuclear_engine	핵 엔진 수리	manual-and-runtime
+technical.skill.repair_life_support	생명 유지 장치 수리	manual-and-runtime
+technical.skill.repair_rocket_hull	로켓 선체 수리	manual-and-runtime
+technical.skill.jury_rig	임시 수리	manual-and-runtime
+technical.skill.bypass_security	보안 우회	manual-and-runtime
+technical.skill.open_lock	자물쇠 따기	manual-and-runtime
+technical.skill.commo_operation	통신 조작	manual-and-runtime
+technical.skill.sensor_operation	센서 조작	manual-and-runtime
+technical.skill.demolitions	폭파	manual-and-runtime
+technical.skill.first_aid	응급 처치	manual-and-runtime
+technical.skill.repair_weapon	무기 수리	manual-and-runtime

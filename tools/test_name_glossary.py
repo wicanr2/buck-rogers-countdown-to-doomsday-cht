@@ -227,5 +227,100 @@ class JaNameRulesTest(unittest.TestCase):
             errors = ng.person_errors(Path(tmp), "ja", g, [ja], unused)
             self.assertTrue(any("未被使用" in e for e in errors), errors)
 
+class KoNameRulesTest(unittest.TestCase):
+    """規格 043 §3.8：韓文名字表允許單一內部空白、依據值 ko-glossary；人物雙向比對與名字邊界審計（§3.3 第 15 項）。"""
+
+    KO_ROWS = [
+        "BUCK ROGERS\tBuck Rogers\t벅 로저스\tfull\tbuck-rogers\tko-glossary\t",
+        "BUCK\tBuck\t벅\tshort\tbuck-rogers\tko-glossary\t",
+        "JIM\tJim\t짐\tfull\tjim\tko-glossary\t",
+    ]
+
+    def read_ko(self, rows, exclude=None):
+        with tempfile.TemporaryDirectory() as tmp:
+            g = Path(tmp) / "g.tsv"
+            g.write_text(HEADER + "\n".join(rows) + "\n", encoding="utf-8")
+            e = None
+            if exclude:
+                e = Path(tmp) / "e.tsv"
+                e.write_text("phrase\tscope\tnote\n" + "\n".join(exclude) + "\n", encoding="utf-8")
+            return ng.read_glossary(g, e, use_old=False, lang="ko")
+
+    def test_space_rules(self):
+        self.assertEqual(len(self.read_ko(self.KO_ROWS).names), 3)
+        for bad in ("벅  로저스", " 벅 로저스", "벅 로저스 ", "벅\u3000로저스"):
+            with self.assertRaises(ng.GlossaryError, msg=repr(bad)):
+                self.read_ko([f"BUCK ROGERS\tBuck Rogers\t{bad}\tfull\tbuck-rogers\tko-glossary\t"])
+
+    def test_basis_and_zh_space_unchanged(self):
+        with self.assertRaises(ng.GlossaryError):
+            self.read_ko(["BUCK\tBuck\t벅\tshort\tbuck-rogers\tja-glossary\t"])
+        # zh-TW 仍不允許空白
+        with self.assertRaises(ng.GlossaryError):
+            glossary(["BUCK ROGERS\tBuck Rogers\t巴克 羅吉斯\tfull\tbuck-rogers\tprinted:SCAN#1\t"])
+
+    def setup_dir(self, tmp, zh_text, ko_text, exclude=None):
+        text = Path(tmp)
+        (text / "name-glossary.tsv").write_text(
+            HEADER + "BUCK\tBuck\t巴克\tshort\tbuck-rogers\tprinted:S#1\t\nJIM\tJim\t吉姆\tfull\tjim\tprinted:S#2\t\n",
+            encoding="utf-8")
+        (text / "name-glossary.ko.tsv").write_text(HEADER + "\n".join(self.KO_ROWS[1:]) + "\n", encoding="utf-8")
+        (text / "ecl-text.zh-TW.tsv").write_text("key\ttranslation\tsource\necl.1\t" + zh_text + "\truntime\n", encoding="utf-8")
+        ko = text / "ecl-text.ko.tsv"
+        ko.write_text("key\ttranslation\tsource\necl.1\t" + ko_text + "\truntime\n", encoding="utf-8")
+        ex = None
+        if exclude:
+            ex = text / "name-glossary-exclude.ko.tsv"
+            ex.write_text("phrase\tscope\tnote\n" + "\n".join(exclude) + "\n", encoding="utf-8")
+        return ng.read_glossary(text / "name-glossary.ko.tsv", ex, use_old=False, lang="ko"), ko
+
+    def test_person_check_both_directions_and_exemption_file_by_lang(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ko = self.setup_dir(tmp, "巴克說話", "벅이 말한다")
+            self.assertEqual(ng.person_errors(Path(tmp), "ko", g, [ko], {}), [])
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ko = self.setup_dir(tmp, "巴克說話", "그가 말한다")
+            errors = ng.person_errors(Path(tmp), "ko", g, [ko], {})
+            self.assertTrue(any("缺人物 buck-rogers" in e for e in errors), errors)
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ko = self.setup_dir(tmp, "他說話", "벅이 말한다")
+            errors = ng.person_errors(Path(tmp), "ko", g, [ko], {})
+            self.assertTrue(any("多人物 buck-rogers" in e for e in errors), errors)
+            unused = {("ecl.9", "*"): "多餘"}
+            errors = ng.person_errors(Path(tmp), "ko", g, [ko], {("ecl.1", "buck-rogers"): "測試", **unused})
+            self.assertTrue(any("ko-name-exemptions" in e and "未被使用" in e for e in errors), errors)
+
+    def test_boundary_audit(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ko = self.setup_dir(tmp, "巴克說話", "벅이 말한다. 벅은 간다")
+            self.assertEqual(ng.boundary_errors("ko", g, [ko]), [])
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ko = self.setup_dir(tmp, "巴克說話", "벅이 말한다. 벅차다")
+            errors = ng.boundary_errors("ko", g, [ko])
+            self.assertTrue(any("후" in e or "後緊接" in e for e in errors), errors)
+        with tempfile.TemporaryDirectory() as tmp:
+            text = Path(tmp)
+            (text / "g.tsv").write_text(HEADER + self.KO_ROWS[2] + "\n", encoding="utf-8")
+            ko = text / "ecl-text.ko.tsv"
+            ko.write_text("key\ttranslation\tsource\necl.1\t그가 쓰러짐\truntime\n", encoding="utf-8")
+            g = ng.read_glossary(text / "g.tsv", None, use_old=False, lang="ko")
+            errors = ng.boundary_errors("ko", g, [ko])
+            self.assertTrue(any("前緊接韓文音節" in e for e in errors), errors)
+        # 例外表遮蔽後不報
+        with tempfile.TemporaryDirectory() as tmp:
+            text = Path(tmp)
+            (text / "g.tsv").write_text(HEADER + self.KO_ROWS[2] + "\n", encoding="utf-8")
+            (text / "e.tsv").write_text("phrase\tscope\tnote\n쓰러짐\t*\t普通詞\n", encoding="utf-8")
+            ko = text / "ecl-text.ko.tsv"
+            ko.write_text("key\ttranslation\tsource\necl.1\t그가 쓰러짐\truntime\n", encoding="utf-8")
+            g = ng.read_glossary(text / "g.tsv", text / "e.tsv", use_old=False, lang="ko")
+            self.assertEqual(ng.boundary_errors("ko", g, [ko]), [])
+
+    def test_boundary_only_for_ko(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            g, ko = self.setup_dir(tmp, "巴克說話", "벅차다")
+            self.assertEqual(ng.boundary_errors("ja", g, [ko]), [])
+
+
 if __name__ == "__main__":
     unittest.main()

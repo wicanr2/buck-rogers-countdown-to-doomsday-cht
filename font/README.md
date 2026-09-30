@@ -41,6 +41,19 @@ python3 tools/catalog_font.py build --lang zh-CN \
 `buckrogers-play -lang-fonts <目錄>` 讀取 `buckrogers-<lang>.golemfnt`；`workplace/play.sh` 在設定
 `PLAY_BIN_DIR`（支援多語的前端）時自動把 `workplace/lang-fonts` 掛進去並傳 `-lang-fonts`。
 
+## 日文（ja）與韓文（ko）字型
+
+規格 042、043：日文與韓文各用同一份 GNU Unifont 17.0.05 子集流程，允許字集 `charset.<lang>.txt` 由 `tools/ja_charset.py`（JIS X 0208 且有 16 寬字模）與
+`tools/ko_charset.py`（可見 ASCII、現代韓文音節 11,172 字、「」『』、`←` `→`）從 Unifont hex 產生並進版控；字元需求 `characters.<lang>.txt` 由正式譯文產生並進版控，
+必須是字集的子集。`tools/ja_check.sh`、`tools/ko_check.sh` 會重生比對兩者。發行包由 `tools/package.sh` 另建 `font/buckrogers-ja.golemfnt`、`font/buckrogers-ko.golemfnt`。
+
+```sh
+python3 tools/catalog_font.py chars --lang ko --out font/characters.ko.txt
+python3 tools/ko_charset.py --font /unifont/unifont_all-17.0.05.hex.gz --out font/charset.ko.txt
+python3 tools/catalog_font.py build --lang ko --font /unifont/unifont_all-17.0.05.hex.gz \
+  --out workplace/lang-fonts/buckrogers-ko.golemfnt
+```
+
 ## 3× host 設定面板原生字型
 
 使用者已為 3× host 面板選擇倚天原生 24 點：漢字與「×」24×24、
