@@ -1,6 +1,6 @@
 # 040 — 多語框架與 F4 語言切換
 
-狀態：**DRAFT**（2026-09-30，第二輪審查後修訂）
+狀態：**READY**（2026-09-30，三輪獨立審查；第三輪應改已併入）
 日期：2026-09-30
 Issue：#35
 前置：規格 039（半形英數字）、036／037／038（名字）、005／034（手冊）、030（手札）、027–029、010–017、022、
@@ -51,8 +51,9 @@ dosgolem 241（前端輸入）。後續：041 簡體、042 日文、043 韓文�
   譯文。zh-TW 載入時仍要求 key 完全吻合（維持現行）；其他語言允許缺列。
 - `post_join_menu`：zh-TW 保留現行常數雜湊釘選；其他語言不釘雜湊，允許 0 列或恰好 7 列（逐列先建驗證），
   0 列時整組顯示原版英文，不讓語言失效。
-- 動作列：每語言的配色由譯文推導——每則譯文須含恰好一個半形括號熱鍵 `(X)`，熱鍵字母用熱鍵色，其餘用一般色；
-  不符者該語言該則缺譯。zh-TW 推導結果須與現行固定配色逐字相同。
+- 動作列：每語言的 normal 配色由譯文推導——每則譯文須含恰好一個半形括號熱鍵 `(X)`，且字母等於 zh-TW 同 key 譯文的字母；
+  熱鍵字母用 events 的首色（`normal_first_fg`），其餘用 `normal_rest_fg`；不符者該語言該則缺譯。focus 配色維持單色。
+  zh-TW 推導結果須與現行固定配色逐字相同（已核對 5 則皆為 {10,10,10,15,10}）；實作移除「長度 5」的釘選。
 - 手冊收據的 `translation_runes` 改由 zh-TW catalog 依 TextKey 補上，收據 JSON 不變；手冊 presenter 以 TextKey 查譯文，
   不再比對請求所帶譯文。
 - 每語言專用的名字資料（036 譯名、037 允許字集等）由後續語言規格定義；本期保證載入介面接受語言參數，
@@ -70,11 +71,15 @@ dosgolem 241（前端輸入）。後續：041 簡體、042 日文、043 韓文�
   各做一次；包括 Apply、Frame、Prewrite、ClearTextCells、ClearRect／Clear、ObserveAnchorEvent、SetStyle、手冊 bridge
   Sync、owner 的 ObserveEntry／ObserveReturn、`obs.Dropped` 觸發的 owner 重建、劇情協定（glyphEntry、verifiedReturn、
   discontinuity、clearWrite、待套用 apply 與 clear）、B 類 watcher 的 hook 事件與 presenter Sync。
-- 目前在合成前執行的 `syncEclText`、`syncHMenu`、`syncEngineDispatch`、`syncLogbook` 移到每個 retrace（與合成無關的
-  固定時點），對所有語言一起執行；合成只讀狀態。切換語言只改合成時使用的語言索引，不重建、不清空、不追趕。
-- 合成時某層缺字：只略過該層並計數，不回錯、不改任何語言的狀態。
+- B 類 sync（`syncEclText`、`syncHMenu`、`syncEngineDispatch`、`syncLogbook`）維持現行兩個時點：每個 retrace，以及
+  `ComposeWith` 之前（收據工具在任意步數輸出需要它，phase-259）。兩個時點都對**所有**已啟用語言一起執行；合成只讀
+  當前語言。所有語言在相同時點同步，因此切換只改合成時使用的語言索引，不重建、不清空、不追趕，zh-TW 收據不變。
+- B 類 sync 遇缺字：只對該語言自己的 watcher 呼叫 `ObserveDiscontinuity` 並清該語言的 presenter（兩個時點同一路徑）。
+- 畫圖階段某層缺字：略過該層並計數，不回錯、不改任何語言的狀態；選單家族是底圖，缺字時改用 `ScaleIndexedRGBA`
+  當底圖。
 - 讓位（`yieldMenu` 等）逐語言計算：每個語言用自己 presenter 的矩形清自己的層；該語言缺譯而沒有疊字時，改用該事件
-  的安全矩形讓位。
+  的原文格範圍讓位：body-icon 用 `body-icon-text-safe-rects.tsv`；加入後提示與加入後選單由 TextEvent 的 `Row`、`Column`、
+  `OriginalLength` 推出原文格範圍；技能離開用第 24 列的清除帶。
 - 缺譯粒度（該語言該筆顯示原版英文）：選單類逐列；加入後選單 7 項為一組（缺任一項整組不畫）；劇情頁以頁為單位
   （缺任一行整頁不畫）；手冊以段落為單位；身體圖示、技能離開、動作列以各自的請求為單位。缺譯時該語言的 presenter
   仍要清掉自己原本的矩形，不留前一筆的疊字。
@@ -104,7 +109,7 @@ dosgolem 241（前端輸入）。後續：041 簡體、042 日文、043 韓文�
   phase-294 已量完列出的畫面且都不使用 F4：採用 F4。未列出的畫面若日後量到 F4 專屬行為，回到本節。
 - 英文模式：合成與截圖輸出逐位元組等於原版 `ScaleIndexedRGBA`（說明頁開啟時不在比對範圍）；手札面板不顯示。
 - 手札翻頁：PgUp／PgDn 是否由前端吃掉，由**目前語言**的手札面板是否開啟決定；`Turn` 對所有語言各自在其頁數內夾住後
-  翻頁。因此語言影響原版輸入的例外是：目前語言的手札面板未開啟時（英文模式，或該語言缺該則手札、面板缺字關閉），
+  翻頁；目前語言沒吃掉 PgUp／PgDn 時，任何語言的 `Turn` 都不執行。因此語言影響原版輸入的例外是：目前語言的手札面板未開啟時（英文模式，或該語言缺該則手札、面板缺字關閉），
   PgUp／PgDn 送進原版。驗收腳本避開這兩鍵，翻頁只以單元測試驗證。
 - 設定檔：使用者資料目錄下 `settings.json`，只存 `{"lang": "<代碼>"}`；讀寫失敗不致命。優先序：`-lang` ＞ 設定檔 ＞
   `zh-TW`。`-lang` 給不認得的代碼視為用法錯誤、結束；`-lang` 或設定檔給出已知但未啟用的代碼時退為 `zh-TW` 並記錯誤。
@@ -130,12 +135,13 @@ dosgolem 241（前端輸入）。後續：041 簡體、042 日文、043 韓文�
    - 英文模式合成等於原版；`LogbookTurn` 英文模式回 false；`Turn` 多語夾住。
    - 設定檔優先序、未知 `-lang` 為用法錯誤、自動與開發模式不讀寫設定檔。
    - post_join：zh-TW 雜湊釘選不變；其他語言 0 或 7 列。動作列配色推導（zh-TW 與現行逐字相同）。
-   - 合成缺字只略過該層；缺譯的讓位用安全矩形；合成前 sync 改在 retrace 執行後各語言狀態不因合成時點而變。
+   - 畫圖缺字只略過該層（選單改用原版底圖）；缺譯的讓位矩形（四家族）；retrace 與合成前 sync 都對所有語言執行，
+     各語言狀態不因合成時點而分岔；B 類 sync 缺字只影響該語言。
 2. 回歸：只有 `zh-TW` 與 `en` 時，phase254 七條回歸（基準 rerun33）與既有各家族收據逐位元組不變。
 3. 切換正確性：`buckrogers-text-receipt` 新增 `-lang`、`-lang-switch <步數>:<代碼>[,…]`、`-compose-every-retrace`
    （每個 retrace 都對目前語言合成，貼近前端）與測試專用的 `-test-lang-dir`／`-test-lang-font`（載入 zz；前端不提供）。
    zz 滿足所有 A 類載入契約（技能離開兩列非空、加入後選單 7 列、動作列每則一個 `(X)`、劇情第 9 頁單列、手冊 504 格
-   與 14 列），譯文長度與 zh-TW 不同，字模都在 zh-TW 字型內，只存在測試資料。以 zz、zh-TW、en 在四個時點切換：
+   與 14 列；手冊段落用合成填充字，不由 zh-TW 手冊段落改寫），譯文長度與 zh-TW 不同，字模都在 zh-TW 字型內，只存在測試資料。以 zz、zh-TW、en 在四個時點切換：
    ECL 敘事窗與水平選單（`workplace/phase258-ecl-ab/g2.state` 與其腳本按鍵）、手札面板開啟
    （`workplace/checkpoints/logbook41-pre.state`）、手冊題進行中（`workplace/probe/phase12-before-question.state`）；
    停止步數沿用各 state 既有腳本並記入收據。每個時點的畫面與「一開始就用該語言」的同格畫面逐位元組相同。
