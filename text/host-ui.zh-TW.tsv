@@ -7,13 +7,23 @@ host.scale3	3×	runtime-interface
 help.01	操作說明（按 F1 關閉）	frontend-help
 help.02	前端功能鍵（不會送進遊戲）	frontend-help
 help.03	 F1 說明  F2 切換 2 倍／3 倍  F3 靜音	frontend-help
-help.04	 F11 全螢幕  F12 截圖	frontend-help
+help.04	 F4 切換語言  F11 全螢幕  F12 截圖	frontend-help
 help.05	 截圖存到存檔資料夾旁的 screenshots	frontend-help
 help.06	遊戲操作	frontend-help
 help.07	 方向鍵或數字鍵盤：移動、切換選項	frontend-help
 help.08	 Enter 確認  Esc 取消或返回	frontend-help
 help.09	 字母鍵、Ctrl、Alt 組合鍵照原版送出	frontend-help
-help.10	 F4 到 F10 照原版送出	frontend-help
+help.10	 F5 到 F10 照原版送出	frontend-help
 help.11	 滑鼠：只用左鍵點選	frontend-help
 help.12	 PgUp／PgDn：手札面板開啟時翻頁	frontend-help
 help.13	原版查閱手冊的題目會顯示中文手冊段落	frontend-help
+help.14	目前語言：{lang}	frontend-help
+help.15	未啟用：{off}	frontend-help
+lang.zh-TW	繁體中文	frontend-help
+lang.zh-CN	簡體中文	frontend-help
+lang.en	英文（原版）	frontend-help
+lang.ja	日文	frontend-help
+lang.ko	韓文	frontend-help
+lang.off.files	缺語言檔	frontend-help
+lang.off.font	缺字型	frontend-help
+lang.off.load	載入失敗	frontend-help
