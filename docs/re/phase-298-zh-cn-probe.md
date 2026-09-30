@@ -3,7 +3,7 @@
 狀態：定稿（主代理審閱，2026-09-30）。使用者已定案 §12 各點：tw2sp＋專案詞表、標點維持、用語採大陸慣用、玩家名繁中音譯後逐字轉簡。
 
 日期：2026-09-30
-狀態：調查與原型（未進主 repo；只寫 `workplace/phase298-zh-cn/`）
+狀態：調查與原型（本文件已由主代理定稿）（未進主 repo；只寫 `workplace/phase298-zh-cn/`）
 依據：規格 040（READY）§3.1–§3.4、phase-296、phase-297；dosgolem 分支 `buck-rogers-cht-output-overlay` HEAD `9c6abb1`（同步副本 `workplace/dosgolem-clean`）
 
 ## 結論
