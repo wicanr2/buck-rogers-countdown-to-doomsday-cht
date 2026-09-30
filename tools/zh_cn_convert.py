@@ -42,7 +42,7 @@ LEDGER_HEADER = ["family", "key", "zh_tw_sha256", "occurrence", "term_id", "verd
 GLOSSARY_HEADER = ["english", "english_mixed", "chinese", "kind", "person", "basis", "note"]
 EXCLUDE_HEADER = ["phrase", "scope", "note"]
 MAP_HEADER = ["tw", "cn"]
-KINDS = ("keep", "map", "guard")
+KINDS = ("keep", "map", "guard", "char")  # char：OpenCC 之後逐字套用（修訂 2026-09-30）
 VERDICTS = ("ok", "override")
 PROJECT_DICT = "zh-CN-phrases"
 PHRASES_REV = "TWPhrasesRev"
@@ -399,7 +399,10 @@ def read_phrases(path: Path) -> tuple[list[Phrase], list[str]]:
             errors.append(f"{where}: 重複 tw「{tw}」")
             continue
         if kind not in KINDS:
-            errors.append(f"{where}: kind 必須是 keep、map 或 guard")
+            errors.append(f"{where}: kind 必須是 keep、map、guard 或 char")
+            continue
+        if kind == "char" and (len(tw) != 1 or len(cn) != 1 or not is_han(tw) or not is_han(cn) or tw == cn):
+            errors.append(f"{where}: char 詞條的 tw、cn 必須各是單一且不同的漢字（改變字數者用 map）")
             continue
         if not reason.strip():
             errors.append(f"{where}: reason 不得為空")
@@ -442,8 +445,15 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
     res.errors += perr
     overrides, oerr = read_overrides(text / "zh-CN-overrides.tsv")
     res.errors += oerr
+    chars = [p for p in phrases if p.kind == "char"]
+    char_map = {p.tw: p for p in chars}
+    phrases = [p for p in phrases if p.kind != "char"]  # 送進 OpenCC 的詞表
     ptuple = tuple(phrases)
-    by_row = {p.row: p for p in phrases}
+    by_row = {p.row: p for p in phrases + chars}
+
+    def apply_chars(text: str) -> str:
+        """§3.2 char：OpenCC 轉換後逐字套用。"""
+        return "".join(char_map[c].cn if c in char_map else c for c in text)
 
     with tempfile.TemporaryDirectory(dir=tmp) as td:
         eng = Engine(phrases, Path(td))
@@ -475,10 +485,11 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
                 continue
             r.raw = eng.track(r.tw, None)
             r.proj = eng.track(r.tw, ptuple)
-            r.cn = formal_proj.convert(r.tw)
-            if r.raw.out2 != formal_raw.convert(r.tw) or r.proj.out2 != r.cn:
+            opencc_out = formal_proj.convert(r.tw)
+            r.cn = apply_chars(opencc_out)
+            if r.raw.out2 != formal_raw.convert(r.tw) or r.proj.out2 != opencc_out:
                 res.errors.append(f"{r.where}: 追蹤設定輸出與正式設定不同")
-            if text_proj.convert(r.tw) != r.cn or text_raw.convert(r.tw) != r.raw.out2:
+            if text_proj.convert(r.tw) != opencc_out or text_raw.convert(r.tw) != r.raw.out2:
                 res.errors.append(f"{r.where}: 匯出 text 字典設定輸出與官方 ocd2 不同")
         rows = [r for r in rows if r.proj is not None]
 
@@ -496,6 +507,22 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
                 res.errors.append(f"詞表第 {p.row} 列「{p.tw}」的 cn 經第二段不恆等")
             if matched_rows[p.row] == 0:
                 res.errors.append(f"詞表第 {p.row} 列「{p.tw}」在正式譯文沒有實際匹配")
+        # char 自檢：單獨轉換（OpenCC＋逐字）等於 cn、至少命中一次、cn 在字元清單中。
+        char_hits: dict[int, int] = {p.row: 0 for p in chars}
+        for r in rows:
+            for c in r.proj.out2:
+                if c in char_map:
+                    char_hits[char_map[c].row] += 1
+        font_list = root / "font" / f"characters.{LANG}.txt"
+        font_chars = ({line.split("\t", 1)[1] for line in font_list.read_text(encoding="utf-8").splitlines() if "\t" in line}
+                      if font_list.exists() else set())
+        for p in chars:
+            if apply_chars(formal_proj.convert(p.tw)) != p.cn:
+                res.errors.append(f"詞表第 {p.row} 列 char「{p.tw}」單獨轉換不等於 cn")
+            if char_hits[p.row] == 0:
+                res.errors.append(f"詞表第 {p.row} 列 char「{p.tw}」在 OpenCC 輸出沒有命中")
+            if p.cn not in font_chars:
+                res.ledger_errors.append(f"詞表第 {p.row} 列 char 的 cn「{p.cn}」不在 {font_list.name}（重生字元清單後再檢查）")
         for r in rows:
             pm = [m for m in r.proj.s1 if m.dict == PROJECT_DICT]
             for p in phrases:
@@ -571,7 +598,7 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
         gout = []
         name_map: list[tuple[str, str]] = []
         for g in grows:
-            cn = formal_proj.convert(g[2])
+            cn = apply_chars(formal_proj.convert(g[2]))
             gout.append([g[0], g[1], cn, g[3], g[4], g[5], g[6]])
             name_map.append((g[2], cn))
         seen_cn: dict[str, str] = {}
@@ -583,7 +610,7 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
         eout = []
         phrase_map: list[tuple[str, str]] = []
         for e in erows:
-            cn = formal_proj.convert(e[0])
+            cn = apply_chars(formal_proj.convert(e[0]))
             eout.append([cn, e[1], e[2]])
             phrase_map.append((e[0], cn))
         for label, pairs in (("名字", name_map), ("例外片語", phrase_map)):
@@ -606,7 +633,7 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
         tmap = []
         seen_t: dict[str, str] = {}
         for _key, ch, _src in trows:
-            cn = formal_proj.convert(ch)
+            cn = apply_chars(formal_proj.convert(ch))
             if len(ch) != 1 or len(cn) != 1:
                 res.errors.append(f"音譯對照「{ch}」→「{cn}」不是單一字元")
                 continue
@@ -643,6 +670,12 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
                 if counted(m):
                     n += 1
                     expected.append((r, n, m))
+            # char 套用處接在後面（依 OpenCC 輸出位置），位置為最終輸出座標。
+            for i, c in enumerate(r.proj.out2):
+                if c in char_map:
+                    n += 1
+                    p = char_map[c]
+                    expected.append((r, n, Match(i, i + 1, PROJECT_DICT, p.row, p.tw, p.cn, i, i + 1)))
         ledger_path = text / "zh-CN-term-review.tsv"
         ledger = {}
         try:
@@ -677,6 +710,21 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
 
         if review:
             for r, n, m in expected:
+                if by_row.get(m.idx) is not None and m.dict == PROJECT_DICT and by_row[m.idx].kind == "char":
+                    inv = {}
+                    for a in range(len(r.tw) + 1):
+                        o = r.proj.align(a)
+                        if o is not None:
+                            inv.setdefault(o, a)
+                    a = inv.get(m.ostart, 0)
+                    res.review.append({
+                        "family": r.family, "key": r.key, "zh_tw_sha256": sha256_text(r.tw), "occurrence": n,
+                        "term_id": m.term_id, "tw": m.key, "cn": m.value, "raw_same": 0,
+                        "tw_context": r.tw[max(0, a - 12):a + 13], "cn_context": r.final[max(0, m.ostart - 12):m.ostart + 13],
+                        "verdict": (ledger.get((r.family, r.key, str(n))) or ("", "", "", ""))[2],
+                        "note": (ledger.get((r.family, r.key, str(n))) or ("", "", "", ""))[3],
+                    })
+                    continue
                 s = r.proj.map2.get(m.ostart)
                 e = r.proj.map2.get(m.oend)
                 cn_term = r.cn[s:e] if s is not None and e is not None else "?"
@@ -709,6 +757,7 @@ def run(root: Path, review: bool = False, tmp: Path | None = None) -> Result:
             "ledger_expected": len(expected),
             "ledger_by_dict": {d: sum(1 for _, _, m in expected if m.dict == d) for d in (PHRASES_REV, PROJECT_DICT)},
             "phrase_matches": {p.row: matched_rows[p.row] for p in phrases},
+            "char_hits": {p.row: char_hits[p.row] for p in chars},
             "width_changed": width,
             "wider": [w for w in width if w[1] > 0],
         }

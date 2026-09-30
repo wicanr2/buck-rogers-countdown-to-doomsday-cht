@@ -1,7 +1,7 @@
 # 第二百九十九階段：規格 041 簡體中文（zh-CN）實作與驗收
 
 日期：2026-09-30
-狀態：定稿（主代理審閱，2026-09-30）；實作 dosgolem `a665258`；phase254 rerun35 與 rerun34 逐位元組相同
+狀態：定稿（主代理審閱，2026-09-30）；實作 dosgolem `a665258`、第 12 節 char 對應與字型位置另見本段；phase254 rerun36 與 rerun35 逐位元組相同
 規格：`docs/spec/041-zh-cn-draft.md`（READY，commit 0657bde）
 程式：主 repo 工作樹（未 commit）；dosgolem fork `workplace/dosgolem`（分支 buck-rogers-cht-output-overlay，HEAD 9c6abb1，未提交修改），
 同步副本 `workplace/dosgolem-clean`（`sync.sh`，原檔備份在 `clean-backup/`）。
@@ -177,3 +177,80 @@ stderr 只有 ja、ko 的停用訊息。zh-CN 字型依 `font/buckrogers-zh-CN.g
 - 程式與字型：`runner`、`buckrogers-play`、`font/`、`font-uni/`、`pkg-stage/`、`zz/`（phase296 的 zz 測試資料複本）、`clean-backup/`、`changed-files.txt`、`new-files.txt`、`*.png`。
 - 審閱清單：`workplace/zh-cn-review/review.tsv`（含手冊前後文，不進版控）。
 - phase254：新增 `runner-rerun34`、`rerun35/`、`rerun35-*.txt`；`runner` 已換成本輪版本。
+
+## 12. 第二輪：規格 041 修訂（commit 4afaa7e）
+
+基底：主 repo dd5b256＋4afaa7e、dosgolem a665258。本輪改動沒有 commit。
+
+### 12.1 結論
+
+- 新增 `char` 字級對應，在 OpenCC 轉換之後逐字套用。詞表中 char 4 條：牠→它、砲→炮、暱→昵、瞇→眯；新增 map 3 條：吋→英寸、紀錄→记录、掃瞄→扫描。
+- 重新產生後帳本共 595 處（官方用語詞條 435、專案 160）。新增 107 處逐一審閱，全部 `ok`，覆寫表仍為 0 列。
+- `--check` 與 `zh_cn_check.sh` 全部通過，Python 測試 329 項 OK（新增 char 測試 5 項）。
+- 本機非 zh-TW 字型改放 `workplace/lang-fonts/`。前端新增 `-lang-fonts <目錄>` 旗標，`play.sh` 可選擇把該目錄掛進去。
+- 四時點收據、phase254 rerun36（與 rerun35 逐位元組相同）、打包外洩掃描都已重跑並通過。
+
+### 12.2 盤點與決定
+
+zh-CN 輸出（譯文欄與名字表 `chinese` 欄）中的非 GB2312 字與台灣慣用寫法：
+
+| 字／詞 | 處數 | 決定 | 理由 |
+|---|---|---|---|
+| 牠 | 67（含手冊） | char →它 | 逐處看過：都是動物、ECG、斯科特（電腦人格）、蛙王、低地人幼體、鸚鵡、雕像的代詞。名字表、例外表、怪物名、物品名都沒有「牠」 |
+| 砲 | 21 | char →炮 | 舰炮、激光炮、加速炮、回旋炮、店名「枪炮反斗行」，都是一般字，不是專名用字 |
+| 暱、瞇 | 各 1 | char →昵、眯 | 大陸規範字 |
+| 吋 | 1 | map →英寸 | 改變字數，依規格用 map（「每一吋」→「每一英寸」） |
+| 紀錄 | 9 | map →记录 | 文件記載義；「纪录」在大陸偏指成績紀錄 |
+| 掃瞄 | 7 | map →扫描 | 台灣異體寫法；「瞄」單字另有「瞄准」等用法，不能用 char |
+| 瞭 | 1 | 保留 | 「瞭望」在《通用規範漢字表》保留「瞭」 |
+| —、• | 91、37 | 保留 | 標點，規格 §4 不改 |
+| 帮浦、杂讯 | 4、1 | 未處理 | 屬於詞彙改譯（泵、噪声），超出規格 §4 的「簡體專屬譯文重寫」範圍 |
+
+名字表 `chinese`、例外表與音譯對照都經過同一條「OpenCC＋char」流程。這三個檔在本輪逐位元組未變，所以玩家名收據不受影響。
+
+### 12.3 產生器改動（`tools/zh_cn_convert.py`）
+
+- `kind=char`：`tw` 與 `cn` 必須各是單一且不同的漢字。char 不送進 OpenCC 設定，改在 OpenCC 輸出上逐字套用。
+- char 的自檢：
+  - 單獨轉換（OpenCC＋逐字）的結果要等於 `cn`。
+  - 在 OpenCC 輸出上至少命中一次。
+  - `cn` 必須在 `font/characters.zh-CN.txt` 內。產生模式下這項只列為帳本警告，`--check` 時才算錯誤，因為字元清單是由產生結果重生的。
+- 字數核算把 char 視為長度差 0。char 不參加遮蔽偵測與「出現處」檢查，因為它是 OpenCC 之後的後處理，不會和 OpenCC 的詞條互相遮蔽。
+- 帳本：每列的 char 套用處接在該列的 OpenCC 套用處之後編號，位置用最終輸出座標，`term_id` 為 `zh-CN-phrases:<列號>`。
+- 名字表、例外表、音譯對照也套用 char。
+- 新增負例與正例測試（`test_zh_cn_convert.py`）：
+  - char 多字元會失敗。
+  - char 從不命中會失敗（例：「們」在 OpenCC 輸出已經是「们」）。
+  - char 的 `cn` 不在字元清單會失敗。
+  - char 的正例與帳本編號。
+  - 名字表跟著 char 轉換。
+
+### 12.4 本機字型位置
+
+- `workplace/lang-fonts/buckrogers-zh-CN.golemfnt`（SHA-256 `70db5f48…faed3`）。
+  `workplace/current-font` 原本就沒有 zh-CN 字型，沒有檔案需要搬移，目錄仍只有倚天 zh-TW。
+- dosgolem `cmd/buckrogers-play`：
+  - 新增 `-lang-fonts <目錄>`：有給就只在該目錄找 `buckrogers-<lang>.golemfnt`，沒給則照舊在發行包的 `font/` 找。
+  - 新測試 `lang_fonts_test.go`。
+- `workplace/play.sh`（備份在 `play.sh.bak-phase299`）：
+  - 新增 `PLAY_BIN_DIR`：有設時掛入 `workplace/lang-fonts` 並傳 `-lang-fonts`。
+  - 預設仍用 phase252 的前端；那一版不支援多語，所以預設不傳這個旗標。
+- `font/README.md` 已改寫本機命令與說明。
+- 實跑（`lf-c1`、`lf-h1`）：工作目錄設在 `/tmp`，執行檔旁邊沒有 `font/`，只給 `-lang-fonts /lf`。
+  結果 zh-CN 啟用、切換成功，合成雜湊與第一輪 c1 相同（`342ac18d…`），說明頁仍顯示「目前語言：簡體中文」；記憶體與 CPU 雜湊與第一輪相同。
+
+### 12.5 驗收重跑
+
+- 四時點收據（`switch.sh`）：2×、3× 全部通過，記憶體、CPU 雜湊與 zh-TW 相同，也與第一輪相同。截圖已更新（`ecl-`、`hmenu-`、`logbook-zh-CN-2x/3x.png`；第一輪的收在 `r1/`）。
+  這四個時點的畫面不含本輪改動的字，所以 zh-CN 畫面雜湊與第一輪相同。char 與新 map 的實際效果以產生檔、帳本與單元測試驗證，沒有另做畫面收據。
+- 變寬列：新增 `ecl.6.97.04086`（吋→英寸，+2 單位，34 單位，英文 51 字＝102 單位），已加入 `TestZhCNWidenedRowsFitEnglishCells`，通過。
+- phase254：`runner` 備份為 `runner-rerun35`（與 `rerun35/runner` 相同）。receipt 程式本輪未改，重建出的 runner 與前一版同雜湊（`899c7b75…`）。
+  `rerun36/` 的 853 個輸出檔與 7 份文字結果，都與 rerun35 逐位元組相同。
+- 打包模擬：`pkg-stage/common/font/buckrogers-zh-CN.golemfnt` 為 `70db5f48…`，詞表、覆寫表、帳本已排除（0 檔），外洩掃描 154 檔、0 命中。
+- Go 測試：`./apps/buckrogers`（zh-CN 相關）與 `./cmd/buckrogers-play` 通過，`go vet ./cmd/buckrogers-play` 通過，Windows build 通過。本輪沒有重跑整個 `go test ./...`。
+
+### 12.6 待決
+
+1. `play.sh` 的預設前端仍是 phase252（沒有多語），要不要改用新版前端待定。
+2. 「帮浦」「杂讯」這類詞彙差異要不要處理：規格 §4 不做簡體專屬的譯文重寫，本輪沒有動。
+3. 新增的 map「紀錄→记录」「掃瞄→扫描」不在規格原列的 map 範例內，是依「盤點決定」加入的，請確認。

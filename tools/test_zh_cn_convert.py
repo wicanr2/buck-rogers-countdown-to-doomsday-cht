@@ -201,6 +201,50 @@ class ZhCnConvertTest(unittest.TestCase):
         self.overrides = [["gamma", "g.1", sha("資料"), "资料", "t"]]
         self.assertError(self.run_(), "跨家族不一致")
 
+    # ---------------------------------------------------------------- char（修訂 2026-09-30）
+
+    def _font_list(self, chars: str) -> None:
+        (self.dir / "font").mkdir(exist_ok=True)
+        (self.dir / "font" / "characters.zh-CN.txt").write_text(
+            "".join(f"U+{ord(c):04X}\t{c}\n" for c in sorted(set(chars))), encoding="utf-8")
+
+    def test_char_positive_applied_after_opencc_and_ledgered(self):
+        self.families["alpha"].append(["a.3", "牠們跑了，牠很快。"])
+        self.phrases.append(["牠", "它", "char", "t"])
+        self._font_list("它")
+        res = self.run_()
+        self.assertEqual(res.errors, [])
+        self.assertIn("它们跑了，它很快。", res.outputs["text/alpha.zh-CN.tsv"].decode())
+        chars = [r for r in res.review if r["tw"] == "牠"]
+        self.assertEqual([r["occurrence"] for r in chars], [1, 2])
+        self.ledger_from(res)
+        self.assertEqual(self.run_().ledger_errors, [])
+
+    def test_char_must_be_single(self):
+        self.phrases.append(["吋", "英寸", "char", "t"])
+        self.assertError(self.run_(), "char 詞條的 tw、cn 必須各是單一")
+
+    def test_char_not_hit(self):
+        # 「們」在 OpenCC 輸出已是「们」，char 永遠不會命中。
+        self.families["alpha"].append(["a.3", "他們"])
+        self.phrases.append(["們", "门", "char", "t"])
+        self.assertError(self.run_(), "在 OpenCC 輸出沒有命中")
+
+    def test_char_cn_not_in_font(self):
+        self.families["alpha"].append(["a.3", "牠"])
+        self.phrases.append(["牠", "它", "char", "t"])
+        self._font_list("丁")
+        self.assertError(self.run_(), "不在 characters.zh-CN.txt")
+
+    def test_char_names_follow_char(self):
+        self.names.append(["PAO", "", "大砲", "short", "pao", "xinhua", ""])
+        self.families["alpha"].append(["a.3", "大砲來了"])
+        self.phrases.append(["砲", "炮", "char", "t"])
+        self._font_list("炮")
+        res = self.run_()
+        self.assertEqual(res.errors, [])
+        self.assertIn("大炮", res.outputs["text/name-glossary.zh-CN.tsv"].decode())
+
     def test_translit_collision(self):
         self.translit = ["丁", "發", "髮"]
         self.assertError(self.run_(), "音譯對照碰撞")

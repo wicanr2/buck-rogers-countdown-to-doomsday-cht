@@ -133,7 +133,7 @@ hmenu.14c9a4669356	俯冲(D)	ecl-batch-editorial
 hmenu.14cb86c7a48b	无法读取	ecl-batch-editorial
 hmenu.1502ed65d609	前进(A)	ecl-batch-editorial
 hmenu.1509f561f241	存档(S)	ecl-batch-editorial
-hmenu.1511e825a991	K型舰砲(K)	ecl-batch-editorial
+hmenu.1511e825a991	K型舰炮(K)	ecl-batch-editorial
 hmenu.151bf4939471	地面(G)	ecl-batch-editorial
 hmenu.1538015233e3	这个图标可以吗？	ecl-batch-editorial
 hmenu.157dca92e425	存档	ecl-batch-editorial
@@ -672,7 +672,7 @@ hmenu.689b17a30cfd	本等级不可再学习新技能	ecl-batch-editorial
 hmenu.68ce45d1ce63	解放者(L)	ecl-batch-editorial
 hmenu.6908fb71a777	猿齿(A)	ecl-batch-editorial
 hmenu.6973dddd3ef9	被阻挡	ecl-batch-editorial
-hmenu.699ec3219c9e	回旋砲(G)	ecl-batch-editorial
+hmenu.699ec3219c9e	回旋炮(G)	ecl-batch-editorial
 hmenu.69a5f2bb972e	医疗补给(M)	ecl-batch-editorial
 hmenu.69b98de6b39c	重型货船(H)	ecl-batch-editorial
 hmenu.69e349285747	月球第谷太空港(T)	ecl-batch-editorial
@@ -1250,7 +1250,7 @@ hmenu.be91940b79f4	支援(S)	ecl-batch-editorial
 hmenu.bed37ce0c7aa	投降(S)	ecl-batch-editorial
 hmenu.bf26c2ac087d	绕过(B)	ecl-batch-editorial
 hmenu.bf322dcc79eb	你？	ecl-batch-editorial
-hmenu.bf46b726b66b	操作扫瞄器(S)	ecl-batch-editorial
+hmenu.bf46b726b66b	操作扫描器(S)	ecl-batch-editorial
 hmenu.bf4a9734694f	勇者号船具行(B)	ecl-batch-editorial
 hmenu.bf4b0c03c646	RAM	ecl-batch-editorial
 hmenu.bf651ae18dce	内陆(O)	ecl-batch-editorial

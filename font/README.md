@@ -30,15 +30,16 @@ SIL OFL-1.1 與 GPL-2.0-or-later（含字型嵌入例外）雙授權；未宣告
 # 字元清單（版控）；tools/zh_cn_check.sh 會重生比對
 python3 tools/catalog_font.py chars --lang zh-CN --out font/characters.zh-CN.txt
 
-# 本機遊玩用：放在 workplace/current-font/ 旁，前端以 font/buckrogers-zh-CN.golemfnt 檔名尋找
+# 本機遊玩用：非 zh-TW 字型一律放 workplace/lang-fonts/（不是打包外洩掃描的禁止來源）
 python3 tools/catalog_font.py build --lang zh-CN \
   --font /unifont/unifont_all-17.0.05.hex.gz \
-  --out workplace/current-font/buckrogers-zh-CN.golemfnt
+  --out workplace/lang-fonts/buckrogers-zh-CN.golemfnt
 ```
 
 譯文或詞表改動後先跑 `python3 tools/zh_cn_convert.py` 重新產生，再重跑上面兩條；產物不入版控。
-`workplace/current-font/` 是 `tools/package.sh` 外洩掃描的禁止來源；本機這份 zh-CN 字型與發行包字型同名同內容，
-打包前需先移出該目錄，否則會被外洩掃描擋下。
+`workplace/current-font/` 只放倚天 zh-TW（它是 `tools/package.sh` 外洩掃描的禁止來源）。前端以
+`buckrogers-play -lang-fonts <目錄>` 讀取 `buckrogers-<lang>.golemfnt`；`workplace/play.sh` 在設定
+`PLAY_BIN_DIR`（支援多語的前端）時自動把 `workplace/lang-fonts` 掛進去並傳 `-lang-fonts`。
 
 ## 3× host 設定面板原生字型
 

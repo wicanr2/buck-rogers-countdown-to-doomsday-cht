@@ -18,18 +18,28 @@ ecl-text	ecl.1.17.03984	91e9c0acf5088b601dec9a1e632b29789be1ea6a960275729e2cf41f
 ecl-text	ecl.1.17.04068	edd3adc77492a44c7ad8dc6599880a5775c96f6607e4e42c1d93e701adc53073	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.1.17.04547	fbf5fb98dd15b3e1b6850e04c675b9e0b0f7949d5fffd224f18036f6df678cf1	1	zh-CN-phrases:21	ok	使用者定案：信息
 ecl-text	ecl.1.17.04986	a4b956a663db8a43572f7f14e24bfd060ac6716d73904243532f60c9e6675297	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
+ecl-text	ecl.2.32.00600	98ad6962d6e045e208c6cc9e2d4372f50b2c215ffd0b48cb1f7fa9fafeb63326	1	zh-CN-phrases:35	ok	char 大陸規範字
+ecl-text	ecl.2.32.01169	a920db430cc6cc9f9639c522603099fef00b32a7efefd1b34d0646a442141865	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.2.32.01332	c7b92c61a33a3a649a058fa6dbf4c034dc2645923537559264e0aceeceeada91	1	TWPhrasesRev:581	ok	大陸慣用語，前後文核對
+ecl-text	ecl.2.32.01446	9b9ff7a8cfc33754947260630c558537f435141be4f4902872f2d41a18de899b	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.2.32.02406	c0848983f905bd724adc271593c5ec13e8f2e83ab09786f4de57b506ecbccc55	1	TWPhrasesRev:237	ok	大陸慣用語，前後文核對
+ecl-text	ecl.2.32.02406	c0848983f905bd724adc271593c5ec13e8f2e83ab09786f4de57b506ecbccc55	2	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.2.32.03956	6b674803ece0d950fd6dcb610e3cc50b8a2929a5cb47bcea012b550a66c26716	1	TWPhrasesRev:496	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.32.04949	0bfff1368cb9e3234bdd6d08e0f6ea48d816ab9788b096125d27ab9e3b416815	1	TWPhrasesRev:131	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.32.06640	3c5889f4d4c26f4fdb5e69a75c0572f55a5edbcd73d0b9d94a61f2593fc8e688	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.32.07051	a9acb9d45cb7075b04c5c7fe5e4349f34a3a521c9947fad5e4779ffd777a0c6b	1	TWPhrasesRev:576	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.32.07481	39967b302eb08d79299c3446745dc8a82a863fba401a5d64c6f3e29ed13608cb	1	TWPhrasesRev:581	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.32.07481	39967b302eb08d79299c3446745dc8a82a863fba401a5d64c6f3e29ed13608cb	2	TWPhrasesRev:400	ok	大陸慣用語，前後文核對
+ecl-text	ecl.2.32.07855	55c0e579d59f30861087197be2535a35598b8d22f551db5c08001cac6e14de12	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.2.32.08185	687b7f892e55199932b0a0e971500f450c080bfc93be839c23c138cf18cf9deb	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.2.32.08271	93864a2ed5e1c6a2bac00c8336c9b16f9370a468ae1fa4777042f17d12674a12	1	TWPhrasesRev:237	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.32.08420	354861d425063b6bfac3aa93853512e6253d3c2ce076edbaf07a7dd9cbf13124	1	TWPhrasesRev:470	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.33.00413	16232114410b1f1df960f2a9e9f471cb4d1fbe7fa199538c4612c690a31eb52f	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
+ecl-text	ecl.2.33.01154	aa538850507150f62e176fa42e7db1d98682b4e05415277c07eeb83eaac5e236	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.2.33.01224	f82e948b455cd11a2e5a87164b06832f0504ef5144e8cdaa2b9e5738abe63090	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.2.33.01300	4cb7afec712501f5ad1cb3d70e41ebb7ee7b438c324b69d4081480bf33d1c1cf	1	TWPhrasesRev:581	ok	大陸慣用語，前後文核對
+ecl-text	ecl.2.33.01300	4cb7afec712501f5ad1cb3d70e41ebb7ee7b438c324b69d4081480bf33d1c1cf	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.2.33.03499	f9d78cfb103ef139a24252124c8c76f4e0536c31ad74609572f3e3aa97b9eb9b	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.2.33.03567	27b763717d9188e451da51ab79000d23acc9b3e5c99fe4fbc890617e64fa4267	1	TWPhrasesRev:458	ok	使用者定案：数据
 ecl-text	ecl.2.33.03869	502e1a1610244a449140acf8fdc175a1b97e79c786937e00c7202d913c53c465	1	TWPhrasesRev:689	ok	使用者定案：图像
 ecl-text	ecl.2.33.03869	502e1a1610244a449140acf8fdc175a1b97e79c786937e00c7202d913c53c465	2	TWPhrasesRev:458	ok	使用者定案：数据
@@ -48,8 +58,12 @@ ecl-text	ecl.2.33.06711	6cb1571ca5b75d3b82970f61ca323988af0d90c6d78770d33eb6c3c8
 ecl-text	ecl.2.33.06711	6cb1571ca5b75d3b82970f61ca323988af0d90c6d78770d33eb6c3c844db1e81	2	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.33.06711	6cb1571ca5b75d3b82970f61ca323988af0d90c6d78770d33eb6c3c844db1e81	3	TWPhrasesRev:494	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.33.07537	dfeb1e24db46fea596cd566c7d46574c1c46eb4ef0f2e1a2cc7710285cc65c7c	1	TWPhrasesRev:39	ok	大陸慣用語，前後文核對
-ecl-text	ecl.2.33.07537	dfeb1e24db46fea596cd566c7d46574c1c46eb4ef0f2e1a2cc7710285cc65c7c	2	TWPhrasesRev:458	ok	使用者定案：数据
+ecl-text	ecl.2.33.07537	dfeb1e24db46fea596cd566c7d46574c1c46eb4ef0f2e1a2cc7710285cc65c7c	2	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
+ecl-text	ecl.2.33.07537	dfeb1e24db46fea596cd566c7d46574c1c46eb4ef0f2e1a2cc7710285cc65c7c	3	TWPhrasesRev:458	ok	使用者定案：数据
+ecl-text	ecl.2.33.07637	75bbf8c9eb0e3e81526d4f3535e27617c9b71948e8e4d1156af2e33821c92b78	1	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
 ecl-text	ecl.2.33.07696	29c4630c2510eb73162f817aff115303c79fc5013e2faac8e365b048600a485f	1	TWPhrasesRev:458	ok	使用者定案：数据
+ecl-text	ecl.2.33.08410	d4d202a988662b343ba61910edceddb2c102170a344d15d525c1c85ebe349f8f	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.2.33.08410	d4d202a988662b343ba61910edceddb2c102170a344d15d525c1c85ebe349f8f	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.2.33.08563	ba6364241580125a8ed3e385be16036e58cd3282f270dfab5d0e47f8458af470	1	TWPhrasesRev:689	ok	使用者定案：图像
 ecl-text	ecl.2.33.08563	ba6364241580125a8ed3e385be16036e58cd3282f270dfab5d0e47f8458af470	2	TWPhrasesRev:470	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.33.08797	e7d11d568f0a54cb414f7b465700ba83ba9d42cfef8895a9f05de5dfacc09121	1	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
@@ -60,6 +74,7 @@ ecl-text	ecl.2.34.03337	ca50e30ea6d9be293df5a698d28a598b70fc1f4fccf82d7845039e74
 ecl-text	ecl.2.34.04851	9f08e7ff294adbbdd4048045faef8972c47ac91f323f1f06a4ebe59e44f599b3	1	TWPhrasesRev:237	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.35.00732	6af7e6fdc66ed48489c08557cbb46e1a795a6e72e8112c4c50e27b345cb77838	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.35.01358	e6f9ab3ec351c9d891aaff27286362e2baff991fc3a0fd64981396e519b1515d	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
+ecl-text	ecl.2.35.01605	b1bae8a07bf5b476f6dd56c3e567b6b6d2003af954c520a09b41b7228dc2591d	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.2.35.01950	84f19cea444bcb79341b13800ddf85e5358b64b0dd76c6912a764681e6e8ac18	1	TWPhrasesRev:180	ok	大陸慣用語，前後文核對
 ecl-text	ecl.2.35.01950	84f19cea444bcb79341b13800ddf85e5358b64b0dd76c6912a764681e6e8ac18	2	TWPhrasesRev:496	ok	大陸慣用語，前後文核對
 ecl-text	ecl.3.48.03030	8e7a6c17fb556ed9750046c3cc027268e8c6ba47c9e297b7adef26436a60c5c5	1	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
@@ -69,6 +84,8 @@ ecl-text	ecl.3.48.03286	7acdfe4eb7af1c0af7de1e4021cd6bdb633870596e2cd1729fff92e9
 ecl-text	ecl.3.48.06719	31218b7c7ff74d97ca570a47e1d5b8bf25058e4260df5649a5986da6c73547b0	1	TWPhrasesRev:530	ok	大陸慣用語，前後文核對
 ecl-text	ecl.3.48.06719	31218b7c7ff74d97ca570a47e1d5b8bf25058e4260df5649a5986da6c73547b0	2	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.3.48.06868	2ff6796d404a513ecf9d7432cb0930f42408884f2663f5ec9319848cedd8543a	1	TWPhrasesRev:48	ok	大陸慣用語，前後文核對
+ecl-text	ecl.3.48.07924	0e0153c6cd57f8f94bf9a6360c0cc73a77ca0a6c054f77b4d229db7e3534f445	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.3.48.08279	018673105141b5abed3685fc80e8cc6f534c48c5fe52980ccc0e480d38cc8cb1	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.3.49.01784	8daa77049faaab1ce78ea32b925177a8beca9e53b97fd0d9e438cb5fd6723538	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
 ecl-text	ecl.3.49.02124	375d7cd24199947b2246eba1ea1bc581cd0f7f3e39acb19b1c8e69297c9917ba	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.3.49.02124	375d7cd24199947b2246eba1ea1bc581cd0f7f3e39acb19b1c8e69297c9917ba	2	TWPhrasesRev:458	ok	使用者定案：数据
@@ -101,7 +118,9 @@ ecl-text	ecl.3.50.03309	e3531f2d7719732b5c2d815b6185a17fdce3df93de106e8082ba13c4
 ecl-text	ecl.3.50.04074	af2451dfcedd088b3f2c148b26d3eaeb161ab2f9dbf9ee0d6654b157b8f32406	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
 ecl-text	ecl.3.50.04568	fae2ef05282d5cad1875593f166568951a622e1abaf311adf6c6f7279b053bc8	1	TWPhrasesRev:180	ok	大陸慣用語，前後文核對
 ecl-text	ecl.3.50.05668	8ed867b6682106b3e7937456fbbbd9a3d89eadfae8b68a7da2f8b8b07fefcb5e	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
+ecl-text	ecl.3.50.06085	3cb344e8bb94756323e793b259f81af6593c9f03776a0eaa79fa8f54a26c6927	1	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.3.50.08809	b5ad33ecd87eda0d9ad1f2cd5d37b0f9d07b6301c4115ecff1a2cef085dc5024	1	TWPhrasesRev:458	ok	使用者定案：数据
+ecl-text	ecl.3.50.08960	c7a67239d76d5ff5945cdd97a6557d4d7b0c5b7542cc10c19e5419a2f8b09ab3	1	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
 ecl-text	ecl.3.52.01458	13d261b8719ad1bb4cc7bd461a8dc93712b0e926b9f66fde327a6fdb91de498a	1	zh-CN-phrases:24	ok	專案 guard，前後文核對
 ecl-text	ecl.3.52.01515	6e087a47d57b90c166d082a1f13f0eea9ba675405eeb3f5211872dc1f60f8753	1	zh-CN-phrases:24	ok	專案 guard，前後文核對
 ecl-text	ecl.4.64.01350	11f4c406fef347b38a87263bc41ed0cd2eb7edf09d3ae4be570fb05c7e8f5df6	1	zh-CN-phrases:25	ok	專案 guard，前後文核對
@@ -110,10 +129,16 @@ ecl-text	ecl.4.64.03454	f10a73d6ee40a811c0d9575192748d69261e12cae0dc7cce4a5b2d8b
 ecl-text	ecl.4.64.03719	3156ad9a2f4ba7979af9d9639f47a2d678220341e2cd13e2ed933389812b8c7e	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.64.04868	739fcfa95f781b0e16ec45bcc0a37348b2061ee8eba716c6f51555fdb54e55cd	1	zh-CN-phrases:21	ok	使用者定案：信息
 ecl-text	ecl.4.64.05070	f58995a39c3bd00c845b8ad46c83df19e985b22f1ed1bb852ee32059f33abbc2	1	TWPhrasesRev:464	ok	大陸慣用語，前後文核對
+ecl-text	ecl.4.64.05975	1c05c549fdbbec12904547b73bcc3e9d62fc04a9c989b7a1b80b19d317c25d18	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.4.64.06129	ca7f6aa4ba4102634182ac187e4fc90d749298dc456efae08e0b870c62f02334	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.4.64.06357	9f64d9d97d2a46478e8cdb80c0a2ca7b1535c3d04dcf2de25c9cf8e8da485647	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.4.64.08143	410b795461f5ae8cc5437eee8113fc4b1bdf15a0dc8e2516509836bbab40aca8	1	TWPhrasesRev:471	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.65.03013	aa3fdd237e5e36c81a9e73a2d3fc754a2a53b95ed04149b5b7569aaa5b257bdb	1	TWPhrasesRev:362	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.65.03155	06f1744805034e6849a964f236260adbbb931b28c12acd7d382351f8edddf689	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.65.03273	55650c566b78a9c1205f8c7dcb80b709fb583ec81311468b85ce2e1ab85820af	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
+ecl-text	ecl.4.65.05613	23c57e3a87bc989a22deaded82bf91d5377484bf73d3719f6747294d41208e84	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.4.65.05647	08225cc87f3000b7fd7fb083be44925c607ac2393c6a8e9ad02bb06f53bd434e	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.4.65.06929	b8f88c2d68742c9baa74d6fe1563652264b71d0fd720a89d2ad575f3526c356f	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.4.65.07404	eb4ff2fe5f261dbd05b87d69bfd62cd4d036164eaccd035ffe358c7d0aea0974	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.65.08281	fe44588a7719b865b75ca96b40e75d2e1e3f6a540ef530b9020a0ccbdedda8c7	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.65.08859	0ae046e0ad9df064a6afc07398b1e935ae078a731ba2ac884328de3837b30cb7	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
@@ -140,19 +165,34 @@ ecl-text	ecl.4.67.02339	eea759a9f74419dc58b96cd7d081444cddfe239ca7caa08d55ea8fb2
 ecl-text	ecl.4.67.03632	fd822ae821c20d8e61f3d11e0b3cd2fb9b19e0d1bc61bfd5c608f259164d65cf	1	TWPhrasesRev:180	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.04235	6ada011eb60f1dd0267e14343296f9911308bcf815f400788c211a0cb2aa4f08	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.04380	9d7c147dcd783630eab8caf1a4d455862f27fce69d5309baea17b620750aa821	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
+ecl-text	ecl.4.67.04380	9d7c147dcd783630eab8caf1a4d455862f27fce69d5309baea17b620750aa821	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.4.67.04587	d92061d5a0cfae15f95cbc0c67267f8e543b82441f77e670815d139f681910eb	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.04713	68866ac3612cdb767320f37ad6a9b2fc51b3765b2edccb79794245e9fa2b940b	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.04931	fda4151b3e8ea80529c2e0caa14661951d1a41ba228c8bbc7e904717943d7249	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.05002	05e1d8170f928667071e4acdc0df609288312be3338d081b4b68af7d5f1563fe	1	TWPhrasesRev:470	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.05002	05e1d8170f928667071e4acdc0df609288312be3338d081b4b68af7d5f1563fe	2	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
+ecl-text	ecl.4.67.05002	05e1d8170f928667071e4acdc0df609288312be3338d081b4b68af7d5f1563fe	3	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
 ecl-text	ecl.4.67.05259	d86c636e6e5d163ca929df4774d2568e94e05394391c3bb4fc9e3380bd1127b5	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.05508	31754f72d8e7160237d57d0b02ce2aa7912288613d00f059ebc1c59ac0672179	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
+ecl-text	ecl.4.67.05651	b0324af15dceb4b871089783b5e7c8be3be4c58f461bbb156c749d4c30b28507	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.4.67.05651	b0324af15dceb4b871089783b5e7c8be3be4c58f461bbb156c749d4c30b28507	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.4.67.07030	aa90b0764277c569085e5b3ba69050b124b402aa1500280b859e9034e5ec928f	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 ecl-text	ecl.4.67.07224	1ca932fd1441bc14d4cacc6572ab534734ea56c4b33a7f83d0022ae839f0051b	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
+ecl-text	ecl.5.80.01707	33bda2a0ca4d65312f49a52bfc928cbf311ed2d1133d68af36a89b7d91e71144	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.5.80.01793	e5cc76b723d41429df504e19fc1977d370425a9de6648d40a24cc10bf02cf061	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.5.80.02727	194f1c5325307c7ec9045ecccc49491429f9cdeb61dbf0b7069b60aa9ebee5d8	1	TWPhrasesRev:458	ok	使用者定案：数据
+ecl-text	ecl.5.80.04587	bfd2675db7ba75585fd3e65c89015216417d87833c3d6dbb6d13d754fbfd5c97	1	zh-CN-phrases:36	ok	char 大陸規範字
+ecl-text	ecl.5.80.04626	88b63be65c8150bae42576d5f12731fdfbe99759fdd16de57d6c086ddb463807	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.5.80.05406	cce5a5df91ab1bc56a82470bc7181e3a9dd0d78609486217df25ce09e5e5caf9	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.5.81.00200	f5024d0f70600a460623c7572b347d3b715a68234ef2ce2bef75c93a98bd8d22	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.5.81.00977	35ec3315d6e2b8389c6fae36b20db154ce6dd894006e9d355a8a0fc2e6d2b924	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.5.81.02106	d57366ca4f4f3bf52b50ed2374a9088cb7b4a31ed8108f22fe47b1a92e2fc2dc	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
+ecl-text	ecl.5.81.02731	1bec6a2cdc543725210700e2c038acae6c8a48c02ab44bfa46c64ecea0dc32a0	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.5.81.02950	b8d40f842c69dcdf798f0943a828bbe58b5ccf643ff71b9dc21cc09231438cc4	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.5.81.03027	d1fc58f7c937fdfa177afc7e825a1cd66e6d10ab06a75c42a6198964040887a2	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.5.81.03027	d1fc58f7c937fdfa177afc7e825a1cd66e6d10ab06a75c42a6198964040887a2	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.5.81.03027	d1fc58f7c937fdfa177afc7e825a1cd66e6d10ab06a75c42a6198964040887a2	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.5.81.03169	b4470353c0049fa0ca5e7201dc52db93007946ac03003631231267c6e706f3dd	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.5.81.04497	dbcd467ae5bc59075291e87944e8332ece5d70f3db08215b49103d57cf459357	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.5.81.06999	3dd5350f8e913ae0b4b83cdc771693fa2822d7f156e0fe6394a3db039f8d4dca	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 ecl-text	ecl.5.81.07118	09782969d354bea70cf6508378e6ae62f4868f43f18d5fed21d9d35ee0ab8b08	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
@@ -161,6 +201,7 @@ ecl-text	ecl.5.82.01472	fedb15ce4097114e13025dfe4054be0db267be7ec9608c5b211bc440
 ecl-text	ecl.5.82.03946	d3d862ded79fcb18f3e363ff5c71e12506251675281acf61146798c12abbb486	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 ecl-text	ecl.5.82.05925	a71f76787438647c5af9240bbbca439289ffa4611716a191ae33b2da0311603a	1	TWPhrasesRev:470	ok	大陸慣用語，前後文核對
 ecl-text	ecl.5.82.07614	0b7e6e931a59f3930ada8b60791833ac2c9a553390d22892a37c86227447683a	1	TWPhrasesRev:470	ok	大陸慣用語，前後文核對
+ecl-text	ecl.5.82.07695	cc0dcd3e33968e918025001800905fa19cc3248ba724d6649259803a42d8e8a5	1	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
 ecl-text	ecl.5.83.00444	c26cfbce4b67a72524a9bb532a3a87626094e23cf5f3e1f51f2508b796f5f1b8	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
 ecl-text	ecl.5.83.01809	627fc35c3bdd9586ba6f306d52924e400019009e08c614f550ee59b897dc8db6	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 ecl-text	ecl.5.83.01935	63ebfbb393e17429224174551de656874cf406cc188fa93a5ab859a4e3d603ba	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
@@ -176,19 +217,29 @@ ecl-text	ecl.6.94.00060	59ea591c07d6c7760a68afb69f2426e663c1c54738c3de830c20c991
 ecl-text	ecl.6.95.00258	62604b1d0cb243b69fb81ab6a1f487c3fe7db0b723649c27706964745adc3492	1	TWPhrasesRev:494	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.95.01345	6cf350c6903d0d851bcbb613e5342098eafac43f4a3a6b77dd4a5a34edb8e260	1	TWPhrasesRev:237	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.95.02644	18731a1d841d09a9b84ff80c66caa98891498b737ce4439993e7ff88f6b5b7c6	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.96.02123	f4c057c8681fcb70e6d163ad1f3b0e5293564ac3ce02745c94714390bcb5a6f5	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.6.96.02223	72dfb4144e6a61eea2d7ef36baafd4c9d9c9295bc7c1149fb71f0f70cbfc5aee	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.6.96.02223	72dfb4144e6a61eea2d7ef36baafd4c9d9c9295bc7c1149fb71f0f70cbfc5aee	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.6.96.02466	12b842318169e0fc2394cde5b19a43a485144ef4aaa5e0fa94ef9a37a6c55b09	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.96.02466	12b842318169e0fc2394cde5b19a43a485144ef4aaa5e0fa94ef9a37a6c55b09	2	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.96.02466	12b842318169e0fc2394cde5b19a43a485144ef4aaa5e0fa94ef9a37a6c55b09	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 ecl-text	ecl.6.96.02712	2110b919a4b998608e1cdd2a1d4d89285d5b540f5a7dab416ba1d14cb6b625b8	1	TWPhrasesRev:237	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.96.02712	2110b919a4b998608e1cdd2a1d4d89285d5b540f5a7dab416ba1d14cb6b625b8	2	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.96.02712	2110b919a4b998608e1cdd2a1d4d89285d5b540f5a7dab416ba1d14cb6b625b8	3	TWPhrasesRev:390	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.96.04148	816312e68d49f849cf4244a7dfeb18a9fe031b54dd3b832fe04025744d0ac7df	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.96.04148	816312e68d49f849cf4244a7dfeb18a9fe031b54dd3b832fe04025744d0ac7df	2	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.6.96.04286	8e3b4ab2062d94396368c61557631abbd8083d441ec2cde63d5d63aaf030aaf7	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.96.04286	8e3b4ab2062d94396368c61557631abbd8083d441ec2cde63d5d63aaf030aaf7	2	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.6.96.04395	1c772b935d29b572088baff90d2e31766e2cc529440798cd2165126a8d5ed99f	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.96.04395	1c772b935d29b572088baff90d2e31766e2cc529440798cd2165126a8d5ed99f	2	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.6.96.04526	6fa65074613a8afedd07fce80d00ebfab2b8bf8518608090c79933cb67770c9b	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.96.04526	6fa65074613a8afedd07fce80d00ebfab2b8bf8518608090c79933cb67770c9b	2	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.6.96.05602	44bf2b0dacc481605ea24f2916ae8eb2798e59dbc06e7e95bdd89b9107d8e37a	1	TWPhrasesRev:689	ok	使用者定案：图像
 ecl-text	ecl.6.96.05817	ba2310355c379ff41e290a6b23f69c6d46f574378cbdf4efc82b6a69fc8058e4	1	TWPhrasesRev:689	ok	使用者定案：图像
+ecl-text	ecl.6.96.05954	ed4f236b56d1f05b3be9381471f7e57484ca1a15c0d679912f3cab7014bb8430	1	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
 ecl-text	ecl.6.96.06576	56d86817e6510212df45e7b6a53d96d36352f534765f399eb5050d0f79c093d0	1	TWPhrasesRev:689	ok	使用者定案：图像
 ecl-text	ecl.6.96.07078	d1c0b556b25c4298c826b68a133925edbbd59a7b6b9436a664245b29530b0251	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.96.07078	d1c0b556b25c4298c826b68a133925edbbd59a7b6b9436a664245b29530b0251	2	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.6.97.00716	2c39f58992ce0a46d77afbb62670baa683154fa22b982be2e12a3e34485bced6	1	TWPhrasesRev:496	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.97.00777	e722ee33c14a31b16d1b4da28e330516603ef53e4388369fa063929c6931beb0	1	TWPhrasesRev:496	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.97.00838	0f44f6d9d1760ed4badc2ae4738c85ea95f73cbacb9cf4a0bd1e1c62d76cc5dd	1	TWPhrasesRev:496	ok	大陸慣用語，前後文核對
@@ -200,6 +251,11 @@ ecl-text	ecl.6.97.01195	a0c2549b04f035b546344bc471fb2bfc064c9f6e7c3012674ded8c8d
 ecl-text	ecl.6.97.01244	baee92b7d21e5a1161140f50adfea55b8d43128cb5b858d6aa6c30c764f1aae2	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.97.01433	67b474ee39a9a6e52d2861e520667bdc4fb74673084fa46547645fa142230637	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.97.02525	5ae1dc82e092de24602e8825e15937f7366fefd6c584154f31b00009b9d2ee0e	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.97.02525	5ae1dc82e092de24602e8825e15937f7366fefd6c584154f31b00009b9d2ee0e	2	zh-CN-phrases:35	ok	char 大陸規範字
+ecl-text	ecl.6.97.03758	9e7f71f6984938d166e9507d27d788723c46a51a9a2a912c70a25c692aef5550	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.6.97.03850	c17cf3c6fe3079ccb9f56e2396ad54cdbbd21acbe173c523fc90278587c76572	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.6.97.03959	af85fd6154431ead87ca8b95f330309425444a8b1c5de0797b9a288dd3bac1f8	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+ecl-text	ecl.6.97.04086	5005bd6a21061a99678f5cd431a8839de27132eefe9d88ff07e1ab8b6d1172ec	1	zh-CN-phrases:38	ok	大陸用「英寸」
 ecl-text	ecl.6.97.04626	2454191bd0412f7a7d11c689ef498c0bd69c2e7a273b1160851ff8195a9b5c46	1	TWPhrasesRev:180	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.97.07826	680d84a59f8d4119a19f749105f33d7f37ad3160fdfa1c93412a4f3209765456	1	TWPhrasesRev:459	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.97.07826	680d84a59f8d4119a19f749105f33d7f37ad3160fdfa1c93412a4f3209765456	2	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
@@ -227,14 +283,18 @@ ecl-text	ecl.6.98.08207	5e54a810d56c30382bbac1133b3d1b7b68faeb10a3aeada0e8bfba14
 ecl-text	ecl.6.98.08356	0efbec942d8983040246df5b0f79772656dd10455523817462c45f8c180af35c	1	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.98.08489	95e6b6a0b2f361284fef0f7039a106581dcd5862a6e10fa598c3a22f0041f0d2	1	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.99.02265	cc332cded840fb6b95de7860d06f668f2b22f6d79203dc19b67d0adbeaa9e9fe	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.99.03129	672ee1534530963ed8b663497ec8c84faeb403097ee03bacd784f6c9e7ec86ef	1	zh-CN-phrases:35	ok	char 大陸規範字
+ecl-text	ecl.6.99.03188	dc81d7626eef286bba1771b74acc4883a3a5eb4d3422ca147dc3b96ecb5c0d77	1	zh-CN-phrases:35	ok	char 大陸規範字
 ecl-text	ecl.6.99.06268	b6379cba787b52dc49a928385620b572b3dc0fb5e437622fb5ea3bc30d6ac7b4	1	TWPhrasesRev:459	ok	大陸慣用語，前後文核對
 ecl-text	ecl.6.99.06496	e8795e0478a7496fbe19e0ec4d5e4f4de25c73cb71cfd8695aef3c339dcbc62b	1	TWPhrasesRev:459	ok	大陸慣用語，前後文核對
+ecl-text	ecl.6.99.06927	d00026132315a5f793ef640a97d825f756dd06b4c5291161e16ec505de6a4d32	1	zh-CN-phrases:35	ok	char 大陸規範字
 engine-fragment	frag.015d99b7535a	488e03a59b1dd6b03b32b3ac343f8b9b190056be57390b01d68a407961f9236c	1	TWPhrasesRev:283	ok	大陸慣用語，前後文核對
 engine-fragment	frag.099d027ca3b5	e8ccfcbb730e7c80b9680241824322c992d8c9b5e00ebab34d6e5362c06c944b	1	TWPhrasesRev:177	ok	大陸慣用語，前後文核對
 engine-fragment	frag.099d027ca3b5	e8ccfcbb730e7c80b9680241824322c992d8c9b5e00ebab34d6e5362c06c944b	2	TWPhrasesRev:581	ok	大陸慣用語，前後文核對
 engine-fragment	frag.09cb21843734	a51d28c3938921ff07fe241e19dd2567b5d0b1610731670248b27dd7a2961558	1	zh-CN-phrases:21	ok	使用者定案：信息
 engine-fragment	frag.0ff3d2b8d663	0bf706720b3292b41465512165b74e15f8c6524b8b29f85efe3ee40fcd750639	1	TWPhrasesRev:798	ok	大陸慣用語，前後文核對
 engine-fragment	frag.14ee0629492e	fe56d226e3ae7cc8aa29e9bbd13e17c571a4e0f25bdb7508002166b2cae31559	1	TWPhrasesRev:281	ok	大陸慣用語，前後文核對
+engine-fragment	frag.1a448b74e339	34ff9dc1f6688efec7e74606172aa3142fc5e97eb470090ca34c85e81428d9d9	1	zh-CN-phrases:35	ok	char 大陸規範字
 engine-fragment	frag.1e748ea4e0f0	e7034782488294295f72270ef214a05a080fce8f15725ef963533c934a9c7d95	1	TWPhrasesRev:153	ok	大陸慣用語，前後文核對
 engine-fragment	frag.2260006382e7	f18c3fa479b24ae5901314c4d485a440c1b0d347cf274f09ff9debb4991c7a74	1	zh-CN-phrases:22	ok	使用者定案：英尺
 engine-fragment	frag.27367ccbbbcc	db4653587d63a9f82cb9058e6c19772958040e15d5ab148b72fcbb4865a80a03	1	TWPhrasesRev:458	ok	使用者定案：数据
@@ -253,9 +313,12 @@ engine-fragment	frag.3dd5d43f43a7	e2a772234e988d485fafed81b644472ef75a8c539cfab2
 engine-fragment	frag.4844cec572c9	f49f853c71287b563d5695989282f5eb6813837685c7284d8b57558a9aed3197	1	zh-CN-phrases:20	ok	使用者定案：读取
 engine-fragment	frag.4844cec572c9	f49f853c71287b563d5695989282f5eb6813837685c7284d8b57558a9aed3197	2	zh-CN-phrases:27	ok	專案 guard，前後文核對
 engine-fragment	frag.4b8fddb04ddc	c4ac4fc865b767e2450f28a5e4d9bf0a8e4b3f3b65092df4c90b290d30d1bfa2	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
+engine-fragment	frag.4e2aa89d576f	7e8b5520140ce730c154ca27ad472a3f78fca6fe9d384f8e8b76577b841e59b3	1	zh-CN-phrases:35	ok	char 大陸規範字
 engine-fragment	frag.5250b5de07b3	4da6a90d08ceb2e8e685e94783416e6ccae2cf2e31dce9aa60dc764dcc382660	1	TWPhrasesRev:529	ok	大陸慣用語，前後文核對
 engine-fragment	frag.542599d6762b	3ccffe7a416c3c0d57f5cd058a786cff804a444b05afc884011526f924675b40	1	TWPhrasesRev:464	ok	大陸慣用語，前後文核對
 engine-fragment	frag.5db98e7af406	ffa6e8ac53a6c8b76beb3edae806ebd841bf59552bc4df508f8be55dc253e62f	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
+engine-fragment	frag.687ea5927c19	927f228bd29e1999ff7fb72d2e0601d6c455dbe824803b217fa4e7655d1b028a	1	zh-CN-phrases:35	ok	char 大陸規範字
+engine-fragment	frag.699ec3219c9e	725de63f6f3efe566d41e77bdba181ec834eb2c8e85d0e701409f4fe40374c23	1	zh-CN-phrases:35	ok	char 大陸規範字
 engine-fragment	frag.6eac636b81bf	2d686a9679f5bc729803e682cd50a8b3d2b7b463b2257d5b76ec0eb53e207d2f	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
 engine-fragment	frag.700ceab2be74	1ba6f023a1a20a9a28577f36757ff3a3ae6a0afaa35b912fb6360f83957bb3ba	1	TWPhrasesRev:51	ok	大陸慣用語，前後文核對
 engine-fragment	frag.7308fcc58956	4dd3c8863e02fcff2ca4a5baf82062994ab26c0144ad363a380c4d990759ba6b	1	TWPhrasesRev:323	ok	大陸慣用語，前後文核對
@@ -270,6 +333,7 @@ engine-fragment	frag.93331741a799	29dc094d20eb15610b73c3e26d5c9f7e77d5e6620a6143
 engine-fragment	frag.93331741a799	29dc094d20eb15610b73c3e26d5c9f7e77d5e6620a614329ed0c1e19426c1543	2	TWPhrasesRev:458	ok	使用者定案：数据
 engine-fragment	frag.9ae5a4479a81	145a2371eaceb44ce53644353486152674435a6a86c5919c4f1c25b4745a2239	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
 engine-fragment	frag.9ae5a4479a81	145a2371eaceb44ce53644353486152674435a6a86c5919c4f1c25b4745a2239	2	TWPhrasesRev:323	ok	大陸慣用語，前後文核對
+engine-fragment	frag.a3254a93cde0	3e7114f40ceac72e37640d94d4c882284150bcbdacd67c1428ffb80aca9f89ec	1	zh-CN-phrases:35	ok	char 大陸規範字
 engine-fragment	frag.a59c2251d490	ebaffc32dcf5ddaade2ca1ed27f340bec4a0b646a8cedfef68dc2bd12c81d329	1	TWPhrasesRev:794	ok	大陸慣用語，前後文核對
 engine-fragment	frag.a646250fde5e	0bfe9ac1bd77d4edccfe3ab2591cc9528d964561262cc059373c9e6351f8b48b	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 engine-fragment	frag.ac461667a825	80d8f311facf07c32ba20b14182623c9961f01576fe21103e746c5f00bbabb67	1	TWPhrasesRev:158	ok	大陸慣用語，前後文核對
@@ -283,6 +347,7 @@ engine-fragment	frag.b4128c8ceeb5	fda308e5ae5fd1c0c75cdfa40cc647f00912b07150d1d1
 engine-fragment	frag.b479932c66f3	133bb08149fe919525ed432af51d542e80ead9b0c168050ce037e73a514623d1	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
 engine-fragment	frag.b97410f97c75	b9576e7dfd25ef76ed07b163a79b5af706878835eec8374b1ab05c0eb751ba2f	1	TWPhrasesRev:323	ok	大陸慣用語，前後文核對
 engine-fragment	frag.b97410f97c75	b9576e7dfd25ef76ed07b163a79b5af706878835eec8374b1ab05c0eb751ba2f	2	TWPhrasesRev:323	ok	大陸慣用語，前後文核對
+engine-fragment	frag.bf46b726b66b	512f7b5ec75f1bf76e53a4cd9c310c66db52b4387f735e4094fbb8bd7ee31b13	1	zh-CN-phrases:40	ok	大陸用「扫描」
 engine-fragment	frag.c210bfdf28ce	dba44ed3f54f2012941c8fb13fc2a13c4960a6df4b89166424f17ae9d796521f	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
 engine-fragment	frag.c65e7c8cdec0	cd28641021b1549897237868ef750dd6395089c66b2bb828a1e70021d872db2e	1	zh-CN-phrases:21	ok	使用者定案：信息
 engine-fragment	frag.c824b9934790	c07e52d684bbf9e7dcdffd373bcc8e239cbc295cdc4c87a2301b58c2469e22e6	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
@@ -296,6 +361,7 @@ engine-fragment	frag.d26c24188d93	6cc2d8e13b4d33a968d0f85e0fbee65187084132fe233c
 engine-fragment	frag.d2c838f79473	0a986f8d0845c8751c39e7f24453a9f31dc3ecd2e2de286a040f960739b1dd3a	1	TWPhrasesRev:323	ok	大陸慣用語，前後文核對
 engine-fragment	frag.d2c838f79473	0a986f8d0845c8751c39e7f24453a9f31dc3ecd2e2de286a040f960739b1dd3a	2	zh-CN-phrases:23	ok	專案 guard，前後文核對
 engine-fragment	frag.d504e6878a5f	aaeedb8bb402bedb9a2b340b19dd8f9428be1e61f2aa620410a35c3251ac8a2d	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
+engine-fragment	frag.dc9197c4fd55	e24062160209b44e91ee24e799f2bbcf5aae183f82a5bb52ede2ddde9805dd28	1	zh-CN-phrases:35	ok	char 大陸規範字
 engine-fragment	frag.df4f6c72ae34	f6e1cf65a0b9665430665efa4732359e80cd5a216eb49193581ea645daaf9138	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
 engine-fragment	frag.df4f6c72ae34	f6e1cf65a0b9665430665efa4732359e80cd5a216eb49193581ea645daaf9138	2	TWPhrasesRev:458	ok	使用者定案：数据
 engine-fragment	frag.e6aba2bd5a6b	0fbb7f06dda6c956d7750f587a0d4f7e480e3c78dfc62904a59f5b9a90d2140f	1	TWPhrasesRev:794	ok	大陸慣用語，前後文核對
@@ -316,6 +382,7 @@ hmenu	hmenu.0cf67fc72b3c	a7ec6fbee8f5eca67fa52b37333ecb8c9dc55a40cf3f9436bbb1329
 hmenu	hmenu.0dc9a6f14fd6	89b9574cdd9754174aaecd5eb368c20d649b5416991a83249ac6ef3e5daa7a9a	1	TWPhrasesRev:513	ok	大陸慣用語，前後文核對
 hmenu	hmenu.1044dec7206e	02edc81d3c333768316764c64f4c225f408372d26d3b0253c7feb3c6661c2998	1	TWPhrasesRev:323	ok	大陸慣用語，前後文核對
 hmenu	hmenu.14cb86c7a48b	a3a85725a30af1dc83c87f92be346403900e005bc9ee6f17c2d7bc31942e5746	1	zh-CN-phrases:20	ok	使用者定案：读取
+hmenu	hmenu.1511e825a991	34e36b805744ac91611da0eaa8b22ef59f484b6b83006e7c2a1bde5b04535cbe	1	zh-CN-phrases:35	ok	char 大陸規範字
 hmenu	hmenu.1538015233e3	0ffea892c6bb204019309d030a7da72435820165407b3ce2183b1db0f7d82413	1	TWPhrasesRev:153	ok	大陸慣用語，前後文核對
 hmenu	hmenu.162cc64ca1e4	c5045d3dff5decb7c76d7ca507dd933c8695909bb9fdce35559027154304f603	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
 hmenu	hmenu.20de5ccb2269	c66e9c03f1b0352d47ea757579df94f3d89bb204ddbbce8d547ad908f087664b	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
@@ -339,6 +406,7 @@ hmenu	hmenu.4c52d4874a1b	d65eeccad7eb5b0deb45bb66e635f494924b7d9c1a1543358d75637
 hmenu	hmenu.53dd76e8676e	9bd9865f773904a27c0d26b251c0b8cd5755852e784296c458e87df1d1bac351	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
 hmenu	hmenu.56f21695a650	18d436093b4e9067a8560c0cc599c056790af9f9f8bd0cb2934bf78c07dfd3df	1	TWPhrasesRev:39	ok	大陸慣用語，前後文核對
 hmenu	hmenu.5db98e7af406	1668a526fe158c9675c70a00eff99aa781d98a776394340ddbf6ce8470625ed3	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
+hmenu	hmenu.699ec3219c9e	d42ef22082377a40dc9b3db58aa8a55d63c9845af3b7cbdfe10c9143958b6c5a	1	zh-CN-phrases:35	ok	char 大陸規範字
 hmenu	hmenu.6e10953f3e4c	46f862b63b8a63027c1cb56fc404bd25e9af04e19bb795a473f4aabcb7d43d00	1	TWPhrasesRev:257	ok	大陸慣用語，前後文核對
 hmenu	hmenu.6e31a0bd32b4	45362068caa9ee0d39915deea195127af518f306b3bc8f8d120f8166b58720cc	1	TWPhrasesRev:180	ok	大陸慣用語，前後文核對
 hmenu	hmenu.700ceab2be74	641f5baf1301d153cad11462096dd71c8964986825d21d772922389c6e48ebc3	1	TWPhrasesRev:51	ok	大陸慣用語，前後文核對
@@ -382,6 +450,7 @@ hmenu	hmenu.b4128c8ceeb5	26c9474460a515db97b598382f714c59fc3d06930f0b3b877434fc0
 hmenu	hmenu.b5c120b316c2	175a3850a37d314b4c6c0668f9fa426d8d5cf199406219a211e06f914791eccb	1	TWPhrasesRev:160	ok	大陸慣用語，前後文核對
 hmenu	hmenu.bb68380e8c1f	bb2bb4c8423ee9a15460cbc409373e4675c4e033083124424feca0a1c63e6de3	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 hmenu	hmenu.be495ffabf1e	a926e774be69192274ee8fbadf3e62128967bc23e647b6bfef58247c983c9a9d	1	TWPhrasesRev:323	ok	大陸慣用語，前後文核對
+hmenu	hmenu.bf46b726b66b	aeadfb0bd40e06d1b3206d3fad538411232a3462074988b684ab5fbff79103ae	1	zh-CN-phrases:40	ok	大陸用「扫描」
 hmenu	hmenu.c064fbca9d9d	c54157716c759b665480a319064dcf31abdf4381334b29418be39101a92d94b4	1	TWPhrasesRev:177	ok	大陸慣用語，前後文核對
 hmenu	hmenu.c2a18af9c74f	c5045d3dff5decb7c76d7ca507dd933c8695909bb9fdce35559027154304f603	1	TWPhrasesRev:228	ok	大陸慣用語，前後文核對
 hmenu	hmenu.c2d4b446a44c	4d467daed49bbdbcd3680ff5f1d7115f7d984273bcce820397bea33a838220e9	1	TWPhrasesRev:153	ok	大陸慣用語，前後文核對
@@ -412,18 +481,45 @@ hmenu	hmenu.fdbd7d627a51	128d8afdc642c33d196d10e6d4c3e9456379b98e6f7c243cfc81ea9
 item-word	item.38df4d6991b6	5abfc959e2554b4742b6d1da4f8ca8aea79473697c7e0376159848a9f0e8af7a	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
 logbook	logbook.2	9892d5742267f4ce7b7a3f56e6829aba1d0a4e85a7315d15b43c2900cb7b62cf	1	TWPhrasesRev:581	ok	大陸慣用語，前後文核對
 logbook	logbook.2	9892d5742267f4ce7b7a3f56e6829aba1d0a4e85a7315d15b43c2900cb7b62cf	2	TWPhrasesRev:233	ok	大陸慣用語，前後文核對
+logbook	logbook.2	9892d5742267f4ce7b7a3f56e6829aba1d0a4e85a7315d15b43c2900cb7b62cf	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.2	9892d5742267f4ce7b7a3f56e6829aba1d0a4e85a7315d15b43c2900cb7b62cf	4	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.4	803cd3575f2a1fcc99c71c4d9c96eca4c43657a90852c63a564a9fe933f5f2f5	1	TWPhrasesRev:548	ok	大陸慣用語，前後文核對
+logbook	logbook.4	803cd3575f2a1fcc99c71c4d9c96eca4c43657a90852c63a564a9fe933f5f2f5	2	zh-CN-phrases:35	ok	char 大陸規範字
 logbook	logbook.5	96658253e8adac1dadc39130cf136d66e05eae5dce8bec803134ea7376697e8f	1	TWPhrasesRev:689	ok	使用者定案：图像
 logbook	logbook.5	96658253e8adac1dadc39130cf136d66e05eae5dce8bec803134ea7376697e8f	2	TWPhrasesRev:689	ok	使用者定案：图像
+logbook	logbook.6	5e48e6765cc467289ae9a66021f7d7142f9eacac8c5753818e548bc5b3125375	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.6	5e48e6765cc467289ae9a66021f7d7142f9eacac8c5753818e548bc5b3125375	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.6	5e48e6765cc467289ae9a66021f7d7142f9eacac8c5753818e548bc5b3125375	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.6	5e48e6765cc467289ae9a66021f7d7142f9eacac8c5753818e548bc5b3125375	4	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.6	5e48e6765cc467289ae9a66021f7d7142f9eacac8c5753818e548bc5b3125375	5	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.7	ab55663a8092803dd39f04a47f56d39b31cc7f21e0d968ce371b8525e3bc8c6c	1	TWPhrasesRev:458	ok	使用者定案：数据
 logbook	logbook.11	33cf710386c70355a15123ec6c309ec305a700add27e6f96ea905e2c4d707f85	1	zh-CN-phrases:21	ok	使用者定案：信息
 logbook	logbook.12	e972203d04c2cc2bc48edc82af988895c2b355da5cf868cff2210360f1ce3236	1	TWPhrasesRev:494	ok	大陸慣用語，前後文核對
+logbook	logbook.12	e972203d04c2cc2bc48edc82af988895c2b355da5cf868cff2210360f1ce3236	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.12	e972203d04c2cc2bc48edc82af988895c2b355da5cf868cff2210360f1ce3236	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.12	e972203d04c2cc2bc48edc82af988895c2b355da5cf868cff2210360f1ce3236	4	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.14	a4a4b0ef6d3347d37634da29aed771eb9f7ac88b47bdf37644a997041030efb8	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
+logbook	logbook.16	9e200d9f0641921cbe0dd14dcf3de0fb80e233984629de74f64f593fb1f4f27b	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.16	9e200d9f0641921cbe0dd14dcf3de0fb80e233984629de74f64f593fb1f4f27b	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.16	9e200d9f0641921cbe0dd14dcf3de0fb80e233984629de74f64f593fb1f4f27b	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.16	9e200d9f0641921cbe0dd14dcf3de0fb80e233984629de74f64f593fb1f4f27b	4	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.17	cee2f9fcf1e74a4f56e5181c97a470eb08e0a987316d725b94250570cb32bb82	1	TWPhrasesRev:503	ok	大陸慣用語，前後文核對
+logbook	logbook.17	cee2f9fcf1e74a4f56e5181c97a470eb08e0a987316d725b94250570cb32bb82	2	zh-CN-phrases:40	ok	大陸用「扫描」
+logbook	logbook.17	cee2f9fcf1e74a4f56e5181c97a470eb08e0a987316d725b94250570cb32bb82	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.17	cee2f9fcf1e74a4f56e5181c97a470eb08e0a987316d725b94250570cb32bb82	4	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.17	cee2f9fcf1e74a4f56e5181c97a470eb08e0a987316d725b94250570cb32bb82	5	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.18	749190077eaf61f58f7c62331c9b67ef84231440604f0470dd5172147daca6ca	1	zh-CN-phrases:26	ok	專案 guard，前後文核對
 logbook	logbook.19	9f680ae2ce69612796c927818b20697cb108511a1a5eeaea3ddcba24d4f079f2	1	TWPhrasesRev:689	ok	使用者定案：图像
 logbook	logbook.19	9f680ae2ce69612796c927818b20697cb108511a1a5eeaea3ddcba24d4f079f2	2	TWPhrasesRev:494	ok	大陸慣用語，前後文核對
+logbook	logbook.19	9f680ae2ce69612796c927818b20697cb108511a1a5eeaea3ddcba24d4f079f2	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.20	b9f451ffa04ef5ee06de7cec2fa9c6ebe46ec67bc81ba220ee565972e1af594f	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.20	b9f451ffa04ef5ee06de7cec2fa9c6ebe46ec67bc81ba220ee565972e1af594f	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.20	b9f451ffa04ef5ee06de7cec2fa9c6ebe46ec67bc81ba220ee565972e1af594f	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.21	6c6ec6104a765b2ac1c74a8c9d82201db7f0e8453a247cd556f99173efc3664c	1	TWPhrasesRev:458	ok	使用者定案：数据
+logbook	logbook.21	6c6ec6104a765b2ac1c74a8c9d82201db7f0e8453a247cd556f99173efc3664c	2	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.21	6c6ec6104a765b2ac1c74a8c9d82201db7f0e8453a247cd556f99173efc3664c	3	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.21	6c6ec6104a765b2ac1c74a8c9d82201db7f0e8453a247cd556f99173efc3664c	4	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
+logbook	logbook.21	6c6ec6104a765b2ac1c74a8c9d82201db7f0e8453a247cd556f99173efc3664c	5	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.23	579e7e9781fe66ac2a74dc9ad2188b2d579fba5abf7971a859445f22a743b2fd	1	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
 logbook	logbook.23	579e7e9781fe66ac2a74dc9ad2188b2d579fba5abf7971a859445f22a743b2fd	2	TWPhrasesRev:121	ok	大陸慣用語，前後文核對
 logbook	logbook.23	579e7e9781fe66ac2a74dc9ad2188b2d579fba5abf7971a859445f22a743b2fd	3	TWPhrasesRev:288	ok	大陸慣用語，前後文核對
@@ -435,11 +531,13 @@ logbook	logbook.31	e05b66b98e7f2716faa138849f7616dd9718be2a5bbdc3099b5047961b4b9
 logbook	logbook.35	ac36d9f626e09caaadb93f362359a5c4defd11013c237d7b8e320e1b8ae9290f	1	TWPhrasesRev:458	ok	使用者定案：数据
 logbook	logbook.35	ac36d9f626e09caaadb93f362359a5c4defd11013c237d7b8e320e1b8ae9290f	2	TWPhrasesRev:522	ok	大陸慣用語，前後文核對
 logbook	logbook.35	ac36d9f626e09caaadb93f362359a5c4defd11013c237d7b8e320e1b8ae9290f	3	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
+logbook	logbook.38	99aa3fe6561c6bf29c87786cb0123d24fc5ecc25827415f4b2b6341df06409eb	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.39	232049ef8a6df88a8fc67ea615112c4f1dcfbde03b847414d7010203da9af2f9	1	zh-CN-phrases:21	ok	使用者定案：信息
 logbook	logbook.39	232049ef8a6df88a8fc67ea615112c4f1dcfbde03b847414d7010203da9af2f9	2	TWPhrasesRev:470	ok	大陸慣用語，前後文核對
 logbook	logbook.39	232049ef8a6df88a8fc67ea615112c4f1dcfbde03b847414d7010203da9af2f9	3	TWPhrasesRev:625	ok	大陸慣用語，前後文核對
 logbook	logbook.46	b111ec77638846d0a48035638d1b30e8ffa5d9eeaaa03eb164342042795b9728	1	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
 logbook	logbook.46	b111ec77638846d0a48035638d1b30e8ffa5d9eeaaa03eb164342042795b9728	2	TWPhrasesRev:537	ok	大陸慣用語，前後文核對
+logbook	logbook.49	94470b11d5157d5475910f566c7fef7941408bc61e84dac905ee3b85eb435571	1	zh-CN-phrases:37	ok	char 大陸規範字
 logbook	logbook.50	48627cba3b974273d030480b5c540a38c0c7cd0fe9a17c781820e3682c1cd62e	1	TWPhrasesRev:492	ok	大陸慣用語，前後文核對
 logbook	logbook.51	b9223a95440639f8829defdc5dcc826db7983e459bd76fbfb32666ce2e86a7df	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
 logbook	logbook.51	b9223a95440639f8829defdc5dcc826db7983e459bd76fbfb32666ce2e86a7df	2	zh-CN-phrases:21	ok	使用者定案：信息
@@ -448,16 +546,23 @@ logbook	logbook.51	b9223a95440639f8829defdc5dcc826db7983e459bd76fbfb32666ce2e86a
 logbook	logbook.54	13b9c7a4f5366f52ccf31002d77536bd293f30a5a23986155f3c03a926d8832e	1	TWPhrasesRev:581	ok	大陸慣用語，前後文核對
 logbook	logbook.55	507c5fdd86e36e8a225390366133b66fcd570810b84b4735c751024a90a242e6	1	TWPhrasesRev:581	ok	大陸慣用語，前後文核對
 logbook	logbook.55	507c5fdd86e36e8a225390366133b66fcd570810b84b4735c751024a90a242e6	2	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
+logbook	logbook.57	bc31623df2173c39e1fc79177a880ad662ff09e1f862aca5183cc3f609df74e1	1	zh-CN-phrases:34	ok	char 大陸規範字，逐處確認為代詞
 logbook	logbook.58	1eab736c40a32b09c1a746def8af914fd993815b386b6c488e8e9b03bf3d79cd	1	TWPhrasesRev:494	ok	大陸慣用語，前後文核對
 logbook	logbook.59	44afb0e8d86957dcd4e8757c302407054eec2081dbe734555f05c2e7076c284c	1	zh-CN-phrases:32	ok	專案 guard，前後文核對
+logbook	logbook.60	38dab9c56610016e835517db6101c93ed18479cdff4b6e43d2e88507511e8a51	1	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
 logbook	logbook.62	ade48054d743d692ae1f39c3b32dbb1aacebf4676c105a80eab55017627e7e67	1	TWPhrasesRev:494	ok	大陸慣用語，前後文核對
 logbook	logbook.63	e47a15ac7aee11e70505d4d0011024cf9ba8f58a81e7b6ab32ed6f108a6e66af	1	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
 logbook	logbook.63	e47a15ac7aee11e70505d4d0011024cf9ba8f58a81e7b6ab32ed6f108a6e66af	2	zh-CN-phrases:21	ok	使用者定案：信息
 logbook	logbook.63	e47a15ac7aee11e70505d4d0011024cf9ba8f58a81e7b6ab32ed6f108a6e66af	3	TWPhrasesRev:625	ok	大陸慣用語，前後文核對
 logbook	logbook.63.title	81f984b81ba33fb59a78bfd03c1f54bc5d351385e86c7d29085fbc1f08aea997	1	TWPhrasesRev:23	ok	大陸慣用語，前後文核對
+logbook	logbook.64	2719ee7fcdc46a7879b950e60a5142f67eeb5d3d0ebdf31b92ba3fc8aef18532	1	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
+logbook	logbook.64	2719ee7fcdc46a7879b950e60a5142f67eeb5d3d0ebdf31b92ba3fc8aef18532	2	zh-CN-phrases:39	ok	文件記載義，大陸用「记录」
 logbook	logbook.67	154fb449001284dcfa6f76a746df83ed6afc85da67489917db859aab24c2bc99	1	TWPhrasesRev:495	ok	大陸慣用語，前後文核對
-logbook	logbook.69	56e45d843825dc40d603320f33ccc3ecbbc2f5eb2dc52178724a0bc2c3c59410	1	TWPhrasesRev:458	ok	使用者定案：数据
-logbook	logbook.69	56e45d843825dc40d603320f33ccc3ecbbc2f5eb2dc52178724a0bc2c3c59410	2	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
+logbook	logbook.69	56e45d843825dc40d603320f33ccc3ecbbc2f5eb2dc52178724a0bc2c3c59410	1	zh-CN-phrases:40	ok	大陸用「扫描」
+logbook	logbook.69	56e45d843825dc40d603320f33ccc3ecbbc2f5eb2dc52178724a0bc2c3c59410	2	TWPhrasesRev:458	ok	使用者定案：数据
+logbook	logbook.69	56e45d843825dc40d603320f33ccc3ecbbc2f5eb2dc52178724a0bc2c3c59410	3	zh-CN-phrases:40	ok	大陸用「扫描」
+logbook	logbook.69	56e45d843825dc40d603320f33ccc3ecbbc2f5eb2dc52178724a0bc2c3c59410	4	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
+logbook	logbook.69.title	d5efb58b2d472d89c050fd9243e5d4ae52acac8966b5253d3af1ab7fd3279f5b	1	zh-CN-phrases:40	ok	大陸用「扫描」
 manual	manual.lore.2456_now	daac275ca39e30b7e78ef0df9dc79f3b7cf96f15e42b3deec6f691d506103ab0	1	TWPhrasesRev:158	ok	
 manual	manual.rules.more_on_abilities	e9e2f97ec3e324af5abf5f1ebd356d8792c124bd140634d69ea978a0c4b9d677	1	TWPhrasesRev:459	ok	
 manual	manual.rules.careers	c7d5772ae28c12a1d1a77e18e17a80b9d5b03b20d3db27f2acce261118b19f58	1	TWPhrasesRev:158	ok	
@@ -474,6 +579,7 @@ manual	manual.log.5.scots_alarm	b2cf97a6bac0d3a69cda49a4d22c7f4f5f8fc5b1796c9e7f
 manual	manual.log.11.the_elevator	3a1e1d474eb4e9e1ff1e62d951f24970d90d5a80ac9ed92546a0187c5af71bef	1	zh-CN-phrases:21	ok	
 manual	manual.log.18.king_in_zero_g	749190077eaf61f58f7c62331c9b67ef84231440604f0470dd5172147daca6ca	1	zh-CN-phrases:26	ok	
 manual	manual.log.27.bucks_speech	37192eb9424c4b41df384b5b11e9bd39127946c23278a28bbcd3000168b75df1	1	zh-CN-phrases:21	ok	
+manual	manual.log.57.acidic_victory	bc31623df2173c39e1fc79177a880ad662ff09e1f862aca5183cc3f609df74e1	1	zh-CN-phrases:34	ok	
 manual	manual.log.63.alert_screen	701dd76d509e91ccfb54bc38af5f0eaf6339f4af977ae719229b03a7583e4517	1	TWPhrasesRev:23	ok	
 manual	manual.rules.technical_skills	ea31e9b728534d28bd2e03d435def5f4716d82bde1b203578f96f5191044522d	1	TWPhrasesRev:728	ok	
 manual	manual.rules.technical_skills	ea31e9b728534d28bd2e03d435def5f4716d82bde1b203578f96f5191044522d	2	TWPhrasesRev:228	ok	
@@ -487,3 +593,4 @@ save-roster-join	roster.loading	d37aeef976c85bf398e62bcabd9561e33168914a342b8bcc
 story-page4	story.page4.line.001	1313a1b2aa5508ce5edcbd58ce9aa38ce9408692015753df0c37724fecb47c2a	1	TWPhrasesRev:689	ok	使用者定案：图像
 story-page6	story.page6.line.001	880334087c8a459f33a06a2d855fe18dc7cc5e09891e095bc9d18dd25b160dd7	1	TWPhrasesRev:689	ok	使用者定案：图像
 technical-skill-screen	technical.skill.commo_operation	46c3082277ceda71527e00f24d2a24800d2a0d6948fb695e5a019a2ad6815cf7	1	TWPhrasesRev:728	ok	大陸慣用語，前後文核對
+technical-skill-screen	technical.skill.sensor_operation	512f7b5ec75f1bf76e53a4cd9c310c66db52b4387f735e4094fbb8bd7ee31b13	1	zh-CN-phrases:40	ok	大陸用「扫描」
