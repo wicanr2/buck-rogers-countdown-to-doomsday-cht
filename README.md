@@ -1,11 +1,11 @@
 # 《拯救地球》DOS 輸出端繁體中文化
 
 本專案讓原版 DOS《Buck Rogers: Countdown to Doomsday》在 dosgolem 執行時，以輸出攔截
-方式覆繪繁體中文。它不是 remake、不是修改原版 EXE，也不重新實作遊戲規則；原版要求
+方式覆繪繁體中文（另有簡體中文、日文、韓文，見下方「語言」）。它不是 remake、不是修改原版 EXE，也不重新實作遊戲規則；原版要求
 玩家查閱手冊時，目標是直接在同一事件中顯示相應的中文手冊段落，而不繞過答案判定。
 
-> 本專案仍在開發中，尚無可供一般玩家下載的完成版或 Release。已證實範圍與下一個驗收
-> 閘門以 [CONTEXT.md](CONTEXT.md) 為準。
+> 已發佈 [Release](https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht/releases)（Linux、Windows、macOS），
+> 需自備原版遊戲；已證實的範圍與下一個驗收閘門以 [CONTEXT.md](CONTEXT.md) 為準，尚未量到的輸出路徑仍顯示英文。
 
 原版 39 題手冊查閱事件均已有對應的遊戲內繁中說明段落；其中 35 題另在段落下方列出英文原文前 N 字
 並標出第 N 字，讓沒有英文手冊的玩家也能作答（英文取自使用者本機的手冊快照，不在本儲存庫）。

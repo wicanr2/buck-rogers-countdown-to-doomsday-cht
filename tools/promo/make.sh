@@ -7,6 +7,8 @@
 # ⚠ 配樂是 workplace/dosboxx-audio/promo/capture/start_000.wav —— DOSBox-X 跑原版錄下的輸出，
 #   不是 dosgolem 的合成結果。使用者 2026-09-28 決定公開影片使用原版音樂，片尾註明權利歸屬。
 # ⚠ 畫面全部是發行設定（Unifont、3 倍、無手冊英文列）的實跑截圖；不收手冊查詢題畫面。
+#   v1.1.0 起畫面是各語言通道的同狀態輸出（workplace/promo-110/shots，由 tools 之外的 runner 腳本產生，
+#   見 docs/re/phase-310-release-v110.md）；v1.0.0 的舊影片用 workplace/play-e2e 的 ps*.png。
 set -eu
 cd /src
 
@@ -17,7 +19,7 @@ TEXT='#ffffff'; DIM='#b0b0b0'; GREEN='#55ff55'
 FONT_TITLE=/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
 FONT_BODY=/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
 
-SHOT=workplace/play-e2e
+SHOT=workplace/promo-110/shots
 MUSIC=workplace/dosboxx-audio/promo/capture/start_000.wav
 OUT=workplace/promo
 TMP=$OUT/tmp
@@ -56,21 +58,23 @@ clip() {
 }
 
 card  "$TMP/00.png" "拯救地球" "BUCK ROGERS: COUNTDOWN TO DOOMSDAY" \
-  "SSI 1990 ・ DOS 英文版 ・ 繁體中文化" "原版程式一行不改，在 dosgolem 上執行並即時覆繪中文"
-slide "$TMP/01.png" ps1.png "角色建立：選擇種族"
-slide "$TMP/02.png" ps3.png "救世站 Salvation III：地點選單與訊息全中文"
-slide "$TMP/03.png" ps4.png "出站：駕駛火箭船穿過太空殘骸"
-slide "$TMP/04.png" ps5.png "登上廢棄飛船：迷宮探索與敘事"
-slide "$TMP/05.png" ps6.png "劇情事件逐句中文，原版版面與時機不變"
-slide "$TMP/06.png" ps7.png "F1 說明、2 倍／3 倍、靜音、全螢幕、截圖"
-card  "$TMP/07.png" "AdLib 音樂 ・ 滑鼠 ・ 三平台" "Windows ・ macOS ・ Linux" \
+  "SSI 1990 ・ DOS 英文版 ・ 繁體中文／簡體中文／日文／韓文" "原版程式一行不改，在 dosgolem 上執行並即時覆繪"
+slide "$TMP/01.png" party-zh-TW.png "隊伍與功能選單：玩家名音譯成「中文(英文)」"
+slide "$TMP/02.png" cmdr-zh-TW.png "指揮官登場：人名依印刷手冊譯名"
+slide "$TMP/03.png" narr-zh-TW.png "廢棄飛船敘事：玩家名接入句中，原版版面與時機不變"
+slide "$TMP/04.png" cmdr-zh-CN.png "F4 切換語言：簡體中文"
+slide "$TMP/05.png" party-ja.png "日文：玩家名音譯成片假名（機器輔助譯文）"
+slide "$TMP/06.png" narr-ja.png "日文：敘事與選單"
+slide "$TMP/07.png" party-ko.png "韓文：玩家名音譯成諺文（機器輔助譯文）"
+slide "$TMP/08.png" battle-ko.png "韓文：戰鬥畫面"
+card  "$TMP/09.png" "AdLib 音樂 ・ 滑鼠 ・ 三平台" "Windows ・ macOS ・ Linux" \
   "模擬 AdLib 與 PC 喇叭；手冊查詢題顯示中文手冊段落" "需自備合法取得的原版遊戲，程式核對雜湊後匯入"
 card  "$TMP/99.png" "拯救地球 繁體中文化" "github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht" \
   "RRSAL-1.0 ・ 非商業免費 ・ 不附原版遊戲" "配樂為原版遊戲音樂（DOSBox-X 錄製），著作權屬原權利人"
 
 LIST="$TMP/list.txt"; : > "$LIST"
-for f in 00 01 02 03 04 05 06 07 99; do
-  case "$f" in 00|99) s=5.5 ;; 07) s=6.5 ;; *) s=6 ;; esac
+for f in 00 01 02 03 04 05 06 07 08 09 99; do
+  case "$f" in 00|99) s=5 ;; 09) s=6 ;; *) s=4.8 ;; esac
   clip "$TMP/$f.png" "$TMP/s_$f.mp4" "$s"
   echo "file 's_$f.mp4'" >> "$LIST"
 done
