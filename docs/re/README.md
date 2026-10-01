@@ -277,6 +277,7 @@
 | [第三百零九階段：甲板提示後的數字補空白](phase-309-zh-deck-space.md) | 規格 048：zh-TW、zh-CN 在 `甲板` 後的 ASCII 數字呼叫前補一個半形空白（`甲板 5。`）、離線重播 74 則 9 種畫面（zh-TW、zh-CN 各）、104 個前後對照時點只有 join 時點的 4 張畫面不同、phase254 七條不變。 |
 | [第三百一十階段：v1.1.0 發行](phase-310-release-v110.md) | v1.1.0 內容、驗證、三平台打包與實機冒煙、ko 標題兩處誤譯修正、發佈流程順序。 |
 | [第三百一十一階段：自動模式畫格輸出與實機錄影版推廣片](phase-311-frame-dump.md) | 規格 049：`-frame-dir`／`-frame-every` 逐格輸出 PNG、開關不改變遊戲與 `-wav`、說明頁期間音訊缺樣本、11,400 格實機錄影與 50.9 秒成片、ffmpeg 與 pids-limit 的坑。 |
+| [第三百一十二階段：zh-TW 譯文修正](phase-312-zh-tw-corrections.md) | Issue #37：三條確認誤譯、欄名片段超寬、第七頁站名、兩條「第」結尾；手札以中文印刷本為準的決定；dosgolem 釘住雜湊同步；離線重播只有欄名片段變動。 |
 | [第三百零八階段：日文與韓文玩家名音譯](phase-308-translit-jk.md) | 規格 044、045：`xlate/translitjk`（共用前端、片假名與諺文規則）、全字典 117,493 詞不變式、兩位獨立審查與兩處規則修正、104 個前後對照時點（機器狀態全同、新舊畫面只在 ja、ko 的隊伍欄 10 個時點不同）、離線重播與 phase254 七條不變、`package.sh linux` 與發行包通道冒煙。 |
 | [音譯例子表（ja）](phase-308-spec-examples.ja.tsv)、[（ko）](phase-308-spec-examples.ko.tsv) | 規格 044、045 規則文字括號內的「名字加寫法」，規則模式逐列比對（`TestSpecExamples`）；idiom 列是已知與慣用寫法的差異。 |
 | [音譯固定名單（ja）](phase-308-translit-fixed-names.ja.tsv)、[（ko）](phase-308-translit-fixed-names.ko.tsv) | 固定測試名單與期望輸出（欄位 name、expected、tier、rules、review），由 dosgolem `-update-fixed` 產生，兩位審查者確認；dosgolem `xlate/translitjk/testdata/` 有逐字副本。 |

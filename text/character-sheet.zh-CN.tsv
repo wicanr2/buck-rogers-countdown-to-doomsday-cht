@@ -11,7 +11,7 @@ character.sheet.status	状态	runtime-interface
 character.sheet.experience	经验值	manual-and-runtime
 character.sheet.credit	信用点数	runtime-interface
 character.sheet.age	年龄	runtime-interface
-character.sheet.mount	坐骑	runtime-interface
+character.sheet.mount	移动力	runtime-interface
 character.sheet.encumbrance	负重	runtime-interface
 character.sheet.damage	伤害	runtime-interface
 character.sheet.weapon	武器	manual-and-runtime

@@ -1,8 +1,8 @@
 key	translation	source
 post_join_menu.purge_character	删除角色	runtime-editorial
 post_join_menu.modify_character	修改角色	runtime-editorial
-post_join_menu.join_a_game	加入游戏	runtime-editorial
+post_join_menu.join_a_game	图标选择	runtime-editorial
 post_join_menu.view_character	查看角色	runtime-editorial
 post_join_menu.remove_character_from_team	将角色移出队伍	runtime-editorial
-post_join_menu.show_characters_game	显示角色所属游戏	runtime-editorial
+post_join_menu.show_characters_game	保存目前游戏	runtime-editorial
 post_join_menu.begin_adventuring	开始冒险	runtime-editorial
