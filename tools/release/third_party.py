@@ -51,7 +51,7 @@ def main():
         raise SystemExit("缺授權檔：" + "、".join(missing))
     body = ["# 第三方元件", "", "由 `go version -m` 列出的實際連結模組（不含 dosgolem 本身，見 LICENSE-dosgolem）。", "",
             "| 模組 | 版本 | 授權 | 授權檔 |", "|---|---|---|---|", *rows, "",
-            "另含：GNU Unifont 17.0.05 字型子集（font/OFL-1.1.txt、font/COPYING-unifont）；",
+            "另含：GNU Unifont 17.0.05 字型子集（font/OFL-1.1.txt、font/COPYING-unifont）：繁體中文取其台灣字形來源（unifont_t），簡體中文取預設（含經 Unifont 收錄授權的文泉驛點陣宋體，Qianqian Fang），日文、韓文取 unifont_all（含公有領域的 izmg16 日文字形）；",
             "Nuked OPL3 的 Go 移植（dosgolem audio/nukedopl，LGPL-2.1-or-later，COPYING.LGPL、nukedopl-SOURCE.md）；",
             "CMU 發音詞典（text/cmudict/cmudict.dict，Carnegie Mellon University，BSD 式授權，全文 text/cmudict/LICENSE），玩家名音譯用；",
             "英語人名譯音表（text/translit-table.tsv，改作自中文維基百科頁面「Wikipedia:外語譯音表/英語」的「人名」表，CC BY-SA 4.0，出處與說明 text/LICENSE-translit-table.md），玩家名音譯用。", ""]

@@ -25,6 +25,11 @@ DIST="$ROOT/dist-all"
 UNIFONT="$W/unifont-src/unifont_all-17.0.05.hex.gz"
 UNIFONT_SHA="7b182454966046d35482469b979edce7d262fab5c53c2180e9b1fbb5d0b5e574"
 UNIFONT_DOC="$W/unifont-src/unifont-17.0.05"
+# 規格 050：zh-TW 用台灣來源 unifont_t、zh-CN 用預設 unifont，從官方 tarball 的 font/precompiled/ 解出並核對雜湊（ja、ko 仍用 unifont_all）。
+UNIFONT_TAR="$W/unifont-src/unifont-17.0.05.tar.gz"
+UNIFONT_TAR_SHA="f287cffb26e22723aa36e6684869b0f3ff3bfb822c4b01008bd847911ec1b631"
+UNIFONT_T_SHA="169634258e4037b507beaafad5d72edc2e44b3faeaa856d9669e4657d1eee454"     # unifont_t-17.0.05.hex
+UNIFONT_ZH_SHA="fd79af3613ec1b984a98d33428fdd43fcf06018d18059960d78edeb63d958622"    # unifont-17.0.05.hex
 RUNTIME_SIZE=944632  # psychicwar-appimage 的 /opt/runtime-x86_64
 GO_IMAGE="eob-remake-go:1.26.7-ebiten2.9.9"
 PY_IMAGE="python:3.13-bookworm"
@@ -66,6 +71,8 @@ git -C "$DG" fetch -q origin "$DG_BRANCH" 2>/dev/null || true
 git -C "$DG" merge-base --is-ancestor "$DC" "origin/$DG_BRANCH" || die "dosgolem $DC 尚未推到公開分支"
 [[ -f "$UNIFONT" ]] || die "缺 $UNIFONT"
 [[ "$(sha256sum "$UNIFONT" | cut -c1-64)" == "$UNIFONT_SHA" ]] || die "Unifont 雜湊不符"
+[[ -f "$UNIFONT_TAR" ]] || die "缺 $UNIFONT_TAR"
+[[ "$(sha256sum "$UNIFONT_TAR" | cut -c1-64)" == "$UNIFONT_TAR_SHA" ]] || die "Unifont tarball 雜湊不符"
 for f in COPYING OFL-1.1.txt; do [[ -f "$UNIFONT_DOC/$f" ]] || die "缺 Unifont $f"; done
 [[ -d "$MODCACHE" ]] || die "缺模組快取 $MODCACHE"
 for s in "${LEAK_SOURCES[@]}"; do [[ -d "$s" ]] || die "外洩掃描來源不存在：$s"; done
@@ -110,13 +117,24 @@ for lang in ja ko; do
   [[ " ${LANGS[*]} " == *" $lang "* ]] && TRANSLIT_FILES+=("translit-$lang-names.tsv" "translit-chars.$lang.tsv")
 done
 for f in "${TRANSLIT_FILES[@]}"; do [[ -f "$STAGE/common/text/$f" ]] || die "發行包缺 text/$f（玩家名音譯器需要）"; done
+# 規格 050：從官方 tarball 解出 zh-TW 與 zh-CN 的字形來源並核對解壓後內容的雜湊（任何不符即失敗）。
+mkdir -p "$STAGE/unifont"
+dr -v "$UNIFONT_TAR:/u.tar.gz:ro" -v "$STAGE:/stage" "$PY_IMAGE" sh -c '
+  tar -xzf /u.tar.gz -C /stage/unifont --strip-components=3 \
+    unifont-17.0.05/font/precompiled/unifont_t-17.0.05.hex unifont-17.0.05/font/precompiled/unifont-17.0.05.hex'
+[[ "$(sha256sum "$STAGE/unifont/unifont_t-17.0.05.hex" | cut -c1-64)" == "$UNIFONT_T_SHA" ]] || die "unifont_t 雜湊不符"
+[[ "$(sha256sum "$STAGE/unifont/unifont-17.0.05.hex" | cut -c1-64)" == "$UNIFONT_ZH_SHA" ]] || die "unifont（預設）雜湊不符"
 dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" sh -c '
-  python3 tools/catalog_font.py build text/*.zh-TW.tsv --font /u.hex.gz --out /stage/common/font/buckrogers-unifont.golemfnt &&
+  python3 tools/catalog_font.py build text/*.zh-TW.tsv --font /stage/unifont/unifont_t-17.0.05.hex --out /stage/common/font/buckrogers-unifont.golemfnt &&
   for s in 256 512; do python3 tools/appicon.py /stage/common/font/buckrogers-unifont.golemfnt /stage/icon-$s.png $s; done'
 for lang in "${LANGS[@]}"; do
   [[ "$lang" == zh-TW ]] && continue
+  case "$lang" in
+    zh-CN) FONTSRC=/stage/unifont/unifont-17.0.05.hex ;;  # 規格 050：簡體用預設（文泉驛），不用日文優先的 unifont_all
+    *)     FONTSRC=/u.hex.gz ;;                           # ja、ko 維持 unifont_all
+  esac
   dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" \
-    python3 tools/catalog_font.py build --lang "$lang" --font /u.hex.gz --out "/stage/common/font/buckrogers-$lang.golemfnt"
+    python3 tools/catalog_font.py build --lang "$lang" --font "$FONTSRC" --out "/stage/common/font/buckrogers-$lang.golemfnt"
 done
 # 規格 044 §3.7：以發行包的 text/ 與 font/ 實跑各語言通道（唯讀掛載 common/）。測試必須真的執行：
 # 輸出要有 --- PASS 且不得有 --- SKIP，否則打包失敗。dosgolem 取已推送分支 HEAD，測試先進該 commit。

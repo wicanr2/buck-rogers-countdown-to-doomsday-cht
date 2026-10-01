@@ -224,3 +224,25 @@ manifest SHA-256 為
 `703cb633fad24001c6041cb3cf9eed9397c49bc1d9a519bdcfac35082297e4b3`。
 同一個 `eten_font.py verify` 唯讀核驗通過；兩份私有產物不入版控。
 來源衝突及原版局部驗收限度見[規格 024](../docs/spec/024-manual-layer-group-font-identity-ready-candidate.md)。
+
+## 中文字形來源（規格 050）
+
+zh-TW 與 zh-CN 發行字型不用 `unifont_all`（它的 CJK 字形取自日文來源 `izmg16`，見規格 050 §1），改用官方 tarball
+`unifont-17.0.05.tar.gz`（SHA-256 `f287cffb26e22723aa36e6684869b0f3ff3bfb822c4b01008bd847911ec1b631`）內 `font/precompiled/` 的：
+
+| 語言 | 來源檔 | SHA-256 |
+|---|---|---|
+| zh-TW | `unifont_t-17.0.05.hex`（預設加台灣來源 `t-source.hex`） | `169634258e4037b507beaafad5d72edc2e44b3faeaa856d9669e4657d1eee454` |
+| zh-CN | `unifont-17.0.05.hex`（預設，CJK 為文泉驛點陣宋體） | `fd79af3613ec1b984a98d33428fdd43fcf06018d18059960d78edeb63d958622` |
+| ja、ko | `unifont_all-17.0.05.hex.gz`（不變） | 見 `tools/package.sh` |
+
+`tools/package.sh` 解出前兩個檔並核對雜湊後建字型。手動重建（本機驗收用）：
+
+```sh
+tar -xzf workplace/unifont-src/unifont-17.0.05.tar.gz -C workplace/unifont-src/full \
+  unifont-17.0.05/font/precompiled/unifont_t-17.0.05.hex unifont-17.0.05/font/precompiled/unifont-17.0.05.hex
+python3 tools/catalog_font.py build text/*.zh-TW.tsv --font <unifont_t-17.0.05.hex> --out <輸出>.golemfnt
+python3 tools/catalog_font.py build --lang zh-CN --font <unifont-17.0.05.hex> --out <輸出>.golemfnt
+```
+
+上方 zh-CN 小節與 `text/README.md` 中以 `unifont_all` 建 zh-CN 的舊命令僅保留作歷史紀錄，現行建置以本節為準。

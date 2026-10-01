@@ -56,7 +56,8 @@ https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht
     dosgolem 執行器（LICENSE-dosgolem，RRSAL-1.0）
     Nuked OPL3 的 Go 移植（LGPL-2.1 或更新版，COPYING.LGPL、nukedopl-SOURCE.md；
       對應原始碼：https://github.com/wicanr2/dosgolem ，commit 見 -version）
-    GNU Unifont 字型（font/OFL-1.1.txt、font/COPYING-unifont）
+    GNU Unifont 字型（font/OFL-1.1.txt、font/COPYING-unifont）：繁體中文用其台灣字形來源，簡體中文用預設字形
+      （含經 Unifont 收錄授權的文泉驛點陣宋體，Qianqian Fang），日文、韓文用含日文字形的 unifont_all
     CMU 發音詞典（text/cmudict/LICENSE，BSD 式授權；玩家名音譯用）
     英語人名譯音表（text/LICENSE-translit-table.md，CC BY-SA 4.0；玩家名音譯用）
     Ebiten 與其他 Go 模組（THIRD-PARTY.md）
