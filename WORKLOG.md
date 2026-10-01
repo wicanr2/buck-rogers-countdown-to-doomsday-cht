@@ -3755,3 +3755,15 @@
 - 推廣影片改用各語言通道的同狀態 Unifont 3 倍截圖（`workplace/promo-110`，runner 加各語言字型），54.4 秒。
 - 發行冒煙發現 ko 標題選單兩處誤譯（`Demo` 譯成 `폭파`），修正後重打包並重建尚未發佈的標籤。規則：發行前每個語言都要看標題畫面，機器翻譯的誤譯不會被同狀態收據抓到。
 - 發佈流程的順序：先標籤再打包（版本字串取自 `git describe`，樹要乾淨），標籤在 Release 建立前才可重建。
+
+## 2026-10-01 — 實機錄影版推廣片（規格 049）
+
+- 使用者要求「實際遊玩錄影版推廣影片」。前端自動模式只有 `-shot` 一張，腳本沒有截圖動作，所以先補 `-frame-dir`／`-frame-every`
+  （規格 049，一輪獨立審查後 READY：寫入點在 `finishFrame` 開頭、說明頁期間音訊缺樣本、`Compose` 有副作用要驗不影響輸出、
+  編號用遊戲畫格）。dosgolem `0bc270a`，九個單元測試，五次整合執行逐位元組驗證（證據 phase-311）。
+- 錄影用固定輸入腳本重播 11,400 格；`lang` 動作切語言不改變遊戲（`memory_sha256` 與無切換的執行相同）。成片 50.9 秒，
+  畫面是遊戲逐格輸出，配樂沿用 DOSBox-X 原版錄音（`rulebook/93`），工具 `tools/promo/{record,play-make,play-run}.sh`
+  與分鏡表 `play-segments.tsv`。影片尚未上傳 Release，等使用者決定。
+- 手冊查詢題因輸入時序換題，舊腳本的作答不適用；作答只存在 ignored 的 `workplace/`，分鏡以 `BAN` 範圍擋掉題目畫面。
+- 踩到：容器 `--pids-limit 64` 讓 ffmpeg 建不了執行緒，回報成濾鏡配置失敗（`Resource temporarily unavailable`），
+  別去調像素格式；`while read` 迴圈裡的 ffmpeg 要加 `-nostdin`。
