@@ -1,6 +1,6 @@
 # 047 — 原版單獨畫出的句號改全形（zh-TW、zh-CN、ja）
 
-狀態：**DRAFT**（2026-10-01；第一輪兩份獨立審查已併入）
+狀態：**READY**（2026-10-01，兩輪獨立審查；第二輪應改已併入）
 日期：2026-10-01
 Issue：#35
 決定：使用者 2026-10-01 同意為此動 zh-TW 畫面（規格 046 §5 的 `5.` 型態），目標是符合中文排版。
@@ -81,24 +81,24 @@ zh-TW、zh-CN、ja。ko 不變（韓文用半形句點）。`zz`（測試語言�
 1. 本次呼叫在 ECL catalog、引擎片段、玩家名都未命中，進入規格 027 §3.7 的 passthrough（`ObserveEntry` 的 miss 分支且 `p != nil`）。旗標非零或游標在視窗外（fresh）的呼叫在此之前已移除本窗的頁，`p == nil`，不處理；玩家名分支（`isPlayer`）不處理，即使音譯失敗後落入 miss 分支。
 2. `e.Original` 逐位元等於 `.` 或 `. `（不去頭尾空白；證據只有這兩個字串）。
 
-動作：以 `。` 取代原文，不補空白（`. ` 的尾端空白也不顯示：中文與日文在 `。` 後不加空白，名字直接接在後面，規格 027 §3.1 已接受名字與中文之間沒有空白）。`key` 仍為 `passthrough`（名字註記階層的閘門不變，`。` 不套名字註記）；`Stats.Misses`、`Passthrough`、`Hits` 的計數與改動前相同，另計 `EclTextStats.FullStop`。
+動作：以 `。` 取代原文，不補空白（`. ` 的尾端空白也不顯示：中文與日文在 `。` 後不加空白，名字直接接在後面，規格 027 §3.1 已接受名字與中文之間沒有空白）。`key` 仍為 `passthrough`（名字註記階層的閘門不變，`。` 不套名字註記）；`Stats.Misses`、`Passthrough`、`Hits` 的計數與改動前相同，另計 `EclTextStats.FullStop`：它計入符合條件 1、2 而進入本節處理的每一次呼叫，不論最後畫出 `。` 或退回原文；`FullStopDropped` 是其中退回原文者，畫出 `。` 的次數等於 `FullStop` 減 `FullStopDropped`。退回後的排版仍溢出時，`Overflows` 照改動前的規則計一次，`FullStop` 與 `FullStopDropped` 各計一次。
 
 「放不下」的定義：先以 `。`（2 單位）排版，下列任一成立視為放不下，改排原文原樣（`.` 或 `. `，即改動前的結果）並計 `EclTextStats.FullStopDropped`：
 
 - (a) 排版失敗（`fits` 為假）；
 - (b) 排版成功但結束列不等於起點列（`。` 被換到下一列的列首：排版函式對單獨一個 2 單位字剩 1 單位時是換列而不是失敗，而全形句讀不放行首，規格 027 §3.4）。
 
-兩次排版從同一個起點（列、欄）算，重試不改變頁狀態（比照規格 046 §3.4 的 `attempt`）。改排後的結果就是改動前的結果，包含它自己換列或溢出：本規格不降低也不增加本呼叫的溢出。起點欄已是列首（規格 027 §3.4 的左欄換列）時 `。` 隨該規則落在列首，視為放得下，並在驗收偵測列首 `。` 的次數（§3.6 第 4 點）。
+兩次排版從同一個起點（列、欄）算，重試不改變頁狀態（比照規格 046 §3.4 的 `attempt`）。改排後的結果就是改動前的結果，包含它自己換列或溢出：本規格不降低也不增加本呼叫的溢出。起點欄已是列首（規格 027 §3.4 的左欄換列）時 `。` 隨該規則落在列首，視為放得下，並在驗收偵測列首 `。` 的次數（§3.6 第 5 點 (d)）。
 
-裸 `.` 原本佔 1 單位、`。` 佔 2 單位，所以其後的續接呼叫起點右移 1 單位（`. ` 前進 2 單位，不變），後續呼叫可能因此多換一列或溢出；「不使頁失效」只保證本呼叫，後續溢出以 §3.6 第 4 點的溢出數與頁尾餘列對照驗收。
+裸 `.` 原本佔 1 單位、`。` 佔 2 單位，所以其後的續接呼叫起點右移 1 單位（`. ` 前進 2 單位，不變），後續呼叫可能因此多換一列或溢出；「不使頁失效」只保證本呼叫，後續溢出以 §3.6 第 5 點 (c) 的溢出數與 (g) 的頁尾餘列對照驗收。
 
-`p == nil`（前面是未翻譯、原版英文的文字）：不處理，句點與英文一起由原版畫。其他呼叫（原文不只一個 `.`、`...`、`!`、`?`、含字母的）不處理：證據只支持單獨的 `.`。前一個畫出的字元已是終止標點時再來單獨 `.`，不特別處理（與改動前一致；資料沒有這種情形）。
+`p == nil`（前面是未翻譯、原版英文的文字）：不處理，句點與英文一起由原版畫。其他呼叫（原文不只一個 `.`、`...`、`!`、`?`、含字母的）不處理：證據只支持單獨的 `.`。前一個畫出的字元已是終止標點時再來單獨 `.`，不特別處理（結果為 `。。`，改動前為 `。.`；資料沒有這種情形）。
 
 ### 3.3 引擎範本欄位（延伸規格 046 §3.3，僅限 zh-TW、zh-CN）
 
 欄位值（來源 `_`，經 `monsterSlot` 轉換並去頭尾空白後）符合 `^[0-9]+\.$`（數字加單一句點）時：
 
-- zh-TW、zh-CN：去掉句點，不論欄位在範本的哪個位置。全部欄位填完且至少一個欄位被去掉句點時，結果不以 `。！？」』…` 結尾就補 `。`；沒有欄位被去掉時不補。終止標點集不含半形 `.!?`：現有五個範本與 `monsterSlot` 的輸出都不以半形標點結尾。
+- zh-TW、zh-CN：去掉句點，不論欄位在範本的哪個位置。「被去掉句點的欄位」以範本字串內實際出現 `{i}` 的欄位為準（與規格 046 的逐 placeholder 掃描一致）；範本未引用的欄位（四個語言的 `tpl.logbook` 都不引用 `{0}`）即使是數字加句點也不去掉、不觸發補 `。`，實作在 `ReplaceAll` 前以 `strings.Contains(t, "{i}")` 判斷。全部欄位填完且至少一個欄位被去掉句點時，結果不以 `。！？」』…` 結尾就補 `。`；沒有欄位被去掉時不補。終止標點集不含半形 `.!?`：現有五個範本中只有 `tpl.logbook` 以欄位收尾，該欄是數字；`monsterSlot` 的輸出可能以半形 `!`、`?`、`,` 結尾，若日後有範本以怪物名欄位收尾，終止標點集需重新檢視。
 - ja、ko：不變（規格 046 §3.3）。現有 ja 範本沒有任何欄位在末尾（`tpl.logbook` 是 `、日誌{1}番に記録した`），沒有資料支持撤掉 ja 的「後面還有字元」條件，所以不擴大；ja 的範本只有 ECL 單獨句點（§3.2）受本規格影響。
 
 實作：zh-TW、zh-CN 不改道 `fillTemplateKoJa`，沿用現行逐欄 `ReplaceAll`，只在取欄位值處去句點並記錄，迴圈後做終止標點檢查；沒有數字句點欄位的字串走與改動前逐位元相同的程式，差集由構造保證。ja、ko、zz 與其餘語言碼走改動前的程式。
@@ -137,22 +137,25 @@ zh-CN 由生成器重產（規格 041），並更新 `text/zh-CN-term-review.tsv
 
 ### 3.6 測試與驗收順序
 
-1. 單元測試（dosgolem，ECL）：`.` 與 `. ` 在 zh-TW、zh-CN、ja 變 `。`；`p == nil`、fresh、玩家名分支不變；ko、zz 不變；剩 2 單位以上得 `。`，剩 1 單位得 `.`（`FullStopDropped` 為 1，頁與未啟用語言逐位元相同），剩 0 單位得改動前的換列結果（`FullStopDropped` 為 1），末列剩 1 單位仍得 `.` 且不溢出；`. ` 後的名字直接接在 `。` 後；含字母、`...`、`!` 的呼叫不變；`Hits`、`Misses`、`Passthrough` 與改動前相同。
+1. 單元測試（dosgolem，ECL）：`.` 與 `. ` 在 zh-TW、zh-CN、ja 變 `。`；`p == nil`、fresh、玩家名分支不變；ko、zz 不變；剩 2 單位以上得 `。`，剩 1 單位得 `.`（`FullStopDropped` 為 1，頁與未啟用語言逐位元相同），剩 0 單位得改動前的換列結果（`FullStopDropped` 為 1），末列剩 1 單位：裸 `.` 仍得 `.` 且不溢出，`. `（原文含尾端空白）的原文排版本來就因尾端空白換列而溢出，結果與未啟用語言相同（兩種原文分開測）；`. ` 後的名字直接接在 `。` 後；含字母、`...`、`!` 的呼叫不變；`Hits`、`Misses`、`Passthrough` 與改動前相同。
 2. 單元測試（範本）：zh-TW、zh-CN 的 `tpl.logbook`（欄位在末尾）`38.` 得 `編號 38。`；`tpl.antidote`、`tpl.needs`、`tpl.destroyed` 的數字句點欄位依 §3.3；欄位值不是數字加句點、欄位已以終止標點收尾時不變；ja、ko 不變（含欄位在範本末尾仍保留句點的合成例）。
 3. 差分（引擎層）：
    - 既有 `TestEngineJoinUnchangedForOtherLanguages` 的語言清單縮為 `zz`（`""` 就是 zh-TW，不再是沒有規則的語言碼）；凍結副本 `frozenTranslateLine` 與摘要不改（它們忠實對應 pre-046，也就是 zh-TW、zh-CN 的 pre-047）。
-   - 新增 zh-TW、zh-CN 的差集測試：哪些字串屬於差集由 `Decompose` 與 `matchTemplate` 判定（不用被測的填欄邏輯），期望值是「把數字句點 `_` 欄位的句點拿掉，丟進凍結副本，再依終止標點規則補 `。`」，逐筆斷言新輸出。corpus 補 `tpl.needs`、`tpl.destroyed`（含 `*` 欄位）、欄位在中段的合成例、欄位已以終止標點收尾的情形。
+   - 新增 zh-TW、zh-CN 的差集測試：哪些字串屬於差集由 `Decompose` 與 `matchTemplate` 判定（不用被測的填欄邏輯，數字句點的判斷用測試自己的正規式，不共用 `joining.go` 的 `digitsDot`），期望值是「把數字句點 `_` 欄位的句點拿掉，丟進凍結副本，再依終止標點規則補 `。`」，逐筆斷言新輸出。差集測試使用獨立的 catalog 與 corpus（新函式，例如 `engineFreezeCatalogP047`、`engineFreezeCorpusP047`）：補 `tpl.needs`（`*` 欄位）、`tpl.destroyed`（兩個 `_`）、`tpl.drop`（`*` 欄位對到數字句點）、欄位在中段的合成例、欄位已以終止標點收尾的情形、範本未引用的欄位為數字句點的情形。`engineFreezeCatalog`、`engineFreezeCorpus`、`engineFreezeWant` 不修改（`engineFreezeWant` 由兩者共同決定）；`joiningCatalog` 補 `tpl.destroyed` 的簽章。
    - ja 與 ko：以規格 046 實作 commit `6680221` 的 `translateLine` 與 `fillTemplateKoJa` 為基準另建凍結副本與摘要（先凍結再改行為）；ja、ko 全部逐筆相同。
-   - 差集的 corpus 含 `38.`、`5.` 片段與欄位值為 `5.` 的合成 `tpl.antidote` 整串，期望表要涵蓋這類合成字串；真實資料的 7 個手札記錄句另在引擎層 baseline 差分（第 5 點）斷言。
+   - 既有 corpus 含 `38.`、`5.` 片段與欄位值為 `5.` 的合成 `tpl.antidote` 整串，zh-TW、zh-CN 的差集會包含這類合成字串，期望表要涵蓋；真實資料的 7 個手札記錄句另在引擎層 baseline 差分（第 5 點）斷言。
 4. 差分（ECL 層）：`layout_freeze_test.go` 凍結的是純排版函式，不涵蓋 `ObserveEntry`，不作為本層的證明。改以 watcher 層三組測試：(1) 閘門：沒有單獨句點的呼叫序列（沿用 `ecl_space_test.go` 的步驟與合成語料），zh-TW、zh-CN、ja 的 watcher 與 `LangTest` 的 watcher，頁（`Lines`、`endRow`、`endCol`、`Top`、`TopCol`、`Gone`、`Keys`）與全部 `Stats` 逐位元相同，新計數為 0；ko 的 catalog 加 `layoutKo`、`layoutJa` 與 nil 各一組同理。(2) 等價：含單獨句點的序列，與「catalog 把 `.`、`. ` 映射為 `。`」的 `LangTest` watcher 比較 `Lines`、`endRow`、`endCol`（名字表為 nil、放得下的情形）。(3) 退回：剩 2、1、0 單位三種游標位置。不用「同一串呼叫跑兩個 watcher，斷言只在句點處不同」：裸 `.` 使後續呼叫起點右移 1 單位。
-5. 離線重播（phase257 trace）：以 `diff046.py` 為基礎另寫 `diff047.py`，輸入 post046-1 與實作後的 `replay-pages.tsv`、`replay-engine.tsv`（zh-TW、zh-CN 的 post046-1 與 baseline-pre046 逐列相同，現成可作基準；引擎層差分以實作前的 post046-1 為基準，不用 046 之前的 `baseline-translate.tsv`）：
+5. 離線重播（phase257 trace）：
+   - 觀測先行：行為變更之前，先在 dosgolem 提交只加觀測、不改行為的 commit（比照規格 046 的 `cc242ea`）。`ecl` 紀錄列目前只由 `-live-trace-out`（`buckrogers-text-receipt`）產生，phase257 離線重播（`trace_replay_test.go`）不產生，post046-1 與 baseline-pre046 都沒有；現有 `workplace/phase304-replay/out/*.trace.tsv` 是 phase-303 的 20 個時點，單獨句點呼叫為 0 筆且是舊格式（缺 `dSpaceDropped`）；`baseline-translate.tsv` 兩份都是 pre-046，產生它的程式不在版控。所以觀測 commit 要加：環境變數 `BUCKROGERS_TRACE_ECL` 設定時，對每個語言通道的每次 ECL 呼叫以 `(*ReplayTrace).ecl` 寫一列（格式同 `-live-trace-out`，含 `dPassthrough`）；`BUCKROGERS_TRACE_TRANSLATE` 設定時，把 W 紀錄中全部不同原文的各語言 `EngineTextCatalog.Translate` 結果寫成 `baseline-translate.tsv`。兩個產生器都進版控。以 `6680221` 加上這個 commit 後重跑，輸出存為 `workplace/phase304-replay/post046-2/`（`replay-pages.tsv`、`replay-engine.tsv`、`replay-ecl.tsv`、`baseline-translate.tsv`），本規格所有離線差分以它為基準；post046-1 沒有 `ecl` 列與 post-046 的引擎翻譯基準，不能單獨使用。
+   - 實作後以同樣環境變數重跑，輸入 `post046-2` 與實作後的四個檔，以 `diff046.py` 為基礎另寫 `diff047.py`（`diff046.py` 只保留還原後畫面字串，(b) 的逐片段驗證要改讀原始 `shown` 欄與 `calls_orig` 欄）。
    - (a) 變動集合：zh-TW 18 種（84 則）、zh-CN 18 種（84 則）、ja 11 種（76 則）、ko 0 種；引擎呼叫（`replay-engine.tsv`）變動 0；引擎層字串（`Decompose` 基準）差集 zh-TW、zh-CN 各恰 7 個手札記錄句，ja、ko 0。
    - (b) 逐筆驗證變動只來自三種替換：片段尾字為 `第` 且下一片段是數字者換成 `甲板`；片段恰為 `.` 或 `. ` 者換成 `。`；`編號 N.` 換成 `編號 N。`；後續片段依單位寬度右移，其餘位元組相同。
-   - (c) 每則訊息的 `calls`、`hits`、`misses`、`overflows` 與改動前相同（`diff046.py` 不比這四欄）；`ecl` 紀錄的 `dHits`、`dMisses`、`dPassthrough` 逐列相同（硬閘門，直接證明命中判定未因本規格改變）；`dOverflows` 在「ECL 溢出 0」成立時逐列相同，否則逐筆列出並說明是否由 §3.2 的右移造成；ko 全欄位相同。
-   - (d) 偵測樣式「ASCII `.` 且前後不同時為拉丁字母」（排除 `SCOT.DOS`）在 zh-TW、zh-CN、ja 改前 18、18、11 種、改後 0 種。`[0-9]\.` 加「漢字或假名後 `. `」兩個樣式改前只命中 17、17、10 種，漏掉 E 型，不作為驗收樣式。列首 `。`（`pages` 紀錄中以 `r<列>.<欄>:。` 開頭的列）次數記錄。
-   - (e) 字元覆蓋缺字 0：`trace_replay_test.go` 的 `reportMissing` 硬線目前只對 ko、ja，擴到 zh-TW 與 zh-CN。
-   - (f) 重播紀錄的 `ecl` 列加 `FullStop`、`FullStopDropped` 兩欄，zh-TW、zh-CN、ja 期望 `FullStopDropped` 為 0（資料中改後最大列尾 zh-TW 55、ja 67，上限 78，退回分支只能由單元測試覆蓋）。
-6. 同狀態收據：ko 全部不變；zh-TW、zh-CN、ja 的 20 個時點（4 加 16）與 phase254 七條，畫面不含上列訊息的時點與 phase-303、phase-301 的雜湊相同，含該訊息的時點列出並逐筆說明；2×、3× 皆做。zh-TW 的 baseline 在此重建。
+   - (c) 每則訊息的 `calls`、`hits`、`misses`、`overflows` 與改動前相同（`diff046.py` 不比這四欄）；`replay-ecl.tsv` 的 `dHits`、`dMisses`、`dPassthrough` 逐列相同（硬閘門，直接證明命中判定未因本規格改變）；`dOverflows` 在「ECL 溢出 0」成立時逐列相同，否則逐筆列出並說明是否由 §3.2 的右移造成；ko 全欄位相同。
+   - (d) 偵測樣式「ASCII `.` 且前後不同時為拉丁字母」（排除 `SCOT.DOS`）在 zh-TW、zh-CN、ja 改前 18、18、11 種、改後 0 種。`[0-9]\.` 加「漢字或假名後 `. `」兩個樣式改前只命中 17、17、10 種，漏掉 E 型，不作為驗收樣式。列首 `。` 指 `shown` 的某個片段文字以 `。` 開頭，且該片段的欄位等於該則視窗左欄的單位欄（2 乘 `L`）；單獨句點呼叫的片段（欄位在列中間）不算。次數記錄，不設門檻。
+   - (e) 字元覆蓋缺字 0：`trace_replay_test.go` 的 `reportMissing` 硬線目前只對 ko、ja，擴到 zh-TW 與 zh-CN；zh-TW 使用出貨用的 `workplace/current-font/buckrogers-eten-top-pad.golemfnt`，不是 unifont 子集；擴硬線之前先記錄 zh-TW、zh-CN 現況缺字數，現況非 0 時以差值為閘門並列出既有缺字。
+   - (f) `replay-ecl.tsv` 的每列在既有欄位之後多 `FullStop`、`FullStopDropped` 兩欄（`replay_trace.go` 的格式字串與欄位註解、`replay_trace_test.go` 的輸入與期望列同步）：zh-TW、zh-CN、ja 每個通道的 `FullStop` 總和等於基準 `replay-pages.tsv` 中含單獨句點片段的訊息數（post046-1 為各 76，實作前重算確認），`FullStopDropped` 為 0；ko 兩欄皆為 0。實例中 `。` 呼叫的起點欄改後最大 58，退回門檻是 77，退回分支只能由單元測試覆蓋。A 型（deck 提示）改後最大列尾 zh-TW、zh-CN 55、ja 67；D、E 型整列列尾 zh-TW、zh-CN 78、ja 77，改前改後相同。
+   - (g) 各視窗頁尾餘列（`trace_replay_test.go` 既有的 `minMargin`、`atEdge` 輸出）改前後逐視窗相同，有差異者逐筆說明。
+6. 同狀態收據：ko 全部不變。zh-TW、zh-CN、ja 的 20 個時點（4 加 16）與 phase254 七條，畫面不含上列訊息的時點，雜湊與各自的既有基準相同：zh-TW 沿用規格 046 驗證過不變的既有雜湊；ja 以規格 046 在 phase-305 重建的基準為準（phase-301、phase-303 的 ja、ko 畫面已被規格 046 取代，不可直接引用）；zh-CN 的基準在實作前以 `6680221` 重跑取得並列入 phase 文件。必做的正向收據：規格 046 的串接狀態點（步數 `26334000000`）以 `-live-trace-out` 重跑 zh-TW、zh-CN、ja，`ecl` 列中單獨句點呼叫的 `FullStop` 為 1、`FullStopDropped` 為 0，其餘既有欄位與以 `6680221` 重跑的紀錄逐列相同；2×、3× 畫面顯示 §3.2、§3.4 的預期文字。含該訊息的其他時點列出並逐筆說明；2×、3× 皆做。zh-TW 的 baseline 在此重建。
 7. 重新抽審：A、B、C、D 各取全部畫面，對照新舊。
 
 ## 4. 驗收
@@ -171,5 +174,5 @@ zh-CN 由生成器重產（規格 041），並更新 `text/zh-CN-term-review.tsv
 | zh-TW、zh-CN 的 `甲板5。` 數字與漢字之間沒有空白，與靜態譯文的 `第 3 層甲板`、範本的 `編號 38。` 不同 | 使用者決定是否要為 zh-TW、zh-CN 加呼叫起點補空白（比照規格 046 §3.4 的 ko 機制）；本規格維持 ECL 路徑現況 |
 | ko 的 `갑판 5.`、半形英文句子的句號仍為半形（韓文排版使然） | 母語者校對 |
 | 原版其他單獨畫出的標點（目前只有句點有證據）出現時另案 | 有 trace 實例 |
-| 規格 027 §3.1、§3.7，029 §2.4，046 §3.1、§3.5、§3.6、§4.1 與 §5 的「ja 的 `5.` 與半形句點」列的修訂註：046 對 zh-TW、zh-CN「不變」的條文以本規格為準，§5 該列標為已由本規格處理（實作後隨本規格一併加入） | 實作時 |
+| 規格 027 §3.1、§3.7，029 §2.4，046 §3.1、§3.3（「zh-TW、zh-CN 路徑不動」）、§3.5、§3.6、§3.8、§4.1 與 §5 的「ja 的 `5.` 與半形句點」列的修訂註：046 對 zh-TW、zh-CN「不變」的條文以本規格為準，§5 該列標為已由本規格處理（實作後隨本規格一併加入） | 實作時 |
 | 既有測試期望會變：`TestTemplateFieldPeriod` 的 zh-TW 列（`編號 38.` 變 `編號 38。`、`對5.使用解毒劑` 變 `對5使用解毒劑。`）、`TestEngineJoinUnchangedForOtherLanguages` 的語言清單；`EclTextStats` 新欄位與 `DebugSummary`、`replay_trace.go` 的 `ecl` 列（在 `dSpaceDropped` 之後追加 `FullStop`、`FullStopDropped` 兩欄）與 `replay_trace_test.go` 期望列同步；`DebugSummary` 不屬覆繪輸出，RGBA 收據不含它 | 實作時 |
