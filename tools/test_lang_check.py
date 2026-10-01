@@ -114,6 +114,19 @@ class KoCheckNegatives(unittest.TestCase):
         f.ko["menu"].append(("menu.zzz", "여분", "runtime-interface"))
         self.assertHas(f.run(), "key 不在 zh-TW")
 
+    def test_translit_files_are_not_a_family(self) -> None:
+        """規格 044 §3.5：音譯允許字集 translit-chars.<lang>.tsv 與詞典 translit-<lang>-names.tsv 不是翻譯家族。"""
+        f = self.fixture()
+        base = f.run()
+        write(f.text / "translit-chars.ko.tsv", [(f"translit.char.U+{0xAC00:04X}", "가", "translit-table")])
+        write(f.text / "translit-chars.zh-TW.tsv", [(f"translit.char.U+{0x4E00:04X}", "一", "translit-table")])
+        (f.text / "translit-ko-names.tsv").write_text("english\ttranslation\tbasis\nPIERRE\t피에르\tmachine-reviewed\n", encoding="utf-8")
+        for lang in ("ko", "zh-TW"):
+            self.assertNotIn("translit-chars", lang_check.families(f.text, lang))
+        report = f.run()
+        self.assertEqual(report.errors, base.errors)
+        self.assertEqual(report.warnings, base.warnings)
+
     def test_missing_family_file(self) -> None:
         f = self.fixture()
         f.flush()

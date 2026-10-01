@@ -13,16 +13,23 @@ MOUNT_UNIFONT=()
 if [[ -f "$UNIFONT_DIR/unifont_all-17.0.05.hex.gz" ]]; then
   MOUNT_UNIFONT=(-v "$UNIFONT_DIR:/unifont:ro")
 fi
+# 規格 044 §5：固定名單與例子表（docs/re）；dosgolem 的 testdata 副本在時一併比對雜湊
+[[ -d "$ROOT/docs/re" ]] || { echo "[ko_check] 缺 $ROOT/docs/re" >&2; exit 1; }
+MOUNT_TRANSLIT=(-v "$ROOT/docs/re:/p/docs/re:ro")
+DG_TESTDATA="$ROOT/workplace/dosgolem/xlate/translitjk/testdata"
+if [[ -d "$DG_TESTDATA" ]]; then
+  MOUNT_TRANSLIT+=(-v "$DG_TESTDATA:/p/workplace/dosgolem/xlate/translitjk/testdata:ro")
+fi
 
 timeout 20m docker run --rm --name "buck-ko-check-$$" --network none --memory 3g --cpus 2 --pids-limit 128 \
   --log-opt max-size=10m --log-opt max-file=3 -u "$(id -u):$(id -g)" -e HOME=/tmp -e PYTHONDONTWRITEBYTECODE=1 \
-  -v "$ROOT/text:/p/text:ro" -v "$ROOT/tools:/p/tools:ro" -v "$ROOT/font:/p/font:ro" "${MOUNT_UNIFONT[@]}" \
+  -v "$ROOT/text:/p/text:ro" -v "$ROOT/tools:/p/tools:ro" -v "$ROOT/font:/p/font:ro" "${MOUNT_UNIFONT[@]}" "${MOUNT_TRANSLIT[@]}" \
   -w /p "$IMAGE" sh -eu -c '
 T=text; L="--lang ko"
 step() { echo "[ko_check] $*"; "$@" >/tmp/out.txt 2>&1 || { cat /tmp/out.txt; echo "[ko_check] 失敗：$*" >&2; exit 1; }; }
 # 1. ko_check.py、合成負例（test_lang_check.py）；ja_check.py 薄包裝仍全綠（規格 043 §5.1）；覆蓋斷言：31 個家族檔 5,414 列、5,406 個不同 key（規格 043 §3.1）
 step python3 tools/ko_check.py --expect-rows 5414 --expect-keys 5406
-step sh -c "cd tools && python3 -m unittest test_ja_check.py test_lang_check.py test_name_glossary.py"
+step sh -c "cd tools && python3 -m unittest test_ja_check.py test_lang_check.py test_name_glossary.py test_translit_jk.py"
 step python3 tools/ja_check.py --expect-rows 5414 --expect-keys 5406
 # 2. 以 --lang ko 呼叫
 step python3 tools/menu_events.py $T/menu-events.tsv $T/menu.ko.tsv $L
@@ -37,6 +44,11 @@ step python3 tools/technical_skill_screen_catalog.py $T/technical-skill-screen-e
 step python3 tools/header_columns.py --text $T --workplace /tmp/none $L
 step python3 tools/name_glossary.py $L lint
 step python3 tools/catalog_font.py lint $L
+# 音譯資料（規格 044、045）：詞典 lint、允許字集檔、例子表、固定名單（含 pending 即失敗）
+step python3 tools/translit_jk.py lint $L
+step python3 tools/translit_jk.py chars --check $L
+step python3 tools/translit_jk.py examples --check $L
+step python3 tools/translit_jk.py verify-fixed $L
 step python3 tools/skill_action_bar_catalog.py $T/skill-action-bar-events.tsv $T/skill-action-bar.ko.tsv $L
 # 3. 以 *.ko.tsv 路徑呼叫（manual_catalog.py 對只有標頭的 manual.ko.tsv 失敗，手冊韓文另訂時再納入）
 step python3 tools/story_opening_catalog.py $T/story-opening-events.tsv $T/story-opening.ko.tsv

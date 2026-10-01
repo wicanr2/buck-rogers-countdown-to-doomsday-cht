@@ -54,6 +54,10 @@ python3 tools/catalog_font.py build --lang ko --font /unifont/unifont_all-17.0.0
   --out workplace/lang-fonts/buckrogers-ko.golemfnt
 ```
 
+玩家名音譯（規格 044、045）的允許字集 `text/translit-chars.<lang>.tsv`（ja 為片假名全區塊加 `ー` `・` 與專案詞典用字，ko 為頭子音 14、中聲 19、尾 8 種組成的 2,128 個音節）
+以 `*.<lang>.tsv` 的形式併入 `catalog_font.py chars/build`，所以 `characters.ja.txt`、`characters.ko.txt` 含全部可能的音譯輸出字，字型子集不必隨規則調整重建。
+該檔由 `tools/translit_jk.py chars --lang <ja|ko>` 產生；`tools/translit.py` 的 `--lang` 只接受 zh-TW，不可用來產生 ja、ko 的字集檔（它會用 zh 譯音表寫出內容錯誤的檔）。
+
 ## 3× host 設定面板原生字型
 
 使用者已為 3× host 面板選擇倚天原生 24 點：漢字與「×」24×24、

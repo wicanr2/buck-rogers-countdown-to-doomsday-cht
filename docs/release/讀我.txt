@@ -37,7 +37,8 @@ https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht
   繁體中文）。也可以用 -lang 指定這次啟動的語言，例如 -lang en；-lang 優先於設定檔，
   本身不寫入設定檔（啟動後再按 F4 切換仍會記住）。可用代碼：zh-TW（繁體中文）、zh-CN（簡體中文）、
   en（英文原版）、ja（日文）、ko（韓文）。
-  日文與韓文為機器輔助譯文，未經母語者校對。兩者的玩家名暫時顯示英文（音譯尚未提供）；手冊題的
+  日文與韓文為機器輔助譯文，未經母語者校對。玩家名依專案自訂的音譯規則轉成片假名或諺文，顯示成
+  「譯名(英文)」，空間不夠時只顯示譯名，再不夠就維持英文；音譯規則同樣未經母語者校對。手冊題的
   提示句是該語言，題目段落顯示原版英文。
   遊戲速度：預設以較慢的虛擬 CPU（-clock 50）執行，一般電腦即可維持原速。若畫面或音樂仍斷續，可改用
   -clock 30；電腦很快而想要較高的 CPU 速度，可用 -clock 100。範圍 10 到 100。
@@ -56,6 +57,8 @@ https://github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht
     Nuked OPL3 的 Go 移植（LGPL-2.1 或更新版，COPYING.LGPL、nukedopl-SOURCE.md；
       對應原始碼：https://github.com/wicanr2/dosgolem ，commit 見 -version）
     GNU Unifont 字型（font/OFL-1.1.txt、font/COPYING-unifont）
+    CMU 發音詞典（text/cmudict/LICENSE，BSD 式授權；玩家名音譯用）
+    英語人名譯音表（text/LICENSE-translit-table.md，CC BY-SA 4.0；玩家名音譯用）
     Ebiten 與其他 Go 模組（THIRD-PARTY.md）
 
 六、原作權利

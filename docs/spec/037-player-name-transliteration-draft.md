@@ -31,6 +31,7 @@ Issue：#33
 - 拼寫後備產出為空的字（例如只含 h）整名 `ok=false`。
 - 逐字音譯後以 `•`（U+2022）連接。`tier` 取各字中最低的來源等級：`dict` ＞ `cmudict` ＞ `spelling`。
 - 決定性：同一組 (name, gender) 永遠同一輸出；不寫檔、不進存檔。
+- 規格 044（2026-10-01）：本節的共用前端（ARPAbet 解析 `ParsePron`、拼寫後備 `SpellingPhones`、元音字母對齊 `AlignVowels`、詞典載入 `SharedCMU`）以包裝方式匯出（`xlate/translit/export.go`），供日韓音譯器（`xlate/translitjk`）共用；zh-TW、zh-CN 的輸出不變（全字典 117,493 詞的摘要與動工前相同，`zh_fulldict_test.go`）。ja、ko 的單字母字與含單字母段的連字號名同樣整名 `ok=false`，空段的處理則各語言自訂（zh 略過空段，ja、ko 整名 `ok=false`）。
 - 輸出每個字都必須在「允許字集」內（§3.4）；否則 `ok=false`。
 
 ### 3.2 查找順序（每個字）
@@ -89,5 +90,5 @@ Issue：#33
    （`A 1.?`、`R2D2`）與單一字母名（`Z`）回 `ok=false`；含撇號或連字號的名字（`O'BRIEN`、`MARY-JANE`）正常音譯；允許字集外的字回 `ok=false`；決定性。
 2. 固定測試名單與期望輸出（人工審定後入庫）：ROARKE、CELESTE、FLAVIUS、JANELLE、PIERRE、NICOLE STEELE，
    以及 BUCK、WILMA、PORT、EXIT 等與 NPC 或 ECL 短詞同形的名字（只驗音譯本身）。
-3. 譯音表轉錄：每格與記錄的 revision 一致（工具重抓比對）；授權檔齊全；CMUdict 授權全文隨發行包。
+3. 譯音表轉錄：每格與記錄的 revision 一致（工具重抓比對）；授權檔齊全；CMUdict 授權全文隨發行包（規格 044 §3.7 於 2026-10-01 補上 `package.sh` 的複製與 `TestPackagedLanes` 冒煙；此前發行包只複製 `*.tsv`，不含 `text/cmudict/`）。
 4. 字型重建零缺字。

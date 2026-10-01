@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 BASE = "zh-TW"
 CATALOG_HEADER = ["key", "translation", "source"]
 HEADER_ONLY_FAMILIES = {"manual"}
-NON_CATALOG_PREFIX = ("name-glossary",)
+NON_CATALOG_PREFIX = ("name-glossary", "translit-chars")
 
 # 規格 042 §3.3 第 5 項。
 STORY_CAP = {**{f"story-page{i}": 78 for i in range(2, 8)}, "story-opening": 78, "story-page8": 76, "story-page9": 40}

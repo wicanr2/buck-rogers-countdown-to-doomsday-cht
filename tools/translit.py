@@ -20,7 +20,7 @@ import sys
 import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
-from catalog_lang import DEFAULT_LANG, KNOWN_LANGS, catalog_name
+from catalog_lang import DEFAULT_LANG, catalog_name
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_TEXT = ROOT / "text"
@@ -413,7 +413,8 @@ def cmd_lint(args: argparse.Namespace) -> int:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--text", default=str(DEFAULT_TEXT), help="text/ 目錄")
-    p.add_argument("--lang", default=DEFAULT_LANG, choices=KNOWN_LANGS, help="譯音字集語言（規格 040；預設 zh-TW）")
+    p.add_argument("--lang", default=DEFAULT_LANG, choices=[DEFAULT_LANG],
+                   help="譯音字集語言，只有 zh-TW（用的是 zh 譯音表；ja、ko 見 tools/translit_jk.py，zh-CN 見 tools/zh_cn_convert.py）")
     sub = p.add_subparsers(dest="cmd", required=True)
     t = sub.add_parser("table", help="轉錄人名表")
     t.add_argument("--src", default=str(DEFAULT_SRC), help="wikitext 路徑")

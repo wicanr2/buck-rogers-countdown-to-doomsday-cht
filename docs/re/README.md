@@ -274,3 +274,7 @@
 | [第三百零四階段：trace 重播閘門與串接抽審](phase-304-replay-gate.md) | 規格 042、043 的 §5.4、§5.5：真實 ECL 視窗、四語言重播無溢出、水平選單餘量、引擎片段兩列拆分、整則訊息串接、100 則抽審與串接缺陷（規格 046 的證據）、三平台打包模擬。 |
 | [第三百零五階段：韓文與日文的片段串接](phase-305-join.md) | 規格 046：串接與範本欄位規則、凍結舊版差分、重播差分（zh 0、ja 13、ko 43 種畫面）、四時點與 16 個家族收據、phase254 回歸不變、139 列重新抽審（串接 issue ko 17→7、ja 8→1）、殘留項。 |
 | [第三百零六階段：原版單獨畫出的句號改全形](phase-306-fullwidth-period.md) | 規格 047：ECL 單獨句點與 zh 手札範本欄位改 `。`、三條譯文改 `甲板`、離線重播 zh 18／ja 11／ko 0 種畫面、104 個前後對照時點（機器狀態全同、畫面只有預期的 6 個不同）、phase254 七條回歸不變。 |
+| [第三百零八階段：日文與韓文玩家名音譯](phase-308-translit-jk.md) | 規格 044、045：`xlate/translitjk`（共用前端、片假名與諺文規則）、全字典 117,493 詞不變式、兩位獨立審查與兩處規則修正、104 個前後對照時點（機器狀態全同、新舊畫面只在 ja、ko 的隊伍欄 10 個時點不同）、離線重播與 phase254 七條不變、`package.sh linux` 與發行包通道冒煙。 |
+| [音譯例子表（ja）](phase-308-spec-examples.ja.tsv)、[（ko）](phase-308-spec-examples.ko.tsv) | 規格 044、045 規則文字括號內的「名字加寫法」，規則模式逐列比對（`TestSpecExamples`）；idiom 列是已知與慣用寫法的差異。 |
+| [音譯固定名單（ja）](phase-308-translit-fixed-names.ja.tsv)、[（ko）](phase-308-translit-fixed-names.ko.tsv) | 固定測試名單與期望輸出（欄位 name、expected、tier、rules、review），由 dosgolem `-update-fixed` 產生，兩位審查者確認；dosgolem `xlate/translitjk/testdata/` 有逐字副本。 |
+| [音譯規則回歸表（ja）](phase-308-translit-rule-regression.ja.tsv)、[（ko）](phase-308-translit-rule-regression.ko.tsv) | 專案詞典 85 個名字加補充名在規則模式（關閉詞典層）下的輸出與規則編號，防止規則缺口被詞典蓋住。 |

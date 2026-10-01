@@ -146,13 +146,15 @@ ko 不變量：詞級加退回的 fits 必與字級相同。fallback 次數由�
 - **一致性測試**：`cmd/buckrogers-name-scan -lang ko` 的輸出與 Python 掃描對全部 ko 譯文逐列比對，差異預設要求 0（審查以移植的 `Matches` 實測為 0），有差異者逐項登記；
   兩端語意差異來源：Go 的 inner 規則（:238–248）、Go 取最長排除而 Python 取檔案序第一個、Python 才有 ASCII 邊界與 `old=`、`path.Match` 與 `fnmatch` 的 `[` `?` 語意。
 - `cmd/buckrogers-name-scan` 與 `name_scan.go` 補 `-lang`（042 遺留），並把 :34、:40 的 nil profile 排版改為 `LayoutFor(lang)`。
-- 玩家名：規格 045 之前 ko 的 `PlayerNames` 停用，名字顯示英文。
+- 玩家名：規格 045 之前 ko 的 `PlayerNames` 停用，名字顯示英文。規格 045 實作後（2026-10-01）ko 的 `PlayerNames` 啟用（諺文音譯，專案詞典 `translit-ko-names.tsv`），ECL 玩家名單元在續接呼叫時依規格 045 §3.4 補呼叫起點空白；`DebugSummary` 的 `玩家名=off` 只剩音譯檔或字型缺字的情形。
 
 ### 3.9 手冊題（本期不做）
 
 同 042 §3.9：`manual.ko.tsv` 只有標頭；手冊題提示句為韓文，段落顯示原版英文；韓文段落從繁中段落轉譯並另訂規格。
 
 ### 3.10 打包與同步
+
+- 規格 044 §3.7（2026-10-01）：打包另帶 `text/cmudict/` 與 `LICENSE-translit-table.md`、前置檢查與 `TestPackagedLanes` 冒煙；`ko_check.sh` 加 `translit_jk.py` 四步與 `test_translit_jk.py`（細節見規格 042 §3.10 的同條）。
 
 - `tools/package.sh`：`LANGS` 加 `ko`；前置檢查在現有逐語言 `if` 之後加第三個 `if`，傳同樣的 `UNIFONT_DIR`；`TEXT_EXCLUDE` 加 `ko-coverage-exemptions.tsv`、`ko-name-exemptions.tsv`。
 - **`host-ui.zh-TW.tsv` 的 `lang.ko` 改為「韓文（機器輔助）」**（現有列，不是新增，新增會被 `catalog_font.py` 拒絕重複 key）：8 字均在現行 `font/characters.txt` 內，字元清單與字型不變，

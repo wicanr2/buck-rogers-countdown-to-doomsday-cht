@@ -59,7 +59,7 @@ Unifont 授權與字形、ECL 禁則的原始調查在 ignored 的 `workplace/ja
 - key 集合**等於**同家族 zh-TW 檔的 key 集合（`manual` 除外）：`ja_check.py` 對缺列與多列都失敗，例外走
   `text/ja-coverage-exemptions.tsv`（key、原因；預設空）。覆蓋斷言釘定：31 個家族檔共 5,414 列、5,406 個不同 key
   （`character.skill.*` 共 8 個 key 同屬 career-skill-screen 與 character-sheet，兩檔譯文必須相同）。
-- 不產生 ja 檔的家族：`translit-chars`（規格 044）、`host-ui`（設定面板與說明頁用 zh-TW，規格 040 §3.4）、
+- 不產生 ja 檔的家族：`translit-chars`（音譯允許字集，不是翻譯家族；ja、ko 的 `translit-chars.<lang>.tsv` 由規格 044、045 定義，`lang_check.py` 的 `NON_CATALOG_PREFIX` 不把它當家族讀）、`host-ui`（設定面板與說明頁用 zh-TW，規格 040 §3.4）、
   `manual-english-panel`（只在 zh-TW 顯示）。
 - 譯文不進入比較、查找、序列化、檔案路徑或存檔（AGENTS.md）；英文原文與批次檔不進 Git。
 
@@ -185,7 +185,7 @@ tokenization：開括號、其後的拉丁連續字或名字單位、尾隨閉�
   另放 `name-glossary-exclude.ja.tsv`）；水平選單因寬度上限縮寫的名字（`hmenu.1d54d5514269`、`hmenu.34efb50db494`、
   `hmenu.a4da3f4fffd1`）；名字只在標題或在前一片段的列（`logbook.21`、`ecl.5.83.00246`），以及 ja 有名字而 zh-TW 該列沒有的
   `ecl.5.83.00207`。§6 第 1 項若放寬 cap，縮寫改回正式寫法後移除對應豁免。
-- 玩家名：規格 044 之前 ja 的 `PlayerNames` 停用，名字顯示英文（`no-transliterator`），不讓語言失效。
+- 玩家名：規格 044 之前 ja 的 `PlayerNames` 停用，名字顯示英文（`no-transliterator`），不讓語言失效。規格 044 實作後（2026-10-01）ja 的 `PlayerNames` 啟用（片假名音譯），`DebugSummary` 的 `玩家名=off` 只剩音譯檔或字型缺字的情形（`translit-ja:`、`translit-font:`）；`no-transliterator` 只留給測試語言 zz。§2 的「只有 `玩家名=off(no-transliterator)`」是規格 044 之前的狀態。
 
 ### 3.9 手冊題（本期不做）
 
@@ -194,6 +194,8 @@ tokenization：開括號、其後的拉丁連續字或名字單位、尾隨閉�
   題目段落顯示原版英文**（規格 040 缺譯粒度：手冊以段落為單位）。
 
 ### 3.10 打包與同步
+
+- 規格 044 §3.7（2026-10-01）：`tools/package.sh` 另複製 `text/cmudict/`（`cmudict.dict`、`LICENSE`、`README`）與 `text/LICENSE-translit-table.md` 進發行包，前置檢查缺任一音譯檔即失敗，字型迴圈之後以 `TestPackagedLanes` 實跑四個通道；`ja_check.sh` 加 `translit_jk.py` 的 `lint`、`chars --check`、`examples --check`、`verify-fixed` 四步與 `test_translit_jk.py`；`THIRD-PARTY.md` 加 CMU 發音詞典與英語人名譯音表。
 
 - `tools/package.sh`：語言清單加 `ja`（現行 `LANGS` 陣列與字型迴圈已通用）；前置檢查改為依 `LANGS` 迴圈執行對應的檢查腳本
   （現行只在 `LANGS` 含 zh-CN 時跑 `zh_cn_check.sh`）；`TEXT_EXCLUDE` 加 `ja-coverage-exemptions.tsv`、`ja-name-exemptions.tsv`

@@ -106,6 +106,16 @@ class NamesTest(unittest.TestCase):
         self.assertEqual(translit.main(["--text", str(TEXT), "chars", "--check"]), 0)
         read_catalog(TEXT / "translit-chars.zh-TW.tsv")
 
+    def test_lang_is_zh_tw_only(self):
+        """規格 044 §3.5：--lang ja|ko|zh-CN 會用 zh 譯音表寫出內容錯誤的字集檔，所以不接受。"""
+        import contextlib
+        import io
+        for lang in ("ja", "ko", "zh-CN"):
+            with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as cm:
+                translit.main(["--text", str(TEXT), "--lang", lang, "chars", "--check"])
+            self.assertEqual(cm.exception.code, 2)
+        self.assertEqual(translit.main(["--text", str(TEXT), "--lang", "zh-TW", "chars", "--check"]), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

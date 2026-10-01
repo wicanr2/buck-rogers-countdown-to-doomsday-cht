@@ -107,6 +107,7 @@
 - 包內文件：`LICENSE`（本 repo RRSAL-1.0）、`LICENSE-dosgolem`、`COPYING.LGPL` 與 `nukedopl-SOURCE.md`、
   `font/OFL-1.1.txt` 與 `font/COPYING-unifont`、`THIRD-PARTY.md`（各 Go 模組授權與版本）、`讀我.txt`
   （自備原版、放置位置、按鍵、存檔位置、macOS 未簽章的開啟方式、授權摘要、原作權利聲明）。
+- 規格 044 §3.7（2026-10-01）：包內另有 `text/cmudict/`（`cmudict.dict`、`LICENSE`、`README`）與 `text/LICENSE-translit-table.md`，玩家名音譯器必需；`package.sh` 於複製後逐項 `test -f`，字型迴圈後以 `TestPackagedLanes` 載入發行包的四個通道，輸出必須有 `--- PASS` 且不得有 `--- SKIP`；`THIRD-PARTY.md` 另列 CMU 發音詞典（BSD 式授權）與英語人名譯音表（CC BY-SA 4.0，改作自中文維基百科）。
 - `THIRD-PARTY.md` 由 `go version -m <執行檔>` 列出實際連結的模組，逐一附上模組快取內的 LICENSE 檔名與類型；
   連結的模組缺 LICENSE 即中止。
 

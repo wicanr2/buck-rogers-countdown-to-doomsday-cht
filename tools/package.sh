@@ -100,6 +100,16 @@ for f in text/*.tsv; do
   [[ " ${TEXT_EXCLUDE[*]} " == *" $(basename "$f") "* ]] && continue
   cp "$f" "$STAGE/common/text/"
 done
+# 規格 044 §3.7：玩家名音譯器讀 CMU 發音詞典（BSD 式授權，全文隨包）與音譯表（CC BY-SA 4.0）的授權說明；
+# 這些不是 text/*.tsv，上面的迴圈不會帶。缺任一項就打包失敗，不在發行包裡安靜地停用玩家名。
+mkdir -p "$STAGE/common/text/cmudict"
+for f in cmudict.dict LICENSE README; do cp "text/cmudict/$f" "$STAGE/common/text/cmudict/$f"; done
+cp text/LICENSE-translit-table.md "$STAGE/common/text/LICENSE-translit-table.md"
+TRANSLIT_FILES=(cmudict/cmudict.dict cmudict/LICENSE LICENSE-translit-table.md translit-table.tsv translit-arpabet.tsv translit-names.tsv translit-chars.zh-TW.tsv)
+for lang in ja ko; do
+  [[ " ${LANGS[*]} " == *" $lang "* ]] && TRANSLIT_FILES+=("translit-$lang-names.tsv" "translit-chars.$lang.tsv")
+done
+for f in "${TRANSLIT_FILES[@]}"; do [[ -f "$STAGE/common/text/$f" ]] || die "發行包缺 text/$f（玩家名音譯器需要）"; done
 dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" sh -c '
   python3 tools/catalog_font.py build text/*.zh-TW.tsv --font /u.hex.gz --out /stage/common/font/buckrogers-unifont.golemfnt &&
   for s in 256 512; do python3 tools/appicon.py /stage/common/font/buckrogers-unifont.golemfnt /stage/icon-$s.png $s; done'
@@ -108,6 +118,17 @@ for lang in "${LANGS[@]}"; do
   dr -v "$ROOT:/p:ro" -v "$UNIFONT:/u.hex.gz:ro" -v "$STAGE:/stage" -w /p "$PY_IMAGE" \
     python3 tools/catalog_font.py build --lang "$lang" --font /u.hex.gz --out "/stage/common/font/buckrogers-$lang.golemfnt"
 done
+# 規格 044 §3.7：以發行包的 text/ 與 font/ 實跑各語言通道（唯讀掛載 common/）。測試必須真的執行：
+# 輸出要有 --- PASS 且不得有 --- SKIP，否則打包失敗。dosgolem 取已推送分支 HEAD，測試先進該 commit。
+smoke_lanes() {
+  local out
+  out="$(dr "${GOENV[@]}" -v "$STAGE/src:/src" -v "$MODCACHE:/gomodcache" -v "$GOCACHE_DIR:/gocache" \
+    -v "$STAGE/common:/pkg:ro" -e BUCKROGERS_PKG_ROOT=/pkg -e "BUCKROGERS_PKG_LANGS=${LANGS[*]}" -w /src "$GO_IMAGE" \
+    go test ./apps/buckrogers -run 'TestPackagedLanes$' -count=1 -v 2>&1)" || { echo "$out" >&2; die "TestPackagedLanes 失敗"; }
+  grep -q -- '--- PASS: TestPackagedLanes' <<<"$out" || { echo "$out" >&2; die "TestPackagedLanes 沒有 PASS"; }
+  ! grep -q -- '--- SKIP' <<<"$out" || { echo "$out" >&2; die "TestPackagedLanes 被略過（BUCKROGERS_PKG_ROOT 沒生效）"; }
+}
+smoke_lanes
 if [[ "$WITH_DATA" == 1 ]]; then
   # 倚天字型依現行譯文重建（與 Unifont 同一份字元聯集），只放進完整版。
   # eten_font.py 只准輸出到 repo 的 workplace/，所以另把 workplace 可寫掛上。
