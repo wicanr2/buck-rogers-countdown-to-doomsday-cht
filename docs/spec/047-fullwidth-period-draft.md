@@ -1,11 +1,11 @@
 # 047 — 原版單獨畫出的句號改全形（zh-TW、zh-CN、ja）
 
-狀態：**READY**（2026-10-01，兩輪獨立審查；第二輪應改已併入）
+狀態：**READY**（2026-10-01，兩輪獨立審查；第二輪應改已併入）。實作 dosgolem `43a1e27`；§4 的 1 到 5 項已驗收（[phase-306](../re/phase-306-fullwidth-period.md)），§3.6 (7) 的重新抽審以變動畫面逐筆列出代替，故不升 CONFORMED。
 日期：2026-10-01
 Issue：#35
 決定：使用者 2026-10-01 同意為此動 zh-TW 畫面（規格 046 §5 的 `5.` 型態），目標是符合中文排版。
 前置：規格 027（ECL 文字視窗，§3.7 未命中接續）、029（引擎片段與範本，§2.4）、046（韓文與日文串接，§3.3 範本欄位、§3.6 與 §5 排除了本題）、039（半形）。
-證據：[phase-304](../re/phase-304-replay-gate.md)、[phase-305](../re/phase-305-join.md)；本規格 §2 的普查在 ignored 的 `workplace/phase257-text-window-trace/cp/` 與 `workplace/phase304-replay/post046-1/`。
+證據：[phase-304](../re/phase-304-replay-gate.md)、[phase-305](../re/phase-305-join.md)、[phase-306](../re/phase-306-fullwidth-period.md)（實作驗收）；本規格 §2 的普查在 ignored 的 `workplace/phase257-text-window-trace/cp/` 與 `workplace/phase304-replay/post046-1/`。
 
 ## 1. 為什麼要做
 

@@ -87,6 +87,8 @@ signature 以片段 key、一般空位 `_`、物品空位 `I` 組成；物品空
 
 ### 2.4 片段串接（預設）與模板（覆寫）
 
+> 修訂註（2026-10-01）：zh-TW、zh-CN 的範本欄位：來源為 `_` 且值為「數字加句點」（`38.`）時，去掉句點並在句尾補 `。`，見規格 [047](047-fullwidth-period-draft.md) §3.3。
+
 > 修訂註（2026-10-01）：本節的空白規則適用 zh-TW、zh-CN。ja 的例外只有規格 [046](046-ko-ja-fragment-joining-draft.md) §3.2 的名字與助詞（B 型態）；ko 的串接與範本欄位規則見規格 046 §3.2、§3.3。
 
 - `text/engine-fragment.zh-TW.tsv`：每個片段的中文。signature 命中模板時用模板；
