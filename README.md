@@ -28,19 +28,33 @@
 
 ## 畫面預覽
 
-以下是 dosgolem 執行原版時的覆繪輸出（2×）。人名以「中文(英文)」顯示，窄欄只顯示中文；`NEO`、`ENTER` 等
-專名與按鍵名保留原文。
+以下是 dosgolem 執行原版時的覆繪輸出（2×）。F4 即時切換語言（見上方「語言」）；人名以「譯名(英文)」顯示，窄欄只顯示譯名；
+`NEO`、`ENTER` 等專名與按鍵名保留原文。
+
+### 同一畫面的四種語言
+
+隊伍與功能選單：玩家名依語言音譯成漢字、片假名或諺文，後面括號保留英文。
 
 | | |
 |---|---|
-| ![開場](docs/screenshots/11-opening-page1.png) 開場劇情第 1 頁 | ![種族選擇](docs/screenshots/01-race-select.png) 角色建立：種族選擇 |
-| ![隊伍與功能選單](docs/screenshots/02-party-menu.png) 隊伍與功能選單（玩家名音譯） | ![救世站](docs/screenshots/03-station.png) Salvation III 站內 |
-| ![酒吧](docs/screenshots/04-bar.png) 交誼廳與水平選單 | ![發射訊息](docs/screenshots/06-launch-message.png) 發射前的基地司令訊息 |
-| ![指揮官](docs/screenshots/13-commander.png) 基地指揮官登場 | ![發現廢棄飛船](docs/screenshots/10-derelict-found.png) 太空中發現廢棄飛船 |
-| ![敘事](docs/screenshots/07-narrative.png) 廢棄飛船敘事（玩家名接入句中） | ![戰鬥](docs/screenshots/12-battle.png) 戰鬥畫面 |
-| ![手札](docs/screenshots/08-logbook.png) 手札直接在遊戲內顯示 | ![物品畫面](docs/screenshots/09-item-screen.png) 角色物品畫面 |
+| ![繁體中文：隊伍與功能選單](docs/screenshots/lang-party-zh-TW.png) 繁體中文 | ![簡體中文：隊伍與功能選單](docs/screenshots/lang-party-zh-CN.png) 簡體中文 |
+| ![日文：隊伍與功能選單](docs/screenshots/lang-party-ja.png) 日文（機器輔助譯文） | ![韓文：隊伍與功能選單](docs/screenshots/lang-party-ko.png) 韓文（機器輔助譯文） |
 
-截圖以開發時的本機倚天字型拍攝；發行包改用 GNU Unifont，字形略有不同。
+廢棄飛船敘事：隊伍欄只顯示譯名，敘事句中的玩家名接成「譯名(英文)」。
+
+| | |
+|---|---|
+| ![繁體中文：敘事](docs/screenshots/lang-narr-zh-TW.png) 繁體中文 | ![簡體中文：敘事](docs/screenshots/lang-narr-zh-CN.png) 簡體中文 |
+| ![日文：敘事](docs/screenshots/lang-narr-ja.png) 日文（機器輔助譯文） | ![韓文：敘事](docs/screenshots/lang-narr-ko.png) 韓文（機器輔助譯文） |
+
+### 其他畫面（繁體中文）
+
+| | |
+|---|---|
+| ![開場](docs/screenshots/11-opening-page1.png) 開場劇情第 1 頁 | ![救世站](docs/screenshots/03-station.png) Salvation III 站內 |
+| ![手札](docs/screenshots/08-logbook.png) 手札直接在遊戲內顯示 | ![戰鬥](docs/screenshots/12-battle.png) 戰鬥畫面 |
+
+同一畫面四種語言的截圖以發行用的 GNU Unifont 拍攝；其他四張繁體中文截圖以開發時的本機倚天字型拍攝，字形略有不同。
 截圖是本專案輸出的展示用途，其中的美術與畫面配置屬原版權利人；發行包不附截圖
 （見 [AGENTS.md](AGENTS.md)）。
 
