@@ -3816,3 +3816,16 @@
   - 兩個功能互斥時，先問「互斥是不是設計的必然」：這次是 `man.e1Plan != nil` 一行排除，實測列數關係後可以並存。
   - 單元測試呼叫 `ComposeWith` 前要先 `Frame`：presenter 的 stamp 顏色在 `Frame` 才套用，否則手冊層沒有任何與底圖不同的像素而整層被 `layer()` 略過，測試會空過。
 - 未做：發行包尚未重發；zh-CN、ja、ko 的 E1 另開 Issue。
+
+## 2026-10-02 — #22 視訊模式設定時覆繪層整層失效（規格 052）
+
+- 規格 052 先經盤點（21 個覆繪家族：9 個訂閱 A000 預寫、11 個靠指令或事件鉤、1 個衍生面板）與兩輪獨立審查才 READY。第一輪四項阻擋：story 略過條件不完整會留下孤兒 in-flight frame、手冊斷言引用錯位置（generation 嚴格遞增的檢查在 presenter 的 Begin 分支，不在 Watcher）、
+  post-join 與 exit prompt 在 failed／跨事件時有規格沒寫的計數、注入驗收會改機器狀態且可能真空成立。第二輪：注入時點照字面做不出來（`m.Steps == until` 的 `BeforeStep` 不會發生）、覆蓋對照表的前提錯了（logbook、page 9 其實都有 state）、play 的冷啟動步數不可寫死。
+- 設計：通用層 `Machine.ObserveModeChanges`（保留 `ModeChanges` 追加）＋ session 可選 `ModeObserver`；`LiveRuntime.VideoModeChange` 對每條 lane、每個倍率的家族整層重置，不 fail、空狀態零副作用；body icon 與手冊保留單調 generation。不採「對全部 A000 位元組合成預寫」：
+  它只蓋到 9 個家族，且會使 post-join 等 fail 並計數。
+- 驗收見 phase-318：迴歸 52 點位元組相同；注入 74 點（64 點非真空）涵蓋除手冊英文列以外的全部家族；冷啟動只有一次 mode 13h 事件且所有家族皆空。
+- 做法教訓：
+  - 「從 state 起跑的重播」不經 `SetVideoMode`，收據相同不證明模式事件路徑；要有 observer-only 的注入加上「注入前先證明覆繪存在」的非真空條件。
+  - 注入要放在迴圈結束之後、輸出之前，不能放在迴圈內：`for m.Steps < until` 的條件使 `m.Steps == until` 的 `BeforeStep` 永遠不會發生。
+  - 反射測試列舉結構欄位並逐欄分類，是防止「新增家族卻忘了接模式事件」的低成本辦法；介面方法（`modeReset`）則讓編譯期強制。
+- 未做：有輸入路徑（含離開 DOS）的模式事件序列；legacy 家族；發行包尚未重發。
