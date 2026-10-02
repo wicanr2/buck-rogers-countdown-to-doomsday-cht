@@ -1,6 +1,6 @@
 # 054 — 韓文助詞依尾音與句中玩家名
 
-狀態：**READY**（2026-10-02，第三版；兩輪獨立審查的必修與建議已併入，第二輪審查結論為修完後由主代理自行核對即可升 READY，核對已完成）。
+狀態：**限縮 CONFORMED**（2026-10-02；範圍：同一支隊伍（六位隊員）的 ko、ja 型態 A、B（0AE5、2813）、D 與怪物句，167 個時點的同狀態 A/B；1E42 的時點 A 版就沒有顯示覆繪（原因未查）、寬度退路 (2) 在語料中未觸發，僅單元測試與計數器涵蓋。證據 docs/re/phase-319-ko-particles-inline-names.md。兩輪規格審查與一輪實作審查的必修與建議已併入）。
 日期：2026-10-02
 Issue：#39
 決定：使用者 2026-10-02 選定 #39 的剩餘項目全做（ko 助詞依尾音、引擎片段內嵌玩家名、ko 範本逗號），母語者校對拆成獨立 Issue。範本逗號已於 2026-10-02 改措辭並提交（`text/engine-template.ko.tsv`、`.ja.tsv` 的 `tpl.logbook` 以句點分句）。
@@ -58,23 +58,24 @@ Issue：#39
 2. **ECL 頁的跨呼叫**：`EclTextPage` 新增 `lastReading rune`（本次呼叫畫出的各行文字依序串接後判定的讀音音節，規則同 §3.1；加註名字單元比一行寬時會在空白處拆行，括號前的音節可能落在上一行，所以不能只看最後一行）。更新點與 `lastRune` 相同（`ecl_text.go:542-553`）：沒畫出任何字的呼叫保留前值；新頁（`fresh` 或 `p == nil`）為 0；
    最後一字是空白、標點、拉丁字母、數字時為 0；玩家名退回英文（`playerEnglish`）時為 0（續接的標記保留，這是預期行為）。玩家名呼叫（規格 038 §3.3）的 `lastReading` 取音譯本身（不含加註）的最後音節。
    續接呼叫（`p != nil && !fresh`）的譯文以標記開頭時，以 `lastReading` 解析前導標記後才排版。**是否補空白（`spaced`、`koGlue`）一律用解析前的譯文判定**；判定完才把前導標記換成解析結果，再交給 `attempt`（否則解析成單獨 `이` 會使 `koGlue` 為假，在名字與助詞之間多插空白）。
-   啟用條件為 `w.catalog.lang == LangKo`。
+   啟用條件為 `w.catalog.lang == LangKo` 且為詞級版面（`layout.word`；`lastReading` 與 `lastRune` 在同一個區塊更新，字級版面恆為 0，續接標記保留）。
 3. 其他路徑（靜態譯文、dispatcher 跨呼叫、hmenu、選單等）不套用；靜態譯文中的標記由 Python 檢查器（規格 043）管。
 
 ### 3.3 句中玩家名（ko、ja）
 
-- **語言閘門**：名字解析器 `names`（型別 `PartyNameFunc`，`func(core string) (reading string, ok bool)`）只在 lane 語言為 ko 或 ja 且 `players != nil` 時建立；其他語言一律傳 nil。`TranslateParty` 本身在 `c.lang` 不是 `LangKo`／`LangJa` 時也忽略 `names`（雙重防護）。`Translate(s)` 等於 `TranslateParty(s, nil)`，行為不變。
+- **語言閘門**：名字解析器 `names`（型別 `PartyNameFunc`，`func(core string) (reading string, ok bool)`）由快照與該 lane 的 `players` 建立。快照給所有 lane 的 watcher（同一份 entry），三層擋下非 ko、ja 的語言：watcher 的 `partyNames` 在 `players == nil` 或引擎 catalog 語言不是 ko／ja 時回 nil；`TranslateParty` 本身在 `c.lang` 不是 `LangKo`／`LangJa` 時也忽略 `names`。`Translate(s)` 等於 `TranslateParty(s, nil)`，行為不變。
 - **隊伍快照**：新增的取快照點 `OVR:27BBE:0AE5`、`OVR:1CA15:1E42`、`OVR:00904:2813` 與 dispatcher `0763:1282` **直接呼叫 `ReadPartySnapshot`**，讀取被拒就不比對名字（`names` 為 nil）；它們**不經** `r.party.refresh`，不更新 `partyTracker` 的 `last`、`Taken`、`Rejected`，既有呼叫端（235A、`21DE`、`0388`、`0B79`、`0B4A`）的取快照方式與回退值不變。
   `0763:1282` 宣告成程式常數（如 `inlineNameCaller`）。`NeedsParty` **不改**，對 1282 仍回 false（它只問 `lanes[0]`，判斷不了「是否有 ko/ja lane」）。`LiveRuntime` 在載入時算出 `r.inlineNames`（至少一條 ko 或 ja lane 的 `players != nil`）。
   `live_runtime.go` 的 dispatcher 段（約 566 至 571 行）改成：`key == inlineNameCaller && r.inlineNames` 時，`party` 取 `ReadPartySnapshot(v, v.DS())` 的結果（錯誤時為 nil）；否則照現行 `NeedsParty` → `r.party.refresh`。
-  ECL 三個呼叫端在 `observeEclText` 以同一個 `caller`（`r.ovl.Key(v, ret)`；現行在 `:738` 的 if 內，要移到 if 外只算一次）判斷，並用已讀的 `ds` 讀取，結果放進 `EclTextEntry.Party`（新欄位，各 lane 共用同一份 entry，各用自己的 `players` 建 `names`）。
+  ECL 三個呼叫端在 `observeEclText` 以同一個 `caller`（`r.ovl.Key(v, ret)`，每次進入只算一次）判斷，並用已讀的 `ds` 讀取，結果放進 `EclTextEntry.Party`（新欄位，各 lane 共用同一份 entry，各用自己的 `players` 建 `names`）。
 - **名字槽**：`EngineTextCatalog.TranslateParty(s string, names PartyNameFunc) (text string, ok bool, inline int)`，`inline` 是換成音譯的槽數；`inline == 0` 時 `text` 與 `Translate(s)` 逐字相同。`translateLine` 的 `_` 槽：先照現行試 `monsterSlot`（怪物名優先，現行行為不變）；沒命中且 `names != nil` 時，槽文字去掉兩側空白與句尾 `.,!?` 後若**逐字等於**快照中某隊員名，換成該隊員的音譯（`PlayerNames.Chinese(name, gender)`，lane 自己的語言），
   保留原有的前後空白與句尾標點（ko 句點、ja `。` 的規則與 `monsterSlot` 相同；ja 的名字槽原有前後半形空白照舊保留，這是刻意保留，與現行英文名一致）。不等於任何隊員名者照舊。
 - **顯示與退路**（只顯示音譯，不加英文註；理由：訊息句由片段組成、版面逐呼叫固定；右欄「窄欄只顯示中文」的決定相同）。順序為：
   (1) 帶句中名音譯的譯文；(2) 放不下時改用 `names == nil` 的譯文，也就是現行輸出（ko 仍套 §3.1 標記解析），**只在 `inline > 0` 時執行**（`ok` 不變）；(3) 再放不下才走現行退路（ECL 整頁丟棄、dispatcher 記 miss）。
+  表格列（`Translate` 的 `engineTableRow` 路徑）的前段帶名字後變寬、放不下原列寬時，`TranslateParty` 整體退回不帶名字的結果（`inline` 為 0），不比現行差。
   ECL 是 `attempt` 失敗：在 `ecl_text.go` 取得兩個版本，`spaced`、`zhDeckSpace`、`fullStop` 分支整段先以 (1) 執行，`!fits` 且 `inline > 0` 時，同一段用 (2) 從同一游標重跑；`SpaceDropped` 只依最後採用的那次計，`Overflows` 只在 (2) 也失敗時加一。
   dispatcher 是 `stringUnits(zh) > 2*n`：判斷點放在 `engine_dispatch.go` 取得譯文之後、`eclPrompt` 之前，成立就改用 (2)。兩者都要先走 (2) 才進入 `eclPrompt`、`pending`、`Overflows` 等後續步驟。
-- **計數器**（先定義，收據才有數可記）：`EclTextStats` 與 `EngineDispatchWatcher` 的統計各加 `InlineNames`（(1) 被採用，即版面放得下，加一）、`InlineNameFallback`（(2) 被採用加一）；`EclTextStats` 另加 `MarkersResolved`（ECL 前導標記被替換且最後採用的版面放得下時加一；退路 (2) 若也解析了標記，只計一次）。
+- **計數器**（先定義，收據才有數可記）：`EclTextStats` 與 `EngineDispatchWatcher` 的統計各加 `InlineNames`（(1) 被採用，即版面放得下，加一）、`InlineNameFallback`（(1) 放不下而改用 (2) 時加一；(2) 也放不下時，另依原有退路計 `Overflows`（ECL）或 `Misses`（dispatcher），所以它是「試用 (2) 的次數」，不是畫出的行數）；`EclTextStats` 另加 `MarkersResolved`（ECL 前導標記被替換且最後採用的版面放得下時加一；退路 (2) 若也解析了標記，只計一次）。
   `replay_trace.go` 的 `engineUnits` 用不帶名字的 `Translate`，trace 的單位數欄不反映句中名（註明，不改）。
 - 順序：名字槽換成音譯後，§3.2 第 1 項的標記解析才套用（所以 `플라비우스` 後的 `은(는)` 解成 `는`）。
 
@@ -109,10 +110,12 @@ Issue：#39
    - 名字槽測試加一筆名字中間帶空白的隊員名（槽比對以去掉兩側空白後的整串比對，名字中間的空白不受影響）。
 2. 執行期重播（有隊伍快照；從 `cp/*.state` 起跑的執行期，不是離線頁面表）：A（實作 commit 的父 commit）與 B（實作 commit）各自從乾淨匯出建置（不含除錯鉤；差別只在少了除錯輸出）。
    時點與型態的對應、目標呼叫的進入步數，以及 dispatcher 呼叫的列（`args` 第 5 值），取自證據蒐集的 dbg 紀錄（`workplace/phase317-evidence/runs*/*.dbg.tsv`，ignored）；收據列出「狀態名 → 型態 → 呼叫端鍵 → 進入步數」，不列原文。
-   `-until` 取目標呼叫進入步數之後、同一 lane trace 中下一列（任何家族）的進入步數減 1；沒有下一列時沿用 plan 的 UNTIL。不另以 trace 確認頁面仍在（`-live-rgba-out` 在 UNTIL 那一步用當下的畫面合成，trace 沒有 retrace 資料）：ko、ja 的非真空條件（B 在預期矩形內與 A 不同）本身就是確認；若某時點 ko 或 ja 在矩形內與 A 相同，先檢查 UNTIL，不得直接算成通過。
+   `-until`：型態 A 取目標（名字呼叫之後的續接呼叫）進入步數之後、同一 lane trace 中下一列（任何家族）的進入步數減 1；型態 B、D 與怪物句（M）另取進入後 8 萬、24 萬、60 萬步與下一列前一步各一點：
+   一個 retrace 約 16 萬步，訊息顯示一陣子後原版會自己清除，只取下一列之前可能畫面還沒合成、或已經空了。不另以 trace 確認頁面仍在（`-live-rgba-out` 在 UNTIL 那一步用當下的畫面合成，trace 沒有 retrace 資料），
+   改以「A 的 ko（ja）畫面在預期矩形內與同一時點的 en 畫面不同」判定覆繪有顯示（shown）；B 的 shown 必須與 A 相同（殘字或遺失都算異常）。
    預期矩形：ECL 取 `ecl` 列的 `Left..Right`、`Top..Bottom`，像素範圍 `[Left×8×s, (Right+1)×8×s) × [Top×8×s, (Bottom+1)×8×s)`，`s` 為 `-live-scale`；dispatcher 取 dbg 紀錄的列 `r`，像素範圍 `[0, 320×s) × [r×8×s, (r+1)×8×s)`。
    每個時點跑 zh-TW、zh-CN、en、ko、ja 五種語言 × A、B：記憶體、CPU 雜湊相同；zh-TW、zh-CN、en 的 live RGBA SHA-256 與 A 相同。
-   **非真空條件**：ko 與 ja 各至少有一個型態 A、一個型態 B、一個型態 D 的時點，B 在預期矩形內與 A 不同；否則該項驗收不成立。畫面僅本機檢視，收據只記雜湊與推導出的計數、呼叫端鍵（不複製 trace 的 `eng` 欄，它印出原版位元組）。
+   **非真空條件**：ko 至少有一個型態 A、一個型態 B、一個型態 D 的 shown 時點，B 在預期矩形內與 A 不同；ja 至少有一個型態 B、一個型態 D。ja 的型態 A 與怪物句 M 不要求不同（ja 沒有標記解析，名字呼叫已由規格 038 處理），它們作為控制組：shown 時點 B 必須與 A 逐位元組相同。否則該項驗收不成立。畫面僅本機檢視，收據只記雜湊與推導出的計數、呼叫端鍵（不複製 trace 的 `eng` 欄，它印出原版位元組）。
 3. 全套件測試（乾淨匯出）與 `go vet` 通過；`ja_check.sh`、`ko_check.sh` 通過（本規格不改 TSV）。
 4. 文件：規格 043、044 §3.8、045、046 加指向本規格的 pointer；`docs/re/` 加收據（呼叫端、計數、驗證，不列原版英文句子）；README、CONTEXT、WORKLOG 更新；Issue #39 逐項回報。
 
@@ -123,4 +126,5 @@ Issue：#39
 - 音譯寬度：ja 與部分 ko 音譯比英文寬，放不下時 (2) 退回現行輸出，不比現行差。
 - ECL 的 engine 鍵不給名字單位：ja 是字級版面，拉丁字串整段不斷行，片假名名字則可能在行尾被拆開（可讀性風險；以畫格檢視記錄，必要時另案讓 `TranslateParty` 回傳名字區間給版面）。
 - 同一畫面右欄（只譯名）、ECL 敘事（譯名加註）與訊息句（只譯名）三種寫法並存，是三種版面限制的結果。
+- 隊員名以 `.`、`,`、`!`、`?` 結尾時，槽文字被剝掉句尾標點而比對不到，維持英文（語料沒有這種名字）。
 - 取隊伍快照增加 `0AE5`、`1E42`、`2813`、`1282` 呼叫的讀取量：每次進入多讀隊伍鏈（約七筆記錄），只在 ko、ja lane 存在時需要。
