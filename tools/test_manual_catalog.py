@@ -67,7 +67,7 @@ class ManualCatalogTest(unittest.TestCase):
             f"manual.log.11.the_elevator\t{'字' * (subject.MANUAL_PAGE_CAPACITY + 1)}\tmanual-and-runtime\n",
             encoding="utf-8",
         )
-        with self.assertRaisesRegex(ValueError, "505 字，超過單頁上限 504 字"):
+        with self.assertRaisesRegex(ValueError, "超過 14 列，超過單頁上限（504 個全形格）"):
             subject.validate(self.questions, self.crosswalk, self.events, self.catalog)
 
 

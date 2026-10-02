@@ -8,6 +8,7 @@ import csv
 from pathlib import Path
 
 from catalog_font import read_catalog
+from manual_lang import manual_rows
 
 
 HEADER = [
@@ -62,8 +63,8 @@ def validate(layout_path: Path, catalog_path: Path) -> int:
 
     catalog = read_catalog(catalog_path)
     for entry in catalog:
-        if len(entry.translation) > EXPECTED["capacity"]:
-            raise ValueError(f"{entry.key}: {len(entry.translation)} 字，超過單頁上限 504 字")
+        if manual_rows(entry.translation, EXPECTED["columns"], EXPECTED["rows"]) is None:  # 規格 051：半形算半格、逐字元換列，與 dosgolem manualRows 等價
+            raise ValueError(f"{entry.key}: 以 36 欄逐字元換列後超過 14 列（單頁上限 504 個全形格）")
     return len(catalog)
 
 

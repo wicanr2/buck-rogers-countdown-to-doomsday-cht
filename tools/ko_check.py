@@ -2,7 +2,7 @@
 """規格 043 §3.3：韓文（ko）譯文檢查。共用邏輯在 tools/lang_check.py，本檔是薄包裝。
 
   python3 tools/ko_check.py                       檢查 text/*.ko.tsv
-  python3 tools/ko_check.py --expect-rows 5414 --expect-keys 5406   加覆蓋斷言（規格 043 §3.1）
+  python3 tools/ko_check.py --expect-rows 5453 --expect-keys 5445   加覆蓋斷言（規格 043 §3.1）
 """
 from __future__ import annotations
 

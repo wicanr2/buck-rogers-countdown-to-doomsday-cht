@@ -145,11 +145,19 @@ class KoCheckNegatives(unittest.TestCase):
         f.ko["hmenu"][0] = ("hmenu.x", "RAM 4", "ecl-batch-editorial")
         self.assertHas(f.run(), "大寫 ASCII 與數字")
 
-    def test_manual_must_be_header_only(self) -> None:
+    def test_manual_rows_pass_and_are_checked(self) -> None:
+        # 規格 051：manual 家族不再只准標頭，改由 manual_lang 檢查
         f = self.fixture()
-        f.zh["manual"] = [("manual.1", "段落", "manual-term-editorial")]
-        f.ko["manual"] = [("manual.1", "단락", "manual-term-editorial")]
-        self.assertHas(f.run(), "只有標頭")
+        f.zh["manual"] = [("manual.1", "NEO 段落 7", "manual-and-runtime")]
+        f.ko["manual"] = [("manual.1", "NEO 단락 7", "manual-and-runtime")]
+        self.assertEqual(f.run().errors, [])
+        f.ko["manual"] = [("manual.1", "NEO BUCK 단락 7", "manual-and-runtime")]
+        self.assertHas(f.run(), "新增的拉丁字母詞")
+        f.ko["manual"] = [("manual.1", "NEO 단락 8", "manual-and-runtime")]
+        self.assertHas(f.run(), "數字")
+        f.ko["manual"] = []
+        self.assertHas(f.run(), "key 集合或順序")
+
 
     def test_row_count_assertion(self) -> None:
         f = self.fixture()
@@ -220,7 +228,7 @@ class KoCheckRealData(unittest.TestCase):
         if not (text / "hmenu-item-events.tsv").exists() or not (text / "ecl-text.ko.tsv").exists():
             self.skipTest("沒有真實 text/")
         report = lang_check.Report()
-        lang_check.check(text, lang_check.ROOT / "font", report, lang="ko", expect_rows=5414, expect_keys=5406)
+        lang_check.check(text, lang_check.ROOT / "font", report, lang="ko", expect_rows=5453, expect_keys=5445)
         self.assertEqual(report.errors, [])
 
     def test_caps_cover_most_rows(self) -> None:

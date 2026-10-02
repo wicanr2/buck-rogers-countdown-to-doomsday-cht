@@ -2,7 +2,7 @@
 """規格 042 §3.3：日文（ja）譯文檢查。共用邏輯在 tools/lang_check.py（規格 043 §3.3），本檔是薄包裝：命令列與舊名稱不變。
 
   python3 tools/ja_check.py                       檢查 text/*.ja.tsv
-  python3 tools/ja_check.py --expect-rows 5414 --expect-keys 5406   加覆蓋斷言（規格 042 §3.1）
+  python3 tools/ja_check.py --expect-rows 5453 --expect-keys 5445   加覆蓋斷言（規格 042 §3.1）
 """
 from __future__ import annotations
 

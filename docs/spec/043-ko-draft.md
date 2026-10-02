@@ -148,7 +148,9 @@ ko 不變量：詞級加退回的 fits 必與字級相同。fallback 次數由�
 - `cmd/buckrogers-name-scan` 與 `name_scan.go` 補 `-lang`（042 遺留），並把 :34、:40 的 nil profile 排版改為 `LayoutFor(lang)`。
 - 玩家名：規格 045 之前 ko 的 `PlayerNames` 停用，名字顯示英文。規格 045 實作後（2026-10-01）ko 的 `PlayerNames` 啟用（諺文音譯，專案詞典 `translit-ko-names.tsv`），ECL 玩家名單元在續接呼叫時依規格 045 §3.4 補呼叫起點空白；`DebugSummary` 的 `玩家名=off` 只剩音譯檔或字型缺字的情形。
 
-### 3.9 手冊題（本期不做）
+### 3.9 手冊題（本期不做；已由規格 051 取代）
+
+> 2026-10-02：規格 051（READY）改為補上 ko 的 39 段。下列為本期當時的決定。
 
 同 042 §3.9：`manual.ko.tsv` 只有標頭；手冊題提示句為韓文，段落顯示原版英文；韓文段落從繁中段落轉譯並另訂規格。
 

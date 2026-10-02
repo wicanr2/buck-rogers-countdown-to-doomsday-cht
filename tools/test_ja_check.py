@@ -158,11 +158,19 @@ class JaCheckNegatives(unittest.TestCase):
         f.ja["menu"].append(("menu.a", "追加(A) 削減(S)", "runtime-interface"))
         self.assertHas(f.run(), "重複 key")
 
-    def test_manual_must_be_header_only(self) -> None:
+    def test_manual_rows_pass_and_are_checked(self) -> None:
+        # 規格 051：manual 家族不再只准標頭，改由 manual_lang 檢查
         f = self.fixture()
-        f.zh["manual"] = [("manual.1", "段落", "manual-term-editorial")]
-        f.ja["manual"] = [("manual.1", "段落", "manual-term-editorial")]
-        self.assertHas(f.run(), "只有標頭")
+        f.zh["manual"] = [("manual.1", "NEO 段落 7", "manual-and-runtime")]
+        f.ja["manual"] = [("manual.1", "NEOの段落7", "manual-and-runtime")]
+        self.assertEqual(f.run().errors, [])
+        f.ja["manual"] = [("manual.1", "NEOとBUCKの段落7", "manual-and-runtime")]
+        self.assertHas(f.run(), "新增的拉丁字母詞")
+        f.ja["manual"] = [("manual.1", "NEOの段落8", "manual-and-runtime")]
+        self.assertHas(f.run(), "數字")
+        f.ja["manual"] = []
+        self.assertHas(f.run(), "key 集合或順序")
+
 
     def test_row_count_assertion(self) -> None:
         f = self.fixture()

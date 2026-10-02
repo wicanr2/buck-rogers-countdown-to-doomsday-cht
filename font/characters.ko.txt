@@ -301,6 +301,7 @@ U+AFB8	꾸
 U+AFBC	꾼
 U+AFC7	꿇
 U+AFC8	꿈
+U+AFD4	꿔
 U+AFF4	꿴
 U+B00C	뀌
 U+B010	뀐
@@ -658,12 +659,14 @@ U+B530	따
 U+B531	딱
 U+B545	땅
 U+B54C	때
+U+B55C	땜
 U+B5A0	떠
 U+B5A1	떡
 U+B5A4	떤
 U+B5A8	떨
 U+B5BB	떻
 U+B5BC	떼
+U+B5C0	뗀
 U+B610	또
 U+B611	똑
 U+B69C	뚜

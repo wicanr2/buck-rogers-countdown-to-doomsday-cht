@@ -3,7 +3,7 @@
 共用邏輯依語言設定（LangConfig）取值；tools/ja_check.py 與 tools/ko_check.py 是薄包裝。
 
   python3 tools/lang_check.py --lang ko                    檢查 text/*.ko.tsv
-  python3 tools/lang_check.py --lang ko --expect-rows 5414 --expect-keys 5406   加覆蓋斷言
+  python3 tools/lang_check.py --lang ko --expect-rows 5453 --expect-keys 5445   加覆蓋斷言
 
 錯誤讓結束碼非零；警告（ECL 寬度超過 zh-TW 1.6 倍等）只列出。單位：半形 1、其餘 2（規格 039）。
 """
@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "zh-TW"
 CATALOG_HEADER = ["key", "translation", "source"]
-HEADER_ONLY_FAMILIES = {"manual"}
+MANUAL_FAMILY = "manual"  # 規格 051：手冊段落由 tools/manual_lang.py 檢查（逐字元換列、拉丁字母白名單、字集）
 NON_CATALOG_PREFIX = ("name-glossary", "translit-chars")
 
 # 規格 042 §3.3 第 5 項。
@@ -251,6 +251,21 @@ def check(text_dir: Path, font_dir: Path, report: Report, *, expect_rows: int | 
         if ja_rows is None or zh_rows is None:
             continue
         name = ja_path.name
+        if fam == MANUAL_FAMILY:
+            import manual_lang
+            for n, r in enumerate(ja_rows, start=2):
+                if len(r) != 3:
+                    report.err(f"{name}:{n}", "必須恰有 3 欄")
+                    continue
+                total_rows += 1
+                total_keys.add(r[0])
+                shared[r[0]][name] = r[1]
+            try:
+                for e in manual_lang.check_catalog(lang, ja_path, zh_fams[fam], charset):
+                    report.err(name, e)
+            except ValueError as exc:
+                report.err(name, str(exc))
+            continue
         zh_map = {r[0]: r for r in zh_rows if len(r) == 3}
         ja_keys: list[str] = []
         seen: set[str] = set()
@@ -268,15 +283,10 @@ def check(text_dir: Path, font_dir: Path, report: Report, *, expect_rows: int | 
                 report.err(where, f"重複 key：{key}")
             seen.add(key)
             zh = zh_map.get(key)
-            if fam in HEADER_ONLY_FAMILIES:
-                report.err(where, f"manual.{lang}.tsv 本期必須只有標頭（{cfg.spec} §3.9）")
-                continue
             if zh is None:
                 report.err(where, f"key 不在 zh-TW 同家族：{key}")
                 continue
             check_row(fam, key, text, source, zh[1], zh[2], where, report, charset, characters, cap_src, panel_title, cfg)
-        if fam in HEADER_ONLY_FAMILIES:
-            continue
         # 順序與覆蓋
         zh_order = [k for k in zh_map if k in seen or k in exemptions]
         ja_order = [k for k in ja_keys if k in zh_map]

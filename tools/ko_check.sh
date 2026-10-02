@@ -28,9 +28,9 @@ timeout 20m docker run --rm --name "buck-ko-check-$$" --network none --memory 3g
 T=text; L="--lang ko"
 step() { echo "[ko_check] $*"; "$@" >/tmp/out.txt 2>&1 || { cat /tmp/out.txt; echo "[ko_check] 失敗：$*" >&2; exit 1; }; }
 # 1. ko_check.py、合成負例（test_lang_check.py）；ja_check.py 薄包裝仍全綠（規格 043 §5.1）；覆蓋斷言：31 個家族檔 5,414 列、5,406 個不同 key（規格 043 §3.1）
-step python3 tools/ko_check.py --expect-rows 5414 --expect-keys 5406
+step python3 tools/ko_check.py --expect-rows 5453 --expect-keys 5445
 step sh -c "cd tools && python3 -m unittest test_ja_check.py test_lang_check.py test_name_glossary.py test_translit_jk.py"
-step python3 tools/ja_check.py --expect-rows 5414 --expect-keys 5406
+step python3 tools/ja_check.py --expect-rows 5453 --expect-keys 5445
 # 2. 以 --lang ko 呼叫
 step python3 tools/menu_events.py $T/menu-events.tsv $T/menu.ko.tsv $L
 step python3 tools/gender_events.py $T/gender-events.tsv $T/gender.ko.tsv $T/post-race-events.tsv $T/gender-selection-events.tsv $L
@@ -50,12 +50,14 @@ step python3 tools/translit_jk.py chars --check $L
 step python3 tools/translit_jk.py examples --check $L
 step python3 tools/translit_jk.py verify-fixed $L
 step python3 tools/skill_action_bar_catalog.py $T/skill-action-bar-events.tsv $T/skill-action-bar.ko.tsv $L
-# 3. 以 *.ko.tsv 路徑呼叫（manual_catalog.py 對只有標頭的 manual.ko.tsv 失敗，手冊韓文另訂時再納入）
+# 3. 以 *.ko.tsv 路徑呼叫（手冊段落見規格 051：manual_catalog.py 與 manual_lang.py 都檢查）
 step python3 tools/story_opening_catalog.py $T/story-opening-events.tsv $T/story-opening.ko.tsv
 for n in 2 3 4 5 6 7 8 9; do
   step python3 tools/story_page${n}_catalog.py $T/story-page${n}-events.tsv $T/story-page${n}.ko.tsv
 done
+step python3 tools/manual_catalog.py $T/manual-questions.tsv $T/manual-source-crosswalk.tsv $T/manual-events.tsv $T/manual.ko.tsv
 step python3 tools/manual_overlay_layout.py $T/manual-overlay-layout.tsv $T/manual.ko.tsv
+step python3 tools/manual_lang.py check --lang ko --catalog $T/manual.ko.tsv --zh $T/manual.zh-TW.tsv --charset font/charset.ko.txt
 # 4. 字元清單：由正式 ko 譯文重生，須與版控檔逐位元組相同
 step python3 tools/catalog_font.py chars $L --out /tmp/characters.ko.txt
 cmp /tmp/characters.ko.txt font/characters.ko.txt || { echo "[ko_check] font/characters.ko.txt 未同步" >&2; exit 1; }

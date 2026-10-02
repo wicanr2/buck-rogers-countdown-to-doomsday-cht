@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 
 from catalog_font import read_catalog
+from manual_lang import manual_rows
 
 
 EVENT_FIELDS = ["event_key", "record_index", "page", "heading_ascii", "ordinal", "text_key"]
@@ -60,10 +61,10 @@ def validate(questions_path: Path, crosswalk_path: Path, events_path: Path, cata
         if event["text_key"] not in catalog:
             raise ValueError(f"record {record} 的 text_key 不在 catalog")
         translation = catalog[event["text_key"]].translation
-        if len(translation) > MANUAL_PAGE_CAPACITY:
+        if manual_rows(translation) is None:  # 規格 051：與 dosgolem manualRows 等價（半形算半格、逐字元換列）
             raise ValueError(
-                f"record {record} 的譯文有 {len(translation)} 字，"
-                f"超過單頁上限 {MANUAL_PAGE_CAPACITY} 字"
+                f"record {record} 的譯文以 {MANUAL_PAGE_COLUMNS} 欄逐字元換列後超過 {MANUAL_PAGE_BODY_ROWS} 列，"
+                f"超過單頁上限（{MANUAL_PAGE_CAPACITY} 個全形格）"
             )
 
     extras = sorted(catalog.keys() - seen_text)
