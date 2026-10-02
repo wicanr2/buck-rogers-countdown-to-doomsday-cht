@@ -48,17 +48,17 @@ E1 的純值 plan（`BuildManualE1Plan`）與 3× 繪製只在 `ManualSnapshotOw
 ### 3.1 啟用條件與 DebugSummary
 
 E1 在下列條件**全部成立**時啟用：語言通道為 zh-TW、倍率為 3×、載入時預檢全部通過、（本機英文關鍵字列已載入時）§3.4 的並存條件成立。其他情形一律走現行固定格路徑，輸出位元組不變。
-`LangTest`（規格 040 §5.3 的測試語言）與 zh-CN、ja、ko 的 `e1Base` 必為 nil。
+`LangTest`（規格 040 §5.3 的測試語言）與 zh-CN、ja、ko 的 `e1Base` 必為 nil。 （2026-10-02：zh-CN、ja、ko 的 3× 已由規格 055 啟用，只有 `LangTest` 仍為 nil。）
 
 - 預檢：建 3× presenter 後，以 §3.2 命名的字型對 catalog 的**每一段**呼叫 `BuildManualE1Plan` 與 `plan.TextLayer`（`DisplayRequest{Generation: 1, EventKey, TextKey, Translation: 該段 catalog 譯文}`；不 `Apply`、不留狀態），
   並記下每段 E1 使用的列數 k'（`plan.lines` 中有 token 的最後一列加一）存在 presenter 旁的 `map[eventKey]int`。
   任一段失敗即整體不啟用 E1（`e1Base` 保持 nil），不逐段退回。預檢在 `loadLane` 內完成，早於 `SetManualEnglish`；失敗不停用語言通道。
 - `DebugSummary`（zh-TW 區段，接在「英文列」之後）：`manual-e1=on`、`manual-e1=off(preflight:M)`（M 為失敗段數）、`manual-e1=off(keyword:N)`（N 為違反 §3.4 並存條件的題數）、`manual-e1=off(runtime)`。
   只有計數與固定代碼，不得含譯文、錯誤原文、字元或 EventKey。
-- runtime 退路：3× zh-TW 的 `manSync.Sync()` 回錯且 `e1Base != nil` 時，把該 presenter 的 `e1Base` 設為 nil，在同一次 `syncManual` 再 `Sync()` 一次（失敗的 Request 沒被 consume，第二次改走固定格）；
+- runtime 退路：3× zh-TW 的 `manSync.Sync()` 回錯且 `e1Base != nil` 時，把該 presenter 的 `e1Base` 設為 nil，在同一次 `syncManual` 再 `Sync()` 一次（失敗的 Request 沒被 consume，第二次改走固定格）； （2026-10-02：規格 055 §3.4 起對所有啟用 E1 的通道一視同仁。）
   第二次仍失敗則照舊 `resets["manual"]++` 且不再重試（不得無限重試）。只有第二次成功才標 `manual-e1=off(runtime)`（`Sync()` 也可能因非 E1 原因失敗，那種情形不標）。
   不改 `Apply` 的 E1 分支（規格 005 已限縮 CONFORMED）。
-- 效能：預檢只對 zh-TW 3× 做，每次載入約 0.1 秒；每次 `LoadLiveRuntime`（含測試）都付這筆成本。
+- 效能：預檢只對 zh-TW 3× 做，每次載入約 0.1 秒；每次 `LoadLiveRuntime`（含測試）都付這筆成本。 （2026-10-02：規格 055 起四個通道各做一次，約 0.4 秒。）
 
 ### 3.2 接線
 
@@ -79,7 +79,7 @@ E1 在下列條件**全部成立**時啟用：語言通道為 zh-TW、倍率為 
 
 ### 3.3 不變量
 
-1. 所有 2×（五種語言）與 3× 的 zh-CN、ja、ko、en 的 `LiveRuntime` 合成 RGBA（`Compose`）與實作前逐位元組相同。
+1. 所有 2×（五種語言）與 3× 的 zh-CN、ja、ko、en 的 `LiveRuntime` 合成 RGBA（`Compose`）與實作前逐位元組相同。 （2026-10-02：3× 的 zh-CN、ja、ko 不再與實作前相同，見規格 055 §3.5。）
 2. 3× zh-TW：與實作前相比，**矩形外零差**；矩形內可以相同也可以不同（39 段中 15 段本來就相同）。會不同的段落集合由單元測試列出（只記 key，不記內容）。
 3. 機器狀態（記憶體、CPU、indexed、palette、停止步數）與倍率及 E1 開關無關，逐位元組相同。
 4. 離頁（作答後清除）後手冊矩形與原版英文通道逐位元組相同（無殘字）；換題、返回的生命週期與現行相同。
@@ -100,7 +100,7 @@ E1 在下列條件**全部成立**時啟用：語言通道為 zh-TW、倍率為 
 
 ## 4. 不在範圍
 
-- zh-CN、ja、ko 的 E1（另開 Issue；ja、ko 的容量要依 E1 的整詞換行規則重算，規格 051 的 13 列上限是固定格的算法）。
+- zh-CN、ja、ko 的 E1（另開 Issue；ja、ko 的容量要依 E1 的整詞換行規則重算，規格 051 的 13 列上限是固定格的算法）。 （2026-10-02：已由規格 055 實作。）
 - 關鍵字列本身的版面改動。
 - 2× 的任何變動、`xlate` 共用層、catalog、字型。
 - host 的 `ManualSnapshotOwner` 路徑（已 CONFORMED，不動）。
@@ -111,7 +111,7 @@ A、B 比對各自從**乾淨匯出**建置（`git archive <commit>` 或獨立 w
 收據記兩個 commit SHA 與兩個 binary 的 SHA-256。同一份 `text/`、同一個發行字型（記 SHA-256）、同一個快照與腳本；不拿既有 phase-316 收據當基準。測試套件也在乾淨匯出上跑。
 
 1. 單元測試（dosgolem；合成 catalog 與字型，另有以 `BUCKROGERS_CHT_ROOT` 與 `BUCK_OWNER_PROJECT`（兩者都指向 Buck repo 根目錄，唯讀）閘控的正式 catalog 測試）：
-   - 啟用矩陣：{zh-TW, zh-CN, ja, ko, LangTest} × {2×, 3×}，只有 zh-TW 3× 的 `e1Base` 非 nil。
+   - 啟用矩陣：{zh-TW, zh-CN, ja, ko, LangTest} × {2×, 3×}，只有 zh-TW 3× 的 `e1Base` 非 nil。 （2026-10-02：矩陣已由規格 055 §5.1 反轉。）
    - 字型命名順序：未命名 derived 時預檢是 0／39；依 §3.2 命名後 39／39；預檢用的 generation 與 runtime 不同，幾何相同。
    - 預檢失敗負例：fixture 取「段落在固定格剛好 14 列，E1 整詞換行後超過 14 列」，固定格能建構、E1 預檢失敗：`e1Base` 為 nil、通道仍啟用、`DebugSummary` 含 `manual-e1=off(preflight:`。
    - runtime 退路：注入方式是把 presenter 的 `e1Base` 換成尺寸不符的字型（`BuildManualE1Plan` 回錯，固定格不受影響；不要刪 derived 字模，否則固定格退路也缺字）；同一題改以固定格顯示，後續題目照常，`DebugSummary` 為 `manual-e1=off(runtime)`；
@@ -120,7 +120,7 @@ A、B 比對各自從**乾淨匯出**建置（`git archive <commit>` 或獨立 w
    - `SetStyle`：E1 段落可見時改 style，下一個 `Clear` 成功，`ActiveKeys` 歸零。
    - 並存：列出每段的（固定格 k，E1 k'）並斷言違反數為 0（只記 key 與數字）；合成摘錄（fixture 不含任何真實手冊單字，只用占位 ASCII 詞，通過 `LoadManualEnglish` 的格式檢查）下，E1 啟用時關鍵字列照畫，位置在 E1 段落之下、不重疊；
      以合成 catalog 製造 k' > k 的題，`SetManualEnglish` 後 E1 整體關閉、`DebugSummary` 為 `manual-e1=off(keyword:1)`；`ManualSnapshotOwner` 路徑的既有測試全過。
-   - 位元組不變：`LiveRuntime` 層對五種語言的 `Compose(2)` 與 zh-CN、ja、ko、en 的 `Compose(3)` 比對實作前的位元組；E1 可見時 `Compose(2)` 與 `Compose(3)` 交替（模擬 F2），2× 位元組不變。
+   - 位元組不變：`LiveRuntime` 層對五種語言的 `Compose(2)` 與 zh-CN、ja、ko、en 的 `Compose(3)` 比對實作前的位元組；E1 可見時 `Compose(2)` 與 `Compose(3)` 交替（模擬 F2），2× 位元組不變。 （2026-10-02：3× 的 zh-CN、ja、ko 部分見規格 055。）
    - 39 段中 E1 與固定格不同的 key 集合（只記 key）與其餘 15 段相同的集合。
    - 下列測試必須 PASS 而不是 SKIP：本規格新增的閘控測試、`TestManualE1PlanAll39PrivateCatalog`、`TestManualE1PlanDeimosPrisonEnglishTokens`；套件其餘 SKIP 列入收據，不作為失敗。
 2. 離線同狀態重播（`workplace/phase316/run.sh` 的手冊題時點，五種語言 × 2×、3×，runner 的 `-manual-english` 旗標**不傳**）：A、B 的 live RGBA SHA-256 比對：2× 全部與 3× 的 zh-CN、ja、ko、en 相同；
@@ -130,7 +130,7 @@ A、B 比對各自從**乾淨匯出**建置（`git archive <commit>` 或獨立 w
    - 不帶摘錄（確認 exe 目錄、`../Resources`、cwd 都沒有 `local/manual-english.tsv`）：A、B 逐格比較，機器雜湊相同；差異格僅限手冊頁矩形；作答後清除那一格矩形與 en 逐位元組相同；之後轉場無殘字。
    - 帶同一份本機摘錄（內容不入 Git；唯讀掛載）：A、B 逐格比較，差異只在手冊矩形內；B 的關鍵字列在段落之下、不與段落重疊；收據只記雜湊，不描述畫面內容。
 4. 詞界樣本：至少兩種不同英文詞界的手冊段落（括號專名、列尾專名各一）在實機或離線重播顯示，畫面僅本機檢視，不入 Git，也不描述手冊內容。
-5. 打包：`tools/package.sh linux` 通過；`TestPackagedLanes` 對 zh-TW 斷言 `DebugSummary` 含 `manual-e1=on`（只斷言一次，不依語言重複解讀）；完整版的預檢以載入時預檢為閘門。
+5. 打包：`tools/package.sh linux` 通過；`TestPackagedLanes` 對 zh-TW 斷言 `DebugSummary` 含 `manual-e1=on`（只斷言一次，不依語言重複解讀）；完整版的預檢以載入時預檢為閘門。 （2026-10-02：規格 055 起對四種語言各自的通道區塊斷言。）
 6. 文件：規格 005 的 E1 判定節加指向本規格的 pointer；規格 034 加指向本規格 §3.4 的 pointer；`docs/re/` 加收據；CONTEXT、WORKLOG、README 更新；Issue #21 依完成條件逐項回報後關閉或標明剩餘項。
 
 ## 6. 風險

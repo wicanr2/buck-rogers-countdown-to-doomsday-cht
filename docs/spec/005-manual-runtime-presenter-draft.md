@@ -25,6 +25,8 @@
 [第九十二階段候選 manifest 驗證](006-formal-font-candidate-manifest-validator.md)、
 [第九十三階段倚天候選輸入盤點](007-eten-15-font-candidate-intake-draft.md)。
 
+> 2026-10-02：E1 的啟用語言由 zh-TW 擴及 zh-CN、ja、ko（規格 055，同時放寬 plan 對 ASCII 終端標點的處理，zh-TW 的 plan 版面不變）。
+
 ## 目的與邊界
 
 本規格定義 `apps/buckrogers` 手冊 presenter 的輸出端接線。它只把既有
