@@ -3,4 +3,4 @@ tpl.antidote	{0}에게 해독제 사용	ecl-batch-editorial
 tpl.drop	{0}을(를) 영구히 버리겠습니까?	ecl-batch-editorial
 tpl.needs	{1}에 {0}점이 필요하다	ecl-batch-editorial
 tpl.destroyed	{0}은(는) {1}에서 파괴되었다	ecl-batch-editorial
-tpl.logbook	, 일지 항목 {1}번으로 기록한다	ecl-batch-editorial
+tpl.logbook	. 일지 항목 {1}번으로 기록한다	ecl-batch-editorial

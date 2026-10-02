@@ -3,4 +3,4 @@ tpl.antidote	{0}に解毒剤を使う	ecl-batch-editorial
 tpl.drop	{0}を永久に捨てるか？	ecl-batch-editorial
 tpl.needs	{1}は{0}点必要だ	ecl-batch-editorial
 tpl.destroyed	{0}は{1}で破壊された	ecl-batch-editorial
-tpl.logbook	、日誌{1}番に記録した	ecl-batch-editorial
+tpl.logbook	。日誌{1}番に記録した	ecl-batch-editorial
