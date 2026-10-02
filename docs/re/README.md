@@ -282,6 +282,7 @@
 | [第三百一十四階段：半形顯示的實機補證](phase-314-halfwidth-live-evidence.md) | Issue #34：含 `•` 的名字（示範模式戰鬥畫面）、Unifont 3× 實跑、手冊 E1 作答後返回三項補量；修理結果表頭仍無可到達狀態。 |
 | [第三百一十五階段：第九頁的自然離頁](phase-315-story-page9-natural-exit.md) | Issue #20：Enter、Esc 進入下一幕、Space 等沒反應；四語言與 en 的收據欄位相同；離頁後無殘字（2×、3×）；RGBA 逐像素 A/B 未做。 |
 | [第三百一十六階段：日文與韓文的手冊段落](phase-316-ja-ko-manual-paragraphs.md) | 規格 051、Issue #39：ja、ko 各 39 段（由 zh-TW 段落轉譯，拉丁字母限同列子集）；`manual_lang.py` 與 Go `manualRows` 等價；離線 5 語言 × 2×／3× 與實機 4 語言 × 2×／3× 的記憶體、CPU 雜湊全同；離頁後矩形與原版逐位元相同；其餘手冊題未逐題實機。 |
+| [第三百一十七階段：手冊 E1 接入玩家路徑](phase-317-manual-e1-live.md) | 規格 053、Issue #21：zh-TW 3× 預檢 39／39 後啟用 E1，與本機英文關鍵字列並存；離線與實機 A/B：2× 與其他語言位元組不變、3× 差異只在手冊矩形、狀態雜湊不變、離頁無殘字；實機是腳本輸入的一題，其餘靠預檢。 |
 | [第三百零八階段：日文與韓文玩家名音譯](phase-308-translit-jk.md) | 規格 044、045：`xlate/translitjk`（共用前端、片假名與諺文規則）、全字典 117,493 詞不變式、兩位獨立審查與兩處規則修正、104 個前後對照時點（機器狀態全同、新舊畫面只在 ja、ko 的隊伍欄 10 個時點不同）、離線重播與 phase254 七條不變、`package.sh linux` 與發行包通道冒煙。 |
 | [音譯例子表（ja）](phase-308-spec-examples.ja.tsv)、[（ko）](phase-308-spec-examples.ko.tsv) | 規格 044、045 規則文字括號內的「名字加寫法」，規則模式逐列比對（`TestSpecExamples`）；idiom 列是已知與慣用寫法的差異。 |
 | [音譯固定名單（ja）](phase-308-translit-fixed-names.ja.tsv)、[（ko）](phase-308-translit-fixed-names.ko.tsv) | 固定測試名單與期望輸出（欄位 name、expected、tier、rules、review），由 dosgolem `-update-fixed` 產生，兩位審查者確認；dosgolem `xlate/translitjk/testdata/` 有逐字副本。 |
