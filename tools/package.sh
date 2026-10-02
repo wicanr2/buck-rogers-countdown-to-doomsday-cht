@@ -154,6 +154,20 @@ if [[ "$WITH_DATA" == 1 ]]; then
     python3 tools/eten_font.py build text/*.zh-TW.tsv --asc /eten/ASCFONT.15 --spc /eten/SPCFONT.15 --std /eten/STDFONT.15 \
       --out workplace/pkg-stage/eten.golemfnt --manifest-out workplace/pkg-stage/eten.json >/dev/null'
 fi
+# 規格 056 §5.1：縮小字模的可用性檢查。對剛建好的字型（完整版另含剛建的倚天字型）檢查名字單元可能用到的字，
+# 每個倍率、等級衍生後都不得全空。測試必須真的執行：要有 --- PASS 且不得有 --- SKIP，否則打包失敗。
+smoke_shrink() {
+  local out eten=()
+  if [[ "$WITH_DATA" == 1 && -f "$STAGE/eten.golemfnt" ]]; then
+    eten=(-v "$STAGE/eten.golemfnt:/eten.golemfnt:ro" -e BUCKROGERS_ZHTW_ETEN_FONT=/eten.golemfnt)
+  fi
+  out="$(dr "${GOENV[@]}" -v "$STAGE/src:/src" -v "$MODCACHE:/gomodcache" -v "$GOCACHE_DIR:/gocache" \
+    -v "$STAGE/common:/pkg:ro" -e BUCKROGERS_PKG_ROOT=/pkg "${eten[@]}" -w /src "$GO_IMAGE" \
+    go test ./apps/buckrogers -run 'TestShrinkFontAvailability$' -count=1 -v 2>&1)" || { echo "$out" >&2; die "TestShrinkFontAvailability 失敗"; }
+  grep -q -- '--- PASS: TestShrinkFontAvailability' <<<"$out" || { echo "$out" >&2; die "TestShrinkFontAvailability 沒有 PASS"; }
+  ! grep -q -- '--- SKIP' <<<"$out" || { echo "$out" >&2; die "TestShrinkFontAvailability 被略過（BUCKROGERS_PKG_ROOT 沒生效）"; }
+}
+smoke_shrink
 cp "$UNIFONT_DOC/OFL-1.1.txt" "$STAGE/common/font/OFL-1.1.txt"
 cp "$UNIFONT_DOC/COPYING" "$STAGE/common/font/COPYING-unifont"
 cp LICENSE "$STAGE/common/LICENSE"
