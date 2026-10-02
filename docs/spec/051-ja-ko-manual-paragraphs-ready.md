@@ -23,7 +23,7 @@ Issue：#39
 - 現行 Python 檢查 `tools/manual_catalog.py`、`tools/manual_overlay_layout.py` 原本只比字元數（`len(translation) > 504`），不是半形單位與換列；
   ja、ko 需要與 Go 一致的檢查（`tools/manual_lang.py`，§5.1）。
 - 量測（2026-10-02，`text/manual.zh-TW.tsv`）：39 段，`source` 欄全為 `manual-and-runtime`，單位數（半形 1、其餘 2）中位 242、最大 661；容量 1,008（14 × 72，逐字元換行的損耗另計）。
-  手札長文的 ko／zh 單位比中位 1.41、ja 1.43；成稿後最長段落 ko 891、ja 886 單位（逐字元換列後 13 列）。
+  手札長文的 ko／zh 單位比中位 1.41、ja 1.43；成稿後最長段落 ja 891、ko 886 單位（各一段，逐字元換列後 13 列；其餘不超過 12 列）。
 - 執行期查表：手冊面板用 `entry.EventKey` 與 `TextKey` 查本語言 catalog（`translationFor`），譯文為空表示未翻譯、原版英文照顯示；
   `readTSV` 不接受空欄位，所以缺譯的表現是「缺 key」，不是空字串。
 - zh-TW 譯文中的拉丁字母詞（NEO、RAM、能力與技能縮寫、`Salvation III`、`Scot.dos`、`Mariposa` 等）是公開發行的內容，白名單以此為界；ja、ko 不會比 zh-TW 多洩漏任何拉丁字母詞。
