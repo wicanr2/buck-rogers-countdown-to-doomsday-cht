@@ -78,7 +78,7 @@ ecl.1.17.00182	그의 연설	ecl-batch-editorial
 ecl.1.17.00195	「여러분의 예인선은 연료를 가득 채우고 대기 중이다.」	ecl-batch-editorial
 ecl.1.17.00327	「이 메시지를 수신했다.」 그가 홀로그램 재생기 앞으로 안내한다.	ecl-batch-editorial
 ecl.1.17.00379	화면에 RAM 여성 지휘관이 나타난다.	ecl-batch-editorial
-ecl.1.17.00417	「그라디부스 산 근처 사막 러너 마을의 여성 지도자를 붙잡았다. 간섭하려는 자는 주노 근처의 지정된 소행성으로 오라. 오지 않으면 그녀는 죽는다.」	ecl-batch-editorial
+ecl.1.17.00417	「그라디부스 산 근처 사막 러너 마을의 여성 지도자를 붙잡았다. 간섭한 자들은 주노 근처의 지정된 소행성으로 오라. 오지 않으면 그녀는 죽는다.」	ecl-batch-editorial
 ecl.1.17.00545	투러비언이 말한다. 「이 문제는 당분간 접어 두어야 한다. 지구가 임박한 위기에 처해 있다. 임무를 계속하라. 해산.」	ecl-batch-editorial
 ecl.1.17.00639	벅이 복도에서 앞길을 막아선다.	ecl-batch-editorial
 ecl.1.17.00671	「규칙은 때로 깨지라고 있는 거예요. 개인이 명령보다 중요하죠.」	ecl-batch-editorial
@@ -95,8 +95,8 @@ ecl.1.17.01276	벅은 지휘관과 함께 떠난다.	ecl-batch-editorial
 ecl.1.17.01370	에어록을 나서자 기지 사령관이 이끄는 대규모 인파의 환영을 받는다. 그가 환호하는 군중을 조용히 시키고 말문을 연다:	ecl-batch-editorial
 ecl.1.17.01467	「돌아오신 것을 환영합니다. 여러분은 홀처하인과 그 RAM 일당의 사악한 재앙에서 지구를 구해 냈습니다...	ecl-batch-editorial
 ecl.1.17.01549	벅 로저스가 어디선가 불쑥 나타나 투러비언의 말을 끊는다:	ecl-batch-editorial
-ecl.1.17.01596	「악수도 하고, 지구와 모든 사람을 구해 준 감사 인사도 전하고 싶었어요. 여러분 같은 이들이 있으면 RAM은 승산이 없죠.」	ecl-batch-editorial
-ecl.1.17.01620	지구와 모든 사람을 구해 준 감사 인사도 전하고 싶었어요. 여러분 같은 이들이 있으면 RAM은 승산이 없죠.」	ecl-batch-editorial
+ecl.1.17.01596	「악수도 하고, 지구와 모든 사람을 구해 줘서 고맙다는 인사도 전하고 싶었어요. 여러분 같은 이들이 있으면 RAM은 승산이 없죠.」	ecl-batch-editorial
+ecl.1.17.01620	지구와 모든 사람을 구해 줘서 고맙다는 인사도 전하고 싶었어요. 여러분 같은 이들이 있으면 RAM은 승산이 없죠.」	ecl-batch-editorial
 ecl.1.17.01702	군중이 환호하는 가운데 축하 파티로 안내된다.	ecl-batch-editorial
 ecl.1.17.01809	NEO 기술자들이 달려와 장치를 회수한다. 투러비언 지휘관이 뒤이어 도착한다.	ecl-batch-editorial
 ecl.1.17.01869	「잘했다! 이는 매우 중요한 정보다. 이제 종말 장치 조사를 계속해 주기 바란다.」	ecl-batch-editorial
@@ -190,7 +190,7 @@ ecl.2.32.02331	로봇들이 공격하며 되뇐다. 「제거한다, 제거한�
 ecl.2.32.02406	포탑 제어 장치가 비활성화되어 있다. 스캐너에는 함선이 감지되지 않는다.	ecl-batch-editorial
 ecl.2.32.02492	문 앞에 떠 있는 시신에 시선이 꽂힌다. 팔 하나가 없는 것으로 보아 복도에서 본 유령 같은 형체와 같은 존재다. 그는 찢어지고 검게 얼룩진 실험복 잔해를 두르고 있다.	ecl-batch-editorial
 ecl.2.32.02652	시신 가까이에 기록 장치와 홀로그램 투영기가 떠 있다. 기록을 재생하자 방 안에 꽤나 지루해하는 목소리가 울려 퍼진다.	ecl-batch-editorial
-ecl.2.32.02764	「...지구를 불모지로 만든 뒤에도 투입은 예정대로 진행될 것이다.	ecl-batch-editorial
+ecl.2.32.02764	「...지구를 불모지로 만든 뒤 투입은 예정대로 진행될 것이다.	ecl-batch-editorial
 ecl.2.32.02821	「홀처하인의 말이 맞다면... 잠깐! 전력이 요동친다... 주 격리 역장이 교란되고 있다... 모든 무리에서 활동이 증가하고 있다. 스콧! 지금 당장 긴급 정지해라! 어디 있어!?	ecl-batch-editorial
 ecl.2.32.02972	「스콧이 작동 불능이다... 보안에 통보했다... 탑승하는 누구에게든 홀로그램 경고를 설치하는 중이다... 부디 단순한 예방 조치이기를...	ecl-batch-editorial
 ecl.2.32.03080	「투영기가 가동되는 중이다... 잠깐! 이렇게 빨리!? 저 번득이는 눈... 안 돼! 물러서!	ecl-batch-editorial
@@ -505,7 +505,7 @@ ecl.3.48.06548	「도킹 구역」	ecl-batch-editorial
 ecl.3.48.06646	「갑급 거주 구역」	ecl-batch-editorial
 ecl.3.48.06666	「을급 거주 구역」	ecl-batch-editorial
 ecl.3.48.06686	「작업자 거주 구역」	ecl-batch-editorial
-ecl.3.48.06719	여기는 인사부장의 사무실이다. 문서를 뒤져 보니 레이저 연구팀이 그라디부스 산으로 재배치된 것으로 드러난다.	ecl-batch-editorial
+ecl.3.48.06719	여기는 인사부장의 사무실이다. 파일을 뒤져 보니 레이저 연구팀이 그라디부스 산으로 재배치된 것으로 드러난다.	ecl-batch-editorial
 ecl.3.48.06868	한 여자가 다급하게 달려온다. 「아이들을 보셨나요? 아이들을 데려오라고 보낸 분대에서 아무 연락이 없어요!」 뭐라고 말하겠습니까?	ecl-batch-editorial
 ecl.3.48.06986	침묵	ecl-batch-editorial
 ecl.3.48.07014	그녀는 안도한다. 「다행이에요! 지금 바로 배로 가 볼게요.」 그녀는 서둘러 자리를 뜬다.	ecl-batch-editorial
@@ -791,7 +791,7 @@ ecl.4.64.01350	그가 말한다. 「우리는 사막의 고요한 심장 속에 
 ecl.4.64.01435	「우리는 수 마일 밖의 적의 기척도 듣는다. 웃으면서 그들을 따돌린다.	ecl-batch-editorial
 ecl.4.64.01479	적의 기척이 들리지 않는다. 너희는 거짓말을 하고 있다!」	ecl-batch-editorial
 ecl.4.64.01511	여자가 그의 노여움을 가라앉힌다. 「나는 아사다. 조심해라, 우리 부족은 거짓말쟁이를 좋아하지 않는다.」	ecl-batch-editorial
-ecl.4.64.01580	한 단어로 말해 보라. RAM은 어떻게 우리 귀에 들리지 않게 공격하느냐.」	ecl-batch-editorial
+ecl.4.64.01580	RAM이 어떻게 우리 귀에 들리지 않게 공격하는지 한 단어로 말해 보라.」	ecl-batch-editorial
 ecl.4.64.01775	「저들의 말은 사실이다! 마을을 떠나라! 우리 새끼들을 구하라!」 그는 성큼성큼 뛰어간다.	ecl-batch-editorial
 ecl.4.64.01837	어쩌면 우리도 도울 수 있을지 모르오. 우리는 자존심이 강하지만 간청하오. 우리 새끼들을 지키는 일을 도와주시겠소?」	ecl-batch-editorial
 ecl.4.64.01917	「겁쟁이들!」 그들은 눈길조차 주지 않는다.	ecl-batch-editorial
@@ -970,7 +970,7 @@ ecl.4.65.04293	RAM 부대가 이 방에 있던 사람을 모조리 죽였다.	ec
 ecl.4.65.04464	이 건물의 지붕이 불타고 있다.	ecl-batch-editorial
 ecl.4.65.04511	자욱한 연기가 방 안에 가득하다.	ecl-batch-editorial
 ecl.4.65.04621	발견한 것:	ecl-batch-editorial
-ecl.4.65.04635	명의 사막 러너가 연기 속에서 꼼짝 못 하고 있어 밖으로 옮긴다.	ecl-batch-editorial
+ecl.4.65.04635	명의 사막 러너. 연기 속에서 꼼짝 못 하는 그들을 밖으로 옮긴다.	ecl-batch-editorial
 ecl.4.65.04690	안전한 곳으로 달아난다.	ecl-batch-editorial
 ecl.4.65.04738	연기와 불길 말고는 아무것도 보이지 않는다.	ecl-batch-editorial
 ecl.4.65.04779	불붙은 재가 비처럼 끊임없이 떨어진다.	ecl-batch-editorial
@@ -1403,7 +1403,7 @@ ecl.5.80.06252	리앤더를 받아들이겠습니까?	ecl-batch-editorial
 ecl.5.80.06346	홀로 황야를 달려가는 저지대인 한 명과 마주친다.	ecl-batch-editorial
 ecl.5.80.06394	그는 팀을 보자 굳어 버린다. 「RAM 장교이십니까?」 그가 묻는다.	ecl-batch-editorial
 ecl.5.80.06450	NEO 소속이라고 밝히겠습니까?	ecl-batch-editorial
-ecl.5.80.06485	그에게 NEO를 대표한다고 말해 준다. 「제에발 도와 주십시오!」 그가 말한다.	ecl-batch-editorial
+ecl.5.80.06485	그에게 NEO를 대표한다고 말해 준다. 「제에발 도와주십시오!」 그가 말한다.	ecl-batch-editorial
 ecl.5.80.06533	「제 가족이 근처에 숨어 있는데, RAM이 언제라도	ecl-batch-editorial
 ecl.5.80.06583	그들을 찾을지 모릅니다! 도와주시겠습니까?」	ecl-batch-editorial
 ecl.5.80.06613	그는 팀을 조금 떨어진 곳에 있는, 겁에 질린	ecl-batch-editorial
@@ -1534,7 +1534,7 @@ ecl.5.81.05381	그녀가 속삭인다. 「보안 코드는 683입니다. 받으�
 ecl.5.81.05436	그녀가 무기와 방어구를 건넨다.	ecl-batch-editorial
 ecl.5.81.05493	남쪽의 큰 집에서 우는 소리가 들린다.	ecl-batch-editorial
 ecl.5.81.05535	「열쇠를 구하셨군요. 부디 키트를	ecl-batch-editorial
-ecl.5.81.05547	열쇠. 부디 키트를 물자 보관실에서 가져와 주십시오. 부디 열쇠를 찾아 그걸 써서 들어가	ecl-batch-editorial
+ecl.5.81.05547	열쇠. 부디 키트를 물자 보관실에서 가져와 주십씨오. 부디 열쇠를 찾아 그걸 써서 들어가	ecl-batch-editorial
 ecl.5.81.05577	물자 보관실에서 가져와 주십씨오.	ecl-batch-editorial
 ecl.5.81.05601	부디 열쇠를 찾아 그걸 써서	ecl-batch-editorial
 ecl.5.81.05641	물자 보관실에 들어가 주십씨오.	ecl-batch-editorial
@@ -1667,7 +1667,7 @@ ecl.5.82.03689	바닥에는 거품이 부글거리는 시체들이 널려 있다
 ecl.5.82.03752	경비 로봇들이 당신들을 겨냥한다.	ecl-batch-editorial
 ecl.5.82.03804	로봇 잔해가 방 안 곳곳에 흩어져 있다.	ecl-batch-editorial
 ecl.5.82.03904	이 보안 문은 알맞은	ecl-batch-editorial
-ecl.5.82.03946	열쇠를 찾으면 열린다.	ecl-batch-editorial
+ecl.5.82.03946	열쇠를 열쇠고리에서 찾으면 열린다.	ecl-batch-editorial
 ecl.5.82.03966	보안 문의 표지판에 적혀 있다: 엘리베이터 방향	ecl-batch-editorial
 ecl.5.82.04006	이 보안 문은 폭파 장치로도 뚫을 수 없다.	ecl-batch-editorial
 ecl.5.82.04051	열리지 않는다.	ecl-batch-editorial
@@ -1765,7 +1765,7 @@ ecl.5.82.08301	죽이기	ecl-batch-editorial
 ecl.5.82.08329	그들을 모조리 죽인다.	ecl-batch-editorial
 ecl.5.82.08357	죽은 RAM 전사 2명이 바닥에 누워 있다.	ecl-batch-editorial
 ecl.5.82.08399	문에 붙은 명판에 이렇게 적혀 있다:	ecl-batch-editorial
-ecl.5.82.08425	중앙 연구소	ecl-batch-editorial
+ecl.5.82.08425	주 연구소	ecl-batch-editorial
 ecl.5.82.08462	연구소 2번	ecl-batch-editorial
 ecl.5.82.08497	연구소 3번	ecl-batch-editorial
 ecl.5.82.08506	깨진 비커와 장비 파편이 바닥에 널려 있다...	ecl-batch-editorial
@@ -1893,7 +1893,7 @@ ecl.5.83.05266	엉킨 케이블 뭉치가 폭발로 무너져 내렸다.	ecl-bat
 ecl.5.83.05305	팀원 한 명이 케이블을 넘어가 길을 열어 볼 수 있다.	ecl-batch-editorial
 ecl.5.83.05351	누가 케이블을 넘겠습니까?	ecl-batch-editorial
 ecl.5.83.05406	케이블을 넘으려 하자 발밑에서 케이블이	ecl-batch-editorial
-ecl.5.83.05448	미끄러져 굴러떨어진다. 하지만 이제	ecl-batch-editorial
+ecl.5.83.05448	움직이는 바람에 굴러떨어진다. 하지만 이제	ecl-batch-editorial
 ecl.5.83.05490	나머지 팀원들이 지나갈 길이 열렸다.	ecl-batch-editorial
 ecl.5.83.05531	케이블을 무사히 넘었다! 팀은	ecl-batch-editorial
 ecl.5.83.05573	계속 나아갈 수 있다.	ecl-batch-editorial
@@ -2128,8 +2128,8 @@ ecl.6.97.04173	태양왕의 시종 한 명이 여기서 쉬고 있다.	ecl-batch
 ecl.6.97.04218	그는 미국 독립 혁명 예복을 입고 있다. 「쉿,」 그가 속삭인다.	ecl-batch-editorial
 ecl.6.97.04269	「태양왕을 찾으세요?	ecl-batch-editorial
 ecl.6.97.04298	그러셔야죠! 중심부의 무기는 태양왕만 끌 수 있어요.」	ecl-batch-editorial
-ecl.6.97.04349	「선물을 가져가야 해요. 태양	ecl-batch-editorial
-ecl.6.97.04394	왕과 이야기하려면요,」 하고 그가 경고한다. 「우리 아래 층마다 하나씩 찾아보세요.」	ecl-batch-editorial
+ecl.6.97.04349	「선물을 가져가야 해요. 태양왕과	ecl-batch-editorial
+ecl.6.97.04394	이야기하려면요,」 하고 그가 경고한다. 「우리 아래층마다 하나씩 찾아보세요.」	ecl-batch-editorial
 ecl.6.97.04455	미국 독립 혁명 예복을 입은 시종이 여기 있다.	ecl-batch-editorial
 ecl.6.97.04497	「여러분을 따라 중심부를 올라가라는 명을 받았어요. 반드시	ecl-batch-editorial
 ecl.6.97.04545	태양왕의 이익을 지키라는 거죠.	ecl-batch-editorial
@@ -2305,10 +2305,10 @@ ecl.6.98.04089	얼마 뒤 확성기에서 메시지가 흘러나온다.	ecl-batc
 ecl.6.98.04134	「전력이 전부 복구되었습니다.」	ecl-batch-editorial
 ecl.6.98.04163	공격한다!	ecl-batch-editorial
 ecl.6.98.04212	무중력 코어 구역의 꼭대기다. 어떻게 하겠습니까?	ecl-batch-editorial
-ecl.6.98.04264	태양왕이 코어를 가로지르는 뚫을 수 없는 레이저	ecl-batch-editorial
+ecl.6.98.04264	태양왕이 중심부를 가로지르는 뚫을 수 없는 레이저	ecl-batch-editorial
 ecl.6.98.04304	필드를 가동했다. 양옆의 무기는 최대 화력으로	ecl-batch-editorial
 ecl.6.98.04349	설정되어 완전 무장 상태다. 더 이상	ecl-batch-editorial
-ecl.6.98.04394	코어를 따라 내려갈 방법이 없다.	ecl-batch-editorial
+ecl.6.98.04394	중심부를 따라 내려갈 방법이 없다.	ecl-batch-editorial
 ecl.6.98.04425	근처 방송 스피커에서 정보가 뒤죽박죽 쏟아진다.	ecl-batch-editorial
 ecl.6.98.04463	「무기 체계 준비 완료... 조준 체계	ecl-batch-editorial
 ecl.6.98.04504	최종 시험 중... 카운트다운은	ecl-batch-editorial
@@ -2366,7 +2366,7 @@ ecl.6.98.06629	카운트 65에 시작됩니다. 자폭 시퀀스는 2분 뒤	ecl
 ecl.6.98.06671	되돌릴 수 없게 됩니다.」	ecl-batch-editorial
 ecl.6.98.06709	RAM 전사들이 방으로 뛰어들어	ecl-batch-editorial
 ecl.6.98.06753	자폭을 해제하려 한다.	ecl-batch-editorial
-ecl.6.98.06802	전사들이 더 공격해 온다!	ecl-batch-editorial
+ecl.6.98.06802	더 많은 전사가 공격해 온다!	ecl-batch-editorial
 ecl.6.98.06843	「자폭 시퀀스는 이제 되돌릴 수 없습니다.	ecl-batch-editorial
 ecl.6.98.06885	종말 무기 파괴 카운트다운 개시.」 벽면 스피커가 알린다.	ecl-batch-editorial
 ecl.6.98.06940	전투가 끝나자 태양왕의 시종이 그림자 속에서	ecl-batch-editorial
@@ -2405,7 +2405,7 @@ ecl.6.98.08316	이 경비실의 모니터 몇 대는	ecl-batch-editorial
 ecl.6.98.08356	꺼져 있다. 주 명령 화면에는 이렇게 표시된다: 「전원 차단	ecl-batch-editorial
 ecl.6.98.08403	진행 중. 예비 전원 사용 중. 무기 상태 비활성.」	ecl-batch-editorial
 ecl.6.98.08451	경비실은 번쩍이는 붉은	ecl-batch-editorial
-ecl.6.98.08489	경보등으로 가득하다. 주 명령 화면이 깜박인다:	ecl-batch-editorial
+ecl.6.98.08489	경고등으로 가득하다. 주 명령 화면이 깜박인다:	ecl-batch-editorial
 ecl.6.98.08533	「무기 자폭이 가동되었습니다. 마리포사 상부 구역에서	ecl-batch-editorial
 ecl.6.98.08577	즉시 대피하십시오.」	ecl-batch-editorial
 ecl.6.98.08596	문 위의 명패에 이렇게 적혀 있다:	ecl-batch-editorial

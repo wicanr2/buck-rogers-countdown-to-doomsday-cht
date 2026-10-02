@@ -129,7 +129,7 @@ hmenu.1405a63e8a78	캐릭터(C)	ecl-batch-editorial
 hmenu.1420d0047696	모험(A)	ecl-batch-editorial
 hmenu.142c264ef84d	현재 층:	ecl-batch-editorial
 hmenu.14b68d2eb68d	분노(A)	ecl-batch-editorial
-hmenu.14c9a4669356	강하(D)	ecl-batch-editorial
+hmenu.14c9a4669356	저급(D)	ecl-batch-editorial
 hmenu.14cb86c7a48b	불러올 수 없다	ecl-batch-editorial
 hmenu.1502ed65d609	전진(A)	ecl-batch-editorial
 hmenu.1509f561f241	저장(S)	ecl-batch-editorial
@@ -233,7 +233,7 @@ hmenu.21e49eb2b299	일지(L)	ecl-batch-editorial
 hmenu.2215b79651c3	중앙(C)	ecl-batch-editorial
 hmenu.22655acc6c55	수락(A)	ecl-batch-editorial
 hmenu.226aad8a0d4a	무중력(Z)	ecl-batch-editorial
-hmenu.226e0758bf81	살핌(L)	ecl-batch-editorial
+hmenu.226e0758bf81	관찰(L)	ecl-batch-editorial
 hmenu.2270f4657420	악기 연주(P)	ecl-batch-editorial
 hmenu.2295e63fc86a	맨 오른쪽 끝으로 밀고 버튼을 누르십시오	ecl-batch-editorial
 hmenu.22d5925ed646	대형	ecl-batch-editorial
@@ -532,7 +532,7 @@ hmenu.52d46ffedcf8	생명(L)	ecl-batch-editorial
 hmenu.52f54b6d2d53	조우(E)	ecl-batch-editorial
 hmenu.531cb8d83b21	말재주/설득(F)	ecl-batch-editorial
 hmenu.53257f68c4e1	초라한 사람들 구조(R)	ecl-batch-editorial
-hmenu.53798f5fd9ee	은(는) 꽤 위협적으로 보인다.	ecl-batch-editorial
+hmenu.53798f5fd9ee	은(는) 진짜 위협적으로 보인다.	ecl-batch-editorial
 hmenu.538e7569dc75	탄약(A)	ecl-batch-editorial
 hmenu.539e23b52e1b	가방 챙기기(T)	ecl-batch-editorial
 hmenu.53a0357017c0	집결지(R)	ecl-batch-editorial
@@ -547,7 +547,7 @@ hmenu.54cda0543a40	지질학(G)	ecl-batch-editorial
 hmenu.54fe25173974	카페(C)	ecl-batch-editorial
 hmenu.556c2616c5f4	개조인(G)	ecl-batch-editorial
 hmenu.5574f7dcd3dc	현장(T)	ecl-batch-editorial
-hmenu.5592b4048986	일부 일반 점수가 남아 있다. 나가겠습니까?	ecl-batch-editorial
+hmenu.5592b4048986	일부 일반 기술 점수가 남아 있다. 나가겠습니까?	ecl-batch-editorial
 hmenu.55a213edc1a2	소년(B)	ecl-batch-editorial
 hmenu.55a816001106	후퇴 중(R)	ecl-batch-editorial
 hmenu.55f6a88dc025	이탈(G)	ecl-batch-editorial
@@ -570,7 +570,7 @@ hmenu.5926c704d5b3	경제학(E)	ecl-batch-editorial
 hmenu.5942bd952f12	상승(A)	ecl-batch-editorial
 hmenu.5985039f106d	팀(T)	ecl-batch-editorial
 hmenu.59ad1b2fc742	스캔	ecl-batch-editorial
-hmenu.59b0d70eeded	은(는) 응급 수리:	ecl-batch-editorial
+hmenu.59b0d70eeded	은(는) 임시 수리:	ecl-batch-editorial
 hmenu.59bb67dc4a0f	은(는) 가치가 없다.	ecl-batch-editorial
 hmenu.59c215d0dc92	보급소(D)	ecl-batch-editorial
 hmenu.59d6cf4f638f	의식이 있는 사람만 훈련합니다	ecl-batch-editorial
@@ -634,7 +634,7 @@ hmenu.64c82aaed1b4	실명(B)	ecl-batch-editorial
 hmenu.64dd65edfeaa	진단(D)	ecl-batch-editorial
 hmenu.64e3cb0e4960	구입(B)	ecl-batch-editorial
 hmenu.64ea62de2928	은(는) 줌:	ecl-batch-editorial
-hmenu.65108526a62e	일부 직업 점수가 남아 있다. 나가겠습니까?	ecl-batch-editorial
+hmenu.65108526a62e	일부 직업 기술 점수가 남아 있다. 나가겠습니까?	ecl-batch-editorial
 hmenu.652bcc3a4784	물품(I)	ecl-batch-editorial
 hmenu.6563b9a9787c	마법 프라이팬(M)	ecl-batch-editorial
 hmenu.65659145569b	관찰력(N)	ecl-batch-editorial
@@ -728,7 +728,7 @@ hmenu.703ac39b5b60	나무 조각품(W)	ecl-batch-editorial
 hmenu.7058347859ce	강당(L)	ecl-batch-editorial
 hmenu.7062520c5a0e	운전	ecl-batch-editorial
 hmenu.7067d9392f2c	수색 완료	ecl-batch-editorial
-hmenu.709c88e3d9ac	축하합니다. 팀이 경험치를 얻었습니다!	ecl-batch-editorial
+hmenu.709c88e3d9ac	축하합니다. 팀이 경험치를 얻는다!	ecl-batch-editorial
 hmenu.70ce871f8a3d	기록	ecl-batch-editorial
 hmenu.70f6dd1dbfe4	은(는) 들이받기를 시도한다!	ecl-batch-editorial
 hmenu.70f6df1a9164	DOS로 나가기(Q)	ecl-batch-editorial
@@ -805,7 +805,7 @@ hmenu.7a3a94a8ca22	취소(A)	ecl-batch-editorial
 hmenu.7a62e3ac3d7c	연구소(L)	ecl-batch-editorial
 hmenu.7abc6c23cb25	릭의(R)	ecl-batch-editorial
 hmenu.7abee2d3cae7	스턴건(S)	ecl-batch-editorial
-hmenu.7ae22a60d86a	기절한	ecl-batch-editorial
+hmenu.7ae22a60d86a	기절함	ecl-batch-editorial
 hmenu.7b18fb03292e	감시(W)	ecl-batch-editorial
 hmenu.7b355cdf217c	일지 페이지:	ecl-batch-editorial
 hmenu.7b539a10ff11	엔지니어(T)	ecl-batch-editorial
@@ -1055,7 +1055,7 @@ hmenu.a18603086e5b	지원	ecl-batch-editorial
 hmenu.a18b869b2e81	가득 참	ecl-batch-editorial
 hmenu.a1a8a8cbbed4	둘(T)	ecl-batch-editorial
 hmenu.a204943256ea	당신의	ecl-batch-editorial
-hmenu.a23d2d16a08e	산성 개구리와 친해지기(B)	ecl-batch-editorial
+hmenu.a23d2d16a08e	개구리와 친해지기(B)	ecl-batch-editorial
 hmenu.a23f0db1c70d	맞습니까?	ecl-batch-editorial
 hmenu.a24e10fde71a	사용 중:	ecl-batch-editorial
 hmenu.a25513c7e0f6	U	ecl-batch-editorial
@@ -1093,11 +1093,11 @@ hmenu.a5d8a91e751c	응시(G)	ecl-batch-editorial
 hmenu.a628d0e473bf	조사 결과(F)	ecl-batch-editorial
 hmenu.a646250fde5e	빔 레이저(B)	ecl-batch-editorial
 hmenu.a688d83ae858	본부(H)	ecl-batch-editorial
-hmenu.a69403506845	이탈하는 동안	ecl-batch-editorial
+hmenu.a69403506845	물러서는 순간	ecl-batch-editorial
 hmenu.a6b46dd0d1ae	일부	ecl-batch-editorial
 hmenu.a73614e57f23	희귀(R)	ecl-batch-editorial
 hmenu.a73ad97290b7	RAM 정찰함(R)	ecl-batch-editorial
-hmenu.a768e1003362	은(는) 받았다:	ecl-batch-editorial
+hmenu.a768e1003362	은(는) 받는다:	ecl-batch-editorial
 hmenu.a7937b64b8ca	첫 번째	ecl-batch-editorial
 hmenu.a79d75e5e0b6	생명 유지 장치 수리(R)	ecl-batch-editorial
 hmenu.a7de9bc2c24b	점의 피해!	ecl-batch-editorial
@@ -1194,7 +1194,7 @@ hmenu.b4128c8ceeb5	펌핑 레이저(P)	ecl-batch-editorial
 hmenu.b43e72eed048	높음(H)	ecl-batch-editorial
 hmenu.b46e2e86f895	감옥(P)	ecl-batch-editorial
 hmenu.b4790d350c6e	팁.	ecl-batch-editorial
-hmenu.b479932c66f3	휴식(R) 저장(S) 교체(C) 나가기(E)	ecl-batch-editorial
+hmenu.b479932c66f3	휴식(R) 저장(S) 변경(C) 나가기(E)	ecl-batch-editorial
 hmenu.b4b33d244164	오버레이	ecl-batch-editorial
 hmenu.b4b944841827	엄폐물로!	ecl-batch-editorial
 hmenu.b4ca32d7b0db	잔혹한	ecl-batch-editorial
@@ -1539,7 +1539,7 @@ hmenu.e678314b76c9	아지트(H)	ecl-batch-editorial
 hmenu.e6aba2bd5a6b	프로그래밍(P)	ecl-batch-editorial
 hmenu.e6ae3d509364	세레스(C)	ecl-batch-editorial
 hmenu.e73ecd0843c7	맨 왼쪽 위 끝으로	ecl-batch-editorial
-hmenu.e768457adba3	각 캐릭터가 받는 것:	ecl-batch-editorial
+hmenu.e768457adba3	각 캐릭터는	ecl-batch-editorial
 hmenu.e76fd0c97e92	임시(R)	ecl-batch-editorial
 hmenu.e7b0c0160426	마법(M)	ecl-batch-editorial
 hmenu.e7d090343763	디스크 5를 넣어 주십시오: 드라이브	ecl-batch-editorial
