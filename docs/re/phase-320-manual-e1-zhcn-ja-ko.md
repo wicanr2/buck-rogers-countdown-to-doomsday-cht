@@ -12,7 +12,7 @@
 |---|---|
 | A（實作的父 commit） | dosgolem `039727e`，乾淨匯出；runner `b414cad47d3f1194…`、`buckrogers-play` `980ad5940dc64191…`（前 16 碼） |
 | B（實作 commit） | dosgolem `72ce242`，乾淨匯出；runner `da34b8344f10307c…`、`buckrogers-play` `6031f2ceb864d545…` |
-| 字型與譯文 | 發行字型 `workplace/pkg-stage/AppDir/font/`（zh-TW `buckrogers-unifont.golemfnt` SHA-256 `7675cf4e…`、zh-CN `2ac47096…`、ja `87ea61ba…`），現行 `text/`（同一份給 A、B） |
+| 字型與譯文 | 發行字型 `workplace/pkg-stage/AppDir/font/`（zh-TW `buckrogers-unifont.golemfnt` SHA-256 `7675cf4e…`、zh-CN `2ac47096…`、ja `87ea61ba…`、ko `aa271de2…`），現行 `text/`（同一份給 A、B） |
 | 離線快照 | `workplace/probe/phase12-before-question.state`，停在步數 266,650,000，不送按鍵，runner 不傳 `-manual-english` |
 | 實機腳本 | `workplace/phase311/path-repair.txt`，5,700 格，3×，`-frame-every 10`，四種語言各一次，另一次 `-lang en` 作對照 |
 
