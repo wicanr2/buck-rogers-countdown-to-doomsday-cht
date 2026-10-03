@@ -60,7 +60,7 @@ clip_card() {
 }
 
 card "$TMP/c00.png" "拯救地球" "BUCK ROGERS: COUNTDOWN TO DOOMSDAY" \
-  "實機遊玩錄影 ・ 繁體中文／簡體中文／日文／韓文" "畫面是遊戲實際執行的逐格輸出，輸入以固定腳本重播"
+  "實機遊玩錄影 ・ F4 即時切換 繁體中文／簡體中文／英文原版／日文／韓文" "畫面是遊戲實際執行的逐格輸出，輸入以固定腳本重播"
 card "$TMP/c99.png" "拯救地球 繁體中文化" "github.com/wicanr2/buck-rogers-countdown-to-doomsday-cht" \
   "RRSAL-1.0 ・ 非商業免費 ・ 不附原版遊戲" "配樂為原版遊戲音樂（DOSBox-X 錄製），著作權屬原權利人"
 clip_card "$TMP/c00.png" "$TMP/s_000.mp4" 3.5
